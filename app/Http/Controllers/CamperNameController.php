@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AnneeScolaire;
 use App\AnneesScolaire;
 use App\Models\Bookings;
+use App\Models\CamperName;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
