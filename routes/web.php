@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->name('dashboard');
 
 //ADMIN->USER
 Route::get('users/{id}/delete', 'usersController@deusersstroy')->name('users.destroy');
