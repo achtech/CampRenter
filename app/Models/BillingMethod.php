@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-class CamperName extends Base
+class BillingMethod extends Base
 {
-    protected $table = 'camper_name';
+    protected $table = 'billing_method';
     public $primarykey = 'id';
     protected $fillable = [
         'label'

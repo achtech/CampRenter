@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class LicenceCategories extends Model
+class LicenceCategories extends Base
 {
     protected $table = 'licence_categories';
     public $primarykey = 'id';
     protected $fillable = [
-        'name'
+        'label'
     ];
 }

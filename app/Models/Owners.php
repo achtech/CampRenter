@@ -2,21 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Owners extends Model
+class Owners extends Base
 {
     protected $table = 'owners';
     public $primarykey = 'id';
     protected $fillable = [
-        'name',
-        'last_name',
+        'owner_name',
+        'owner_last_name',
         'email',
         'password',
         'national_id',
         'image_national_id',
         'id_avatars',
-        'paypal_account',
-        'credit_card'
     ];
 }

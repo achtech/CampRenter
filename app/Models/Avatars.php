@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Avatars extends Model
+class Avatars extends Base
 {
     protected $table = 'avatars';
     public $primarykey = 'id';
     protected $fillable = [
-        'image'
+        'image',
+        'label'
     ];
 }

@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Fuels extends Model
+class Fuels extends Base
 {
     protected $table = 'fuels';
     public $primarykey = 'id';
     protected $fillable = [
-        'name'
+        'label'
     ];
 }
