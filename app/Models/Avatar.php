@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-class Transmissions extends Base
+class Avatar extends Base
 {
-    protected $table = 'transmissions';
+    protected $table = 'avatars';
     public $primarykey = 'id';
     protected $fillable = [
+        'image',
         'label'
     ];
 }

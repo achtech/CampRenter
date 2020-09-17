@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-class Commissions extends Base
+class Fuel extends Base
 {
-    protected $table = 'commissions';
+    protected $table = 'fuels';
     public $primarykey = 'id';
     protected $fillable = [
-        'rate',
+        'label'
     ];
 }
