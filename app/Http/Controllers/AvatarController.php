@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AnneeScolaire;
 use App\AnneesScolaire;
+use App\Models\Avatars;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
@@ -17,11 +18,15 @@ class AvatarController extends Controller
      */
     public function index(Request $request)
     {
+        $search = '';
+        if (isset($request) && null !== $request->get('search')) {
+            $search = $request->get('search');
+            $datas = Avatars::where('picture', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            $datas = Avatars::paginate(10);
+        }
+        return view('avatar.index')->with('datas', $datas)->with('search', $search);
     }
-
-
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,27 +34,8 @@ class AvatarController extends Controller
      */
     public function create()
     {
-        return view('Administrations.AnneesScolaire.create');
+        return view('Avatar.create');
     }
-
-
-
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-        $input = $request->all();
-        // $data = Users::create($input);
-        return redirect(route('anneesscolaire.index'))->with('success', 'Item added succesfully');
-    }
-
     /**
      * Display the specified resource.
      *
@@ -58,7 +44,22 @@ class AvatarController extends Controller
      */
     public function show($id)
     {
+        return redirect(route('avatar.index'));
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $input = $request->all();
+        $data = Avatars::create($input);
+        return redirect(route('avatar.index'))->with('success', 'Item added succesfully');
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -79,6 +80,12 @@ class AvatarController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = Avatars::find($id);
+        if (empty($data)) {
+            return redirect(route('avatar.index'));
+        }
+        $data = Avatars::where('id', $id)->update(request()->except(['_token', '_method']));
+        return redirect(route('avatar.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -91,5 +98,11 @@ class AvatarController extends Controller
      */
     public function destroy($id)
     {
+        $data = Avatars::find($id);
+        if (empty($data)) {
+            return redirect(route('avatar.index'));
+        }
+        $data->delete();
+        return redirect(route('avatar.index'));
     }
 }

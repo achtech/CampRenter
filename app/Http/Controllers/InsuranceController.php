@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AnneeScolaire;
 use App\AnneesScolaire;
+use App\Models\Inssurances;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
@@ -17,11 +18,15 @@ class InsuranceController extends Controller
      */
     public function index(Request $request)
     {
+        $search = '';
+        if (isset($request) && null !== $request->get('search')) {
+            $search = $request->get('search');
+            $datas = Inssurances::where('description', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            $datas = Inssurances::paginate(10);
+        }
+        return view('inssurance.index')->with('datas', $datas)->with('search', $search);
     }
-
-
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,27 +34,8 @@ class InsuranceController extends Controller
      */
     public function create()
     {
-        return view('Administrations.AnneesScolaire.create');
+        return view('Insurance.create');
     }
-
-
-
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-        $input = $request->all();
-        //$data = Users::create($input);
-        return redirect(route('anneesscolaire.index'))->with('success', 'Item added succesfully');
-    }
-
     /**
      * Display the specified resource.
      *
@@ -58,6 +44,19 @@ class InsuranceController extends Controller
      */
     public function show($id)
     {
+        return redirect(route('inssurance.index'));
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $input = $request->all();
+        $data = Inssurances::create($input);
+        return redirect(route('insurance.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -79,6 +78,12 @@ class InsuranceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = Inssurances::find($id);
+        if (empty($data)) {
+            return redirect(route('insurance.index'));
+        }
+        $data = Inssurances::where('id', $id)->update(request()->except(['_token', '_method']));
+        return redirect(route('insurance.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -91,5 +96,11 @@ class InsuranceController extends Controller
      */
     public function destroy($id)
     {
+        $data = Inssurances::find($id);
+        if (empty($data)) {
+            return redirect(route('insurance.index'));
+        }
+        $data->delete();
+        return redirect(route('insurance.index'));
     }
 }

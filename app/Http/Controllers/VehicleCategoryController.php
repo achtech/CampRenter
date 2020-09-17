@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\AnneeScolaire;
 use App\AnneesScolaire;
-use App\Models\Renters;
+use App\Models\VehicleCategories;
+use App\Models\VehiculeCategories;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
-class RenterController extends Controller
+class VehicleCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +22,11 @@ class RenterController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = Renters::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = VehicleCategories::where('name', 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $datas = Renters::paginate(10);
+            $datas = VehicleCategories::paginate(10);
         }
-        return view('renter.index')->with('datas', $datas)->with('search', $search);
+        return view('vehicleCategory.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -34,7 +35,7 @@ class RenterController extends Controller
      */
     public function create()
     {
-        return view('Renter.create');
+        return view('VehicleCategory.create');
     }
     /**
      * Display the specified resource.
@@ -44,7 +45,7 @@ class RenterController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('renter.index'));
+        return redirect(route('vehicleCategory.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -55,8 +56,8 @@ class RenterController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = Renters::create($input);
-        return redirect(route('renter.index'))->with('success', 'Item added succesfully');
+        $data = VehicleCategories::create($input);
+        return redirect(route('vehicleCategory.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -78,12 +79,12 @@ class RenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Renters::find($id);
+        $data = VehicleCategories::find($id);
         if (empty($data)) {
-            return redirect(route('renter.index'));
+            return redirect(route('vehicleCategory.index'));
         }
-        $data = Renters::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('renter.index'))->with('success', 'Item Updated succesfully');
+        $data = VehicleCategories::where('id', $id)->update(request()->except(['_token', '_method']));
+        return redirect(route('vehicleCategory.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -96,11 +97,11 @@ class RenterController extends Controller
      */
     public function destroy($id)
     {
-        $data = Renters::find($id);
+        $data = VehicleCategories::find($id);
         if (empty($data)) {
-            return redirect(route('renter.index'));
+            return redirect(route('vehicleCategory.index'));
         }
         $data->delete();
-        return redirect(route('renter.index'));
+        return redirect(route('vehicleCategory.index'));
     }
 }
