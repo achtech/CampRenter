@@ -30,7 +30,7 @@ Route::resource('users', 'UsersController', ['except' => 'destroy', 'names' => [
 
 //ADMIN->OWNER
 Route::get('owners/{id}/delete', 'ownersController@destroy')->name('owners.destroy');
-Route::resource('owners', 'OwnersController', ['except' => 'destroy', 'names' => [
+Route::resource('owners', 'App\Http\Controllers\OwnersController', ['except' => 'destroy', 'names' => [
     'index' => 'owners.index',
     'create' => 'owners.create',
     'update' => 'owners.update',

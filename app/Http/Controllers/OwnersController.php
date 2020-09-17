@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
-class OwnerController extends Controller
+class OwnersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class OwnerController extends Controller
         } else {
             $datas = Owners::paginate(10);
         }
-        return view('owner.index')->with('datas', $datas)->with('search', $search);
+        return view('owners.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
