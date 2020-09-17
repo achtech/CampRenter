@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class InssuranceCompany extends Model
+class InssuranceCompany extends Base
 {
     protected $table = 'inssurance_company';
     public $primarykey = 'id';
     protected $fillable = [
-        'name'
+        'label'
     ];
 }

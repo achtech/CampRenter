@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-class Commissions extends Base
+class Promotion extends Base
 {
-    protected $table = 'commissions';
+    protected $table = 'promotion';
     public $primarykey = 'id';
     protected $fillable = [
         'rate',
+        'date_from',
+        'date_to'
     ];
 }
