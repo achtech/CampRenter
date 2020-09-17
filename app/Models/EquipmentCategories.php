@@ -9,6 +9,6 @@ class EquipmentCategories extends Model
     protected $table = 'equipment_categories';
     public $primarykey = 'id';
     protected $fillable = [
-        'name'
+        'name',
     ];
 }
