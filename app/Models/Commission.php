@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-class Avatars extends Base
+class Commission extends Base
 {
-    protected $table = 'avatars';
+    protected $table = 'commissions';
     public $primarykey = 'id';
     protected $fillable = [
-        'image',
-        'label'
+        'rate',
     ];
 }

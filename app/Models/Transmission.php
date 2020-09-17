@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-class Fuels extends Base
+class Transmission extends Base
 {
-    protected $table = 'fuels';
+    protected $table = 'transmissions';
     public $primarykey = 'id';
     protected $fillable = [
         'label'

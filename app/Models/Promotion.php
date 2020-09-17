@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Promotion extends Base
 {
-    protected $table = 'promotion';
+    protected $table = 'promotions';
     public $primarykey = 'id';
     protected $fillable = [
         'rate',
