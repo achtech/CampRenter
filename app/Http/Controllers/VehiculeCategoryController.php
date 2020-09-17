@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AnneeScolaire;
 use App\AnneesScolaire;
+use App\Models\EquipmentCategories;
 use App\Models\VehicleCategories;
 use App\Models\VehiculeCategories;
 use Illuminate\Http\Request;
@@ -22,9 +23,9 @@ class VehiculeCategoryController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = VehicleCategories::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = EquipmentCategories::where('name', 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $datas = VehicleCategories::paginate(10);
+            $datas = EquipmentCategories::paginate(10);
         }
         return view('vehicleCategory.index')->with('datas', $datas)->with('search', $search);
     }
@@ -56,7 +57,7 @@ class VehiculeCategoryController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = VehicleCategories::create($input);
+        $data = EquipmentCategories::create($input);
         return redirect(route('vehicleCategory.index'))->with('success', 'Item added succesfully');
     }
 
@@ -79,11 +80,11 @@ class VehiculeCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = VehicleCategories::find($id);
+        $data = EquipmentCategories::find($id);
         if (empty($data)) {
             return redirect(route('vehicleCategory.index'));
         }
-        $data = VehicleCategories::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = EquipmentCategories::where('id', $id)->update(request()->except(['_token', '_method']));
         return redirect(route('vehicleCategory.index'))->with('success', 'Item Updated succesfully');
     }
 
@@ -97,7 +98,7 @@ class VehiculeCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $data = VehicleCategories::find($id);
+        $data = EquipmentCategories::find($id);
         if (empty($data)) {
             return redirect(route('vehicleCategory.index'));
         }
