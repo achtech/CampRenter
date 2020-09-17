@@ -279,10 +279,6 @@
                                 aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                                     class="hide-menu">Administration </span></a>
                             <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                                <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
-                                            class="hide-menu"> Profile user
-                                        </span></a>
-                                </li>
                                 <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
                                             class="hide-menu"> Users
                                         </span></a>
@@ -290,74 +286,123 @@
                             </ul>
                         </li>             
                         <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">Authentication</span></li>
-
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html"
-                                aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
-                                    class="hide-menu">Login
-                                </span></a>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link"
-                                href="authentication-register1.html" aria-expanded="false"><i data-feather="lock"
-                                    class="feather-icon"></i><span class="hide-menu">Register
-                                </span></a>
-                        </li>
-
+                        <li class="nav-small-cap"><span class="hide-menu">Owner Management</span></li>
+                        
+                                <li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link"><span
+                                            class="hide-menu"> List of owner </span></a></li>
+                                <li class="sidebar-item"><a href="icon-simple-lineicon.html" class="sidebar-link"><span
+                                class="hide-menu"> Chat width owner </span></a></li>
+                               
+                        <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Renter Management</span></li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                                 aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
-                                    class="hide-menu">Icons
-                                </span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link"><span
-                                            class="hide-menu"> Fontawesome Icons </span></a></li>
-
-                                <li class="sidebar-item"><a href="icon-simple-lineicon.html" class="sidebar-link"><span
-                                            class="hide-menu"> Simple Line Icons </span></a></li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                    class="hide-menu">Multi
-                                    level
-                                    dd</span></a>
+                                    class="hide-menu">Renter</span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
                                 <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> item 1.1</span></a>
-                                </li>
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> item 1.2</span></a>
-                                </li>
-                                <li class="sidebar-item"> <a class="has-arrow sidebar-link" href="javascript:void(0)"
-                                        aria-expanded="false"><span class="hide-menu">Menu 1.3</span></a>
-                                    <ul aria-expanded="false" class="collapse second-level base-level-line">
-                                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                                    class="hide-menu"> item
-                                                    1.3.1</span></a></li>
-                                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                                    class="hide-menu"> item
-                                                    1.3.2</span></a></li>
-                                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                                    class="hide-menu"> item
-                                                    1.3.3</span></a></li>
-                                        <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                                    class="hide-menu"> item
-                                                    1.3.4</span></a></li>
-                                    </ul>
-                                </li>
+                                            class="hide-menu"> List of renter</span></a>
+                                </li>                  
                                 <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
                                             class="hide-menu"> item
                                             1.4</span></a></li>
                             </ul>
-                        </li>
+                        </li>        
                         <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="../../docs/docs.html"
+                        <li class="nav-small-cap"><span class="hide-menu">Sitting</span></li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
+                                    class="hide-menu">Commissions</span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> New commition</span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> Commission history</span></a>
+                                </li>                                                          
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
+                                    class="hide-menu">Promotions</span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> New promotion</span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> Promotion history</span></a>
+                                </li>                                                          
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
+                                    class="hide-menu">Licence categories</span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> List of categories</span></a>
+                                </li>                                                    
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
+                                    class="hide-menu">Equipement categories</span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> List of categories</span></a>
+                                </li>                                                    
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
+                                    class="hide-menu">Transmission</span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> List of transmission</span></a>
+                                </li>                                                    
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
+                                    class="hide-menu">Equipment fuel</span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> List of fuel</span></a>
+                                </li>                                                    
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
+                                    class="hide-menu">Avatar management</span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> List of avatars</span></a>
+                                </li>                                                    
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
+                                    class="hide-menu">Insurance management</span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> List of insurance</span></a>
+                                </li>                                                    
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
+                                    class="hide-menu">Backup</span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
+                                            class="hide-menu"> List of backups</span></a>
+                                </li>                                                    
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html"
                                 aria-expanded="false"><i data-feather="edit-3" class="feather-icon"></i><span
-                                    class="hide-menu">Documentation</span></a></li>
+                                    class="hide-menu">Profil</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html"
                                 aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
                                     class="hide-menu">Logout</span></a></li>
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
