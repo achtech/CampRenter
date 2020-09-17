@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
-class VehiculeCategoryController extends Controller
+class EquipmentCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.

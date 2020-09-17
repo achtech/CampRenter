@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Billing extends Base
 {
-    protected $table = 'fuels';
+    protected $table = 'billings';
     public $primarykey = 'id';
     protected $fillable = [
         'id_renter',
