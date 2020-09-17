@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LicenceCategories extends Model
+class InssuranceCompany extends Model
 {
-    protected $table = 'licence_categories';
+    protected $table = 'inssurance_company';
     public $primarykey = 'id';
     protected $fillable = [
         'name'
