@@ -7,6 +7,8 @@ class Transmission extends Base
     protected $table = 'transmissions';
     public $primarykey = 'id';
     protected $fillable = [
-        'label'
+        'label_en',
+        'label_de',
+        'label_fr'
     ];
 }

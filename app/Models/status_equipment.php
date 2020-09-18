@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-class EquipmentCategory extends Base
+class Status_equipment extends Base
 {
-    protected $table = 'equipment_categories';
+    protected $table = 'status_equipments';
     public $primarykey = 'id';
     protected $fillable = [
         'label_en',

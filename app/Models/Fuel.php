@@ -7,6 +7,8 @@ class Fuel extends Base
     protected $table = 'fuels';
     public $primarykey = 'id';
     protected $fillable = [
-        'label'
+        'label_en',
+        'label_de',
+        'label_fr'
     ];
 }
