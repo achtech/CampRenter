@@ -315,7 +315,7 @@
                     </li>
                     <li class="sidebar-item"> 
                         <a class="sidebar-link has-arrow" href="{{route('renters.index')}}" aria-expanded="false">
-                            <i data-feather="home" class="feather-icon"></i>
+                            <i data-feather="home" class="settings-icon"></i>
                             <span class="hide-menu">Settings</span>
                         </a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
