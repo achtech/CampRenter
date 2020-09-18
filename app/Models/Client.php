@@ -2,17 +2,20 @@
 
 namespace App\Models;
 
-class Owners extends Base
+class Client extends Base
 {
-    protected $table = 'owners';
+    protected $table = 'clients';
     public $primarykey = 'id';
     protected $fillable = [
-        'owner_name',
-        'owner_last_name',
+        'client_name',
+        'client_last_name',
         'email',
         'password',
         'national_id',
         'image_national_id',
+        'id_licence_categories',
+        'image_licence_categories',
         'id_avatars',
+        'type'
     ];
 }
