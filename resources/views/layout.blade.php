@@ -168,14 +168,30 @@
                             </div>
                         </li>
                         <!-- End Notification -->
-                        
+                        <!-- ============================================================== -->
+                        <!-- create new -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i data-feather="settings" class="svg-icon"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
                         <li class="nav-item d-none d-md-block">
                             <a class="nav-link" href="javascript:void(0)">
                                 <div class="customize-input">
                                     <select
                                         class="custom-select form-control bg-white custom-radius custom-shadow border-0">
                                         <option selected>EN</option>
-                                        <option value="1">FR</option>
+                                        <option value="1">AB</option>
+                                        <option value="2">AK</option>
+                                        <option value="3">BE</option>
                                     </select>
                                 </div>
                             </a>
@@ -187,6 +203,18 @@
                     <ul class="navbar-nav float-right">
                         <!-- ============================================================== -->
                         <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item d-none d-md-block">
+                            <a class="nav-link" href="javascript:void(0)">
+                                <form>
+                                    <div class="customize-input">
+                                        <input class="form-control custom-shadow custom-radius border-0 bg-white"
+                                            type="search" placeholder="Search" aria-label="Search">
+                                        <i class="form-control-icon" data-feather="search"></i>
+                                    </div>
+                                </form>
+                            </a>
+                        </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -203,6 +231,16 @@
                                 <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
                                         class="svg-icon mr-2 ml-1"></i>
                                     My Profile</a>
+                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="credit-card"
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    My Balance</a>
+                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="mail"
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    Inbox</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings"
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    Account Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
@@ -231,140 +269,91 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="index.html"
-                                aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                    class="hide-menu">Dashboard</span></a></li>
-
-                        <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">User Management</span></li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                                    class="hide-menu">Administration </span></a>
-                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                                <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
-                                            class="hide-menu"> Users
-                                        </span></a>
-                                </li>
-                            </ul>
-                        </li>             
-                        <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">Owner Management</span></li>
-                        
-                <li class="sidebar-item"><a href="{{ route('owners.index')}}" class="sidebar-link"><span
-                            class="hide-menu"> Owners </span></a></li>
-                                <li class="sidebar-item"><a href="icon-simple-lineicon.html" class="sidebar-link"><span
-                                class="hide-menu"> Chat width owner </span></a></li>
-                               
-                        <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">Renter Management</span></li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
-                                    class="hide-menu">Renter</span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> List of renter</span></a>
-                                </li>                  
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> item
-                                            1.4</span></a></li>
-                            </ul>
-                        </li>        
-                        <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">Sitting</span></li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                    class="hide-menu">Commissions</span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> New commition</span></a>
-                                </li>
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> Commission history</span></a>
-                                </li>                                                          
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                    class="hide-menu">Promotions</span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> New promotion</span></a>
-                                </li>
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> Promotion history</span></a>
-                                </li>                                                          
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                    class="hide-menu">Licence categories</span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> List of categories</span></a>
-                                </li>                                                    
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                    class="hide-menu">Equipement categories</span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> List of categories</span></a>
-                                </li>                                                    
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                    class="hide-menu">Transmission</span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> List of transmission</span></a>
-                                </li>                                                    
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                    class="hide-menu">Equipment fuel</span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> List of fuel</span></a>
-                                </li>                                                    
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                    class="hide-menu">Avatar management</span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> List of avatars</span></a>
-                                </li>                                                    
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                    class="hide-menu">Insurance management</span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> List of insurance</span></a>
-                                </li>                                                    
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                    class="hide-menu">Backup</span></a>
-                            <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span
-                                            class="hide-menu"> List of backups</span></a>
-                                </li>                                                    
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html"
-                                aria-expanded="false"><i data-feather="edit-3" class="feather-icon"></i><span
-                                    class="hide-menu">Profil</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html"
-                                aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
-                                    class="hide-menu">Logout</span></a></li>
-
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" 
+                            href="{{route('dashboard')}}" 
+                            aria-expanded="false">
+                            <i data-feather="home" class="feather-icon"></i>
+                            <span class="hide-menu">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" href="{{route('owners.index')}}" aria-expanded="false">
+                            <i data-feather="home" class="feather-icon"></i>
+                            <span class="hide-menu">Owners</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" href="{{route('renters.index')}}" aria-expanded="false">
+                            <i data-feather="home" class="feather-icon"></i>
+                            <span class="hide-menu">Renters</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" href="{{route('bookings.index')}}" aria-expanded="false">
+                            <i data-feather="home" class="feather-icon"></i>
+                            <span class="hide-menu">Booking</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" href="{{route('renters.index')}}" aria-expanded="false">
+                            <i data-feather="home" class="feather-icon"></i>
+                            <span class="hide-menu">Billing</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" href="{{route('inssurances.index')}}" aria-expanded="false">
+                            <i data-feather="home" class="feather-icon"></i>
+                            <span class="hide-menu">Insurances</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" href="{{route('renters.index')}}" aria-expanded="false">
+                            <i data-feather="home" class="feather-icon"></i>
+                            <span class="hide-menu">Users</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link has-arrow" href="{{route('renters.index')}}" aria-expanded="false">
+                            <i data-feather="home" class="settings-icon"></i>
+                            <span class="hide-menu">Settings</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                            <li class="sidebar-item"><a href="{{route('commissions.index')}}" class="sidebar-link"><span
+                                        class="hide-menu"> Profile Management
+                                    </span></a>
+                            </li>
+                        <li class="sidebar-item"><a href="{{route('commissions.index')}}" class="sidebar-link"><span
+                                        class="hide-menu"> Commission Management
+                                    </span></a>
+                            </li>
+                        <li class="sidebar-item"><a href="{{route('licenceCategories.index')}}" class="sidebar-link"><span
+                                        class="hide-menu"> Licence Categories 
+                                    </span></a>
+                            </li>
+                         <li class="sidebar-item"><a  href="{{route('vehiculeCategories.index')}}" class="sidebar-link"><span
+                                        class="hide-menu"> Vehicle Categories 
+                                    </span></a>
+                            </li>
+                          <li class="sidebar-item"><a href="{{route('transmissions.index')}}" class="sidebar-link"><span
+                                        class="hide-menu">  Vehicle transmission
+                                    </span></a>
+                            </li>
+                          <li class="sidebar-item"><a href="{{route('fuels.index')}}" class="sidebar-link"><span
+                                        class="hide-menu"> Vehicle Fuel
+                                    </span></a>
+                            </li>
+                           <li class="sidebar-item"><a href="{{route('avatars.index')}}" class="sidebar-link"><span
+                                        class="hide-menu"> Avatar Management
+                                    </span></a>
+                            </li>
+                            <li class="sidebar-item"><a href="{{route('avatars.index')}}" class="sidebar-link"><span
+                                        class="hide-menu"> Backup
+                                    </span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -380,9 +369,40 @@
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== --> 
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Good Morning Jason!</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb m-0 p-0">
+                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-5 align-self-center">
+                        <div class="customize-input float-right">
+                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
+                                <option selected>Aug 19</option>
+                                <option value="1">July 19</option>
+                                <option value="2">Jun 19</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
                 @yield('content')
-            
+            </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
