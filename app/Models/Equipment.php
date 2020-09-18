@@ -36,7 +36,9 @@ class Equipment extends Base
         'license_age',
         'licence_age_desc',
         'smoking_allowed',
-        'availability'
+        'availability',
+        'status',
+        'confirmed'
 
     ];
 }
