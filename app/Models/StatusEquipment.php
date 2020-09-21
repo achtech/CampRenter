@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Status_equipment extends Base
+class StatusEquipment extends Base
 {
     protected $table = 'status_equipments';
     public $primarykey = 'id';

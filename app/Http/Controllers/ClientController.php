@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\AnneeScolaire;
 use App\AnneesScolaire;
-use App\Models\Fuel;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
-class FuelController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +21,11 @@ class FuelController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = Fuel::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = Client::where('name', 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $datas = Fuel::paginate(10);
+            $datas = Client::paginate(10);
         }
-        return view('fuel.index')->with('datas', $datas)->with('search', $search);
+        return view('client.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -34,7 +34,7 @@ class FuelController extends Controller
      */
     public function create()
     {
-        return view('fuel.create');
+        return view('client.create');
     }
     /**
      * Display the specified resource.
@@ -44,7 +44,7 @@ class FuelController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('fuel.index'));
+        return redirect(route('client.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -55,8 +55,8 @@ class FuelController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = Fuel::create($input);
-        return redirect(route('fuel.index'))->with('success', 'Item added succesfully');
+        $data = Client::create($input);
+        return redirect(route('client.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -78,12 +78,12 @@ class FuelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Fuel::find($id);
+        $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('fuel.index'));
+            return redirect(route('client.index'));
         }
-        $data = Fuel::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('fuel.index'))->with('success', 'Item Updated succesfully');
+        $data = Client::where('id', $id)->update(request()->except(['_token', '_method']));
+        return redirect(route('client.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -96,11 +96,11 @@ class FuelController extends Controller
      */
     public function destroy($id)
     {
-        $data = Fuel::find($id);
+        $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('fuel.index'));
+            return redirect(route('client.index'));
         }
         $data->delete();
-        return redirect(route('fuel.index'));
+        return redirect(route('client.index'));
     }
 }
