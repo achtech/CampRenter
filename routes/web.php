@@ -18,8 +18,8 @@ Route::get('/', function () {
 })->name('dashboard');
 
 //ADMIN->USER
-Route::get('user/{id}/delete', 'userController@deusersstroy')->name('user.destroy');
-Route::resource('user', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
+Route::get('user/{id}/delete', 'UserController@deusersstroy')->name('user.destroy');
+Route::resource('user', 'App\Http\Controllers\UserController', ['except' => 'destroy', 'names' => [
     'index' => 'user.index',
     'create' => 'user.create',
     'update' => 'user.update',
@@ -28,31 +28,20 @@ Route::resource('user', 'App\Http\Controllers\Controller', ['except' => 'destroy
     'show' => 'user.show',
 ]]);
 
-//ADMIN->OWNER
-Route::get('owner/{id}/delete', 'ownerController@destroy')->name('owner.destroy');
-Route::resource('owner', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
-    'index' => 'owner.index',
-    'create' => 'owner.create',
-    'update' => 'owner.update',
-    'edit' => 'owner.edit',
-    'store' => 'owner.store',
-    'show' => 'owner.show',
-]]);
-
-//ADMIN->RENTER
-Route::get('renter/{id}/delete', 'renterController@destroy')->name('renter.destroy');
-Route::resource('renter', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
-    'index' => 'renter.index',
-    'create' => 'renter.create',
-    'update' => 'renter.update',
-    'edit' => 'renter.edit',
-    'store' => 'renter.store',
-    'show' => 'renter.show',
+//ADMIN->CLIENT
+Route::get('client/{id}/delete', 'ClientController@destroy')->name('client.destroy');
+Route::resource('client', 'App\Http\Controllers\ClientController', ['except' => 'destroy', 'names' => [
+    'index' => 'client.index',
+    'create' => 'client.create',
+    'update' => 'client.update',
+    'edit' => 'client.edit',
+    'store' => 'client.store',
+    'show' => 'client.show',
 ]]);
 
 //ADMIN->EQUIPMENT
-Route::get('equipment/{id}/delete', 'equipmentController@destroy')->name('equipment.destroy');
-Route::resource('equipment', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
+Route::get('equipment/{id}/delete', 'EquipmentController@destroy')->name('equipment.destroy');
+Route::resource('equipment', 'App\Http\Controllers\EquipmentController', ['except' => 'destroy', 'names' => [
     'index' => 'equipment.index',
     'create' => 'equipment.create',
     'update' => 'equipment.update',
@@ -61,20 +50,20 @@ Route::resource('equipment', 'App\Http\Controllers\Controller', ['except' => 'de
     'show' => 'equipment.show',
 ]]);
 
-//ADMIN->INSSURANCE
-Route::get('inssurance/{id}/delete', 'inssuranceController@destroy')->name('inssurance.destroy');
-Route::resource('inssurance', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
-    'index' => 'inssurance.index',
-    'create' => 'inssurance.create',
-    'update' => 'inssurance.update',
-    'edit' => 'inssurance.edit',
-    'store' => 'inssurance.store',
-    'show' => 'inssurance.show',
+//ADMIN->INSURANCE
+Route::get('insurance/{id}/delete', 'InsuranceController@destroy')->name('insurance.destroy');
+Route::resource('insurance', 'App\Http\Controllers\InsuranceController', ['except' => 'destroy', 'names' => [
+    'index' => 'insurance.index',
+    'create' => 'insurance.create',
+    'update' => 'insurance.update',
+    'edit' => 'insurance.edit',
+    'store' => 'insurance.store',
+    'show' => 'insurance.show',
 ]]);
 
 //ADMIN->COMIMSSION
-Route::get('commission/{id}/delete', 'commissionController@destroy')->name('commission.destroy');
-Route::resource('commission', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
+Route::get('commission/{id}/delete', 'CommissionController@destroy')->name('commission.destroy');
+Route::resource('commission', 'App\Http\Controllers\CommissionController', ['except' => 'destroy', 'names' => [
     'index' => 'commission.index',
     'create' => 'commission.create',
     'update' => 'commission.update',
@@ -84,8 +73,8 @@ Route::resource('commission', 'App\Http\Controllers\Controller', ['except' => 'd
 ]]);
 
 //ADMIN->AVATAR
-Route::get('avatar/{id}/delete', 'avatarController@destroy')->name('avatar.destroy');
-Route::resource('avatar', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
+Route::get('avatar/{id}/delete', 'AvatarController@destroy')->name('avatar.destroy');
+Route::resource('avatar', 'App\Http\Controllers\AvatarController', ['except' => 'destroy', 'names' => [
     'index' => 'avatar.index',
     'create' => 'avatar.create',
     'update' => 'avatar.update',
@@ -95,8 +84,8 @@ Route::resource('avatar', 'App\Http\Controllers\Controller', ['except' => 'destr
 ]]);
 
 //ADMIN->FUEL
-Route::get('fuel/{id}/delete', 'fuelController@destroy')->name('fuel.destroy');
-Route::resource('fuel', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
+Route::get('fuel/{id}/delete', 'FuelController@destroy')->name('fuel.destroy');
+Route::resource('fuel', 'App\Http\Controllers\FuelController', ['except' => 'destroy', 'names' => [
     'index' => 'fuel.index',
     'create' => 'fuel.create',
     'update' => 'fuel.update',
@@ -107,7 +96,7 @@ Route::resource('fuel', 'App\Http\Controllers\Controller', ['except' => 'destroy
 
 //ADMIN->LICENCECATEGORIES
 Route::get('licenceCategory/{id}/delete', 'licenceCategoryController@destroy')->name('licenceCategory.destroy');
-Route::resource('licenceCategory', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
+Route::resource('licenceCategory', 'App\Http\Controllers\licenceCategoryController', ['except' => 'destroy', 'names' => [
     'index' => 'licenceCategory.index',
     'create' => 'licenceCategory.create',
     'update' => 'licenceCategory.update',
@@ -117,8 +106,8 @@ Route::resource('licenceCategory', 'App\Http\Controllers\Controller', ['except' 
 ]]);
 
 //ADMIN->TRANSMISSION
-Route::get('transmission/{id}/delete', 'transmissionController@destroy')->name('transmission.destroy');
-Route::resource('transmission', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
+Route::get('transmission/{id}/delete', 'TransmissionController@destroy')->name('transmission.destroy');
+Route::resource('transmission', 'App\Http\Controllers\TransmissionController', ['except' => 'destroy', 'names' => [
     'index' => 'transmission.index',
     'create' => 'transmission.create',
     'update' => 'transmission.update',
@@ -127,9 +116,9 @@ Route::resource('transmission', 'App\Http\Controllers\Controller', ['except' => 
     'show' => 'transmission.show',
 ]]);
 
-//ADMIN->VEHICULECATEGORIES
-Route::get('equipmentCategory/{id}/delete', 'equipmentCategoryController@destroy')->name('equipmentCategory.destroy');
-Route::resource('equipmentCategory', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
+//ADMIN->EQUIPMENTCATEGORY
+Route::get('equipmentCategory/{id}/delete', 'EquipmentCategoryController@destroy')->name('equipmentCategory.destroy');
+Route::resource('equipmentCategory', 'App\Http\Controllers\EquipmentCategoryController', ['except' => 'destroy', 'names' => [
     'index' => 'equipmentCategory.index',
     'create' => 'equipmentCategory.create',
     'update' => 'equipmentCategory.update',
@@ -139,8 +128,8 @@ Route::resource('equipmentCategory', 'App\Http\Controllers\Controller', ['except
 ]]);
 
 //ADMIN->BOOKING
-Route::get('booking/{id}/delete', 'bookingController@destroy')->name('booking.destroy');
-Route::resource('booking', 'App\Http\Controllers\Controller', ['except' => 'destroy', 'names' => [
+Route::get('booking/{id}/delete', 'BookingController@destroy')->name('booking.destroy');
+Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
     'index' => 'booking.index',
     'create' => 'booking.create',
     'update' => 'booking.update',

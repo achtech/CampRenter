@@ -6,7 +6,7 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="index.html">Owners</a>
+                                    <li class="breadcrumb-item"><a href="index.html">Clients</a>
                                     </li>
                                 </ol>
                             </nav>
@@ -19,10 +19,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                <form method="POST" action="/owners.create">
+                <form method="POST" action="/client.create">
                     @csrf
                     <button type="button"
-                        class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary  float-right">New owner </button>
+                        class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary  float-right">New Client </button>
                 </form>
                     </div>
             </div>
@@ -32,7 +32,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">List of owners</h4>
+                    <h4 class="card-title">List of Clients</h4>
                     <div class="table-responsive">
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">

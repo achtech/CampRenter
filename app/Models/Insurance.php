@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Inssurance extends Base
+class Insurance extends Base
 {
     protected $table = 'inssurances';
     public $primarykey = 'id';
