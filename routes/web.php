@@ -137,3 +137,25 @@ Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' =
     'store' => 'booking.store',
     'show' => 'booking.show',
 ]]);
+
+//ADMIN->CAMPERNAME
+Route::get('camperName/{id}/delete', 'CamperNameController@destroy')->name('camperName.destroy');
+Route::resource('camperName', 'App\Http\Controllers\CamperNameController', ['except' => 'destroy', 'names' => [
+    'index' => 'camperName.index',
+    'create' => 'camperName.create',
+    'update' => 'camperName.update',
+    'edit' => 'camperName.edit',
+    'store' => 'camperName.store',
+    'show' => 'camperName.show',
+]]);
+
+//ADMIN->INSURANCECOMPANY
+Route::get('inssuranceCompany/{id}/delete', 'InssuranceCompanyController@destroy')->name('inssuranceCompany.destroy');
+Route::resource('inssuranceCompany', 'App\Http\Controllers\InssuranceCompanyController', ['except' => 'destroy', 'names' => [
+    'index' => 'inssuranceCompany.index',
+    'create' => 'inssuranceCompany.create',
+    'update' => 'inssuranceCompany.update',
+    'edit' => 'inssuranceCompany.edit',
+    'store' => 'inssuranceCompany.store',
+    'show' => 'inssuranceCompany.show',
+]]);

@@ -290,7 +290,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item"> 
-                        <a class="sidebar-link sidebar-link" href="{{route('equipment.index')}}" aria-expanded="false">
+                        <a class="sidebar-link sidebar-link" href="{{route('camperName.index')}}" aria-expanded="false">
                         <i class="icon-grid"></i>
                             <span class="hide-menu">Campers</span>
                         </a>
@@ -314,11 +314,11 @@
                         </a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
                             <li class="sidebar-item"><a href="{{route('commission.index')}}" class="sidebar-link"><span
-                                        class="hide-menu"> Profile Management
+                                        class="hide-menu"> Profile
                                     </span></a>
                             </li>
                             <li class="sidebar-item"><a href="{{route('commission.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> Commission Management
+                                            class="hide-menu"> Commissions
                                         </span></a>
                                 </li>
                             <li class="sidebar-item"><a href="{{route('licenceCategory.index')}}" class="sidebar-link"><span
@@ -329,23 +329,24 @@
                                             class="hide-menu"> Equipment Categories 
                                         </span></a>
                                 </li>
-                            <li class="sidebar-item"><a href="{{route('licenceCategory.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> Campers 
-                                        </span></a>
-                                </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link sidebar-link" href="{{route('inssuranceCompany.index')}}" class="sidebar-link">
+                                    <span class="hide-menu">Insurance Providers</span>
+                                </a>
+                            </li>
                             <li class="sidebar-item"><a href="{{route('transmission.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> transmission
+                                            class="hide-menu"> transmissions
                                         </span></a>
                                 </li>
                             <li class="sidebar-item"><a href="{{route('fuel.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> Fuel
+                                            class="hide-menu"> Fuels
                                         </span></a>
                                 </li>
                             <li class="sidebar-item"><a href="{{route('avatar.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> Avatar Management
+                                            class="hide-menu"> Avatars
                                         </span></a>
                                 </li>
-                            <li class="sidebar-item"><a href="{{route('avatar.index')}}" class="sidebar-link">
+                            <li class="sidebar-item"><a href="" class="sidebar-link">
                                 <span class="hide-menu"> Backup
                                 </span></a>
                             </li>
