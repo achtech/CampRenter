@@ -346,7 +346,7 @@
                                             class="hide-menu"> Avatars
                                         </span></a>
                                 </li>
-                            <li class="sidebar-item"><a href="" class="sidebar-link">
+                            <li class="sidebar-item"><a href="{{route('avatar.index')}}" class="sidebar-link">
                                 <span class="hide-menu"> Backup
                                 </span></a>
                             </li>
