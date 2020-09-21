@@ -329,8 +329,12 @@
                                             class="hide-menu"> Equipment Categories 
                                         </span></a>
                                 </li>
+                            <li class="sidebar-item"><a href="{{route('licenceCategory.index')}}" class="sidebar-link"><span
+                                            class="hide-menu"> Campers 
+                                        </span></a>
+                                </li>
                             <li class="sidebar-item"><a href="{{route('transmission.index')}}" class="sidebar-link"><span
-                                            class="hide-menu">  transmission
+                                            class="hide-menu"> transmission
                                         </span></a>
                                 </li>
                             <li class="sidebar-item"><a href="{{route('fuel.index')}}" class="sidebar-link"><span
