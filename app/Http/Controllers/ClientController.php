@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
-use App\Models\Renters;
+use App\Models\Client;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
 
-class RenterController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +17,11 @@ class RenterController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = Renters::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = Client::where('name', 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $datas = Renters::paginate(10);
+            $datas = Client::paginate(10);
         }
-        return view('renter.index')->with('datas', $datas)->with('search', $search);
+        return view('owners.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -34,7 +30,7 @@ class RenterController extends Controller
      */
     public function create()
     {
-        return view('Renter.create');
+        return view('owners.create');
     }
     /**
      * Display the specified resource.
@@ -44,7 +40,7 @@ class RenterController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('renter.index'));
+        return redirect(route('owner.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -55,8 +51,9 @@ class RenterController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = Renters::create($input);
-        return redirect(route('renter.index'))->with('success', 'Item added succesfully');
+        $data = Client::create($input);
+        dd($data);
+        return redirect(route('owners.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -78,12 +75,12 @@ class RenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Renters::find($id);
+        $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('renter.index'));
+            return redirect(route('owner.index'));
         }
-        $data = Renters::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('renter.index'))->with('success', 'Item Updated succesfully');
+        $data = Client::where('id', $id)->update(request()->except(['_token', '_method']));
+        return redirect(route('owner.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -96,11 +93,11 @@ class RenterController extends Controller
      */
     public function destroy($id)
     {
-        $data = Renters::find($id);
+        $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('renter.index'));
+            return redirect(route('owner.index'));
         }
         $data->delete();
-        return redirect(route('renter.index'));
+        return redirect(route('owner.index'));
     }
 }
