@@ -80,12 +80,13 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+     //   dd($request->all());
         $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('owners.edit'));
+            return redirect(route('owners.index'));
         }
-        $data = Client::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('owners.edit'))->with('success', 'Item Updated succesfully');
+        $data = Client::where('id', $id)->update(request()->except(['_token', '_method','action']));
+        return redirect(route('owners.index'))->with('success', 'Item Updated succesfully');
     }
 
     //

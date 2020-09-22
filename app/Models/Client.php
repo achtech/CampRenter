@@ -16,6 +16,8 @@ class Client extends Base
         'id_licence_categories',
         'image_licence_categories',
         'id_avatars',
+        'driving_licence_image',
+        'driving_licence',
         'type'
     ];
 }
