@@ -38,47 +38,49 @@
                                     <th>{{ __('backend.client_last_name.lbl') }}</th>
                                     <th>{{ __('backend.client_email.lbl') }}</th>
                                     <th>{{ __('backend.client_national_number.lbl') }}</th>
-                                    <th>{{ __('backend.client_paypal_account.lbl') }}</th>
-                                    <th>{{ __('backend.client_operations.lbl') }}</th>
-                                    <th>{{ __('backend.client_action.lbl') }}</th>
+                                     <th>{{ __('backend.client_action.lbl') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($datas as $item)
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                    <td>
+                                    <td>{{$item->client_name}}</td>
+                                    <td>{{$item->client_last_name}}</td>
+                                    <td>{{$item->email}}</td>
+                                    <td>{{$item->national_id}}</td>
+                                   <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit"></i></button>
+                                                <a href="{{ route('owners.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
                                             </li>  
                                             <li class="list-inline-item">
-                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
+                                                <div class="container">
+                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
+ <!-- Modal -->
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          <p>{{ __('backend.message_delete_owner.lbl') }}</p>
+        </div>
+        <div class="modal-footer">
+            <a href="{{ route('owners.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
                                             </li> 
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>63</td>
-                                    <td>2011/07/25</td>
-                                    <td>$170,750</td>
-                                    <td>
-                                        <ul class="list-inline m-0">
-                                            <li class="list-inline-item">
-                                                <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit"></i></button>
-                                            </li>  
-                                            <li class="list-inline-item">
-                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
-                                            </li> 
-                                    </td>
-                                </tr>
-                                
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -86,8 +88,6 @@
                                     <th>{{ __('backend.client_position.lbl') }}</th>
                                     <th>{{ __('backend.client_office.lbl') }}</th>
                                     <th>{{ __('backend.client_age.lbl') }}</th>
-                                    <th>{{ __('backend.client_start_date.lbl') }}</th>
-                                    <th>{{ __('backend.client_salary.lbl') }}</th>
                                     <th></th>
                                 </tr>
                             </tfoot>

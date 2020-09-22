@@ -2,16 +2,18 @@
 @section('content')
 
 <div class="container-fluid">
-    <!--'action'=>'ClientController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\ClientController@store','autocomplete'=>'off','method'=>'POST']) }}
-    <div class="row">
+    <!--'action'=>'App\Http\Controllers\ClientController@update',-->
+    {{ Form::open(['autocomplete'=>'off','method'=>'POST']) }}
+    @csrf
+    {{Form::hidden('_method','PUT')}}
+     <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.client_name.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('client_name','',['class'=>'form-control','required'])}}
+                                {{Form::text('client_name',$data->client_name,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -23,7 +25,7 @@
                         <h4 class="card-title">{{ __('backend.client_last_name.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('client_last_name','',['class'=>'form-control','required'])}}
+                                {{Form::text('client_last_name',$data->client_last_name,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -35,7 +37,7 @@
                         <h4 class="card-title">{{ __('backend.client_email.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('email','',['class'=>'form-control','required'])}}
+                                {{Form::text('email',$data->email,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -94,7 +96,7 @@
                         <h4 class="card-title">{{ __('backend.driving_licence.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('driving_licence','',['class'=>'form-control','required'])}}
+                                {{Form::text('driving_licence',$data->driving_licence,['class'=>'form-control','required'])}}
                             
                             </div>
                         </div>
@@ -127,14 +129,14 @@
                         <h4 class="card-title">{{ __('backend.national.lbl') }} </h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('national_id','',['class'=>'form-control','required'])}}
+                                {{Form::text('national_id',$data->national_id,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>      
             <div class="col-sm-12 col-md-6">
-                {{Form::submit('Create',['class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
+                {{Form::submit('Update',['class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
  
                 <a href="{{ route('owners.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.cancel.btn') }}</a>
             </div>

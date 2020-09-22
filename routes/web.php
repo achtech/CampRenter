@@ -29,13 +29,14 @@ Route::resource('user', 'App\Http\Controllers\Controller', ['except' => 'destroy
 ]]);
 
 //ADMIN->OWNER
-Route::get('owner/{id}/delete', 'ClientController@destroy')->name('owner.destroy');
-Route::post('owners/create', 'App\Http\Controllers\ClientController@store');
+Route::get('owner/{id}/delete', 'App\Http\Controllers\ClientController@destroy')->name('owner.destroy');
+Route::post('owner/create', 'App\Http\Controllers\ClientController@store');
+Route::put('owner/{id}/edit', 'App\Http\Controllers\ClientController@update')->name('owner.update');
 Route::resource('owner', 'App\Http\Controllers\ClientController', ['except' => 'destroy', 'names' => [
     'index' => 'owners.index',
     'create' => 'owners.create',
-    'update' => 'owners.update',
     'edit' => 'owners.edit',
+    'update' => 'owners.update',
     'show' => 'owners.show',
 ]]);
 

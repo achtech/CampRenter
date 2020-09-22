@@ -17,7 +17,7 @@ class ClientController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = Client::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = Client::where('client_name', 'like', '%' . $search . '%')->paginate(10);
         } else {
             $datas = Client::paginate(10);
         }
@@ -51,8 +51,10 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['driving_licence_image'] = 1;
+        $input['id_avatars'] = 1;
+        $input['image_national_id'] = 1;
         $data = Client::create($input);
-        dd($data);
         return redirect(route('owners.index'))->with('success', 'Item added succesfully');
     }
 
@@ -64,6 +66,9 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
+        $data = Client::find($id);
+        //dd($data);
+        return view('owners.edit')->with('data', $data);
     }
 
     /**
@@ -77,10 +82,10 @@ class ClientController extends Controller
     {
         $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('owner.index'));
+            return redirect(route('owners.edit'));
         }
         $data = Client::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('owner.index'))->with('success', 'Item Updated succesfully');
+        return redirect(route('owners.edit'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -95,9 +100,9 @@ class ClientController extends Controller
     {
         $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('owner.index'));
+            return redirect(route('owners.index'));
         }
         $data->delete();
-        return redirect(route('owner.index'));
+        return redirect(route('owners.index'));
     }
 }

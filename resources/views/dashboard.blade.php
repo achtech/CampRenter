@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout', ['activePage' => 'dashboard', 'titlePage' => __('backend.dashboard.lbl')])
 @section('content')
 <div class="page-breadcrumb">
                 <div class="row">

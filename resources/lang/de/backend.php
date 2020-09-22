@@ -26,6 +26,6 @@ return [
     'credit_card.lbl' => 'Kreditkarte',
     'create.btn' => 'Erstellen',
     'cancel.btn' => 'Stornieren',
-
+    'dashboard.lbl' => 'dashboard',
 
 ];
