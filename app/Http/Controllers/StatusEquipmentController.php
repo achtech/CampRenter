@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use App\AnneeScolaire;
 use App\AnneesScolaire;
-use App\Models\Bookings;
-use App\Models\InssuranceCompany;
+use App\Models\StatusEquipment;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
-class InssuranceCompanyController extends Controller
+class StatusEquipmentController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -23,11 +21,11 @@ class InssuranceCompanyController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = InssuranceCompany::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = StatusEquipment::where('name', 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $datas = InssuranceCompany::paginate(10);
+            $datas = StatusEquipment::paginate(10);
         }
-        return view('inssuranceCompany.index')->with('datas', $datas)->with('search', $search);
+        return view('statusEquipment.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -36,7 +34,7 @@ class InssuranceCompanyController extends Controller
      */
     public function create()
     {
-        return view('InssuranceCompany.create');
+        return view('statusEquipment.create');
     }
     /**
      * Display the specified resource.
@@ -46,7 +44,7 @@ class InssuranceCompanyController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('inssuranceCompany.index'));
+        return redirect(route('statusEquipment.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -57,10 +55,9 @@ class InssuranceCompanyController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = Bookings::create($input);
-        return redirect(route('inssuranceCompany.index'))->with('success', 'Item added succesfully');
+        $data = StatusEquipment::create($input);
+        return redirect(route('statusEquipment.index'))->with('success', 'Item added succesfully');
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -81,12 +78,12 @@ class InssuranceCompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = InssuranceCompany::find($id);
+        $data = StatusEquipment::find($id);
         if (empty($data)) {
-            return redirect(route('inssuranceCompany.index'));
+            return redirect(route('statusEquipment.index'));
         }
-        $data = InssuranceCompany::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('inssuranceCompany.index'))->with('success', 'Item Updated succesfully');
+        $data = StatusEquipment::where('id', $id)->update(request()->except(['_token', '_method']));
+        return redirect(route('statusEquipment.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -99,11 +96,11 @@ class InssuranceCompanyController extends Controller
      */
     public function destroy($id)
     {
-        $data = Bookings::find($id);
+        $data = StatusEquipment::find($id);
         if (empty($data)) {
-            return redirect(route('inssuranceCompany.index'));
+            return redirect(route('statusEquipment.index'));
         }
         $data->delete();
-        return redirect(route('inssuranceCompany.index'));
+        return redirect(route('statusEquipment.index'));
     }
 }

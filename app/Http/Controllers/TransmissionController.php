@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AnneeScolaire;
 use App\AnneesScolaire;
-use App\Models\Transmissions;
+use App\Models\Transmission;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
@@ -21,9 +21,9 @@ class TransmissionController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = Transmissions::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = Transmission::where('name', 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $datas = Transmissions::paginate(10);
+            $datas = Transmission::paginate(10);
         }
         return view('transmission.index')->with('datas', $datas)->with('search', $search);
     }
@@ -55,7 +55,7 @@ class TransmissionController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = Transmissions::create($input);
+        $data = Transmission::create($input);
         return redirect(route('transmission.index'))->with('success', 'Item added succesfully');
     }
     /**
@@ -77,11 +77,11 @@ class TransmissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Transmissions::find($id);
+        $data = Transmission::find($id);
         if (empty($data)) {
             return redirect(route('transmission.index'));
         }
-        $data = Transmissions::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = Transmission::where('id', $id)->update(request()->except(['_token', '_method']));
         return redirect(route('transmission.index'))->with('success', 'Item Updated succesfully');
     }
 
@@ -95,7 +95,7 @@ class TransmissionController extends Controller
      */
     public function destroy($id)
     {
-        $data = Transmissions::find($id);
+        $data = Transmission::find($id);
         if (empty($data)) {
             return redirect(route('transmission.index'));
         }

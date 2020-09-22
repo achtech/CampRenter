@@ -271,79 +271,81 @@
                     <ul id="sidebarnav">
                     <li class="sidebar-item{{ $activePage == 'dashboard' ? ' selected' : '' }}"> 
                         <a class="sidebar-link sidebar-link" 
-                            href="{{route('dashboard')}}" 
+                            href="/" 
                             aria-expanded="false">
-                            <i data-feather="home" class="feather-icon"></i>
+                            <i class="icon-home"></i>
                             <span class="hide-menu">Dashboard</span>
                         </a>
                     </li>
                     <li class="sidebar-item{{ $activePage == 'Owner' ? ' selected' : '' }}"> 
-                        <a class="sidebar-link sidebar-link" href="{{route('owners.index')}}" aria-expanded="false">
-                            <i data-feather="home" class="feather-icon"></i>
-                            <span class="hide-menu">Clients</span>
+                        <a class="sidebar-link sidebar-link" href="{{route('user.index')}}" aria-expanded="false">
+                        <i class="icon-user"></i>
+                            <span class="hide-menu">User Managment</span>
                         </a>
                     </li>
                     
                     <li class="sidebar-item"> 
-                        <a class="sidebar-link sidebar-link" href="{{route('bookings.index')}}" aria-expanded="false">
-                            <i data-feather="home" class="feather-icon"></i>
-                            <span class="hide-menu">Booking</span>
+                        <a class="sidebar-link sidebar-link" href="{{route('client.index')}}" aria-expanded="false">
+                        <i class="icon-people"></i>
+                            <span class="hide-menu">Clients</span>
                         </a>
                     </li>
                     <li class="sidebar-item"> 
-                        <a class="sidebar-link sidebar-link"  aria-expanded="false">
-                            <i data-feather="home" class="feather-icon"></i>
-                            <span class="hide-menu">Billing</span>
+                        <a class="sidebar-link sidebar-link" href="{{route('camperName.index')}}" aria-expanded="false">
+                        <i class="icon-grid"></i>
+                            <span class="hide-menu">Campers</span>
                         </a>
                     </li>
                     <li class="sidebar-item"> 
-                        <a class="sidebar-link sidebar-link" href="{{route('inssurances.index')}}" aria-expanded="false">
-                            <i data-feather="home" class="feather-icon"></i>
+
+                    </li>
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" href="{{route('insurance.index')}}" aria-expanded="false">
+                        <i class="icon-book-open"></i>
                             <span class="hide-menu">Insurances</span>
                         </a>
                     </li>
                     <li class="sidebar-item"> 
-                        <a class="sidebar-link sidebar-link"  aria-expanded="false">
-                            <i data-feather="home" class="feather-icon"></i>
-                            <span class="hide-menu">Users</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item"> 
-                        <a class="sidebar-link has-arrow" aria-expanded="false">
-                            <i data-feather="home" class="settings-icon"></i>
+                        <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <i class="icon-settings"></i>
                             <span class="hide-menu">Settings</span>
                         </a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            <li class="sidebar-item"><a href="{{route('commissions.index')}}" class="sidebar-link"><span
-                                        class="hide-menu"> Profile Management
+                            <li class="sidebar-item"><a  class="sidebar-link"><span
+                                        class="hide-menu"> Profile
                                     </span></a>
                             </li>
-                        <li class="sidebar-item"><a href="{{route('commissions.index')}}" class="sidebar-link"><span
-                                        class="hide-menu"> Commission Management
+                            <li class="sidebar-item"><a href="{{route('commission.index')}}" class="sidebar-link"><span
+                                            class="hide-menu"> Commissions
                                     </span></a>
                             </li>
-                        <li class="sidebar-item"><a href="{{route('licenceCategories.index')}}" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="{{route('licenceCategory.index')}}" class="sidebar-link"><span
                                         class="hide-menu"> Licence Categories 
                                     </span></a>
                             </li>
-                         <li class="sidebar-item"><a  href="{{route('equipmentCategories.index')}}" class="sidebar-link"><span
-                                        class="hide-menu"> Vehicle Categories 
+                            <li class="sidebar-item"><a  href="{{route('equipmentCategory.index')}}" class="sidebar-link"><span
+                                            class="hide-menu"> Equipment Categories 
                                     </span></a>
                             </li>
-                          <li class="sidebar-item"><a href="{{route('transmissions.index')}}" class="sidebar-link"><span
-                                        class="hide-menu">  Vehicle transmission
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link sidebar-link" href="{{route('inssuranceCompany.index')}}" class="sidebar-link">
+                                    <span class="hide-menu">Insurance Providers</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item"><a href="{{route('transmission.index')}}" class="sidebar-link"><span
+                                            class="hide-menu"> transmissions
                                     </span></a>
                             </li>
-                          <li class="sidebar-item"><a href="{{route('fuels.index')}}" class="sidebar-link"><span
-                                        class="hide-menu"> Vehicle Fuel
+                            <li class="sidebar-item"><a href="{{route('fuel.index')}}" class="sidebar-link"><span
+                                            class="hide-menu"> Fuels
                                     </span></a>
                             </li>
-                           <li class="sidebar-item"><a href="{{route('avatars.index')}}" class="sidebar-link"><span
-                                        class="hide-menu"> Avatar Management
+                            <li class="sidebar-item"><a href="{{route('avatar.index')}}" class="sidebar-link"><span
+                                            class="hide-menu"> Avatars
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="{{route('avatars.index')}}" class="sidebar-link"><span
-                                        class="hide-menu"> Backup
+                            <li class="sidebar-item"><a href="{{route('avatar.index')}}" class="sidebar-link">
+                                <span class="hide-menu"> Backup
                                     </span></a>
                             </li>
                         </ul>
@@ -372,7 +374,7 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a>
+                                    <li class="breadcrumb-item"><a href="/">Dashboard</a>
                                     </li>
                                 </ol>
                             </nav>

@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-class InssuranceCompany extends Base
+class InsuranceCompany extends Base
 {
-    protected $table = 'inssurance_company';
+    protected $table = 'insurance_company';
     public $primarykey = 'id';
     protected $fillable = [
-        'label'
+        'label_en',
+        'label_de',
+        'label_fr'
     ];
 }

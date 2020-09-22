@@ -6,7 +6,7 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="index.html">{{ __('backend.owners.lbl') }}</a>
+                                    <li class="breadcrumb-item"><a href="index.html">{{ __('backend.clients.lbl') }}</a>
                                     </li>
                                 </ol>
                             </nav>
@@ -28,7 +28,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.owner_list.lbl') }}</h4>
+                    <h4 class="card-title">{{ __('backend.clients_list.lbl') }}</h4>
                     <div class="table-responsive">
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">

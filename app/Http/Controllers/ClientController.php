@@ -21,7 +21,7 @@ class ClientController extends Controller
         } else {
             $datas = Client::paginate(10);
         }
-        return view('owners.index')->with('datas', $datas)->with('search', $search);
+        return view('client.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -55,7 +55,7 @@ class ClientController extends Controller
         $input['id_avatars'] = 1;
         $input['image_national_id'] = 1;
         $data = Client::create($input);
-        return redirect(route('owners.index'))->with('success', 'Item added succesfully');
+        return redirect(route('client.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -83,10 +83,10 @@ class ClientController extends Controller
      //   dd($request->all());
         $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('owners.index'));
+            return redirect(route('client.index'));
         }
         $data = Client::where('id', $id)->update(request()->except(['_token', '_method','action']));
-        return redirect(route('owners.index'))->with('success', 'Item Updated succesfully');
+        return redirect(route('client.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -101,9 +101,9 @@ class ClientController extends Controller
     {
         $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('owners.index'));
+            return redirect(route('client.index'));
         }
         $data->delete();
-        return redirect(route('owners.index'));
+        return redirect(route('client.index'));
     }
 }
