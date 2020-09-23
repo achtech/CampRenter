@@ -30,7 +30,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('owners.create');
+        return view('client.create');
     }
     /**
      * Display the specified resource.

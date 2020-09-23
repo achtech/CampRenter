@@ -34,7 +34,7 @@ class InsuranceController extends Controller
      */
     public function create()
     {
-        return view('Insurance.create');
+        return view('insurance.create');
     }
     /**
      * Display the specified resource.
@@ -67,6 +67,8 @@ class InsuranceController extends Controller
      */
     public function edit($id)
     {
+        $data = Insurance::find($id);
+        return view('insurance.edit', ['id' => 1])->with('data', $data);
     }
 
     /**

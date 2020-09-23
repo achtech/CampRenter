@@ -5,6 +5,7 @@ return [
     'owners.lbl' => 'Owners',
     'new_owner.btn' => 'New owner',
     'owner_list.lbl' => 'List of owners',
+    /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Lastname',
     'client_password.lbl' => 'Password',
@@ -21,9 +22,25 @@ return [
     'client_national_image.lbl' => 'Image of National ID',
     'choose_file.lbl' => 'Choose file',
     'client_image.lbl' => 'Personal image',
+
+    /** End Client */
+
+    /** Insurance */
+    'insurance.lbl' => 'Insurance',
+    'insurance_list.lbl' => 'List of insurances',
+    'description.lbl' =>'Description',
+    'insurance_company.lbl' =>'Campany',
+    'camper_name.lbl' =>'Camper',
+    'price_per_day.lbl' =>'Price/ day',
+    'new_insurance.btn' => 'New Insurance',
+    
+    /** End Insurance */
+
     'paiment.lbl' => 'Paiement',
     'paypal_account.lbl' => 'Paypal account',
     'credit_card.lbl' => 'Credit card',
+    'action.btn' => 'Action',
+
     'create.btn' => 'Create',
     'cancel.btn' => 'Cancel',
     'avatar.lbl' => 'Avatar',

@@ -1,0 +1,2 @@
+
+ALTER TABLE `inssurances` CHANGE `created_at` `created_at` DATE NULL, CHANGE `created_by` `created_by` INT(11) NULL, CHANGE `updated_at` `updated_at` DATE NULL, CHANGE `updated_by` `updated_by` INT(11) NULL;

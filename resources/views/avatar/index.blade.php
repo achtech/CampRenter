@@ -19,7 +19,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                        <a href="{{ route('owners.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" style="width:200px">{{ __('backend.new_owner.btn') }}</a>
+                        <a href="{{ route('avatar.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" style="width:200px">{{ __('backend.new_owner.btn') }}</a>
                     </div>
             </div>
         </div>

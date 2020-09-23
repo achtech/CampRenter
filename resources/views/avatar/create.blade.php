@@ -136,7 +136,7 @@
             <div class="col-sm-12 col-md-6">
                 {{Form::submit('Create',['class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
  
-                <a href="{{ route('owners.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.cancel.btn') }}</a>
+                <a href="{{ route('avatar.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.cancel.btn') }}</a>
             </div>
     </div>
     {{ Form::close() }}
