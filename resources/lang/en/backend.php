@@ -47,5 +47,14 @@ return [
     'driving_licence.lbl' => 'Driving Licence',
     'driving_licence_image.lbl' => 'Driving Licence Image',
     'national.lbl' => 'National',
-    'message_delete_owner.lbl' => 'Do you want to delete this owner'
+    'message_delete_owner.lbl' => 'Do you want to delete this owner',
+
+    'label.lbl' => 'Label',
+
+    /** Start Fuel */
+    'fuel.lbl' => 'Fuel',
+    'new_fuel.btn' => 'New Fuel',
+    'fuel_list.lbl' => 'List of Fuel',
+    'message_delete_fuel.lbl' => 'Do you want to delete this Fuel',
+    /** End Fuel */
 ];

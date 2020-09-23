@@ -84,7 +84,7 @@ Route::resource('avatar', 'App\Http\Controllers\AvatarController', ['except' => 
 ]]);
 
 //ADMIN->FUEL
-Route::get('fuel/{id}/delete', 'FuelController@destroy')->name('fuel.destroy');
+Route::get('fuel/{id}/delete', 'App\Http\Controllers\FuelController@destroy')->name('fuel.destroy');
 Route::resource('fuel', 'App\Http\Controllers\FuelController', ['except' => 'destroy', 'names' => [
     'index' => 'fuel.index',
     'create' => 'fuel.create',

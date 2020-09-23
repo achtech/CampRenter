@@ -67,6 +67,8 @@ class FuelController extends Controller
      */
     public function edit($id)
     {
+        $data = Fuel::find($id);
+        return view('fuel.edit', ['id' => 1])->with('data', $data);
     }
 
     /**
@@ -82,7 +84,7 @@ class FuelController extends Controller
         if (empty($data)) {
             return redirect(route('fuel.index'));
         }
-        $data = Fuel::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = Fuel::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
         return redirect(route('fuel.index'))->with('success', 'Item Updated succesfully');
     }
 
