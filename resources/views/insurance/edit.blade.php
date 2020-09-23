@@ -49,7 +49,7 @@
                         <h4 class="card-title">{{ __('backend.insurance_company.lbl') }} </h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{ Form::text('id_inssurance_company',$data->id_inssurance_company,['class'=>'form-control','required'])}}
+                                {{ Form::select('id_inssurance_company', $insuranceCompanies, $data->id_inssurance_company, ['class' => 'form-control','required']) }}
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                     <h4 class="card-title">{{ __('backend.camper_name.lbl') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('id_camper_name',$data->id_camper_name,['class'=>'form-control','required'])}}
+                                {{ Form::select('id_camper_name', $camperNames, $data->id_camper_name, ['class' => 'form-control','required']) }}
                             </div>
                         </div>
                     </div>

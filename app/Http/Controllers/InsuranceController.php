@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
 use App\Models\Insurance;
+use App\Models\CamperName;
+use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
@@ -34,7 +34,13 @@ class InsuranceController extends Controller
      */
     public function create()
     {
-        return view('insurance.create');
+        //TODO : IF ENG
+        $camperNames = CamperName::all()->pluck('label_en', 'id');
+        $insuranceCompanies = InsuranceCompany::all()->pluck('label_en', 'id');
+
+        return view('insurance.create')                
+            ->with('camperNames', $camperNames)
+            ->with('insuranceCompanies', $insuranceCompanies);
     }
     /**
      * Display the specified resource.
@@ -68,7 +74,12 @@ class InsuranceController extends Controller
     public function edit($id)
     {
         $data = Insurance::find($id);
-        return view('insurance.edit', ['id' => 1])->with('data', $data);
+        $camperNames = CamperName::all()->pluck('label_en', 'id');
+        $insuranceCompanies = InsuranceCompany::all()->pluck('label_en', 'id');
+        return view('insurance.edit', ['id' => 1])
+        ->with('data', $data)
+        ->with('camperNames', $camperNames)
+        ->with('insuranceCompanies', $insuranceCompanies);
     }
 
     /**
@@ -104,5 +115,9 @@ class InsuranceController extends Controller
         }
         $data->delete();
         return redirect(route('insurance.index'));
+    }
+
+    public static function getLabel($table,$id){
+        return DB::table($table)->find($id)->label_en;
     }
 }

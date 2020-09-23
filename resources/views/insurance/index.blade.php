@@ -42,8 +42,8 @@
                                     <td>{{$item->description_de}}</td>
                                     <td>{{$item->description_en}}</td>
                                     <td>{{$item->description_fr}}</td>
-                                    <td>{{$item->id_inssurance_company}}</td>
-                                    <td>{{$item->id_camper_name}}</td>
+                                    <td>{{App\Http\Controllers\InsuranceController::getLabel('inssurance_company',$item->id_inssurance_company)}}</td>
+                                    <td>{{App\Http\Controllers\InsuranceController::getLabel('camper_names',$item->id_camper_name)}}</td>
                                     <td>{{$item->price_per_day}}</td>
                                    <td>
                                         <ul class="list-inline m-0">
