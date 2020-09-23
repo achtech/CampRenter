@@ -299,7 +299,7 @@
                     <li class="sidebar-item"> 
 
                     </li>
-                    <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}"> > 
+                    <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}"> 
                         <a class="sidebar-link sidebar-link" href="{{route('insurance.index')}}" aria-expanded="false">
                         <i class="icon-book-open"></i>
                             <span class="hide-menu">Insurances</span>
