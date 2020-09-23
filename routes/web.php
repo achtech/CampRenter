@@ -51,7 +51,7 @@ Route::resource('equipment', 'App\Http\Controllers\EquipmentController', ['excep
 ]]);
 
 //ADMIN->INSURANCE
-Route::get('insurance/{id}/delete', 'InsuranceController@destroy')->name('insurance.destroy');
+Route::get('insurance/{id}/delete', 'App\Http\Controllers\InsuranceController@destroy')->name('insurance.destroy');
 Route::resource('insurance', 'App\Http\Controllers\InsuranceController', ['except' => 'destroy', 'names' => [
     'index' => 'insurance.index',
     'create' => 'insurance.create',

@@ -33,7 +33,7 @@ return [
     'camper_name.lbl' =>'Camper',
     'price_per_day.lbl' =>'Price/ day',
     'new_insurance.btn' => 'New Insurance',
-    
+    'message_delete_insurance.lbl' => 'Do you want to delete this Insurance ?',
     /** End Insurance */
 
     'paiment.lbl' => 'Paiement',
