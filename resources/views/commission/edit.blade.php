@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
     <!--'action'=>'ComissionController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\ComissionController@store','autocomplete'=>'off','method'=>'POST']) }}
+    {{ Form::open(array('method'=>'PUT','route' => ['commission.update', $data->id])) }}
     <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
@@ -10,7 +10,8 @@
                         <h4 class="card-title">{{ __('backend.commission_rate.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('rate','',['class'=>'form-control','required'])}}
+                                {{Form::text('rate',$data->rate,['class'=>'form-control','required'])}}
+
                             </div>
                         </div>
                     </div>

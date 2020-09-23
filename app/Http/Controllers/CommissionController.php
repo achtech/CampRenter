@@ -19,13 +19,15 @@ class ComissionController extends Controller
     public function index(Request $request)
     {
         $search = '';
-        if (isset($request) && null !== $request->get('search')) {
+        /*if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
             $datas = Commission::where('start_date', 'like', '%' . $search . '%')->paginate(10);
         } else {
             $datas = Commission::paginate(10);
-        }
-        return view('commission.index')->with('datas', $datas)->with('search', $search);
+        }*/
+        $datas = Commission::paginate(10);
+
+        return view('commission.index')->with('datas', $datas);
     }
     /**
      * Show the form for creating a new resource.

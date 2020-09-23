@@ -53,25 +53,25 @@
                                             <li class="list-inline-item">
                                                 <div class="container">
                                                 <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                <p>{{ __('backend.message_delete_insurance.lbl') }}</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="{{ route('insurance.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
-                    <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="myModal" role="dialog">
+                                                    <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                <p>{{ __('backend.message_delete_insurance.lbl') }}</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="{{ route('insurance.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
+                                                                    <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li> 
                                     </td>
                                 </tr>

@@ -62,8 +62,8 @@ Route::resource('insurance', 'App\Http\Controllers\InsuranceController', ['excep
 ]]);
 
 //ADMIN->COMIMSSION
-Route::get('commission/{id}/delete', 'CommissionController@destroy')->name('commission.destroy');
-Route::resource('commission', 'App\Http\Controllers\CommissionController', ['except' => 'destroy', 'names' => [
+Route::get('commission/{id}/delete', 'App\Http\Controllers\ComissionController@destroy')->name('commission.destroy');
+Route::resource('commission', 'App\Http\Controllers\ComissionController', ['except' => 'destroy', 'names' => [
     'index' => 'commission.index',
     'create' => 'commission.create',
     'update' => 'commission.update',

@@ -315,7 +315,8 @@
                                         class="hide-menu"> Profile
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="{{route('commission.index')}}" class="sidebar-link"><span
+                            <li class="sidebar-item{{ $activePage == 'commission' ? ' selected' : '' }}">
+                                <a href="{{route('commission.index')}}" class="sidebar-link"><span
                                             class="hide-menu"> Commissions
                                     </span></a>
                             </li>
