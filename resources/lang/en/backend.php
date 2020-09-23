@@ -47,5 +47,17 @@ return [
     'driving_licence.lbl' => 'Driving Licence',
     'driving_licence_image.lbl' => 'Driving Licence Image',
     'national.lbl' => 'National',
-    'message_delete_owner.lbl' => 'Do you want to delete this owner'
+    'message_delete_owner.lbl' => 'Do you want to delete this owner',
+
+    'label.lbl' => 'Label',
+
+    /** EquipmentCategory */
+    'equipmentCategory.lbl' => 'Equipment Category',
+    'new_equipmentCategory.btn' => 'New Category',
+    'equipmentCategory_list.lbl' => 'List of Equipment Category',
+    'message_delete_equipmentCategory.lbl' => 'Do you want to delete this Equipment Category',
+    /** End EquipmentCategory */
+
+
+
 ];
