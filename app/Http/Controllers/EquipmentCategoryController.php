@@ -25,7 +25,7 @@ class EquipmentCategoryController extends Controller
         } else {
             $datas = EquipmentCategory::paginate(10);
         }
-        return view('vehicleCategory.index')->with('datas', $datas)->with('search', $search);
+        return view('equipmentCategory.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -34,7 +34,7 @@ class EquipmentCategoryController extends Controller
      */
     public function create()
     {
-        return view('VehicleCategory.create');
+        return view('equipmentCategory.create');
     }
     /**
      * Display the specified resource.
@@ -44,7 +44,7 @@ class EquipmentCategoryController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('vehicleCategory.index'));
+        return redirect(route('equipmentCategory.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -56,7 +56,7 @@ class EquipmentCategoryController extends Controller
     {
         $input = $request->all();
         $data = EquipmentCategory::create($input);
-        return redirect(route('vehicleCategory.index'))->with('success', 'Item added succesfully');
+        return redirect(route('equipmentCategory.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -67,6 +67,8 @@ class EquipmentCategoryController extends Controller
      */
     public function edit($id)
     {
+        $data = EquipmentCategory::find($id);
+        return view('equipmentCategory.edit', ['id' => 1])->with('data', $data);
     }
 
     /**
@@ -80,10 +82,10 @@ class EquipmentCategoryController extends Controller
     {
         $data = EquipmentCategory::find($id);
         if (empty($data)) {
-            return redirect(route('vehicleCategory.index'));
+            return redirect(route('equipmentCategory.index'));
         }
-        $data = EquipmentCategory::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('vehicleCategory.index'))->with('success', 'Item Updated succesfully');
+        $data = EquipmentCategory::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
+        return redirect(route('equipmentCategory.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -98,9 +100,9 @@ class EquipmentCategoryController extends Controller
     {
         $data = EquipmentCategory::find($id);
         if (empty($data)) {
-            return redirect(route('vehicleCategory.index'));
+            return redirect(route('equipmentCategory.index'));
         }
         $data->delete();
-        return redirect(route('vehicleCategory.index'));
+        return redirect(route('equipmentCategory.index'));
     }
 }

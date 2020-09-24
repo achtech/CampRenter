@@ -96,7 +96,7 @@ Route::resource('fuel', 'App\Http\Controllers\FuelController', ['except' => 'des
 ]]);
 
 //ADMIN->LICENCECATEGORIES
-Route::get('licenceCategory/{id}/delete', 'licenceCategoryController@destroy')->name('licenceCategory.destroy');
+Route::get('licenceCategory/{id}/delete', 'App\Http\Controllers\llicenceCategoryController@destroy')->name('licenceCategory.destroy');
 Route::resource('licenceCategory', 'App\Http\Controllers\licenceCategoryController', ['except' => 'destroy', 'names' => [
     'index' => 'licenceCategory.index',
     'create' => 'licenceCategory.create',
@@ -118,7 +118,7 @@ Route::resource('transmission', 'App\Http\Controllers\TransmissionController', [
 ]]);
 
 //ADMIN->EQUIPMENTCATEGORY
-Route::get('equipmentCategory/{id}/delete', 'EquipmentCategoryController@destroy')->name('equipmentCategory.destroy');
+Route::get('equipmentCategory/{id}/delete', 'App\Http\Controllers\EquipmentCategoryController@destroy')->name('equipmentCategory.destroy');
 Route::resource('equipmentCategory', 'App\Http\Controllers\EquipmentCategoryController', ['except' => 'destroy', 'names' => [
     'index' => 'equipmentCategory.index',
     'create' => 'equipmentCategory.create',
