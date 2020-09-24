@@ -70,4 +70,14 @@ return [
 
 
 
+    'message_delete_owner.lbl' => 'Do you want to delete this owner',
+
+    'label.lbl' => 'Label',
+
+    /** Start Fuel */
+    'fuel.lbl' => 'Fuel',
+    'new_fuel.btn' => 'New Fuel',
+    'fuel_list.lbl' => 'List of Fuel',
+    'message_delete_fuel.lbl' => 'Do you want to delete this Fuel',
+    /** End Fuel */
 ];
