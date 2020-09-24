@@ -27,5 +27,8 @@ return [
     'create.btn' => 'Créer',
     'cancel.btn' => 'Annuler',
 
-
+    /** commission */
+    'commission.lbl' => 'Commission',
+    'commission_list.lbl' => 'List des commissions',
+    'new_commission.btn' => 'Nouvelle commission',
 ];

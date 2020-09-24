@@ -80,4 +80,15 @@ return [
     'fuel_list.lbl' => 'List of Fuel',
     'message_delete_fuel.lbl' => 'Do you want to delete this Fuel',
     /** End Fuel */
+    'message_delete_owner.lbl' => 'Do you want to delete this owner',
+
+    /* ---- Commission-----*/
+    'commission.lbl' => 'Commission',
+    'commission_list.lbl' => 'List of commission',
+    'new_commission.btn' => 'New commission',
+    'commission_createdBy.lbl' => 'Created By',
+    'commission_createdAt.lbl' => 'Created At',
+    'commission_updatedBy.lbl' => 'Update By',
+    'commission_updatedAt.lbl' => 'Update At',
+    'commission_rate.lbl' => 'Amount',
 ];
