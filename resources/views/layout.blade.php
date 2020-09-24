@@ -221,7 +221,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img src="../assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
+                                <img src="../../assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
                                     width="40">
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
                                         class="text-dark">Jason Doe</span> <i data-feather="chevron-down"
@@ -284,7 +284,7 @@
                         </a>
                     </li>
                     
-                    <li class="sidebar-item"> 
+                    <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}"> 
                         <a class="sidebar-link sidebar-link" href="{{route('client.index')}}" aria-expanded="false">
                         <i class="icon-people"></i>
                             <span class="hide-menu">Clients</span>
@@ -299,7 +299,7 @@
                     <li class="sidebar-item"> 
 
                     </li>
-                    <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}">
+                    <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}"> 
                         <a class="sidebar-link sidebar-link" href="{{route('insurance.index')}}" aria-expanded="false">
                         <i class="icon-book-open"></i>
                             <span class="hide-menu">Insurances</span>

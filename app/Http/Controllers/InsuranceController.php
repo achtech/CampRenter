@@ -84,7 +84,7 @@ class InsuranceController extends Controller
         if (empty($data)) {
             return redirect(route('insurance.index'));
         }
-        $data = Insurance::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = Insurance::where('id', $id)->update(request()->except(['_token', '_method','action']));
         return redirect(route('insurance.index'))->with('success', 'Item Updated succesfully');
     }
 
