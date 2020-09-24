@@ -239,7 +239,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item"> 
-                        <a class="sidebar-link sidebar-link" href="{{route('camperName.index')}}" aria-expanded="false">
+                        <a class="sidebar-link sidebar-link" href="{{route('equipment.index')}}" aria-expanded="false">
                         <i class="icon-grid"></i>
                             <span class="hide-menu">Campers</span>
                         </a>

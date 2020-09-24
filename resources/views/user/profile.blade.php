@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\InsuranceController@update',-->
-    {{ Form::open(array('method'=>'PUT','route' => ['user.update', $data->id])) }}
+    {{ Form::open(array('method'=>'PUT','route' => ['user.update', $data->id ?? 1])) }}
     
     @csrf
      <div class="row">
@@ -13,7 +13,7 @@
                         <h4 class="card-title">{{ __('backend.user_name.lbl') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('user_name',$data->user_name,['class'=>'form-control','required'])}}
+                                {{Form::text('user_name',$data->user_name ?? '',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                     <h4 class="card-title">{{ __('backend.client_email.lbl') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('email',$data->email,['class'=>'form-control','required'])}}
+                                {{Form::text('email',$data->email ?? '',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <h4 class="card-title">{{ __('backend.tel.lbl') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('telephone',$data->telephone,['class'=>'form-control','required'])}}
+                                {{Form::text('telephone',$data->telephone ?? '',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         <h4 class="card-title">{{ __('backend.adress.lbl') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('adress',$data->adress, ['class'=>'form-control','required'])}}
+                                {{Form::text('adress',$data->adress ?? '', ['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>

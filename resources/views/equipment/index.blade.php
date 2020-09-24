@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout', ['activePage' => 'equipment', 'titlePage' => __('backend.equipment.lbl')])
 @section('content')
 <div class="page-breadcrumb">
                 <div class="row">

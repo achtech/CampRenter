@@ -96,8 +96,8 @@ Route::resource('fuel', 'App\Http\Controllers\FuelController', ['except' => 'des
 ]]);
 
 //ADMIN->LICENCECATEGORIES
-Route::get('licenceCategory/{id}/delete', 'App\Http\Controllers\llicenceCategoryController@destroy')->name('licenceCategory.destroy');
-Route::resource('licenceCategory', 'App\Http\Controllers\licenceCategoryController', ['except' => 'destroy', 'names' => [
+Route::get('licenceCategory/{id}/delete', 'App\Http\Controllers\LicenceCategoryController@destroy')->name('licenceCategory.destroy');
+Route::resource('licenceCategory', 'App\Http\Controllers\LicenceCategoryController', ['except' => 'destroy', 'names' => [
     'index' => 'licenceCategory.index',
     'create' => 'licenceCategory.create',
     'update' => 'licenceCategory.update',
@@ -151,8 +151,8 @@ Route::resource('camperName', 'App\Http\Controllers\CamperNameController', ['exc
 ]]);
 
 //ADMIN->INSURANCECOMPANY
-Route::get('inssuranceCompany/{id}/delete', 'InssuranceCompanyController@destroy')->name('inssuranceCompany.destroy');
-Route::resource('inssuranceCompany', 'App\Http\Controllers\InssuranceCompanyController', ['except' => 'destroy', 'names' => [
+Route::get('inssuranceCompany/{id}/delete', 'InsuranceCompanyController@destroy')->name('inssuranceCompany.destroy');
+Route::resource('inssuranceCompany', 'App\Http\Controllers\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
     'index' => 'inssuranceCompany.index',
     'create' => 'inssuranceCompany.create',
     'update' => 'inssuranceCompany.update',

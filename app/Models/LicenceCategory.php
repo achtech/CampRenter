@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class LicenceCategories extends Base
+class LicenceCategory extends Base
 {
     protected $table = 'licence_categories';
     public $primarykey = 'id';
