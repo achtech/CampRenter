@@ -18,7 +18,8 @@ Route::get('/', function () {
 })->name('dashboard');
 
 //ADMIN->USER
-Route::get('user/{id}/delete', 'UserController@deusersstroy')->name('user.destroy');
+Route::get('user/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
+Route::get('user/{id}/delete', 'App\Http\Controllers\UserController@destroy')->name('user.destroy');
 Route::resource('user', 'App\Http\Controllers\UserController', ['except' => 'destroy', 'names' => [
     'index' => 'user.index',
     'create' => 'user.create',

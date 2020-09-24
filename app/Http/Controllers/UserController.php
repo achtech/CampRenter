@@ -42,9 +42,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        return redirect(route('user.index'));
+        //TODO : change user find by connected user
+        $user = User::find(1);
+        return view('user.profile')->with('user', $user);
+    }
+
+    public function profile()
+    {
+        //TODO : change user find by connected user
+        $user = User::find(1);
+        return view('user.profile')->with('data', $user);
     }
     /**
      * Store a newly created resource in storage.
@@ -79,10 +88,10 @@ class UserController extends Controller
     {
         $data = User::find($id);
         if (empty($data)) {
-            return redirect(route('user.index'));
+            return redirect(route('user.profile'));
         }
-        $data = User::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('user.index'))->with('success', 'Item Updated succesfully');
+        $data = User::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
+        return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
     }
 
     //

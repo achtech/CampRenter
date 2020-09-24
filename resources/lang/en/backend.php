@@ -47,5 +47,14 @@ return [
     'driving_licence.lbl' => 'Driving Licence',
     'driving_licence_image.lbl' => 'Driving Licence Image',
     'national.lbl' => 'National',
-    'message_delete_owner.lbl' => 'Do you want to delete this owner'
+    'message_delete_owner.lbl' => 'Do you want to delete this owner',
+
+    /** start user */
+    'user.lbl' => 'User',
+    'user_name.lbl' => 'User Name',
+    'password.lbl' => 'Password',
+    'tel.lbl' => 'Phone',
+    'adress.lbl' => 'Adress',
+
+    /** End user */
 ];
