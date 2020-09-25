@@ -267,6 +267,10 @@
                                             class="hide-menu"> Commissions
                                     </span></a>
                             </li>
+                            <li class="sidebar-item"><a href="{{route('promotion.index')}}" class="sidebar-link"><span
+                                class="hide-menu">{{ __('backend.promotion.lbl') }} 
+                        </span></a>
+                </li>
                             <li class="sidebar-item"><a href="{{route('licenceCategory.index')}}" class="sidebar-link"><span
                                         class="hide-menu"> Licence Categories 
                                     </span></a>

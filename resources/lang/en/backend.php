@@ -28,10 +28,10 @@ return [
     /** Insurance */
     'insurance.lbl' => 'Insurance',
     'insurance_list.lbl' => 'List of insurances',
-    'description.lbl' =>'Description',
-    'insurance_company.lbl' =>'Campany',
-    'camper_name.lbl' =>'Camper',
-    'price_per_day.lbl' =>'Price/ day',
+    'description.lbl' => 'Description',
+    'insurance_company.lbl' => 'Campany',
+    'camper_name.lbl' => 'Camper',
+    'price_per_day.lbl' => 'Price/ day',
     'new_insurance.btn' => 'New Insurance',
     'message_delete_insurance.lbl' => 'Do you want to delete this Insurance ?',
     /** End Insurance */
@@ -57,4 +57,29 @@ return [
     'adress.lbl' => 'Adress',
 
     /** End user */
+
+    /** Dashboard */
+    'dashboard_confirm_camper.lbl' => 'Campers to be confirmed',
+    'dashboard_last_booking.lbl' => 'Last Bookings',
+    'dashboard_today.lbl' => 'Today',
+    'dashboard_week.lbl' => 'Week',
+    'dashboard_current_month.lbl' => 'Current Month',
+    'dashboard_last_month.lbl' => 'Previous Month',
+    'dashboard_new_promotion.btn' => 'New Promotion',
+    'dashboard_change_commission.btn' => 'Change Commission',
+    'dashboard_add_user.btn' => 'New User',
+    'dashboard_client_name.lbl' => 'Client Name',
+    'dashboard_message.lbl' => 'Message',
+    'dashboard_view_details.lbl' => 'View Details',
+    'dashboard_view_message_details.lbl' => 'view message details',
+    'dashboard_owners_part.lbl' => 'Owners Part',
+    'dashboard_unit_campers_part.lbl' => 'Unit Campers Part',
+    'dashboard_total.lbl' => 'Total',
+    'dashboard_recent_message.lbl' => 'Recent Messages',
+    'per_day.lbl' => 'day',
+    'promotion.lbl' => 'Promotion',
+    /** End Dashboard */
+
+
+
 ];

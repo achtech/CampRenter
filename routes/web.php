@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+Route::get('/confirm/{id}', 'App\Http\Controllers\DashboardController@confirmEquipment')->name('dashboard.confirm');
+//Route::get('/lastBookings', 'App\Http\Controllers\DashboardController@getLastBookings')->name('dashboard');
 
 //ADMIN->USER
 Route::get('user/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
@@ -63,7 +64,7 @@ Route::resource('insurance', 'App\Http\Controllers\InsuranceController', ['excep
 ]]);
 
 //ADMIN->COMIMSSION
-Route::get('commission/{id}/delete', 'CommissionController@destroy')->name('commission.destroy');
+Route::get('commission/{id}/delete', 'App\Http\Controllers\CommissionController@destroy')->name('commission.destroy');
 Route::resource('commission', 'App\Http\Controllers\CommissionController', ['except' => 'destroy', 'names' => [
     'index' => 'commission.index',
     'create' => 'commission.create',
@@ -71,6 +72,15 @@ Route::resource('commission', 'App\Http\Controllers\CommissionController', ['exc
     'edit' => 'commission.edit',
     'store' => 'commission.store',
     'show' => 'commission.show',
+]]);
+//ADMIN->PROMOTION
+Route::resource('promotion', 'App\Http\Controllers\PromotionController', ['except' => 'destroy', 'names' => [
+    'index' => 'promotion.index',
+    'create' => 'promotion.create',
+    'update' => 'promotion.update',
+    'edit' => 'promotion.edit',
+    'store' => 'promotion.store',
+    'show' => 'promotion.show',
 ]]);
 
 //ADMIN->AVATAR

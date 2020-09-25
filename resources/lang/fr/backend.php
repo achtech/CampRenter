@@ -27,5 +27,23 @@ return [
     'create.btn' => 'Créer',
     'cancel.btn' => 'Annuler',
 
+    /** Dashboard */
+    'dashboard_confirm_camper.lbl' => 'Campeurs à confirmer',
+    'dashboard_last_booking.lbl' => 'Dernière réservation',
+    'dashboard_today.lbl' => 'Aujourd hui',
+    'dashboard_week.lbl' => 'La semaine',
+    'dashboard_current_month.lbl' => 'Mois en cours',
+    'dashboard_last_month.lbl' => 'Le mois dernier',
+    'dashboard_new_promotion.btn' => 'Nouvelle promotion',
+    'dashboard_change_commission.btn' => 'Changer Commission',
+    'dashboard_add_user.btn' => 'Nouveau Utilisateur',
+    'dashboard_client_name.lbl' => 'Nom du Client',
+    'dashboard_message.lbl' => 'Message',
+    'dashboard_view_details.lbl' => 'Voir les détails',
+    'dashboard_view_message_details.lbl' => 'afficher les détails du message',
+    'dashboard_owners_part.lbl' => 'Partie propriétaires',
+    'dashboard_unit_campers_part.lbl' => 'Partie campeurs de l unité',
+    'dashboard_total.lbl' => 'Totale',
+    /** End Dashboard */
 
 ];
