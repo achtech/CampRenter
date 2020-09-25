@@ -50,38 +50,31 @@ return [
     'message_delete_owner.lbl' => 'Do you want to delete this owner',
 
     /** start user */
+    'user_list.lbl' => 'List of users',
     'user.lbl' => 'User',
     'user_name.lbl' => 'User Name',
     'password.lbl' => 'Password',
     'tel.lbl' => 'Phone',
     'adress.lbl' => 'Adress',
-
+    'email.lbl' => 'Email',
+    'role.lbl' => 'Role',
+    'new_user.btn' => 'New User',
     /** End user */
-    'message_delete_owner.lbl' => 'Do you want to delete this owner',
-
-    'label.lbl' => 'Label',
-
+    
     /** EquipmentCategory */
     'equipmentCategory.lbl' => 'Equipment Category',
     'new_equipmentCategory.btn' => 'New Category',
     'equipmentCategory_list.lbl' => 'List of Equipment Category',
     'message_delete_equipmentCategory.lbl' => 'Do you want to delete this Equipment Category',
     /** End EquipmentCategory */
-
-
-
-    'message_delete_owner.lbl' => 'Do you want to delete this owner',
-
-    'label.lbl' => 'Label',
-
+    
     /** Start Fuel */
     'fuel.lbl' => 'Fuel',
     'new_fuel.btn' => 'New Fuel',
     'fuel_list.lbl' => 'List of Fuel',
     'message_delete_fuel.lbl' => 'Do you want to delete this Fuel',
     /** End Fuel */
-    'message_delete_owner.lbl' => 'Do you want to delete this owner',
-
+    
     /* ---- Commission-----*/
     'commission.lbl' => 'Commission',
     'commission_list.lbl' => 'List of commission',
@@ -91,4 +84,8 @@ return [
     'commission_updatedBy.lbl' => 'Update By',
     'commission_updatedAt.lbl' => 'Update At',
     'commission_rate.lbl' => 'Amount',
+    
+    /** General */
+    'operations.lbl' => 'Operation',    
+    'label.lbl' => 'Label',
 ];

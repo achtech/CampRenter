@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.owner.lbl')])
+@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance.lbl')])
 @section('content')
 
 <div class="container-fluid">
