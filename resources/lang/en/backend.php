@@ -5,6 +5,7 @@ return [
     'owners.lbl' => 'Owners',
     'new_owner.btn' => 'New owner',
     'owner_list.lbl' => 'List of owners',
+    'operation.lbl' => 'Operation',
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Lastname',
@@ -91,4 +92,11 @@ return [
     'commission_updatedBy.lbl' => 'Update By',
     'commission_updatedAt.lbl' => 'Update At',
     'commission_rate.lbl' => 'Amount',
+
+    'promotion_datefrom.lbl' => 'From',
+    'promotion_dateto.lbl'=>'To',
+    'promotion_createdBy.lbl' =>'Created By',
+    'promotion_createdAt.lbl' =>'Created At',
+    'promotion_rate.lbl' => 'Amount of Promotion',
+    'promotion_list.lbl' => 'List of Promotion',
 ];

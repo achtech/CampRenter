@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
 use App\Models\Avatars;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
@@ -57,7 +55,7 @@ class PromotionController extends Controller
     {
         $input = $request->all();
         $data = Promotion::create($input);
-        return redirect(route('promotion.index'))->with('success', 'Item added succesfully');
+        return redirect(route('commission.index'))->with('success', 'Item added succesfully');
     }
 
 
@@ -101,9 +99,9 @@ class PromotionController extends Controller
     {
         $data = Promotion::find($id);
         if (empty($data)) {
-            return redirect(route('promotion.index'));
+            return redirect(route('commission.index'));
         }
         $data->delete();
-        return redirect(route('promotion.index'));
+        return redirect(route('commission.index'));
     }
 }

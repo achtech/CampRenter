@@ -71,6 +71,16 @@ Route::resource('commission', 'App\Http\Controllers\ComissionController', ['exce
     'edit' => 'commission.edit',
     'store' => 'commission.store',
     'show' => 'commission.show',
+    ]]);
+    
+Route::get('promotion/{id}/delete', 'App\Http\Controllers\PromotionController@destroy')->name('promotion.destroy');
+Route::resource('promotion', 'App\Http\Controllers\PromotionController', ['except' => 'destroy', 'names' => [
+    'index' => 'promotion.index',
+    'create' => 'promotion.create',
+    'update' => 'promotion.update',
+    'edit' => 'promotion.edit',
+    'store' => 'promotion.store',
+    'show' => 'promotion.show',
 ]]);
 
 //ADMIN->AVATAR
