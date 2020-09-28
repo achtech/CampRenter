@@ -120,4 +120,13 @@ return [
 
 
 
+
+    /** licence_category */
+    'licence_category.lbl' => 'Category',
+    'new_licence_category.btn' => 'New Camper Category',
+    'licence_category_list.lbl' => 'List of Camper Categories',
+    'message_delete_licence_category.lbl' => 'Do you want to delete this Camper Category',
+    '' => '',
+    '' => '',
+
 ];

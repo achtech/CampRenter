@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
 use App\Models\LicenceCategory;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
-use PharIo\Manifest\License;
 
 class LicenceCategoryController extends Controller
 {
@@ -22,7 +19,7 @@ class LicenceCategoryController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = LicenceCategory::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = LicenceCategory::where('label_en', 'like', '%' . $search . '%')->paginate(10);
         } else {
             $datas = LicenceCategory::paginate(10);
         }
@@ -34,8 +31,8 @@ class LicenceCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('Licence.create');
+    { 
+        return view('licenceCategory.create');
     }
     /**
      * Display the specified resource.
@@ -45,7 +42,7 @@ class LicenceCategoryController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('licence.index'));
+        return redirect(route('licenceCategory.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -60,7 +57,6 @@ class LicenceCategoryController extends Controller
         return redirect(route('licenceCategory.index'))->with('success', 'Item added succesfully');
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -69,6 +65,9 @@ class LicenceCategoryController extends Controller
      */
     public function edit($id)
     {
+        $data = LicenceCategory::find($id);
+        return view('licenceCategory.edit', ['id' => 1])
+        ->with('data', $data);
     }
 
     /**
@@ -84,7 +83,7 @@ class LicenceCategoryController extends Controller
         if (empty($data)) {
             return redirect(route('licenceCategory.index'));
         }
-        $data = LicenceCategory::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = LicenceCategory::where('id', $id)->update(request()->except(['_token', '_method','action']));
         return redirect(route('licenceCategory.index'))->with('success', 'Item Updated succesfully');
     }
 
@@ -104,5 +103,9 @@ class LicenceCategoryController extends Controller
         }
         $data->delete();
         return redirect(route('licenceCategory.index'));
+    }
+
+    public static function getLabel($table,$id){
+        return DB::table($table)->find($id)->label_en;
     }
 }
