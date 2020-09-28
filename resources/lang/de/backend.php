@@ -57,4 +57,22 @@ return [
     'booking_to.lbl' => 'Reservierung bei',
     'remaining_days_number.lbl' => 'Anzahl der verbleibenden Tage',
 
+    /** Dashboard */
+    'dashboard_confirm_camper.lbl' => 'Camper müssen noch bestätigt werden',
+    'dashboard_last_booking.lbl' => 'Letzte Reservierung',
+    'dashboard_today.lbl' => 'Heute',
+    'dashboard_week.lbl' => 'Die Woche',
+    'dashboard_current_month.lbl' => 'Aktueller Monat',
+    'dashboard_last_month.lbl' => 'Im vergangenen Monat',
+    'dashboard_new_promotion.btn' => 'Neue Promotion',
+    'dashboard_change_commission.btn' => 'Kommission ändern',
+    'dashboard_add_user.btn' => 'Neue Nutzer',
+    'dashboard_client_name.lbl' => 'Kundenname',
+    'dashboard_message.lbl' => 'Botschaft',
+    'dashboard_view_details.lbl' => 'Siehe die Details',
+    'dashboard_view_message_details.lbl' => 'Nachrichtendetails anzeigen',
+    'dashboard_owners_part.lbl' => 'Eigentümer Teil',
+    'dashboard_unit_campers_part.lbl' => 'Unit Camper Teil',
+    'dashboard_total.lbl' => 'Total',
+    /** End Dashboard */
 ];
