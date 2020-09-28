@@ -31,4 +31,8 @@ return [
     'commission.lbl' => 'Commission',
     'commission_list.lbl' => 'List des commissions',
     'new_commission.btn' => 'Nouvelle commission',
+
+    /* ---- Billings-----*/
+    'billings.lbl' => 'Facturation',
+    'billing_list.lbl' => 'Liste des facturations',
 ];

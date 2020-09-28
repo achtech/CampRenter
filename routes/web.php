@@ -160,3 +160,17 @@ Route::resource('inssuranceCompany', 'App\Http\Controllers\InsuranceCompanyContr
     'store' => 'inssuranceCompany.store',
     'show' => 'inssuranceCompany.show',
 ]]);
+
+//ADMIN->billings
+//Route::get('inssuranceCompany/{id}/delete', 'InsuranceCompanyController@destroy')->name('inssuranceCompany.destroy');
+
+Route::get('applyFilter', 'App\Http\Controllers\BillingController@filter')->name('applyFilter');
+Route::get('excel-export', 'App\Http\Controllers\BillingController@export')->name('excel-export');
+Route::resource('billing', 'App\Http\Controllers\BillingController', ['except' => 'destroy', 'names' => [
+    'index' => 'billing.index',
+    'create' => 'billing.create',
+    'update' => 'billing.update',
+    'edit' => 'billing.edit',
+    'store' => 'billing.store',
+    'show' => 'billing.show',
+]]);

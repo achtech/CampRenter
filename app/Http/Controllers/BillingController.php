@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\AnneeScolaire;
 use App\AnneesScolaire;
+use App\Exports\BillingExport;
 use App\Models\Avatars;
 use App\Models\Billing;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BillingController extends Controller
 {
@@ -19,15 +21,23 @@ class BillingController extends Controller
      */
     public function index(Request $request)
     {
-        $search = '';
-        if (isset($request) && null !== $request->get('search')) {
-            $search = $request->get('search');
-            $datas = Billing::where('picture', 'like', '%' . $search . '%')->paginate(10);
-        } else {
-            $datas = Billing::paginate(10);
-        }
-        return view('billing.index')->with('datas', $datas)->with('search', $search);
+        $todayDate = date("Y-m-d");
+        $datas = Billing::join('clients', 'billings.id_client', '=', 'clients.id')
+            ->join('bookings', 'billings.id_booking', '=', 'bookings.id')
+            ->join('equipments', 'bookings.id_equipments', '=', 'equipments.id')
+            ->get();
+        return view('billing.index')->with('datas', $datas)->with('todayDate', $todayDate);
     }
+
+    public function export()
+    {
+        return Excel::download(new BillingExport, 'billings.xlsx');
+    }
+    public function filter()
+    {
+        dd(1);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

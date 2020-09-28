@@ -27,5 +27,7 @@ return [
     'create.btn' => 'Erstellen',
     'cancel.btn' => 'Stornieren',
     'dashboard.lbl' => 'dashboard',
-
+    /* ---- Billings-----*/
+    'billings.lbl' => 'Abrechnungen',
+    'billing_list.lbl' => 'Liste der Abrechnungen',
 ];

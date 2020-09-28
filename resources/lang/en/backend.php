@@ -28,10 +28,10 @@ return [
     /** Insurance */
     'insurance.lbl' => 'Insurance',
     'insurance_list.lbl' => 'List of insurances',
-    'description.lbl' =>'Description',
-    'insurance_company.lbl' =>'Campany',
-    'camper_name.lbl' =>'Camper',
-    'price_per_day.lbl' =>'Price/ day',
+    'description.lbl' => 'Description',
+    'insurance_company.lbl' => 'Campany',
+    'camper_name.lbl' => 'Camper',
+    'price_per_day.lbl' => 'Price/ day',
     'new_insurance.btn' => 'New Insurance',
     'message_delete_insurance.lbl' => 'Do you want to delete this Insurance ?',
     /** End Insurance */
@@ -91,4 +91,16 @@ return [
     'commission_updatedBy.lbl' => 'Update By',
     'commission_updatedAt.lbl' => 'Update At',
     'commission_rate.lbl' => 'Amount',
+    /* ---- Billings-----*/
+    'billings.lbl' => 'Billings',
+    'billing_list.lbl' => 'List of Billings',
+    'equipment_name.lbl' => 'Equipment Name',
+    'status_paiement.lbl' => 'Status',
+    'amount_paiement.lbl' => 'Amount',
+    'renter_name.lbl' => 'Renter Name',
+    'export.btn' => 'Export',
+    'billing_date_from.lbl' => 'Date From',
+    'billing_date_to.lbl' => 'Date To',
+    'billing_date_filter.lbl' => 'Date Filter',
+    'apply.btn' => 'Apply',
 ];
