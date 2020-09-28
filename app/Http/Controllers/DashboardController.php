@@ -9,7 +9,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $datas = Equipment::where('is_confirmed', 0)->get();
+        $datas = Equipment::where('is_confirmed', 0)
+            ->join('clients', 'equipments.id_client', '=', 'clients.id')
+            ->get();
         $bookings = Booking::join('clients', 'bookings.id_clients', '=', 'clients.id')
             ->get();
         return view('dashboard')->with('datas', $datas)->with('bookings', $bookings);

@@ -78,6 +78,11 @@ return [
     'dashboard_recent_message.lbl' => 'Recent Messages',
     'per_day.lbl' => 'day',
     'promotion.lbl' => 'Promotion',
+    'detail.btn' => 'Detail',
+    'read_more.btn' => 'Read More',
+    'renter_name.lbl' => 'Renter Name',
+    'date_booking.lbl' => 'Booking Date',
+    'dashboard_action.lbl' => 'Action',
     /** End Dashboard */
 
 
