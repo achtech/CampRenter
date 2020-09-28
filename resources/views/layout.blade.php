@@ -247,6 +247,12 @@
                     <li class="sidebar-item"> 
 
                     </li>
+                    <li class="sidebar-item{{ $activePage == 'booking' ? ' selected' : '' }}"> 
+                        <a class="sidebar-link sidebar-link" href="{{route('booking.index')}}" aria-expanded="false">
+                        <i class="icon-wallet"></i>
+                            <span class="hide-menu">Bookings</span>
+                        </a>
+                    </li>
                     <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}"> 
                         <a class="sidebar-link sidebar-link" href="{{route('insurance.index')}}" aria-expanded="false">
                         <i class="icon-book-open"></i>

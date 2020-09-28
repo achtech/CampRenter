@@ -40,7 +40,7 @@
                             @foreach($datas as $item)
                                 <tr>
                                     <td>
-                                        <img style="width:64px;height:64px;" src="{{App\Http\Controllers\UserController::getAvatar($item->id_avatars)}}" ></td>
+                                <img style="width:64px;height:64px;" src="{{$item->picture}}" ></td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->telephone}}</td>
                                     <td>{{$item->email}}</td>

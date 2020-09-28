@@ -111,9 +111,4 @@ class UserController extends Controller
         $data->delete();
         return redirect(route('user.index'));
     }
-
-    public static function getAvatar($id){
-        $avatar = Avatar::find($id);
-        return "\assets\images\avatar\\".$avatar->image;
-    }
 }
