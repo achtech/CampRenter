@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
+use App\Models\Avatar;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
@@ -21,7 +20,7 @@ class UserController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = User::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = User::where('user_name', 'like', '%' . $search . '%')->paginate(10);
         } else {
             $datas = User::paginate(10);
         }
@@ -34,7 +33,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('User.create');
+        return view('user.create');
     }
     /**
      * Display the specified resource.
@@ -64,6 +63,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['password']="123456";
         $data = User::create($input);
         return redirect(route('user.index'))->with('success', 'Item added succesfully');
     }
@@ -110,5 +110,10 @@ class UserController extends Controller
         }
         $data->delete();
         return redirect(route('user.index'));
+    }
+
+    public static function getAvatar($id){
+        $avatar = Avatar::find($id);
+        return "\assets\images\avatar\\".$avatar->image;
     }
 }

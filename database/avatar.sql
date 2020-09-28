@@ -1,0 +1,1 @@
+ALTER TABLE `avatars` CHANGE `created_at` `created_at` DATE NOT NULL, CHANGE `updated_by` `updated_by` INT NOT NULL;
