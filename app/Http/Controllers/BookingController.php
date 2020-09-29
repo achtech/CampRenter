@@ -19,14 +19,11 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        $search = '';
-        if (isset($request) && null !== $request->get('search')) {
-            $search = $request->get('search');
-            $datas = Booking::where('start_date', 'like', '%' . $search . '%')->paginate(10);
-        } else {
-            $datas = Booking::paginate(10);
-        }
-        return view('booking.index')->with('datas', $datas)->with('search', $search);
+
+        
+        $datas = DB::table('bookingdetails')->get();
+        $datasClients = DB::table('clients')->get();
+        return view('booking.index')->with('datas', $datas)->with('datasClients', $datasClients);
     }
     /**
      * Show the form for creating a new resource.
@@ -104,5 +101,22 @@ class BookingController extends Controller
         }
         $data->delete();
         return redirect(route('booking.index'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $date1,$date2
+     * @return \Illuminate\Http\Response
+     */
+    public function search($date1,$date2)
+    {
+        $datas = DB::table('bookingdetails')
+        ->Where(function ($q) use ($a) {
+            $q->where('dateFrom','>=', $date1)
+                ->where('dateTo', '<=',$date2);
+        })->get();
+
+        return redirect(route('booking.index'))->with('dataSearch', $dataSearch);
     }
 }

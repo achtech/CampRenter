@@ -6,6 +6,7 @@ return [
     'new_owner.btn' => 'New owner',
     'owner_list.lbl' => 'List of owners',
     'operation.lbl' => 'Operation',
+    'search.lbl'=>'Search',
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
@@ -164,5 +165,17 @@ return [
     'promotion_createdAt.lbl' =>'Created At',
     'promotion_rate.lbl' => 'Amount of Promotion',
     'promotion_list.lbl' => 'List of Promotion',
+
+    /* ------------ Booking -----------*/
+    'booking_renter.lbl' => 'Renter',
+    'booking_equipement.lbl' => 'Equipement',
+    'booking_from.lbl' => 'From',
+    'booking_to.lbl' => 'To',
+    'booking_list.lbl' => 'List of booking',
+    'booking_price_per_day.lbl' => 'Price per day',
+    'booking_title.lbl' => 'Booking',
+    'booking_owner.lbl' => 'Owner',
+    'booking_renter.lbl' => 'Renter',
+    'booking_select_choose.lbl' => 'Choose',
 ];
     
