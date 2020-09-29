@@ -55,7 +55,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <div class="navbar-brand">
+                    <div class="navbar-brand" style="padding-left: 75px; margin-top: 21px;">
                         <!-- Logo icon -->
                         <a href="index.html">
                             <b class="logo-icon">
@@ -66,12 +66,7 @@
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo text -->
-                                <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                            </span>
+                            
                         </a>
                     </div>
                     <!-- ============================================================== -->
@@ -257,6 +252,14 @@
                         <a class="sidebar-link sidebar-link" href="{{route('insurance.index')}}" aria-expanded="false">
                         <i class="icon-book-open"></i>
                             <span class="hide-menu">Insurances</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item{{ $activePage == 'message' ? ' selected' : '' }}"> 
+                        <a class="sidebar-link sidebar-link" 
+                            href="{{route('message.index')}}" 
+                            aria-expanded="false">
+                            <i class="icon-bubble"></i>
+                            <span class="hide-menu">Messages</span>
                         </a>
                     </li>
                     <li class="sidebar-item"> 

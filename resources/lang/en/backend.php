@@ -157,10 +157,12 @@ return [
     'date_booking.lbl' => 'Booking Date',
     'dashboard_action.lbl' => 'Action',
     /** End Dashboard */
-	/** start promotion *
+	/** start promotion */
  	'promotion_datefrom.lbl' => 'From',
     'promotion_dateto.lbl'=>'To',
     'promotion_createdBy.lbl' =>'Created By',
     'promotion_createdAt.lbl' =>'Created At',
     'promotion_rate.lbl' => 'Amount of Promotion',
-    'promotion_list.lbl' => 'List of Promotion'];
+    'promotion_list.lbl' => 'List of Promotion',
+];
+    
