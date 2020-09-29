@@ -175,3 +175,11 @@ Route::resource('inssuranceCompany', 'App\Http\Controllers\InsuranceCompanyContr
     'store' => 'inssuranceCompany.store',
     'show' => 'inssuranceCompany.show',
 ]]);
+
+//ADMIN->MESSAGE
+Route::get('message/{id}/delete', 'App\Http\Controllers\MessageController@destroy')->name('message.destroy');
+Route::resource('message', 'App\Http\Controllers\MessageController', ['except' => 'destroy', 'names' => [
+    'index' => 'message.index',
+    'store' => 'camperName.store',
+    'show' => 'camperName.show',
+]]);

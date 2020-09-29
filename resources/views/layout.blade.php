@@ -259,6 +259,14 @@
                             <span class="hide-menu">Insurances</span>
                         </a>
                     </li>
+                    <li class="sidebar-item{{ $activePage == 'message' ? ' selected' : '' }}"> 
+                        <a class="sidebar-link sidebar-link" 
+                            href="{{route('message.index')}}" 
+                            aria-expanded="false">
+                            <i class="icon-bubble"></i>
+                            <span class="hide-menu">Messages</span>
+                        </a>
+                    </li>
                     <li class="sidebar-item"> 
                         <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <i class="icon-settings"></i>
