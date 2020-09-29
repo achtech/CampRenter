@@ -55,7 +55,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <div class="navbar-brand">
+                    <div class="navbar-brand" style="padding-left: 75px; margin-top: 21px;">
                         <!-- Logo icon -->
                         <a href="index.html">
                             <b class="logo-icon">
@@ -66,12 +66,7 @@
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo text -->
-                                <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                            </span>
+                            
                         </a>
                     </div>
                     <!-- ============================================================== -->
