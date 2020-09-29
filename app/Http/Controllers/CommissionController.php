@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\AnneeScolaire;
 use App\AnneesScolaire;
 use App\Models\Commission;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
+
 
 class ComissionController extends Controller
 {
@@ -26,8 +28,8 @@ class ComissionController extends Controller
             $datas = Commission::paginate(10);
         }*/
         $datas = Commission::paginate(10);
-
-        return view('commission.index')->with('datas', $datas);
+        $datasPromo = Promotion::paginate(10);
+        return view('commission.index')->with('datas', $datas)->with('datasPromo', $datasPromo);
     }
     /**
      * Show the form for creating a new resource.
@@ -36,7 +38,7 @@ class ComissionController extends Controller
      */
     public function create()
     {
-        return view('Commission.create');
+        return view('Commission.index');
     }
     /**
      * Display the specified resource.
@@ -60,6 +62,14 @@ class ComissionController extends Controller
         $data = Commission::create($input);
         return redirect(route('commission.index'))->with('success', 'Item added succesfully');
     }
+
+    public function storePromotion()
+    {
+        $input = $request->all();
+        $data = Promotion::create($input);
+        return redirect(route('commission.index'))->with('success', 'Item added succesfully');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -68,6 +78,7 @@ class ComissionController extends Controller
      */
     public function edit($id)
     {
+        
     }
 
     /**
@@ -79,12 +90,7 @@ class ComissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Commission::find($id);
-        if (empty($data)) {
-            return redirect(route('commission.index'));
-        }
-        $data = Commission::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('commission.index'))->with('success', 'Item Updated succesfully');
+        
     }
 
     //

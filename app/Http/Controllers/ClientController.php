@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Client;
+use App\Models\Equipment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -70,6 +73,12 @@ class ClientController extends Controller
         //dd($data);
         return view('owners.edit')->with('data', $data);
     }
+    public function detail($id)
+    {
+        $data = Client::find($id);
+        return view('client.detail')->with('data', $data);
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -80,12 +89,12 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-     //   dd($request->all());
+        //   dd($request->all());
         $data = Client::find($id);
         if (empty($data)) {
             return redirect(route('client.index'));
         }
-        $data = Client::where('id', $id)->update(request()->except(['_token', '_method','action']));
+        $data = Client::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
         return redirect(route('client.index'))->with('success', 'Item Updated succesfully');
     }
 
@@ -105,5 +114,53 @@ class ClientController extends Controller
         }
         $data->delete();
         return redirect(route('client.index'));
+    }
+
+    public function blockClient($id)
+    {
+        $data = Client::find($id);
+        if (empty($data)) {
+            return redirect(route('client.index'));
+        }
+        $data->status = 'blocked';
+        $data->save();
+        return redirect(route('client.index'));
+    }
+    public function activateClient($id)
+    {
+        $data = Client::find($id);
+        if (empty($data)) {
+            return redirect(route('client.index'));
+        }
+        $data->status = 'active';
+        $data->save();
+        return redirect(route('client.index'));
+    }
+    public function checkEquipmentDetail($id)
+    {
+        $datas = Equipment::where('id_client', $id)->get();
+        return view('client.detailEquipment')->with('datas', $datas);
+    }
+    public function checkBookingDetail($id)
+    {
+        $remaining_days = 0;
+        $datas = Booking::where('id_clients', $id)
+            ->join('equipments', 'bookings.id_equipments', '=', 'equipments.id')
+            ->get();
+        foreach ($datas as $elem) {
+            $diff = abs(strtotime($elem->dateFrom) - strtotime($elem->dateTo));
+            $years = floor($diff / (365 * 60 * 60 * 24));
+            $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+            $remaining_days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+        }
+        return view('client.bookingDetail')->with('datas', $datas)->with('remaining_days', $remaining_days);
+    }
+    public static function getCurrentSolde($id)
+    {
+        return $id;
+    }
+    public static function getTotalsSolde($id)
+    {
+        return $id;
     }
 }

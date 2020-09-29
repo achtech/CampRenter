@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+Route::get('/confirm/{id}', 'App\Http\Controllers\DashboardController@confirmEquipment')->name('dashboard.confirm');
+//Route::get('/lastBookings', 'App\Http\Controllers\DashboardController@getLastBookings')->name('dashboard');
 
 //ADMIN->USER
 Route::get('user/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
@@ -30,12 +31,17 @@ Route::resource('user', 'App\Http\Controllers\UserController', ['except' => 'des
 ]]);
 
 //ADMIN->CLIENT
-Route::get('client/{id}/delete', 'ClientController@destroy')->name('client.destroy');
+Route::get('client/{id}/delete', 'App\Http\Controllers\ClientController@destroy')->name('client.destroy');
+Route::get('client/{id}/block', 'App\Http\Controllers\ClientController@blockClient')->name('client.block');
+Route::get('client/{id}/active', 'App\Http\Controllers\ClientController@activateClient')->name('client.active');
+Route::get('client/{id}/detail', 'App\Http\Controllers\ClientController@detail')->name('client.detail');
+Route::get('client/{id}/equipmentDetail', 'App\Http\Controllers\ClientController@checkEquipmentDetail')->name('client.equipmentDetail');
+Route::get('client/{id}/rentDetail', 'App\Http\Controllers\ClientController@checkBookingDetail')->name('client.rentDetail');
+
 Route::resource('client', 'App\Http\Controllers\ClientController', ['except' => 'destroy', 'names' => [
     'index' => 'client.index',
     'create' => 'client.create',
     'update' => 'client.update',
-    'edit' => 'client.edit',
     'store' => 'client.store',
     'show' => 'client.show',
 ]]);
@@ -63,14 +69,33 @@ Route::resource('insurance', 'App\Http\Controllers\InsuranceController', ['excep
 ]]);
 
 //ADMIN->COMIMSSION
-Route::get('commission/{id}/delete', 'App\Http\Controllers\ComissionController@destroy')->name('commission.destroy');
-Route::resource('commission', 'App\Http\Controllers\ComissionController', ['except' => 'destroy', 'names' => [
+Route::get('commission/{id}/delete', 'App\Http\Controllers\CommissionController@destroy')->name('commission.destroy');
+Route::resource('commission', 'App\Http\Controllers\CommissionController', ['except' => 'destroy', 'names' => [
     'index' => 'commission.index',
     'create' => 'commission.create',
     'update' => 'commission.update',
     'edit' => 'commission.edit',
     'store' => 'commission.store',
     'show' => 'commission.show',
+    ]]);
+    
+Route::get('promotion/{id}/delete', 'App\Http\Controllers\PromotionController@destroy')->name('promotion.destroy');
+Route::resource('promotion', 'App\Http\Controllers\PromotionController', ['except' => 'destroy', 'names' => [
+    'index' => 'promotion.index',
+    'create' => 'promotion.create',
+    'update' => 'promotion.update',
+    'edit' => 'promotion.edit',
+    'store' => 'promotion.store',
+    'show' => 'promotion.show',
+]]);
+//ADMIN->PROMOTION
+Route::resource('promotion', 'App\Http\Controllers\PromotionController', ['except' => 'destroy', 'names' => [
+    'index' => 'promotion.index',
+    'create' => 'promotion.create',
+    'update' => 'promotion.update',
+    'edit' => 'promotion.edit',
+    'store' => 'promotion.store',
+    'show' => 'promotion.show',
 ]]);
 
 //ADMIN->AVATAR

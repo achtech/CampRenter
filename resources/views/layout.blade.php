@@ -18,7 +18,7 @@
     <link href="../../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="../../dist/css/style.min.css" rel="stylesheet">
-    
+    <link href="../../dist/css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -182,7 +182,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img src="../assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
+                                <img src="../../assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
                                     width="40">
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
                                         class="text-dark">Jason Doe</span> <i data-feather="chevron-down"
@@ -232,7 +232,7 @@
                         </a>
                     </li>
                     
-                    <li class="sidebar-item"> 
+                    <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}"> 
                         <a class="sidebar-link sidebar-link" href="{{route('client.index')}}" aria-expanded="false">
                         <i class="icon-people"></i>
                             <span class="hide-menu">Clients</span>
@@ -246,6 +246,12 @@
                     </li>
                     <li class="sidebar-item"> 
 
+                    </li>
+                    <li class="sidebar-item{{ $activePage == 'booking' ? ' selected' : '' }}"> 
+                        <a class="sidebar-link sidebar-link" href="{{route('booking.index')}}" aria-expanded="false">
+                        <i class="icon-wallet"></i>
+                            <span class="hide-menu">Bookings</span>
+                        </a>
                     </li>
                     <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}"> 
                         <a class="sidebar-link sidebar-link" href="{{route('insurance.index')}}" aria-expanded="false">
@@ -274,6 +280,10 @@
                                             class="hide-menu"> Commissions
                                     </span></a>
                             </li>
+                            <li class="sidebar-item"><a href="{{route('promotion.index')}}" class="sidebar-link"><span
+                                class="hide-menu">{{ __('backend.promotion.lbl') }} 
+                        </span></a>
+                </li>
                             <li class="sidebar-item"><a href="{{route('licenceCategory.index')}}" class="sidebar-link"><span
                                         class="hide-menu"> Licence Categories 
                                     </span></a>
