@@ -11,7 +11,7 @@
                         <h4 class="card-title">{{ __('backend.user_name.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('name','',['class'=>'form-control','required'])}}
+                                {{Form::text('user_name','',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>

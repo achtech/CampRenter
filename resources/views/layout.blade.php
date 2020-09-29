@@ -287,7 +287,7 @@
                                     </span></a>
                             </li>
                             <li class="sidebar-item"> 
-                                <a class="sidebar-link sidebar-link" href="{{route('inssuranceCompany.index')}}" class="sidebar-link">
+                                <a href="{{route('inssuranceCompany.index')}}" class="sidebar-link">
                                     <span class="hide-menu">Insurance Providers</span>
                                 </a>
                             </li>

@@ -34,7 +34,7 @@ class TransmissionController extends Controller
      */
     public function create()
     {
-        return view('Transmission.create');
+        return view('transmission.create');
     }
     /**
      * Display the specified resource.
@@ -58,6 +58,7 @@ class TransmissionController extends Controller
         $data = Transmission::create($input);
         return redirect(route('transmission.index'))->with('success', 'Item added succesfully');
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -66,6 +67,8 @@ class TransmissionController extends Controller
      */
     public function edit($id)
     {
+        $data = Transmission::find($id);
+        return view('transmission.edit', ['id' => 1])->with('data', $data);
     }
 
     /**
@@ -81,7 +84,7 @@ class TransmissionController extends Controller
         if (empty($data)) {
             return redirect(route('transmission.index'));
         }
-        $data = Transmission::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = transmission::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
         return redirect(route('transmission.index'))->with('success', 'Item Updated succesfully');
     }
 
@@ -95,7 +98,7 @@ class TransmissionController extends Controller
      */
     public function destroy($id)
     {
-        $data = Transmission::find($id);
+        $data = transmission::find($id);
         if (empty($data)) {
             return redirect(route('transmission.index'));
         }

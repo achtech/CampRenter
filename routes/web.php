@@ -122,7 +122,7 @@ Route::resource('licenceCategory', 'App\Http\Controllers\LicenceCategoryControll
 ]]);
 
 //ADMIN->TRANSMISSION
-Route::get('transmission/{id}/delete', 'TransmissionController@destroy')->name('transmission.destroy');
+Route::get('transmission/{id}/delete', 'App\Http\Controllers\TransmissionController@destroy')->name('transmission.destroy');
 Route::resource('transmission', 'App\Http\Controllers\TransmissionController', ['except' => 'destroy', 'names' => [
     'index' => 'transmission.index',
     'create' => 'transmission.create',
