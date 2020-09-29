@@ -9091,3 +9091,7 @@ strong {
   .float-right{
     float: right;
   }
+
+  .space-top{
+    padding-top: 20px;;
+  }
