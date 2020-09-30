@@ -1,7 +1,7 @@
 @extends('layout', ['activePage' => 'commission', 'titlePage' => __('backend.commission.lbl')])
 @section('content')
 <div class="container-fluid">
-    <!--'action'=>'ComissionController@store',-->
+    <!--'action'=>'  CommissionController@store',-->
     {{ Form::open(array('method'=>'PUT','route' => ['commission.update', $data->id])) }}
     <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">

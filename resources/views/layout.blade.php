@@ -297,7 +297,7 @@
                                         class="hide-menu"> {{ __('backend.menu_profil.lbl') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item{{ $activePage == 'commission' ? ' selected' : '' }}">
+                            <li class="sidebar-item">
                                 <a href="{{route('commission.index')}}" class="sidebar-link"><span
                                             class="hide-menu">{{ __('backend.menu_commision.lbl') }}
                                     </span></a>

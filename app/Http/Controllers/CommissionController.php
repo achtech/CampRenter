@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
+  
+ 
 use App\Models\Commission;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
 
-class ComissionController extends Controller
+class CommissionController extends Controller
 {
     /**
      * Display a listing of the resource.

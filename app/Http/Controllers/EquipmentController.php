@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
+  
+ 
 use App\Models\Equipment;
 use App\Models\Client;
 use App\Models\EquipmentCategory;
