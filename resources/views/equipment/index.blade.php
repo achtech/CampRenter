@@ -50,13 +50,12 @@
                                     <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <a href="{{ route('equipment.detail',$item->id)}}" class="btn btn-primary btn-circle"><i class="fa fa-list"></i></a>
+                                                <a href="{{ route('equipment.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
                                             </li>  
                                             <li class="list-inline-item">
                                                 <a href="{{ route('equipment.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
                                             </li>  
                                             <li class="list-inline-item">
-                                                <div class="container">
                                                 <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="myModal" role="dialog">
@@ -76,7 +75,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                             </li> 
                                     </td>
                                 </tr>
