@@ -2,6 +2,7 @@
 
 return [
 
+    'dashboard.lbl' => 'Instrumententafel',
     'owners.lbl' => 'Besitzer',
     'new_owner.btn' => 'Neuer Besitzer',
     'owner_list.lbl' => 'Liste der Eigentümer',
@@ -26,7 +27,6 @@ return [
     'credit_card.lbl' => 'Kreditkarte',
     'create.btn' => 'Erstellen',
     'cancel.btn' => 'Stornieren',
-    'dashboard.lbl' => 'dashboard',
     'client_rents.lbl' => 'Mieten',
     'client_equipments.lbl' => 'Ausrüstungen',
     'client_block_message.lbl' => 'Möchten Sie diesen Client blockieren?',
@@ -40,6 +40,9 @@ return [
     'client_total_solde.lbl' => 'Gesamtsaldo',
     'client_current_solde.lbl' => 'Aktueller Saldo',
 
+    /* ---- Billings-----*/
+    'billings.lbl' => 'Abrechnungen',
+    'billing_list.lbl' => 'Liste der Abrechnungen',
     /** Equipment */
     'equipment_name.lbl' => 'Ausrüstungsname',
     'equipment_model.lbl' => 'Ausstattungsmodell',
@@ -74,5 +77,33 @@ return [
     'dashboard_owners_part.lbl' => 'Eigentümer Teil',
     'dashboard_unit_campers_part.lbl' => 'Unit Camper Teil',
     'dashboard_total.lbl' => 'Total',
+    'no_equipment.lbl' => 'Keine Ausrüstung gefunden',
+    'billing_date_from.lbl' => 'Anfangsdatum',
+    'billing_date_to.lbl' => 'Endtermin',
+    'apply.btn' => 'anwenden',
+    'renter_name.lbl' => 'Mieter',
+    'amount_paiement.lbl' => 'Menge',
+    'export.btn' => 'Export',
+    'dashboard_recent_message.lbl' => 'Aktuelle Nachrichten',
     /** End Dashboard */
+
+    //Menu
+    'menu_user_managment.lbl' => 'Benutzerverwaltung',
+    'menu_clients.lbl' => 'Kunden',
+    'menu_campers.lbl' => 'Camper',
+    'menu_booking.lbl' => 'Buchung',
+    'menu_insurances.lbl' => 'Versicherungen',
+    'menu_billings.lbl' => 'Abrechnungen',
+    'menu_message.lbl' => 'Mitteilungen',
+    'menu_settings.lbl' => 'die Einstellungen',
+    'menu_profil.lbl' => 'Profil',
+    'menu_commision.lbl' => 'Kommission',
+    'menu_promotion.lbl' => 'Beförderung',
+    'menu_licence_category.lbl' => 'Lizenzkategorien',
+    'menu_equipment_category.lbl' => 'Ausrüstungskategorien',
+    'menu_inssurance_providers.lbl' => 'Versicherer',
+    'menu_transmissions.lbl' => 'Übertragungen',
+    'menu_fuels.lbl' => 'Kraftstoffe',
+    'menu_avatars.lbl' => 'Avatare',
+    'menu_backup.lbl' => 'Backup',
 ];

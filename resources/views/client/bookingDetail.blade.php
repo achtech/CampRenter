@@ -25,22 +25,25 @@
                             style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>{{ __('backend.owner_name.lbl') }}</th>
                                     <th>{{ __('backend.equipment_name.lbl') }}</th>
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.remaining_days_number.lbl') }}</th>
-                                    </tr>
+                                    <th>{{ __('backend.dashboard_action.lbl') }}</th>    
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach($datas as $item)
                                 <tr>
+                                    <td>{{$item->client_name}} {{$item->client_last_name}}</td>
                                     <td>{{$item->equipment_name}}</td>
                                     <td >{{$item->dateFrom}}</td>
                                     <td>{{$item->dateTo}}</td>
                                     <td>{{$remaining_days}}</td>
-                                    
-                                   
+                                    <td><a href="{{ route('billing.index') }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
                                 </tr>
+                                <br/>
                                 @endforeach
                  
                             </tbody>

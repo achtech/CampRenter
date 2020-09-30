@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avatar;
 use App\Models\Booking;
 use App\Models\Client;
 use App\Models\Equipment;
@@ -76,7 +77,9 @@ class ClientController extends Controller
     public function detail($id)
     {
         $data = Client::find($id);
-        return view('client.detail')->with('data', $data);
+        $datas = Avatar::where('id', $data->id_avatars)->first();
+        $avatar = $datas['image'];
+        return view('client.detail')->with('data', $data)->with('avatar', $avatar);
     }
 
 
@@ -146,6 +149,7 @@ class ClientController extends Controller
         $remaining_days = 0;
         $datas = Booking::where('id_clients', $id)
             ->join('equipments', 'bookings.id_equipments', '=', 'equipments.id')
+            ->join('clients', 'bookings.id_clients', '=', 'clients.id')
             ->get();
         foreach ($datas as $elem) {
             $diff = abs(strtotime($elem->dateFrom) - strtotime($elem->dateTo));
