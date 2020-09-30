@@ -2,6 +2,7 @@
 
 return [
 
+    'dashboard.lbl' => 'Instrumententafel',
     'owners.lbl' => 'Besitzer',
     'new_owner.btn' => 'Neuer Besitzer',
     'owner_list.lbl' => 'Liste der Eigentümer',
@@ -26,7 +27,6 @@ return [
     'credit_card.lbl' => 'Kreditkarte',
     'create.btn' => 'Erstellen',
     'cancel.btn' => 'Stornieren',
-    'dashboard.lbl' => 'dashboard',
     'client_rents.lbl' => 'Mieten',
     'client_equipments.lbl' => 'Ausrüstungen',
     'client_block_message.lbl' => 'Möchten Sie diesen Client blockieren?',

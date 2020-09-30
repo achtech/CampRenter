@@ -89,7 +89,7 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                         
-                        <!-- End Notification -->
+                        <!-- End Notification -->                        
                         <!-- ============================================================== -->
                     </ul>
                     <!-- ============================================================== -->
@@ -196,6 +196,18 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
+                        <li class="nav-item">
+                            <div class="nav-link">
+                            <div class="customize-input">
+                                    <a class="form-control" style="display:unset !important;padding:5px"
+                                        href="{{ url('lang/en') }}" class="dropdown-item">En</a>
+                                    <a class="form-control" style="display:unset !important;padding:5px"
+                                        href="{{ url('lang/de') }}" class="dropdown-item">DE</a>
+                                    <a class="form-control" style="display:unset !important;padding:5px"
+                                        href="{{ url('lang/fr') }}" class="dropdown-item">FR</a>
+                                    
+                                </div> </div>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -217,7 +229,8 @@
                             href="/" 
                             aria-expanded="false">
                             <i class="icon-home"></i>
-                            <span class="hide-menu">Dashboard</span>
+                            <span class="hide-menu">
+                            {{ __('backend.dashboard.lbl') }}</span>
                         </a>
                     </li>
                     <li class="sidebar-item{{ $activePage == 'Owner' ? ' selected' : '' }}"> 
