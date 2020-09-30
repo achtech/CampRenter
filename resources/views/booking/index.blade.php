@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ __('backend.booking_from.lbl') }}</h4>
                         <div class="form-group">
-                            <input type="date" class="form-control"  id="dateform"  name="dateform" />
+                            <input type="date" class="form-control"  id="dateFrom"  name="dateFrom" value="{{ $dateFrom ?? '' }}"/>
                         </div>
                 </div>
             </div>
@@ -48,7 +48,8 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ __('backend.booking_to.lbl') }}</h4>
                         <div class="form-group">
-                            <input type="date" class="form-control"  id="dateto" name="dateto" />
+                           
+                            <input type="date" class="form-control"  id="dateTo" name="dateTo"  value="{{ $dateTo ?? '' }}" />
                         </div>
                 </div>
             </div>
