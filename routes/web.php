@@ -47,7 +47,8 @@ Route::resource('client', 'App\Http\Controllers\ClientController', ['except' => 
 ]]);
 
 //ADMIN->EQUIPMENT
-Route::get('equipment/{id}/delete', 'EquipmentController@destroy')->name('equipment.destroy');
+Route::get('equipment/{id}/detail', 'App\Http\Controllers\EquipmentController@detail')->name('equipment.detail');
+Route::get('equipment/{id}/delete', 'App\Http\Controllers\EquipmentController@destroy')->name('equipment.destroy');
 Route::resource('equipment', 'App\Http\Controllers\EquipmentController', ['except' => 'destroy', 'names' => [
     'index' => 'equipment.index',
     'create' => 'equipment.create',
