@@ -273,7 +273,7 @@
                             <span class="hide-menu">{{ __('backend.menu_insurances.lbl') }}</span>
                         </a>
                     </li>
-                    <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}"> 
+                    <li class="sidebar-item{{ $activePage == 'billing' ? ' selected' : '' }}"> 
                         <a class="sidebar-link sidebar-link" href="{{route('billing.index')}}" aria-expanded="false">
                             <i class="fas fa-money-bill-alt"></i>
                             <span class="hide-menu">{{ __('backend.billings.lbl') }}</span>
