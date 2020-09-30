@@ -6,6 +6,7 @@ return [
     'new_owner.btn' => 'New owner',
     'owner_list.lbl' => 'List of owners',
     'operation.lbl' => 'Operation',
+    'dashboard.lbl' => "Dashboard",
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
