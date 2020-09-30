@@ -56,6 +56,7 @@ return [
     'booking_to.lbl' => 'Réservation à',
     'remaining_days_number.lbl' => 'Nombre de jours restants',
     /** Dashboard */
+    'dashboard.lbl' => 'Tableau de bord',
     'dashboard_confirm_camper.lbl' => 'Campeurs à confirmer',
     'dashboard_last_booking.lbl' => 'Dernière réservation',
     'dashboard_today.lbl' => 'Aujourd hui',

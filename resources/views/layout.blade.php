@@ -61,7 +61,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <div class="navbar-brand">
+                    <div class="navbar-brand" style="padding-left: 75px; margin-top: 21px;">
                         <!-- Logo icon -->
                         <a href="index.html">
                             <b class="logo-icon">
@@ -72,12 +72,7 @@
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo text -->
-                                <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                            </span>
+                            
                         </a>
                     </div>
                     <!-- ============================================================== -->
@@ -100,7 +95,7 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                         
-                        <!-- End Notification -->
+                        <!-- End Notification -->                        
                         <!-- ============================================================== -->
                     </ul>
                     <!-- ============================================================== -->
@@ -207,6 +202,18 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
+                        <li class="nav-item">
+                            <div class="nav-link">
+                            <div class="customize-input">
+                                    <a class="form-control" style="display:unset !important;padding:5px"
+                                        href="{{ url('lang/en') }}" class="dropdown-item">En</a>
+                                    <a class="form-control" style="display:unset !important;padding:5px"
+                                        href="{{ url('lang/de') }}" class="dropdown-item">DE</a>
+                                    <a class="form-control" style="display:unset !important;padding:5px"
+                                        href="{{ url('lang/fr') }}" class="dropdown-item">FR</a>
+                                    
+                                </div> </div>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -228,7 +235,8 @@
                             href="/" 
                             aria-expanded="false">
                             <i class="icon-home"></i>
-                            <span class="hide-menu">Dashboard</span>
+                            <span class="hide-menu">
+                            {{ __('backend.dashboard.lbl') }}</span>
                         </a>
                     </li>
                     <li class="sidebar-item{{ $activePage == 'Owner' ? ' selected' : '' }}"> 
@@ -269,6 +277,14 @@
                         <a class="sidebar-link sidebar-link" href="{{route('billing.index')}}" aria-expanded="false">
                             <i class="fas fa-money-bill-alt"></i>
                             <span class="hide-menu">{{ __('backend.billings.lbl') }}</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item{{ $activePage == 'message' ? ' selected' : '' }}"> 
+                        <a class="sidebar-link sidebar-link" 
+                            href="{{route('message.index')}}" 
+                            aria-expanded="false">
+                            <i class="icon-bubble"></i>
+                            <span class="hide-menu">Messages</span>
                         </a>
                     </li>
                     <li class="sidebar-item"> 
