@@ -153,7 +153,6 @@ return [
     'dashboard_total.lbl' => 'Total',
     'dashboard_recent_message.lbl' => 'Recent Messages',
     'per_day.lbl' => 'day',
-    'promotion.lbl' => 'Promotion',
     'detail.btn' => 'Detail',
     'read_more.btn' => 'Read More',
     'renter_name.lbl' => 'Renter Name',
@@ -181,5 +180,25 @@ return [
     'apply.btn' => 'Apply',
     'owner_name.lbl' => 'Owner',
     'no_equipment.lbl' => 'No Equipment Found',
+
+    //Menu
+    'menu_user_managment.lbl' => 'User Managment',
+    'menu_clients.lbl' => 'Clients',
+    'menu_campers.lbl' => 'Campers',
+    'menu_booking.lbl' => 'Bookings',
+    'menu_insurances.lbl' => 'Insurances',
+    'menu_billings.lbl' => 'Billings',
+    'menu_message.lbl' => 'Mitteilungen',
+    'menu_settings.lbl' => 'Settings',
+    'menu_profil.lbl' => 'Profil',
+    'menu_commision.lbl' => 'Commission',
+    'menu_promotion.lbl' => 'Promotion',
+    'menu_licence_category.lbl' => 'License Categories',
+    'menu_equipment_category.lbl' => 'Equipment Categories',
+    'menu_inssurance_providers.lbl' => 'Insurance Providers',
+    'menu_transmissions.lbl' => 'Transmissions',
+    'menu_fuels.lbl' => 'Fuels',
+    'menu_avatars.lbl' => 'Avatars',
+    'menu_backup.lbl' => 'Backup',
 
 ];
