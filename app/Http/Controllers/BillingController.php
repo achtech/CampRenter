@@ -7,6 +7,7 @@ use App\AnneesScolaire;
 use App\Exports\BillingExport;
 use App\Models\Avatars;
 use App\Models\Billing;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +28,7 @@ class BillingController extends Controller
             ->join('equipments', 'bookings.id_equipments', '=', 'equipments.id')
             ->get();
         return view('billing.index')->with('datas', $datas)->with('todayDate', $todayDate);
+        Session::put('datefilter', $todayDate);
     }
 
     public function export()
@@ -35,7 +37,11 @@ class BillingController extends Controller
     }
     public function filter()
     {
-        dd(1);
+        $dateFrom = '';
+        $dateTo = '';
+        $datas = Billing::join('bookings', 'billings.id_booking', '=', 'bookings.id')
+            ->where('dateFrom', $dateFrom)
+            ->where('dateTo', $dateTo);
     }
 
     /**

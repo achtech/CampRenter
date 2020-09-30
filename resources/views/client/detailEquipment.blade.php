@@ -11,10 +11,16 @@
                                 </ol>
                             </nav>
                         </div>
-                        <h1 style="text-align: center;">{{ __('backend.equipment_detail.lbl') }}</h1>
                     </div>
                 </div>
             </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title" style="text-align: center">{{ __('backend.equipment_detail.lbl') }}</h3>
+                 
             <ul style="list-style-type: none;">
                 @if($datas->count()>0)
                 @foreach($datas as $item)
@@ -67,5 +73,5 @@
                 <h4>{{ __('backend.no_equipment.lbl') }}</h4>
                 @endif
             </ul>
-
+        </div> </div> </div> </div> </div>
 @endsection

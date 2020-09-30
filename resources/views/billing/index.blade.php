@@ -30,7 +30,7 @@
    
         <div class="col-3">
             <label style="white-space: nowrap;"  for="example-date-input" class="col-2 col-form-label">{{ __('backend.billing_date_to.lbl') }}</label>
-          <input class="form-control" value="{{$todayDate}}" type="date"  id="example-date-input">
+            {{ Form::date('startDate', '',['class'=>'form-control','required','id'=>'example-date-input'])}}
         </div>
         <div class="col-3">
           <a href="{{ route('applyFilter') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 

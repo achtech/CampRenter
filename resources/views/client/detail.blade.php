@@ -22,19 +22,30 @@
                     <h4 class="card-title">{{ __('backend.detail_client.lbl') }}</h4>
                    
                     <div class="row">
-                        <div class="col-2">    
-                                
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">{{ __('backend.client_name.lbl') }}</h4>
-                                        <div class="mt-4">
-                                            <div class="form-group">
-                                                <img style="height: 107px;" src="/assets/images/campers/{{$avatar}}"/>
-                                            </div>
+                        <div class="col-2">  
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ __('backend.client_name.lbl') }}</h4>
+                                    <div class="mt-4">
+                                        <div class="form-group">
+                                            <img style="height: 107px;" src="/assets/images/campers/{{$avatar}}"/>
                                         </div>
                                     </div>
                                 </div>
-                        </div>
+                            </div>
+                    </div>
+                        <div class="col-4">    
+                            <div class="card" style="HEIGHT: 220px;">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ __('backend.client_email.lbl') }}</h4>
+                                    <div class="mt-4">
+                                        <div class="form-group">
+                                            {{Form::text('email',$data->email,['class'=>'form-control','required','disabled'])}}                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div> 
+                      
                         <div class="col-2">    
                             <div class="card" style="HEIGHT: 220px;">
                                 <div class="card-body">
@@ -109,17 +120,7 @@
                     </div>
                 </div>
             </div>  
-            <div class="col-4">    
-                <div class="card" style="HEIGHT: 220px;">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.client_email.lbl') }}</h4>
-                        <div class="mt-4">
-                            <div class="form-group">
-                                {{Form::text('email',$data->email,['class'=>'form-control','required','disabled'])}}                                </div>
-                        </div>
-                    </div>
-                </div>
-        </div>         
+                    
                         </div>
                 </div>
             </div>
