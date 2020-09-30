@@ -28,7 +28,7 @@
                                     <h4 class="card-title">{{ __('backend.client_name.lbl') }}</h4>
                                     <div class="mt-4">
                                         <div class="form-group">
-                                            <img style="height: 107px;" src="/assets/images/campers/{{$avatar}}"/>
+                                            <img style="height: 107px;" src="/assets/images/avatar/{{$avatar}}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
             <div class="col-3">    
                 <div class="card" style="HEIGHT: 220px;">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.driving_licence.lbl') }}</h4>
+                        <h4 class="card-title">{{ __('backend.driving_licence_image.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
                                 <a data-fancybox="gallery" class="primary-btn" href="/assets/images/clients/{{$data->driving_licence_image}}"><img style="height: 107px;width: 158px;" src="/assets/images/clients/{{$data->driving_licence_image}}"/></a>
@@ -111,7 +111,7 @@
             <div class="col-3">    
                 <div class="card" style="HEIGHT: 220px;">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.driving_licence.lbl') }}</h4>
+                        <h4 class="card-title">{{ __('backend.image_national.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
                                 <a data-fancybox="gallery" class="primary-btn" href="/assets/images/clients/{{$data->image_national_id}}"><img style="height: 107px;width: 158px;" src="/assets/images/clients/{{$data->image_national_id}}"/></a>

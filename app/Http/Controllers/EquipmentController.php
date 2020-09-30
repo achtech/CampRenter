@@ -146,4 +146,8 @@ class EquipmentController extends Controller
     public static function getName($table,$id){
         return DB::table($table)->find($id)->client_name;
     }
+
+    public static function getCamperName($table,$id){
+        return DB::table($table)->find($id)->label_en;
+    }
 }

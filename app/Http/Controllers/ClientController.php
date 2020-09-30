@@ -78,7 +78,7 @@ class ClientController extends Controller
     {
         $data = Client::find($id);
         $datas = Avatar::where('id', $data->id_avatars)->first();
-        $avatar = $datas['image'];
+        $avatar = $datas != null ? $datas['image'] : 'default.jpg';
         return view('client.detail')->with('data', $data)->with('avatar', $avatar);
     }
 
