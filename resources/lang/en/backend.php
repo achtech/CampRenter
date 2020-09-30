@@ -91,6 +91,14 @@ return [
     'message_delete_fuel.lbl' => 'Do you want to delete this Fuel',
     /** End Fuel */
 
+    /** Start Transmission */
+    'transmission.lbl' => 'Transmission',
+    'new_transmission.btn' => 'New Transmission',
+    'transmission_list.lbl' => 'List of Transmission',
+    'message_delete_transmission.lbl' => 'Do you want to delete this Transmission',
+    /** End Transmission */
+    
+
     /* ---- Commission-----*/
     'commission.lbl' => 'Commission',
     'commission_list.lbl' => 'List of commission',

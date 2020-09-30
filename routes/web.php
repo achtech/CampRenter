@@ -138,16 +138,16 @@ Route::resource('equipment', 'App\Http\Controllers\EquipmentController', ['excep
         'show' => 'licenceCategory.show',
     ]]);
 
-    //ADMIN->TRANSMISSION
-    Route::get('transmission/{id}/delete', 'TransmissionController@destroy')->name('transmission.destroy');
-    Route::resource('transmission', 'App\Http\Controllers\TransmissionController', ['except' => 'destroy', 'names' => [
-        'index' => 'transmission.index',
-        'create' => 'transmission.create',
-        'update' => 'transmission.update',
-        'edit' => 'transmission.edit',
-        'store' => 'transmission.store',
-        'show' => 'transmission.show',
-    ]]);
+//ADMIN->TRANSMISSION
+Route::get('transmission/{id}/delete', 'App\Http\Controllers\TransmissionController@destroy')->name('transmission.destroy');
+Route::resource('transmission', 'App\Http\Controllers\TransmissionController', ['except' => 'destroy', 'names' => [
+    'index' => 'transmission.index',
+    'create' => 'transmission.create',
+    'update' => 'transmission.update',
+    'edit' => 'transmission.edit',
+    'store' => 'transmission.store',
+    'show' => 'transmission.show',
+]]);
 
     //ADMIN->EQUIPMENTCATEGORY
     Route::get('equipmentCategory/{id}/delete', 'App\Http\Controllers\EquipmentCategoryController@destroy')->name('equipmentCategory.destroy');
