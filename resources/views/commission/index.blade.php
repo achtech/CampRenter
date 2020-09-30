@@ -12,8 +12,8 @@
             </div>
         </div>
     </div>
-    <!--'action'=>'ComissionController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\ComissionController@store','autocomplete'=>'off','method'=>'POST']) }}
+    <!--'action'=>'  CommissionController@store',-->
+    {{ Form::open(['action'=>'App\Http\Controllers\CommissionController@store','autocomplete'=>'off','method'=>'POST']) }}
         <div class="row space-top">
                 <div class="col-sm-12 col-md-9 col-lg-9">
                     <div class="card">

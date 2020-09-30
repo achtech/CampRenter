@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
+  
+ 
 use App\Models\Avatar;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;

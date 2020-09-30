@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
+  
+ 
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
