@@ -6,7 +6,7 @@ return [
     'new_owner.btn' => 'New owner',
     'owner_list.lbl' => 'List of owners',
     'operation.lbl' => 'Operation',
-    'search.lbl'=>'Search',
+    'search.lbl' => 'Search',
     'dashboard.lbl' => "Dashboard",
     /** Client  */
     'client_name.lbl' => 'Name',
@@ -258,4 +258,5 @@ return [
     'booking_owner.lbl' => 'Owner',
     'booking_renter.lbl' => 'Renter',
     'booking_select_choose.lbl' => 'Choose',
+    'equipment_description.lbl' => 'Description',
 ];

@@ -35,7 +35,7 @@
                                
                                 <table>
                                     <tr>
-                                        <td> <span style="color: black;font-weight: 400;">{{ __('backend.equipment_description_en.lbl') }} :</span> {{$item->description_en}}</td>
+                                        <td> <span style="color: black;font-weight: 400;">{{ __('backend.equipment_description.lbl') }} :</span> {{$item->description_en}}</td>
                                     </tr>
                                     <tr>
                                         <td><span style="color: black;font-weight: 400;"> {{ __('backend.equipment_name.lbl') }} :</span> {{$item->equipment_name}}</td>

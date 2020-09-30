@@ -43,7 +43,6 @@ return [
     'equipment_name.lbl' => 'nom de l équipement',
     'equipment_model.lbl' => 'Modèle d équipement',
     'equipment_sleeping_places.lbl' => 'Nombre de places',
-    'equipment_description_en.lbl' => 'Description',
     'equipment_price_per_day.lbl' => 'Prix de location par jour',
     'equipment_number_kilometre.lbl' => 'Nombre de kilometers',
     'equipment_availability.lbl' => 'Disponibilité de l équipement',
@@ -110,5 +109,6 @@ return [
     'menu_fuels.lbl' => 'Carburants',
     'menu_avatars.lbl' => 'Avatars',
     'menu_backup.lbl' => 'Sauvegarde',
+    'equipment_description.lbl' => 'Description',
 
 ];
