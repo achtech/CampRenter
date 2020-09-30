@@ -52,16 +52,17 @@ Route::group(['middleware'=>'Lang'], function(){
         'show' => 'client.show',
     ]]);
 
-    //ADMIN->EQUIPMENT
-    Route::get('equipment/{id}/delete', 'EquipmentController@destroy')->name('equipment.destroy');
-    Route::resource('equipment', 'App\Http\Controllers\EquipmentController', ['except' => 'destroy', 'names' => [
-        'index' => 'equipment.index',
-        'create' => 'equipment.create',
-        'update' => 'equipment.update',
-        'edit' => 'equipment.edit',
-        'store' => 'equipment.store',
-        'show' => 'equipment.show',
-    ]]);
+//ADMIN->EQUIPMENT
+Route::get('equipment/{id}/detail', 'App\Http\Controllers\EquipmentController@detail')->name('equipment.detail');
+Route::get('equipment/{id}/delete', 'App\Http\Controllers\EquipmentController@destroy')->name('equipment.destroy');
+Route::resource('equipment', 'App\Http\Controllers\EquipmentController', ['except' => 'destroy', 'names' => [
+    'index' => 'equipment.index',
+    'create' => 'equipment.create',
+    'update' => 'equipment.update',
+    'edit' => 'equipment.edit',
+    'store' => 'equipment.store',
+    'show' => 'equipment.show',
+]]);
 
     //ADMIN->INSURANCE
     Route::get('insurance/{id}/delete', 'App\Http\Controllers\InsuranceController@destroy')->name('insurance.destroy');
