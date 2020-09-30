@@ -22,25 +22,22 @@
     <fieldset class="border p-2">
         <legend  class="w-auto">{{ __('backend.billing_date_filter.lbl') }}</legend>
     <div class="form-group row">
+       
         <div class="col-3">
             <label style="white-space: nowrap;" for="example-date-input" class="col-2 col-form-label">{{ __('backend.billing_date_from.lbl') }}</label>
-        </div>
-        <div class="col-3">
           <input class="form-control" type="date" value="{{$todayDate}}" id="example-date-input">
         </div>
+   
         <div class="col-3">
             <label style="white-space: nowrap;"  for="example-date-input" class="col-2 col-form-label">{{ __('backend.billing_date_to.lbl') }}</label>
-        </div>
-        <div class="col-3">
           <input class="form-control" value="{{$todayDate}}" type="date"  id="example-date-input">
         </div>
+        <div class="col-3">
+          <a href="{{ route('applyFilter') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
+          style="width:200px;bottom: 3px;position: absolute;">{{ __('backend.apply.btn') }}</a>
+        </div> 
       </div>
-    <div class="form-group row">
-        <div class="col-3"></div>
-        <div class="col-4">
-        <a href="{{ route('applyFilter') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                style="width:200px">{{ __('backend.apply.btn') }}</a>
-    </div></div>
+    
     </fieldset>
     <br><br>
     <div class="row">

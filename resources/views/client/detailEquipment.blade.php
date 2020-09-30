@@ -16,13 +16,14 @@
                 </div>
             </div>
             <ul style="list-style-type: none;">
+                @if($datas->count()>0)
                 @foreach($datas as $item)
                 <li >
                     <table>
                        
                         <tr>
                             <td><div>
-                                <img src="https://www.w3schools.com/images/picture.jpg"/>
+                            <img src="/assets/images/clients/{{$item->image}}"/>
                             </div></td>
                             <td style="vertical-align: top !important;">
                                
@@ -62,6 +63,9 @@
                     
                 </li>
                 @endforeach
+                @else
+                <h4>{{ __('backend.no_equipment.lbl') }}</h4>
+                @endif
             </ul>
 
 @endsection

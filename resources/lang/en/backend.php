@@ -35,6 +35,8 @@ return [
     'client_avatar.lbl' => 'Avatar',
     'client_total_solde.lbl' => 'Total Solde',
     'client_current_solde.lbl' => 'Current Solde',
+    'owner_name.lbl' => 'Owner Name',
+    'clients.lbl' => 'Clients',
     /** End Client */
 
     /** Insurance */
@@ -72,21 +74,21 @@ return [
     'role.lbl' => 'Role',
     'new_user.btn' => 'New User',
     /** End user */
-    
+
     /** EquipmentCategory */
     'equipmentCategory.lbl' => 'Equipment Category',
     'new_equipmentCategory.btn' => 'New Category',
     'equipmentCategory_list.lbl' => 'List of Equipment Category',
     'message_delete_equipmentCategory.lbl' => 'Do you want to delete this Equipment Category',
     /** End EquipmentCategory */
-    
+
     /** Start Fuel */
     'fuel.lbl' => 'Fuel',
     'new_fuel.btn' => 'New Fuel',
     'fuel_list.lbl' => 'List of Fuel',
     'message_delete_fuel.lbl' => 'Do you want to delete this Fuel',
     /** End Fuel */
-    
+
     /* ---- Commission-----*/
     'commission.lbl' => 'Commission',
     'commission_list.lbl' => 'List of commission',
@@ -96,13 +98,13 @@ return [
     'commission_updatedBy.lbl' => 'Update By',
     'commission_updatedAt.lbl' => 'Update At',
     'commission_rate.lbl' => 'Amount',
-    
+
     /** General */
-    'operations.lbl' => 'Operation',    
+    'operations.lbl' => 'Operation',
     'label.lbl' => 'Label',
     'message_delete_owner.lbl' => 'Do you want to delete this owner',
     /** Equipment */
-    'equipment_name.lbl' => 'Equipment Name',
+    'equipment_name.lbl' => 'Equipment',
     'equipment_model.lbl' => 'Equipment Model',
     'equipment_sleeping_places.lbl' => 'number of places',
     'equipment_description_en.lbl' => 'Description',
@@ -141,10 +143,10 @@ return [
     'dashboard_new_promotion.btn' => 'New Promotion',
     'dashboard_change_commission.btn' => 'Change Commission',
     'dashboard_add_user.btn' => 'New User',
-    'dashboard_client_name.lbl' => 'Client Name',
-    'dashboard_message.lbl' => 'Message',
-    'dashboard_view_details.lbl' => 'View Details',
-    'dashboard_view_message_details.lbl' => 'view message details',
+    'dashboard_client_name.lbl' => 'Client',
+    'dashboard_message.lbl' => 'Subject',
+    'dashboard_view_details.lbl' => 'Action',
+    'dashboard_view_message_details.lbl' => 'Details',
     'dashboard_owners_part.lbl' => 'Owners Part',
     'dashboard_unit_campers_part.lbl' => 'Unit Campers Part',
     'dashboard_total.lbl' => 'Total',
@@ -154,26 +156,29 @@ return [
     'detail.btn' => 'Detail',
     'read_more.btn' => 'Read More',
     'renter_name.lbl' => 'Renter Name',
-    'date_booking.lbl' => 'Booking Date',
+    'date_booking.lbl' => 'Date',
     'dashboard_action.lbl' => 'Action',
     /** End Dashboard */
-	/** start promotion *
- 	'promotion_datefrom.lbl' => 'From',
-    'promotion_dateto.lbl'=>'To',
-    'promotion_createdBy.lbl' =>'Created By',
-    'promotion_createdAt.lbl' =>'Created At',
+    /** start promotion */
+    'promotion_datefrom.lbl' => 'From',
+    'promotion_dateto.lbl' => 'To',
+    'promotion_createdBy.lbl' => 'Created By',
+    'promotion_createdAt.lbl' => 'Created At',
     'promotion_rate.lbl' => 'Amount of Promotion',
-    'promotion_list.lbl' => 'List of Promotion'];
-    /* ---- Billings-----*/
+    'promotion_list.lbl' => 'List of Promotion',
+    /** End promotion */
     'billings.lbl' => 'Billings',
     'billing_list.lbl' => 'List of Billings',
-    'equipment_name.lbl' => 'Equipment Name',
+    'equipment_name.lbl' => 'Equipment',
     'status_paiement.lbl' => 'Status',
     'amount_paiement.lbl' => 'Amount',
-    'renter_name.lbl' => 'Renter Name',
+    'renter_name.lbl' => 'Renter',
     'export.btn' => 'Export',
-    'billing_date_from.lbl' => 'Date From',
-    'billing_date_to.lbl' => 'Date To',
-    'billing_date_filter.lbl' => 'Date Filter',
+    'billing_date_from.lbl' => 'Start date',
+    'billing_date_to.lbl' => 'End date',
+    'billing_date_filter.lbl' => 'Filter',
     'apply.btn' => 'Apply',
+    'owner_name.lbl' => 'Owner',
+    'no_equipment.lbl' => 'No Equipment Found',
+
 ];
