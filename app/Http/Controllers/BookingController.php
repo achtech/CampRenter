@@ -8,6 +8,7 @@ use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
+use Carbon\carbon;
 
 class BookingController extends Controller
 {
@@ -109,14 +110,21 @@ class BookingController extends Controller
      * @param  int  $date1,$date2
      * @return \Illuminate\Http\Response
      */
-    public function search($date1,$date2)
+    public function search(Request $request)
     {
-        $datas = DB::table('bookingdetails')
-        ->Where(function ($q) use ($a) {
+        
+        $d1 = $request->get('dateform');
+        $d2 = $request->get('dateto'); 
+        $date1 = Carbon::parse($d1)->format('yy-m-d');
+        $date2 = Carbon::parse($d2)->format('yy-m-d');
+        $owner = $request->get('ownerId');
+        $dataSearch = DB::table('bookingdetails')->Where('client_id',$owner)
+        ->orWhere(function ($q) use ($date1,$date2) {
             $q->where('dateFrom','>=', $date1)
                 ->where('dateTo', '<=',$date2);
         })->get();
 
-        return redirect(route('booking.index'))->with('dataSearch', $dataSearch);
+        return redirect(route('booking.index'))->with('dataSearch', $dataSearch)
+        ->with('dateform',$d1)->with('dateto',$d2);
     }
 }

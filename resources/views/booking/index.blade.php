@@ -15,14 +15,14 @@
     </div>
 </div>
 <div class="container-fluid space-top">
-{{ Form::open(['action'=>'App\Http\Controllers\BookingController@search','autocomplete'=>'off','method'=>'GET']) }}
-   <div class="row">
+{{ Form::open(['action'=>'App\Http\Controllers\BookingController@search','autocomplete'=>'off','method'=>'GET']) }} 
+<div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{{ __('backend.booking_owner.lbl') }}</h4>
                         <div class="form-group mb-4">
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <select class="custom-select mr-sm-2" id="ownerId" name="ownerId">
                                 <option selected>{{ __('backend.booking_select_choose.lbl') }}</option>
                                 @foreach($datasClients as $item)
                                     <option value="{{$item->id}}">{{$item->client_name}} {{$item->client_last_name}}</option>
@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ __('backend.booking_from.lbl') }}</h4>
                         <div class="form-group">
-                            <input type="date" class="form-control" value="2018-05-13">
+                            <input type="date" class="form-control"  id="dateform"  name="dateform" />
                         </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ __('backend.booking_to.lbl') }}</h4>
                         <div class="form-group">
-                            <input type="date" class="form-control" value="2018-05-13">
+                            <input type="date" class="form-control"  id="dateto" name="dateto" />
                         </div>
                 </div>
             </div>
