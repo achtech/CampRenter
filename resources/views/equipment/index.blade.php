@@ -40,8 +40,8 @@
                             <tbody>
                                 @foreach($datas as $item)
                                 <tr>
-                                    <td><img src="/assets/images/campers/{{$item->image}}"/></td>
-                                    <td>{{$item->equipment_name}}</td>
+                                    <td><img src="/assets/images/gallery/{{$item->image}}"/></td>
+                                    <td>{{App\Http\Controllers\EquipmentController::getCamperName('camper_names',$item->id_campers_name)}}</td>
                                     <td>{{App\Http\Controllers\EquipmentController::getName('clients',$item->id_client)}}</td>
                                     <td>{{App\Http\Controllers\EquipmentController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
                                     <td>{{$item->availability}}</td>
@@ -81,7 +81,8 @@
                                 @endforeach
                             </tbody>
                             <tfoot>
-                                <tr><th>{{ __('backend.equipment_name.lbl') }}</th>
+                            <th>{{ __('backend.image.lbl') }}</th>
+                                    <th>{{ __('backend.equipment_name.lbl') }}</th>
                                     <th>{{ __('backend.client.lbl') }}</th>
                                     <th>{{ __('backend.category.lbl') }}</th>
                                     <th>{{ __('backend.availability.lbl') }}</th>

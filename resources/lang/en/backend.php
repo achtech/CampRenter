@@ -75,6 +75,7 @@ return [
     'email.lbl' => 'Email',
     'role.lbl' => 'Role',
     'new_user.btn' => 'New User',
+    'user_managment.lbl' => 'User managment',
     /** End user */
 
     /** EquipmentCategory */
