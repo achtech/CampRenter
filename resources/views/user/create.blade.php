@@ -1,6 +1,6 @@
 @extends('layout', ['activePage' => 'user', 'titlePage' => __('backend.user.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('add_user') }}
 <div class="container-fluid">
     <!--'action'=>'InsuranceController@store',-->
     {{ Form::open(['action'=>'App\Http\Controllers\UserController@store','autocomplete'=>'off','method'=>'POST']) }}
