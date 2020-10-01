@@ -42,7 +42,7 @@ return [
     /** End Client */
 
     /** Insurance */
-    'insurance.lbl' => 'Insurance',
+    'insurance_managment.lbl' => 'Insurance Managment',
     'insurance_list.lbl' => 'List of insurances',
     'description.lbl' => 'Description',
     'insurance_company.lbl' => 'Campany',

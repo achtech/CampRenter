@@ -22,6 +22,12 @@ Breadcrumbs::for('edit_user', function ($trail, $category) {
     $trail->parent('user');
     $trail->push('Edit user', route('user.edit'));
 });
+
+// Dashboard > Insurance
+Breadcrumbs::for('insurance', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Insurances', route('insurance.index'));
+});
 /*
 Breadcrumbs::for('edit_user', function ($trail, $category) {
     $trail->parent('user');
