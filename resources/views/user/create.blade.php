@@ -1,6 +1,6 @@
 @extends('layout', ['activePage' => 'user', 'titlePage' => __('backend.user.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('add_user') }}
 <div class="container-fluid">
     <!--'action'=>'InsuranceController@store',-->
     {{ Form::open(['action'=>'App\Http\Controllers\UserController@store','autocomplete'=>'off','method'=>'POST']) }}
@@ -11,7 +11,7 @@
                         <h4 class="card-title">{{ __('backend.user_name.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('name','',['class'=>'form-control','required'])}}
+                                {{Form::text('user_name','',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>

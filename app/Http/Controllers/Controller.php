@@ -10,4 +10,19 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    static function getNotificationCount(){
+        return 5;
+    }
+
+
+    static function getMessageCount(){
+        return 3;
+    }
+
+    
+    static function getCampersCount(){
+        return 2;
+    }
+
 }

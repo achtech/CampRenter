@@ -15,6 +15,8 @@ class Billing extends Base
         'num_card',
         'exp_date',
         'cvc',
-        'type'
+        'type',
+        'amount',
+        'status'
     ];
 }

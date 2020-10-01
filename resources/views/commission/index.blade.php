@@ -1,19 +1,9 @@
-@extends('layout', ['activePage' => 'commission', 'titlePage' => __('backend.commission.lbl')])
+@extends('layout', ['activePage' => 'commission', 'titlePage' => __('backend.commission_managment.lbl')])
 @section('content')
+{{ Breadcrumbs::render('commission') }}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{route('commission.index')}}">{{ __('backend.commission.lbl') }}</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!--'action'=>'ComissionController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\ComissionController@store','autocomplete'=>'off','method'=>'POST']) }}
+    <!--'action'=>'  CommissionController@store',-->
+    {{ Form::open(['action'=>'App\Http\Controllers\CommissionController@store','autocomplete'=>'off','method'=>'POST']) }}
         <div class="row space-top">
                 <div class="col-sm-12 col-md-9 col-lg-9">
                     <div class="card">
@@ -42,7 +32,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.commission_list.lbl') }}</h4>
                     <div class="table-responsive">
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
+  
+ 
 use App\Models\Bookings;
 use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;

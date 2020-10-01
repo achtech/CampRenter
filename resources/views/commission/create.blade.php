@@ -1,8 +1,8 @@
 @extends('layout', ['activePage' => 'commission', 'titlePage' => __('backend.commission.lbl')])
 @section('content')
 <div class="container-fluid">
-    <!--'action'=>'ComissionController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\ComissionController@store','autocomplete'=>'off','method'=>'POST']) }}
+    <!--'action'=>'  CommissionController@store',-->
+    {{ Form::open(['action'=>'App\Http\Controllers\CommissionController@store','autocomplete'=>'off','method'=>'POST']) }}
     <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">

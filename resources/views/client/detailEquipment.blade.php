@@ -1,5 +1,6 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client.lbl')]))
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.equipment_detail.lbl').': '.strtoupper($client->client_last_name) . " " . $client->client_name]))
 @section('content')
+{{ Breadcrumbs::render('detail_equipment',$client) }}
 <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
@@ -11,24 +12,30 @@
                                 </ol>
                             </nav>
                         </div>
-                        <h1 style="text-align: center;">{{ __('backend.equipment_detail.lbl') }}</h1>
                     </div>
                 </div>
             </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                 
             <ul style="list-style-type: none;">
+                @if($datas->count()>0)
                 @foreach($datas as $item)
                 <li >
                     <table>
                        
                         <tr>
                             <td><div>
-                                <img src="https://www.w3schools.com/images/picture.jpg"/>
+                            <img src="/assets/images/clients/{{$item->image}}"/>
                             </div></td>
                             <td style="vertical-align: top !important;">
                                
                                 <table>
                                     <tr>
-                                        <td> <span style="color: black;font-weight: 400;">{{ __('backend.equipment_description_en.lbl') }} :</span> {{$item->description_en}}</td>
+                                        <td> <span style="color: black;font-weight: 400;">{{ __('backend.equipment_description.lbl') }} :</span> {{$item->description_en}}</td>
                                     </tr>
                                     <tr>
                                         <td><span style="color: black;font-weight: 400;"> {{ __('backend.equipment_name.lbl') }} :</span> {{$item->equipment_name}}</td>
@@ -62,6 +69,9 @@
                     
                 </li>
                 @endforeach
+                @else
+                <h4>{{ __('backend.no_equipment.lbl') }}</h4>
+                @endif
             </ul>
-
+        </div> </div> </div> </div> </div>
 @endsection

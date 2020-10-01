@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\AnneeScolaire;
-use App\AnneesScolaire;
+  
+ 
 use App\Models\Equipment;
+use App\Models\Client;
+use App\Models\EquipmentCategory;
+use App\Models\LicenceCategory;
+use App\Models\Transmission;
+use App\Models\Fuel;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +27,7 @@ class EquipmentController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = Equipment::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = Equipment::where('equipment_name', 'like', '%' . $search . '%')->paginate(10);
         } else {
             $datas = Equipment::paginate(10);
         }
@@ -35,7 +40,12 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        return view('Equipment.create');
+        $clients = Client::all()->pluck('client_name', 'id');
+        $equipmentCategories = EquipmentCategory::all()->pluck('label_en', 'id');
+
+        return view('equipment.create')                
+            ->with('clients', $clients)
+            ->with('equipmentCategories', $equipmentCategories);
     }
     /**
      * Display the specified resource.
@@ -45,7 +55,24 @@ class EquipmentController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('equipment.index'));
+        return view('equipment.details');
+    }
+
+    public function detail($id)
+    {
+        $data = Equipment::find($id);
+        $clients = Client::find($data->id_client)->first();
+        $equipment_categories = EquipmentCategory::find($data->id_licence_categories)->first();
+        $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
+        $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
+        $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
+        return view('equipment.details')
+        ->with('data', $data)
+        ->with('clients', $clients)
+        ->with('equipmentCategory', $equipment_categories)
+        ->with('licenceCategories', $licenceCategories)
+        ->with('fuels', $fuels)
+        ->with('transmissions', $transmissions);
     }
     /**
      * Store a newly created resource in storage.
@@ -68,6 +95,13 @@ class EquipmentController extends Controller
      */
     public function edit($id)
     {
+        $data = Equipment::find($id);
+        $clients = Client::all()->pluck('name_client', 'id');
+        $equipment_categories = EquipmentCategory::all()->pluck('label_en', 'id');
+        return view('equipment.edit', ['id' => 1])
+        ->with('data', $data)
+        ->with('clients', $clients)
+        ->with('insuranceCompanies', $equipment_categories);
     }
 
     /**
@@ -103,5 +137,17 @@ class EquipmentController extends Controller
         }
         $data->delete();
         return redirect(route('equipment.index'));
+    }
+
+    public static function getLabel($table,$id){
+        return DB::table($table)->find($id)->label_en;
+    }
+
+    public static function getName($table,$id){
+        return DB::table($table)->find($id)->client_name;
+    }
+
+    public static function getCamperName($table,$id){
+        return DB::table($table)->find($id)->label_en;
     }
 }
