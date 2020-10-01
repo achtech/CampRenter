@@ -6,7 +6,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.equipmentCategory_list.lbl') }}</h4>
                     <div class="table-responsive">
                         <a href="{{ route('equipmentCategory.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
                             style="width:200px;margin:0px 10px">{{ __('backend.new_equipmentCategory.btn') }}</a>

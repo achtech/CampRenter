@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.owner.lbl')])
+@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance_managment.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('edit_insurance') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\InsuranceController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['insurance.update', $data->id])) }}
