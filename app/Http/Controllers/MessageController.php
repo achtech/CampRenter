@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Avatars;
-use App\Models\Promotion;
-use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
+use App\Models\Message;
 
 class MessageController extends Controller
 {
@@ -15,8 +11,10 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        $datas = Message::paginate(10);
+        return view('message.index')->with('datas', $datas);
     }
     /**
      * Show the form for creating a new resource.

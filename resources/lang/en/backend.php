@@ -101,6 +101,7 @@ return [
     
 
     /* ---- Commission-----*/
+    'commission_managment.lbl' => 'Commission Management',
     'commission.lbl' => 'Commission',
     'commission_list.lbl' => 'List of commission',
     'new_commission.btn' => 'New commission',
@@ -131,8 +132,14 @@ return [
     'booking_to.lbl' => 'Booking To',
     'remaining_days_number.lbl' => 'Number of days remaining',
 
-
-
+    /** Message */
+    'message_managment.lbl' => 'Message Managment',
+    'new_message.btn' => 'New Message',
+    'contact.lbl' => 'Contact Name',
+    'telephone.lbl' => 'Phone',
+    'subject.lbl' => 'Subject',
+    'send_date.lbl' => 'Date',
+    
 
 
     /** licence_category */
@@ -211,6 +218,12 @@ return [
     'menu_avatars.lbl' => 'Avatars',
     'menu_backup.lbl' => 'Backup',
 
+    /** Avatar */   
+    'avatar_managment.lbl' => 'Avatar managment',
+    'avatar_name.lbl' => 'Label',
+    'new_avatar.btn' => 'New avatar',
+
+
 
     /** equipment */
     'image.lbl' => 'Image',
@@ -257,6 +270,7 @@ return [
     /** End Equipment */
 
     /* ------------ Booking -----------*/
+    'booking_management.lbl' => 'Booking Management',
     'booking_renter.lbl' => 'Renter',
     'booking_equipement.lbl' => 'Equipement',
     'booking_from.lbl' => 'From',
