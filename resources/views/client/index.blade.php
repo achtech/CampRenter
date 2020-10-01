@@ -1,5 +1,6 @@
 @extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client.lbl')])
 @section('content')
+{{ Breadcrumbs::render('client') }}
 <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">

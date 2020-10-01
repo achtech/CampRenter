@@ -1,5 +1,6 @@
 @extends('layout', ['activePage' => 'billing', 'titlePage' => __('backend.insurance.lbl')])
 @section('content')
+{{ Breadcrumbs::render('billing') }}
 <div class="container-fluid">
     <div class="row">
         <div class="col-7 align-self-center">

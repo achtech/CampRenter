@@ -22,6 +22,16 @@ Breadcrumbs::for('edit_user', function ($trail, $category) {
     $trail->parent('user');
     $trail->push('Edit user', route('user.edit'));
 });
+//client
+Breadcrumbs::for('client', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Client', route('client.index'));
+});
+//billings
+Breadcrumbs::for('billing', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Billing', route('billing.index'));
+});
 /*
 Breadcrumbs::for('edit_user', function ($trail, $category) {
     $trail->parent('user');
@@ -34,4 +44,3 @@ Breadcrumbs::for('post', function ($trail, $post) {
     $trail->push($post->title, route('post', $post->id));
 });
 */
-?>
