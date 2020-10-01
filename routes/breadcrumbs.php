@@ -176,13 +176,13 @@ Breadcrumbs::for('post', function ($trail, $post) {
 */
 // Commission
 Breadcrumbs::for('commission', function ($trail) {
-    $trail->parent('dashboard');
+    $trail->parent('settings');
     $trail->push('Commission', route('commission.index'));
 });
 
 // Promotion
 Breadcrumbs::for('promotion', function ($trail) {
-    $trail->parent('dashboard');
+    $trail->parent('settings');
     $trail->push('Promotion', route('promotion.index'));
 });
 
@@ -200,7 +200,7 @@ Breadcrumbs::for('detail_booking', function ($trail,$booking) {
 
 //  Home >Avatar
 Breadcrumbs::for('avatar', function ($trail) {
-    $trail->parent('dashboard');
+    $trail->parent('settings');
     $trail->push('Avatar', route('avatar.index'));
 });
 
