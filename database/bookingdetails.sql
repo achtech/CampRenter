@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Structure de la vue `bookingdetails`
 --
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `bookingdetails`  AS  select `b`.`id` AS `id`,`b`.`dateFrom` AS `dateFrom`,`b`.`dateTo` AS `dateTo`,to_days(`b`.`dateTo`) - to_days(`b`.`dateFrom`) AS `bookingDay`,`ca`.`label_en` AS `equipment_name_en`,`ca`.`label_de` AS `equipment_name_de`,`ca`.`label_fr` AS `equipment_name_fr`,`e`.`price_per_day` AS `price_per_day`,`c`.`id` AS `client_id`,`c`.`client_name` AS `client_name`,`c`.`client_last_name` AS `client_last_name` from (((`bookings` `b` join `equipments` `e`) join `clients` `c`) join `camper_names` `ca`) where `b`.`id_equipments` = `e`.`id` and `b`.`id_clients` = `c`.`id` and `e`.`id_campers_name` = `ca`.`id` ;
+CREATE  VIEW `bookingdetails`  AS  select `b`.`id` AS `id`,`b`.`dateFrom` AS `dateFrom`,`b`.`dateTo` AS `dateTo`,to_days(`b`.`dateTo`) - to_days(`b`.`dateFrom`) AS `bookingDay`,`ca`.`label_en` AS `equipment_name_en`,`ca`.`label_de` AS `equipment_name_de`,`ca`.`label_fr` AS `equipment_name_fr`,`e`.`price_per_day` AS `price_per_day`,`c`.`id` AS `client_id`,`c`.`client_name` AS `client_name`,`c`.`client_last_name` AS `client_last_name` from (((`bookings` `b` join `equipments` `e`) join `clients` `c`) join `camper_names` `ca`) where `b`.`id_equipments` = `e`.`id` and `b`.`id_clients` = `c`.`id` and `e`.`id_campers_name` = `ca`.`id` ;
 
 --
 -- VIEW `bookingdetails`

@@ -107,4 +107,7 @@ return [
     'menu_backup.lbl' => 'Backup',
     'equipment_description.lbl' => 'Beschreibung',
 
+    
+    /*----------------BREADCRUMB ----------*/
+    'users.breadcrumb' => 'Benutzer',
 ];

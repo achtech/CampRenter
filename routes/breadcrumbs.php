@@ -8,7 +8,7 @@ Breadcrumbs::for('dashboard', function ($trail) {
 // Home > About
 Breadcrumbs::for('user', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('Users', route('user.index'));
+    $trail->push(__('backend.users.breadcrumb'), route('user.index'));
 });
 
 // Home > Blog
@@ -18,9 +18,9 @@ Breadcrumbs::for('add_user', function ($trail) {
 });
 
 // Home > Blog > [Category]
-Breadcrumbs::for('edit_user', function ($trail, $category) {
+Breadcrumbs::for('edit_user', function ($trail, $user) {
     $trail->parent('user');
-    $trail->push('Edit user', route('user.edit'));
+    $trail->push('Edit user: '.$user->user_name, route('user.edit'));
 });
 /*
 Breadcrumbs::for('edit_user', function ($trail, $category) {

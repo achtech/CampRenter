@@ -268,4 +268,10 @@ return [
     'booking_renter.lbl' => 'Renter',
     'booking_select_choose.lbl' => 'Choose',
     'equipment_description.lbl' => 'Description',
+
+
+
+
+    /*----------------BREADCRUMB ----------*/
+    'users.breadcrumb' => 'Users',
 ];

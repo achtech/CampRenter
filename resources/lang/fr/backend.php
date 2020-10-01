@@ -111,4 +111,7 @@ return [
     'menu_backup.lbl' => 'Sauvegarde',
     'equipment_description.lbl' => 'Description',
 
+        /*----------------BREADCRUMB ----------*/
+        'users.breadcrumb' => 'Utilisateur',
+
 ];
