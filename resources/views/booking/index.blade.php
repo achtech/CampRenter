@@ -1,20 +1,7 @@
-@extends('layout', ['activePage' => 'booking', 'titlePage' => __('backend.booking.lbl')])
+@extends('layout', ['activePage' => 'booking', 'titlePage' => __('backend.booking_management.lbl')])
 @section('content')
-<div class="page-breadcrumb">
-    <div class="row">
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 p-0">
-                        <li class="breadcrumb-item"><a href="index.html">{{ __('backend.booking_title.lbl') }}</a>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container-fluid space-top">
+{{ Breadcrumbs::render('booking') }}
+<div class="container-fluid ">
 {{ Form::open(['action'=>'App\Http\Controllers\BookingController@search','autocomplete'=>'off','method'=>'GET']) }} 
 <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4">
