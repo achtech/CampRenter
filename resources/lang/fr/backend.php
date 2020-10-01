@@ -86,7 +86,7 @@ return [
     'billing_date_from.lbl' => 'date de début',
     'billing_date_to.lbl' => 'Date de fin',
     'apply.btn' => 'appliquer',
-    'renter_name.lbl' => 'loueur',
+    'owner_name.lbl' => 'le nom du propriétaire',
     'amount_paiement.lbl' => 'montant',
     'export.btn' => 'Exporter',
     'dashboard_recent_message.lbl' => 'Messages récents',
@@ -114,4 +114,9 @@ return [
     'billing_managment.lbl' => 'La Gestion de la facturation',
     'equipment_detail.lbl' => 'Détail de l équipement',
     'rent_management.lbl' => 'Gestion des loyers',
+    //billing
+    'last_booking.lbl' => 'Dernière réservation',
+    'current_amount.lbl' => 'Montant actuel',
+    'confirmed_amount.lbl' => 'Montant confirmé',
+    'detail.lbl' => 'Détail',
 ];

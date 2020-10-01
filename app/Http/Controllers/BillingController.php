@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-  
- 
+
+
 use App\Exports\BillingExport;
 use App\Models\Avatars;
 use App\Models\Billing;
@@ -28,12 +28,42 @@ class BillingController extends Controller
             ->join('equipments', 'bookings.id_equipments', '=', 'equipments.id')
             ->get();
         return view('billing.index')->with('datas', $datas)->with('todayDate', $todayDate);
-        Session::put('datefilter', $todayDate);
+        //Session::put('end_date', $todayDate);
     }
 
-    public function export()
+    public function export(Request $request)
     {
-        return Excel::download(new BillingExport, 'billings.xlsx');
+
+        $fileName = 'billings.csv';
+
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $columns = array('Owner', 'IBAN', 'Amount');
+        $callback = function () use ($columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+            $current_date = date("Y-m-d");
+            $datas = Billing::join('bookings', 'billings.id_booking', '=', 'bookings.id')
+                ->join('clients', 'billings.id_client', '=', 'clients.id')
+                ->where('dateTo', '<', $current_date)->get();
+            foreach ($datas as $elem) {
+                $row['Owner']  = $elem->client_name;
+                $row['IBAN']    = $elem->IBAN;
+                $row['Amount']    = $elem->confirmed_amount;;
+            }
+
+            fputcsv($file, array($row['Owner'], $row['IBAN'], $row['Amount']));
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+        // return Excel::download(new BillingExport, 'billings.xlsx');
     }
     public function filter()
     {

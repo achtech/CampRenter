@@ -80,7 +80,7 @@ return [
     'billing_date_from.lbl' => 'Anfangsdatum',
     'billing_date_to.lbl' => 'Endtermin',
     'apply.btn' => 'anwenden',
-    'renter_name.lbl' => 'Mieter',
+    'owner_name.lbl' => 'Besitzername',
     'amount_paiement.lbl' => 'Menge',
     'export.btn' => 'Export',
     'dashboard_recent_message.lbl' => 'Aktuelle Nachrichten',
@@ -110,4 +110,9 @@ return [
     'billing_managment.lbl' => 'Abrechnungsmanagement',
     'equipment_detail.lbl' => 'Ausrüstungsdetail',
     'rent_management.lbl' => 'Mietmanagement',
+    //billing
+    'last_booking.lbl' => 'Letzte Buchung',
+    'current_amount.lbl' => 'Aktueller Betrag',
+    'confirmed_amount.lbl' => 'Bestätigter Betrag',
+    'detail.lbl' => 'Detail',
 ];
