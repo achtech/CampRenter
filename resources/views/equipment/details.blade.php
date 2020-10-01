@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'equipment', 'titlePage' => __('backend.equipment.lbl')])
+@extends('layout', ['activePage' => 'equipment', 'titlePage' => __('backend.equipment_managment.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('details_equipment') }}
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-7 align-self-center">

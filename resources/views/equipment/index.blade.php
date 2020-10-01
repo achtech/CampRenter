@@ -1,27 +1,11 @@
-@extends('layout', ['activePage' => 'equipment', 'titlePage' => __('backend.equipment.lbl')])
+@extends('layout', ['activePage' => 'equipment', 'titlePage' => __('backend.equipment_managment.lbl')])
 @section('content')
+{{ Breadcrumbs::render('equipment') }}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{route('equipment.index')}}">{{ __('backend.equipment.lbl') }}</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="card-body">
-            <a href="{{ route('equipment.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                style="width:200px">{{ __('backend.new_equipment.btn') }}</a>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.equipment_list.lbl') }}</h4>
                     <div class="table-responsive">
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">

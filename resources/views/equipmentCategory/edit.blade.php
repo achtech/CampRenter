@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'equipmentCategory', 'titlePage' => __('backend.equipmentCategory.lbl')])
+@extends('layout', ['activePage' => 'equipmentCategory', 'titlePage' => __('backend.equipmentCategory_managment.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('edit_equipmentCategory') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\EquipmentCategoryController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['equipmentCategory.update', $data->id])) }}

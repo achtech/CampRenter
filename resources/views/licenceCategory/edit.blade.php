@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => __('backend.owner.lbl')])
+@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => __('backend.licence_category_managment.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('edit_licenceCategory') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\LicenceCategoryController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['licenceCategory.update', $data->id])) }}

@@ -61,7 +61,7 @@ class EquipmentController extends Controller
     public function detail($id)
     {
         $data = Equipment::find($id);
-        $clients = Client::find($data->id_client)->first();
+        $clients = Client::find($data->id_client) != null ? Client::find($data->id_client)->first() : new Client();
         $equipment_categories = EquipmentCategory::find($data->id_licence_categories)->first();
         $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
         $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();

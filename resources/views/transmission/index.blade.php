@@ -1,32 +1,14 @@
-<<<<<<< HEAD
-@extends('layout', ['activePage' => 'transmission', 'titlePage' => __('backend.insurance.lbl')])
-=======
-@extends('layout', ['activePage' => 'transmission', 'titlePage' => __('backend.transmission.lbl')])
->>>>>>> 9143c7434dd57f79b58e26a0b0d65bfe5725e81a
+@extends('layout', ['activePage' => 'transmission', 'titlePage' => __('backend.transmission_managment.lbl')])
 @section('content')
+{{ Breadcrumbs::render('transmission') }}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{route('transmission.index')}}">{{ __('backend.transmission.lbl') }}</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="card-body">
-            <a href="{{ route('transmission.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                style="width:200px">{{ __('backend.new_transmission.btn') }}</a>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.transmission_list.lbl') }}</h4>
                     <div class="table-responsive">
+                        <a href="{{ route('transmission.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
+                            style="width:200px;margin:0px 10px">{{ __('backend.new_transmission.btn') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>

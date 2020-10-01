@@ -93,7 +93,7 @@ return [
     /** End Fuel */
 
     /** Start Transmission */
-    'transmission.lbl' => 'Transmission',
+    'transmission_managment.lbl' => 'Transmission Managment',
     'new_transmission.btn' => 'New Transmission',
     'transmission_list.lbl' => 'List of Transmission',
     'message_delete_transmission.lbl' => 'Do you want to delete this Transmission',
@@ -210,11 +210,12 @@ return [
     'menu_fuels.lbl' => 'Fuels',
     'menu_avatars.lbl' => 'Avatars',
     'menu_backup.lbl' => 'Backup',
+    'settings_profil.lbl' => 'Profil Managment',
 
 
     /** equipment */
     'image.lbl' => 'Image',
-    'equipment.lbl' => 'Camper',
+    'equipment_managment.lbl' => 'Camper Managment',
     'equipment_details.lbl' => 'Camper Details',
     'equipment_list.lbl' => 'List of Campers',
     'new_equipment.btn' => 'New Camper',

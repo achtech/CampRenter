@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'transmission', 'titlePage' => __('backend.owner.lbl')])
+@extends('layout', ['activePage' => 'transmission', 'titlePage' => __('backend.transmission_managment.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('edit_transmission') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\TransmissionController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['transmission.update', $data->id])) }}

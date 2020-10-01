@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'profile', 'titlePage' => __('backend.user.lbl')])
+@extends('layout', ['activePage' => 'profile', 'titlePage' => __('backend.settings_profil.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('profile') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\InsuranceController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['user.update', $data->id ?? 1])) }}

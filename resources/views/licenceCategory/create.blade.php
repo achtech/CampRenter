@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => __('backend.owner.lbl')])
+@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => __('backend.licence_category_managment.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('create_licenceCategory') }}
 <div class="container-fluid">
     <!--'action'=>'LicenceCategoryController@store',-->
     {{ Form::open(['action'=>'App\Http\Controllers\LicenceCategoryController@store','autocomplete'=>'off','method'=>'POST']) }}

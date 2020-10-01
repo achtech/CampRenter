@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'fuel', 'titlePage' => __('backend.owner.lbl')])
+@extends('layout', ['activePage' => 'fuel', 'titlePage' => __('backend.fuel_managment.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('edit_fuel') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\FuelController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['fuel.update', $data->id])) }}
