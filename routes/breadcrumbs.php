@@ -32,6 +32,22 @@ Breadcrumbs::for('billing', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Billing', route('billing.index'));
 });
+//detail client
+Breadcrumbs::for('detail_client', function ($trail, $client) {
+    $trail->parent('client');
+    $trail->push('Detail Client', route('client.detail', $client->id));
+});
+//detail equipment
+Breadcrumbs::for('detail_equipment', function ($trail, $client) {
+    $trail->parent('client');
+    $trail->push('Detail Equipment', route('client.equipmentDetail', $client->id));
+});
+
+//rent detail
+Breadcrumbs::for('rent_detail', function ($trail, $client) {
+    $trail->parent('client');
+    $trail->push('Rent Detail', route('client.rentDetail', $client->id));
+});
 /*
 Breadcrumbs::for('edit_user', function ($trail, $category) {
     $trail->parent('user');

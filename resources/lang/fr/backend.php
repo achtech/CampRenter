@@ -110,5 +110,8 @@ return [
     'menu_avatars.lbl' => 'Avatars',
     'menu_backup.lbl' => 'Sauvegarde',
     'equipment_description.lbl' => 'Description',
-
+    'client_management.lbl' => 'La gestion des clients',
+    'billing_managment.lbl' => 'La Gestion de la facturation',
+    'equipment_detail.lbl' => 'Détail de l équipement',
+    'rent_management.lbl' => 'Gestion des loyers',
 ];

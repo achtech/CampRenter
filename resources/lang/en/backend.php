@@ -98,7 +98,7 @@ return [
     'transmission_list.lbl' => 'List of Transmission',
     'message_delete_transmission.lbl' => 'Do you want to delete this Transmission',
     /** End Transmission */
-    
+
 
     /* ---- Commission-----*/
     'commission.lbl' => 'Commission',
@@ -268,4 +268,9 @@ return [
     'booking_renter.lbl' => 'Renter',
     'booking_select_choose.lbl' => 'Choose',
     'equipment_description.lbl' => 'Description',
+    'client_management.lbl' => 'Client Management',
+    'billing_managment.lbl' => 'Billing Management',
+    'equipment_detail.lbl' => 'Equipment Detail',
+    'rent_management.lbl' => 'Rent Management',
+
 ];

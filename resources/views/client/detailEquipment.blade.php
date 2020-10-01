@@ -1,5 +1,6 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client.lbl')]))
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.equipment_detail.lbl').': '.$client->client_last_name . " " . $client->client_name]))
 @section('content')
+{{ Breadcrumbs::render('detail_equipment',$client) }}
 <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
@@ -19,7 +20,6 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title" style="text-align: center">{{ __('backend.equipment_detail.lbl') }}</h3>
                  
             <ul style="list-style-type: none;">
                 @if($datas->count()>0)
