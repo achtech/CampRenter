@@ -109,9 +109,9 @@ Breadcrumbs::for('booking', function ($trail) {
 });
 
 // Booking details
-Breadcrumbs::for('detail_booking', function ($trail,$booking) {
+Breadcrumbs::for('detail_booking', function ($trail,$data) {
     $trail->parent('booking');
-    $trail->push('Booking detail:'.$booking->camperNamer, route('booking.show'));
+    $trail->push('Booking detail', route('booking.detail',$data->client_name));
 });
 
 //  Home >Avatar

@@ -1,20 +1,6 @@
 @extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management.lbl').': '.strtoupper($client->client_last_name) . " " . $client->client_name])
 @section('content')
 {{ Breadcrumbs::render('detail_client',$client) }}
-<div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-7 align-self-center">
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb m-0 p-0">
-                                <li class="breadcrumb-item"><a href="{{ route('client.index') }}">{{__('backend.clients.lbl') }}</a>
-                                    </li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">

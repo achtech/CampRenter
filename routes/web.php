@@ -163,7 +163,9 @@ Route::resource('transmission', 'App\Http\Controllers\TransmissionController', [
 //ADMIN->BOOKING
 Route::get('booking/{id}/delete', 'App\Http\Controllers\BookingController@destroy')->name('booking.destroy');
 //Route::get('booking/{id}/{date1}/{date2}/search', 'BookingController@search')->name('booking.search');
+Route::get('booking/{id}/detail', 'App\Http\Controllers\BookingController@detail')->name('booking.detail');
 Route::get('booking/search', 'App\Http\Controllers\BookingController@search')->name('booking.search');
+Route::get('booking/{id}/message', 'App\Http\Controllers\BookingController@message')->name('booking.message');
 Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
     'index' => 'booking.index',
     'create' => 'booking.create',

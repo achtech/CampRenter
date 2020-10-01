@@ -41,7 +41,22 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('booking.index'));
+        $data = Booking::find($id);
+        if (empty($data)) {
+            return redirect(route('booking.index'));
+        }
+        return view('booking.show')->with('data', $data);
+
+    }
+    public function detail($id)
+    {
+        $data = DB::table('bookingdetails')->Where('id',$id)->first();
+        $totalPrice = $data-> price_per_day * $data-> bookingDay;
+        if (empty($data)) {
+            return redirect(route('booking.index'));
+        }
+        return view('booking.show')->with('data', $data)->with('totalPrice',$totalPrice);
+
     }
     /**
      * Store a newly created resource in storage.

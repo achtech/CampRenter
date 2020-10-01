@@ -66,6 +66,7 @@
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
+                                    <th>{{ __('backend.operation.lbl') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,6 +77,14 @@
                                         <td>{{$item->dateFrom}}</td>
                                         <td>{{$item->dateTo}}</td>
                                         <td>{{$item->price_per_day}}</td>
+                                        <td>
+                                            <li class="list-inline-item">
+                                                <a href="{{ route('booking.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
+                                            </li>  
+                                            <li class="list-inline-item">
+                                                <a href="{{ route('booking.message',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="fa fa-newspaper"></i></a>
+                                            </li> 
+                                        </td>
                                     </tr>
                                 @endforeach     
                             </tbody>
@@ -86,6 +95,7 @@
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
+                                    <th>{{ __('backend.operation.lbl') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

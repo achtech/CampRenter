@@ -281,10 +281,16 @@ return [
     'booking_owner.lbl' => 'Owner',
     'booking_renter.lbl' => 'Renter',
     'booking_select_choose.lbl' => 'Choose',
+    'renter_first_name.lbl' => 'Name of renter',
+    'renter_last_name.lbl' => 'Last name of renter',
+    'booking_total_days.lbl' => 'Total days',
+    'booking_total_price.lbl' => 'Total price',
+
     'equipment_description.lbl' => 'Description',
     'client_management.lbl' => 'Client Management',
     'billing_managment.lbl' => 'Billing Management',
     'equipment_detail.lbl' => 'Equipment Detail',
     'rent_management.lbl' => 'Rent Management',
+    
 
 ];
