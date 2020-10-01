@@ -79,14 +79,14 @@ return [
     /** End user */
 
     /** EquipmentCategory */
-    'equipmentCategory.lbl' => 'Equipment Category',
+    'equipmentCategory_managment.lbl' => 'Equipment Category Managment',
     'new_equipmentCategory.btn' => 'New Category',
     'equipmentCategory_list.lbl' => 'List of Equipment Category',
     'message_delete_equipmentCategory.lbl' => 'Do you want to delete this Equipment Category',
     /** End EquipmentCategory */
 
     /** Start Fuel */
-    'fuel.lbl' => 'Fuel',
+    'fuel_managment.lbl' => 'Fuel Managment',
     'new_fuel.btn' => 'New Fuel',
     'fuel_list.lbl' => 'List of Fuel',
     'message_delete_fuel.lbl' => 'Do you want to delete this Fuel',
@@ -136,8 +136,8 @@ return [
 
 
     /** licence_category */
-    'licence_category.lbl' => 'Category',
-    'new_licence_category.btn' => 'New Camper Category',
+    'licence_category_managment.lbl' => 'Licence Category Managment',
+    'new_licence_category.btn' => 'New Licence Category',
     'licence_category_list.lbl' => 'List of Camper Categories',
     'message_delete_licence_category.lbl' => 'Do you want to delete this Camper Category',
     '' => '',
