@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.rent_management.lbl').': '.$client->client_last_name . " " . $client->client_name])
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.rent_management.lbl').': '.strtoupper($client->client_last_name) . " " . $client->client_name])
 @section('content')
 {{ Breadcrumbs::render('rent_detail',$client) }}
 <div class="page-breadcrumb">
