@@ -48,6 +48,36 @@ Breadcrumbs::for('rent_detail', function ($trail, $client) {
     $trail->parent('client');
     $trail->push('Rent Detail', route('client.rentDetail', $client->id));
 });
+
+// Dashboard > Insurance
+Breadcrumbs::for('insurance', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Insurances', route('insurance.index'));
+});
+
+// settings
+Breadcrumbs::for('settings', function ($trail) {
+    $trail->push('Settings');
+});
+
+// Settings > Fuel
+Breadcrumbs::for('fuel', function ($trail) {
+    $trail->parent('settings');
+    $trail->push('Fuel', route('fuel.index'));
+});
+
+// Settings > EquipmentCategory
+Breadcrumbs::for('equipmentCategory', function ($trail) {
+    $trail->parent('settings');
+    $trail->push('Equipment Category', route('equipmentCategory.index'));
+});
+
+// Settings > LicenceCategory
+Breadcrumbs::for('licenceCategory', function ($trail) {
+    $trail->parent('settings');
+    $trail->push('Licence Category', route('licenceCategory.index'));
+});
+
 /*
 Breadcrumbs::for('edit_user', function ($trail, $category) {
     $trail->parent('user');
