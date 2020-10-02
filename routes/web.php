@@ -21,6 +21,16 @@ Route::get('lang/{lang}', function ($lang) {
 });
 Route::group(['middleware'=>'Lang'], function(){
     Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+    Route::get('/logout', 'App\Http\Controllers\Controller@logout')->name('logout');
+    Route::get('/', function () {
+        if (auth()->user() == null) {
+            return view('/auth/login');
+        } else {
+            return redirect(route('dashboard'));
+        }
+    });
+    
+    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
     Route::get('/confirm/{id}', 'App\Http\Controllers\DashboardController@confirmEquipment')->name('dashboard.confirm');
     //Route::get('/lastBookings', 'App\Http\Controllers\DashboardController@getLastBookings')->name('dashboard');
 
@@ -218,3 +228,7 @@ Route::resource('billing', 'App\Http\Controllers\BillingController', ['except' =
     ]]);
 });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

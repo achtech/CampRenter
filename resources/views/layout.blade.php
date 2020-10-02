@@ -143,7 +143,7 @@
                                 <img src="../../assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
                                     width="40">
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
-                                        class="text-dark">Sim</span> <i data-feather="chevron-down"
+                                        class="text-dark">{{auth()->user()->name}}</span> <i data-feather="chevron-down"
                                         class="svg-icon"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
@@ -151,7 +151,7 @@
                                         class="svg-icon mr-2 ml-1"></i>
                                     My Profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                <a class="dropdown-item" href="{{route('logout')}}"><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Logout</a>
                             </div>
