@@ -99,7 +99,6 @@ return [
     'message_delete_transmission.lbl' => 'Do you want to delete this Transmission',
     /** End Transmission */
 
-
     /* ---- Commission-----*/
     'commission_managment.lbl' => 'Commission Management',
     'commission.lbl' => 'Commission',
@@ -131,6 +130,8 @@ return [
     'booking_from.lbl' => 'Booking From',
     'booking_to.lbl' => 'Booking To',
     'remaining_days_number.lbl' => 'Number of days remaining',
+    'block_equipment_message.lbl' => 'Do you want to block this Camper?',
+    'confirm_equipment_message.lbl' => 'Do you want to confirm this Camper?',
 
     /** Message */
     'message_managment.lbl' => 'Message Managment',
@@ -139,8 +140,6 @@ return [
     'telephone.lbl' => 'Phone',
     'subject.lbl' => 'Subject',
     'send_date.lbl' => 'Date',
-    
-
 
     /** licence_category */
     'licence_category_managment.lbl' => 'Licence Category Managment',
@@ -149,7 +148,6 @@ return [
     'message_delete_licence_category.lbl' => 'Do you want to delete this Camper Category',
     '' => '',
     '' => '',
-
 
     /** Dashboard */
     'dashboard_confirm_camper.lbl' => 'Campers to be confirmed',
@@ -219,12 +217,10 @@ return [
     'menu_backup.lbl' => 'Backup',
     'settings_profil.lbl' => 'Profil Managment',
 
-    /** Avatar */   
+    /** Avatar */
     'avatar_managment.lbl' => 'Avatar managment',
     'avatar_name.lbl' => 'Label',
     'new_avatar.btn' => 'New avatar',
-
-
 
     /** equipment */
     'image.lbl' => 'Image',
