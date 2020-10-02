@@ -1,5 +1,6 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client.lbl')]))
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management.lbl').': '.strtoupper($client->client_last_name) . " " . $client->client_name])
 @section('content')
+{{ Breadcrumbs::render('detail_client',$client) }}
 <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
@@ -19,7 +20,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.detail_client.lbl') }}</h4>
                    
                     <div class="row">
                         <div class="col-2">  

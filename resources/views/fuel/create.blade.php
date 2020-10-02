@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'fuel', 'titlePage' => __('backend.owner.lbl')])
+@extends('layout', ['activePage' => 'fuel', 'titlePage' => __('backend.fuel_managment.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('create_fuel') }}
 <div class="container-fluid">
     <!--'action'=>'FuelController@store',-->
     {{ Form::open(['action'=>'App\Http\Controllers\FuelController@store','autocomplete'=>'off','method'=>'POST']) }}

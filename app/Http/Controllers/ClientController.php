@@ -76,10 +76,11 @@ class ClientController extends Controller
     }
     public function detail($id)
     {
+        $client  = Client::find($id);
         $data = Client::find($id);
         $datas = Avatar::where('id', $data->id_avatars)->first();
         $avatar = $datas != null ? $datas['image'] : 'default.jpg';
-        return view('client.detail')->with('data', $data)->with('avatar', $avatar);
+        return view('client.detail')->with('data', $data)->with('avatar', $avatar)->with('client', $client);
     }
 
 
@@ -142,10 +143,12 @@ class ClientController extends Controller
     public function checkEquipmentDetail($id)
     {
         $datas = Equipment::where('id_client', $id)->get();
-        return view('client.detailEquipment')->with('datas', $datas);
+        $client  = Client::find($id);
+        return view('client.detailEquipment')->with('datas', $datas)->with('client', $client);
     }
     public function checkBookingDetail($id)
     {
+        $client  = Client::find($id);
         $remaining_days = 0;
         $datas = Booking::where('id_clients', $id)
             ->join('equipments', 'bookings.id_equipments', '=', 'equipments.id')
@@ -157,7 +160,7 @@ class ClientController extends Controller
             $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
             $remaining_days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
         }
-        return view('client.bookingDetail')->with('datas', $datas)->with('remaining_days', $remaining_days);
+        return view('client.bookingDetail')->with('datas', $datas)->with('remaining_days', $remaining_days)->with('client', $client);
     }
     public static function getCurrentSolde($id)
     {

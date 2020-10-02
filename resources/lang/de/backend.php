@@ -106,7 +106,10 @@ return [
     'menu_avatars.lbl' => 'Avatare',
     'menu_backup.lbl' => 'Backup',
     'equipment_description.lbl' => 'Beschreibung',
-
+    'client_management.lbl' => 'Client-Management',
+    'billing_managment.lbl' => 'Abrechnungsmanagement',
+    'equipment_detail.lbl' => 'Ausrüstungsdetail',
+    'rent_management.lbl' => 'Mietmanagement',
     
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Benutzer',

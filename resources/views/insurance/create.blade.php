@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance.lbl')])
+@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance_managment.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('create_insurance') }}
 <div class="container-fluid">
     <!--'action'=>'InsuranceController@store',-->
     {{ Form::open(['action'=>'App\Http\Controllers\InsuranceController@store','autocomplete'=>'off','method'=>'POST']) }}

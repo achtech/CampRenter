@@ -1,28 +1,14 @@
-@extends('layout', ['activePage' => 'equipmentCategory', 'titlePage' => __('backend.equipmentCategory.lbl')])
+@extends('layout', ['activePage' => 'equipmentCategory', 'titlePage' => __('backend.equipmentCategory_managment.lbl')])
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{route('equipmentCategory.index')}}">{{ __('backend.equipmentCategory.lbl') }}</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="card-body">
-            <a href="{{ route('equipmentCategory.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                style="width:200px">{{ __('backend.new_equipmentCategory.btn') }}</a>
-        </div>
-    </div>
-
+{{ Breadcrumbs::render('equipmentCategory') }}
+<div class="container-fluid">       
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.equipmentCategory_list.lbl') }}</h4>
                     <div class="table-responsive">
+                        <a href="{{ route('equipmentCategory.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
+                            style="width:200px;margin:0px 10px">{{ __('backend.new_equipmentCategory.btn') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>

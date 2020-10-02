@@ -210,7 +210,7 @@ Route::resource('billing', 'App\Http\Controllers\BillingController', ['except' =
     ]]);
 
     //ADMIN->MESSAGE
-    Route::get('message/{id}/delete', 'App\Http\Controllers\MessageController@destroy')->name('message.destroy');
+    Route::get('message/{id}/delete', ['MessageController','destroy'])->name('message.destroy');
     Route::resource('message', 'App\Http\Controllers\MessageController', ['except' => 'destroy', 'names' => [
         'index' => 'message.index',
         'store' => 'camperName.store',

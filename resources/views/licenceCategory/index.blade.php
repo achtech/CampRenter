@@ -1,28 +1,14 @@
-@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => __('backend.licence_category.lbl')])
+@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => __('backend.licence_category_managment.lbl')])
 @section('content')
+{{ Breadcrumbs::render('licenceCategory') }}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{route('licenceCategory.index')}}">{{ __('backend.licence_category.lbl') }}</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="card-body">
-            <a href="{{ route('licenceCategory.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                style="width:200px">{{ __('backend.new_licence_category.btn') }}</a>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.licence_category_list.lbl') }}</h4>
                     <div class="table-responsive">
+                        <a href="{{ route('licenceCategory.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
+                            style="width:200px;margin:0px 10px">{{ __('backend.new_licence_category.btn') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>

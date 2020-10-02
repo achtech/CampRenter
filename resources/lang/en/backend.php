@@ -42,7 +42,7 @@ return [
     /** End Client */
 
     /** Insurance */
-    'insurance.lbl' => 'Insurance',
+    'insurance_managment.lbl' => 'Insurance Managment',
     'insurance_list.lbl' => 'List of insurances',
     'description.lbl' => 'Description',
     'insurance_company.lbl' => 'Campany',
@@ -79,21 +79,21 @@ return [
     /** End user */
 
     /** EquipmentCategory */
-    'equipmentCategory.lbl' => 'Equipment Category',
+    'equipmentCategory_managment.lbl' => 'Equipment Category Managment',
     'new_equipmentCategory.btn' => 'New Category',
     'equipmentCategory_list.lbl' => 'List of Equipment Category',
     'message_delete_equipmentCategory.lbl' => 'Do you want to delete this Equipment Category',
     /** End EquipmentCategory */
 
     /** Start Fuel */
-    'fuel.lbl' => 'Fuel',
+    'fuel_managment.lbl' => 'Fuel Managment',
     'new_fuel.btn' => 'New Fuel',
     'fuel_list.lbl' => 'List of Fuel',
     'message_delete_fuel.lbl' => 'Do you want to delete this Fuel',
     /** End Fuel */
 
     /** Start Transmission */
-    'transmission.lbl' => 'Transmission',
+    'transmission_managment.lbl' => 'Transmission Managment',
     'new_transmission.btn' => 'New Transmission',
     'transmission_list.lbl' => 'List of Transmission',
     'message_delete_transmission.lbl' => 'Do you want to delete this Transmission',
@@ -101,6 +101,7 @@ return [
     
 
     /* ---- Commission-----*/
+    'commission_managment.lbl' => 'Commission Management',
     'commission.lbl' => 'Commission',
     'commission_list.lbl' => 'List of commission',
     'new_commission.btn' => 'New commission',
@@ -131,13 +132,19 @@ return [
     'booking_to.lbl' => 'Booking To',
     'remaining_days_number.lbl' => 'Number of days remaining',
 
-
+    /** Message */
+    'message_managment.lbl' => 'Message Managment',
+    'new_message.btn' => 'New Message',
+    'contact.lbl' => 'Contact Name',
+    'telephone.lbl' => 'Phone',
+    'subject.lbl' => 'Subject',
+    'send_date.lbl' => 'Date',
 
 
 
     /** licence_category */
-    'licence_category.lbl' => 'Category',
-    'new_licence_category.btn' => 'New Camper Category',
+    'licence_category_managment.lbl' => 'Licence Category Managment',
+    'new_licence_category.btn' => 'New Licence Category',
     'licence_category_list.lbl' => 'List of Camper Categories',
     'message_delete_licence_category.lbl' => 'Do you want to delete this Camper Category',
     '' => '',
@@ -210,11 +217,18 @@ return [
     'menu_fuels.lbl' => 'Fuels',
     'menu_avatars.lbl' => 'Avatars',
     'menu_backup.lbl' => 'Backup',
+    'settings_profil.lbl' => 'Profil Managment',
+
+    /** Avatar */   
+    'avatar_managment.lbl' => 'Avatar managment',
+    'avatar_name.lbl' => 'Label',
+    'new_avatar.btn' => 'New avatar',
+
 
 
     /** equipment */
     'image.lbl' => 'Image',
-    'equipment.lbl' => 'Camper',
+    'equipment_managment.lbl' => 'Camper Managment',
     'equipment_details.lbl' => 'Camper Details',
     'equipment_list.lbl' => 'List of Campers',
     'new_equipment.btn' => 'New Camper',
@@ -257,6 +271,7 @@ return [
     /** End Equipment */
 
     /* ------------ Booking -----------*/
+    'booking_management.lbl' => 'Booking Management',
     'booking_renter.lbl' => 'Renter',
     'booking_equipement.lbl' => 'Equipement',
     'booking_from.lbl' => 'From',
@@ -268,6 +283,11 @@ return [
     'booking_renter.lbl' => 'Renter',
     'booking_select_choose.lbl' => 'Choose',
     'equipment_description.lbl' => 'Description',
+    'client_management.lbl' => 'Client Management',
+    'billing_managment.lbl' => 'Billing Management',
+    'equipment_detail.lbl' => 'Equipment Detail',
+    'rent_management.lbl' => 'Rent Management',
+
 
 
 

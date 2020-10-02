@@ -1,5 +1,6 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client.lbl')])
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management.lbl')])
 @section('content')
+{{ Breadcrumbs::render('client') }}
 <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
@@ -19,7 +20,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">List of Clients</h4>
                     <div class="table-responsive">
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">

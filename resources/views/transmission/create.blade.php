@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'transmission', 'titlePage' => __('backend.owner.lbl')])
+@extends('layout', ['activePage' => 'transmission', 'titlePage' => __('backend.transmission_managment.lbl')])
 @section('content')
-
+{{ Breadcrumbs::render('create_transmission') }}
 <div class="container-fluid">
     <!--'action'=>'TransmissionController@store',-->
     {{ Form::open(['action'=>'App\Http\Controllers\TransmissionController@store','autocomplete'=>'off','method'=>'POST']) }}
