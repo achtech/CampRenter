@@ -16,25 +16,26 @@
         </div>
         
     </div>
+    {{ Form::open(['action'=>'App\Http\Controllers\BillingController@filter','autocomplete'=>'off','method'=>'GET']) }}
     <div class="card">
         <div class="card-body">
     <fieldset class="border p-2">
         <legend  class="w-auto">{{ __('backend.billing_date_filter.lbl') }}</legend>
     <div class="form-group row">
-       
         <div class="col-3">
             <label style="white-space: nowrap;" for="example-date-input" class="col-2 col-form-label">{{ __('backend.billing_date_from.lbl') }}</label>
-          <input class="form-control" type="date" value="{{$todayDate}}" id="example-date-input">
+            {{ Form::date('start_date', $startDate?? $todayDate,['class'=>'form-control','required','id'=>'example-date-input'])}}
         </div>
    
         <div class="col-3">
             <label style="white-space: nowrap;"  for="example-date-input" class="col-2 col-form-label">{{ __('backend.billing_date_to.lbl') }}</label>
-            {{ Form::date('end_date', '',['class'=>'form-control','required','id'=>'example-date-input'])}}
+            {{ Form::date('end_date', $endDate?? $todayDate,['class'=>'form-control','required','id'=>'example-date-input'])}}
         </div>
         <div class="col-3">
-          <a href="{{ route('applyFilter') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-          style="width:200px;bottom: 3px;position: absolute;">{{ __('backend.apply.btn') }}</a>
-        </div> 
+            {{Form::submit('Apply',['style' => 'width:200px;bottom: 3px;position: absolute;','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class','name' => 'action'])}}
+        </div>
+        
+ 
         <div class="col-1"></div>
         <div class="col-2">
         <a href="{{ route('excel-export') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
@@ -42,7 +43,8 @@
                 {{ __('backend.export.btn') }}</a>
       </div>
     </div>
-    </fieldset></div></div>
+    </fieldset>
+</div></div>{{ Form::close() }}
     <br>
     <div class="row">
         <div class="col-12">

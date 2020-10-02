@@ -8,6 +8,7 @@ use App\Exports\BillingExport;
 use App\Models\Avatars;
 use App\Models\Billing;
 use App\Models\Booking;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
@@ -24,8 +25,6 @@ class BillingController extends Controller
     {
         $todayDate = date("Y-m-d");
         $datas = Billing::join('clients', 'billings.id_client', '=', 'clients.id')
-            ->join('bookings', 'billings.id_booking', '=', 'bookings.id')
-            ->join('equipments', 'bookings.id_equipments', '=', 'equipments.id')
             ->get();
         return view('billing.index')->with('datas', $datas)->with('todayDate', $todayDate);
         //Session::put('end_date', $todayDate);
@@ -35,6 +34,13 @@ class BillingController extends Controller
     {
 
         $fileName = 'billings.csv';
+        $current_date = date("Y-m-d");
+        //$endDate = $request->end_date ?? '';
+        $endDate = Session::get('endDate');
+        $datas = Billing::join('bookings', 'billings.id_booking', '=', 'bookings.id')
+            ->join('clients', 'billings.id_client', '=', 'clients.id')
+            ->where('dateTo', '=', $endDate)
+            ->where('dateTo', '<', $current_date)->get();
 
         $headers = array(
             "Content-type"        => "text/csv",
@@ -45,19 +51,20 @@ class BillingController extends Controller
         );
 
         $columns = array('Owner', 'IBAN', 'Amount');
-        $callback = function () use ($columns) {
+        $callback = function () use ($datas, $columns) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
-            $current_date = date("Y-m-d");
-            $datas = Billing::join('bookings', 'billings.id_booking', '=', 'bookings.id')
-                ->join('clients', 'billings.id_client', '=', 'clients.id')
-                ->where('dateTo', '<', $current_date)->get();
-            foreach ($datas as $elem) {
-                $row['Owner']  = $elem->client_name;
-                $row['IBAN']    = $elem->IBAN;
-                $row['Amount']    = $elem->confirmed_amount;;
+            if ($datas->count() > 0) {
+                foreach ($datas as $elem) {
+                    $row['Owner']  = $elem->client_name;
+                    $row['IBAN']    = $elem->IBAN;
+                    $row['Amount']    = $elem->confirmed_amount;
+                }
+            } else {
+                $row['Owner']  = '';
+                $row['IBAN']    = '';
+                $row['Amount']    = '';
             }
-
             fputcsv($file, array($row['Owner'], $row['IBAN'], $row['Amount']));
             fclose($file);
         };
@@ -65,13 +72,22 @@ class BillingController extends Controller
         return response()->stream($callback, 200, $headers);
         // return Excel::download(new BillingExport, 'billings.xlsx');
     }
-    public function filter()
+    public function filter(Request $request)
     {
-        $dateFrom = '';
-        $dateTo = '';
-        $datas = Billing::join('bookings', 'billings.id_booking', '=', 'bookings.id')
-            ->where('dateFrom', $dateFrom)
-            ->where('dateTo', $dateTo);
+        $todayDate = date("Y-m-d");
+        $startDate = $request->start_date ?? '';
+        $endDate = $request->end_date ?? '';
+        Session::put('endDate', $endDate);
+        $datas = Billing::join('clients', 'billings.id_client', '=', 'clients.id')
+            ->join('bookings', 'billings.id_booking', '=', 'bookings.id')
+            ->where('dateFrom', '>=', $startDate)
+            ->where('dateTo', '<=', $endDate)
+            ->get();
+        return view('billing.index')
+            ->with('datas', $datas)
+            ->with('startDate', $startDate)
+            ->with('endDate', $endDate)
+            ->with('todayDate', $todayDate);
     }
 
     /**
