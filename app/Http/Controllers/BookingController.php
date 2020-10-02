@@ -144,4 +144,12 @@ class BookingController extends Controller
             ->with('dateTo',$dateTo)
             ->with('datasClients', $datasClients);
     }
+    public function message($id)
+    {
+        $data = DB::table('bookingdetails')->Where('id',$id)->first();
+        if (empty($data)) {
+            return redirect(route('booking.index'));
+        }
+        return view('booking.message')->with('data', $data);
+    }
 }

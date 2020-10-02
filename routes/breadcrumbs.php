@@ -113,6 +113,12 @@ Breadcrumbs::for('detail_booking', function ($trail,$data) {
     $trail->parent('booking');
     $trail->push('Booking detail', route('booking.detail',$data->client_name));
 });
+// Booking details
+Breadcrumbs::for('message_booking', function ($trail,$data) {
+    $trail->parent('booking');
+    $trail->push('message detail', route('booking.message',$data->client_name));
+});
+
 
 //  Home >Avatar
 Breadcrumbs::for('avatar', function ($trail) {

@@ -361,6 +361,20 @@
       <!--This page plugins -->
     <script src="../../assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script>
+        $(function () {
+            $(document).on('keypress', "#textarea1", function (e) {
+                if (e.keyCode == 13) {
+                    var id = $(this).attr("data-user-id");
+                    var msg = $(this).val();
+                    msg = msg_sent(msg);
+                    $("#someDiv").append(msg);
+                    $(this).val("");
+                    $(this).focus();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
