@@ -98,7 +98,7 @@ return [
     'transmission_list.lbl' => 'List of Transmission',
     'message_delete_transmission.lbl' => 'Do you want to delete this Transmission',
     /** End Transmission */
-    
+
 
     /* ---- Commission-----*/
     'commission_managment.lbl' => 'Commission Management',
@@ -219,7 +219,7 @@ return [
     'menu_backup.lbl' => 'Backup',
     'settings_profil.lbl' => 'Profil Managment',
 
-    /** Avatar */   
+    /** Avatar */
     'avatar_managment.lbl' => 'Avatar managment',
     'avatar_name.lbl' => 'Label',
     'new_avatar.btn' => 'New avatar',
@@ -287,11 +287,8 @@ return [
     'billing_managment.lbl' => 'Billing Management',
     'equipment_detail.lbl' => 'Equipment Detail',
     'rent_management.lbl' => 'Rent Management',
-
-
-
-
-
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Users',
+    'no_data_to_confirm.lbl' => 'No campers to confirm',
+
 ];

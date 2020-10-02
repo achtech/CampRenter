@@ -110,7 +110,8 @@ return [
     'billing_managment.lbl' => 'Abrechnungsmanagement',
     'equipment_detail.lbl' => 'Ausrüstungsdetail',
     'rent_management.lbl' => 'Mietmanagement',
-    
+
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Benutzer',
+    'no_data_to_confirm.lbl' => 'Keine Camper zu bestätigen',
 ];

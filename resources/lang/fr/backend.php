@@ -114,8 +114,8 @@ return [
     'billing_managment.lbl' => 'La Gestion de la facturation',
     'equipment_detail.lbl' => 'Détail de l équipement',
     'rent_management.lbl' => 'Gestion des loyers',
-  
-     /*----------------BREADCRUMB ----------*/
-     'users.breadcrumb' => 'Utilisateur',
 
+    /*----------------BREADCRUMB ----------*/
+    'users.breadcrumb' => 'Utilisateur',
+    'no_data_to_confirm.lbl' => 'Aucun campeur à confirmer',
 ];
