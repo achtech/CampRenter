@@ -25,19 +25,4 @@ class Controller extends BaseController
     static function getCampersCount(){
         return 2;
     }
-/*
-    function logout($request){
-        auth()->logout();
-        return view('auth.login');
-    }
-*/
-    public function logout(Request $request)
-    {
-        $this->guard()->logout();
-
-        $request->session()->invalidate();
-
-        return $this->loggedOut($request) ?: redirect('/login');
-    }
-
 }

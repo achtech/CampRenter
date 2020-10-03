@@ -1,7 +1,8 @@
 <?php
 
 return [
-
+    'hello.lbl' => 'Hallo',
+    'change_password.btn' => 'Passwort ändern',
     'dashboard.lbl' => 'Instrumententafel',
     'owners.lbl' => 'Besitzer',
     'new_owner.btn' => 'Neuer Besitzer',

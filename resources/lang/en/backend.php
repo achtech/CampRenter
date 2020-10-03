@@ -1,13 +1,17 @@
 <?php
 
 return [
-
+    'hello.lbl' => 'Hello',
     'owners.lbl' => 'Owners',
     'new_owner.btn' => 'New owner',
     'owner_list.lbl' => 'List of owners',
     'operation.lbl' => 'Operation',
     'search.lbl' => 'Search',
     'dashboard.lbl' => "Dashboard",
+    'change_password.btn' => 'Change password',
+    'profile_managment.lbl' => 'Profile managment',
+    'picture.lbl' => 'Photo',
+    'update.btn' => 'Update',
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',

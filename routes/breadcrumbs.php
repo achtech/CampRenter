@@ -22,6 +22,20 @@ Breadcrumbs::for('edit_user', function ($trail, $category) {
     $trail->parent('user');
     $trail->push('Edit user', route('user.edit'));
 });
+
+Breadcrumbs::for('profile', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Profile', route('user.profile'));
+});
+
+Breadcrumbs::for('edit_profile', function ($trail) {
+    $trail->parent('profile');
+    $trail->push('Update profile', route('user.updateProfile'));
+});
+Breadcrumbs::for('change_password', function ($trail) {
+    $trail->parent('profile');
+    $trail->push('Change password', route('user.changePassword'));
+});
 /*
 Breadcrumbs::for('edit_user', function ($trail, $category) {
     $trail->parent('user');
