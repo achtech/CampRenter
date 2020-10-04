@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'hello.lbl' => 'Bonjour',
     'owners.lbl' => 'Propriétaire',
     'new_owner.btn' => 'Nouveau propriétaire',
     'owner_list.lbl' => 'Liste des propriétaires',

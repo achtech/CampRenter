@@ -21,10 +21,24 @@ Route::get('lang/{lang}', function ($lang) {
 });
 Route::group(['middleware'=>'Lang'], function(){
     Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+    Route::get('/', function () {
+        if (auth()->user() == null) {
+            return view('/auth/login');
+        } else {
+            return redirect(route('dashboard'));
+        }
+    });
+    
+    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
     Route::get('/confirm/{id}', 'App\Http\Controllers\DashboardController@confirmEquipment')->name('dashboard.confirm');
     //Route::get('/lastBookings', 'App\Http\Controllers\DashboardController@getLastBookings')->name('dashboard');
 
     //ADMIN->USER
+    Route::get('user/updateProfile', 'App\Http\Controllers\UserController@updateProfile')->name('user.updateProfile');
+    Route::get('user/changePassword', 'App\Http\Controllers\UserController@changePassword')->name('user.changePassword');
+    Route::PUT('user/updatePassword', 'App\Http\Controllers\UserController@updatePassword')->name('user.updatePassword');
+    
     Route::get('user/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
     Route::get('user/{id}/delete', 'App\Http\Controllers\UserController@destroy')->name('user.destroy');
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => 'destroy', 'names' => [
@@ -213,8 +227,12 @@ Route::resource('billing', 'App\Http\Controllers\BillingController', ['except' =
     Route::get('message/{id}/delete', ['MessageController','destroy'])->name('message.destroy');
     Route::resource('message', 'App\Http\Controllers\MessageController', ['except' => 'destroy', 'names' => [
         'index' => 'message.index',
-        'store' => 'camperName.store',
-        'show' => 'camperName.show',
+        'store' => 'message.store',
+        'show' => 'message.show',
     ]]);
 });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
