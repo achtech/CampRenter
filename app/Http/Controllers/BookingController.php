@@ -146,10 +146,17 @@ class BookingController extends Controller
     }
     public function message($id)
     {
-        $data = DB::table('bookingdetails')->Where('id',$id)->first();
-        if (empty($data)) {
+        $dataMessOwner = DB::table('v_chats_bookings')
+            ->Where('id_bookings',$id)
+            ->WhereNotNull('id_owner')
+            ->orderBy('ordre_message','asc')->get();
+        $dataMessRenter = DB::table('v_chats_bookings')
+            ->Where('id_bookings',$id)
+            ->WhereNotNull('id_renter')
+            ->orderBy('ordre_message','asc')->get();
+        if (empty($dataMessOwner) && empty($dataMessRenter) ) {
             return redirect(route('booking.index'));
         }
-        return view('booking.message')->with('data', $data);
+        return view('booking.message')->with('dataMessOwner', $dataMessOwner)->with('dataMessRenter', $dataMessRenter)->with('bookingId', $id);
     }
 }
