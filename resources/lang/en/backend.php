@@ -8,6 +8,7 @@ return [
     'operation.lbl' => 'Operation',
     'search.lbl' => 'Search',
     'dashboard.lbl' => "Dashboard",
+    'photo.lbl'=> 'Picture',
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',

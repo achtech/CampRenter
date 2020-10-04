@@ -13,7 +13,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $datas = Message::paginate(10);
+        $datas = DB::table('v_messages')->get();
         return view('message.index')->with('datas', $datas);
     }
     /**
@@ -32,6 +32,12 @@ class MessageController extends Controller
      */
     public function show($id)
     {
+        $datas = Message::find($id);
+        if (empty($data)) {
+            return view('message.index')->with('datas', $datas);
+        }
+        $client  = Client::find($datas->$id_client);
+        return view('message.show')->with('datas', $datas)->with('client', $client);
     }
     /**
      * Store a newly created resource in storage.

@@ -144,7 +144,7 @@ class BookingController extends Controller
             ->with('dateTo',$dateTo)
             ->with('datasClients', $datasClients);
     }
-    public function message($id)
+    public function chat($id)
     {
         $dataMessOwner = DB::table('v_chats_bookings')
             ->Where('id_bookings',$id)
@@ -157,6 +157,6 @@ class BookingController extends Controller
         if (empty($dataMessOwner) && empty($dataMessRenter) ) {
             return redirect(route('booking.index'));
         }
-        return view('booking.message')->with('dataMessOwner', $dataMessOwner)->with('dataMessRenter', $dataMessRenter)->with('bookingId', $id);
+        return view('booking.chat')->with('dataMessOwner', $dataMessOwner)->with('dataMessRenter', $dataMessRenter)->with('bookingId', $id);
     }
 }

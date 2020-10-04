@@ -82,7 +82,7 @@
                                                 <a href="{{ route('booking.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
                                             </li>  
                                             <li class="list-inline-item">
-                                                <a href="{{ route('booking.message',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="fa fa-newspaper"></i></a>
+                                                <a href="{{ route('booking.chat',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="fa fa-newspaper"></i></a>
                                             </li> 
                                         </td>
                                     </tr>

@@ -165,7 +165,7 @@ Route::get('booking/{id}/delete', 'App\Http\Controllers\BookingController@destro
 //Route::get('booking/{id}/{date1}/{date2}/search', 'BookingController@search')->name('booking.search');
 Route::get('booking/{id}/detail', 'App\Http\Controllers\BookingController@detail')->name('booking.detail');
 Route::get('booking/search', 'App\Http\Controllers\BookingController@search')->name('booking.search');
-Route::get('booking/{id}/message', 'App\Http\Controllers\BookingController@message')->name('booking.message');
+Route::get('booking/{id}/chat', 'App\Http\Controllers\BookingController@chat')->name('booking.chat');
 Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
     'index' => 'booking.index',
     'create' => 'booking.create',
@@ -215,8 +215,8 @@ Route::resource('billing', 'App\Http\Controllers\BillingController', ['except' =
     Route::get('message/{id}/delete', ['MessageController','destroy'])->name('message.destroy');
     Route::resource('message', 'App\Http\Controllers\MessageController', ['except' => 'destroy', 'names' => [
         'index' => 'message.index',
-        'store' => 'camperName.store',
-        'show' => 'camperName.show',
+        'store' => 'message.store',
+        'show' => 'message.show',
     ]]);
 });
 

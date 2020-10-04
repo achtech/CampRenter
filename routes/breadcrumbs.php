@@ -114,9 +114,9 @@ Breadcrumbs::for('detail_booking', function ($trail,$data) {
     $trail->push('Booking detail', route('booking.detail',$data->client_name));
 });
 // Booking details
-Breadcrumbs::for('message_booking', function ($trail,$id) {
+Breadcrumbs::for('chat_booking', function ($trail,$id) {
     $trail->parent('booking');
-    $trail->push('message detail', route('booking.message',$id));
+    $trail->push('chat detail', route('booking.chat',$id));
 });
 
 
@@ -154,6 +154,12 @@ Breadcrumbs::for('add_message', function ($trail) {
 Breadcrumbs::for('edit_message', function ($trail) {
     $trail->parent('message');
     $trail->push('Edit Message', route('message.edit'));
+});
+
+// Message
+Breadcrumbs::for('detail_message', function ($trail,$id) {
+    $trail->parent('message');
+    $trail->push('Detail Message', route('message.show',$id));
 });
 
 ?>
