@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-            <a href="{{ route('user.updateProfile') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.update.btn') }}</a>
+            <a href="{{ route('user.updateProfile') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.edit.btn') }}</a>
             <a href="{{ route('user.changePassword') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.change_password.btn') }}</a>
             </div>
     </div>

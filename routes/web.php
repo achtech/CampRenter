@@ -37,6 +37,7 @@ Route::group(['middleware'=>'Lang'], function(){
     //ADMIN->USER
     Route::get('user/updateProfile', 'App\Http\Controllers\UserController@updateProfile')->name('user.updateProfile');
     Route::get('user/changePassword', 'App\Http\Controllers\UserController@changePassword')->name('user.changePassword');
+    Route::PUT('user/updatePassword', 'App\Http\Controllers\UserController@updatePassword')->name('user.updatePassword');
     
     Route::get('user/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
     Route::get('user/{id}/delete', 'App\Http\Controllers\UserController@destroy')->name('user.destroy');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateProfile;
 use App\Models\Avatar;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -118,7 +119,24 @@ class UserController extends Controller
         $file->move(base_path('public\assets\images\users'),$file->getClientOriginalName());
         return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
     }
-
+    
+    
+    public function updatePassword(UpdateProfile $request)
+    {
+        $password = $request->password;
+        $confirm = $request->password_confirmation;
+        $data = User::find(auth()->user()->id);
+        if (empty($data)) {
+            return redirect(route('user.profile'));
+        }
+        if($password!=$confirm){
+            return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');    
+        }
+        $input = request()->except(['_token', '_method', 'action', 'password_confirmation']);
+        $input['password'] = bcrypt($password);
+        $data = User::where('id', auth()->user()->id)->update($input);
+        return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
+    }
     //
 
     /**
