@@ -12,6 +12,7 @@ return [
     'profile_managment.lbl' => 'Profile managment',
     'picture.lbl' => 'Photo',
     'update.btn' => 'Update',
+    'no_data_found.lbl' => 'No data found',
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',

@@ -103,31 +103,18 @@
                                     <li>
                                         <div class="message-center notifications position-relative">
                                             <!-- Message -->
-                                            <a href="{{route('message.index')}}"
-                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                <div class="btn btn-danger rounded-circle btn-circle"><i
-                                                         class="text-white">
-                                                         {{App\Http\Controllers\Controller::getMessageCount()}}
-                                                         </i></div>
-                                                <div class="w-75 d-inline-block v-middle pl-2">
-                                                    <h6 class="message-title mb-0 mt-1">New message</h6>
-                                                    <span class="font-12 text-nowrap d-block text-muted">You have not readed message(s) </span>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="{{route('equipment.index')}}"
-                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                <span class="btn btn-success text-white rounded-circle btn-circle"><i
-                                                         class="text-white">
-                                                         {{App\Http\Controllers\Controller::getCampersCount()}}
-                                                      
-                                                         </i></span>
-                                                <div class="w-75 d-inline-block v-middle pl-2">
-                                                    <h6 class="message-title mb-0 mt-1">Equipments</h6>
-                                                    <span
-                                                        class="font-12 text-nowrap d-block text-muted text-truncate">Check the status of some equipment</span>
-                                                </div>
-                                            </a>
+                                            @foreach(App\Http\Controllers\Controller::getNotReadedMessages() as $msg)
+                                                <a href="{{route('message.show',$msg->id)}}"
+                                                    class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                    <span class="btn btn-primary rounded-circle btn-circle"><i
+                                                            data-feather="box" class="text-white"></i></span>
+                                                    <div class="w-75 d-inline-block v-middle pl-2">
+                                                        <h6 class="message-title mb-0 mt-1">{{$msg->full_name}}</h6> <span
+                                                            class="font-12 text-nowrap d-block text-muted">{{$msg->subject}}</span>
+                                                        <span class="font-12 text-nowrap d-block text-muted">{{$msg->date_time}}</span>
+                                                    </div>
+                                                </a>
+                                            @endforeach
                                             <!-- Message -->
                                         </div>
                                     </li>
@@ -146,32 +133,28 @@
                                 <ul class="list-style-none">
                                     <li>
                                         <div class="message-center notifications position-relative">
-                                            <!-- Message -->
+                                            @foreach(App\Http\Controllers\Controller::getNotConfirmedEquipments() as $camps)
+                                                <a href="{{route('equipment.detail',$camps->id)}}"
+                                                    class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                    <span class="btn btn-primary rounded-circle btn-circle"><i
+                                                            data-feather="box" class="text-white"></i></span>
+                                                    <div class="w-75 d-inline-block v-middle pl-2">
+                                                        <h6 class="message-title mb-0 mt-1">{{$camps->client_last_name." ".$camps->client_name}}</h6> <span
+                                                            class="font-12 text-nowrap d-block text-muted">{{(app()->getLocale()== 'fr' ? $camps->label_fr : (app()->getLocale()== 'en' ? $camps->label_en : $camps->label_de))}}</span>
+                                                        <span class="font-12 text-nowrap d-block text-muted">{{$camps->created_at}}</span>
+                                                    </div>
+                                                </a>
+                                            @endforeach
+                                            @if(count(App\Http\Controllers\Controller::getNotConfirmedEquipments())==0)
                                             <a href="{{route('message.index')}}"
-                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                <div class="btn btn-danger rounded-circle btn-circle"><i
-                                                         class="text-white">
-                                                         {{App\Http\Controllers\Controller::getMessageCount()}}
-                                                         </i></div>
-                                                <div class="w-75 d-inline-block v-middle pl-2">
-                                                    <h6 class="message-title mb-0 mt-1">New message</h6>
-                                                    <span class="font-12 text-nowrap d-block text-muted">You have not readed message(s) </span>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="{{route('equipment.index')}}"
-                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                <span class="btn btn-success text-white rounded-circle btn-circle"><i
-                                                         class="text-white">
-                                                         {{App\Http\Controllers\Controller::getCampersCount()}}
-                                                      
-                                                         </i></span>
-                                                <div class="w-75 d-inline-block v-middle pl-2">
-                                                    <h6 class="message-title mb-0 mt-1">Equipments</h6>
-                                                    <span
-                                                        class="font-12 text-nowrap d-block text-muted text-truncate">Check the status of some equipment</span>
-                                                </div>
-                                            </a>
+                                                    class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                    <span class="btn btn-primary rounded-circle btn-circle"><i
+                                                            data-feather="box" class="text-white"></i></span>
+                                                    <div class="w-75 d-inline-block v-middle pl-2">
+                                                       <span class="font-12 text-nowrap d-block text-muted">{{'backend.no_data_found.lbl'}}</span>
+                                                    </div>
+                                                </a>
+                                            @endif
                                             <!-- Message -->
                                         </div>
                                     </li>
