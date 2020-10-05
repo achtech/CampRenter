@@ -190,10 +190,10 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
    //ADMIN->BOOKING
-Route::get('booking/{id}/delete', 'app\http\controllers\Bookingcontroller@destroy')->name('booking.destroy');
-Route::get('booking/{id}/detail', 'app\http\controllers\Bookingcontroller@detail')->name('booking.detail');
-Route::get('booking/search', 'app\http\controllers\Bookingcontroller@search')->name('booking.search');
-Route::get('booking/{id}/chat', 'app\http\controllers\Bookingcontroller@chat')->name('booking.chat');
+Route::get('booking/{id}/delete', 'App\Http\Controllers\Bookingcontroller@destroy')->name('booking.destroy');
+Route::get('booking/{id}/detail', 'App\Http\Controllers\Bookingcontroller@detail')->name('booking.detail');
+Route::get('booking/search', 'App\Http\Controllers\Bookingcontroller@search')->name('booking.search');
+Route::get('booking/{id}/chat', 'App\Http\Controllers\Bookingcontroller@chat')->name('booking.chat');
 Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
     'index' => 'booking.index',
     'create' => 'booking.create',
