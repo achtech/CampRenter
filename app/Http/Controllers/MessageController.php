@@ -43,7 +43,7 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        $datas = DB::table('v_messages')->where('id',$id)->get();
+        $datas = Message :: find($id);
         if (empty($datas)) {
             return view('message.index')->with('datas', $datas);
         }
