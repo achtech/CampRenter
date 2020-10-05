@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 05 oct. 2020 à 12:12
+-- Généré le : lun. 05 oct. 2020 à 17:33
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.3
 
@@ -32,6 +32,7 @@ CREATE TABLE `equipments` (
   `id` int(11) NOT NULL,
   `id_client` int(11) NOT NULL,
   `id_campers_name` int(11) NOT NULL,
+  `id_status_equipments` int(11) NOT NULL,
   `image` varchar(50) NOT NULL,
   `brand` varchar(100) NOT NULL,
   `model` varchar(100) NOT NULL,
@@ -77,9 +78,9 @@ CREATE TABLE `equipments` (
 -- Déchargement des données de la table `equipments`
 --
 
-INSERT INTO `equipments` (`id`, `id_client`, `id_campers_name`, `image`, `brand`, `model`, `id_licence_categories`, `value_of_vehicle`, `license_plate_number`, `seat_number`, `sleeping_places`, `id_equipment_categories`, `id_transmissions`, `id_fuels`, `vehicle_licence`, `length`, `width`, `height`, `description_equipment`, `location`, `zip_code`, `city`, `country`, `position_x`, `position_y`, `price_per_day`, `minimal_rent_days`, `included_kilometres`, `minimum_age`, `animals_allowed`, `animal_description`, `license_needed`, `licence_needed_desc`, `license_age`, `licence_age_desc`, `smoking_allowed`, `availability`, `is_confirmed`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 10, 1, 'camp1.jpg', 'Caravane', 'Caravane', 1, 'Caravane', '5', '12', 2, 2, 1, 2, '3', '33', '33', '33', 'Perfect for beginners and those who would like to try out a caravan because our caravan is very compact and light. It is easy to drive and can be pushed and parked by hand by two or three people. The caravan is new, our family bought it new in summer 2018.', 'ALLEMAGNE', NULL, NULL, NULL, NULL, NULL, 44, '3', '2222', '22', 'NO', 'NO', 'NO', 'NO', 'NO', 'NO', 'NO', 1, 1, '2020-09-09', '2020-09-25', 1, 1),
-(2, 10, 1, 'camp1.jpg', 'e', 'A', 1, 'A', 'A', 'A', 22, 1, 1, 1, 'A', 'A', 'A', 'A', 'A', 'A', NULL, NULL, NULL, NULL, NULL, 122, 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 0, 0, '2020-09-16', '2020-09-24', 2, 2);
+INSERT INTO `equipments` (`id`, `id_client`, `id_campers_name`, `id_status_equipments`, `image`, `brand`, `model`, `id_licence_categories`, `value_of_vehicle`, `license_plate_number`, `seat_number`, `sleeping_places`, `id_equipment_categories`, `id_transmissions`, `id_fuels`, `vehicle_licence`, `length`, `width`, `height`, `description_equipment`, `location`, `zip_code`, `city`, `country`, `position_x`, `position_y`, `price_per_day`, `minimal_rent_days`, `included_kilometres`, `minimum_age`, `animals_allowed`, `animal_description`, `license_needed`, `licence_needed_desc`, `license_age`, `licence_age_desc`, `smoking_allowed`, `availability`, `is_confirmed`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 10, 1, 0, 'camp1.jpg', 'Caravane', 'Caravane', 1, 'Caravane', '5', '12', 2, 2, 1, 2, '3', '33', '33', '33', 'Perfect for beginners and those who would like to try out a caravan because our caravan is very compact and light. It is easy to drive and can be pushed and parked by hand by two or three people. The caravan is new, our family bought it new in summer 2018.', 'ALLEMAGNE', NULL, NULL, NULL, NULL, NULL, 44, '3', '2222', '22', 'NO', 'NO', 'NO', 'NO', 'NO', 'NO', 'NO', 1, 1, '2020-09-09', '2020-09-25', 1, 1),
+(2, 10, 1, 0, 'camp1.jpg', 'e', 'A', 1, 'A', 'A', 'A', 22, 1, 1, 1, 'A', 'A', 'A', 'A', 'A', 'A', NULL, NULL, NULL, NULL, NULL, 122, 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 0, 0, '2020-09-16', '2020-09-24', 2, 2);
 
 --
 -- Index pour les tables déchargées
@@ -94,7 +95,8 @@ ALTER TABLE `equipments`
   ADD KEY `fk_id_equipment_categories` (`id_equipment_categories`),
   ADD KEY `fk_id_transmissions` (`id_transmissions`),
   ADD KEY `fk_id_fuels` (`id_fuels`),
-  ADD KEY `id_client` (`id_client`);
+  ADD KEY `id_client` (`id_client`),
+  ADD KEY `id_status_equipments` (`id_status_equipments`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées

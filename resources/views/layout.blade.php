@@ -65,10 +65,10 @@
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
-                            
+
                         </a>
                     </div>
-                    
+
                     <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
                         data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
@@ -83,7 +83,7 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                         <h3>{{$titlePage}}</h3>
-                        <!-- End Notification -->                        
+                        <!-- End Notification -->
                         <!-- ============================================================== -->
                     </ul>
                     <!-- ============================================================== -->
@@ -195,7 +195,7 @@
                                         href="{{ url('lang/de') }}" class="dropdown-item">DE</a>
                                     <a class="form-control" style="display:unset !important;padding:5px;color:@if(app()->getLocale()=='fr') black;@endif"
                                         href="{{ url('lang/fr') }}" class="dropdown-item">FR</a>
-                                    
+
                                 </div> </div>
                         </li>
                     </ul>
@@ -214,64 +214,64 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                    <li class="sidebar-item{{ $activePage == 'dashboard' ? ' selected' : '' }}"> 
-                        <a class="sidebar-link sidebar-link" 
-                            href="/" 
+                    <li class="sidebar-item{{ $activePage == 'dashboard' ? ' selected' : '' }}">
+                        <a class="sidebar-link sidebar-link"
+                            href="/"
                             aria-expanded="false">
                             <i class="icon-home"></i>
                             <span class="hide-menu">
                             {{ __('backend.dashboard.lbl') }}</span>
                         </a>
                     </li>
-                    <li class="sidebar-item{{ $activePage == 'user' ? ' selected' : '' }}"> 
+                    <li class="sidebar-item{{ $activePage == 'user' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('user.index')}}" aria-expanded="false">
                         <i class="icon-user"></i>
                             <span class="hide-menu"> {{ __('backend.menu_user_managment.lbl') }}</span>
                         </a>
                     </li>
-                    
-                    <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}"> 
+
+                    <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('client.index')}}" aria-expanded="false">
                         <i class="icon-people"></i>
                             <span class="hide-menu"> {{ __('backend.menu_clients.lbl') }}</span>
                         </a>
                     </li>
-                    <li class="sidebar-item"> 
+                    <li class="sidebar-item{{ $activePage == 'equipment' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('equipment.index')}}" aria-expanded="false">
                         <i class="icon-grid"></i>
                             <span class="hide-menu">{{ __('backend.menu_campers.lbl') }}</span>
                         </a>
                     </li>
-                    <li class="sidebar-item"> 
+                    <li class="sidebar-item">
 
                     </li>
-                    <li class="sidebar-item{{ $activePage == 'booking' ? ' selected' : '' }}"> 
+                    <li class="sidebar-item{{ $activePage == 'booking' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('booking.index')}}" aria-expanded="false">
                         <i class="icon-wallet"></i>
                             <span class="hide-menu">{{ __('backend.menu_booking.lbl') }}</span>
                         </a>
                     </li>
-                    <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}"> 
+                    <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('insurance.index')}}" aria-expanded="false">
                         <i class="icon-book-open"></i>
                             <span class="hide-menu">{{ __('backend.menu_insurances.lbl') }}</span>
                         </a>
                     </li>
-                    <li class="sidebar-item{{ $activePage == 'billing' ? ' selected' : '' }}"> 
+                    <li class="sidebar-item{{ $activePage == 'billing' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('billing.index')}}" aria-expanded="false">
                             <i class="fas fa-money-bill-alt"></i>
                             <span class="hide-menu">{{ __('backend.billings.lbl') }}</span>
                         </a>
                     </li>
-                    <li class="sidebar-item{{ $activePage == 'message' ? ' selected' : '' }}"> 
-                        <a class="sidebar-link sidebar-link" 
-                            href="{{route('message.index')}}" 
+                    <li class="sidebar-item{{ $activePage == 'message' ? ' selected' : '' }}">
+                        <a class="sidebar-link sidebar-link"
+                            href="{{route('message.index')}}"
                             aria-expanded="false">
                             <i class="icon-bubble"></i>
                             <span class="hide-menu">{{ __('backend.menu_message.lbl') }} </span>
                         </a>
                     </li>
-                    <li class="sidebar-item"> 
+                    <li class="sidebar-item">
                         <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <i class="icon-settings"></i>
                             <span class="hide-menu">{{ __('backend.menu_settings.lbl') }}</span>
@@ -287,18 +287,18 @@
                                     </span></a>
                             </li>
                             <li class="sidebar-item"><a href="{{route('promotion.index')}}" class="sidebar-link"><span
-                                class="hide-menu">{{ __('backend.menu_promotion.lbl') }} 
+                                class="hide-menu">{{ __('backend.menu_promotion.lbl') }}
                         </span></a>
                 </li>
                             <li class="sidebar-item"><a href="{{route('licenceCategory.index')}}" class="sidebar-link"><span
-                                        class="hide-menu">{{ __('backend.menu_licence_category.lbl') }} 
+                                        class="hide-menu">{{ __('backend.menu_licence_category.lbl') }}
                                     </span></a>
                             </li>
                             <li class="sidebar-item"><a  href="{{route('equipmentCategory.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> {{ __('backend.menu_equipment_category.lbl') }} 
+                                            class="hide-menu"> {{ __('backend.menu_equipment_category.lbl') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"> 
+                            <li class="sidebar-item">
                                 <a href="{{route('inssuranceCompany.index')}}" class="sidebar-link">
                                     <span class="hide-menu">{{ __('backend.menu_inssurance_providers.lbl') }}</span>
                                 </a>
@@ -321,7 +321,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

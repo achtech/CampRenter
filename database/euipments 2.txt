@@ -1,0 +1,1 @@
+INSERT INTO `status_equipments` (`id`, `label_en`, `label_fr`, `label_de`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES ('2', 'status_2_EN', 'status_2_FR', 'status_2_DE', NULL, NULL, NULL, NULL);
