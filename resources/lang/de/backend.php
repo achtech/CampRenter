@@ -111,7 +111,7 @@ return [
     'billing_managment.lbl' => 'Abrechnungsmanagement',
     'equipment_detail.lbl' => 'Ausrüstungsdetail',
     'rent_management.lbl' => 'Mietmanagement',
-    
+
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Benutzer',
     //billing
@@ -119,4 +119,5 @@ return [
     'current_amount.lbl' => 'Aktueller Betrag',
     'confirmed_amount.lbl' => 'Bestätigter Betrag',
     'detail.lbl' => 'Detail',
+    'no_data_to_confirm.lbl' => 'Keine Camper zu bestätigen',
 ];
