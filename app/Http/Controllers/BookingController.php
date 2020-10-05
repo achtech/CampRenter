@@ -134,7 +134,6 @@ class BookingController extends Controller
      */
     public function search(Request $request)
     {
-        
         $datasClients = DB::table('clients')->get();
         $dateFrom = $request->get('dateFrom');
         $dateTo = $request->get('dateTo'); 
@@ -163,9 +162,14 @@ class BookingController extends Controller
             ->Where('id_bookings',$id)
             ->WhereNotNull('id_renter')
             ->orderBy('ordre_message','asc')->get();
+        $datas = DB::table('bookingdetails')->get();
+        $datasClients = DB::table('clients')->get();
         if (empty($dataMessOwner) && empty($dataMessRenter) ) {
             return redirect(route('booking.index'));
         }
-        return view('booking.chat')->with('dataMessOwner', $dataMessOwner)->with('dataMessRenter', $dataMessRenter)->with('bookingId', $id);
+        return view('booking.chat')->with('dataMessOwner', $dataMessOwner)->with('dataMessRenter', $dataMessRenter)
+        ->with('bookingId', $id)
+        ->with('datas', $datas)
+        ->with('datasClients', $datasClients);
     }
 }
