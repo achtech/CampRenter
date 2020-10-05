@@ -14,7 +14,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $datas = DB::table('v_messages')->get();
+        $datas = Message::paginate(10);
         return view('message.index')->with('datas', $datas);
     }
     /**

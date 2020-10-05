@@ -12,7 +12,7 @@
                                             <label class="col-md-2">{{ __('backend.message_email_from.lbl') }} </label>
                                             <div class="col-md-10">
                                                 <div class="row">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-7">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control"
                                                                 placeholder="First Input &amp; First Row">
@@ -30,27 +30,27 @@
                                                             <input type="text" class="form-control"
                                                                 placeholder="First Input &amp; First Row">
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Second Input &amp; First Row">
-                                                        </div>
-                                                    </div>
+                                                    </div>     
                                                 </div>
                                                 <div class="row">
+                                                    <label class="col-md-2">{{ __('backend.message_email_subject.lbl') }} </label>
                                                     <div class="col-md-8">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control"
                                                                 placeholder="First Input &amp; Second Row">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-2">{{ __('backend.message_email_answer.lbl') }} </label>
+                                                    <div class="col-md-8">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control"
-                                                                placeholder="Second Input &amp; Second Row">
+                                                                placeholder="First Input &amp; Second Row">
                                                         </div>
                                                     </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>

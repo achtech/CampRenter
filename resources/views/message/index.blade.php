@@ -11,7 +11,6 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.photo.lbl') }}</th>
                                     <th>{{ __('backend.contact.lbl') }}</th>
                                     <th>{{ __('backend.email.lbl') }}</th>
                                     <th>{{ __('backend.telephone.lbl') }}</th>
@@ -23,23 +22,21 @@
                             </thead>
                             <tbody>
                             @foreach($datas as $item)
-                                <tr>
-                                    <td>
-                                    <img style="width:64px;height:64px;" src="/assets/images/messages/{{$item->image}}" ></td>
-                                    <td>{{$item->client_name}} {{$item->client_last_name }}</td>
+                                <tr class="{{$item->status== 1 ? 'css-status-read' : 'css-status-not-read'}}">
+                                    <td>{{$item->full_name}}</td>
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->telephone}}</td>
                                     <td>{{$item->subject}}</td>
                                     <td>{{$item->send_date}}</td>
-                                    <td>{{$item->status}}</td>
+                                    <td>{{ __('backend.message_status_'.$item->status.'.lbl') }}</td>
                                    <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <a href="{{ route('message.show',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="fa fa-newspaper"></i></a>
+                                                <a href="{{ route('message.show',$item->id)}}" class="btn btn-success btn-sm rounded-0" data-toggle="tooltip" title="Detail Message"><i class="fa fa-newspaper"></i></a>
                                             </li> 
                                             <li class="list-inline-item">
                                                 <div class="container">
-                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
+                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="myModal" role="dialog">
                                                     <div class="modal-dialog">
@@ -52,7 +49,7 @@
                                                                 <p>{{ __('backend.message_delete_message.lbl') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="{{ route('message.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
+                                                                    <a href="{{ route('message.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0" data-toggle="tooltip" title="Delete">Delete</a>
                                                                     <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                                 </div>
                                                             </div>
@@ -68,7 +65,6 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>{{ __('backend.photo.lbl') }}</th>
                                     <th>{{ __('backend.contact.lbl') }}</th>
                                     <th>{{ __('backend.email.lbl') }}</th>
                                     <th>{{ __('backend.telephone.lbl') }}</th>
@@ -85,4 +81,9 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 @endsection

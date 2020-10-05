@@ -9095,3 +9095,9 @@ strong {
   .space-top{
     padding-top: 20px;;
   }
+.css-status-not-read{
+  background-color:  rgba(133, 189, 122, 0.9) !important;
+}
+.css-status-read{
+  background-color: #fafbfb !important;
+}
