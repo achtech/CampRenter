@@ -36,10 +36,10 @@ class DashboardController extends Controller
         $month_campunit = $this->getTotal('month','campunit');
         $previous_month_campunit = $this->getTotal('previous_month','campunit');
 
-        $today_total = 0;//$today_campunit+$today_owner;
-        $week_total = 0;//$week_campunit+$week_owner;
-        $month_total = 0;//$month_campunit+$month_owner;
-        $previous_month_total = 0;//$previous_month_campunit+$previous_month_owner;
+        $today_total = $today_campunit+$today_owner;
+        $week_total = $week_campunit+$week_owner;
+        $month_total = $month_campunit+$month_owner;
+        $previous_month_total = $previous_month_campunit+$previous_month_owner;
  		$messages = Message::join('clients', 'messages.id_client', '=', 'clients.id')
             ->get();
         return view('dashboard')
@@ -79,7 +79,10 @@ class DashboardController extends Controller
     }
 
     public function getIncome($startDate,$endDate,$owner){
-        return 'start: '.$startDate.', end:'.$endDate.', isOwner: '.$owner;
+        $data = Booking::where('dateFrom','<=',$owner?$endDate:$startDate)
+                       ->where('dateTo','>=',$owner?$endDate:$startDate)
+                       ->get()->sum('total');
+                       return $data;
         
     }
 

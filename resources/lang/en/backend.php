@@ -15,7 +15,8 @@ return [
     'update.btn' => 'Update',
     'no_data_found.lbl' => 'No data found',
     'new_password.lbl' => 'New password',
-    'confirm_password.lbl' => 'confirm password',    /** Client  */
+    'confirm_password.lbl' => 'confirm password',    
+    /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
     'client_password.lbl' => 'Password',
@@ -246,8 +247,6 @@ return [
     'new_licence_category.btn' => 'New Licence Category',
     'licence_category_list.lbl' => 'List of Camper Categories',
     'message_delete_licence_category.lbl' => 'Do you want to delete this Camper Category',
-    '' => '',
-    '' => '',
 
     /** Dashboard */
     'dashboard_confirm_camper.lbl' => 'Campers to be confirmed',
