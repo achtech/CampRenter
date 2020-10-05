@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Equipment;
+use App\Models\Message;
 
 class DashboardController extends Controller
 {
@@ -21,6 +22,7 @@ class DashboardController extends Controller
     {
         $datas = Equipment::where('is_confirmed', 0)
             ->join('clients', 'equipments.id_client', '=', 'clients.id')
+            ->join('camper_names', 'equipments.id_campers_name', '=', 'camper_names.id')
             ->get();
         $bookings = Booking::join('clients', 'bookings.id_clients', '=', 'clients.id')
             ->get();
@@ -38,7 +40,8 @@ class DashboardController extends Controller
         $week_total = 0;//$week_campunit+$week_owner;
         $month_total = 0;//$month_campunit+$month_owner;
         $previous_month_total = 0;//$previous_month_campunit+$previous_month_owner;
-
+ 		$messages = Message::join('clients', 'messages.id_client', '=', 'clients.id')
+            ->get();
         return view('dashboard')
             ->with('today_owner', $today_owner)
             ->with('week_owner', $week_owner)
@@ -53,7 +56,10 @@ class DashboardController extends Controller
             ->with('month_total', $month_total)
             ->with('previous_month_total', $previous_month_total)
             ->with('datas', $datas)
-            ->with('bookings', $bookings);
+            ->with('bookings', $bookings)
+			->with('messages', $messages);
+       
+        
     }
 
     public function getTotal($period,$user){

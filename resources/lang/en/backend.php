@@ -45,7 +45,6 @@ return [
     'client_avatar.lbl' => 'Avatar',
     'client_total_solde.lbl' => 'Total Solde',
     'client_current_solde.lbl' => 'Current Solde',
-    'owner_name.lbl' => 'Owner Name',
     'clients.lbl' => 'Clients',
     /** End Client */
 
@@ -106,7 +105,7 @@ return [
     'transmission_list.lbl' => 'List of Transmission',
     'message_delete_transmission.lbl' => 'Do you want to delete this Transmission',
     /** End Transmission */
-    
+
 
     /* ---- Commission-----*/
     'commission_managment.lbl' => 'Commission Management',
@@ -180,7 +179,7 @@ return [
     'per_day.lbl' => 'day',
     'detail.btn' => 'Detail',
     'read_more.btn' => 'Read More',
-    'renter_name.lbl' => 'Renter Name',
+    'owner_name.lbl' => 'Owner Name',
     'date_booking.lbl' => 'Date',
     'dashboard_action.lbl' => 'Action',
     /** End Dashboard */
@@ -203,7 +202,6 @@ return [
     'billing_date_to.lbl' => 'End date',
     'billing_date_filter.lbl' => 'Filter',
     'apply.btn' => 'Apply',
-    'owner_name.lbl' => 'Owner',
     'no_equipment.lbl' => 'No Equipment Found',
 
     //Menu
@@ -227,7 +225,7 @@ return [
     'menu_backup.lbl' => 'Backup',
     'settings_profil.lbl' => 'Profil Managment',
 
-    /** Avatar */   
+    /** Avatar */
     'avatar_managment.lbl' => 'Avatar managment',
     'avatar_name.lbl' => 'Label',
     'new_avatar.btn' => 'New avatar',
@@ -273,9 +271,6 @@ return [
     'smoking_allowed.lbl' => 'Smoking Allowed',
     'licence_age_desc.lbl' => 'Licence Age Desc',
     'availability.lbl' => 'Availability',
-    '' => '',
-    '' => '',
-    '' => '',
     /** End Equipment */
 
     /* ------------ Booking -----------*/
@@ -295,6 +290,11 @@ return [
     'billing_managment.lbl' => 'Billing Management',
     'equipment_detail.lbl' => 'Equipment Detail',
     'rent_management.lbl' => 'Rent Management',
+    //billing
+    'last_booking.lbl' => 'Last Booking',
+    'current_amount.lbl' => 'Current Amount',
+    'confirmed_amount.lbl' => 'Confirmed Amount',
+    'detail.lbl' => 'Detail',
 
 
 
@@ -302,4 +302,6 @@ return [
 
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Users',
+    'no_data_to_confirm.lbl' => 'No campers to confirm',
+
 ];

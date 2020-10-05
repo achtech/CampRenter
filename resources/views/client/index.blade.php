@@ -46,11 +46,11 @@
                                     <td>{{App\Http\Controllers\ClientController::getCurrentSolde($item->id)}}</td>
                                     <td>{{App\Http\Controllers\ClientController::getTotalsSolde($item->id)}}</td>
                                     <td>
-                                        <a href="{{ route('client.index').'/'.$item->id.'/equipmentDetail' }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.equipment.btn') }}</a>
+                                        <a href="{{ route('equipment.detailEquipment',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.equipment.btn') }}</a>
 
                                     </td>
                                     <td>
-                                        <a href="{{ route('client.index').'/'.$item->id.'/rentDetail' }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.rentes.btn') }}</a>
+                                        <a href="{{ route('equipment.detailBooking',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.rentes.btn') }}</a>
        
                                     </td>
                                     <td>
