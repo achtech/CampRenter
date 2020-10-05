@@ -18,7 +18,7 @@ class Controller extends BaseController
 
 
     static function getMessageCount(){
-        return Message::where('status',0)->orderby('date_time')->get()->count();
+        return Message::where('status',0)->orderby('send_date')->get()->count();
     }
 
     
@@ -27,7 +27,7 @@ class Controller extends BaseController
     }
 
     static function getNotReadedMessages(){
-        return Message::where('status',0)->orderby('date_time')->get();
+        return Message::where('status',0)->orderby('send_date')->get();
     }
 
     static function getNotConfirmedEquipments(){

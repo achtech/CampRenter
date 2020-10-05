@@ -111,7 +111,7 @@
                                                     <div class="w-75 d-inline-block v-middle pl-2">
                                                         <h6 class="message-title mb-0 mt-1">{{$msg->full_name}}</h6> <span
                                                             class="font-12 text-nowrap d-block text-muted">{{$msg->subject}}</span>
-                                                        <span class="font-12 text-nowrap d-block text-muted">{{$msg->date_time}}</span>
+                                                        <span class="font-12 text-nowrap d-block text-muted">{{$msg->send_date}}</span>
                                                     </div>
                                                 </a>
                                             @endforeach
