@@ -151,9 +151,9 @@ Breadcrumbs::for('add_message', function ($trail) {
 });
 
 // Message
-Breadcrumbs::for('edit_message', function ($trail) {
+Breadcrumbs::for('edit_message', function ($trail,$messageId) {
     $trail->parent('message');
-    $trail->push('Edit Message', route('message.edit'));
+    $trail->push('Edit Message', route('message.edit',$messageId));
 });
 
 // Message

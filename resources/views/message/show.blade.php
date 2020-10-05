@@ -6,38 +6,23 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Multiple Input With Inline Label</h4>
                                 <form action="#">
                                     <div class="form-body">
                                         <div class="form-group row">
-                                            <label class="col-md-2">Label </label>
+                                            <label class="col-md-2">{{ __('backend.message_email_from.lbl') }} </label>
                                             <div class="col-md-10">
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <input type="text" class="form-control"
                                                                 placeholder="First Input &amp; First Row">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="First Input &amp; Second Row">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Second Input &amp; First Row">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Second Input &amp; Second Row">
-                                                        </div>
+                                                        </div>   
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-2">Multiple width Input Label </label>
+                                            <label class="col-md-2">{{ __('backend.message_email_to.lbl') }} </label>
                                             <div class="col-md-10">
                                                 <div class="row">
                                                     <div class="col-md-7">

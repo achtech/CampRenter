@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Message;
 
@@ -32,12 +33,11 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        $datas = Message::find($id);
-        if (empty($data)) {
+        $datas = DB::table('v_messages')->where('id',$id)->get();
+        if (empty($datas)) {
             return view('message.index')->with('datas', $datas);
         }
-        $client  = Client::find($datas->$id_client);
-        return view('message.show')->with('datas', $datas)->with('client', $client);
+        return view('message.show')->with('datas', $datas)->with('messageId',$id);
     }
     /**
      * Store a newly created resource in storage.
