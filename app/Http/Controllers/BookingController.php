@@ -29,8 +29,6 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-
-        
         $datas = DB::table('bookingdetails')->get();
         $datasClients = DB::table('clients')->get();
         return view('booking.index')->with('datas', $datas)->with('datasClients', $datasClients);
@@ -52,7 +50,22 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('booking.index'));
+        $data = Booking::find($id);
+        if (empty($data)) {
+            return redirect(route('booking.index'));
+        }
+        return view('booking.show')->with('data', $data);
+
+    }
+    public function detail($id)
+    {
+        $data = DB::table('bookingdetails')->Where('id',$id)->first();
+        $totalPrice = $data-> price_per_day * $data-> bookingDay;
+        if (empty($data)) {
+            return redirect(route('booking.index'));
+        }
+        return view('booking.show')->with('data', $data)->with('totalPrice',$totalPrice);
+
     }
     /**
      * Store a newly created resource in storage.
@@ -122,18 +135,37 @@ class BookingController extends Controller
     public function search(Request $request)
     {
         
-        $d1 = $request->get('dateform');
-        $d2 = $request->get('dateto'); 
-        $date1 = Carbon::parse($d1)->format('yy-m-d');
-        $date2 = Carbon::parse($d2)->format('yy-m-d');
+        $datasClients = DB::table('clients')->get();
+        $dateFrom = $request->get('dateFrom');
+        $dateTo = $request->get('dateTo'); 
+        $date1 = Carbon::parse($dateFrom)->format('yy-m-d');
+        $date2 = Carbon::parse($dateTo)->format('yy-m-d');
         $owner = $request->get('ownerId');
-        $dataSearch = DB::table('bookingdetails')->Where('client_id',$owner)
+        $datas = DB::table('bookingdetails')->Where('client_id',$owner)
         ->orWhere(function ($q) use ($date1,$date2) {
             $q->where('dateFrom','>=', $date1)
                 ->where('dateTo', '<=',$date2);
         })->get();
 
-        return redirect(route('booking.index'))->with('dataSearch', $dataSearch)
-        ->with('dateform',$d1)->with('dateto',$d2);
+        return view('booking.index')
+            ->with('datas', $datas)
+            ->with('dateFrom',$dateFrom)
+            ->with('dateTo',$dateTo)
+            ->with('datasClients', $datasClients);
+    }
+    public function chat($id)
+    {
+        $dataMessOwner = DB::table('v_chats_bookings')
+            ->Where('id_bookings',$id)
+            ->WhereNotNull('id_owner')
+            ->orderBy('ordre_message','asc')->get();
+        $dataMessRenter = DB::table('v_chats_bookings')
+            ->Where('id_bookings',$id)
+            ->WhereNotNull('id_renter')
+            ->orderBy('ordre_message','asc')->get();
+        if (empty($dataMessOwner) && empty($dataMessRenter) ) {
+            return redirect(route('booking.index'));
+        }
+        return view('booking.chat')->with('dataMessOwner', $dataMessOwner)->with('dataMessRenter', $dataMessRenter)->with('bookingId', $id);
     }
 }

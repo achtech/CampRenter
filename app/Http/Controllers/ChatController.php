@@ -1,31 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
+
+  
+ 
+use App\Models\Booking;
+use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
+use Carbon\carbon;
 
-use App\Models\Message;
-
-class MessageController extends Controller
+class BookingController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datas = DB::table('v_messages')->get();
-        return view('message.index')->with('datas', $datas);
+        //$datas = DB::table('bookingdetails')->get();
+        //$datasClients = DB::table('clients')->get();
+        return view('booking.index');
     }
     /**
      * Show the form for creating a new resource.
@@ -34,6 +31,7 @@ class MessageController extends Controller
      */
     public function create()
     {
+        return view('Booking.create');
     }
     /**
      * Display the specified resource.
@@ -43,11 +41,13 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        $datas = DB::table('v_messages')->where('id',$id)->get();
-        if (empty($datas)) {
-            return view('message.index')->with('datas', $datas);
-        }
-        return view('message.show')->with('datas', $datas)->with('messageId',$id);
+        
+
+    }
+    public function detail($id)
+    {
+     
+
     }
     /**
      * Store a newly created resource in storage.
@@ -57,8 +57,10 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+        $input = $request->all();
+        $data = Booking::create($input);
+        return redirect(route('booking.index'))->with('success', 'Item added succesfully');
     }
-
 
 
     /**
@@ -80,6 +82,7 @@ class MessageController extends Controller
      */
     public function update(Request $request, $id)
     {
+
     }
 
     //
@@ -92,5 +95,18 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
+
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $date1,$date2
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        
+    }
+  
 }

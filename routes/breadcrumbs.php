@@ -200,10 +200,16 @@ Breadcrumbs::for('booking', function ($trail) {
 });
 
 // Booking details
-Breadcrumbs::for('detail_booking', function ($trail,$booking) {
+Breadcrumbs::for('detail_booking', function ($trail,$data) {
     $trail->parent('booking');
-    $trail->push('Booking detail:'.$booking->camperNamer, route('booking.show'));
+    $trail->push('Booking detail', route('booking.detail',$data->client_name));
 });
+// Booking details
+Breadcrumbs::for('chat_booking', function ($trail,$id) {
+    $trail->parent('booking');
+    $trail->push('chat detail', route('booking.chat',$id));
+});
+
 
 //  Home >Avatar
 Breadcrumbs::for('avatar', function ($trail) {
@@ -236,9 +242,15 @@ Breadcrumbs::for('add_message', function ($trail) {
 });
 
 // Message
-Breadcrumbs::for('edit_message', function ($trail) {
+Breadcrumbs::for('edit_message', function ($trail,$messageId) {
     $trail->parent('message');
-    $trail->push('Edit Message', route('message.edit'));
+    $trail->push('Edit Message', route('message.edit',$messageId));
+});
+
+// Message
+Breadcrumbs::for('detail_message', function ($trail,$id) {
+    $trail->parent('message');
+    $trail->push('Detail Message', route('message.show',$id));
 });
 
 ?>
