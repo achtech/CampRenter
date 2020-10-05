@@ -142,12 +142,14 @@ class ClientController extends Controller
     }
     public function activateClient($id)
     {
+        //dd($id);
         $data = Client::find($id);
         if (empty($data)) {
             return redirect(route('client.index'));
         }
         $data->status = 'active';
         $data->save();
+        
         return redirect(route('client.index'));
     }
     public function checkEquipmentDetail($id)
