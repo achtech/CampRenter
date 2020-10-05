@@ -8,15 +8,14 @@ return [
     'operation.lbl' => 'Operation',
     'search.lbl' => 'Search',
     'dashboard.lbl' => "Dashboard",
-    'edit.btn' => 'Edit',
+	'photo.lbl'=> 'Picture',	'edit.btn' => 'Edit',
     'change_password.btn' => 'Change password',
     'profile_managment.lbl' => 'Profile managment',
     'picture.lbl' => 'Photo',
     'update.btn' => 'Update',
     'no_data_found.lbl' => 'No data found',
     'new_password.lbl' => 'New password',
-    'confirm_password.lbl' => 'confirm password',
-    /** Client  */
+    'confirm_password.lbl' => 'confirm password',    /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
     'client_password.lbl' => 'Password',
@@ -375,17 +374,21 @@ return [
     'booking_owner.lbl' => 'Owner',
     'booking_renter.lbl' => 'Renter',
     'booking_select_choose.lbl' => 'Choose',
+    'renter_first_name.lbl' => 'Name of renter',
+    'renter_last_name.lbl' => 'Last name of renter',
+    'booking_total_days.lbl' => 'Total days',
+    'booking_total_price.lbl' => 'Total price',
+
     'equipment_description.lbl' => 'Description',
     'client_management.lbl' => 'Client Management',
     'billing_managment.lbl' => 'Billing Management',
     'equipment_detail.lbl' => 'Equipment Detail',
     'rent_management.lbl' => 'Rent Management',
-    //billing
+	//billing
     'last_booking.lbl' => 'Last Booking',
     'current_amount.lbl' => 'Current Amount',
     'confirmed_amount.lbl' => 'Confirmed Amount',
     'detail.lbl' => 'Detail',
-
 
 
 
