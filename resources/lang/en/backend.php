@@ -15,7 +15,8 @@ return [
     'update.btn' => 'Update',
     'no_data_found.lbl' => 'No data found',
     'new_password.lbl' => 'New password',
-    'confirm_password.lbl' => 'confirm password',    /** Client  */
+    'confirm_password.lbl' => 'confirm password',    
+    /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
     'client_password.lbl' => 'Password',
@@ -239,6 +240,12 @@ return [
     'telephone.lbl' => 'Phone',
     'subject.lbl' => 'Subject',
     'send_date.lbl' => 'Date',
+    'message_email_from.lbl' => 'From',
+    'message_email_to.lbl' => 'To',
+    'message_email_subject.lbl'=>'Subject',
+    'message_email_answer.lbl'=>'Answer',
+    'message_status_0.lbl'=>'Not read',
+    'message_status_1.lbl'=>'Read',
 
 
     /** licence_category */
@@ -246,8 +253,6 @@ return [
     'new_licence_category.btn' => 'New Licence Category',
     'licence_category_list.lbl' => 'List of Camper Categories',
     'message_delete_licence_category.lbl' => 'Do you want to delete this Camper Category',
-    '' => '',
-    '' => '',
 
     /** Dashboard */
     'dashboard_confirm_camper.lbl' => 'Campers to be confirmed',
