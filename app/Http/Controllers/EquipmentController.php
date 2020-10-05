@@ -68,6 +68,40 @@ class EquipmentController extends Controller
         return view('equipment.details');
     }
 
+    public function detailBooking($id)
+    {
+        $data = Equipment::find($id);
+        $clients = Client::find($data->id_client) != null ? Client::find($data->id_client)->first() : new Client();
+        $equipment_categories = EquipmentCategory::find($data->id_licence_categories)->first();
+        $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
+        $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
+        $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
+        return view('equipment.detailBooking')
+            ->with('data', $data)
+            ->with('clients', $clients)
+            ->with('equipmentCategory', $equipment_categories)
+            ->with('licenceCategories', $licenceCategories)
+            ->with('fuels', $fuels)
+            ->with('transmissions', $transmissions);
+    }
+
+    public function detailEquipment($id)
+    {
+        $data = Equipment::find($id);
+        $clients = Client::find($data->id_client) != null ? Client::find($data->id_client)->first() : new Client();
+        $equipment_categories = EquipmentCategory::find($data->id_licence_categories)->first();
+        $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
+        $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
+        $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
+        return view('equipment.detailEquipment')
+            ->with('data', $data)
+            ->with('clients', $clients)
+            ->with('equipmentCategory', $equipment_categories)
+            ->with('licenceCategories', $licenceCategories)
+            ->with('fuels', $fuels)
+            ->with('transmissions', $transmissions);
+    }
+
     public function detail($id)
     {
         $data = Equipment::find($id);

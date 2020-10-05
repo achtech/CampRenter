@@ -80,6 +80,19 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'equipment.show',
     ]]);
 
+    Route::get('equipment/{id}/detailBooking', 'App\Http\Controllers\EquipmentController@detailBooking')->name('equipment.detailBooking');
+    Route::get('equipment/{id}/detailEquipment', 'App\Http\Controllers\EquipmentController@detailEquipment')->name('equipment.detailEquipment');
+    Route::get('equipment/{id}/detail', 'App\Http\Controllers\EquipmentController@detail')->name('equipment.detail');
+    Route::get('equipment/{id}/delete', 'App\Http\Controllers\EquipmentController@destroy')->name('equipment.destroy');
+    Route::resource('equipment', 'App\Http\Controllers\EquipmentController', ['except' => 'destroy', 'names' => [
+        'index' => 'equipment.index',
+        'create' => 'equipment.create',
+        'update' => 'equipment.update',
+        'edit' => 'equipment.edit',
+        'store' => 'equipment.store',
+        'show' => 'equipment.show',
+    ]]);
+
     //ADMIN->INSURANCE
     Route::get('insurance/{id}/delete', 'App\Http\Controllers\InsuranceController@destroy')->name('insurance.destroy');
     Route::resource('insurance', 'App\Http\Controllers\InsuranceController', ['except' => 'destroy', 'names' => [
