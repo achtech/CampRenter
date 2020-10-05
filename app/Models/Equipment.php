@@ -26,6 +26,11 @@ class Equipment extends Base
         'height',
         'description',
         'location',
+        'zip_code',
+        'city',
+        'country',
+        'position_x',
+        'position_y',
         'price_per_day',
         'minimal_rent_days',
         'included_kilometres',
@@ -39,7 +44,7 @@ class Equipment extends Base
         'smoking_allowed',
         'availability',
         'status',
-        'confirmed'
+        'confirmed',
 
     ];
 }

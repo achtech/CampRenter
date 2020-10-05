@@ -7,6 +7,8 @@
                 <!-- *************************************************************** -->
                 <!-- Start First Cards -->
                 <!-- *************************************************************** -->
+                <div class="card" >
+                    <div class="card-body">
                 <table  class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
@@ -22,34 +24,35 @@
                             <tbody>
                                 <tr>
                                     <td>{{ __('backend.dashboard_owners_part.lbl') }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$today_owner ?? '0'}}</td>
+                                    <td>{{$week_owner ?? '0'}}</td>
+                                    <td>{{$month_owner ?? '0'}}</td>
+                                    <td>{{$previous_month_owner ?? '0'}}</td>
                                 </tr>
                                 <tr>
                                     <td>{{ __('backend.dashboard_unit_campers_part.lbl') }}</td></td>
-                                    <td></td>
-                                    <td></td>
-                                 <td></td>
-                                    <td></td>
+                                    <td>{{$today_campunit ?? '0'}}</td>
+                                    <td>{{$week_campunit ?? '0'}}</td>
+                                    <td>{{$month_campunit ?? '0'}}</td>
+                                    <td>{{$previous_month_campunit ?? '0'}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <th>{{ __('backend.dashboard_total.lbl') }}</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                    <td>{{$today_total ?? '0'}}</td>
+                                    <td>{{$week_total ?? '0'}}</td>
+                                    <td>{{$month_total ?? '0'}}</td>
+                                    <td>{{$previous_month_total ?? '0'}}</td>
                             </tfoot>
                         </table>
+       </div></div>
                 <!-- *************************************************************** -->
                 <!-- End First Cards -->
                 <!-- *************************************************************** -->
                 <!-- *************************************************************** -->
                 <!-- Start Sales Charts Section -->
                 <!-- *************************************************************** -->
-                <br/>
+               
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card" style="min-height: 423px;">
@@ -71,18 +74,33 @@
                                 @foreach($datas as $item)
                                     <tr>
                                    
-                                        <td>{{$item->equipment_name}} </td>
+                                        <td>
+                                            @if(app()->getLocale()=='en')
+                                                {{$item->label_en}} 
+                                            @if(app()->getLocale()=='de')
+                                                {{$item->label_de}}     
+                                            @if(app()->getLocale()=='fr')
+                                                {{$item->label_fr}}
+                                            @endif
+                                            @endif
+                                            @endif
+                                        </td>
                                         <td>{{$item->client_name}} {{$item->client_last_name}}</td>
-                                        <td><a href="{{ route('camperName.index') }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
+                                        <td><a href="{{ route('equipment.detail',$item->id) }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
                                     </tr>
                                 @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="3" style="text-align: center;">{{ __('backend.no_data_to_confirm.lbl') }}</td>
+                                </tr>
+                                
 								 @endif
                                </tbody>
                             
                         </table>
                         <br/>
                            
-                                <a style="position: absolute;bottom:10px;width: 90%;" href="{{ route('camperName.index') }}" class="btn btn-md waves-effect waves-light btn-rounded btn-primary" 
+                                <a style="position: absolute;bottom:10px;width: 90%;" href="{{ route('equipment.unconfirmedEquipment') }}" class="btn btn-md waves-effect waves-light btn-rounded btn-primary" 
                 >{{ __('backend.read_more.btn') }}</a>
                
                             </div>
@@ -157,7 +175,8 @@
                     <br/>
                     <div class="row">
                         <div class="col-md-12">    
-                            <div class="card-body">
+                            <div class="card" >
+                                <div class="card-body">            
                                 <fieldset class="scheduler-border">
                                     <legend>{{ __('backend.dashboard_recent_message.lbl') }}</legend>
                                     <table id="default_order" class="table table-striped table-bordered">
@@ -169,16 +188,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>  
+                                            @foreach($messages as $item)
                                             <tr>
-                                                <td></td>
-                                                <td>Perfect for beginners and those who would like to try out a caravan because our caravan is very compact and light.</td>
-                                                <td><a href="#">{{ __('backend.dashboard_view_message_details.lbl') }}</a></td>
+                                                <td>{{$item->client_name}} {{$item->client_last_name}}</td>
+                                                <td>{{$item->message}}</td>
+                                                <td><a href="{{ route('message.index') }}">{{ __('backend.dashboard_view_message_details.lbl') }}</a></td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                 
                                 </fieldset>            
-                            </div>
+                            </div> </div>
                         </div>
                     </div>
                     </div>

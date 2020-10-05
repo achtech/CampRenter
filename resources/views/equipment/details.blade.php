@@ -40,6 +40,13 @@
                     <span class="d-none d-lg-block">Bookings</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a href="#location" data-toggle="tab" aria-expanded="false" class="nav-link">
+                    <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
+                    <span class="d-none d-lg-block">Location</span>
+                </a>
+            </li>
         </ul>
 
         <div class="tab-content">
@@ -436,7 +443,7 @@
                 <!-- ============================================================== -->
                 <!-- row -->
                 <div class="row">
-                    
+
                     <div class="col-lg-6" style="display: contents;">
                         <div class="card">
                             <div class="card-body">
@@ -464,10 +471,7 @@
             </div>
 
             <div class="tab-pane" id="bookings">
-                
-            
-
-            <div class="table-responsive">
+                    <div class="table-responsive">
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
@@ -477,13 +481,15 @@
                                     <th>{{ __('backend.client_rents.lbl') }}</th>
                                 </tr>
                             </thead>
-                            
+
                         </table>
                     </div>
+            </div>
 
+            <div class="tab-pane" id="location">
+                    <div class="table-responsive">
 
-
-
+                    </div>
             </div>
         </div>
 

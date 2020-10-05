@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-  
- 
+
+
 use App\Exports\BillingExport;
 use App\Models\Avatars;
 use App\Models\Billing;
 use App\Models\Booking;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,17 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class BillingController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -24,24 +36,69 @@ class BillingController extends Controller
     {
         $todayDate = date("Y-m-d");
         $datas = Billing::join('clients', 'billings.id_client', '=', 'clients.id')
-            ->join('bookings', 'billings.id_booking', '=', 'bookings.id')
-            ->join('equipments', 'bookings.id_equipments', '=', 'equipments.id')
             ->get();
         return view('billing.index')->with('datas', $datas)->with('todayDate', $todayDate);
-        Session::put('datefilter', $todayDate);
+        //Session::put('end_date', $todayDate);
     }
 
-    public function export()
+    public function export(Request $request)
     {
-        return Excel::download(new BillingExport, 'billings.xlsx');
-    }
-    public function filter()
-    {
-        $dateFrom = '';
-        $dateTo = '';
+
+        $fileName = 'billings.csv';
+        $current_date = date("Y-m-d");
+        //$endDate = $request->end_date ?? '';
+        $endDate = Session::get('endDate');
         $datas = Billing::join('bookings', 'billings.id_booking', '=', 'bookings.id')
-            ->where('dateFrom', $dateFrom)
-            ->where('dateTo', $dateTo);
+            ->join('clients', 'billings.id_client', '=', 'clients.id')
+            ->where('dateTo', '=', $endDate)
+            ->where('dateTo', '<', $current_date)->get();
+
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $columns = array('Owner', 'IBAN', 'Amount');
+        $callback = function () use ($datas, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+            if ($datas->count() > 0) {
+                foreach ($datas as $elem) {
+                    $row['Owner']  = $elem->client_name;
+                    $row['IBAN']    = $elem->IBAN;
+                    $row['Amount']    = $elem->confirmed_amount;
+                }
+            } else {
+                $row['Owner']  = '';
+                $row['IBAN']    = '';
+                $row['Amount']    = '';
+            }
+            fputcsv($file, array($row['Owner'], $row['IBAN'], $row['Amount']));
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+        // return Excel::download(new BillingExport, 'billings.xlsx');
+    }
+    public function filter(Request $request)
+    {
+        $todayDate = date("Y-m-d");
+        $startDate = $request->start_date ?? '';
+        $endDate = $request->end_date ?? '';
+        Session::put('endDate', $endDate);
+        $datas = Billing::join('clients', 'billings.id_client', '=', 'clients.id')
+            ->join('bookings', 'billings.id_booking', '=', 'bookings.id')
+            ->where('dateFrom', '>=', $startDate)
+            ->where('dateTo', '<=', $endDate)
+            ->get();
+        return view('billing.index')
+            ->with('datas', $datas)
+            ->with('startDate', $startDate)
+            ->with('endDate', $endDate)
+            ->with('todayDate', $todayDate);
     }
 
     /**

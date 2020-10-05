@@ -95,39 +95,66 @@
                             <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
                                 id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                <span><i data-feather="bell" class="svg-icon"></i></span>
-                                <span class="badge badge-primary notify-no rounded-circle">{{App\Http\Controllers\Controller::getNotificationCount()}}</span>
+                                <span><i data-feather="mail" class="svg-icon"></i></span>
+                                <span class="badge badge-primary notify-no rounded-circle">{{App\Http\Controllers\Controller::getMessageCount()}}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
                                 <ul class="list-style-none">
                                     <li>
                                         <div class="message-center notifications position-relative">
                                             <!-- Message -->
-                                            <a href="{{route('message.index')}}"
-                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                <div class="btn btn-danger rounded-circle btn-circle"><i
-                                                         class="text-white">
-                                                         {{App\Http\Controllers\Controller::getMessageCount()}}
-                                                         </i></div>
-                                                <div class="w-75 d-inline-block v-middle pl-2">
-                                                    <h6 class="message-title mb-0 mt-1">New message</h6>
-                                                    <span class="font-12 text-nowrap d-block text-muted">You have not readed message(s) </span>
-                                                </div>
-                                            </a>
+                                            @foreach(App\Http\Controllers\Controller::getNotReadedMessages() as $msg)
+                                                <a href="{{route('message.show',$msg->id)}}"
+                                                    class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                    <span class="btn btn-primary rounded-circle btn-circle"><i
+                                                            data-feather="box" class="text-white"></i></span>
+                                                    <div class="w-75 d-inline-block v-middle pl-2">
+                                                        <h6 class="message-title mb-0 mt-1">{{$msg->full_name}}</h6> <span
+                                                            class="font-12 text-nowrap d-block text-muted">{{$msg->subject}}</span>
+                                                        <span class="font-12 text-nowrap d-block text-muted">{{$msg->send_date}}</span>
+                                                    </div>
+                                                </a>
+                                            @endforeach
                                             <!-- Message -->
-                                            <a href="{{route('equipment.index')}}"
-                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                <span class="btn btn-success text-white rounded-circle btn-circle"><i
-                                                         class="text-white">
-                                                         {{App\Http\Controllers\Controller::getCampersCount()}}
-                                                      
-                                                         </i></span>
-                                                <div class="w-75 d-inline-block v-middle pl-2">
-                                                    <h6 class="message-title mb-0 mt-1">Equipments</h6>
-                                                    <span
-                                                        class="font-12 text-nowrap d-block text-muted text-truncate">Check the status of some equipment</span>
-                                                </div>
-                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
+                                id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <span><i data-feather="bell" class="svg-icon"></i></span>
+                                <span class="badge badge-primary notify-no rounded-circle">{{App\Http\Controllers\Controller::getCampersCount()}}</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
+                                <ul class="list-style-none">
+                                    <li>
+                                        <div class="message-center notifications position-relative">
+                                            @foreach(App\Http\Controllers\Controller::getNotConfirmedEquipments() as $camps)
+                                                <a href="{{route('equipment.detail',$camps->id)}}"
+                                                    class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                    <span class="btn btn-primary rounded-circle btn-circle"><i
+                                                            data-feather="box" class="text-white"></i></span>
+                                                    <div class="w-75 d-inline-block v-middle pl-2">
+                                                        <h6 class="message-title mb-0 mt-1">{{$camps->client_last_name." ".$camps->client_name}}</h6> <span
+                                                            class="font-12 text-nowrap d-block text-muted">{{(app()->getLocale()== 'fr' ? $camps->label_fr : (app()->getLocale()== 'en' ? $camps->label_en : $camps->label_de))}}</span>
+                                                        <span class="font-12 text-nowrap d-block text-muted">{{$camps->created_at}}</span>
+                                                    </div>
+                                                </a>
+                                            @endforeach
+                                            @if(count(App\Http\Controllers\Controller::getNotConfirmedEquipments())==0)
+                                            <a href="{{route('message.index')}}"
+                                                    class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                    <span class="btn btn-primary rounded-circle btn-circle"><i
+                                                            data-feather="box" class="text-white"></i></span>
+                                                    <div class="w-75 d-inline-block v-middle pl-2">
+                                                       <span class="font-12 text-nowrap d-block text-muted">{{'backend.no_data_found.lbl'}}</span>
+                                                    </div>
+                                                </a>
+                                            @endif
                                             <!-- Message -->
                                         </div>
                                     </li>
@@ -140,18 +167,18 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img src="../../assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
+                                <img src="../../assets/images/users/{{auth()->user()->picture ?? '1.jpg'}}" alt="user" class="rounded-circle"
                                     width="40">
-                                <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
-                                        class="text-dark">Sim</span> <i data-feather="chevron-down"
+                                <span class="ml-2 d-none d-lg-inline-block"><span>{{__('backend.hello.lbl')}},</span> <span
+                                        class="text-dark">{{auth()->user()->name}}</span> <i data-feather="chevron-down"
                                         class="svg-icon"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
+                                <a class="dropdown-item" href="{{route('user.profile')}}"><i data-feather="user"
                                         class="svg-icon mr-2 ml-1"></i>
                                     My Profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                <a class="dropdown-item" href="{{route('logout')}}"><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Logout</a>
                             </div>

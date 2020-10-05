@@ -8,7 +8,7 @@ Breadcrumbs::for('dashboard', function ($trail) {
 // Home > About
 Breadcrumbs::for('user', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('Users', route('user.index'));
+    $trail->push(__('backend.users.breadcrumb'), route('user.index'));
 });
 
 // Home > Blog
@@ -18,9 +18,9 @@ Breadcrumbs::for('add_user', function ($trail) {
 });
 
 // Home > Blog > [Category]
-Breadcrumbs::for('edit_user', function ($trail, $category) {
+Breadcrumbs::for('edit_user', function ($trail, $user) {
     $trail->parent('user');
-    $trail->push('Edit user', route('user.edit'));
+    $trail->push('Edit user: '.$user->user_name, route('user.edit'));
 });
 //client
 Breadcrumbs::for('client', function ($trail) {
@@ -156,12 +156,19 @@ Breadcrumbs::for('create_transmission', function ($trail) {
     $trail->push('Create Transmission', route('transmission.index'));
 });
 
-// Settings > Profil
 Breadcrumbs::for('profile', function ($trail) {
-    $trail->parent('settings');
-    $trail->push('Profil', route('user.profile'));
+    $trail->parent('dashboard');
+    $trail->push('Profile', route('user.profile'));
 });
 
+Breadcrumbs::for('edit_profile', function ($trail) {
+    $trail->parent('profile');
+    $trail->push('Update profile', route('user.updateProfile'));
+});
+Breadcrumbs::for('change_password', function ($trail) {
+    $trail->parent('profile');
+    $trail->push('Change password', route('user.changePassword'));
+});
 /*
 Breadcrumbs::for('edit_user', function ($trail, $category) {
     $trail->parent('user');

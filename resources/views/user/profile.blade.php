@@ -1,31 +1,41 @@
-@extends('layout', ['activePage' => 'profile', 'titlePage' => __('backend.settings_profil.lbl')])
+@extends('layout', ['activePage' => 'profile', 'titlePage' => __('backend.profile_managment.lbl')])
 @section('content')
 {{ Breadcrumbs::render('profile') }}
 <div class="container-fluid">
-    <!--'action'=>'App\Http\Controllers\InsuranceController@update',-->
-    {{ Form::open(array('method'=>'PUT','route' => ['user.update', $data->id ?? 1])) }}
-    
+    <!--'action'=>'App\Http\Controllers\InsuranceController@update',-->    
     @csrf
      <div class="row">
-     <div class="col-sm-12 col-md-6 col-lg-6">
+     <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.user_name.lbl') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('user_name',$data->user_name ?? '',['class'=>'form-control','required'])}}
+                                <label class='form-control'>{{$data->name ?? ''}}</label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                     <h4 class="card-title">{{ __('backend.client_email.lbl') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('email',$data->email ?? '',['class'=>'form-control','required'])}}
+                            <label class='form-control'>{{$data->email ?? ''}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.tel.lbl') }}</h4>
+                        <div class="mt-5">
+                            <div class="form-group">
+                                <label class='form-control'>{{$data->telephone ?? ''}}</label>
                             </div>
                         </div>
                     </div>
@@ -34,10 +44,10 @@
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.tel.lbl') }}</h4>
+                        <h4 class="card-title">{{ __('backend.picture.lbl') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('telephone',$data->telephone ?? '',['class'=>'form-control','required'])}}
+                                <img src="/assets/images/users/{{$data->picture ?? '1.jpg'}}" style="width:254px" />
                             </div>
                         </div>
                     </div>
@@ -49,15 +59,15 @@
                         <h4 class="card-title">{{ __('backend.adress.lbl') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('adress',$data->adress ?? '', ['class'=>'form-control','required'])}}
+                                <label class='form-control' style="height:250px">{{$data->adress ?? ''}}</label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-12">
-                {{Form::submit('Update',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
-                <a href="{{ route('user.profile') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.cancel.btn') }}</a>
+            <a href="{{ route('user.updateProfile') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.edit.btn') }}</a>
+            <a href="{{ route('user.changePassword') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.change_password.btn') }}</a>
             </div>
     </div>
     {{ Form::close() }}

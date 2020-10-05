@@ -1,7 +1,8 @@
 <?php
 
 return [
-
+    'hello.lbl' => 'Hallo',
+    'change_password.btn' => 'Passwort ändern',
     'dashboard.lbl' => 'Instrumententafel',
     'owners.lbl' => 'Besitzer',
     'new_owner.btn' => 'Neuer Besitzer',
@@ -80,7 +81,7 @@ return [
     'billing_date_from.lbl' => 'Anfangsdatum',
     'billing_date_to.lbl' => 'Endtermin',
     'apply.btn' => 'anwenden',
-    'renter_name.lbl' => 'Mieter',
+    'owner_name.lbl' => 'Besitzername',
     'amount_paiement.lbl' => 'Menge',
     'export.btn' => 'Export',
     'dashboard_recent_message.lbl' => 'Aktuelle Nachrichten',
@@ -110,4 +111,13 @@ return [
     'billing_managment.lbl' => 'Abrechnungsmanagement',
     'equipment_detail.lbl' => 'Ausrüstungsdetail',
     'rent_management.lbl' => 'Mietmanagement',
+
+    /*----------------BREADCRUMB ----------*/
+    'users.breadcrumb' => 'Benutzer',
+    //billing
+    'last_booking.lbl' => 'Letzte Buchung',
+    'current_amount.lbl' => 'Aktueller Betrag',
+    'confirmed_amount.lbl' => 'Bestätigter Betrag',
+    'detail.lbl' => 'Detail',
+    'no_data_to_confirm.lbl' => 'Keine Camper zu bestätigen',
 ];
