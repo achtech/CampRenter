@@ -156,13 +156,6 @@ Breadcrumbs::for('create_transmission', function ($trail) {
     $trail->push('Create Transmission', route('transmission.index'));
 });
 
-// Settings > Profil
-Breadcrumbs::for('profile', function ($trail) {
-    $trail->parent('settings');
-    $trail->push('Profil', route('user.profile'));
-});
-
-
 Breadcrumbs::for('profile', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Profile', route('user.profile'));

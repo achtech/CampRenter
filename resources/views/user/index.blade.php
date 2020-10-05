@@ -26,7 +26,7 @@
                             @foreach($datas as $item)
                                 <tr>
                                     <td>
-                                <img style="width:64px;height:64px;" src="/assets/images/users/{{$item->picture}}" ></td>
+                                <img style="width:64px;height:64px;" src="/assets/images/users/{{$item->picture ?? '1.jpg'}}" ></td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->telephone}}</td>
                                     <td>{{$item->email}}</td>
@@ -68,14 +68,13 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.avatar.lbl') }}</th>
+                                    <th>{{ __('backend.avatar.lbl') }}</th>
                                     <th>{{ __('backend.user_name.lbl') }}</th>
                                     <th>{{ __('backend.tel.lbl') }}</th>
                                     <th>{{ __('backend.email.lbl') }}</th>
                                     <th>{{ __('backend.role.lbl') }}</th>
                                     <th>{{ __('backend.adress.lbl') }}</th>
                                     <th>{{ __('backend.operations.lbl') }}</th>
-
                                 </tr>
                             </tfoot>
                         </table>

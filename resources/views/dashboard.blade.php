@@ -22,25 +22,25 @@
                             <tbody>
                                 <tr>
                                     <td>{{ __('backend.dashboard_owners_part.lbl') }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$today_owner ?? '0'}}</td>
+                                    <td>{{$week_owner ?? '0'}}</td>
+                                    <td>{{$month_owner ?? '0'}}</td>
+                                    <td>{{$previous_month_owner ?? '0'}}</td>
                                 </tr>
                                 <tr>
                                     <td>{{ __('backend.dashboard_unit_campers_part.lbl') }}</td></td>
-                                    <td></td>
-                                    <td></td>
-                                 <td></td>
-                                    <td></td>
+                                    <td>{{$today_campunit ?? '0'}}</td>
+                                    <td>{{$week_campunit ?? '0'}}</td>
+                                    <td>{{$month_campunit ?? '0'}}</td>
+                                    <td>{{$previous_month_campunit ?? '0'}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <th>{{ __('backend.dashboard_total.lbl') }}</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                    <td>{{$today_total ?? '0'}}</td>
+                                    <td>{{$week_total ?? '0'}}</td>
+                                    <td>{{$month_total ?? '0'}}</td>
+                                    <td>{{$previous_month_total ?? '0'}}</td>
                             </tfoot>
                         </table>
                 <!-- *************************************************************** -->
