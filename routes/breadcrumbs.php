@@ -202,12 +202,12 @@ Breadcrumbs::for('booking', function ($trail) {
 // Booking details
 Breadcrumbs::for('detail_booking', function ($trail,$data) {
     $trail->parent('booking');
-    $trail->push('Booking detail', route('booking.detail',$data->client_name));
+    $trail->push('Booking detail', route('booking.search',$data->client_name));
 });
 // Booking details
 Breadcrumbs::for('chat_booking', function ($trail,$id) {
     $trail->parent('booking');
-    $trail->push('chat detail', route('booking.chat',$id));
+    $trail->push('Chat detail', route('booking.chat',$id));
 });
 
 

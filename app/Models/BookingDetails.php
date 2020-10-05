@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Client extends Base
 {
-    protected $table = 'bookingDetails';
+    protected $table = 'clients';
     public $primarykey = 'id';
     protected $fillable = [
         'dateFrom',
