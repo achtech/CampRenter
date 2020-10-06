@@ -31,7 +31,7 @@
                                     <th>{{ __('backend.client_national_number.lbl') }}</th>
                                     <th>{{ __('backend.client_current_solde.lbl') }}</th>
                                     <th>{{ __('backend.client_total_solde.lbl') }}</th>
-                                    <th>{{ __('backend.client_equipments.lbl') }}</th>
+                                    <th>{{ __('backend.client_campers.lbl') }}</th>
                                     <th>{{ __('backend.client_rents.lbl') }}</th>
                                     <th>{{ __('backend.client_action.lbl') }}</th>
                                 </tr>
@@ -123,3 +123,18 @@
     </div>
 </div>
 @endsection
+<script>
+
+
+$(document).on("click", "#activateClient", function () {
+     var myBookId = $(this).data('id');
+     $(".modal-footer #activ").val( myBookId );
+
+});
+
+$(document).on("click", "#blockClient", function () {
+     var myBookId = $(this).data('id');
+     $(".modal-footer #bloc").val( myBookId );
+
+});
+</script>

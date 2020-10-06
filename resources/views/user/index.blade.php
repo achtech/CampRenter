@@ -1,3 +1,4 @@
+@if(auth()->user()->role == 'super-admin')
 @extends('layout', ['activePage' => 'user', 'titlePage' => __('backend.user_managment.lbl')])
 @section('content')
 {{ Breadcrumbs::render('user') }}
@@ -85,3 +86,4 @@
     </div>
 </div>
 @endsection
+@endif

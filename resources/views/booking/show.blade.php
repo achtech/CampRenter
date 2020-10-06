@@ -49,7 +49,7 @@
                                     <h4 class="card-title">{{ __('backend.booking_from.lbl') }}</h4>
                                         <div class="mt-4">
                                             <div class="form-group">
-                                                {{Form::text('dateFrom',$data->dateFrom,['class'=>'form-control','required','disabled'])}}
+                                                {{Form::text('start_date',$data->start_date,['class'=>'form-control','required','disabled'])}}
                                             </div>
                                         </div>
                                 </div>
@@ -62,7 +62,7 @@
                                     <h4 class="card-title">{{ __('backend.booking_to.lbl') }}</h4>
                                     <div class="mt-4">
                                         <div class="form-group">
-                                            {{Form::text('dateFrom',$data->dateTo,['class'=>'form-control','required','disabled'])}}
+                                            {{Form::text('start_date',$data->end_date,['class'=>'form-control','required','disabled'])}}
                                         </div>
                                     </div>
                                 </div>

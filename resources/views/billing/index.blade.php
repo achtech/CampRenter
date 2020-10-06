@@ -29,7 +29,7 @@
    
         <div class="col-3">
             <label style="white-space: nowrap;"  for="example-date-input" class="col-2 col-form-label">{{ __('backend.billing_date_to.lbl') }}</label>
-            {{ Form::date('end_date', $endDate?? $todayDate,['class'=>'form-control','required','id'=>'example-date-input'])}}
+            {{ Form::date('end_date', $end_date?? $todayDate,['class'=>'form-control','required','id'=>'example-date-input'])}}
         </div>
         <div class="col-3">
             {{Form::submit('Apply',['style' => 'width:200px;bottom: 3px;position: absolute;','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class','name' => 'action'])}}

@@ -4,7 +4,7 @@ namespace App\Models;
 
 class InsuranceCompany extends Base
 {
-    protected $table = 'inssurance_company';
+    protected $table = 'insurance_companies';
     public $primarykey = 'id';
     protected $fillable = [
         'label_en',
