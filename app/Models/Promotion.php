@@ -8,7 +8,7 @@ class Promotion extends Base
     public $primarykey = 'id';
     protected $fillable = [
         'rate',
-        'date_from',
-        'date_to'
+        'start_date',
+        'end_date'
     ];
 }

@@ -7,8 +7,14 @@ class Booking extends Base
     protected $table = 'bookings';
     public $primarykey = 'id';
     protected $fillable = [
-        'id_campers',
         'start_date',
-        'end_date'
+        'end_date',
+        'total',
+        'status_booking',
+        'status_billings',
+        'id_campers',
+        'id_clients',
+        'id_commissions',
+        'id_promotions',
     ];
 }
