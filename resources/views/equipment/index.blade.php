@@ -25,8 +25,8 @@
                                 @foreach($datas as $item)
                                 <tr>
                                     <td><img src="/assets/images/gallery/{{$item->image}}"/></td>
-                                    <td>{{App\Http\Controllers\EquipmentController::getCamperName('camper_names',$item->id_campers_name)}}</td>
-                                    <td>{{App\Http\Controllers\EquipmentController::getName('clients',$item->id_client)}}</td>
+                                    <td>{{App\Http\Controllers\EquipmentController::getCamperName('camper_names',$item->id_camper_names)}}</td>
+                                    <td>{{App\Http\Controllers\EquipmentController::getName('clients',$item->id_clients)}}</td>
                                     <td>{{App\Http\Controllers\EquipmentController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
                                     <td>
                                         @if($item->availability==1)

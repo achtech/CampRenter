@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CamperName;
-use App\Models\Client;
+use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
+use App\Models\CamperName;
+use App\Models\Client;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
 use App\Models\StatusEquipment;
@@ -111,6 +112,7 @@ class EquipmentController extends Controller
         $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
         $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
         $camper_status = StatusCamper::find($data->id_status_equipments) != null ? StatusCamper::find($data->id_status_equipments)->first() : new StatusEquipment();
+        $booking_equipment = Booking::where('id_equipments', $id)->get();
         return view('equipment.details')
             ->with('data', $data)
             ->with('clients', $clients)
@@ -119,8 +121,10 @@ class EquipmentController extends Controller
             ->with('fuels', $fuels)
             ->with('transmissions', $transmissions)
             ->with('camper_name', $camper_name)
+            ->with('booking_equipment', $booking_equipment)
             ->with('camper_status', $camper_status);
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -188,7 +192,8 @@ class EquipmentController extends Controller
 
     public static function getLabel($table, $id)
     {
-        return DB::table($table)->find($id)->label_en;
+        $data = DB::table($table)->find($id);
+        return $data->label_en;
     }
 
     public static function getName($table, $id)

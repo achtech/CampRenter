@@ -108,7 +108,6 @@ return [
     'message_delete_transmission.lbl' => 'Do you want to delete this Transmission',
     /** End Transmission */
 
-
     /* ---- Commission-----*/
     'commission_managment.lbl' => 'Commission Management',
     'commission.lbl' => 'Commission',
@@ -249,7 +248,6 @@ return [
     'message_status_0.lbl'=>'Not read',
     'message_status_1.lbl'=>'Read',
     'message_email_sent_date.lbl'=>'Date sent',
-
 
     /** licence_category */
     'licence_category_managment.lbl' => 'Licence Category Managment',
@@ -397,9 +395,6 @@ return [
     'current_amount.lbl' => 'Current Amount',
     'confirmed_amount.lbl' => 'Confirmed Amount',
     'detail.lbl' => 'Detail',
-
-
-
 
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Users',

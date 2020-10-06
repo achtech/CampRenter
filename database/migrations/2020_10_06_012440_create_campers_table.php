@@ -58,7 +58,7 @@ class CreateCampersTable extends Migration
             $table->foreign('id_camper_names')->references('id')->on('camper_names');
             $table->foreign('id_licence_categories')->references('id')->on('licence_categories');
             $table->foreign('id_camper_categories')->references('id')->on('camper_categories');
-            $table->foreign('id_transmissions')->references('id')->on('tranmissions');
+            $table->foreign('id_transmissions')->references('id')->on('transmissions');
             $table->foreign('id_fuels')->references('id')->on('fuels');
         });
     }
