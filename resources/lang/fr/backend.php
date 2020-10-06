@@ -27,7 +27,7 @@ return [
     'create.btn' => 'Créer',
     'cancel.btn' => 'Annuler',
     'client_rents.lbl' => 'Mieten',
-    'client_equipments.lbl' => 'Location',
+    'client_campers.lbl' => 'Location',
     'client_block_message.lbl' => 'Voulez-vous bloquer ce client?',
     'client_block.btn' => 'Bloquer',
     'client_activate.btn' => 'Activer',

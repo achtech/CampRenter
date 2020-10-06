@@ -92,6 +92,7 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-right">
                         <!-- Notification -->
+                        @if(App\Http\Controllers\Controller::getMessageCount()!=0)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
                                 id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -122,7 +123,9 @@
                                 </ul>
                             </div>
                         </li>
+                        @endif
 
+                        @if(App\Http\Controllers\Controller::getCampersCount()!=0)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
                                 id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -134,7 +137,7 @@
                                 <ul class="list-style-none">
                                     <li>
                                         <div class="message-center notifications position-relative">
-                                            @foreach(App\Http\Controllers\Controller::getNotConfirmedEquipments() as $camps)
+                                            @foreach(App\Http\Controllers\Controller::getNotConfirmedcampers() as $camps)
                                                 <a href="{{route('equipment.detail',$camps->id)}}"
                                                     class="message-item d-flex align-items-center border-bottom px-3 py-2">
                                                     <span class="btn btn-primary rounded-circle btn-circle"><i
@@ -146,7 +149,7 @@
                                                     </div>
                                                 </a>
                                             @endforeach
-                                            @if(count(App\Http\Controllers\Controller::getNotConfirmedEquipments())==0)
+                                            @if(count(App\Http\Controllers\Controller::getNotConfirmedcampers())==0)
                                             <a href="{{route('message.index')}}"
                                                     class="message-item d-flex align-items-center border-bottom px-3 py-2">
                                                     <span class="btn btn-primary rounded-circle btn-circle"><i
@@ -162,6 +165,9 @@
                                 </ul>
                             </div>
                         </li>
+                        @endif
+
+
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -224,12 +230,14 @@
                             {{ __('backend.dashboard.lbl') }}</span>
                         </a>
                     </li>
+                    @if(auth()->user()->role == 'super-admin')
                     <li class="sidebar-item{{ $activePage == 'user' ? ' selected' : '' }}"> 
                         <a class="sidebar-link sidebar-link" href="{{route('user.index')}}" aria-expanded="false">
                         <i class="icon-user"></i>
                             <span class="hide-menu"> {{ __('backend.menu_user_managment.lbl') }}</span>
                         </a>
                     </li>
+                    @endif
                     
                     <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}"> 
                         <a class="sidebar-link sidebar-link" href="{{route('client.index')}}" aria-expanded="false">

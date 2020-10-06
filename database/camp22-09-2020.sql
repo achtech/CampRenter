@@ -46,9 +46,9 @@ CREATE TABLE `avatars` (
 
 CREATE TABLE `billings` (
   `id` int(11) NOT NULL,
-  `id_client` int(11) NOT NULL,
+  `id_clients` int(11) NOT NULL,
   `id_bill` int(11) NOT NULL,
-  `id_booking` int(11) NOT NULL,
+  `id_bookings` int(11) NOT NULL,
   `email_paypal` varchar(100) NOT NULL,
   `num_card` int(11) NOT NULL,
   `exp_date` date NOT NULL,
@@ -85,9 +85,9 @@ CREATE TABLE `billing_methods` (
 
 CREATE TABLE `bookings` (
   `id` int(11) NOT NULL,
-  `id_equipments` int(11) NOT NULL,
-  `dateFrom` date NOT NULL,
-  `dateTo` date NOT NULL,
+  `id_campers` int(11) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
   `created_at` date NOT NULL,
   `created_by` int(11) NOT NULL,
   `updated_at` date NOT NULL,
@@ -152,12 +152,12 @@ CREATE TABLE `commissions` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `equipments`
+-- Structure de la table `campers`
 --
 
-CREATE TABLE `equipments` (
+CREATE TABLE `campers` (
   `id` int(11) NOT NULL,
-  `id_client` int(11) NOT NULL,
+  `id_clients` int(11) NOT NULL,
   `equipment_name` varchar(100) NOT NULL,
   `image` varchar(100) NOT NULL,
   `brand` varchar(100) NOT NULL,
@@ -209,10 +209,10 @@ CREATE TABLE `equipments` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `equipment_categories`
+-- Structure de la table `camper_categories`
 --
 
-CREATE TABLE `equipment_categories` (
+CREATE TABLE `camper_categories` (
   `id` int(100) NOT NULL,
   `label_en` varchar(100) NOT NULL,
   `label_de` varchar(100) NOT NULL,
@@ -231,7 +231,7 @@ CREATE TABLE `equipment_categories` (
 
 CREATE TABLE `favoris` (
   `id` int(11) NOT NULL,
-  `id_equipments` int(11) NOT NULL,
+  `id_campers` int(11) NOT NULL,
   `id_clients` int(11) NOT NULL,
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
@@ -259,10 +259,10 @@ CREATE TABLE `fuels` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `inssurances`
+-- Structure de la table `insurances`
 --
 
-CREATE TABLE `inssurances` (
+CREATE TABLE `insurances` (
   `id` int(11) NOT NULL,
   `description_en` varchar(300) NOT NULL,
   `description_de` varchar(300) NOT NULL,
@@ -279,10 +279,10 @@ CREATE TABLE `inssurances` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `inssurance_company`
+-- Structure de la table `insurance_companies`
 --
 
-CREATE TABLE `inssurance_company` (
+CREATE TABLE `insurance_companies` (
   `id` int(11) NOT NULL,
   `label_en` varchar(50) NOT NULL,
   `label_de` varchar(50) NOT NULL,
@@ -330,10 +330,10 @@ CREATE TABLE `promotions` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `status_equipments`
+-- Structure de la table `status_campers`
 --
 
-CREATE TABLE `status_equipments` (
+CREATE TABLE `status_campers` (
   `id` int(11) NOT NULL,
   `label_en` varchar(50) NOT NULL,
   `label_fr` varchar(50) NOT NULL,
@@ -393,9 +393,9 @@ ALTER TABLE `avatars`
 --
 ALTER TABLE `billings`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_id_owner` (`id_client`),
+  ADD KEY `fk_id_owner` (`id_clients`),
   ADD KEY `fk_id_bill` (`id_bill`),
-  ADD KEY `fk_id_booking` (`id_booking`);
+  ADD KEY `fk_id_booking` (`id_bookings`);
 
 --
 -- Index pour la table `billing_methods`
@@ -408,7 +408,7 @@ ALTER TABLE `billing_methods`
 --
 ALTER TABLE `bookings`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_id_equipments` (`id_equipments`);
+  ADD KEY `fk_id_campers` (`id_campers`);
 
 --
 -- Index pour la table `camper_names`
@@ -430,20 +430,20 @@ ALTER TABLE `commissions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `equipments`
+-- Index pour la table `campers`
 --
-ALTER TABLE `equipments`
+ALTER TABLE `campers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_id_licence_categories` (`id_licence_categories`),
   ADD KEY `fk_id_equipment_categories` (`id_equipment_categories`),
   ADD KEY `fk_id_transmissions` (`id_transmissions`),
   ADD KEY `fk_id_fuels` (`id_fuels`),
-  ADD KEY `id_client` (`id_client`);
+  ADD KEY `id_clients` (`id_clients`);
 
 --
--- Index pour la table `equipment_categories`
+-- Index pour la table `camper_categories`
 --
-ALTER TABLE `equipment_categories`
+ALTER TABLE `camper_categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -451,7 +451,7 @@ ALTER TABLE `equipment_categories`
 --
 ALTER TABLE `favoris`
   ADD UNIQUE KEY `id_clients` (`id_clients`),
-  ADD KEY `id_equipments` (`id_equipments`);
+  ADD KEY `id_campers` (`id_campers`);
 
 --
 -- Index pour la table `fuels`
@@ -460,17 +460,17 @@ ALTER TABLE `fuels`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `inssurances`
+-- Index pour la table `insurances`
 --
-ALTER TABLE `inssurances`
+ALTER TABLE `insurances`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_id_camper_name` (`id_camper_name`),
   ADD KEY `fk_id_inssurance_company` (`id_inssurance_company`);
 
 --
--- Index pour la table `inssurance_company`
+-- Index pour la table `insurance_companies`
 --
-ALTER TABLE `inssurance_company`
+ALTER TABLE `insurance_companies`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -486,9 +486,9 @@ ALTER TABLE `promotions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `status_equipments`
+-- Index pour la table `status_campers`
 --
-ALTER TABLE `status_equipments`
+ALTER TABLE `status_campers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -550,15 +550,15 @@ ALTER TABLE `commissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `equipments`
+-- AUTO_INCREMENT pour la table `campers`
 --
-ALTER TABLE `equipments`
+ALTER TABLE `campers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `equipment_categories`
+-- AUTO_INCREMENT pour la table `camper_categories`
 --
-ALTER TABLE `equipment_categories`
+ALTER TABLE `camper_categories`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
@@ -568,15 +568,15 @@ ALTER TABLE `fuels`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `inssurances`
+-- AUTO_INCREMENT pour la table `insurances`
 --
-ALTER TABLE `inssurances`
+ALTER TABLE `insurances`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `inssurance_company`
+-- AUTO_INCREMENT pour la table `insurance_companies`
 --
-ALTER TABLE `inssurance_company`
+ALTER TABLE `insurance_companies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
