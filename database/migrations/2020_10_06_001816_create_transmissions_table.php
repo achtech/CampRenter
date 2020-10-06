@@ -13,7 +13,7 @@ class CreateTransmissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tranmissions', function (Blueprint $table) {
+        Schema::create('transmissions', function (Blueprint $table) {
             $table->id();
             $table->string('label_en');
             $table->string('label_de');
@@ -33,6 +33,6 @@ class CreateTransmissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tranmissions');
+        Schema::dropIfExists('transmissions');
     }
 }

@@ -20,7 +20,7 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        //$datas = DB::table('bookingdetails')->get();
+        //$datas = DB::table('v_bookings_details')->get();
         //$datasClients = DB::table('clients')->get();
         return view('booking.index');
     }

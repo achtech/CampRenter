@@ -13,7 +13,7 @@ class CreateLicencesCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('licences_categories', function (Blueprint $table) {
+        Schema::create('licence_categories', function (Blueprint $table) {
             $table->id();
             $table->string('label_en');
             $table->string('label_de');
@@ -33,6 +33,6 @@ class CreateLicencesCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('licences_categories');
+        Schema::dropIfExists('licence_categories');
     }
 }

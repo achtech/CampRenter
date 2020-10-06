@@ -154,7 +154,7 @@ class ClientController extends Controller
     }
     public function checkEquipmentDetail($id)
     {
-        $datas = Equipment::where('id_client', $id)->get();
+        $datas = Equipment::where('id_clients', $id)->get();
         $client  = Client::find($id);
         return view('client.detailEquipment')->with('datas', $datas)->with('client', $client);
     }
@@ -163,11 +163,11 @@ class ClientController extends Controller
         $client  = Client::find($id);
         $remaining_days = 0;
         $datas = Booking::where('id_clients', $id)
-            ->join('equipments', 'bookings.id_equipments', '=', 'equipments.id')
+            ->join('campers', 'bookings.id_campers', '=', 'campers.id')
             ->join('clients', 'bookings.id_clients', '=', 'clients.id')
             ->get();
         foreach ($datas as $elem) {
-            $diff = abs(strtotime($elem->dateFrom) - strtotime($elem->dateTo));
+            $diff = abs(strtotime($elem->start_date) - strtotime($elem->end_date));
             $years = floor($diff / (365 * 60 * 60 * 24));
             $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
             $remaining_days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));

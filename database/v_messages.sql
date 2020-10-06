@@ -14,7 +14,7 @@ FROM
         (
             `messages` `m`
         JOIN `clients` `c` ON
-            ((`c`.`id` = `m`.`id_client`))
+            ((`c`.`id` = `m`.`id_clients`))
         )
     JOIN `avatars` `a` ON
         ((`a`.`id` = `c`.`id_avatars`))

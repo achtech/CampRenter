@@ -13,7 +13,7 @@ class CreateInsurancesCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('insurances_companies', function (Blueprint $table) {
+        Schema::create('insurance_companies', function (Blueprint $table) {
             $table->id();
             $table->string('label_en');
             $table->string('label_de');
@@ -33,6 +33,6 @@ class CreateInsurancesCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('insurances_companies');
+        Schema::dropIfExists('insurance_companies');
     }
 }

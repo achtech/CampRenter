@@ -137,7 +137,7 @@
                                 <ul class="list-style-none">
                                     <li>
                                         <div class="message-center notifications position-relative">
-                                            @foreach(App\Http\Controllers\Controller::getNotConfirmedEquipments() as $camps)
+                                            @foreach(App\Http\Controllers\Controller::getNotConfirmedcampers() as $camps)
                                                 <a href="{{route('equipment.detail',$camps->id)}}"
                                                     class="message-item d-flex align-items-center border-bottom px-3 py-2">
                                                     <span class="btn btn-primary rounded-circle btn-circle"><i
@@ -149,7 +149,7 @@
                                                     </div>
                                                 </a>
                                             @endforeach
-                                            @if(count(App\Http\Controllers\Controller::getNotConfirmedEquipments())==0)
+                                            @if(count(App\Http\Controllers\Controller::getNotConfirmedcampers())==0)
                                             <a href="{{route('message.index')}}"
                                                     class="message-item d-flex align-items-center border-bottom px-3 py-2">
                                                     <span class="btn btn-primary rounded-circle btn-circle"><i

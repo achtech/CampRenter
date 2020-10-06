@@ -27,7 +27,7 @@ class CreateInsurancesTable extends Migration
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
 
-            $table->foreign('id_insurance_companies')->references('id')->on('insurances_companies');
+            $table->foreign('id_insurance_companies')->references('id')->on('insurance_companies');
             $table->foreign('id_camper_names')->references('id')->on('camper_names');
 
         });

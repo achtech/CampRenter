@@ -25,7 +25,7 @@ class CreateBookingTable extends Migration
             $table->unsignedBigInteger('id_campers')->nullable();
             $table->unsignedBigInteger('id_clients')->nullable();
             $table->unsignedBigInteger('id_commissions')->nullable();
-            $table->unsignedBigInteger('id_promotions')->nullable();
+            $table->unsignedBigInteger('id_promotionss')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -35,7 +35,7 @@ class CreateBookingTable extends Migration
             $table->foreign('id_campers')->references('id')->on('campers');
             $table->foreign('id_clients')->references('id')->on('clients');
             $table->foreign('id_commissions')->references('id')->on('commissions');
-            $table->foreign('id_promotions')->references('id')->on('promotions');
+            $table->foreign('id_promotionss')->references('id')->on('promotions');
         });
     }
 
