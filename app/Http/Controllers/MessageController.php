@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Message;
+use Mail;
 
 class MessageController extends Controller
 {
@@ -48,6 +49,22 @@ class MessageController extends Controller
             return view('message.index')->with('datas', $datas);
         }
         return view('message.show')->with('datas', $datas)->with('messageId',$id);
+    }
+    public function sendEmail()
+    {
+        $data = array('name'=>"Our Code World");
+        // Path or name to the blade template to be rendered
+        $template_path = 'message.index';
+        $datas = array();
+        $datas = Message::paginate(10);
+        Mail::send($template_path, $datas, function($message) {
+            // Set the receiver and subject of the mail.
+            $message->to('achraf.saloumi@exo-it.com', 'Receiver Name')->subject('Laravel HTML Mail');
+            // Set the sender
+            $message->from('noura.bouchbaat@exo-it.com','Our Code World');
+        });
+
+        return "Basic email sent, check your inbox.";
     }
     /**
      * Store a newly created resource in storage.

@@ -247,7 +247,9 @@ return [
     'message_status_0.lbl'=>'Not read',
     'message_status_1.lbl'=>'Read',
     'message_email_sent_date.lbl'=>'Date sent',
-
+    'message_contact_tel.lbl'=>'Telephone',
+    'message_contact_name.lbl'=>'Contact name',
+    'answer_message.btn'=>'Answer',
 
     /** licence_category */
     'licence_category_managment.lbl' => 'Licence Category Managment',
