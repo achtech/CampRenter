@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-
-
-use App\Models\Equipment;
+use App\Models\CamperName;
 use App\Models\Client;
+use App\Models\Equipment;
 use App\Models\EquipmentCategory;
-use App\Models\LicenceCategory;
-use App\Models\Transmission;
 use App\Models\Fuel;
+use App\Models\LicenceCategory;
+use App\Models\StatusEquipment;
+use App\Models\Transmission;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
 class EquipmentController extends Controller
@@ -106,17 +105,21 @@ class EquipmentController extends Controller
     {
         $data = Equipment::find($id);
         $clients = Client::find($data->id_client) != null ? Client::find($data->id_client)->first() : new Client();
-        $camper_categories = EquipmentCategory::find($data->id_licence_categories)->first();
+        $camper_name = CamperName::find($data->id_campers_name) != null ? CamperName::find($data->id_campers_name)->first() : new CamperName();
+        $equipment_categories = EquipmentCategory::find($data->id_licence_categories)->first();
         $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
         $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
         $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
+        $camper_status = StatusEquipment::find($data->id_status_equipments) != null ? StatusEquipment::find($data->id_status_equipments)->first() : new StatusEquipment();
         return view('equipment.details')
             ->with('data', $data)
             ->with('clients', $clients)
             ->with('equipmentCategory', $camper_categories)
             ->with('licenceCategories', $licenceCategories)
             ->with('fuels', $fuels)
-            ->with('transmissions', $transmissions);
+            ->with('transmissions', $transmissions)
+            ->with('camper_name', $camper_name)
+            ->with('camper_status', $camper_status);
     }
     /**
      * Store a newly created resource in storage.
@@ -195,7 +198,8 @@ class EquipmentController extends Controller
 
     public static function getCamperName($table, $id)
     {
-        return DB::table($table)->find($id)->label_en;
+        $data = DB::table($table)->find($id);
+        return app()->getLocale() == 'de' ? $data->label_de : (app()->getLocale() == 'en' ? $data->label_en : $data->label_fr);
     }
     public function getUnconfirmedCampers()
     {
