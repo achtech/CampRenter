@@ -1,34 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 05 oct. 2020 à 16:30
--- Version du serveur :  5.7.26
--- Version de PHP :  7.3.5
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données :  `camp`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `avatars`
---
-
-DROP TABLE IF EXISTS `avatars`;
 CREATE TABLE IF NOT EXISTS `avatars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `image` varchar(100) NOT NULL,
@@ -94,27 +63,6 @@ CREATE TABLE IF NOT EXISTS `billing_methods` (
   `updated_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Doublure de structure pour la vue `bookingdetails`
--- (Voir ci-dessous la vue réelle)
---
-DROP VIEW IF EXISTS `bookingdetails`;
-CREATE TABLE IF NOT EXISTS `bookingdetails` (
-`id` int(11)
-,`dateFrom` date
-,`dateTo` date
-,`bookingDay` int(7)
-,`equipment_name_en` varchar(100)
-,`equipment_name_de` varchar(100)
-,`equipment_name_fr` varchar(100)
-,`price_per_day` double
-,`client_id` int(11)
-,`client_name` varchar(6000)
-,`client_last_name` varchar(6000)
-);
 
 -- --------------------------------------------------------
 
@@ -731,53 +679,11 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `created_b
 -- --------------------------------------------------------
 
 --
--- Doublure de structure pour la vue `v_chats_bookings`
--- (Voir ci-dessous la vue réelle)
---
-DROP VIEW IF EXISTS `v_chats_bookings`;
-CREATE TABLE IF NOT EXISTS `v_chats_bookings` (
-`message` text
-,`date_sent` timestamp
-,`id_bookings` int(11)
-,`ordre_message` bigint(20)
-,`id_owner` int(11)
-,`owner_first_name` varchar(6000)
-,`owner_last_name` varchar(6000)
-,`image_owner` varchar(100)
-,`id_renter` int(11)
-,`renter_first_name` varchar(6000)
-,`renter_last_name` varchar(6000)
-,`image_renter` varchar(100)
-);
-
--- --------------------------------------------------------
-
---
--- Doublure de structure pour la vue `v_messages`
--- (Voir ci-dessous la vue réelle)
---
-DROP VIEW IF EXISTS `v_messages`;
-CREATE TABLE IF NOT EXISTS `v_messages` (
-`id` int(11)
-,`email` varchar(100)
-,`telephone` varchar(20)
-,`subject` text
-,`message` text
-,`status` int(11)
-,`send_date` datetime
-,`client_name` varchar(6000)
-,`client_last_name` varchar(6000)
-,`image` varchar(100)
-);
-
--- --------------------------------------------------------
-
---
 -- Structure de la vue `bookingdetails`
 --
 DROP TABLE IF EXISTS `bookingdetails`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `bookingdetails`  AS  select `b`.`id` AS `id`,`b`.`dateFrom` AS `dateFrom`,`b`.`dateTo` AS `dateTo`,(to_days(`b`.`dateTo`) - to_days(`b`.`dateFrom`)) AS `bookingDay`,`ca`.`label_en` AS `equipment_name_en`,`ca`.`label_de` AS `equipment_name_de`,`ca`.`label_fr` AS `equipment_name_fr`,`e`.`price_per_day` AS `price_per_day`,`c`.`id` AS `client_id`,`c`.`client_name` AS `client_name`,`c`.`client_last_name` AS `client_last_name` from (((`bookings` `b` join `equipments` `e`) join `clients` `c`) join `camper_names` `ca`) where ((`b`.`id_equipments` = `e`.`id`) and (`b`.`id_clients` = `c`.`id`) and (`e`.`id_campers_name` = `ca`.`id`)) ;
+CREATE VIEW `bookingdetails`  AS  select `b`.`id` AS `id`,`b`.`dateFrom` AS `dateFrom`,`b`.`dateTo` AS `dateTo`,(to_days(`b`.`dateTo`) - to_days(`b`.`dateFrom`)) AS `bookingDay`,`ca`.`label_en` AS `equipment_name_en`,`ca`.`label_de` AS `equipment_name_de`,`ca`.`label_fr` AS `equipment_name_fr`,`e`.`price_per_day` AS `price_per_day`,`c`.`id` AS `client_id`,`c`.`client_name` AS `client_name`,`c`.`client_last_name` AS `client_last_name` from (((`bookings` `b` join `equipments` `e`) join `clients` `c`) join `camper_names` `ca`) where ((`b`.`id_equipments` = `e`.`id`) and (`b`.`id_clients` = `c`.`id`) and (`e`.`id_campers_name` = `ca`.`id`)) ;
 
 -- --------------------------------------------------------
 
@@ -786,7 +692,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_chats_bookings`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_chats_bookings`  AS  select `m`.`message` AS `message`,`m`.`date_sent` AS `date_sent`,`m`.`id_bookings` AS `id_bookings`,`m`.`ordre_message` AS `ordre_message`,`c`.`id` AS `id_owner`,`c`.`client_name` AS `owner_first_name`,`c`.`client_last_name` AS `owner_last_name`,`ao`.`image` AS `image_owner`,`l`.`id` AS `id_renter`,`l`.`client_name` AS `renter_first_name`,`l`.`client_last_name` AS `renter_last_name`,`ar`.`image` AS `image_renter` from (((((`chats` `m` join `bookings` `b` on((`m`.`id_bookings` = `b`.`id`))) left join `clients` `c` on((`m`.`id_owner` = `c`.`id`))) left join `avatars` `ao` on((`c`.`id_avatars` = `ao`.`id`))) left join `clients` `l` on((`m`.`id_renter` = `l`.`id`))) left join `avatars` `ar` on((`l`.`id_avatars` = `ar`.`id`))) ;
+CREATE VIEW `v_chats_bookings`  AS  select `m`.`message` AS `message`,`m`.`date_sent` AS `date_sent`,`m`.`id_bookings` AS `id_bookings`,`m`.`ordre_message` AS `ordre_message`,`c`.`id` AS `id_owner`,`c`.`client_name` AS `owner_first_name`,`c`.`client_last_name` AS `owner_last_name`,`ao`.`image` AS `image_owner`,`l`.`id` AS `id_renter`,`l`.`client_name` AS `renter_first_name`,`l`.`client_last_name` AS `renter_last_name`,`ar`.`image` AS `image_renter` from (((((`chats` `m` join `bookings` `b` on((`m`.`id_bookings` = `b`.`id`))) left join `clients` `c` on((`m`.`id_owner` = `c`.`id`))) left join `avatars` `ao` on((`c`.`id_avatars` = `ao`.`id`))) left join `clients` `l` on((`m`.`id_renter` = `l`.`id`))) left join `avatars` `ar` on((`l`.`id_avatars` = `ar`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -795,9 +701,5 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_messages`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_messages`  AS  select `m`.`id` AS `id`,`m`.`email` AS `email`,`m`.`telephone` AS `telephone`,`m`.`subject` AS `subject`,`m`.`message` AS `message`,`m`.`status` AS `status`,`m`.`send_date` AS `send_date`,`c`.`client_name` AS `client_name`,`c`.`client_last_name` AS `client_last_name`,`a`.`image` AS `image` from ((`messages` `m` join `clients` `c` on((`c`.`id` = `m`.`id_client`))) join `avatars` `a` on((`a`.`id` = `c`.`id_avatars`))) ;
+CREATE VIEW `v_messages`  AS  select `m`.`id` AS `id`,`m`.`email` AS `email`,`m`.`telephone` AS `telephone`,`m`.`subject` AS `subject`,`m`.`message` AS `message`,`m`.`status` AS `status`,`m`.`send_date` AS `send_date`,`c`.`client_name` AS `client_name`,`c`.`client_last_name` AS `client_last_name`,`a`.`image` AS `image` from ((`messages` `m` join `clients` `c` on((`c`.`id` = `m`.`id_client`))) join `avatars` `a` on((`a`.`id` = `c`.`id_avatars`))) ;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

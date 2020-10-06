@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Equipment;
 use App\Models\Message;
-
+use DB;
 class DashboardController extends Controller
 {
     /**
@@ -74,15 +74,28 @@ class DashboardController extends Controller
         $end_last_month = date("Y-m-d", strtotime('last day of last month'));;
         $startDate = $period == 'today' ? $today : ($period == 'week' ? $start_week : ($period == 'month' ? $start_month : $start_last_month));
         $endDate = $period == 'today' ? $today : ($period == 'week' ? $end_week : ($period == 'month' ? $end_month : $end_last_month));
-        $owner = $user == 'owner' ? 'true':'false';
+        $owner = $user == 'owner';
         return $this->getIncome($startDate,$endDate,$owner);
     }
 
     public function getIncome($startDate,$endDate,$owner){
-        $data = Booking::where('dateFrom','<=',$owner?$endDate:$startDate)
-                       ->where('dateTo','>=',$owner?$endDate:$startDate)
-                       ->get()->sum('total');
-                       return $data;
+       /* $data = Booking::where('dateFrom','<=',$owner?$endDate:$startDate)
+                       ->where('dateTo','>=',$owner?$endDate:$startDate);
+         */
+        $data=Booking::leftjoin('commissions', 'Bookings.id_commision', '=', 'commissions.id')
+        ->leftjoin('Promotions', 'Promotions.id', '=', 'Bookings.id_promotion');
+        if($owner){
+            $data = $data->select(DB::raw('sum((Bookings.total/100) * (100-(IFNULL(Commissions.rate,0)+ IFNULL(Promotions.rate,0)))) as total'))
+                        ->where('Bookings.dateTo','>=',$startDate)
+                        ->where('Bookings.dateTo','<=',$endDate);
+        } else {
+            $data = $data->select(DB::raw('sum((Bookings.total/100) * (IFNULL(Commissions.rate,0)+ IFNULL(Promotions.rate,0))) as total'))
+                            ->where('Bookings.dateFrom','>=',$startDate)
+                           ->where('Bookings.dateFrom','<=',$endDate);
+        }
+        
+        $data= $data->first(['total']);
+        return $data->total;
         
     }
 
