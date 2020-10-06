@@ -34,7 +34,7 @@
                                         @else
                                         <i class="fa fa-circle text-danger mr-2"></i>
                                         @endif
-                                    <td>{{App\Http\Controllers\EquipmentController::getCamperName('status_equipments',$item->id_status_equipments)}}</td>
+                                    <td>{{App\Http\Controllers\EquipmentController::getCamperName('camper_status',$item->id_camper_status)}}</td>
                                     <td>
                                         @if($item->is_confirmed==1)
                                         <i class="fa fa-circle text-success mr-2"></i>

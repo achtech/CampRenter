@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
 use App\Models\Message;
-use App\Models\Equipment;
+use App\Models\Camper;
 
 class Controller extends BaseController
 {
@@ -23,7 +23,7 @@ class Controller extends BaseController
 
     
     static function getCampersCount(){
-        return Equipment::where('is_confirmed',0)->get()->count();
+        return Camper::where('is_confirmed',0)->get()->count();
     }
 
     static function getNotReadedMessages(){
@@ -31,7 +31,7 @@ class Controller extends BaseController
     }
 
     static function getNotConfirmedcampers(){
-        return Equipment::join('clients', 'clients.id', '=', 'campers.id_clients')
+        return Camper::join('clients', 'clients.id', '=', 'campers.id_clients')
         ->join('camper_names', 'camper_names.id', '=', 'campers.id_camper_names')
         ->where('campers.is_confirmed',0)
         ->select('campers.*', 'camper_names.label_en','camper_names.label_fr','camper_names.label_de', 'clients.client_name', 'clients.client_last_name')

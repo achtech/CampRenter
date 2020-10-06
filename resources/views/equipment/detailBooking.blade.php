@@ -51,7 +51,7 @@
                             <h4 class="card-title">{{__('backend.equipment_name.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('equipment_name',$data->equipment_name,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('camper_name',$data->camper_name,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>

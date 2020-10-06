@@ -73,7 +73,7 @@
                                 @foreach($datas as $item)
                                     <tr>
                                         <td>{{$item->client_name }} {{$item->client_last_name }}</td>
-                                        <td>{{$item->equipment_name_en}}</td>        
+                                        <td>{{$item->camper_name_en}}</td>        
                                         <td>{{$item->start_date}}</td>
                                         <td>{{$item->end_date}}</td>
                                         <td>{{$item->price_per_day}}</td>

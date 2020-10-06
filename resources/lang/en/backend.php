@@ -241,11 +241,11 @@ return [
     'send_date.lbl' => 'Date',
     'message_email_from.lbl' => 'From',
     'message_email_to.lbl' => 'To',
-    'message_email_subject.lbl' => 'Subject',
-    'message_email_answer.lbl' => 'Answer',
-    'message_status_0.lbl' => 'Not read',
-    'message_status_1.lbl' => 'Read',
-    'message_email_sent_date.lbl' => 'Date sent',
+    'message_email_subject.lbl'=>'Subject',
+    'message_email_answer.lbl'=>'Answer',
+    'message_status_0.lbl'=>'Not read',
+    'message_status_1.lbl'=>'Read',
+    'message_email_sent_date.lbl'=>'Date sent',
 
     /** licence_category */
     'licence_category_managment.lbl' => 'Licence Category Managment',
