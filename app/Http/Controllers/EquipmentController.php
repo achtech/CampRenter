@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
-use App\Models\CamperName;
-use App\Models\Client;
-
 use App\Models\Camper;
 use App\Models\CamperCategory;
+use App\Models\CamperName;
+use App\Models\Client;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
 use App\Models\StatusEquipment;
@@ -72,7 +71,7 @@ class EquipmentController extends Controller
     public function detailBooking($id)
     {
         $data = Camper::find($id);
-		$clients = Client::find($data->id_client) != null ? Client::find($data->id_client)->first() : new Client();
+        $clients = Client::find($data->id_client) != null ? Client::find($data->id_client)->first() : new Client();
         $camper_categories = CamperCategory::find($data->id_licence_categories)->first();
         $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
         $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
@@ -193,7 +192,8 @@ class EquipmentController extends Controller
 
     public static function getLabel($table, $id)
     {
-        return DB::table($table)->find($id)->label_en;
+        $data = DB::table($table)->find($id);
+        return $data->label_en;
     }
 
     public static function getName($table, $id)
