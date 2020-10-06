@@ -61,7 +61,7 @@
                                             </li>
                                             @if($item->status=='active')
                                             <li class="list-inline-item" >
-                                                <a href="{{ route('client.edit',$item->id)}}" class="btn btn-info btn-sm rounded-0" data-toggle="modal" data-target="#block" title="Block" id="blockClient" data-id={{$item->id}}><i class="fas fa-check"></i></a>
+                                                <a href="{{ route('client.edit',$item->id)}}" class="btn btn-info btn-sm rounded-0 user_dialog" data-toggle="modal" data-target="#block" title="Block" id="blockClient" data-id={{$item->id}}><i class="fas fa-check"></i>{{$item->id}}</a>
                                             <!-- Modal -->
  <div class="modal fade" id="block" role="dialog">
     <div class="modal-dialog">
@@ -74,9 +74,10 @@
         </div>
         <div class="modal-body">
           <p>{{ __('backend.client_block_message.lbl') }}</p>
+          <input type="text" name="id_client" id="id_client" value=""/>
         </div>
         <div class="modal-footer">
-            <a href="{{ route('client.block',$item->id) }}" class="btn btn-danger btn-sm rounded-0" id="block"> {{ __('backend.client_block.btn') }}</a>
+            <a href="{{ route('client.block',$item->id) }}" class="btn btn-danger btn-sm rounded-0 block-activate" id="block"> {{ __('backend.client_block.btn') }} </a>
             <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
         </div>
       </div>
@@ -85,7 +86,7 @@
                                             </li>
                                             @else
                                             <li class="list-inline-item">
-                                                <a href="{{ route('client.edit',$item->id)}}" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#activate"  id="activateClient" title="Activate" data-id={{$item->id}}><i class="fas fa-ban"></i></a>
+                                                <a href="{{ route('client.edit',$item->id)}}" class="btn btn-danger btn-sm rounded-0 user_dialog" data-toggle="modal" data-target="#activate"  id="activateClient" title="Activate" data-id={{$item->id}}><i class="fas fa-ban"></i>{{$item->id}}</a>
                                                                               <!-- Modal -->
  <div class="modal fade" id="activate" role="dialog">
     <div class="modal-dialog">
@@ -98,10 +99,10 @@
         </div>
         <div class="modal-body">
           <p>{{ __('backend.client_active_message.lbl') }}</p>
+          <input type="text" name="id_client" id="id_client" value=""/>
         </div>
         <div class="modal-footer">
-        
-            <a href="{{ route('client.active',$item->id) }}" class="btn btn-info btn-sm rounded-0"> {{ __('backend.client_activate.btn') }}</a>
+            <a href="{{ route('client.active',$item->id) }}" class="btn btn-info btn-sm rounded-0 block-activate"> {{ __('backend.client_activate.btn') }} {{$item->id}}</a>
         </div>
       </div>
     </div>
@@ -122,19 +123,21 @@
         </div>
     </div>
 </div>
-@endsection
-<script>
 
-
-$(document).on("click", "#activateClient", function () {
-     var myBookId = $(this).data('id');
-     $(".modal-footer #activ").val( myBookId );
-
+<script type="text/javascript">
+var id;
+$(document).on("click", ".user_dialog", function () {
+     var id_client = $(this).data('id');
+     id=id_client;
+    $(".modal-body #id_client").val(id);
+   
+     //$(".block-activate").click(function (id_client) {
+      //  window.location.href = "{{URL::to('client/2/active')}}"
+//});
 });
-
-$(document).on("click", "#blockClient", function () {
-     var myBookId = $(this).data('id');
-     $(".modal-footer #bloc").val( myBookId );
-
-});
+function test(val){
+    alert(val);
+  //window.location.href = "http://127.0.0.1:8000/client/".val."/active"
+    }
 </script>
+@endsection

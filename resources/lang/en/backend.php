@@ -413,4 +413,5 @@ return [
     'total.lbl' => 'Total',
     'booking_status.lbl' => 'Booking Status',
     'billing_status.lbl' => 'Billing Status',
+    'image_national.lbl' => 'National Image',
 ];

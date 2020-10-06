@@ -89,7 +89,7 @@
                         <h4 class="card-title">{{ __('backend.driving_licence_image.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                <a data-fancybox="gallery" class="primary-btn" href="/assets/images/clients/{{$data->driving_licence_image}}"><img style="height: 107px;width: 158px;" src="/assets/images/clients/{{$data->driving_licence_image ?? 'default.jpg'}}"/></a>
+                            <a data-fancybox="gallery" href="/assets/images/clients/{{$driving_licence_image}}" class="primary-btn"><img style="height: 107px;width: 158px;" src="/assets/images/clients/{{$driving_licence_image}}"/></a>
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                         <h4 class="card-title">{{ __('backend.image_national.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                <a data-fancybox="gallery" class="primary-btn" href="/assets/images/clients/{{$data->image_national_id}}"><img style="height: 107px;width: 158px;" src="/assets/images/clients/{{$data->image_national_id}}"/></a>
+                                <a data-fancybox="gallery" class="primary-btn" href="/assets/images/clients/{{$image_national_id}}"><img style="height: 107px;width: 158px;" src="/assets/images/clients/{{$image_national_id}}"/></a>
                             </div>
                         </div>
                     </div>

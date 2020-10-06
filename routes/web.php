@@ -54,6 +54,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('client/{id}/delete', 'App\Http\Controllers\ClientController@destroy')->name('client.destroy');
     Route::get('client/{id}/block', 'App\Http\Controllers\ClientController@blockClient')->name('client.block');
     Route::get('client/{id}/active', 'App\Http\Controllers\ClientController@activateClient')->name('client.active');
+    //Route::get('client/{id}/active', array('as' => 'select2', 'uses' =>'App\Http\Controllers\ClientController@activateClient'));
     Route::get('client/{id}/detail', 'App\Http\Controllers\ClientController@detail')->name('client.detail');
     Route::get('client/{id}/equipmentDetail', 'App\Http\Controllers\ClientController@checkEquipmentDetail')->name('client.equipmentDetail');
     Route::get('client/{id}/rentDetail', 'App\Http\Controllers\ClientController@checkBookingDetail')->name('client.rentDetail');

@@ -7,6 +7,7 @@ use App\Models\CamperName;
 use App\Models\Client;
 use App\Models\Camper;
 use App\Models\CamperCategory;
+use App\Models\CamperStatus;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
 use App\Models\StatusEquipment;
@@ -37,7 +38,7 @@ class EquipmentController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = Camper::where('equipment_name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = Camper::where('camper_name', 'like', '%' . $search . '%')->paginate(10);
         } else {
             $datas = Camper::paginate(10);
         }
@@ -78,7 +79,7 @@ class EquipmentController extends Controller
 
     public function detailEquipment($id)
     {
-        $equipments = Equipment::join('clients', 'campers.id_clients', '=', 'clients.id')
+        $equipments = Camper::join('clients', 'campers.id_clients', '=', 'clients.id')
             ->join('camper_names', 'campers.id_camper_names', '=', 'camper_names.id')
             ->where('id_clients', $id)->get();
         return view('equipment.detailEquipment')->with('data', $equipments);
@@ -89,11 +90,11 @@ class EquipmentController extends Controller
         $data = Camper::find($id);
         $clients = Client::find($data->id_client) != null ? Client::find($data->id_client)->first() : new Client();
         $camper_name = CamperName::find($data->id_campers_name) != null ? CamperName::find($data->id_campers_name)->first() : new CamperName();
-        $equipment_categories = CamperCategory::find($data->id_licence_categories)->first();
+        $camper_categories = CamperCategory::find($data->id_licence_categories)->first();
         $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
         $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
         $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
-        $camper_status = StatusCamper::find($data->id_status_equipments) != null ? StatusCamper::find($data->id_status_equipments)->first() : new StatusEquipment();
+        $camper_status = CamperStatus::find($data->id_status_equipments) != null ? CamperStatus::find($data->id_status_equipments)->first() : new CamperStatus();
         return view('equipment.details')
             ->with('data', $data)
             ->with('clients', $clients)
