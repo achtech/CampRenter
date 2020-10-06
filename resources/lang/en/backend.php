@@ -246,7 +246,7 @@ return [
     'message_email_answer.lbl'=>'Answer',
     'message_status_0.lbl'=>'Not read',
     'message_status_1.lbl'=>'Read',
-    'message_email_sent_date.lbl'=>'Date sent'
+    'message_email_sent_date.lbl'=>'Date sent',
 
 
     /** licence_category */

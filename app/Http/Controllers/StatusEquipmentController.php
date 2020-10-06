@@ -31,9 +31,9 @@ class StatusEquipmentController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = StatusEquipment::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = StatusCamper::where('name', 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $datas = StatusEquipment::paginate(10);
+            $datas = StatusCamper::paginate(10);
         }
         return view('statusEquipment.index')->with('datas', $datas)->with('search', $search);
     }
@@ -65,7 +65,7 @@ class StatusEquipmentController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = StatusEquipment::create($input);
+        $data = StatusCamper::create($input);
         return redirect(route('statusEquipment.index'))->with('success', 'Item added succesfully');
     }
 
@@ -88,11 +88,11 @@ class StatusEquipmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = StatusEquipment::find($id);
+        $data = StatusCamper::find($id);
         if (empty($data)) {
             return redirect(route('statusEquipment.index'));
         }
-        $data = StatusEquipment::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = StatusCamper::where('id', $id)->update(request()->except(['_token', '_method']));
         return redirect(route('statusEquipment.index'))->with('success', 'Item Updated succesfully');
     }
 
@@ -106,7 +106,7 @@ class StatusEquipmentController extends Controller
      */
     public function destroy($id)
     {
-        $data = StatusEquipment::find($id);
+        $data = StatusCamper::find($id);
         if (empty($data)) {
             return redirect(route('statusEquipment.index'));
         }
