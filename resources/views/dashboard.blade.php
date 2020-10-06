@@ -125,7 +125,7 @@
                                     <tr>
                                    
                                         <td>{{$item->client_name}} {{$item->client_last_name}}</td>
-                                        <td>{{$item->dateFrom}}</td>
+                                        <td>{{$item->start_date}}</td>
                                         <td><a href="{{ route('booking.index') }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
                                     </tr>
                                 @endforeach

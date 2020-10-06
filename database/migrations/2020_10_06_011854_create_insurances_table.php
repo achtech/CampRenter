@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateInsurancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,23 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('insurances', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('telephone')->nullable();
-            $table->mediumText('adress')->nullable();
-            $table->string('picture')->nullable();
-            $table->string('role')->nullable();
-            $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->text('profile_photo_path')->nullable();
+            $table->string('description_en');
+            $table->string('description_de')->nullable();
+            $table->string('description_fr')->nullable();
+            $table->double('price_per_day');
+            $table->unsignedBigInteger('id_insurance_companies');
+            $table->unsignedBigInteger('id_camper_names');
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
+
+            $table->foreign('id_insurance_companies')->references('id')->on('insurance_companies');
+            $table->foreign('id_camper_names')->references('id')->on('camper_names');
+
         });
     }
 
@@ -41,6 +40,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('insurances');
     }
 }

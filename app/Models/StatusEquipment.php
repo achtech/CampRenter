@@ -4,7 +4,7 @@ namespace App\Models;
 
 class StatusEquipment extends Base
 {
-    protected $table = 'status_equipments';
+    protected $table = 'status_campers';
     public $primarykey = 'id';
     protected $fillable = [
         'label_en',
