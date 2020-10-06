@@ -9,6 +9,8 @@ class Equipment extends Base
     protected $fillable = [
         'equipment_name',
         'id_client',
+        'id_status_equipments',
+        'id_campers_name',
         'image',
         'brand',
         'model',

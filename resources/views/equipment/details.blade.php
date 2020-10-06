@@ -22,14 +22,14 @@
 
         <ul class="nav nav-tabs nav-justified nav-bordered mb-3">
             <li class="nav-item">
-                <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link">
+                <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link active">
                     <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
                     <span class="d-none d-lg-block">Details</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#galery" data-toggle="tab" aria-expanded="true"
-                    class="nav-link active">
+                    class="nav-link">
                     <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
                     <span class="d-none d-lg-block">Galery</span>
                 </a>
@@ -50,7 +50,7 @@
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane" id="home-b2">
+            <div class="tab-pane show active" id="home-b2">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
@@ -58,7 +58,7 @@
                             <h4 class="card-title">{{__('backend.equipment_name.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('equipment_name',$data->equipment_name,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_campers_name',App\Http\Controllers\EquipmentController::getCamperName('camper_names',$camper_name->id),['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -238,7 +238,31 @@
                             <h4 class="card-title">{{__('backend.description.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::textArea('description',$data->description,['class'=>'form-control','required','disabled'])}}
+                                {{Form::textArea('description',$data->description_equipment,['class'=>'form-control','required','disabled'])}}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{__('backend.animal_description.lbl')}}</h4>
+                            <form class="mt-4">
+                                <div class="form-group">
+                                {{Form::textArea('animal_description',$data->animal_description,['class'=>'form-control','required','disabled'])}}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{__('backend.licence_age_desc.lbl')}}</h4>
+                            <form class="mt-4">
+                                <div class="form-group">
+                                {{Form::textArea('licence_age_desc',$data->licence_age_desc,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -251,18 +275,6 @@
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('id_fuels',$fuels->label_en,['class'=>'form-control','required','disabled'])}}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">{{__('backend.location.lbl')}}</h4>
-                            <form class="mt-4">
-                                <div class="form-group">
-                                {{Form::text('location',$data->location,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -331,18 +343,6 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.animal_description.lbl')}}</h4>
-                            <form class="mt-4">
-                                <div class="form-group">
-                                {{Form::textArea('animal_description',$data->animal_description,['class'=>'form-control','required','disabled'])}}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
                             <h4 class="card-title">{{__('backend.license_needed.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
@@ -391,18 +391,6 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.licence_age_desc.lbl')}}</h4>
-                            <form class="mt-4">
-                                <div class="form-group">
-                                {{Form::textArea('licence_age_desc',$data->licence_age_desc,['class'=>'form-control','required','disabled'])}}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
                             <h4 class="card-title">{{__('backend.availability.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
@@ -438,7 +426,7 @@
                 </div>
         </div>
   </div>
-            <div class="tab-pane show active" id="galery">
+            <div class="tab-pane show" id="galery">
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- row -->
