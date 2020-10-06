@@ -8,14 +8,14 @@ return [
     'operation.lbl' => 'Operation',
     'search.lbl' => 'Search',
     'dashboard.lbl' => "Dashboard",
-	'photo.lbl'=> 'Picture',	'edit.btn' => 'Edit',
+    'photo.lbl' => 'Picture', 'edit.btn' => 'Edit',
     'change_password.btn' => 'Change password',
     'profile_managment.lbl' => 'Profile managment',
     'picture.lbl' => 'Photo',
     'update.btn' => 'Update',
     'no_data_found.lbl' => 'No data found',
     'new_password.lbl' => 'New password',
-    'confirm_password.lbl' => 'confirm password',    
+    'confirm_password.lbl' => 'confirm password',
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
@@ -105,7 +105,6 @@ return [
     'transmission_list.lbl' => 'List of Transmission',
     'message_delete_transmission.lbl' => 'Do you want to delete this Transmission',
     /** End Transmission */
-
 
     /* ---- Commission-----*/
     'commission_managment.lbl' => 'Commission Management',
@@ -242,12 +241,11 @@ return [
     'send_date.lbl' => 'Date',
     'message_email_from.lbl' => 'From',
     'message_email_to.lbl' => 'To',
-    'message_email_subject.lbl'=>'Subject',
-    'message_email_answer.lbl'=>'Answer',
-    'message_status_0.lbl'=>'Not read',
-    'message_status_1.lbl'=>'Read',
-    'message_email_sent_date.lbl'=>'Date sent'
-
+    'message_email_subject.lbl' => 'Subject',
+    'message_email_answer.lbl' => 'Answer',
+    'message_status_0.lbl' => 'Not read',
+    'message_status_1.lbl' => 'Read',
+    'message_email_sent_date.lbl' => 'Date sent',
 
     /** licence_category */
     'licence_category_managment.lbl' => 'Licence Category Managment',
@@ -390,14 +388,11 @@ return [
     'billing_managment.lbl' => 'Billing Management',
     'equipment_detail.lbl' => 'Equipment Detail',
     'rent_management.lbl' => 'Rent Management',
-	//billing
+    //billing
     'last_booking.lbl' => 'Last Booking',
     'current_amount.lbl' => 'Current Amount',
     'confirmed_amount.lbl' => 'Confirmed Amount',
     'detail.lbl' => 'Detail',
-
-
-
 
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Users',
