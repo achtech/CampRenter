@@ -29,7 +29,7 @@ Route::group(['middleware' => 'Lang'], function () {
             return redirect(route('dashboard'));
         }
     });
-    
+
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
     Route::get('/confirm/{id}', 'App\Http\Controllers\DashboardController@confirmEquipment')->name('dashboard.confirm');
     //Route::get('/lastBookings', 'App\Http\Controllers\DashboardController@getLastBookings')->name('dashboard');
@@ -38,7 +38,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('user/updateProfile', 'App\Http\Controllers\UserController@updateProfile')->name('user.updateProfile');
     Route::get('user/changePassword', 'App\Http\Controllers\UserController@changePassword')->name('user.changePassword');
     Route::PUT('user/updatePassword', 'App\Http\Controllers\UserController@updatePassword')->name('user.updatePassword');
-    
+
     Route::get('user/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
     Route::get('user/{id}/delete', 'App\Http\Controllers\UserController@destroy')->name('user.destroy');
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => 'destroy', 'names' => [
@@ -189,19 +189,19 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'equipmentCategory.show',
     ]]);
 
-   //ADMIN->BOOKING
-Route::get('booking/{id}/delete', 'App\Http\Controllers\Bookingcontroller@destroy')->name('booking.destroy');
-Route::get('booking/{id}/detail', 'App\Http\Controllers\Bookingcontroller@detail')->name('booking.detail');
-Route::get('booking/search', 'App\Http\Controllers\Bookingcontroller@search')->name('booking.search');
-Route::get('booking/{id}/chat', 'App\Http\Controllers\Bookingcontroller@chat')->name('booking.chat');
-Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
-    'index' => 'booking.index',
-    'create' => 'booking.create',
-    'update' => 'booking.update',
-    'edit' => 'booking.edit',
-    'store' => 'booking.store',
-    'show' => 'booking.show',
-]]);
+    //ADMIN->BOOKING
+    Route::get('booking/{id}/delete', 'App\Http\Controllers\Bookingcontroller@destroy')->name('booking.destroy');
+    Route::get('booking/{id}/detail', 'App\Http\Controllers\Bookingcontroller@detail')->name('booking.detail');
+    Route::get('booking/search', 'App\Http\Controllers\Bookingcontroller@search')->name('booking.search');
+    Route::get('booking/{id}/chat', 'App\Http\Controllers\Bookingcontroller@chat')->name('booking.chat');
+    Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
+        'index' => 'booking.index',
+        'create' => 'booking.create',
+        'update' => 'booking.update',
+        'edit' => 'booking.edit',
+        'store' => 'booking.store',
+        'show' => 'booking.show',
+    ]]);
 
     //ADMIN->CAMPERNAME
     Route::get('camperName/{id}/delete', 'CamperNameController@destroy')->name('camperName.destroy');
