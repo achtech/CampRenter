@@ -406,7 +406,7 @@
                             <h4 class="card-title">{{__('backend.status.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('status',$data->status,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_campers_name',App\Http\Controllers\EquipmentController::getCamperName('status_equipments',$camper_status->id),['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -418,7 +418,11 @@
                             <h4 class="card-title">{{__('backend.confirmed.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('confirmed',$data->confirmed,['class'=>'form-control','required','disabled'])}}
+                                    @if($data->is_confirmed==1)
+                                        <i class="fa fa-circle text-success mr-2"></i>
+                                        @else
+                                        <i class="fa fa-circle text-danger mr-2"></i>
+                                        @endif
                                 </div>
                             </form>
                         </div>
@@ -433,7 +437,7 @@
                 <div class="row">
 
                     <div class="col-lg-6" style="display: contents;">
-                        <div class="card">
+                        <div class="card" style="margin: auto;">
                             <div class="card-body">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner" role="listbox">

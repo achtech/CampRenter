@@ -8,6 +8,7 @@ use App\Models\Equipment;
 use App\Models\EquipmentCategory;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
+use App\Models\StatusEquipment;
 use App\Models\Transmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -109,6 +110,7 @@ class EquipmentController extends Controller
         $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
         $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
         $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
+        $camper_status = StatusEquipment::find($data->id_status_equipments) != null ? StatusEquipment::find($data->id_status_equipments)->first() : new StatusEquipment();
         return view('equipment.details')
             ->with('data', $data)
             ->with('clients', $clients)
@@ -116,7 +118,8 @@ class EquipmentController extends Controller
             ->with('licenceCategories', $licenceCategories)
             ->with('fuels', $fuels)
             ->with('transmissions', $transmissions)
-            ->with('camper_name', $camper_name);
+            ->with('camper_name', $camper_name)
+            ->with('camper_status', $camper_status);
     }
     /**
      * Store a newly created resource in storage.

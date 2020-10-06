@@ -36,7 +36,7 @@
                                         @endif
                                     <td>{{App\Http\Controllers\EquipmentController::getCamperName('status_equipments',$item->id_status_equipments)}}</td>
                                     <td>
-                                        @if($item->confirmed==1)
+                                        @if($item->is_confirmed==1)
                                         <i class="fa fa-circle text-success mr-2"></i>
                                         @else
                                         <i class="fa fa-circle text-danger mr-2"></i>
@@ -47,7 +47,7 @@
                                             <li class="list-inline-item">
                                                 <a href="{{ route('equipment.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
                                             </li>
-                                            @if($item->confirmed==0)
+                                            @if($item->is_confirmed==1)
                                             <li class="list-inline-item" >
                                                 <a href="{{ route('client.edit',$item->id)}}" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#block" title="Block"><i class="fas fa-ban"></i></a>
                                             <!-- Modal -->
