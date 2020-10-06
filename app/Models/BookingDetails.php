@@ -7,8 +7,8 @@ class Client extends Base
     protected $table = 'clients';
     public $primarykey = 'id';
     protected $fillable = [
-        'dateFrom',
-        'dateTo',
+        'start_date',
+        'end_date',
         'bookingDay',
         'equipment_name_en',
         'equipment_name_de',

@@ -70,7 +70,7 @@
                             <h4 class="card-title">{{__('backend.client.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_client',$clients->client_name,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_clients',$clients->client_name,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>

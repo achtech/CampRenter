@@ -35,7 +35,7 @@ class BillingController extends Controller
     public function index(Request $request)
     {
         $todayDate = date("Y-m-d");
-        $datas = Billing::join('clients', 'billings.id_client', '=', 'clients.id')
+        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
             ->get();
         return view('billing.index')->with('datas', $datas)->with('todayDate', $todayDate);
         //Session::put('end_date', $todayDate);
@@ -46,12 +46,12 @@ class BillingController extends Controller
 
         $fileName = 'billings.csv';
         $current_date = date("Y-m-d");
-        //$endDate = $request->end_date ?? '';
-        $endDate = Session::get('endDate');
-        $datas = Billing::join('bookings', 'billings.id_booking', '=', 'bookings.id')
-            ->join('clients', 'billings.id_client', '=', 'clients.id')
-            ->where('dateTo', '=', $endDate)
-            ->where('dateTo', '<', $current_date)->get();
+        //$end_date = $request->end_date ?? '';
+        $end_date = Session::get('end_date');
+        $datas = Billing::join('bookings', 'billings.id_bookings', '=', 'bookings.id')
+            ->join('clients', 'billings.id_clients', '=', 'clients.id')
+            ->where('end_date', '=', $end_date)
+            ->where('end_date', '<', $current_date)->get();
 
         $headers = array(
             "Content-type"        => "text/csv",
@@ -87,17 +87,17 @@ class BillingController extends Controller
     {
         $todayDate = date("Y-m-d");
         $startDate = $request->start_date ?? '';
-        $endDate = $request->end_date ?? '';
-        Session::put('endDate', $endDate);
-        $datas = Billing::join('clients', 'billings.id_client', '=', 'clients.id')
-            ->join('bookings', 'billings.id_booking', '=', 'bookings.id')
-            ->where('dateFrom', '>=', $startDate)
-            ->where('dateTo', '<=', $endDate)
+        $end_date = $request->end_date ?? '';
+        Session::put('end_date', $end_date);
+        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
+            ->join('bookings', 'billings.id_bookings', '=', 'bookings.id')
+            ->where('start_date', '>=', $startDate)
+            ->where('end_date', '<=', $end_date)
             ->get();
         return view('billing.index')
             ->with('datas', $datas)
             ->with('startDate', $startDate)
-            ->with('endDate', $endDate)
+            ->with('end_date', $end_date)
             ->with('todayDate', $todayDate);
     }
 

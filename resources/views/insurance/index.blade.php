@@ -29,7 +29,7 @@
                                     <td>{{$item->description_de}}</td>
                                     <td>{{$item->description_en}}</td>
                                     <td>{{$item->description_fr}}</td>
-                                    <td>{{App\Http\Controllers\InsuranceController::getLabel('inssurance_company',$item->id_inssurance_company)}}</td>
+                                    <td>{{App\Http\Controllers\InsuranceController::getLabel('insurance_companies',$item->id_inssurance_company)}}</td>
                                     <td>{{App\Http\Controllers\InsuranceController::getLabel('camper_names',$item->id_camper_name)}}</td>
                                     <td>{{$item->price_per_day}}</td>
                                    <td>

@@ -38,8 +38,8 @@
                                 <tr>
                                     <td>{{$item->client_name}} {{$item->client_last_name}}</td>
                                     <td>{{$item->equipment_name}}</td>
-                                    <td >{{$item->dateFrom}}</td>
-                                    <td>{{$item->dateTo}}</td>
+                                    <td >{{$item->start_date}}</td>
+                                    <td>{{$item->end_date}}</td>
                                     <td>{{$remaining_days}}</td>
                                     <td><a href="{{ route('billing.index') }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
                                 </tr>

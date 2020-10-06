@@ -10,7 +10,7 @@ class Billing extends Base
         'id_renter',
         'id_owner',
         'id_bill',
-        'id_booking',
+        'id_bookings',
         'email_paypal',
         'num_card',
         'exp_date',

@@ -89,7 +89,7 @@
                 <div class="col-sm-12 col-md-4 col-lg-4">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">{{ __('backend.promotion_datefrom.lbl') }}</h4>
+                                <h4 class="card-title">{{ __('backend.promotion_start_date.lbl') }}</h4>
                                     <div class="form-group">
                                         {{Form::date('date_from','',['class'=>'form-control','required'])}}
                                     </div>
@@ -99,7 +99,7 @@
                 <div class="col-sm-12 col-md-4 col-lg-4">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">{{ __('backend.promotion_dateto.lbl') }}</h4>
+                                <h4 class="card-title">{{ __('backend.promotion_end_date.lbl') }}</h4>
                                     <div class="form-group">
                                         {{Form::date('date_to','',['class'=>'form-control','required'])}}
                                     </div>
@@ -128,8 +128,8 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.promotion_datefrom.lbl') }}</th>
-                                    <th>{{ __('backend.promotion_dateto.lbl') }}</th>
+                                    <th>{{ __('backend.promotion_start_date.lbl') }}</th>
+                                    <th>{{ __('backend.promotion_end_date.lbl') }}</th>
                                     <th>{{ __('backend.promotion_createdBy.lbl') }}</th>
                                     <th>{{ __('backend.promotion_createdAt.lbl') }}</th>
                                     <th>{{ __('backend.promotion_rate.lbl') }}</th>
@@ -156,8 +156,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>{{ __('backend.promotion_datefrom.lbl') }}</th>
-                                    <th>{{ __('backend.promotion_dateto.lbl') }}</th>
+                                    <th>{{ __('backend.promotion_start_date.lbl') }}</th>
+                                    <th>{{ __('backend.promotion_end_date.lbl') }}</th>
                                     <th>{{ __('backend.promotion_createdBy.lbl') }}</th>
                                     <th>{{ __('backend.promotion_createdAt.lbl') }}</th>
                                     <th>{{ __('backend.promotion_rate.lbl') }}</th>

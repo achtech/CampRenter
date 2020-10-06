@@ -29,7 +29,7 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = DB::table('bookingdetails')->get();
+        $datas = DB::table('v_bookings_details')->get();
         $datasClients = DB::table('clients')->get();
         return view('booking.index')->with('datas', $datas)->with('datasClients', $datasClients);
     }
@@ -59,7 +59,7 @@ class BookingController extends Controller
     }
     public function detail($id)
     {
-        $data = DB::table('bookingdetails')->Where('id',$id)->first();
+        $data = DB::table('v_bookings_details')->Where('id',$id)->first();
         $totalPrice = $data-> price_per_day * $data-> bookingDay;
         if (empty($data)) {
             return redirect(route('booking.index'));
@@ -134,23 +134,22 @@ class BookingController extends Controller
      */
     public function search(Request $request)
     {
-        
         $datasClients = DB::table('clients')->get();
-        $dateFrom = $request->get('dateFrom');
-        $dateTo = $request->get('dateTo'); 
-        $date1 = Carbon::parse($dateFrom)->format('yy-m-d');
-        $date2 = Carbon::parse($dateTo)->format('yy-m-d');
+        $start_date = $request->get('start_date');
+        $end_date = $request->get('end_date'); 
+        $date1 = Carbon::parse($start_date)->format('yy-m-d');
+        $date2 = Carbon::parse($end_date)->format('yy-m-d');
         $owner = $request->get('ownerId');
-        $datas = DB::table('bookingdetails')->Where('client_id',$owner)
+        $datas = DB::table('v_bookings_details')->Where('client_id',$owner)
         ->orWhere(function ($q) use ($date1,$date2) {
-            $q->where('dateFrom','>=', $date1)
-                ->where('dateTo', '<=',$date2);
+            $q->where('start_date','>=', $date1)
+                ->where('end_date', '<=',$date2);
         })->get();
 
         return view('booking.index')
             ->with('datas', $datas)
-            ->with('dateFrom',$dateFrom)
-            ->with('dateTo',$dateTo)
+            ->with('start_date',$start_date)
+            ->with('end_date',$end_date)
             ->with('datasClients', $datasClients);
     }
     public function chat($id)
@@ -163,9 +162,14 @@ class BookingController extends Controller
             ->Where('id_bookings',$id)
             ->WhereNotNull('id_renter')
             ->orderBy('ordre_message','asc')->get();
+        $datas = DB::table('v_bookings_details')->get();
+        $datasClients = DB::table('clients')->get();
         if (empty($dataMessOwner) && empty($dataMessRenter) ) {
             return redirect(route('booking.index'));
         }
-        return view('booking.chat')->with('dataMessOwner', $dataMessOwner)->with('dataMessRenter', $dataMessRenter)->with('bookingId', $id);
+        return view('booking.chat')->with('dataMessOwner', $dataMessOwner)->with('dataMessRenter', $dataMessRenter)
+        ->with('bookingId', $id)
+        ->with('datas', $datas)
+        ->with('datasClients', $datasClients);
     }
 }

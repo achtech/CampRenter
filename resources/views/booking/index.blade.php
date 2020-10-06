@@ -2,7 +2,7 @@
 @section('content')
 {{ Breadcrumbs::render('booking') }}
 <div class="container-fluid ">
-{{ Form::open(['action'=>'App\Http\Controllers\BookingController@search','autocomplete'=>'off','method'=>'GET']) }} 
+<form method="GET" action="{{ route('booking.search') }}">
 <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4">
             <div class="card">
@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ __('backend.booking_from.lbl') }}</h4>
                         <div class="form-group">
-                            <input type="date" class="form-control"  id="dateFrom"  name="dateFrom" value="{{ $dateFrom ?? '' }}"/>
+                            <input type="date" class="form-control"  id="start_date"  name="start_date" value="{{ $start_date ?? '' }}"/>
                         </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     <h4 class="card-title">{{ __('backend.booking_to.lbl') }}</h4>
                         <div class="form-group">
                            
-                            <input type="date" class="form-control"  id="dateTo" name="dateTo"  value="{{ $dateTo ?? '' }}" />
+                            <input type="date" class="form-control"  id="end_date" name="end_date"  value="{{ $end_date ?? '' }}" />
                         </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    {{ Form::close() }}
+</form>
     <div class="row space-top">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="card">
@@ -74,8 +74,8 @@
                                     <tr>
                                         <td>{{$item->client_name }} {{$item->client_last_name }}</td>
                                         <td>{{$item->equipment_name_en}}</td>        
-                                        <td>{{$item->dateFrom}}</td>
-                                        <td>{{$item->dateTo}}</td>
+                                        <td>{{$item->start_date}}</td>
+                                        <td>{{$item->end_date}}</td>
                                         <td>{{$item->price_per_day}}</td>
                                         <td>
                                             <li class="list-inline-item">

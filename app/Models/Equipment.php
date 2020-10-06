@@ -4,11 +4,11 @@ namespace App\Models;
 
 class Equipment extends Base
 {
-    protected $table = 'equipments';
+    protected $table = 'campers';
     public $primarykey = 'id';
     protected $fillable = [
         'equipment_name',
-        'id_client',
+        'id_clients',
         'id_status_equipments',
         'id_campers_name',
         'image',

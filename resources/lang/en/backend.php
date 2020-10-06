@@ -15,7 +15,8 @@ return [
     'update.btn' => 'Update',
     'no_data_found.lbl' => 'No data found',
     'new_password.lbl' => 'New password',
-    'confirm_password.lbl' => 'confirm password',    /** Client  */
+    'confirm_password.lbl' => 'confirm password',    
+    /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
     'client_password.lbl' => 'Password',
@@ -33,7 +34,7 @@ return [
     'choose_file.lbl' => 'Choose file',
     'client_image.lbl' => 'Personal image',
     'client_rents.lbl' => 'Rents',
-    'client_equipments.lbl' => 'Equipments',
+    'client_campers.lbl' => 'campers',
     'client_block_message.lbl' => 'Do you want to block this client?',
     'client_block.btn' => 'Block',
     'client_activate.btn' => 'Activate',
@@ -131,7 +132,7 @@ return [
     'equipment_availability.lbl' => 'Equipment Availability',
     'equipment_smoking_allowed.lbl' => 'Smoking Allowed',
     'equipment_detail.lbl' => 'Equipment Details',
-    'equipment.btn' => 'View Equipments',
+    'equipment.btn' => 'View campers',
     'rentes.btn' => 'View Rents',
     'equipment_booking_list.lbl' => 'Booking List Detail',
     'booking_from.lbl' => 'Booking From',
@@ -223,7 +224,7 @@ return [
     'equipment_availability.lbl' => 'Equipment Availability',
     'equipment_smoking_allowed.lbl' => 'Smoking Allowed',
     'equipment_detail.lbl' => 'Equipment Details',
-    'equipment.btn' => 'View Equipments',
+    'equipment.btn' => 'View campers',
     'rentes.btn' => 'View Rents',
     'equipment_booking_list.lbl' => 'Booking List Detail',
     'booking_from.lbl' => 'Booking From',
@@ -239,6 +240,13 @@ return [
     'telephone.lbl' => 'Phone',
     'subject.lbl' => 'Subject',
     'send_date.lbl' => 'Date',
+    'message_email_from.lbl' => 'From',
+    'message_email_to.lbl' => 'To',
+    'message_email_subject.lbl'=>'Subject',
+    'message_email_answer.lbl'=>'Answer',
+    'message_status_0.lbl'=>'Not read',
+    'message_status_1.lbl'=>'Read',
+    'message_email_sent_date.lbl'=>'Date sent'
 
 
     /** licence_category */
@@ -246,8 +254,6 @@ return [
     'new_licence_category.btn' => 'New Licence Category',
     'licence_category_list.lbl' => 'List of Camper Categories',
     'message_delete_licence_category.lbl' => 'Do you want to delete this Camper Category',
-    '' => '',
-    '' => '',
 
     /** Dashboard */
     'dashboard_confirm_camper.lbl' => 'Campers to be confirmed',
@@ -275,8 +281,8 @@ return [
     'dashboard_action.lbl' => 'Action',
     /** End Dashboard */
     /** start promotion */
-    'promotion_datefrom.lbl' => 'From',
-    'promotion_dateto.lbl' => 'To',
+    'promotion_start_date.lbl' => 'From',
+    'promotion_end_date.lbl' => 'To',
     'promotion_createdBy.lbl' => 'Created By',
     'promotion_createdAt.lbl' => 'Created At',
     'promotion_rate.lbl' => 'Amount of Promotion',
