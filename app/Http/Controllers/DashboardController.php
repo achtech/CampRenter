@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
-use App\Models\Equipment;
+use App\Models\Camper;
 use App\Models\Message;
 use DB;
 class DashboardController extends Controller
@@ -20,7 +20,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $datas = Equipment::where('is_confirmed', 0)
+        $datas = Camper::where('is_confirmed', 0)
             ->join('clients', 'campers.id_clients', '=', 'clients.id')
             ->join('camper_names', 'campers.id_camper_names', '=', 'camper_names.id')
             ->get();
@@ -102,7 +102,7 @@ class DashboardController extends Controller
 
     public function confirmEquipment($id)
     {
-        $data = Equipment::find($id);
+        $data = Camper::find($id);
         if (empty($data)) {
             return redirect(route('dashboard'));
         }

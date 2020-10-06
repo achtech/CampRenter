@@ -172,4 +172,5 @@ class BookingController extends Controller
         ->with('datas', $datas)
         ->with('datasClients', $datasClients);
     }
+
 }

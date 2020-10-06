@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
   
  
-use App\Models\EquipmentCategory;
+use App\Models\CamperCategory;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
@@ -31,9 +31,9 @@ class EquipmentCategoryController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = EquipmentCategory::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = CamperCategory::where('name', 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $datas = EquipmentCategory::paginate(10);
+            $datas = CamperCategory::paginate(10);
         }
         return view('equipmentCategory.index')->with('datas', $datas)->with('search', $search);
     }
@@ -65,7 +65,7 @@ class EquipmentCategoryController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = EquipmentCategory::create($input);
+        $data = CamperCategory::create($input);
         return redirect(route('equipmentCategory.index'))->with('success', 'Item added succesfully');
     }
 
@@ -77,7 +77,7 @@ class EquipmentCategoryController extends Controller
      */
     public function edit($id)
     {
-        $data = EquipmentCategory::find($id);
+        $data = CamperCategory::find($id);
         return view('equipmentCategory.edit', ['id' => 1])->with('data', $data);
     }
 
@@ -90,11 +90,11 @@ class EquipmentCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = EquipmentCategory::find($id);
+        $data = CamperCategory::find($id);
         if (empty($data)) {
             return redirect(route('equipmentCategory.index'));
         }
-        $data = EquipmentCategory::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
+        $data = CamperCategory::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
         return redirect(route('equipmentCategory.index'))->with('success', 'Item Updated succesfully');
     }
 
@@ -108,7 +108,7 @@ class EquipmentCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $data = EquipmentCategory::find($id);
+        $data = CamperCategory::find($id);
         if (empty($data)) {
             return redirect(route('equipmentCategory.index'));
         }

@@ -72,8 +72,8 @@
                             <tbody>
                                 @foreach($datas as $item)
                                     <tr>
-                                        <td>{{$item->client_name }} {{$item->client_last_name }}</td>
-                                        <td>{{$item->equipment_name_en}}</td>        
+                                        <td>{{$item->renter_name }} {{$item->renter_last_name }}</td>
+                                        <td>{{app()->getLocale()=='en'? $item->camper_name_en : app()->getLocale()=='de' ? $item->camper_name_de : $item->camper_name_fr}}</td>        
                                         <td>{{$item->start_date}}</td>
                                         <td>{{$item->end_date}}</td>
                                         <td>{{$item->price_per_day}}</td>

@@ -34,9 +34,9 @@
                                         @else
                                         <i class="fa fa-circle text-danger mr-2"></i>
                                         @endif
-                                    <td>{{$item->status}}</td>
+                                    <td>{{App\Http\Controllers\EquipmentController::getCamperName('camper_status',$item->id_camper_status)}}</td>
                                     <td>
-                                        @if($item->confirmed==1)
+                                        @if($item->is_confirmed==1)
                                         <i class="fa fa-circle text-success mr-2"></i>
                                         @else
                                         <i class="fa fa-circle text-danger mr-2"></i>
@@ -47,7 +47,7 @@
                                             <li class="list-inline-item">
                                                 <a href="{{ route('equipment.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
                                             </li>
-                                            @if($item->confirmed=='1')
+                                            @if($item->is_confirmed==1)
                                             <li class="list-inline-item" >
                                                 <a href="{{ route('client.edit',$item->id)}}" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#block" title="Block"><i class="fas fa-ban"></i></a>
                                             <!-- Modal -->
@@ -61,10 +61,10 @@
 
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p>{{ __('backend.client_block_message.lbl') }}</p>
+                                                                <p>{{ __('backend.block_equipment_message.lbl') }}</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="{{ route('equipment.index').'/'.$item->id.'/block' }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.block_equipment_message.btn') }}</a>
+                                                                <a href="{{ route('equipment.index').'/'.$item->id.'/block' }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block.btn') }}</a>
                                                                 <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                             </div>
                                                         </div>

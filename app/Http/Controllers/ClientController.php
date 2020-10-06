@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Avatar;
 use App\Models\Booking;
 use App\Models\Client;
-use App\Models\Equipment;
+use App\Models\Camper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -154,7 +154,7 @@ class ClientController extends Controller
     }
     public function checkEquipmentDetail($id)
     {
-        $datas = Equipment::where('id_clients', $id)->get();
+        $datas = Camper::where('id_clients', $id)->get();
         $client  = Client::find($id);
         return view('client.detailEquipment')->with('datas', $datas)->with('client', $client);
     }
