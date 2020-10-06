@@ -468,12 +468,21 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.client_name.lbl') }}</th>
-                                    <th>{{ __('backend.client_equipments.lbl') }}</th>
-                                    <th>{{ __('backend.client_rents.lbl') }}</th>
+                                    <th>{{ __('backend.booking_renter.lbl') }}</th>
+                                    <th>{{ __('backend.booking_from.lbl') }}</th>
+                                    <th>{{ __('backend.booking_to.lbl') }}</th>
+                                    <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
+                                    <th>{{ __('backend.total.lbl') }}</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach($booking_equipment as $item)
+                                <tr>
+                                    <td></td>
+                                </tr>
 
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
             </div>

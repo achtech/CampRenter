@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\CamperName;
 use App\Models\Client;
 use App\Models\Equipment;
@@ -111,6 +112,7 @@ class EquipmentController extends Controller
         $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
         $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
         $camper_status = StatusEquipment::find($data->id_status_equipments) != null ? StatusEquipment::find($data->id_status_equipments)->first() : new StatusEquipment();
+        $booking_equipment = Booking::where('id_equipments', $id)->get();
         return view('equipment.details')
             ->with('data', $data)
             ->with('clients', $clients)
@@ -119,8 +121,10 @@ class EquipmentController extends Controller
             ->with('fuels', $fuels)
             ->with('transmissions', $transmissions)
             ->with('camper_name', $camper_name)
+            ->with('booking_equipment', $booking_equipment)
             ->with('camper_status', $camper_status);
     }
+
     /**
      * Store a newly created resource in storage.
      *
