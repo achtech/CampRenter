@@ -8,14 +8,14 @@ return [
     'operation.lbl' => 'Operation',
     'search.lbl' => 'Search',
     'dashboard.lbl' => "Dashboard",
-	'photo.lbl'=> 'Picture',	'edit.btn' => 'Edit',
+    'photo.lbl' => 'Picture',    'edit.btn' => 'Edit',
     'change_password.btn' => 'Change password',
     'profile_managment.lbl' => 'Profile managment',
     'picture.lbl' => 'Photo',
     'update.btn' => 'Update',
     'no_data_found.lbl' => 'No data found',
     'new_password.lbl' => 'New password',
-    'confirm_password.lbl' => 'confirm password',    
+    'confirm_password.lbl' => 'confirm password',
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
@@ -242,11 +242,11 @@ return [
     'send_date.lbl' => 'Date',
     'message_email_from.lbl' => 'From',
     'message_email_to.lbl' => 'To',
-    'message_email_subject.lbl'=>'Subject',
-    'message_email_answer.lbl'=>'Answer',
-    'message_status_0.lbl'=>'Not read',
-    'message_status_1.lbl'=>'Read',
-    'message_email_sent_date.lbl'=>'Date sent'
+    'message_email_subject.lbl' => 'Subject',
+    'message_email_answer.lbl' => 'Answer',
+    'message_status_0.lbl' => 'Not read',
+    'message_status_1.lbl' => 'Read',
+    'message_email_sent_date.lbl' => 'Date sent',
 
 
     /** licence_category */
@@ -390,17 +390,27 @@ return [
     'billing_managment.lbl' => 'Billing Management',
     'equipment_detail.lbl' => 'Equipment Detail',
     'rent_management.lbl' => 'Rent Management',
-	//billing
+    //billing
     'last_booking.lbl' => 'Last Booking',
     'current_amount.lbl' => 'Current Amount',
     'confirmed_amount.lbl' => 'Confirmed Amount',
     'detail.lbl' => 'Detail',
-
-
-
-
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Users',
     'no_data_to_confirm.lbl' => 'No campers to confirm',
-
+    /*----------------campers ----------*/
+    'camper_name.lbl' => 'Camper Name',
+    'camper_description.lbl' => 'Camper Description',
+    'camper_location.lbl' => 'Location',
+    'camper_price_per_day.lbl' => 'Price per day',
+    'camper_availability.lbl' => 'Availability',
+    'camper_kilometres.lbl' => 'Kilometres',
+    'camper_model.lbl' => 'Camper Model',
+    'vehicle_licence.lbl' => 'Vehicle Licence',
+    'check_equipment_detail.btn' => 'Check Details',
+    'start_date.lbl' => 'Start Date',
+    'end_date.lbl' => 'End Date',
+    'total.lbl' => 'Total',
+    'booking_status.lbl' => 'Booking Status',
+    'billing_status.lbl' => 'Billing Status',
 ];

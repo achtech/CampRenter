@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Equipment;
 use App\Models\Message;
 use DB;
+
 class DashboardController extends Controller
 {
     /**
@@ -26,21 +27,21 @@ class DashboardController extends Controller
             ->get();
         $bookings = Booking::join('clients', 'bookings.id_clients', '=', 'clients.id')
             ->get();
-        $today_owner = $this->getTotal('today','owner');
-        $week_owner = $this->getTotal('week','owner');
-        $month_owner = $this->getTotal('month','owner');
-        $previous_month_owner = $this->getTotal('previous_month','owner');
+        $today_owner = $this->getTotal('today', 'owner');
+        $week_owner = $this->getTotal('week', 'owner');
+        $month_owner = $this->getTotal('month', 'owner');
+        $previous_month_owner = $this->getTotal('previous_month', 'owner');
 
-        $today_campunit = $this->getTotal('today','campunit');
-        $week_campunit = $this->getTotal('week','campunit');
-        $month_campunit = $this->getTotal('month','campunit');
-        $previous_month_campunit = $this->getTotal('previous_month','campunit');
+        $today_campunit = $this->getTotal('today', 'campunit');
+        $week_campunit = $this->getTotal('week', 'campunit');
+        $month_campunit = $this->getTotal('month', 'campunit');
+        $previous_month_campunit = $this->getTotal('previous_month', 'campunit');
 
-        $today_total = $today_campunit+$today_owner;
-        $week_total = $week_campunit+$week_owner;
-        $month_total = $month_campunit+$month_owner;
-        $previous_month_total = $previous_month_campunit+$previous_month_owner;
- 		$messages = Message::where('status',0)
+        $today_total = $today_campunit + $today_owner;
+        $week_total = $week_campunit + $week_owner;
+        $month_total = $month_campunit + $month_owner;
+        $previous_month_total = $previous_month_campunit + $previous_month_owner;
+        $messages = Message::where('status', 0)
             ->get();
         return view('dashboard')
             ->with('today_owner', $today_owner)
@@ -57,14 +58,13 @@ class DashboardController extends Controller
             ->with('previous_month_total', $previous_month_total)
             ->with('datas', $datas)
             ->with('bookings', $bookings)
-			->with('messages', $messages);
-       
-        
+            ->with('messages', $messages);
     }
 
-    public function getTotal($period,$user){
+    public function getTotal($period, $user)
+    {
         $today = date("Y-m-d");
-        
+
         $day = date('w');
         $start_week = date("Y-m-d", strtotime('monday this week'));
         $end_week = date("Y-m-d", strtotime('sunday this week'));
@@ -75,28 +75,28 @@ class DashboardController extends Controller
         $startDate = $period == 'today' ? $today : ($period == 'week' ? $start_week : ($period == 'month' ? $start_month : $start_last_month));
         $end_date = $period == 'today' ? $today : ($period == 'week' ? $end_week : ($period == 'month' ? $end_month : $end_last_month));
         $owner = $user == 'owner';
-        return $this->getIncome($startDate,$end_date,$owner);
+        return $this->getIncome($startDate, $end_date, $owner);
     }
 
-    public function getIncome($startDate,$end_date,$owner){
-       /* $data = Booking::where('start_date','<=',$owner?$end_date:$startDate)
+    public function getIncome($startDate, $end_date, $owner)
+    {
+        /* $data = Booking::where('start_date','<=',$owner?$end_date:$startDate)
                        ->where('end_date','>=',$owner?$end_date:$startDate);
          */
-        $data=Booking::leftjoin('commissions', 'Bookings.id_commissions', '=', 'commissions.id')
-        ->leftjoin('Promotions', 'Promotions.id', '=', 'Bookings.id_promotions');
-        if($owner){
+        $data = Booking::leftjoin('commissions', 'Bookings.id_commissions', '=', 'commissions.id')
+            ->leftjoin('Promotions', 'Promotions.id', '=', 'Bookings.id_promotions');
+        if ($owner) {
             $data = $data->select(DB::raw('sum((Bookings.total/100) * (100-(IFNULL(Commissions.rate,0)+ IFNULL(Promotions.rate,0)))) as total'))
-                        ->where('Bookings.end_date','>=',$startDate)
-                        ->where('Bookings.end_date','<=',$end_date);
+                ->where('Bookings.end_date', '>=', $startDate)
+                ->where('Bookings.end_date', '<=', $end_date);
         } else {
             $data = $data->select(DB::raw('sum((Bookings.total/100) * (IFNULL(Commissions.rate,0)+ IFNULL(Promotions.rate,0))) as total'))
-                            ->where('Bookings.start_date','>=',$startDate)
-                           ->where('Bookings.start_date','<=',$end_date);
+                ->where('Bookings.start_date', '>=', $startDate)
+                ->where('Bookings.start_date', '<=', $end_date);
         }
-        
-        $data= $data->first(['total']);
+
+        $data = $data->first(['total']);
         return $data->total;
-        
     }
 
 

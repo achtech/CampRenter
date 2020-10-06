@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
-
+use App\Models\Booking;
 use App\Models\Equipment;
 use App\Models\Client;
 use App\Models\EquipmentCategory;
@@ -70,28 +69,18 @@ class EquipmentController extends Controller
 
     public function detailBooking($id)
     {
-        $data = Equipment::find($id);
-        $clients = Client::find($data->id_client) != null ? Client::find($data->id_client)->first() : new Client();
-        $camper_categories = EquipmentCategory::find($data->id_licence_categories)->first();
-        $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
-        $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
-        $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
+        $bookings = Booking::join('clients', 'bookings.id_clients', '=', 'clients.id')
+            ->where('id_clients', $id)->get();
         return view('equipment.detailBooking')
-            ->with('data', $data)
-            ->with('clients', $clients)
-            ->with('equipmentCategory', $camper_categories)
-            ->with('licenceCategories', $licenceCategories)
-            ->with('fuels', $fuels)
-            ->with('transmissions', $transmissions);
+            ->with('data', $bookings);
     }
 
     public function detailEquipment($id)
     {
-        //$data = Equipment::find($id);
-        $clients = Client::find($id);
         $equipments = Equipment::join('clients', 'campers.id_clients', '=', 'clients.id')
-            ->where('id_clients', $id);
-        //dd($clients);
+            ->join('camper_names', 'campers.id_camper_names', '=', 'camper_names.id')
+            ->where('id_clients', $id)->get();
+        return view('equipment.detailEquipment')->with('data', $equipments);
     }
 
     public function detail($id)
