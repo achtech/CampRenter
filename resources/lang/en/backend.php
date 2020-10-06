@@ -15,7 +15,8 @@ return [
     'update.btn' => 'Update',
     'no_data_found.lbl' => 'No data found',
     'new_password.lbl' => 'New password',
-    'confirm_password.lbl' => 'confirm password',    
+    'confirm_password.lbl' => 'Confirm password', 
+    'current_password.lbl' => 'Current password',   
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
@@ -76,6 +77,7 @@ return [
     'user_list.lbl' => 'List of users',
     'user.lbl' => 'User',
     'user_name.lbl' => 'User Name',
+    'message_delete_user.lbl' => 'Do you really want to delete this user',
     'password.lbl' => 'Password',
     'tel.lbl' => 'Phone',
     'adress.lbl' => 'Adress',

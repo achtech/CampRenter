@@ -18,9 +18,9 @@ Breadcrumbs::for('add_user', function ($trail) {
 });
 
 // Home > Blog > [Category]
-Breadcrumbs::for('edit_user', function ($trail, $user) {
+Breadcrumbs::for('edit_user', function ($trail, $id) {
     $trail->parent('user');
-    $trail->push('Edit user: '.$user->user_name, route('user.edit'));
+    $trail->push('Edit user', route('user.edit',$id));
 });
 //client
 Breadcrumbs::for('client', function ($trail) {

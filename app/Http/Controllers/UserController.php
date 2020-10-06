@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
+use Hash;
 
 class UserController extends Controller
 {
@@ -73,8 +74,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        $input['password']=md5("123456");
+
+        $file = $request->file('picture');
+
+        if($request->file('picture') && $request->file('picture')->getClientOriginalName()){
+            $input = request()->except(['_token', '_method', 'action']);
+            $input['picture'] = $request->file('picture')->getClientOriginalName();
+            $file->move(base_path('public\assets\images\users'),$file->getClientOriginalName());
+        } else {
+            $input = request()->except(['_token', '_method', 'action', 'picture']);
+        }
+        $input['password']=bcrypt("123456");
         $data = User::create($input);
         return redirect(route('user.index'))->with('success', 'Item added succesfully');
     }
@@ -86,6 +96,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $data = User::find($id);
+        return view('user.edit')->with('data', $data);
     }
 
     public function updateProfile(){
@@ -112,27 +124,40 @@ class UserController extends Controller
         if (empty($data)) {
             return redirect(route('user.profile'));
         }
-        $input = request()->except(['_token', '_method', 'action']);
-        $input['picture'] = $request->file('picture')->getClientOriginalName();
+        if($request->file('picture') && $request->file('picture')->getClientOriginalName()){
+            $input = request()->except(['_token', '_method', 'action']);
+            $input['picture'] = $request->file('picture')->getClientOriginalName();
+            $file->move(base_path('public\assets\images\users'),$file->getClientOriginalName());
+        } else {
+            $input = request()->except(['_token', '_method', 'action', 'picture']);
+        }
         $data = User::where('id', $id)->update($input);
-        //dd(base_path('public\assets\images\users'));
-        $file->move(base_path('public\assets\images\users'),$file->getClientOriginalName());
         return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
     }
     
     
     public function updatePassword(UpdateProfile $request)
     {
+        $current = $request->old_password;
         $password = $request->password;
         $confirm = $request->password_confirmation;
         $data = User::find(auth()->user()->id);
         if (empty($data)) {
             return redirect(route('user.profile'));
         }
+        if (!(Hash::check($current, auth()->user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+        }
+
+        if(strcmp($current, $password) == 0){
+            //Current password and new password are same
+            return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+        }
         if($password!=$confirm){
             return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');    
         }
-        $input = request()->except(['_token', '_method', 'action', 'password_confirmation']);
+        $input = request()->except(['_token', '_method', 'action','old_password','password_confirmation']);
         $input['password'] = bcrypt($password);
         $data = User::where('id', auth()->user()->id)->update($input);
         return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
@@ -151,7 +176,8 @@ class UserController extends Controller
         if (empty($data)) {
             return redirect(route('user.index'));
         }
-        $data->delete();
+        $data->status = 0;
+        $data = User::where('id', $id)->update($data);
         return redirect(route('user.index'));
     }
 }

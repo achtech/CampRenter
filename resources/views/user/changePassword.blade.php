@@ -6,7 +6,25 @@
     
     @csrf
      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
+     <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ __('backend.current_password.lbl') }}</h4>
+                    <div class="mt-5">
+                        <div class="form-group">
+                            {{ Form::password('old_password',array('class' => 'form-control','placeholder' => 'password','required')) }}
+          
+                        </div>
+                        @if ($errors->has('password'))
+                            <span class="help-block" style="color:red">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{{ __('backend.new_password.lbl') }}</h4>
@@ -24,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
                 <h4 class="card-title">{{ __('backend.confirm_password.lbl') }}</h4>
