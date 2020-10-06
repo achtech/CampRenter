@@ -13,7 +13,7 @@
                                 <div class="card-body">
                                     <div class="mt-4">
                                         <div class="form-group">
-                                            <img style="height: 120px;" src="/assets/images/campers/{{$data->img_equipment}}"/>
+                                            <img style="height: 120px;" src="/assets/images/campers/{{$data->image}}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                                     <h4 class="card-title">{{ __('backend.booking_equipement.lbl') }}</h4>
                                     <div class="mt-4">
                                         <div class="form-group">
-                                            {{Form::text('equipment_name_en',$data->equipment_name_en,['class'=>'form-control','required','disabled'])}}
+                                            {{Form::text('camper_name_en',$data->camper_name_en,['class'=>'form-control','required','disabled'])}}
                                         </div>
                                     </div>
                                 </div>
