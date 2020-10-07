@@ -312,7 +312,7 @@ return [
     'menu_booking.lbl' => 'Bookings',
     'menu_insurances.lbl' => 'Insurances',
     'menu_billings.lbl' => 'Billings',
-    'menu_message.lbl' => 'Mitteilungen',
+    'menu_message.lbl' => 'Messages',
     'menu_settings.lbl' => 'Settings',
     'menu_profil.lbl' => 'Profil',
     'menu_commision.lbl' => 'Commission',

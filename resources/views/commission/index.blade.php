@@ -46,7 +46,7 @@
                             <tbody>
                                 @foreach($datas as $item)
                                     <tr>
-                                        <td>{{$item->created_by}}</td>
+                                        <td>{{App\Http\Controllers\Controller::getUser($item->created_by)}}</td>
                                         <td>{{$item->created_at}}</td>
                                         <td>{{$item->rate}}</td>
                                         <td>
