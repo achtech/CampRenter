@@ -135,7 +135,7 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->AVATAR
-    Route::get('avatar/{id}/delete', 'AvatarController@destroy')->name('avatar.destroy');
+    Route::get('avatar/{id}/delete', 'App\Http\Controllers\AvatarController@destroy')->name('avatar.destroy');
     Route::resource('avatar', 'App\Http\Controllers\AvatarController', ['except' => 'destroy', 'names' => [
         'index' => 'avatar.index',
         'create' => 'avatar.create',

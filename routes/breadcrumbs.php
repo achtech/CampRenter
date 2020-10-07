@@ -67,6 +67,24 @@ Breadcrumbs::for('create_insurance', function ($trail) {
     $trail->push('Create Insurance', route('insurance.index'));
 });
 
+// Dashboard > Insurance
+Breadcrumbs::for('insurance_company', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Insurances company', route('inssuranceCompany.index'));
+});
+
+// Dashboard > Insurance > Edit Insurance
+Breadcrumbs::for('edit_insurance_company', function ($trail,$data) {
+    $trail->parent('insurance_company');
+    $trail->push('Edit Insurance company', route('inssuranceCompany.edit', $data->id));
+});
+
+// Dashboard > Insurance > Create Insurance
+Breadcrumbs::for('create_insurance_company', function ($trail) {
+    $trail->parent('insurance_company');
+    $trail->push('Create Insurance company', route('inssuranceCompany.create'));
+});
+
 // Dashboard > Equipment
 Breadcrumbs::for('equipment', function ($trail) {
     $trail->parent('dashboard');
@@ -224,9 +242,9 @@ Breadcrumbs::for('add_avatar', function ($trail) {
 });
 
 // Home > Avatar > ediy [Category]
-Breadcrumbs::for('edit_avatar', function ($trail, $category) {
+Breadcrumbs::for('edit_avatar', function ($trail, $avatar) {
     $trail->parent('avatar');
-    $trail->push('Edit avatar', route('avatar.edit'));
+    $trail->push('Edit avatar', route('avatar.edit',$avatar->id));
 });
 
 // Message

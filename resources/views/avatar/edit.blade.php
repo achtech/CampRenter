@@ -1,9 +1,9 @@
 @extends('layout', ['activePage' => 'avatar', 'titlePage' => __('backend.avatar_managment.lbl')])
 @section('content')
-{{ Breadcrumbs::render('add_avatar') }}
+{{ Breadcrumbs::render('edit_avatar',$data) }}
 <div class="container-fluid">
     <!--'action'=>'InsuranceController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\AvatarController@store', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+    {{ Form::open(array('method'=>'PUT', 'enctype'=>'multipart/form-data' ,'route' => ['avatar.update', $data->id ?? 1])) }}
     <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
@@ -11,7 +11,7 @@
                         <h4 class="card-title">{{ __('backend.avatar.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('label','',['class'=>'form-control','required'])}}
+                                {{Form::text('label',$data->label,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -30,11 +30,12 @@
                                     <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.choose_file.lbl') }} </label>
                                 </div>
                             </div>
+                                    <img src="/assets/images/avatar/{{$data->image}}"  style="with:200px"/>
                     </div>
                 </div>
             </div>  
             <div class="col-sm-12">
-                {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
+                {{Form::submit('Update',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
  
                 <a href="{{ route('user.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.cancel.btn') }}</a>
             </div>

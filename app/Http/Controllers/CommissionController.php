@@ -31,12 +31,6 @@ class CommissionController extends Controller
     public function index(Request $request)
     {
         $search = '';
-        /*if (isset($request) && null !== $request->get('search')) {
-            $search = $request->get('search');
-            $datas = Commission::where('start_date', 'like', '%' . $search . '%')->paginate(10);
-        } else {
-            $datas = Commission::paginate(10);
-        }*/
         $datas = Commission::paginate(10);
         $datasPromo = Promotion::paginate(10);
         return view('commission.index')->with('datas', $datas)->with('datasPromo', $datasPromo);

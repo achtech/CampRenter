@@ -9,6 +9,7 @@ class Promotion extends Base
     protected $fillable = [
         'rate',
         'start_date',
-        'end_date'
+        'end_date',
+        
     ];
 }

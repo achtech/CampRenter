@@ -17,6 +17,7 @@ return [
     'new_password.lbl' => 'New password',
     'confirm_password.lbl' => 'Confirm password', 
     'current_password.lbl' => 'Current password',   
+    'message_delete_avatar.lbl' => 'DO you really want to delete this avatar ?',
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
