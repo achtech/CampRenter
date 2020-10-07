@@ -6,10 +6,10 @@ use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
 use App\Models\CamperName;
+use App\Models\CamperStatus;
 use App\Models\Client;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
-use App\Models\StatusEquipment;
 use App\Models\Transmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -105,18 +105,18 @@ class EquipmentController extends Controller
     public function detail($id)
     {
         $data = Camper::find($id);
-        $clients = Client::find($data->id_client) != null ? Client::find($data->id_client)->first() : new Client();
-        $camper_name = CamperName::find($data->id_campers_name) != null ? CamperName::find($data->id_campers_name)->first() : new CamperName();
-        $equipment_categories = CamperCategory::find($data->id_licence_categories)->first();
+        $clients = Client::find($data->id_clients) != null ? Client::find($data->id_clients)->first() : new Client();
+        $camper_name = CamperName::find($data->id_camper_names) != null ? CamperName::find($data->id_camper_names)->first() : new CamperName();
+        $camper_categories = CamperCategory::find($data->id_licence_categories)->first();
         $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
         $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
         $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
-        $camper_status = StatusCamper::find($data->id_status_equipments) != null ? StatusCamper::find($data->id_status_equipments)->first() : new StatusEquipment();
-        $booking_equipment = Booking::where('id_equipments', $id)->get();
+        $camper_status = CamperStatus::find($data->id_camper_status) != null ? CamperStatus::find($data->id_camper_status)->first() : new CamperStatus();
+        $booking_equipment = Booking::where('id_campers', $id)->get();
         return view('equipment.details')
             ->with('data', $data)
             ->with('clients', $clients)
-            ->with('equipmentCategory', $camper_categories)
+            ->with('camper_categories', $camper_categories)
             ->with('licenceCategories', $licenceCategories)
             ->with('fuels', $fuels)
             ->with('transmissions', $transmissions)

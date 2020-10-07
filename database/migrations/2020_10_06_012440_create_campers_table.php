@@ -35,6 +35,7 @@ class CreateCampersTable extends Migration
             $table->string('animals_allowed')->nullable();
             $table->string('animal_description', 300)->nullable();
             $table->string('licence_needed_desc', 100)->nullable();
+            $table->string('licence_needed', 100)->nullable();
             $table->string('license_age', 100)->nullable();
             $table->string('licence_age_desc', 300)->nullable();
             $table->string('smoking_allowed', 100)->nullable();

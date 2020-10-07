@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers;
 
-  
- 
-use App\Models\StatusEquipment;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
 
-class StatusEquipmentController extends Controller
+class StatusCamperController extends Controller
 {
     /**
      * Create a new controller instance.
