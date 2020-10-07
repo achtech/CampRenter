@@ -46,6 +46,7 @@ class CamperSeeder extends Seeder
                 'id_camper_categories' => '1',
                 'id_transmissions' => '1',
                 'id_fuels' => '1',
+                'id_camper_status' => '1',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,

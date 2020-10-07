@@ -6,8 +6,6 @@ namespace App\Http\Controllers;
  
 use App\Models\StatusCamper;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
 
 class StatusCamperController extends Controller
 {

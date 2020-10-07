@@ -118,7 +118,7 @@
                             <h4 class="card-title">{{__('backend.value_of_vehicle.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('value_of_vehicle',$data->value_of_vehicle,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('value_of_vehicle',$data->value_of_vehicule,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -166,7 +166,7 @@
                             <h4 class="card-title">{{__('backend.category.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_camper_categories',$camperCategory->label_en,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_camper_categories',$camper_categories->label_en,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -472,7 +472,7 @@
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
-                                    <th>{{ __('backend.total.lbl') }}</th>
+                                    <th>{{ __('backend.booking_total_price.lbl') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
