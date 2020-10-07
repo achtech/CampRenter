@@ -69,13 +69,6 @@ class CommissionController extends Controller
         return redirect(route('commission.index'))->with('success', 'Item added succesfully');
     }
 
-    public function storePromotion()
-    {
-        $input = $request->all();
-        $data = Promotion::create($input);
-        return redirect(route('commission.index'))->with('success', 'Item added succesfully');
-    }
-
     /**
      * Show the form for editing the specified resource.
      *

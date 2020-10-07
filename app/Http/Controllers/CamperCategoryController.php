@@ -60,7 +60,9 @@ class CamperCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
         $data = CamperCategory::create($input);
         return redirect(route('camperCategory.index'))->with('success', 'Item added succesfully');
     }
@@ -90,7 +92,9 @@ class CamperCategoryController extends Controller
         if (empty($data)) {
             return redirect(route('camperCategory.index'));
         }
-        $data = CamperCategory::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['updated_by']=auth()->user()->id;
+        $data = CamperCategory::where('id', $id)->update($input);
         return redirect(route('camperCategory.index'))->with('success', 'Item Updated succesfully');
     }
 

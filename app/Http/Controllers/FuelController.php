@@ -64,7 +64,9 @@ class FuelController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
         $data = Fuel::create($input);
         return redirect(route('fuel.index'))->with('success', 'Item added succesfully');
     }
@@ -94,7 +96,9 @@ class FuelController extends Controller
         if (empty($data)) {
             return redirect(route('fuel.index'));
         }
-        $data = Fuel::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['updated_by']=auth()->user()->id;
+        $data = Fuel::where('id', $id)->update($input);
         return redirect(route('fuel.index'))->with('success', 'Item Updated succesfully');
     }
 

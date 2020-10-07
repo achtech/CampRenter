@@ -73,6 +73,8 @@ class AvatarController extends Controller
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
         $data = Avatar::create($input);
         return redirect(route('avatar.index'))->with('success', 'Item added succesfully');
     }
@@ -114,6 +116,7 @@ class AvatarController extends Controller
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
+        $input['updated_by']=auth()->user()->id;
         $data = Avatar::where('id', $id)->update($input);
         return redirect(route('avatar.index'))->with('success', 'Item Updated succesfully');
     }

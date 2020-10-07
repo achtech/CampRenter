@@ -85,6 +85,9 @@ class UserController extends Controller
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
         $input['password']=bcrypt("123456");
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
+
         $data = User::create($input);
         return redirect(route('user.index'))->with('success', 'Item added succesfully');
     }
@@ -131,6 +134,8 @@ class UserController extends Controller
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
+        $input['updated_by']=auth()->user()->id;
+
         $data = User::where('id', $id)->update($input);
         return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
     }
@@ -159,6 +164,7 @@ class UserController extends Controller
         }
         $input = request()->except(['_token', '_method', 'action','old_password','password_confirmation']);
         $input['password'] = bcrypt($password);
+        $input['updated_by']=auth()->user()->id;
         $data = User::where('id', auth()->user()->id)->update($input);
         return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
     }
@@ -177,6 +183,7 @@ class UserController extends Controller
             return redirect(route('user.index'));
         }
         $data->status = 0;
+        $input['updated_by']=auth()->user()->id;
         $data = User::where('id', $id)->update($data);
         return redirect(route('user.index'));
     }

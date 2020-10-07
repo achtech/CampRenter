@@ -249,7 +249,7 @@ Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' =
         'show' => 'billing.show',
     ]]);
     //ADMIN->INSURANCECOMPANY
-    Route::get('inssuranceCompany/{id}/delete', 'InsuranceCompanyController@destroy')->name('inssuranceCompany.destroy');
+    Route::get('inssuranceCompany/{id}/delete', 'App\Http\Controllers\InsuranceCompanyController@destroy')->name('inssuranceCompany.destroy');
     Route::resource('inssuranceCompany', 'App\Http\Controllers\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
         'index' => 'inssuranceCompany.index',
         'create' => 'inssuranceCompany.create',
@@ -265,6 +265,13 @@ Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' =
         'index' => 'message.index',
         'store' => 'message.store',
         'show' => 'message.show',
+    ]]);
+    //ADMIN->BACKUP
+    Route::get('backup/{id}/delete', ['BackupController', 'destroy'])->name('backup.destroy');
+    Route::resource('backup', 'App\Http\Controllers\BackupController', ['except' => 'destroy', 'names' => [
+        'index' => 'backup.index',
+        'store' => 'backup.store',
+        'show' => 'backup.show',
     ]]);
 });
 
