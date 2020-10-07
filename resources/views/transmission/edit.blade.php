@@ -7,7 +7,7 @@
     
     @csrf
      <div class="row">
-     <div class="col-sm-12 col-md-6 col-lg-6">
+     <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label.lbl') }} DE</h4>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label.lbl') }} EN</h4>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label.lbl') }} FR</h4>

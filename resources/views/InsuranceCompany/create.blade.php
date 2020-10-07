@@ -1,11 +1,11 @@
-@extends('layout', ['activePage' => 'fuel', 'titlePage' => __('backend.fuel_managment.lbl')])
+@extends('layout', ['activePage' => 'insuranceCompany', 'titlePage' => __('backend.insurance_company_managment.lbl')])
 @section('content')
-{{ Breadcrumbs::render('create_fuel') }}
+{{ Breadcrumbs::render('create_insurance_company') }}
 <div class="container-fluid">
-    <!--'action'=>'FuelController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\FuelController@store','autocomplete'=>'off','method'=>'POST']) }}
+    <!--'action'=>'InsuranceCompanyController@store',-->
+    {{ Form::open(['action'=>'App\Http\Controllers\InsuranceCompanyController@store','autocomplete'=>'off','method'=>'POST']) }}
     <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label.lbl') }} DE</h4>
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label.lbl') }} EN</h4>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label.lbl') }} FR</h4>
@@ -44,7 +44,7 @@
             <div class="col-sm-12">
                 {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
  
-                <a href="{{ route('fuel.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.cancel.btn') }}</a>
+                <a href="{{ route('insuranceCompany.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.cancel.btn') }}</a>
             </div>
     </div>
     {{ Form::close() }}

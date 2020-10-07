@@ -254,8 +254,11 @@ return [
     'licence_category_managment.lbl' => 'Licence Category Managment',
     'new_licence_category.btn' => 'New Licence Category',
     'licence_category_list.lbl' => 'List of Camper Categories',
-    'message_delete_licence_category.lbl' => 'Do you want to delete this Camper Category',
-
+    'message_delete_licence_category.lbl' => 'Do you want to delete this licence category',
+    'message_delete_camperNames.lbl' => 'Do you want to delete this camper name',
+    'message_delete_camperStatus.lbl' => 'Do you want to delete this camper status',
+    'insurance_company_managment.lbl' => 'Insurance provider managment',
+    'new_insurance_company.btn' => 'New insurance provider',
     /** Dashboard */
     'dashboard_confirm_camper.lbl' => 'Campers to be confirmed',
     'dashboard_last_booking.lbl' => 'Last Bookings',

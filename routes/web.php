@@ -103,6 +103,17 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'insurance.show',
     ]]);
 
+        //ADMIN->INSURANCE
+        Route::get('insuranceCompany/{id}/delete', 'App\Http\Controllers\InsuranceCompanyController@destroy')->name('insuranceCompany.destroy');
+        Route::resource('insuranceCompany', 'App\Http\Controllers\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
+            'index' => 'insuranceCompany.index',
+            'create' => 'insuranceCompany.create',
+            'update' => 'insuranceCompany.update',
+            'edit' => 'insuranceCompany.edit',
+            'store' => 'insuranceCompany.store',
+            'show' => 'insuranceCompany.show',
+        ]]);
+
     //ADMIN->COMIMSSION
     Route::get('commission/{id}/delete', 'App\Http\Controllers\CommissionController@destroy')->name('commission.destroy');
     Route::resource('commission', 'App\Http\Controllers\CommissionController', ['except' => 'destroy', 'names' => [

@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-  
- 
-use App\Models\Bookings;
 use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
@@ -66,7 +63,7 @@ class InsuranceCompanyController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = Bookings::create($input);
+        $data = InsuranceCompa::create($input);
         return redirect(route('insuranceCompany.index'))->with('success', 'Item added succesfully');
     }
 

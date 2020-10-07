@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <a href="{{ route('inssuranceCompany.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                            style="width:200px;margin:0px 10px">{{ __('backend.new_insurance_company.btn') }}</a>
+                            style="margin:0px 10px">{{ __('backend.new_insurance_company.btn') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>

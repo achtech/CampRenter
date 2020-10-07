@@ -1,13 +1,13 @@
 @extends('layout', ['activePage' => 'fuel', 'titlePage' => __('backend.fuel_managment.lbl')])
 @section('content')
-{{ Breadcrumbs::render('edit_fuel') }}
+{{ Breadcrumbs::render('edit_insurance_company',$data) }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\FuelController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['fuel.update', $data->id])) }}
     
     @csrf
      <div class="row">
-     <div class="col-sm-12 col-md-6 col-lg-6">
+     <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label.lbl') }} DE</h4>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label.lbl') }} EN</h4>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label.lbl') }} FR</h4>
