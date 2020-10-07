@@ -18,7 +18,7 @@
                                     <th>{{ __('backend.dashboard_week.lbl') }}</th>
                                     <th>{{ __('backend.dashboard_current_month.lbl') }}</th>
                                     <th>{{ __('backend.dashboard_last_month.lbl') }}</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,33 +52,32 @@
                 <!-- *************************************************************** -->
                 <!-- Start Sales Charts Section -->
                 <!-- *************************************************************** -->
-               
+
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card" style="min-height: 423px;">
                             <div class="card-body" style="min-height: 376px !important;">
                                 <h4 style="text-align:center;" class="card-title">{{ __('backend.dashboard_confirm_camper.lbl') }}</h4>
-                                
                                 <table class="table table-striped table-bordered">
-                            <thead>
-                                
-                                <tr>
-                                    <th>{{ __('backend.camper_name.lbl') }}</th>
-                                    <th>{{ __('backend.owner_name.lbl') }}</th>
-                                    <th>{{ __('backend.dashboard_action.lbl') }}</th>
-                                    
-                                </tr>
+                                   <thead>
+
+                                    <tr>
+                                        <th>{{ __('backend.camper_name.lbl') }}</th>
+                                        <th>{{ __('backend.owner_name.lbl') }}</th>
+                                        <th>{{ __('backend.dashboard_action.lbl') }}</th>
+
+                                    </tr>
                             </thead>
                             <tbody>
 							@if($datas->count()>0)
                                 @foreach($datas as $item)
                                     <tr>
-                                   
+
                                         <td>
                                             @if(app()->getLocale()=='en')
-                                                {{$item->label_en}} 
+                                                {{$item->label_en}}
                                             @if(app()->getLocale()=='de')
-                                                {{$item->label_de}}     
+                                                {{$item->label_de}}
                                             @if(app()->getLocale()=='fr')
                                                 {{$item->label_fr}}
                                             @endif
@@ -93,16 +92,16 @@
                                 <tr>
                                     <td colspan="3" style="text-align: center;">{{ __('backend.no_data_to_confirm.lbl') }}</td>
                                 </tr>
-                                
+
 								 @endif
                                </tbody>
-                            
+
                         </table>
                         <br/>
-                           
-                                <a style="position: absolute;bottom:10px;width: 90%;" href="{{ route('camper.unconfirmedCamper') }}" class="btn btn-md waves-effect waves-light btn-rounded btn-primary" 
+
+                                <a style="position: absolute;bottom:10px;width: 90%;" href="{{ route('camper.unconfirmedCamper') }}" class="btn btn-md waves-effect waves-light btn-rounded btn-primary"
                 >{{ __('backend.read_more.btn') }}</a>
-               
+
                             </div>
                         </div>
                     </div>
@@ -112,27 +111,27 @@
                                 <h4 style="text-align:center;" class="card-title">{{ __('backend.dashboard_last_booking.lbl') }}</h4>
                                 <table class="table table-striped table-bordered">
                             <thead>
-                                
+
                                 <tr>
                                     <th>{{ __('backend.renter_name.lbl') }}</th>
                                     <th>{{ __('backend.date_booking.lbl') }}</th>
                                     <th>{{ __('backend.dashboard_action.lbl') }}</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($bookings as $item)
                                     <tr>
-                                   
+
                                         <td>{{$item->client_name}} {{$item->client_last_name}}</td>
                                         <td>{{$item->start_date}}</td>
                                         <td><a href="{{ route('booking.index') }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
                                     </tr>
                                 @endforeach
                                </tbody>
-                            
+
                         </table>
-                        <a style="position: absolute;bottom:10px;width: 90%;"  href="{{ route('booking.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary" 
+                        <a style="position: absolute;bottom:10px;width: 90%;"  href="{{ route('booking.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary"
                 >{{ __('backend.read_more.btn') }}</a>
                             </div>
                         </div>
@@ -145,7 +144,7 @@
                                 <div class="row">
                                     <div class="col-4"></div>
                                     <div class="col-5">
-                                        <a href="{{ route('promotion.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
+                                        <a href="{{ route('promotion.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
                                         style="width:200px">{{ __('backend.dashboard_new_promotion.btn') }}</a>
                                     </div>
                                     <div class="col-4"></div>
@@ -154,8 +153,8 @@
                                 <div class="row">
                                     <div class="col-4"></div>
                                     <div class="col-5">
-                                        <a href="{{ route('commission.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                                        style="width:200px">{{ __('backend.dashboard_change_commission.btn') }}</a>    
+                                        <a href="{{ route('commission.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
+                                        style="width:200px">{{ __('backend.dashboard_change_commission.btn') }}</a>
                                     </div>
                                     <div class="col-4"></div>
                                 </div>
@@ -163,20 +162,20 @@
                                 <div class="row">
                                     <div class="col-4"></div>
                                     <div class="col-5">
-                                        <a href="{{ route('insurance.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                                style="width:200px">{{ __('backend.dashboard_add_user.btn') }}</a>    
+                                        <a href="{{ route('insurance.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
+                                style="width:200px">{{ __('backend.dashboard_add_user.btn') }}</a>
                                     </div>
                                     <div class="col-4"></div>
                                 </div>
-                            
+
                             </div>
                         </div>
                     </div> </div>
                     <br/>
                     <div class="row">
-                        <div class="col-md-12">    
+                        <div class="col-md-12">
                             <div class="card" >
-                                <div class="card-body">            
+                                <div class="card-body">
                                 <fieldset class="scheduler-border">
                                     <legend>{{ __('backend.dashboard_recent_message.lbl') }}</legend>
                                     <table id="default_order" class="table table-striped table-bordered">
@@ -187,7 +186,7 @@
                                                 <th>{{ __('backend.dashboard_view_details.lbl') }}</th>
                                             </tr>
                                         </thead>
-                                        <tbody>  
+                                        <tbody>
                                             @foreach($messages as $item)
                                             <tr>
                                                 <td>{{$item->client_name}} {{$item->client_last_name}}</td>
@@ -197,14 +196,14 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                
-                                </fieldset>            
+
+                                </fieldset>
                             </div> </div>
                         </div>
                     </div>
                     </div>
-                           
- 
+
+
 
 <style>
     fieldset.scheduler-border {

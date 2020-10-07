@@ -62,7 +62,9 @@ class CommissionController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = request()->except(['_token','action', '_method']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
         $data = Commission::create($input);
         return redirect(route('commission.index'))->with('success', 'Item added succesfully');
     }
