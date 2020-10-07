@@ -85,12 +85,12 @@ return [
     'user_managment.lbl' => 'User managment',
     /** End user */
 
-    /** EquipmentCategory */
-    'equipmentCategory_managment.lbl' => 'Equipment Category Managment',
-    'new_equipmentCategory.btn' => 'New Category',
-    'equipmentCategory_list.lbl' => 'List of Equipment Category',
-    'message_delete_equipmentCategory.lbl' => 'Do you want to delete this Equipment Category',
-    /** End EquipmentCategory */
+    /** CamperCategory */
+    'camperCategory_managment.lbl' => 'Camper Category Managment',
+    'new_camperCategory.btn' => 'New Category',
+    'camperCategory_list.lbl' => 'List of Camper Category',
+    'message_delete_camperCategory.lbl' => 'Do you want to delete this Camper Category',
+    /** End CamperCategory */
 
     /** Start Fuel */
     'fuel_managment.lbl' => 'Fuel Managment',
@@ -122,19 +122,19 @@ return [
     'operations.lbl' => 'Operation',
     'label.lbl' => 'Label',
     'message_delete_owner.lbl' => 'Do you want to delete this owner',
-    /** Equipment */
-    'equipment_name.lbl' => 'Equipment',
-    'equipment_model.lbl' => 'Equipment Model',
-    'equipment_sleeping_places.lbl' => 'number of places',
-    'equipment_description.lbl' => 'Description',
-    'equipment_price_per_day.lbl' => 'Rental price per day',
-    'equipment_number_kilometre.lbl' => 'Number of kilometers',
-    'equipment_availability.lbl' => 'Equipment Availability',
-    'equipment_smoking_allowed.lbl' => 'Smoking Allowed',
-    'equipment_detail.lbl' => 'Equipment Details',
-    'equipment.btn' => 'View campers',
+    /** Camper */
+    'camper_name.lbl' => 'Camper',
+    'camper_model.lbl' => 'Camper Model',
+    'camper_sleeping_places.lbl' => 'number of places',
+    'camper_description.lbl' => 'Description',
+    'camper_price_per_day.lbl' => 'Rental price per day',
+    'camper_number_kilometre.lbl' => 'Number of kilometers',
+    'camper_availability.lbl' => 'Camper Availability',
+    'camper_smoking_allowed.lbl' => 'Smoking Allowed',
+    'camper_detail.lbl' => 'Camper Details',
+    'camper.btn' => 'View campers',
     'rentes.btn' => 'View Rents',
-    'equipment_booking_list.lbl' => 'Booking List Detail',
+    'camper_booking_list.lbl' => 'Booking List Detail',
     'booking_from.lbl' => 'Booking From',
     'booking_to.lbl' => 'Booking To',
     'remaining_days_number.lbl' => 'Number of days remaining',
@@ -178,12 +178,12 @@ return [
     'user_managment.lbl' => 'User managment',
     /** End user */
 
-    /** EquipmentCategory */
-    'equipmentCategory_managment.lbl' => 'Equipment Category Managment',
-    'new_equipmentCategory.btn' => 'New Category',
-    'equipmentCategory_list.lbl' => 'List of Equipment Category',
-    'message_delete_equipmentCategory.lbl' => 'Do you want to delete this Equipment Category',
-    /** End EquipmentCategory */
+    /** CamperCategory */
+    'camperCategory_managment.lbl' => 'Camper Category Managment',
+    'new_camperCategory.btn' => 'New Category',
+    'camperCategory_list.lbl' => 'List of Camper Category',
+    'message_delete_camperCategory.lbl' => 'Do you want to delete this Camper Category',
+    /** End CamperCategory */
 
     /** Start Fuel */
     'fuel_managment.lbl' => 'Fuel Managment',
@@ -214,24 +214,24 @@ return [
     'operations.lbl' => 'Operation',
     'label.lbl' => 'Label',
     'message_delete_owner.lbl' => 'Do you want to delete this owner',
-    /** Equipment */
-    'equipment_name.lbl' => 'Equipment',
-    'equipment_model.lbl' => 'Equipment Model',
-    'equipment_sleeping_places.lbl' => 'number of places',
-    'equipment_description.lbl' => 'Description',
-    'equipment_price_per_day.lbl' => 'Rental price per day',
-    'equipment_number_kilometre.lbl' => 'Number of kilometers',
-    'equipment_availability.lbl' => 'Equipment Availability',
-    'equipment_smoking_allowed.lbl' => 'Smoking Allowed',
-    'equipment_detail.lbl' => 'Equipment Details',
-    'equipment.btn' => 'View campers',
+    /** Camper */
+    'camper_name.lbl' => 'Camper',
+    'camper_model.lbl' => 'Camper Model',
+    'camper_sleeping_places.lbl' => 'number of places',
+    'camper_description.lbl' => 'Description',
+    'camper_price_per_day.lbl' => 'Rental price per day',
+    'camper_number_kilometre.lbl' => 'Number of kilometers',
+    'camper_availability.lbl' => 'Camper Availability',
+    'camper_smoking_allowed.lbl' => 'Smoking Allowed',
+    'camper_detail.lbl' => 'Camper Details',
+    'camper.btn' => 'View campers',
     'rentes.btn' => 'View Rents',
-    'equipment_booking_list.lbl' => 'Booking List Detail',
+    'camper_booking_list.lbl' => 'Booking List Detail',
     'booking_from.lbl' => 'Booking From',
     'booking_to.lbl' => 'Booking To',
     'remaining_days_number.lbl' => 'Number of days remaining',
-    'block_equipment_message.lbl' => 'Do you want to block this Camper?',
-    'confirm_equipment_message.lbl' => 'Do you want to confirm this Camper?',
+    'block_camper_message.lbl' => 'Do you want to block this Camper?',
+    'confirm_camper_message.lbl' => 'Do you want to confirm this Camper?',
 
     /** Message */
     'message_managment.lbl' => 'Message Managment',
@@ -283,7 +283,7 @@ return [
     /** End promotion */
     'billings.lbl' => 'Billings',
     'billing_list.lbl' => 'List of Billings',
-    'equipment_name.lbl' => 'Equipment',
+    'camper_name.lbl' => 'Camper',
     'status_paiement.lbl' => 'Status',
     'amount_paiement.lbl' => 'Amount',
     'renter_name.lbl' => 'Renter',
@@ -292,7 +292,7 @@ return [
     'billing_date_to.lbl' => 'End date',
     'billing_date_filter.lbl' => 'Filter',
     'apply.btn' => 'Apply',
-    'no_equipment.lbl' => 'No Equipment Found',
+    'no_camper.lbl' => 'No Camper Found',
 
     //Menu
     'menu_user_managment.lbl' => 'User Managment',
@@ -307,7 +307,7 @@ return [
     'menu_commision.lbl' => 'Commission',
     'menu_promotion.lbl' => 'Promotion',
     'menu_licence_category.lbl' => 'License Categories',
-    'menu_equipment_category.lbl' => 'Equipment Categories',
+    'menu_camper_category.lbl' => 'Camper Categories',
     'menu_inssurance_providers.lbl' => 'Insurance Providers',
     'menu_transmissions.lbl' => 'Transmissions',
     'menu_fuels.lbl' => 'Fuels',
@@ -320,14 +320,14 @@ return [
     'avatar_name.lbl' => 'Label',
     'new_avatar.btn' => 'New avatar',
 
-    /** equipment */
+    /** camper */
     'image.lbl' => 'Image',
-    'equipment_managment.lbl' => 'Camper Managment',
-    'equipment_details.lbl' => 'Camper Details',
-    'equipment_list.lbl' => 'List of Campers',
-    'new_equipment.btn' => 'New Camper',
-    'message_delete_equipment.lbl' => 'Do you want to delete this Camper ?',
-    'equipment_name.lbl' => 'Camper Name',
+    'camper_managment.lbl' => 'Camper Managment',
+    'camper_details.lbl' => 'Camper Details',
+    'camper_list.lbl' => 'List of Campers',
+    'new_camper.btn' => 'New Camper',
+    'message_delete_camper.lbl' => 'Do you want to delete this Camper ?',
+    'camper_name.lbl' => 'Camper Name',
     'client.lbl' => 'Client',
     'category.lbl' => 'Category',
     'location.lbl' => 'Location',
@@ -359,7 +359,7 @@ return [
     'smoking_allowed.lbl' => 'Smoking Allowed',
     'licence_age_desc.lbl' => 'Licence Age Desc',
     'availability.lbl' => 'Availability',
-    /** End Equipment */
+    /** End Camper */
 
     /* ------------ Booking -----------*/
     'booking_management.lbl' => 'Booking Management',
@@ -378,10 +378,10 @@ return [
     'booking_total_days.lbl' => 'Total days',
     'booking_total_price.lbl' => 'Total price',
 
-    'equipment_description.lbl' => 'Description',
+    'camper_description.lbl' => 'Description',
     'client_management.lbl' => 'Client Management',
     'billing_managment.lbl' => 'Billing Management',
-    'equipment_detail.lbl' => 'Equipment Detail',
+    'camper_detail.lbl' => 'Camper Detail',
     'rent_management.lbl' => 'Rent Management',
 	//billing
     'last_booking.lbl' => 'Last Booking',

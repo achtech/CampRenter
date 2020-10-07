@@ -10,11 +10,13 @@ class Client extends Base
         'start_date',
         'end_date',
         'bookingDay',
-        'equipment_name_en',
-        'equipment_name_de',
-        'equipment_name_fr',
+        'camper_name_en',
+        'camper_name_de',
+        'camper_name_fr',
         'price_per_day',
         'client_name',
-        'client_last_name'
+        'client_last_name',
+        'created_by',
+        'updated_by'
     ];
 }

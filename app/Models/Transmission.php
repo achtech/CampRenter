@@ -9,6 +9,8 @@ class Transmission extends Base
     protected $fillable = [
         'label_en',
         'label_de',
-        'label_fr'
+        'label_fr',
+        'created_by',
+        'updated_by'
     ];
 }

@@ -152,11 +152,11 @@ class ClientController extends Controller
         
         return redirect(route('client.index'));
     }
-    public function checkEquipmentDetail($id)
+    public function checkCamperDetail($id)
     {
         $datas = Camper::where('id_clients', $id)->get();
         $client  = Client::find($id);
-        return view('client.detailEquipment')->with('datas', $datas)->with('client', $client);
+        return view('client.detailCamper')->with('datas', $datas)->with('client', $client);
     }
     public function checkBookingDetail($id)
     {
