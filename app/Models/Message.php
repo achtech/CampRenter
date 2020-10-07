@@ -13,6 +13,8 @@ class Message extends Base
         'message',
         'subject',
         'status',
-        'send_date'
+        'send_date',
+        'created_by',
+        'updated_by'
     ];
 }

@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
   
  
-use App\Models\Bookings;
-use App\Models\CamperName;
+use App\Models\CamperStatus;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
-class CamperNameController extends Controller
+class CamperStatusController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,7 +21,6 @@ class CamperNameController extends Controller
         $this->middleware('auth');
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -33,11 +31,11 @@ class CamperNameController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = CamperName::where('name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = CamperStatus::where('name', 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $datas = CamperName::paginate(10);
+            $datas = CamperStatus::paginate(10);
         }
-        return view('camperName.index')->with('datas', $datas)->with('search', $search);
+        return view('camperStatus.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -46,7 +44,7 @@ class CamperNameController extends Controller
      */
     public function create()
     {
-        return view('CamperName.create');
+        return view('camperStatus.create');
     }
     /**
      * Display the specified resource.
@@ -56,7 +54,7 @@ class CamperNameController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('camperName.index'));
+        return redirect(route('camperStatus.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -67,10 +65,9 @@ class CamperNameController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = Bookings::create($input);
-        return redirect(route('camperName.index'))->with('success', 'Item added succesfully');
+        $data = CamperStatus::create($input);
+        return redirect(route('camperStatus.index'))->with('success', 'Item added succesfully');
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -80,6 +77,8 @@ class CamperNameController extends Controller
      */
     public function edit($id)
     {
+        $data = CamperStatus::find($id);
+        return view('camperStatus.edit', ['id' => 1])->with('data', $data);
     }
 
     /**
@@ -91,12 +90,12 @@ class CamperNameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Bookings::find($id);
+        $data = CamperStatus::find($id);
         if (empty($data)) {
-            return redirect(route('camperName.index'));
+            return redirect(route('camperStatus.index'));
         }
-        $data = CamperName::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('camperName.index'))->with('success', 'Item Updated succesfully');
+        $data = CamperStatus::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
+        return redirect(route('camperStatus.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -109,11 +108,11 @@ class CamperNameController extends Controller
      */
     public function destroy($id)
     {
-        $data = Bookings::find($id);
+        $data = CamperStatus::find($id);
         if (empty($data)) {
-            return redirect(route('camperName.index'));
+            return redirect(route('camperStatus.index'));
         }
         $data->delete();
-        return redirect(route('camperName.index'));
+        return redirect(route('camperStatus.index'));
     }
 }

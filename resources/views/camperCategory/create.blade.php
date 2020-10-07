@@ -1,9 +1,9 @@
-@extends('layout', ['activePage' => 'equipmentCategory', 'titlePage' => __('backend.equipmentCategory_managment.lbl')])
+@extends('layout', ['activePage' => 'camperCategory', 'titlePage' => __('backend.camperCategory_managment.lbl')])
 @section('content')
-{{ Breadcrumbs::render('edit_equipmentCategory') }}
+{{ Breadcrumbs::render('edit_camperCategory') }}
 <div class="container-fluid">
-    <!--'action'=>'EquipmentCategoryController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\EquipmentCategoryController@store','autocomplete'=>'off','method'=>'POST']) }}
+    <!--'action'=>'CamperCategoryController@store',-->
+    {{ Form::open(['action'=>'App\Http\Controllers\CamperCategoryController@store','autocomplete'=>'off','method'=>'POST']) }}
     <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
@@ -44,7 +44,7 @@
             <div class="col-sm-12">
                 {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
  
-                <a href="{{ route('equipmentCategory.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.cancel.btn') }}</a>
+                <a href="{{ route('camperCategory.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.cancel.btn') }}</a>
             </div>
     </div>
     {{ Form::close() }}

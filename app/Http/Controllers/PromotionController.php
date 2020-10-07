@@ -27,14 +27,8 @@ class PromotionController extends Controller
      */
     public function index(Request $request)
     {
-        $search = '';
-        if (isset($request) && null !== $request->get('search')) {
-            $search = $request->get('search');
-            $datas = Promotion::where('picture', 'like', '%' . $search . '%')->paginate(10);
-        } else {
-            $datas = Promotion::paginate(10);
-        }
-        return view('promotion.index')->with('datas', $datas)->with('search', $search);
+        $datasPromo = Promotion::paginate(10);
+        return view('promotion.index')->with('datasPromo', $datasPromo);
     }
     /**
      * Show the form for creating a new resource.
@@ -63,12 +57,12 @@ class PromotionController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = request()->except(['_token','action', '_method']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
         $data = Promotion::create($input);
-        return redirect(route('commission.index'))->with('success', 'Item added succesfully');
+        return redirect(route('promotion.index'))->with('success', 'Item added succesfully');
     }
-
-
 
     /**
      * Show the form for editing the specified resource.
@@ -109,9 +103,9 @@ class PromotionController extends Controller
     {
         $data = Promotion::find($id);
         if (empty($data)) {
-            return redirect(route('commission.index'));
+            return redirect(route('promotion.index'));
         }
         $data->delete();
-        return redirect(route('commission.index'));
+        return redirect(route('promotion.index'));
     }
 }

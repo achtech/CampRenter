@@ -230,14 +230,14 @@ CREATE TABLE IF NOT EXISTS `campers` (
   `license_plate_number` varchar(100) NOT NULL,
   `seat_number` varchar(100) NOT NULL,
   `sleeping_places` double NOT NULL,
-  `id_equipment_categories` int(11) NOT NULL,
+  `id_camper_categories` int(11) NOT NULL,
   `id_transmissions` int(11) NOT NULL,
   `id_fuels` int(11) NOT NULL,
   `vehicle_licence` varchar(100) NOT NULL,
   `length` varchar(100) NOT NULL,
   `width` varchar(100) NOT NULL,
   `height` varchar(100) NOT NULL,
-  `description_equipment` varchar(300) NOT NULL,
+  `description_camper` varchar(300) NOT NULL,
   `location` varchar(100) NOT NULL,
   `price_per_day` double NOT NULL,
   `minimal_rent_days` varchar(100) NOT NULL,
@@ -258,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `campers` (
   `updated_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_id_licence_categories` (`id_licence_categories`),
-  KEY `fk_id_equipment_categories` (`id_equipment_categories`),
+  KEY `fk_id_camper_categories` (`id_camper_categories`),
   KEY `fk_id_transmissions` (`id_transmissions`),
   KEY `fk_id_fuels` (`id_fuels`),
   KEY `id_clients` (`id_clients`)
@@ -268,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `campers` (
 -- Déchargement des données de la table `campers`
 --
 
-INSERT INTO `campers` (`id`, `id_clients`, `id_campers_name`, `image`, `brand`, `model`, `id_licence_categories`, `value_of_vehicle`, `license_plate_number`, `seat_number`, `sleeping_places`, `id_equipment_categories`, `id_transmissions`, `id_fuels`, `vehicle_licence`, `length`, `width`, `height`, `description_equipment`, `location`, `price_per_day`, `minimal_rent_days`, `included_kilometres`, `minimum_age`, `animals_allowed`, `animal_description`, `license_needed`, `licence_needed_desc`, `license_age`, `licence_age_desc`, `smoking_allowed`, `availability`, `is_confirmed`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+INSERT INTO `campers` (`id`, `id_clients`, `id_campers_name`, `image`, `brand`, `model`, `id_licence_categories`, `value_of_vehicle`, `license_plate_number`, `seat_number`, `sleeping_places`, `id_camper_categories`, `id_transmissions`, `id_fuels`, `vehicle_licence`, `length`, `width`, `height`, `description_camper`, `location`, `price_per_day`, `minimal_rent_days`, `included_kilometres`, `minimum_age`, `animals_allowed`, `animal_description`, `license_needed`, `licence_needed_desc`, `license_age`, `licence_age_desc`, `smoking_allowed`, `availability`, `is_confirmed`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
 (1, 10, 1, 'camp1.jpg', 'Caravane', 'Caravane', 1, 'Caravane', '5', '12', 2, 2, 1, 2, '3', '33', '33', '33', 'Perfect for beginners and those who would like to try out a caravan because our caravan is very compact and light. It is easy to drive and can be pushed and parked by hand by two or three people. The caravan is new, our family bought it new in summer 2018.', 'ALLEMAGNE', 44, '3', '2222', '22', 'NO', 'NO', 'NO', 'NO', 'NO', 'NO', 'NO', 1, 1, '2020-09-09', '2020-09-25', 1, 1),
 (2, 10, 1, 'camp1.jpg', 'e', 'A', 1, 'A', 'A', 'A', 22, 1, 1, 1, 'A', 'A', 'A', 'A', 'A', 'A', 122, 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 0, 0, '2020-09-16', '2020-09-24', 2, 2);
 
@@ -301,23 +301,23 @@ INSERT INTO `camper_categories` (`id`, `label_en`, `label_de`, `label_fr`, `crea
 -- --------------------------------------------------------
 
 --
--- Structure de la table `equipment_images`
+-- Structure de la table `camper_images`
 --
 
-DROP TABLE IF EXISTS `equipment_images`;
-CREATE TABLE IF NOT EXISTS `equipment_images` (
+DROP TABLE IF EXISTS `camper_images`;
+CREATE TABLE IF NOT EXISTS `camper_images` (
   `id` int(11) NOT NULL,
   `id_campers` int(11) NOT NULL,
   `image` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_equipment` (`id_campers`)
+  KEY `id_camper` (`id_campers`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `equipment_images`
+-- Déchargement des données de la table `camper_images`
 --
 
-INSERT INTO `equipment_images` (`id`, `id_campers`, `image`) VALUES
+INSERT INTO `camper_images` (`id`, `id_campers`, `image`) VALUES
 (1, 1, 'camp1.jpg');
 
 -- --------------------------------------------------------
@@ -683,7 +683,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `created_b
 --
 DROP TABLE IF EXISTS `v_bookings_details`;
 
-CREATE VIEW `v_bookings_details`  AS  select `b`.`id` AS `id`,`b`.`start_date` AS `start_date`,`b`.`end_date` AS `end_date`,(to_days(`b`.`end_date`) - to_days(`b`.`start_date`)) AS `bookingDay`,`ca`.`label_en` AS `equipment_name_en`,`ca`.`label_de` AS `equipment_name_de`,`ca`.`label_fr` AS `equipment_name_fr`,`e`.`price_per_day` AS `price_per_day`,`c`.`id` AS `client_id`,`c`.`client_name` AS `client_name`,`c`.`client_last_name` AS `client_last_name` from (((`bookings` `b` join `campers` `e`) join `clients` `c`) join `camper_names` `ca`) where ((`b`.`id_campers` = `e`.`id`) and (`b`.`id_clients` = `c`.`id`) and (`e`.`id_campers_name` = `ca`.`id`)) ;
+CREATE VIEW `v_bookings_details`  AS  select `b`.`id` AS `id`,`b`.`start_date` AS `start_date`,`b`.`end_date` AS `end_date`,(to_days(`b`.`end_date`) - to_days(`b`.`start_date`)) AS `bookingDay`,`ca`.`label_en` AS `camper_name_en`,`ca`.`label_de` AS `camper_name_de`,`ca`.`label_fr` AS `camper_name_fr`,`e`.`price_per_day` AS `price_per_day`,`c`.`id` AS `client_id`,`c`.`client_name` AS `client_name`,`c`.`client_last_name` AS `client_last_name` from (((`bookings` `b` join `campers` `e`) join `clients` `c`) join `camper_names` `ca`) where ((`b`.`id_campers` = `e`.`id`) and (`b`.`id_clients` = `c`.`id`) and (`e`.`id_campers_name` = `ca`.`id`)) ;
 
 -- --------------------------------------------------------
 

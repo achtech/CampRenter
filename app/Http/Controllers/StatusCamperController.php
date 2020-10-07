@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
   
  
-use App\Models\StatusEquipment;
+use App\Models\StatusCamper;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
 
-class StatusEquipmentController extends Controller
+class StatusCamperController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -35,7 +33,7 @@ class StatusEquipmentController extends Controller
         } else {
             $datas = StatusCamper::paginate(10);
         }
-        return view('statusEquipment.index')->with('datas', $datas)->with('search', $search);
+        return view('statusCamper.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -44,7 +42,7 @@ class StatusEquipmentController extends Controller
      */
     public function create()
     {
-        return view('statusEquipment.create');
+        return view('statusCamper.create');
     }
     /**
      * Display the specified resource.
@@ -54,7 +52,7 @@ class StatusEquipmentController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('statusEquipment.index'));
+        return redirect(route('statusCamper.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -66,7 +64,7 @@ class StatusEquipmentController extends Controller
     {
         $input = $request->all();
         $data = StatusCamper::create($input);
-        return redirect(route('statusEquipment.index'))->with('success', 'Item added succesfully');
+        return redirect(route('statusCamper.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -90,10 +88,10 @@ class StatusEquipmentController extends Controller
     {
         $data = StatusCamper::find($id);
         if (empty($data)) {
-            return redirect(route('statusEquipment.index'));
+            return redirect(route('statusCamper.index'));
         }
         $data = StatusCamper::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('statusEquipment.index'))->with('success', 'Item Updated succesfully');
+        return redirect(route('statusCamper.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -108,9 +106,9 @@ class StatusEquipmentController extends Controller
     {
         $data = StatusCamper::find($id);
         if (empty($data)) {
-            return redirect(route('statusEquipment.index'));
+            return redirect(route('statusCamper.index'));
         }
         $data->delete();
-        return redirect(route('statusEquipment.index'));
+        return redirect(route('statusCamper.index'));
     }
 }

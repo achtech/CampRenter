@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-  
- 
 use App\Models\CamperCategory;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
 
-class EquipmentCategoryController extends Controller
+class CamperCategoryController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -35,7 +31,7 @@ class EquipmentCategoryController extends Controller
         } else {
             $datas = CamperCategory::paginate(10);
         }
-        return view('equipmentCategory.index')->with('datas', $datas)->with('search', $search);
+        return view('camperCategory.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -44,7 +40,7 @@ class EquipmentCategoryController extends Controller
      */
     public function create()
     {
-        return view('equipmentCategory.create');
+        return view('camperCategory.create');
     }
     /**
      * Display the specified resource.
@@ -54,7 +50,7 @@ class EquipmentCategoryController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('equipmentCategory.index'));
+        return redirect(route('camperCategory.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -66,7 +62,7 @@ class EquipmentCategoryController extends Controller
     {
         $input = $request->all();
         $data = CamperCategory::create($input);
-        return redirect(route('equipmentCategory.index'))->with('success', 'Item added succesfully');
+        return redirect(route('camperCategory.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -78,7 +74,7 @@ class EquipmentCategoryController extends Controller
     public function edit($id)
     {
         $data = CamperCategory::find($id);
-        return view('equipmentCategory.edit', ['id' => 1])->with('data', $data);
+        return view('camperCategory.edit', ['id' => 1])->with('data', $data);
     }
 
     /**
@@ -92,10 +88,10 @@ class EquipmentCategoryController extends Controller
     {
         $data = CamperCategory::find($id);
         if (empty($data)) {
-            return redirect(route('equipmentCategory.index'));
+            return redirect(route('camperCategory.index'));
         }
         $data = CamperCategory::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
-        return redirect(route('equipmentCategory.index'))->with('success', 'Item Updated succesfully');
+        return redirect(route('camperCategory.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -110,9 +106,9 @@ class EquipmentCategoryController extends Controller
     {
         $data = CamperCategory::find($id);
         if (empty($data)) {
-            return redirect(route('equipmentCategory.index'));
+            return redirect(route('camperCategory.index'));
         }
         $data->delete();
-        return redirect(route('equipmentCategory.index'));
+        return redirect(route('camperCategory.index'));
     }
 }

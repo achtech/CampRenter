@@ -1,13 +1,13 @@
-@extends('layout', ['activePage' => 'equipment', 'titlePage' => __('backend.equipment_managment.lbl')])
+@extends('layout', ['activePage' => 'camper', 'titlePage' => __('backend.camper_managment.lbl')])
 @section('content')
-{{ Breadcrumbs::render('details_equipment') }}
+{{ Breadcrumbs::render('details_camper') }}
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-7 align-self-center">
             <div class="d-flex align-items-center">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb m-0 p-0">
-                        <li class="breadcrumb-item"><a href="index.html">{{__('backend.equipment_details.lbl')}}</a>
+                        <li class="breadcrumb-item"><a href="index.html">{{__('backend.camper_details.lbl')}}</a>
                         </li>
                     </ol>
                 </nav>
@@ -55,10 +55,10 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.equipment_name.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.camper_name.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_campers_name',App\Http\Controllers\EquipmentController::getCamperName('camper_names',$camper_name->id),['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_campers_name',App\Http\Controllers\CamperController::getCamperName('camper_names',$camper_name->id),['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -118,7 +118,7 @@
                             <h4 class="card-title">{{__('backend.value_of_vehicle.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('value_of_vehicle',$data->value_of_vehicle,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('value_of_vehicle',$data->value_of_vehicule,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -166,7 +166,7 @@
                             <h4 class="card-title">{{__('backend.category.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_camper_categories',$camperCategory->label_en,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_camper_categories',$camper_categories->label_en,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -238,7 +238,7 @@
                             <h4 class="card-title">{{__('backend.description.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::textArea('description',$data->description_equipment,['class'=>'form-control','required','disabled'])}}
+                                {{Form::textArea('description',$data->description_camper,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -406,7 +406,7 @@
                             <h4 class="card-title">{{__('backend.status.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_campers_name',App\Http\Controllers\EquipmentController::getCamperName('camper_status',$camper_status->id),['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_campers_name',App\Http\Controllers\CamperController::getCamperName('camper_status',$camper_status->id),['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -468,12 +468,25 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.client_name.lbl') }}</th>
-                                    <th>{{ __('backend.client_campers.lbl') }}</th>
-                                    <th>{{ __('backend.client_rents.lbl') }}</th>
+                                    <th>{{ __('backend.booking_renter.lbl') }}</th>
+                                    <th>{{ __('backend.booking_from.lbl') }}</th>
+                                    <th>{{ __('backend.booking_to.lbl') }}</th>
+                                    <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
+                                    <th>{{ __('backend.booking_total_price.lbl') }}</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach($booking_camper as $item)
+                                <tr>
+                                    <td>{{$item->client_name }} {{$item->client_last_name }}</td>
+                                    <td>{{$item->start_date}}</td>
+                                    <td>{{$item->end_date}}</td>
+                                    <td>{{$item->price_per_day}}</td>
+                                    <td>{{$item->total}}</td>
+                                </tr>
 
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
             </div>

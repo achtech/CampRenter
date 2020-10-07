@@ -63,7 +63,7 @@
                             <thead>
                                 
                                 <tr>
-                                    <th>{{ __('backend.equipment_name.lbl') }}</th>
+                                    <th>{{ __('backend.camper_name.lbl') }}</th>
                                     <th>{{ __('backend.owner_name.lbl') }}</th>
                                     <th>{{ __('backend.dashboard_action.lbl') }}</th>
                                     
@@ -86,7 +86,7 @@
                                             @endif
                                         </td>
                                         <td>{{$item->client_name}} {{$item->client_last_name}}</td>
-                                        <td><a href="{{ route('equipment.detail',$item->id) }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
+                                        <td><a href="{{ route('camper.detail',$item->id) }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
                                     </tr>
                                 @endforeach
                                 @else
@@ -100,7 +100,7 @@
                         </table>
                         <br/>
                            
-                                <a style="position: absolute;bottom:10px;width: 90%;" href="{{ route('equipment.unconfirmedEquipment') }}" class="btn btn-md waves-effect waves-light btn-rounded btn-primary" 
+                                <a style="position: absolute;bottom:10px;width: 90%;" href="{{ route('camper.unconfirmedCamper') }}" class="btn btn-md waves-effect waves-light btn-rounded btn-primary" 
                 >{{ __('backend.read_more.btn') }}</a>
                
                             </div>

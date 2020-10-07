@@ -3,7 +3,7 @@
 {{ Breadcrumbs::render('add_user') }}
 <div class="container-fluid">
     <!--'action'=>'InsuranceController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\UserController@store','autocomplete'=>'off','method'=>'POST']) }}
+    {{ Form::open(['action'=>'App\Http\Controllers\UserController@store','enctype'=>'multipart/form-data' ,'autocomplete'=>'off','method'=>'POST']) }}
     <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
@@ -11,50 +11,18 @@
                         <h4 class="card-title">{{ __('backend.user_name.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('user_name','',['class'=>'form-control','required'])}}
+                                {{Form::text('name','test',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.email.lbl') }}</h4>
-                        <div class="mt-4">
-                            <div class="form-group">
-                                {{Form::text('email','',['class'=>'form-control','required'])}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.tel.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('telephone','',['class'=>'form-control','required'])}}
+                                {{Form::text('telephone','test',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.adress.lbl') }} </h4>
-                        <div class="mt-4">
-                            <div class="form-group">
-                                 {{Form::text('adress','',['class'=>'form-control','required'])}} 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.role.lbl') }}</h4>
                         <div class="mt-4">
@@ -66,15 +34,36 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.picture.lbl') }}</h4>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.choose_file.lbl') }} </label>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
-                    <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.avatar.lbl') }}</h4>
+                <div class="card-body">
+                    <h4 class="card-title">{{ __('backend.email.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                            {{ Form::text('id_avatars','',['class'=>'form-control','required'])}}
+                                {{Form::text('email','test@test2.com',['class'=>'form-control','required'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.adress.lbl') }} </h4>
+                        <div class="mt-4">
+                            <div class="form-group">
+                                 {{Form::textarea('adress','test',['class'=>'form-control','required'])}} 
                             </div>
                         </div>
                     </div>

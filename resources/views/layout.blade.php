@@ -92,13 +92,14 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-right">
                         <!-- Notification -->
-                        @if(App\Http\Controllers\Controller::getMessageCount()!=0)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
                                 id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <span><i data-feather="mail" class="svg-icon"></i></span>
+                        @if(App\Http\Controllers\Controller::getMessageCount()!=0)
                                 <span class="badge badge-primary notify-no rounded-circle">{{App\Http\Controllers\Controller::getMessageCount()}}</span>
+                        @endif
                             </a>
                             <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
                                 <ul class="list-style-none">
@@ -123,22 +124,22 @@
                                 </ul>
                             </div>
                         </li>
-                        @endif
 
-                        @if(App\Http\Controllers\Controller::getCampersCount()!=0)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
                                 id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <span><i data-feather="bell" class="svg-icon"></i></span>
+                            @if(App\Http\Controllers\Controller::getCampersCount()!=0)
                                 <span class="badge badge-primary notify-no rounded-circle">{{App\Http\Controllers\Controller::getCampersCount()}}</span>
+                            @endif
                             </a>
                             <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
                                 <ul class="list-style-none">
                                     <li>
                                         <div class="message-center notifications position-relative">
                                             @foreach(App\Http\Controllers\Controller::getNotConfirmedcampers() as $camps)
-                                                <a href="{{route('equipment.detail',$camps->id)}}"
+                                                <a href="{{route('camper.detail',$camps->id)}}"
                                                     class="message-item d-flex align-items-center border-bottom px-3 py-2">
                                                     <span class="btn btn-primary rounded-circle btn-circle"><i
                                                             data-feather="box" class="text-white"></i></span>
@@ -165,7 +166,6 @@
                                 </ul>
                             </div>
                         </li>
-                        @endif
 
 
                         <!-- ============================================================== -->
@@ -231,23 +231,23 @@
                         </a>
                     </li>
                     @if(auth()->user()->role == 'super-admin')
-                    <li class="sidebar-item{{ $activePage == 'user' ? ' selected' : '' }}"> 
+                    <li class="sidebar-item{{ $activePage == 'user' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('user.index')}}" aria-expanded="false">
                         <i class="icon-user"></i>
                             <span class="hide-menu"> {{ __('backend.menu_user_managment.lbl') }}</span>
                         </a>
                     </li>
 @endif
-                    
-                    
-                    <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}"> 
+
+
+                    <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('client.index')}}" aria-expanded="false">
                         <i class="icon-people"></i>
                             <span class="hide-menu"> {{ __('backend.menu_clients.lbl') }}</span>
                         </a>
                     </li>
-                    <li class="sidebar-item{{ $activePage == 'equipment' ? ' selected' : '' }}">
-                        <a class="sidebar-link sidebar-link" href="{{route('equipment.index')}}" aria-expanded="false">
+                    <li class="sidebar-item{{ $activePage == 'camper' ? ' selected' : '' }}">
+                        <a class="sidebar-link sidebar-link" href="{{route('camper.index')}}" aria-expanded="false">
                         <i class="icon-grid"></i>
                             <span class="hide-menu">{{ __('backend.menu_campers.lbl') }}</span>
                         </a>
@@ -304,8 +304,16 @@
                                         class="hide-menu">{{ __('backend.menu_licence_category.lbl') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a  href="{{route('equipmentCategory.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> {{ __('backend.menu_equipment_category.lbl') }}
+                            <li class="sidebar-item"><a  href="{{route('camperCategory.index')}}" class="sidebar-link"><span
+                                            class="hide-menu"> {{ __('backend.menu_camper_category.lbl') }}
+                                    </span></a>
+                            </li>
+                            <li class="sidebar-item"><a  href="{{route('camperNames.index')}}" class="sidebar-link"><span
+                                            class="hide-menu"> {{ __('backend.menu_camper_names.lbl') }}
+                                    </span></a>
+                            </li>
+                            <li class="sidebar-item"><a  href="{{route('camperStatus.index')}}" class="sidebar-link"><span
+                                            class="hide-menu"> {{ __('backend.menu_camper_status.lbl') }}
                                     </span></a>
                             </li>
                             <li class="sidebar-item">

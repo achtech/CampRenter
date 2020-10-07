@@ -3,7 +3,7 @@
 {{ Breadcrumbs::render('add_avatar') }}
 <div class="container-fluid">
     <!--'action'=>'InsuranceController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\AvatarController@store','autocomplete'=>'off','method'=>'POST']) }}
+    {{ Form::open(['action'=>'App\Http\Controllers\AvatarController@store', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
     <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
@@ -26,7 +26,7 @@
                                     <span class="input-group-text">Upload</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="id_avatars" class="custom-file-input" id="inputGroupFile01">
+                                    <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
                                     <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.choose_file.lbl') }} </label>
                                 </div>
                             </div>

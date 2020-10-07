@@ -158,7 +158,7 @@ CREATE TABLE `commissions` (
 CREATE TABLE `campers` (
   `id` int(11) NOT NULL,
   `id_clients` int(11) NOT NULL,
-  `equipment_name` varchar(100) NOT NULL,
+  `camper_name` varchar(100) NOT NULL,
   `image` varchar(100) NOT NULL,
   `brand` varchar(100) NOT NULL,
   `model` varchar(100) NOT NULL,
@@ -167,7 +167,7 @@ CREATE TABLE `campers` (
   `license_plate_number` varchar(100) NOT NULL,
   `seat_number` varchar(100) NOT NULL,
   `sleeping_places` double NOT NULL,
-  `id_equipment_categories` int(11) NOT NULL,
+  `id_camper_categories` int(11) NOT NULL,
   `id_transmissions` int(11) NOT NULL,
   `id_fuels` int(11) NOT NULL,
   `vehicle_licence` varchar(100) NOT NULL,
@@ -435,7 +435,7 @@ ALTER TABLE `commissions`
 ALTER TABLE `campers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_id_licence_categories` (`id_licence_categories`),
-  ADD KEY `fk_id_equipment_categories` (`id_equipment_categories`),
+  ADD KEY `fk_id_camper_categories` (`id_camper_categories`),
   ADD KEY `fk_id_transmissions` (`id_transmissions`),
   ADD KEY `fk_id_fuels` (`id_fuels`),
   ADD KEY `id_clients` (`id_clients`);

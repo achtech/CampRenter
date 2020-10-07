@@ -16,5 +16,7 @@ class Booking extends Base
         'id_clients',
         'id_commissions',
         'id_promotions',
+        'created_by',
+        'updated_by'
     ];
 }
