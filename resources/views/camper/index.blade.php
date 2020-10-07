@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'equipment', 'titlePage' => __('backend.equipment_managment.lbl')])
+@extends('layout', ['activePage' => 'camper', 'titlePage' => __('backend.camper_managment.lbl')])
 @section('content')
-{{ Breadcrumbs::render('equipment') }}
+{{ Breadcrumbs::render('camper') }}
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -12,7 +12,7 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('backend.image.lbl') }}</th>
-                                    <th>{{ __('backend.equipment_name.lbl') }}</th>
+                                    <th>{{ __('backend.camper_name.lbl') }}</th>
                                     <th>{{ __('backend.client.lbl') }}</th>
                                     <th>{{ __('backend.category.lbl') }}</th>
                                     <th>{{ __('backend.availability.lbl') }}</th>
@@ -25,16 +25,16 @@
                                 @foreach($datas as $item)
                                 <tr>
                                     <td><img src="/assets/images/gallery/{{$item->image}}"/></td>
-                                    <td>{{App\Http\Controllers\EquipmentController::getCamperName('camper_names',$item->id_camper_names)}}</td>
-                                    <td>{{App\Http\Controllers\EquipmentController::getName('clients',$item->id_clients)}}</td>
-                                    <td>{{App\Http\Controllers\EquipmentController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
+                                    <td>{{App\Http\Controllers\CamperController::getCamperName('camper_names',$item->id_camper_names)}}</td>
+                                    <td>{{App\Http\Controllers\CamperController::getName('clients',$item->id_clients)}}</td>
+                                    <td>{{App\Http\Controllers\CamperController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
                                     <td>
                                         @if($item->availability==1)
                                         <i class="fa fa-circle text-success mr-2"></i>
                                         @else
                                         <i class="fa fa-circle text-danger mr-2"></i>
                                         @endif
-                                    <td>{{App\Http\Controllers\EquipmentController::getCamperName('camper_status',$item->id_camper_status)}}</td>
+                                    <td>{{App\Http\Controllers\CamperController::getCamperName('camper_status',$item->id_camper_status)}}</td>
                                     <td>
                                         @if($item->is_confirmed==1)
                                         <i class="fa fa-circle text-success mr-2"></i>
@@ -45,7 +45,7 @@
                                     <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <a href="{{ route('equipment.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0" data-toggle="tooltip" title="Details"><i class="fa fa-list"></i></a>
+                                                <a href="{{ route('camper.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"  data-toggle="tooltip" title="Details"><i class="fa fa-list"></i></a>
                                             </li>
                                             @if($item->is_confirmed==1)
                                             <li class="list-inline-item" >
@@ -61,10 +61,10 @@
 
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p>{{ __('backend.block_equipment_message.lbl') }}</p>
+                                                                <p>{{ __('backend.block_camper_message.lbl') }}</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="{{ route('equipment.blockActivateCamper', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block.btn') }}</a>
+                                                                <a href="{{ route('camper.blockActivateCamper', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block.btn') }}</a>
                                                                 <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                             </div>
                                                         </div>
@@ -73,7 +73,7 @@
                                             </li>
                                             @else
                                             <li class="list-inline-item">
-                                                <a href="" class="btn btn-info btn-sm rounded-0" data-toggle="modal" data-target="#activate" data-toggle="tooltip" title="Activate"><i class="fas fa-check"></i></a>
+                                                <a href="{{ route('camper.edit',$item->id)}}" class="btn btn-info btn-sm rounded-0" data-toggle="tooltip" data-toggle="modal" data-target="#activate" title="Activate"><i class="fas fa-check"></i></a>
                                                                               <!-- Modal -->
                                                 <div class="modal fade" id="activate" role="dialog">
                                                     <div class="modal-dialog">
@@ -85,7 +85,7 @@
 
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p>{{ __('backend.confirm_equipment_message.lbl') }}</p>
+                                                                <p>{{ __('backend.confirm_camper_message.lbl') }}</p>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <a href="{{ route('equipment.blockActivateCamper', $item->id) }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_activate.btn') }}</a>
@@ -102,7 +102,7 @@
                             </tbody>
                             <tfoot>
                             <th>{{ __('backend.image.lbl') }}</th>
-                                    <th>{{ __('backend.equipment_name.lbl') }}</th>
+                                    <th>{{ __('backend.camper_name.lbl') }}</th>
                                     <th>{{ __('backend.client.lbl') }}</th>
                                     <th>{{ __('backend.category.lbl') }}</th>
                                     <th>{{ __('backend.availability.lbl') }}</th>

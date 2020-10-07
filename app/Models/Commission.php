@@ -8,5 +8,7 @@ class Commission extends Base
     public $primarykey = 'id';
     protected $fillable = [
         'rate',
+        'created_by',
+        'updated_by'
     ];
 }

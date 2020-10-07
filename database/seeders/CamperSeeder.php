@@ -26,7 +26,7 @@ class CamperSeeder extends Seeder
                 'length' => '10',
                 'width' => '3',
                 'height' => '2.5',
-                'description_equipment' => 'test description camper',
+                'description_camper' => 'test description camper',
                 'location' => 'location',
                 'price_per_day' => '120',
                 'minimal_rent_days' => '2',

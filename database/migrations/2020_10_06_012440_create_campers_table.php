@@ -26,7 +26,7 @@ class CreateCampersTable extends Migration
             $table->string('length', 100)->nullable();
             $table->string('width', 100)->nullable();
             $table->string('height', 100)->nullable();
-            $table->string('description_equipment', 300)->nullable();
+            $table->string('description_camper', 300)->nullable();
             $table->string('location', 100)->nullable();
             $table->double('price_per_day')->nullable();
             $table->integer('minimal_rent_days')->nullable();

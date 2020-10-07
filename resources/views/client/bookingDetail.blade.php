@@ -26,7 +26,7 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('backend.owner_name.lbl') }}</th>
-                                    <th>{{ __('backend.equipment_name.lbl') }}</th>
+                                    <th>{{ __('backend.camper_name.lbl') }}</th>
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.remaining_days_number.lbl') }}</th>
