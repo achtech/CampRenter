@@ -113,8 +113,8 @@ class CamperController extends Controller
         $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
         $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
         $camper_status = CamperStatus::find($data->id_camper_status) != null ? CamperStatus::find($data->id_camper_status)->first() : new CamperStatus();
-        $booking_equipment = Booking::where('id_campers', $id)->get();
-        return view('equipment.details')
+        $booking_camper = Booking::where('id_campers', $id)->get();
+        return view('camper.details')
             ->with('data', $data)
             ->with('clients', $clients)
             ->with('camper_categories', $camper_categories)
