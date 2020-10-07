@@ -88,7 +88,7 @@
                                                                 <p>{{ __('backend.confirm_camper_message.lbl') }}</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="{{ route('equipment.blockActivateCamper', $item->id) }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_activate.btn') }}</a>
+                                                                <a href="{{ route('camper.blockActivateCamper', $item->id) }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_activate.btn') }}</a>
                                                                 <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                             </div>
                                                         </div>
