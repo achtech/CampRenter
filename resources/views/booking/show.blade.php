@@ -2,124 +2,142 @@
 @section('content')
 {{ Breadcrumbs::render('detail_booking',$data) }}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                   
-                    <div class="row">
-                        <div class="col-4">  
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="mt-4">
-                                        <div class="form-group">
-                                            <img style="height: 120px;" src="/assets/images/campers/{{$data->image}}"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">    
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.renter_first_name.lbl') }}</h4>
-                                    <div class="mt-4">
-                                        <div class="form-group">
-                                            {{Form::text('renterName',$data->client_name,['class'=>'form-control','required','disabled'])}}                                </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                      
-                        <div class="col-4">    
-                            <div class="card" >
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.renter_last_name.lbl') }}</h4>
-                                    <div class="mt-4">
-                                        <div class="form-group">
-                                        {{Form::text('renterLastName',$data->client_last_name,['class'=>'form-control','required','disabled'])}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-2">    
-                            <div class="card" >
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.booking_from.lbl') }}</h4>
-                                        <div class="mt-4">
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                         <div class="row">
+                            <div class="col-md-4"><img style="height: 120px;" src="/assets/images/campers/{{$data->image}}"/></div>  
+                            <div class="col-md-8">    
+                            <div class="row">
+                                <label class="col-md-4">{{ __('backend.booking_owner.lbl') }}</label>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                {{Form::text('start_date',$data->start_date,['class'=>'form-control','required','disabled'])}}
+                                                <label >{{$data->owner_name}} {{$data->owner_last_name}} </label>
                                             </div>
-                                        </div>
+                                        </div>    
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                
-                        <div class="col-2">    
-                            <div class="card" >
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.booking_to.lbl') }}</h4>
-                                    <div class="mt-4">
-                                        <div class="form-group">
-                                            {{Form::text('start_date',$data->end_date,['class'=>'form-control','required','disabled'])}}
+                            <div class="form-group row">
+                                <label class="col-md-4">{{ __('backend.booking_equipement.lbl') }} </label>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <label >
+                                                    @if(app()->getLocale()=='en')
+                                                    {{$data->camper_name_en}} 
+                                                    @if(app()->getLocale()=='de')
+                                                        {{$data->camper_name_de}}     
+                                                    @if(app()->getLocale()=='fr')
+                                                        {{$data->camper_name_fr}}
+                                                    @endif
+                                                    @endif
+                                                    @endif
+                                            </label>
+                                            </div>
+                                        </div>     
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4">{{ __('backend.booking_renter.lbl') }}</label>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label >{{$data->renter_name}} {{$data->renter_last_name}} </label>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4">{{ __('backend.booking_from.lbl') }} </label>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label >{{$data->start_date}}</label>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4">    
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.booking_equipement.lbl') }}</h4>
-                                    <div class="mt-4">
-                                        <div class="form-group">
-                                            {{Form::text('camper_name_en',$data->camper_name_en,['class'=>'form-control','required','disabled'])}}
-                                        </div>
+                            <div class="form-group row">
+                            <label class="col-md-4">{{ __('backend.booking_to.lbl') }} </label>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label >{{$data->end_date}}</label>
+                                            </div>
+                                            
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>     
+                            <div class="form-group row">
+                                <label class="col-md-4">{{ __('backend.booking_price_per_day.lbl') }} </label>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>{{$data->price_per_day }}</label>
+                                            </div>
+                                        </div>     
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4">    
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.booking_price_per_day.lbl') }}</h4>
-                                    <div class="mt-4">
-                                        <div class="form-group">
-                                            {{Form::text('price_per_day',$data->price_per_day,['class'=>'form-control','required','disabled'])}}
-                                        </div>
+                            <div class="form-group row">
+                                <label class="col-md-4">{{ __('backend.booking_total_price.lbl') }} </label>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>{{$data->total }}</label>
+                                            </div>
+                                        </div>     
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-3">    
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.booking_total_days.lbl') }}</h4>
-                                    <div class="mt-4">
-                                        <div class="form-group">
-                                            {{Form::text('bookingDay',$data->bookingDay,['class'=>'form-control','required','disabled'])}}
-                                        </div>
+                            <div class="form-group row">
+                                <label class="col-md-4">{{ __('backend.status_booking.lbl') }} </label>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>{{ __('backend.status_booking_'.$data->status_booking.'.lbl') }}</label>
+                                            </div>
+                                        </div>     
                                     </div>
                                 </div>
                             </div>
-                        </div>     
-                        <div class="col-3">    
-                            <div class="card" >
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.booking_total_price.lbl') }}</h4>
-                                    <div class="mt-4">
-                                        <div class="form-group">
-                                            {{Form::text('totalPrice',$totalPrice,['class'=>'form-control','required','disabled'])}}
-                                        </div>
+                            <div class="form-group row">
+                                <label class="col-md-4">{{ __('backend.status_billing.lbl') }} </label>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>{{ __('backend.status_billing_'.$data->status_billings.'.lbl') }}</label>
+                                            </div>
+                                        </div>     
                                     </div>
                                 </div>
                             </div>
-                        </div> 
-                    </div>
+                           
+                </div>
                 </div>
             </div>
         </div>
     </div>
+                    
 </div>
 @endsection

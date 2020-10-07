@@ -140,7 +140,7 @@ class BookingController extends Controller
         $date1 = Carbon::parse($start_date)->format('yy-m-d');
         $date2 = Carbon::parse($end_date)->format('yy-m-d');
         $owner = $request->get('ownerId');
-        $datas = DB::table('v_bookings_details')->Where('client_id',$owner)
+        $datas = DB::table('v_bookings_details')->Where('renter_id',$owner)
         ->orWhere(function ($q) use ($date1,$date2) {
             $q->where('start_date','>=', $date1)
                 ->where('end_date', '<=',$date2);

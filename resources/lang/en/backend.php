@@ -251,6 +251,7 @@ return [
     'message_contact_name.lbl'=>'Contact name',
     'answer_message.btn'=>'Answer',
 
+
     /** licence_category */
     'licence_category_managment.lbl' => 'Licence Category Managment',
     'new_licence_category.btn' => 'New Licence Category',
@@ -386,6 +387,12 @@ return [
     'renter_last_name.lbl' => 'Last name of renter',
     'booking_total_days.lbl' => 'Total days',
     'booking_total_price.lbl' => 'Total price',
+    'status_booking_0.lbl'=>'Closed',
+    'status_booking_1.lbl'=>'Open',
+    'status_billing_0.lbl'=>'Non paid',
+    'status_billing_1.lbl'=>'Paid',
+    'status_booking.lbl'=>'Status booking',
+    'status_billing.lbl'=>'Status billing',
 
     'equipment_description.lbl' => 'Description',
     'client_management.lbl' => 'Client Management',
