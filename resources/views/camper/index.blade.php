@@ -64,7 +64,7 @@
                                                                 <p>{{ __('backend.block_equipment_message.lbl') }}</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="{{ route('equipment.index').'/'.$item->id.'/block' }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block.btn') }}</a>
+                                                                <a href="{{ route('equipment.blockActivateCamper', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block.btn') }}</a>
                                                                 <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                             </div>
                                                         </div>
@@ -88,7 +88,7 @@
                                                                 <p>{{ __('backend.confirm_equipment_message.lbl') }}</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="{{ route('equipment.index').'/'.$item->id.'/active' }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_activate.btn') }}</a>
+                                                                <a href="{{ route('equipment.blockActivateCamper', $item->id) }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_activate.btn') }}</a>
                                                                 <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                             </div>
                                                         </div>

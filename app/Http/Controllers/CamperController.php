@@ -14,7 +14,7 @@ use App\Models\Transmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class EquipmentController extends Controller
+class CamperController extends Controller
 {
 
     /**
@@ -104,24 +104,27 @@ class EquipmentController extends Controller
 
     public function detail($id)
     {
-        $data = Camper::find($id);
-        $clients = Client::find($data->id_clients) != null ? Client::find($data->id_clients)->first() : new Client();
-        $camper_name = CamperName::find($data->id_camper_names) != null ? CamperName::find($data->id_camper_names)->first() : new CamperName();
-        $camper_categories = CamperCategory::find($data->id_licence_categories)->first();
-        $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
-        $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
-        $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
-        $camper_status = CamperStatus::find($data->id_camper_status) != null ? CamperStatus::find($data->id_camper_status)->first() : new CamperStatus();
-        $booking_equipment = Booking::where('id_campers', $id)->get();
+        $camper = Camper::find($id);
+        $owner = Client::find($camper->id_clients);
+        $camper_name = CamperName::find($camper->id_camper_names);
+        $camper_categories = CamperCategory::find($camper->id_licence_categories);
+        $licenceCategories = LicenceCategory::find($camper->id_licence_categories);
+        $transmissions = Transmission::find($camper->id_transmissions);
+        $fuels = Fuel::find($camper->id_fuels);
+        $camper_status = CamperStatus::find($camper->id_camper_status);
+        $booking_equipment = Booking::leftjoin('clients', 'Bookings.id_clients', '=', 'clients.id')
+            ->where('id_campers', $id)->get();
+
         return view('equipment.details')
-            ->with('data', $data)
-            ->with('clients', $clients)
+            ->with('data', $camper)
+            ->with('clients', $owner)
             ->with('camper_categories', $camper_categories)
             ->with('licenceCategories', $licenceCategories)
             ->with('fuels', $fuels)
             ->with('transmissions', $transmissions)
             ->with('camper_name', $camper_name)
             ->with('booking_equipment', $booking_equipment)
+            // ->with('booking_client', $booking_client)
             ->with('camper_status', $camper_status);
     }
 
@@ -168,8 +171,28 @@ class EquipmentController extends Controller
         if (empty($data)) {
             return redirect(route('equipment.index'));
         }
+        if ($data->is_confirmed == '0') {
+            $data->is_confirmed = '1';
+        } else {
+            $data->is_confirmed = '0';
+        }
+
         $data = Camper::where('id', $id)->update(request()->except(['_token', '_method']));
         return redirect(route('equipment.index'))->with('success', 'Item Updated succesfully');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function blockActivateCamper($id)
+    {
+        $data = Camper::find($id);
+        $data->is_confirmed = $data->is_confirmed == '0' ? '1' : '0';
+        $data = $data->update();
+        return redirect(route('equipment.index'));
     }
 
     //

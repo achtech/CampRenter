@@ -231,16 +231,16 @@
                         </a>
                     </li>
                     @if(auth()->user()->role == 'super-admin')
-                    <li class="sidebar-item{{ $activePage == 'user' ? ' selected' : '' }}"> 
+                    <li class="sidebar-item{{ $activePage == 'user' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('user.index')}}" aria-expanded="false">
                         <i class="icon-user"></i>
                             <span class="hide-menu"> {{ __('backend.menu_user_managment.lbl') }}</span>
                         </a>
                     </li>
 @endif
-                    
-                    
-                    <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}"> 
+
+
+                    <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('client.index')}}" aria-expanded="false">
                         <i class="icon-people"></i>
                             <span class="hide-menu"> {{ __('backend.menu_clients.lbl') }}</span>

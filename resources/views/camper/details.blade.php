@@ -22,23 +22,35 @@
 
         <ul class="nav nav-tabs nav-justified nav-bordered mb-3">
             <li class="nav-item">
-                <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link">
+                <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link active">
                     <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
                     <span class="d-none d-lg-block">Details</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#galery" data-toggle="tab" aria-expanded="true"
-                    class="nav-link active">
+                    class="nav-link">
                     <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
                     <span class="d-none d-lg-block">Galery</span>
                 </a>
             </li>
-            
+            <li class="nav-item">
+                <a href="#bookings" data-toggle="tab" aria-expanded="false" class="nav-link">
+                    <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
+                    <span class="d-none d-lg-block">Bookings</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#location" data-toggle="tab" aria-expanded="false" class="nav-link">
+                    <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
+                    <span class="d-none d-lg-block">Location</span>
+                </a>
+            </li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane" id="home-b2">
+            <div class="tab-pane show active" id="home-b2">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
@@ -46,7 +58,7 @@
                             <h4 class="card-title">{{__('backend.equipment_name.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('camper_name',$data->camper_name,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_camper_names',App\Http\Controllers\EquipmentController::getCamperName('camper_names',$camper_name->id),['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -106,7 +118,7 @@
                             <h4 class="card-title">{{__('backend.value_of_vehicle.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('value_of_vehicle',$data->value_of_vehicle,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('value_of_vehicle',$data->value_of_vehicule,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -154,7 +166,7 @@
                             <h4 class="card-title">{{__('backend.category.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_equipment_categories',$equipmentCategory->label_en,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_camper_categories',$camper_categories->label_en,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -226,7 +238,31 @@
                             <h4 class="card-title">{{__('backend.description.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::textArea('description',$data->description,['class'=>'form-control','required','disabled'])}}
+                                {{Form::textArea('description',$data->description_equipment,['class'=>'form-control','required','disabled'])}}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{__('backend.animal_description.lbl')}}</h4>
+                            <form class="mt-4">
+                                <div class="form-group">
+                                {{Form::textArea('animal_description',$data->animal_description,['class'=>'form-control','required','disabled'])}}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{__('backend.licence_age_desc.lbl')}}</h4>
+                            <form class="mt-4">
+                                <div class="form-group">
+                                {{Form::textArea('licence_age_desc',$data->licence_age_desc,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -239,18 +275,6 @@
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('id_fuels',$fuels->label_en,['class'=>'form-control','required','disabled'])}}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">{{__('backend.location.lbl')}}</h4>
-                            <form class="mt-4">
-                                <div class="form-group">
-                                {{Form::text('location',$data->location,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -319,18 +343,6 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.animal_description.lbl')}}</h4>
-                            <form class="mt-4">
-                                <div class="form-group">
-                                {{Form::textArea('animal_description',$data->animal_description,['class'=>'form-control','required','disabled'])}}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
                             <h4 class="card-title">{{__('backend.license_needed.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
@@ -379,18 +391,6 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.licence_age_desc.lbl')}}</h4>
-                            <form class="mt-4">
-                                <div class="form-group">
-                                {{Form::textArea('licence_age_desc',$data->licence_age_desc,['class'=>'form-control','required','disabled'])}}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
                             <h4 class="card-title">{{__('backend.availability.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
@@ -406,7 +406,7 @@
                             <h4 class="card-title">{{__('backend.status.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('status',$data->status,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_campers_name',App\Http\Controllers\EquipmentController::getCamperName('camper_status',$camper_status->id),['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -418,7 +418,11 @@
                             <h4 class="card-title">{{__('backend.confirmed.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('confirmed',$data->confirmed,['class'=>'form-control','required','disabled'])}}
+                                    @if($data->is_confirmed==1)
+                                        <i class="fa fa-circle text-success mr-2"></i>
+                                        @else
+                                        <i class="fa fa-circle text-danger mr-2"></i>
+                                        @endif
                                 </div>
                             </form>
                         </div>
@@ -426,14 +430,14 @@
                 </div>
         </div>
   </div>
-            <div class="tab-pane show active" id="galery">
+            <div class="tab-pane show" id="galery">
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- row -->
                 <div class="row">
-                    
+
                     <div class="col-lg-6" style="display: contents;">
-                        <div class="card">
+                        <div class="card" style="margin: auto;">
                             <div class="card-body">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner" role="listbox">
@@ -459,26 +463,38 @@
             </div>
 
             <div class="tab-pane" id="bookings">
-                
-            
-
-            <div class="table-responsive">
+                    <div class="table-responsive">
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.client_name.lbl') }}</th>
-                                    <th>{{ __('backend.client_campers.lbl') }}</th>
-                                    <th>{{ __('backend.client_rents.lbl') }}</th>
+                                    <th>{{ __('backend.booking_renter.lbl') }}</th>
+                                    <th>{{ __('backend.booking_from.lbl') }}</th>
+                                    <th>{{ __('backend.booking_to.lbl') }}</th>
+                                    <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
+                                    <th>{{ __('backend.booking_total_price.lbl') }}</th>
                                 </tr>
                             </thead>
-                            
+                            <tbody>
+                                @foreach($booking_equipment as $item)
+                                <tr>
+                                    <td>{{$item->client_name }} {{$item->client_last_name }}</td>
+                                    <td>{{$item->start_date}}</td>
+                                    <td>{{$item->end_date}}</td>
+                                    <td>{{$item->price_per_day}}</td>
+                                    <td>{{$item->total}}</td>
+                                </tr>
+
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
+            </div>
 
+            <div class="tab-pane" id="location">
+                    <div class="table-responsive">
 
-
-
+                    </div>
             </div>
         </div>
 

@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-  
- 
 use App\Models\CamperCategory;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
 
-class EquipmentCategoryController extends Controller
+class CamperCategoryController extends Controller
 {
     /**
      * Create a new controller instance.

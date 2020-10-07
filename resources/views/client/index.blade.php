@@ -61,7 +61,7 @@
                                             </li>
                                             @if($item->status=='active')
                                             <li class="list-inline-item" >
-                                                <a href="{{ route('client.edit',$item->id)}}" class="btn btn-info btn-sm rounded-0" data-toggle="modal" data-target="#block" title="Block" id="blockClient" data-id={{$item->id}}><i class="fas fa-check"></i>{{$item->id}}</a>
+                                                <a href="{{ route('client.edit',$item->id)}}" class="btn btn-info btn-sm rounded-0" data-toggle="modal" data-target="#block" title="Block" id="blockClient" data-id="{{$item->id}}"><i class="fas fa-check"></i>{{$item->id}}</a>
                                             <!-- Modal -->
  <div class="modal fade" id="block" role="dialog">
     <div class="modal-dialog">
@@ -85,7 +85,7 @@
                                             </li>
                                             @else
                                             <li class="list-inline-item">
-                                                <a href="{{ route('client.edit',$item->id)}}" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#activate"  id="activateClient" title="Activate" data-id={{$item->id}}><i class="fas fa-ban"></i>{{$item->id}}</a>
+                                                <a href="{{ route('client.edit',$item->id)}}" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#activate"  id="activateClient" title="Activate" data-id="{{$item->id}}"><i class="fas fa-ban"></i>{{$item->id}}</a>
                                                                               <!-- Modal -->
  <div class="modal fade" id="activate" role="dialog">
     <div class="modal-dialog">
