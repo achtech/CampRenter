@@ -90,7 +90,7 @@ class StatusCamperController extends Controller
         if (empty($data)) {
             return redirect(route('statusCamper.index'));
         }
-        $data = StatusCamper::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = StatusCamper::where('id', $id)->update(request()->except(['_token', '_method','action']));
         return redirect(route('statusCamper.index'))->with('success', 'Item Updated succesfully');
     }
 

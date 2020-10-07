@@ -92,7 +92,7 @@ class FavorisController extends Controller
         if (empty($data)) {
             return redirect(route('favoris.index'));
         }
-        $data = Favoris::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = Favoris::where('id', $id)->update(request()->except(['_token', '_method','action']));
         return redirect(route('favoris.index'))->with('success', 'Item Updated succesfully');
     }
 

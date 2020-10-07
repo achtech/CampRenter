@@ -177,7 +177,7 @@ class CamperController extends Controller
             $data->is_confirmed = '0';
         }
 
-        $data = Camper::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = Camper::where('id', $id)->update(request()->except(['_token', '_method','action']));
         return redirect(route('camper.index'))->with('success', 'Item Updated succesfully');
     }
 

@@ -28,7 +28,7 @@
                                    <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <a href="{{ route('insurance_company.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
+                                                <a href="{{ route('insuranceCompany.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
                                             </li>  
                                             <li class="list-inline-item">
                                                 <div class="container">
@@ -45,7 +45,7 @@
                 <p>{{ __('backend.message_delete_insurance_company.lbl') }}</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="{{ route('insurance_company.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
+                    <a href="{{ route('insuranceCompany.destroy',$item->id) }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
                     <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                 </div>
             </div>

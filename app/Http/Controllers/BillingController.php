@@ -158,7 +158,7 @@ class BillingController extends Controller
         if (empty($data)) {
             return redirect(route('billing.index'));
         }
-        $data = Billing::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = Billing::where('id', $id)->update(request()->except(['_token', '_method','action']));
         return redirect(route('billing.index'))->with('success', 'Item Updated succesfully');
     }
 

@@ -104,7 +104,7 @@ class BookingController extends Controller
         if (empty($data)) {
             return redirect(route('booking.index'));
         }
-        $data = Booking::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = Booking::where('id', $id)->update(request()->except(['_token', '_method','action']));
         return redirect(route('booking.index'))->with('success', 'Item Updated succesfully');
     }
 

@@ -63,7 +63,7 @@ class InsuranceCompanyController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $data = InsuranceCompa::create($input);
+        $data = InsuranceCompany::create($input);
         return redirect(route('insuranceCompany.index'))->with('success', 'Item added succesfully');
     }
 
@@ -76,6 +76,9 @@ class InsuranceCompanyController extends Controller
      */
     public function edit($id)
     {
+        $data = InsuranceCompany::find($id);
+        return view('insuranceCompany.edit')->with('data', $data);
+ 
     }
 
     /**
@@ -91,7 +94,7 @@ class InsuranceCompanyController extends Controller
         if (empty($data)) {
             return redirect(route('insuranceCompany.index'));
         }
-        $data = InsuranceCompany::where('id', $id)->update(request()->except(['_token', '_method']));
+        $data = InsuranceCompany::where('id', $id)->update(request()->except(['_token', '_method','action']));
         return redirect(route('insuranceCompany.index'))->with('success', 'Item Updated succesfully');
     }
 
@@ -105,7 +108,7 @@ class InsuranceCompanyController extends Controller
      */
     public function destroy($id)
     {
-        $data = Bookings::find($id);
+        $data = InsuranceCompany::find($id);
         if (empty($data)) {
             return redirect(route('insuranceCompany.index'));
         }

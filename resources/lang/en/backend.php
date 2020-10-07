@@ -259,6 +259,7 @@ return [
     'message_delete_camperStatus.lbl' => 'Do you want to delete this camper status',
     'insurance_company_managment.lbl' => 'Insurance provider managment',
     'new_insurance_company.btn' => 'New insurance provider',
+    'message_delete_insurance_company.lbl' => 'Do you want to delete this insurance company',
     /** Dashboard */
     'dashboard_confirm_camper.lbl' => 'Campers to be confirmed',
     'dashboard_last_booking.lbl' => 'Last Bookings',
