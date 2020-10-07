@@ -10,9 +10,10 @@
                     <h4 class="card-title">{{ __('backend.booking_owner.lbl') }}</h4>
                         <div class="form-group mb-4">
                             <select class="custom-select mr-sm-2" id="ownerId" name="ownerId">
-                                <option selected>{{ __('backend.booking_select_choose.lbl') }}</option>
+                                <option selected>{{ __('backend.booking_select_choose.lbl') }}</option> 
                                 @foreach($datasClients as $item)
-                                    <option value="{{$item->id}}">{{$item->client_name}} {{$item->client_last_name}}</option>
+                                @php $id = $item->id; @endphp
+                                    <option value="{{$item->id}}" @if(isset($ownerId)) @if($ownerId==$id) selected @endif @endif  >{{$item->client_name}} {{$item->client_last_name}}</option>
                                 @endforeach
                                 <option value="3">Three</option>
                             </select>

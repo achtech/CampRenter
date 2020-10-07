@@ -50,10 +50,30 @@
                                         <td>{{$item->created_at}}</td>
                                         <td>{{$item->rate}}</td>
                                         <td>
-                                            <ul class="list-inline m-0">
+                                            <ul class="list-inline m-0"> 
                                                 <li class="list-inline-item">
-                                                    <a href="{{ route('commission.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
-                                                </li>  
+                                                <div class="container">
+                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal"  data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="myModal" role="dialog">
+                                                    <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                <p>{{ __('backend.delete_commission.lbl') }}</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="{{ route('commission.destroy',$item->id) }}" class="btn btn-danger btn-sm rounded-0" data-toggle="tooltip" title="Delete">Delete</a>
+                                                                    <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>  
                                             </ul>
                                         </td>
                                     </tr>

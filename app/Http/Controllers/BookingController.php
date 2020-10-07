@@ -150,6 +150,7 @@ class BookingController extends Controller
             ->with('datas', $datas)
             ->with('start_date',$start_date)
             ->with('end_date',$end_date)
+            ->with('ownerId',$owner)
             ->with('datasClients', $datasClients);
     }
     public function chat($id)

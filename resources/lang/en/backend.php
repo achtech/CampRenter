@@ -211,6 +211,7 @@ return [
     'commission_updatedBy.lbl' => 'Update By',
     'commission_updatedAt.lbl' => 'Update At',
     'commission_rate.lbl' => 'Amount',
+    'delete_commission.lbl' => 'Do you want to delete this commission',
 
     /** General */
     'operations.lbl' => 'Operation',
