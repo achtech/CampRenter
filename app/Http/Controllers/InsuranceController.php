@@ -132,6 +132,7 @@ class InsuranceController extends Controller
     }
 
     public static function getLabel($table,$id){
-        return DB::table($table)->find($id)->label_en;
+        $data =  DB::table($table)->find($id);
+        return $data ? $data->label_en : '';
     }
 }

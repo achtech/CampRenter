@@ -24,25 +24,25 @@
                             <tbody>
                                 @foreach($datas as $item)
                                 <tr>
-                                    <td><img src="/assets/images/gallery/{{$item->image}}"/></td>
-                                    <td>{{App\Http\Controllers\CamperController::getCamperName('camper_names',$item->id_camper_names)}}</td>
-                                    <td>{{App\Http\Controllers\CamperController::getName('clients',$item->id_clients)}}</td>
-                                    <td>{{App\Http\Controllers\CamperController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
-                                    <td>
+                                    <td style="vertical-align: middle;text-align:center"><img style="width:100px" src="/assets/images/gallery/{{$item->image}}"/></td>
+                                    <td style="vertical-align: middle;">{{App\Http\Controllers\CamperController::getCamperName('camper_names',$item->id_camper_names)}}</td>
+                                    <td style="vertical-align: middle;">{{App\Http\Controllers\CamperController::getName('clients',$item->id_clients)}}</td>
+                                    <td style="vertical-align: middle;">{{App\Http\Controllers\CamperController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
+                                    <td style="vertical-align: middle;text-align:center">
                                         @if($item->availability==1)
                                         <i class="fa fa-circle text-success mr-2"></i>
                                         @else
                                         <i class="fa fa-circle text-danger mr-2"></i>
                                         @endif
-                                    <td>{{App\Http\Controllers\CamperController::getCamperName('camper_status',$item->id_camper_status)}}</td>
-                                    <td>
+                                    <td style="vertical-align: middle;">{{App\Http\Controllers\CamperController::getCamperName('camper_status',$item->id_camper_status)}}</td>
+                                    <td style="vertical-align: middle;text-align:center">
                                         @if($item->is_confirmed==1)
                                         <i class="fa fa-circle text-success mr-2"></i>
                                         @else
                                         <i class="fa fa-circle text-danger mr-2"></i>
                                         @endif
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: middle;">
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
                                                 <a href="{{ route('camper.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"  data-toggle="tooltip" title="Details"><i class="fa fa-list"></i></a>

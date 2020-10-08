@@ -13,15 +13,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-            $this->call('UserSeeder');
-            $this->call('AvatarSeeder');
-            $this->call('CamperCategorySeeder');
-            $this->call('CamperNameSeeder');
-            $this->call('CamperStatusSeeder');
-            $this->call('FuelSeeder');
-            $this->call('LicenceCategorySeeder');
-            $this->call('TransmissionSeeder');
-            $this->call('ClientSeeder');
-            $this->command->info('User table seeded!');
+        $this->call([
+            UserSeeder::class,
+            AvatarsSeeder::class,
+            CamperNamesSeeder::class,
+
+            CamperStatusSeeder::class,
+            CamperCategoriesSeeder::class,
+            CommissionsSeeder::class,
+            
+            FuelsSeeder::class,
+            InsuranceCompaniesSeeder::class,
+            LicenceCategoriesSeeder::class,
+            
+            MessagesSeeder::class,
+            PromotionsSeeder::class,
+            TransmissionsSeeder::class,
+            
+            ClientsSeeder::class,
+            InsurancesSeeder::class,
+            CampersSeeder::class,
+            
+            CamperImagesSeeder::class,
+     /*       BookingsSeeder::class,
+            ChatsSeeder::class,
+            BillingsSeeder::class,
+       */     
+        ]);
+
     }
 }
