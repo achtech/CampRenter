@@ -66,17 +66,21 @@
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
+                                    <th>{{ __('backend.booking_status_booking.lbl') }}</th>
+                                    <th>{{ __('backend.booking_status_billing.lbl') }}</th>
                                     <th>{{ __('backend.operation.lbl') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($datas as $item)
                                     <tr>
-                                        <td>{{$item->client_name }} {{$item->client_last_name }}</td>
-                                        <td>{{$item->camper_name_en}}</td>        
+                                        <td>{{$item->renter_name }} {{$item->renter_last_name }}</td>
+                                        <td>{{app()->getLocale()=='en'? $item->camper_name_en : app()->getLocale()=='de' ? $item->camper_name_de : $item->camper_name_fr}}</td>        
                                         <td>{{$item->start_date}}</td>
                                         <td>{{$item->end_date}}</td>
                                         <td>{{$item->price_per_day}}</td>
+                                        <td>{{ __('backend.status_booking_'.$item->status_booking.'.lbl') }}</td>
+                                        <td>{{ __('backend.status_billing_'.$item->status_billings.'.lbl') }}</td>
                                         <td>
                                             <li class="list-inline-item">
                                                 <a href="{{ route('booking.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
@@ -95,6 +99,8 @@
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
+                                    <th>{{ __('backend.booking_status_booking.lbl') }}</th>
+                                    <th>{{ __('backend.booking_status_billing.lbl') }}</th>
                                     <th>{{ __('backend.operation.lbl') }}</th>
                                 </tr>
                             </tfoot>

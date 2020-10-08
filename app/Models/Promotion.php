@@ -8,8 +8,8 @@ class Promotion extends Base
     public $primarykey = 'id';
 
     protected $fillable = [
-        'commision',
-        'label',
+        'commission',
+        'details',
         'status',
         'created_by',
         'updated_by'

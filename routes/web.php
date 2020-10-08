@@ -261,6 +261,7 @@ Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' =
 
     //ADMIN->MESSAGE
     Route::get('message/{id}/delete', ['MessageController', 'destroy'])->name('message.destroy');
+    Route::get('message/sendEmail', 'App\Http\Controllers\MessageController@sendEmail')->name('message.sendEmail');
     Route::resource('message', 'App\Http\Controllers\MessageController', ['except' => 'destroy', 'names' => [
         'index' => 'message.index',
         'store' => 'message.store',

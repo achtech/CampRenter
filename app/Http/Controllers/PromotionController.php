@@ -27,8 +27,10 @@ class PromotionController extends Controller
      */
     public function index(Request $request)
     {
-        $datasPromo = Promotion::paginate(10);
-        return view('promotion.index')->with('datasPromo', $datasPromo);
+        $datas = Promotion::paginate(10);
+        $dataPromoActivate = Promotion::where('status',1)->first();
+        return view('promotion.index')->with('datas', $datas)
+        ->with('dataPromoActivate', $dataPromoActivate);
     }
     /**
      * Show the form for creating a new resource.
