@@ -49,7 +49,7 @@
                                             </li>
                                             @if($item->is_confirmed==1)
                                             <li class="list-inline-item" >
-                                                <a href="" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#block" data-toggle="tooltip" title="Block"><i class="fas fa-ban"></i></a>
+                                                <a href="" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#block"  title="Block"><i class="fas fa-ban"></i></a>
                                             <!-- Modal -->
                                                 <div class="modal fade" id="block" role="dialog">
                                                     <div class="modal-dialog">
@@ -73,7 +73,7 @@
                                             </li>
                                             @else
                                             <li class="list-inline-item">
-                                                <a href="{{ route('camper.edit',$item->id)}}" class="btn btn-info btn-sm rounded-0" data-toggle="tooltip" data-toggle="modal" data-target="#activate" title="Activate"><i class="fas fa-check"></i></a>
+                                                <a href="" class="btn btn-info btn-sm rounded-0" data-toggle="modal" data-target="#activate"  title="Confirm"><i class="fas fa-check"></i></a>
                                                                               <!-- Modal -->
                                                 <div class="modal fade" id="activate" role="dialog">
                                                     <div class="modal-dialog">
