@@ -31,12 +31,6 @@ class CommissionController extends Controller
     public function index(Request $request)
     {
         $search = '';
-        /*if (isset($request) && null !== $request->get('search')) {
-            $search = $request->get('search');
-            $datas = Commission::where('start_date', 'like', '%' . $search . '%')->paginate(10);
-        } else {
-            $datas = Commission::paginate(10);
-        }*/
         $datas = Commission::paginate(10);
         $datasPromo = Promotion::paginate(10);
         return view('commission.index')->with('datas', $datas)->with('datasPromo', $datasPromo);
@@ -68,15 +62,10 @@ class CommissionController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = request()->except(['_token','action', '_method']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
         $data = Commission::create($input);
-        return redirect(route('commission.index'))->with('success', 'Item added succesfully');
-    }
-
-    public function storePromotion()
-    {
-        $input = $request->all();
-        $data = Promotion::create($input);
         return redirect(route('commission.index'))->with('success', 'Item added succesfully');
     }
 

@@ -8,6 +8,8 @@ class CamperImage extends Base
     public $primarykey = 'id';
     protected $fillable = [
         'image',
-        'id_campers'
+        'id_campers',
+        'created_by',
+        'updated_by'
     ];
 }

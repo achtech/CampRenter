@@ -6,5 +6,7 @@ class Client extends Base
 {
     protected $table = 'clients';
     public $primarykey = 'id';
-    protected $fillable = ['message','date_sent','ordre_message','id_owners','id_renters','id_bookings'];
+    protected $fillable = ['message','date_sent','ordre_message','id_owners','id_renters','id_bookings',
+    'created_by',
+    'updated_by'];
 }

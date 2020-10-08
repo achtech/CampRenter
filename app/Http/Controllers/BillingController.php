@@ -128,7 +128,10 @@ class BillingController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
+
         $data = Billing::create($input);
         return redirect(route('billing.index'))->with('success', 'Item added succesfully');
     }
@@ -158,7 +161,9 @@ class BillingController extends Controller
         if (empty($data)) {
             return redirect(route('billing.index'));
         }
-        $data = Billing::where('id', $id)->update(request()->except(['_token', '_method']));
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['updated_by']=auth()->user()->id;
+        $data = Billing::where('id', $id)->update($input);
         return redirect(route('billing.index'))->with('success', 'Item Updated succesfully');
     }
 

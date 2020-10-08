@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Message;
 use App\Models\Camper;
+use App\Models\User;
 
 class Controller extends BaseController
 {
@@ -28,6 +29,11 @@ class Controller extends BaseController
 
     static function getNotReadedMessages(){
         return Message::where('status',0)->orderby('send_date')->get();
+    }
+
+    static function getUser($id){
+        $user = User::find($id);
+        return $user ? $user->name : '';
     }
 
     static function getNotConfirmedcampers(){

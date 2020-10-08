@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
   
  
-use App\Models\Bookings;
 use App\Models\CamperName;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
-class CamperNameController extends Controller
+class CamperNamesController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,7 +20,6 @@ class CamperNameController extends Controller
     {
         $this->middleware('auth');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -37,7 +35,7 @@ class CamperNameController extends Controller
         } else {
             $datas = CamperName::paginate(10);
         }
-        return view('camperName.index')->with('datas', $datas)->with('search', $search);
+        return view('camperNames.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -46,7 +44,7 @@ class CamperNameController extends Controller
      */
     public function create()
     {
-        return view('CamperName.create');
+        return view('camperNames.create');
     }
     /**
      * Display the specified resource.
@@ -56,7 +54,7 @@ class CamperNameController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('camperName.index'));
+        return redirect(route('camperNames.index'));
     }
     /**
      * Store a newly created resource in storage.
@@ -66,11 +64,12 @@ class CamperNameController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        $data = Bookings::create($input);
-        return redirect(route('camperName.index'))->with('success', 'Item added succesfully');
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
+         $data = CamperName::create($input);
+        return redirect(route('camperNames.index'))->with('success', 'Item added succesfully');
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -80,6 +79,8 @@ class CamperNameController extends Controller
      */
     public function edit($id)
     {
+        $data = camperName::find($id);
+        return view('camperNames.edit', ['id' => 1])->with('data', $data);
     }
 
     /**
@@ -91,12 +92,14 @@ class CamperNameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Bookings::find($id);
+        $data = camperName::find($id);
         if (empty($data)) {
-            return redirect(route('camperName.index'));
+            return redirect(route('camperNames.index'));
         }
-        $data = CamperName::where('id', $id)->update(request()->except(['_token', '_method']));
-        return redirect(route('camperName.index'))->with('success', 'Item Updated succesfully');
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['updated_by']=auth()->user()->id;
+        $data = camperName::where('id', $id)->update($input);
+        return redirect(route('camperNames.index'))->with('success', 'Item Updated succesfully');
     }
 
     //
@@ -109,11 +112,11 @@ class CamperNameController extends Controller
      */
     public function destroy($id)
     {
-        $data = Bookings::find($id);
+        $data = camperName::find($id);
         if (empty($data)) {
-            return redirect(route('camperName.index'));
+            return redirect(route('camperNames.index'));
         }
         $data->delete();
-        return redirect(route('camperName.index'));
+        return redirect(route('camperNames.index'));
     }
 }

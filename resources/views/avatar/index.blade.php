@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                     <a href="{{ route('avatar.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                        style="width:200px;margin:0px 10px">{{ __('backend.new_avatar.btn') }}</a>
+                        style="width:200px;margin:10px">{{ __('backend.new_avatar.btn') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
@@ -19,6 +19,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @if(count($datas)==0)
+                            <tr>
+                                <td colspan="3">{{__('backend.no_data_found.lbl')}}</td>
+                            </tr>
+                            @endif
                             @foreach($datas as $item)
                                 <tr>
                                     <td>
@@ -44,7 +49,7 @@
                                                                 <p>{{ __('backend.message_delete_avatar.lbl') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="{{ route('avatar.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
+                                                                    <a href="{{ route('avatar.destroy',$item->id) }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
                                                                     <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                                 </div>
                                                             </div>

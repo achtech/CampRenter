@@ -64,7 +64,17 @@ class AvatarController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $file = $request->file('image');
+
+        $input = request()->except(['_token', '_method', 'action']);
+        if($request->file('image') && $request->file('image')->getClientOriginalName()){
+            $input['image'] = $request->file('image')->getClientOriginalName();
+            $file->move(base_path('public\assets\images\avatar'),$file->getClientOriginalName());
+        } else {
+            $input = request()->except(['_token', '_method', 'action', 'picture']);
+        }
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
         $data = Avatar::create($input);
         return redirect(route('avatar.index'))->with('success', 'Item added succesfully');
     }
@@ -79,6 +89,9 @@ class AvatarController extends Controller
      */
     public function edit($id)
     {
+        $data = Avatar::find($id);
+        return view('avatar.edit')->with('data', $data);
+
     }
 
     /**
@@ -94,11 +107,19 @@ class AvatarController extends Controller
         if (empty($data)) {
             return redirect(route('avatar.index'));
         }
-        $data = Avatar::where('id', $id)->update(request()->except(['_token', '_method']));
+
+        $file = $request->file('image');
+        $input = request()->except(['_token', '_method', 'action']);
+        if($request->file('image') && $request->file('image')->getClientOriginalName()){
+            $input['image'] = $request->file('image')->getClientOriginalName();
+            $file->move(base_path('public\assets\images\avatar'),$file->getClientOriginalName());
+        } else {
+            $input = request()->except(['_token', '_method', 'action', 'picture']);
+        }
+        $input['updated_by']=auth()->user()->id;
+        $data = Avatar::where('id', $id)->update($input);
         return redirect(route('avatar.index'))->with('success', 'Item Updated succesfully');
     }
-
-    //
 
     /**
      * Remove the specified resource from storage.

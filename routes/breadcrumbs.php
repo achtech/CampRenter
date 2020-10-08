@@ -18,9 +18,9 @@ Breadcrumbs::for('add_user', function ($trail) {
 });
 
 // Home > Blog > [Category]
-Breadcrumbs::for('edit_user', function ($trail, $user) {
+Breadcrumbs::for('edit_user', function ($trail, $id) {
     $trail->parent('user');
-    $trail->push('Edit user: '.$user->user_name, route('user.edit'));
+    $trail->push('Edit user', route('user.edit',$id));
 });
 //client
 Breadcrumbs::for('client', function ($trail) {
@@ -37,10 +37,10 @@ Breadcrumbs::for('detail_client', function ($trail, $client) {
     $trail->parent('client');
     $trail->push('Detail Client', route('client.detail', $client->id));
 });
-//detail equipment
-Breadcrumbs::for('detail_equipment', function ($trail, $client) {
+//detail camper
+Breadcrumbs::for('detail_camper', function ($trail, $client) {
     $trail->parent('client');
-    $trail->push('Detail Equipment', route('client.equipmentDetail', $client->id));
+    $trail->push('Detail Camper', route('client.camperDetail', $client->id));
 });
 
 //rent detail
@@ -67,16 +67,34 @@ Breadcrumbs::for('create_insurance', function ($trail) {
     $trail->push('Create Insurance', route('insurance.index'));
 });
 
-// Dashboard > Equipment
-Breadcrumbs::for('equipment', function ($trail) {
+// Dashboard > Insurance
+Breadcrumbs::for('insurance_company', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('Camper', route('equipment.index'));
+    $trail->push('Insurances company', route('inssuranceCompany.index'));
 });
 
-// Dashboard > Equipment > Details Camper
-Breadcrumbs::for('details_equipment', function ($trail) {
-    $trail->parent('equipment');
-    $trail->push('Details Camper', route('equipment.index'));
+// Dashboard > Insurance > Edit Insurance
+Breadcrumbs::for('edit_insurance_company', function ($trail,$data) {
+    $trail->parent('insurance_company');
+    $trail->push('Edit Insurance company', route('inssuranceCompany.edit', $data->id));
+});
+
+// Dashboard > Insurance > Create Insurance
+Breadcrumbs::for('create_insurance_company', function ($trail) {
+    $trail->parent('insurance_company');
+    $trail->push('Create Insurance company', route('inssuranceCompany.create'));
+});
+
+// Dashboard > Camper
+Breadcrumbs::for('camper', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Camper', route('camper.index'));
+});
+
+// Dashboard > Camper > Details Camper
+Breadcrumbs::for('details_camper', function ($trail) {
+    $trail->parent('camper');
+    $trail->push('Details Camper', route('camper.index'));
 });
 
 // settings
@@ -102,22 +120,59 @@ Breadcrumbs::for('create_fuel', function ($trail) {
     $trail->push('Create Fuel', route('fuel.index'));
 });
 
-// Settings > EquipmentCategory
-Breadcrumbs::for('equipmentCategory', function ($trail) {
+// Settings > CamperCategory
+Breadcrumbs::for('camperCategory', function ($trail) {
     $trail->parent('settings');
-    $trail->push('Equipment Category', route('equipmentCategory.index'));
+    $trail->push('Camper Category', route('camperCategory.index'));
 });
 
-// Settings > EquipmentCategory > Edit EquipmentCategory
-Breadcrumbs::for('edit_equipmentCategory', function ($trail) {
-    $trail->parent('equipmentCategory');
-    $trail->push('Edit Equipment Category', route('equipmentCategory.index'));
+// Settings > CamperCategory > Edit CamperCategory
+Breadcrumbs::for('edit_camperCategory', function ($trail) {
+    $trail->parent('camperCategory');
+    $trail->push('Edit Camper Category', route('camperCategory.index'));
 });
 
-// Settings > EquipmentCategory > Create EquipmentCategory
-Breadcrumbs::for('create_equipmentCategory', function ($trail) {
-    $trail->parent('equipmentCategory');
-    $trail->push('Create Equipment Category', route('equipmentCategory.index'));
+// Settings > CamperCategory > Create CamperCategory
+Breadcrumbs::for('create_camperCategory', function ($trail) {
+    $trail->parent('camperCategory');
+    $trail->push('Create Camper Category', route('camperCategory.index'));
+});
+
+
+// Settings > Camper Names
+Breadcrumbs::for('camperNames', function ($trail) {
+    $trail->parent('settings');
+    $trail->push('Camper names', route('camperNames.index'));
+});
+
+// Settings > CamperCategory > Edit CamperCategory
+Breadcrumbs::for('edit_camperNames', function ($trail, $data) {
+    $trail->parent('camperNames');
+    $trail->push('Edit Camper names', route('camperNames.edit',$data->id));
+});
+
+// Settings > CamperCategory > Create CamperCategory
+Breadcrumbs::for('create_camperNames', function ($trail) {
+    $trail->parent('camperNames');
+    $trail->push('Create Camper Names', route('camperNames.create'));
+});
+
+// Settings > Camper Names
+Breadcrumbs::for('camperStatus', function ($trail) {
+    $trail->parent('settings');
+    $trail->push('Camper status', route('camperStatus.index'));
+});
+
+// Settings > CamperCategory > Edit CamperCategory
+Breadcrumbs::for('edit_camperStatus', function ($trail, $data) {
+    $trail->parent('camperStatus');
+    $trail->push('Edit Camper Status', route('camperStatus.edit',$data->id));
+});
+
+// Settings > CamperCategory > Create CamperCategory
+Breadcrumbs::for('create_camperStatus', function ($trail) {
+    $trail->parent('camperStatus');
+    $trail->push('Create Camper Status', route('camperStatus.create'));
 });
 
 // Settings > LicenceCategory
@@ -169,18 +224,6 @@ Breadcrumbs::for('change_password', function ($trail) {
     $trail->parent('profile');
     $trail->push('Change password', route('user.changePassword'));
 });
-/*
-Breadcrumbs::for('edit_user', function ($trail, $category) {
-    $trail->parent('user');
-    $trail->push($category->title, route('category', $category->id));
-});
-
-// Home > Blog > [Category] > [Post]
-Breadcrumbs::for('post', function ($trail, $post) {
-    $trail->parent('category', $post->category);
-    $trail->push($post->title, route('post', $post->id));
-});
-*/
 // Commission
 Breadcrumbs::for('commission', function ($trail) {
     $trail->parent('settings');
@@ -224,9 +267,9 @@ Breadcrumbs::for('add_avatar', function ($trail) {
 });
 
 // Home > Avatar > ediy [Category]
-Breadcrumbs::for('edit_avatar', function ($trail, $category) {
+Breadcrumbs::for('edit_avatar', function ($trail, $avatar) {
     $trail->parent('avatar');
-    $trail->push('Edit avatar', route('avatar.edit'));
+    $trail->push('Edit avatar', route('avatar.edit',$avatar->id));
 });
 
 // Message

@@ -12,6 +12,8 @@ class Billing extends Base
         'total',
         'id_clients',
         'id_bookings',
-        'billings_status'
+        'billings_status',
+        'created_by',
+        'updated_by'
     ];
 }

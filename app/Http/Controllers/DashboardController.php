@@ -100,7 +100,7 @@ class DashboardController extends Controller
     }
 
 
-    public function confirmEquipment($id)
+    public function confirmCamper($id)
     {
         $data = Camper::find($id);
         if (empty($data)) {

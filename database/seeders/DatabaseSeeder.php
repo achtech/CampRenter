@@ -13,6 +13,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            UserSeeder::class,
+            AvatarsSeeder::class,
+            CamperNamesSeeder::class,
+
+            CamperStatusSeeder::class,
+            CamperCategoriesSeeder::class,
+            CommissionsSeeder::class,
+            
+            FuelsSeeder::class,
+            InsuranceCompaniesSeeder::class,
+            LicenceCategoriesSeeder::class,
+            
+            MessagesSeeder::class,
+            PromotionsSeeder::class,
+            TransmissionsSeeder::class,
+            
+            ClientsSeeder::class,
+            InsurancesSeeder::class,
+            CampersSeeder::class,
+            
+            CamperImagesSeeder::class,
+     /*       BookingsSeeder::class,
+            ChatsSeeder::class,
+            BillingsSeeder::class,
+       */     
+        ]);
+
     }
 }

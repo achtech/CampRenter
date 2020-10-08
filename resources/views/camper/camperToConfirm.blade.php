@@ -1,6 +1,6 @@
-@extends('layout', ['activePage' => 'equipment', 'titlePage' => __('backend.equipment_managment.lbl')])
+@extends('layout', ['activePage' => 'camper', 'titlePage' => __('backend.camper_managment.lbl')])
 @section('content')
-{{ Breadcrumbs::render('equipment') }}
+{{ Breadcrumbs::render('camper') }}
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -12,7 +12,7 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('backend.image.lbl') }}</th>
-                                    <th>{{ __('backend.equipment_name.lbl') }}</th>
+                                    <th>{{ __('backend.camper_name.lbl') }}</th>
                                     <th>{{ __('backend.client.lbl') }}</th>
                                     <th>{{ __('backend.category.lbl') }}</th>
                                     <th>{{ __('backend.availability.lbl') }}</th>
@@ -25,16 +25,16 @@
                                 @foreach($datas as $item)
                                 <tr>
                                     <td><img src="/assets/images/gallery/{{$item->image}}"/></td>
-                                    <td>{{App\Http\Controllers\EquipmentController::getCamperName('camper_names',$item->id_campers_name)}}</td>
-                                    <td>{{App\Http\Controllers\EquipmentController::getName('clients',$item->id_client)}}</td>
-                                    <td>{{App\Http\Controllers\EquipmentController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
+                                    <td>{{App\Http\Controllers\CamperController::getCamperName('camper_names',$item->id_campers_name)}}</td>
+                                    <td>{{App\Http\Controllers\CamperController::getName('clients',$item->id_client)}}</td>
+                                    <td>{{App\Http\Controllers\CamperController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
                                     <td>{{$item->availability}}</td>
                                     <td>{{$item->status}}</td>
                                     <td>{{$item->confirmed}}</td>
                                     <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <a href="{{ route('equipment.confirm',$item->id) }}" class="btn btn-primary btn-sm rounded-0"><i class="fas fa-check"></i></a>
+                                                <a href="{{ route('camper.confirm',$item->id) }}" class="btn btn-primary btn-sm rounded-0"><i class="fas fa-check"></i></a>
                                             </li> 
                                     </td>
                                 </tr>
@@ -42,7 +42,7 @@
                             </tbody>
                             <tfoot>
                             <th>{{ __('backend.image.lbl') }}</th>
-                                    <th>{{ __('backend.equipment_name.lbl') }}</th>
+                                    <th>{{ __('backend.camper_name.lbl') }}</th>
                                     <th>{{ __('backend.client.lbl') }}</th>
                                     <th>{{ __('backend.category.lbl') }}</th>
                                     <th>{{ __('backend.availability.lbl') }}</th>

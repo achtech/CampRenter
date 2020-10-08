@@ -26,7 +26,7 @@ class CreateCampersTable extends Migration
             $table->string('length', 100)->nullable();
             $table->string('width', 100)->nullable();
             $table->string('height', 100)->nullable();
-            $table->string('description_equipment', 300)->nullable();
+            $table->string('description_camper', 300)->nullable();
             $table->string('location', 100)->nullable();
             $table->double('price_per_day')->nullable();
             $table->integer('minimal_rent_days')->nullable();
@@ -35,11 +35,17 @@ class CreateCampersTable extends Migration
             $table->string('animals_allowed')->nullable();
             $table->string('animal_description', 300)->nullable();
             $table->string('licence_needed_desc', 100)->nullable();
+            $table->string('licence_needed', 100)->nullable();
             $table->string('license_age', 100)->nullable();
             $table->string('licence_age_desc', 300)->nullable();
             $table->string('smoking_allowed', 100)->nullable();
             $table->string('availability', 100)->nullable();
             $table->string('is_confirmed', 100)->nullable();
+            $table->integer("zip_code")->nullable();
+            $table->string("city")->nullable();
+            $table->string("country")->nullable();
+            $table->string("position_x")->nullable();
+            $table->string("position_y")->nullable();
 
             $table->unsignedBigInteger('id_clients')->nullable();
             $table->unsignedBigInteger('id_camper_names')->nullable();
@@ -47,19 +53,21 @@ class CreateCampersTable extends Migration
             $table->unsignedBigInteger('id_camper_categories')->nullable();
             $table->unsignedBigInteger('id_transmissions')->nullable();
             $table->unsignedBigInteger('id_fuels')->nullable();
-
+            $table->unsignedBigInteger('id_camper_status')->nullable();
+            
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
-
+            
             $table->foreign('id_clients')->references('id')->on('clients');
             $table->foreign('id_camper_names')->references('id')->on('camper_names');
             $table->foreign('id_licence_categories')->references('id')->on('licence_categories');
             $table->foreign('id_camper_categories')->references('id')->on('camper_categories');
-            $table->foreign('id_transmissions')->references('id')->on('tranmissions');
+            $table->foreign('id_transmissions')->references('id')->on('transmissions');
             $table->foreign('id_fuels')->references('id')->on('fuels');
+            $table->foreign('id_camper_status')->references('id')->on('camper_status');
         });
     }
 

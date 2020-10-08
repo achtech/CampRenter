@@ -18,6 +18,7 @@ class CreateBookingTable extends Migration
             $table->dateTime('start_date')->nullable();
             $table->dateTime('end_date')->nullable();
             $table->double('total')->nullable();
+            $table->integer('price_per_day')->nullable();
 
             $table->string('status_booking')->nullable();
             $table->string('status_billings')->nullable();

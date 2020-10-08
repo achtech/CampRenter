@@ -8,6 +8,8 @@ class Avatar extends Base
     public $primarykey = 'id';
     protected $fillable = [
         'image',
-        'label'
+        'label',
+        'created_by',
+        'updated_by'
     ];
 }

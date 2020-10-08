@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
+ */
 
 Route::get('lang/{lang}', function ($lang) {
     \Session::put('locale', $lang);
@@ -31,7 +29,7 @@ Route::group(['middleware' => 'Lang'], function () {
     });
 
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
-    Route::get('/confirm/{id}', 'App\Http\Controllers\DashboardController@confirmEquipment')->name('dashboard.confirm');
+    Route::get('/confirm/{id}', 'App\Http\Controllers\DashboardController@confirmCamper')->name('dashboard.confirm');
     //Route::get('/lastBookings', 'App\Http\Controllers\DashboardController@getLastBookings')->name('dashboard');
 
     //ADMIN->USER
@@ -56,7 +54,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('client/{id}/active', 'App\Http\Controllers\ClientController@activateClient')->name('client.active');
     //Route::get('client/{id}/active', array('as' => 'select2', 'uses' =>'App\Http\Controllers\ClientController@activateClient'));
     Route::get('client/{id}/detail', 'App\Http\Controllers\ClientController@detail')->name('client.detail');
-    Route::get('client/{id}/equipmentDetail', 'App\Http\Controllers\ClientController@checkEquipmentDetail')->name('client.equipmentDetail');
+    Route::get('client/{id}/camperDetail', 'App\Http\Controllers\ClientController@checkCamperDetail')->name('client.camperDetail');
     Route::get('client/{id}/rentDetail', 'App\Http\Controllers\ClientController@checkBookingDetail')->name('client.rentDetail');
 
     Route::resource('client', 'App\Http\Controllers\ClientController', ['except' => 'destroy', 'names' => [
@@ -68,30 +66,31 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->EQUIPMENT
-    Route::get('equipment/{id}/confirm', 'App\Http\Controllers\EquipmentController@confirm')->name('equipment.confirm');
-    Route::get('equipment/{id}/detail', 'App\Http\Controllers\EquipmentController@detail')->name('equipment.detail');
-    Route::get('equipment/{id}/delete', 'App\Http\Controllers\EquipmentController@destroy')->name('equipment.destroy');
-    Route::get('equipment/unconfirmedEquipment', 'App\Http\Controllers\EquipmentController@getUnconfirmedCampers')->name('equipment.unconfirmedEquipment');
-    Route::resource('equipment', 'App\Http\Controllers\EquipmentController', ['except' => 'destroy', 'names' => [
-        'index' => 'equipment.index',
-        'create' => 'equipment.create',
-        'update' => 'equipment.update',
-        'edit' => 'equipment.edit',
-        'store' => 'equipment.store',
-        'show' => 'equipment.show',
+    Route::get('camper/{id}/confirm', 'App\Http\Controllers\CamperController@confirm')->name('camper.confirm');
+    Route::get('camper/{id}/detail', 'App\Http\Controllers\CamperController@detail')->name('camper.detail');
+    Route::get('camper/{id}/delete', 'App\Http\Controllers\CamperController@destroy')->name('camper.destroy');
+    Route::get('camper/unconfirmedCamper', 'App\Http\Controllers\CamperController@getUnconfirmedCampers')->name('camper.unconfirmedCamper');
+    Route::resource('camper', 'App\Http\Controllers\CamperController', ['except' => 'destroy', 'names' => [
+        'index' => 'camper.index',
+        'create' => 'camper.create',
+        'update' => 'camper.update',
+        'edit' => 'camper.edit',
+        'store' => 'camper.store',
+        'show' => 'camper.show',
     ]]);
 
-    Route::get('equipment/{id}/detailBooking', 'App\Http\Controllers\EquipmentController@detailBooking')->name('equipment.detailBooking');
-    Route::get('equipment/{id}/detailEquipment', 'App\Http\Controllers\EquipmentController@detailEquipment')->name('equipment.detailEquipment');
-    Route::get('equipment/{id}/detail', 'App\Http\Controllers\EquipmentController@detail')->name('equipment.detail');
-    Route::get('equipment/{id}/delete', 'App\Http\Controllers\EquipmentController@destroy')->name('equipment.destroy');
-    Route::resource('equipment', 'App\Http\Controllers\EquipmentController', ['except' => 'destroy', 'names' => [
-        'index' => 'equipment.index',
-        'create' => 'equipment.create',
-        'update' => 'equipment.update',
-        'edit' => 'equipment.edit',
-        'store' => 'equipment.store',
-        'show' => 'equipment.show',
+    Route::get('camper/{id}/blockActivateCamper', 'App\Http\Controllers\CamperController@blockActivateCamper')->name('camper.blockActivateCamper');
+    Route::get('camper/{id}/detailBooking', 'App\Http\Controllers\CamperController@detailBooking')->name('camper.detailBooking');
+    Route::get('camper/{id}/detailCamper', 'App\Http\Controllers\CamperController@detailCamper')->name('camper.detailCamper');
+    Route::get('camper/{id}/detail', 'App\Http\Controllers\CamperController@detail')->name('camper.detail');
+    Route::get('camper/{id}/delete', 'App\Http\Controllers\CamperController@destroy')->name('camper.destroy');
+    Route::resource('camper', 'App\Http\Controllers\CamperController', ['except' => 'destroy', 'names' => [
+        'index' => 'camper.index',
+        'create' => 'camper.create',
+        'update' => 'camper.update',
+        'edit' => 'camper.edit',
+        'store' => 'camper.store',
+        'show' => 'camper.show',
     ]]);
 
     //ADMIN->INSURANCE
@@ -104,6 +103,17 @@ Route::group(['middleware' => 'Lang'], function () {
         'store' => 'insurance.store',
         'show' => 'insurance.show',
     ]]);
+
+        //ADMIN->INSURANCE
+        Route::get('insuranceCompany/{id}/delete', 'App\Http\Controllers\InsuranceCompanyController@destroy')->name('insuranceCompany.destroy');
+        Route::resource('insuranceCompany', 'App\Http\Controllers\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
+            'index' => 'insuranceCompany.index',
+            'create' => 'insuranceCompany.create',
+            'update' => 'insuranceCompany.update',
+            'edit' => 'insuranceCompany.edit',
+            'store' => 'insuranceCompany.store',
+            'show' => 'insuranceCompany.show',
+        ]]);
 
     //ADMIN->COMIMSSION
     Route::get('commission/{id}/delete', 'App\Http\Controllers\CommissionController@destroy')->name('commission.destroy');
@@ -136,7 +146,7 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->AVATAR
-    Route::get('avatar/{id}/delete', 'AvatarController@destroy')->name('avatar.destroy');
+    Route::get('avatar/{id}/delete', 'App\Http\Controllers\AvatarController@destroy')->name('avatar.destroy');
     Route::resource('avatar', 'App\Http\Controllers\AvatarController', ['except' => 'destroy', 'names' => [
         'index' => 'avatar.index',
         'create' => 'avatar.create',
@@ -180,41 +190,51 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->EQUIPMENTCATEGORY
-    Route::get('equipmentCategory/{id}/delete', 'App\Http\Controllers\EquipmentCategoryController@destroy')->name('equipmentCategory.destroy');
-    Route::resource('equipmentCategory', 'App\Http\Controllers\EquipmentCategoryController', ['except' => 'destroy', 'names' => [
-        'index' => 'equipmentCategory.index',
-        'create' => 'equipmentCategory.create',
-        'update' => 'equipmentCategory.update',
-        'edit' => 'equipmentCategory.edit',
-        'store' => 'equipmentCategory.store',
-        'show' => 'equipmentCategory.show',
+    Route::get('camperCategory/{id}/delete', 'App\Http\Controllers\CamperCategoryController@destroy')->name('camperCategory.destroy');
+    Route::resource('camperCategory', 'App\Http\Controllers\CamperCategoryController', ['except' => 'destroy', 'names' => [
+        'index' => 'camperCategory.index',
+        'create' => 'camperCategory.create',
+        'update' => 'camperCategory.update',
+        'edit' => 'camperCategory.edit',
+        'store' => 'camperCategory.store',
+        'show' => 'camperCategory.show',
+    ]]);
+
+    //ADMIN->CAMPERNAMES
+    Route::get('camperStatus/{id}/delete', 'App\Http\Controllers\CamperStatusController@destroy')->name('camperStatus.destroy');
+    Route::resource('camperStatus', 'App\Http\Controllers\CamperStatusController', ['except' => 'destroy', 'names' => [
+        'index' => 'camperStatus.index',
+        'create' => 'camperStatus.create',
+        'update' => 'camperStatus.update',
+        'edit' => 'camperStatus.edit',
+        'store' => 'camperStatus.store',
+        'show' => 'camperStatus.show',
+    ]]);
+
+    //ADMIN->CAMPER STAUS
+    Route::get('camperNames/{id}/delete', 'App\Http\Controllers\CamperNamesController@destroy')->name('camperNames.destroy');
+    Route::resource('camperNames', 'App\Http\Controllers\CamperNamesController', ['except' => 'destroy', 'names' => [
+        'index' => 'camperNames.index',
+        'create' => 'camperNames.create',
+        'update' => 'camperNames.update',
+        'edit' => 'camperNames.edit',
+        'store' => 'camperNames.store',
+        'show' => 'camperNames.show',
     ]]);
 
     //ADMIN->BOOKING
-    Route::get('booking/{id}/delete', 'App\Http\Controllers\Bookingcontroller@destroy')->name('booking.destroy');
-    Route::get('booking/{id}/detail', 'App\Http\Controllers\Bookingcontroller@detail')->name('booking.detail');
-    Route::get('booking/search', 'App\Http\Controllers\Bookingcontroller@search')->name('booking.search');
-    Route::get('booking/{id}/chat', 'App\Http\Controllers\Bookingcontroller@chat')->name('booking.chat');
-    Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
-        'index' => 'booking.index',
-        'create' => 'booking.create',
-        'update' => 'booking.update',
-        'edit' => 'booking.edit',
-        'store' => 'booking.store',
-        'show' => 'booking.show',
-    ]]);
-
-    //ADMIN->CAMPERNAME
-    Route::get('camperName/{id}/delete', 'CamperNameController@destroy')->name('camperName.destroy');
-    Route::resource('camperName', 'App\Http\Controllers\CamperNameController', ['except' => 'destroy', 'names' => [
-        'index' => 'camperName.index',
-        'create' => 'camperName.create',
-        'update' => 'camperName.update',
-        'edit' => 'camperName.edit',
-        'store' => 'camperName.store',
-        'show' => 'camperName.show',
-    ]]);
-
+Route::get('booking/{id}/delete', 'App\Http\Controllers\Bookingcontroller@destroy')->name('booking.destroy');
+Route::get('booking/{id}/detail', 'App\Http\Controllers\Bookingcontroller@detail')->name('booking.detail');
+Route::get('booking/search', 'App\Http\Controllers\Bookingcontroller@search')->name('booking.search');
+Route::get('booking/{id}/chat', 'App\Http\Controllers\Bookingcontroller@chat')->name('booking.chat');
+Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
+    'index' => 'booking.index',
+    'create' => 'booking.create',
+    'update' => 'booking.update',
+    'edit' => 'booking.edit',
+    'store' => 'booking.store',
+    'show' => 'booking.show',
+]]);
 
     //ADMIN->billings
     //Route::get('inssuranceCompany/{id}/delete', 'InsuranceCompanyController@destroy')->name('inssuranceCompany.destroy');
@@ -230,7 +250,7 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'billing.show',
     ]]);
     //ADMIN->INSURANCECOMPANY
-    Route::get('inssuranceCompany/{id}/delete', 'InsuranceCompanyController@destroy')->name('inssuranceCompany.destroy');
+    Route::get('inssuranceCompany/{id}/delete', 'App\Http\Controllers\InsuranceCompanyController@destroy')->name('inssuranceCompany.destroy');
     Route::resource('inssuranceCompany', 'App\Http\Controllers\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
         'index' => 'inssuranceCompany.index',
         'create' => 'inssuranceCompany.create',
@@ -247,8 +267,14 @@ Route::group(['middleware' => 'Lang'], function () {
         'store' => 'message.store',
         'show' => 'message.show',
     ]]);
+    //ADMIN->BACKUP
+    Route::get('backup/{id}/delete', ['BackupController', 'destroy'])->name('backup.destroy');
+    Route::resource('backup', 'App\Http\Controllers\BackupController', ['except' => 'destroy', 'names' => [
+        'index' => 'backup.index',
+        'store' => 'backup.store',
+        'show' => 'backup.show',
+    ]]);
 });
-
 
 Auth::routes();
 
