@@ -21,24 +21,24 @@ class DatabaseSeeder extends Seeder
             CamperStatusSeeder::class,
             CamperCategoriesSeeder::class,
             CommissionsSeeder::class,
-            
+
             FuelsSeeder::class,
             InsuranceCompaniesSeeder::class,
             LicenceCategoriesSeeder::class,
-            
+
             MessagesSeeder::class,
             PromotionsSeeder::class,
             TransmissionsSeeder::class,
-            
+
             ClientsSeeder::class,
             InsurancesSeeder::class,
             CampersSeeder::class,
-            
+
             CamperImagesSeeder::class,
-     /*       BookingsSeeder::class,
+            BookingsSeeder::class,
             ChatsSeeder::class,
             BillingsSeeder::class,
-       */     
+
         ]);
 
     }
