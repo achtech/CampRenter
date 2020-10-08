@@ -20,13 +20,12 @@ class CreateBookingTable extends Migration
             $table->double('total')->nullable();
             $table->integer('price_per_day')->nullable();
 
-            $table->string('status_booking')->nullable();
             $table->string('status_billings')->nullable();
+            $table->double('commission')->nullable();
 
             $table->unsignedBigInteger('id_campers')->nullable();
             $table->unsignedBigInteger('id_clients')->nullable();
-            $table->unsignedBigInteger('id_commissions')->nullable();
-            $table->unsignedBigInteger('id_promotions')->nullable();
+            $table->unsignedBigInteger('id_booking_status')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -35,8 +34,7 @@ class CreateBookingTable extends Migration
 
             $table->foreign('id_campers')->references('id')->on('campers');
             $table->foreign('id_clients')->references('id')->on('clients');
-            $table->foreign('id_commissions')->references('id')->on('commissions');
-            $table->foreign('id_promotions')->references('id')->on('promotions');
+            $table->foreign('id_booking_status')->references('id')->on('booking_status');
         });
     }
 

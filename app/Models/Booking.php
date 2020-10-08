@@ -10,12 +10,11 @@ class Booking extends Base
         'start_date',
         'end_date',
         'total',
-        'status_booking',
+        'id_booking_status',
         'status_billings',
         'id_campers',
         'id_clients',
-        'id_commissions',
-        'id_promotions',
+        'commission',
         'created_by',
         'updated_by'
     ];
