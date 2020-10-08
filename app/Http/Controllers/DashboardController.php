@@ -85,11 +85,11 @@ class DashboardController extends Controller
         $data=Booking::leftjoin('commissions', 'Bookings.id_commissions', '=', 'commissions.id')
         ->leftjoin('Promotions', 'Promotions.id', '=', 'Bookings.id_promotions');
         if($owner){
-            $data = $data->select(DB::raw('sum((Bookings.total/100) * (100-(IFNULL(Commissions.rate,0)+ IFNULL(Promotions.rate,0)))) as total'))
+            $data = $data->select(DB::raw('sum((Bookings.total/100) * (100-(IFNULL(Commissions.rate,0)+ IFNULL(Promotions.commission,0)))) as total'))
                         ->where('Bookings.end_date','>=',$startDate)
                         ->where('Bookings.end_date','<=',$end_date);
         } else {
-            $data = $data->select(DB::raw('sum((Bookings.total/100) * (IFNULL(Commissions.rate,0)+ IFNULL(Promotions.rate,0))) as total'))
+            $data = $data->select(DB::raw('sum((Bookings.total/100) * (IFNULL(Commissions.rate,0)+ IFNULL(Promotions.commission,0))) as total'))
                             ->where('Bookings.start_date','>=',$startDate)
                            ->where('Bookings.start_date','<=',$end_date);
         }

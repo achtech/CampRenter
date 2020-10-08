@@ -18,6 +18,7 @@ return [
     'confirm_password.lbl' => 'Confirm password',
     'current_password.lbl' => 'Current password',
     'message_delete_avatar.lbl' => 'DO you really want to delete this avatar ?',
+    'action.lbl'=>'Action',
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
@@ -295,6 +296,14 @@ return [
     'promotion_createdAt.lbl' => 'Created At',
     'promotion_rate.lbl' => 'Amount of Promotion',
     'promotion_list.lbl' => 'List of Promotion',
+    'commission_label.lbl'=>'Commission',
+    'commission_description.lbl' => 'Description',
+    'commission_Status.lbl' => 'Status',
+    'new_promotion.btn' => 'New promotion',
+    'current_commission.lbl' => 'Current commission',
+    'promotion_managment.lbl' => 'Promotion Management',
+    'promotion_status_active.lbl' =>'Active',
+    'promotion_status_disactivate.lbl'=>'Disactivate',
     /** End promotion */
     'billings.lbl' => 'Billings',
     'billing_list.lbl' => 'List of Billings',
