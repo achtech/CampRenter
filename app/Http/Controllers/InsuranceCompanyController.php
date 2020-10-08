@@ -62,7 +62,9 @@ class InsuranceCompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
         $data = InsuranceCompany::create($input);
         return redirect(route('insuranceCompany.index'))->with('success', 'Item added succesfully');
     }
@@ -94,7 +96,9 @@ class InsuranceCompanyController extends Controller
         if (empty($data)) {
             return redirect(route('insuranceCompany.index'));
         }
-        $data = InsuranceCompany::where('id', $id)->update(request()->except(['_token', '_method','action']));
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['updated_by']=auth()->user()->id;
+        $data = InsuranceCompany::where('id', $id)->update($input);
         return redirect(route('insuranceCompany.index'))->with('success', 'Item Updated succesfully');
     }
 

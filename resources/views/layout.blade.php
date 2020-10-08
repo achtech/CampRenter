@@ -333,7 +333,7 @@
                                             class="hide-menu">  {{ __('backend.menu_avatars.lbl') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="{{route('avatar.index')}}" class="sidebar-link">
+                            <li class="sidebar-item"><a href="{{route('backup.index')}}" class="sidebar-link">
                                 <span class="hide-menu"> {{ __('backend.menu_backup.lbl') }}
                                     </span></a>
                             </li>

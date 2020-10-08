@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 
-class TransmissionSeeder extends Seeder
+class FuelsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,29 +14,32 @@ class TransmissionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('transmissions')->insert(array(
+        DB::table('fuels')->insert(array(
             0 => array(
-                'label_en' => 'transmission en',
-                'label_de' => 'transmission de',
-                'label_fr' => 'transmission fr',
+                'id' => 1,
+                'label_en' => 'Fuel 1 en',
+                'label_de' => 'Fuel 1 de',
+                'label_fr' => 'Fuel 1 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             1 => array(
-                'label_en' => 'transmission2 en',
-                'label_de' => 'transmission2 de',
-                'label_fr' => 'transmission2 fr',
+                'id' => 2,
+                'label_en' => 'Fuel 2 en',
+                'label_de' => 'Fuel 2 de',
+                'label_fr' => 'Fuel 2 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             2 => array(
-                'label_en' => 'transmission3 en',
-                'label_de' => 'transmission3 de',
-                'label_fr' => 'transmission3 fr',
+                'id' => 3,
+                'label_en' => 'Fuel 3 en',
+                'label_de' => 'Fuel 3 de',
+                'label_fr' => 'Fuel 3 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,

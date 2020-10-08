@@ -87,7 +87,9 @@ class PromotionController extends Controller
         if (empty($data)) {
             return redirect(route('promotion.index'));
         }
-        $data = Promotion::where('id', $id)->update(request()->except(['_token', '_method','action']));
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['updated_by']=auth()->user()->id;
+        $data = Promotion::where('id', $id)->update($input);
         return redirect(route('promotion.index'))->with('success', 'Item Updated succesfully');
     }
 

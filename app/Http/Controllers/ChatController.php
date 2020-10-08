@@ -20,8 +20,6 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        //$datas = DB::table('v_bookings_details')->get();
-        //$datasClients = DB::table('clients')->get();
         return view('booking.index');
     }
     /**
@@ -57,8 +55,10 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        $data = Booking::create($input);
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
+       $data = Booking::create($input);
         return redirect(route('booking.index'))->with('success', 'Item added succesfully');
     }
 

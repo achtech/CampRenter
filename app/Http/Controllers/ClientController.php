@@ -64,7 +64,9 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
         $input['driving_licence_image'] = 1;
         $input['id_avatars'] = 1;
         $input['image_national_id'] = 1;
@@ -81,7 +83,6 @@ class ClientController extends Controller
     public function edit($id)
     {
         $data = Client::find($id);
-        //dd($data);
         return view('owners.edit')->with('data', $data);
     }
     public function detail($id)
@@ -108,7 +109,9 @@ class ClientController extends Controller
         if (empty($data)) {
             return redirect(route('client.index'));
         }
-        $data = Client::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['updated_by']=auth()->user()->id;
+        $data = Client::where('id', $id)->update($input);
         return redirect(route('client.index'))->with('success', 'Item Updated succesfully');
     }
 

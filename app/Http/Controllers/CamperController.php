@@ -136,7 +136,9 @@ class CamperController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
         $data = Camper::create($input);
         return redirect(route('camper.index'))->with('success', 'Item added succesfully');
     }
@@ -177,7 +179,9 @@ class CamperController extends Controller
             $data->is_confirmed = '0';
         }
 
-        $data = Camper::where('id', $id)->update(request()->except(['_token', '_method','action']));
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['updated_by']=auth()->user()->id;
+        $data = Camper::where('id', $id)->update($input);
         return redirect(route('camper.index'))->with('success', 'Item Updated succesfully');
     }
 
@@ -191,6 +195,7 @@ class CamperController extends Controller
     {
         $data = Camper::find($id);
         $data->is_confirmed = $data->is_confirmed == '0' ? '1' : '0';
+        $data->updated_by=auth()->user()->id;
         $data = $data->update();
         return redirect(route('camper.index'));
     }
@@ -239,6 +244,7 @@ class CamperController extends Controller
     {
         $datas = Camper::find($id);
         $datas->is_confirmed = 1;
+        $data->updated_by=auth()->user()->id;
         $datas->save();
         return redirect(route('dashboard'));
     }
