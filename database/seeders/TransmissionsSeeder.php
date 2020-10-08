@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 
-class LicenceCategorySeeder extends Seeder
+class TransmissionsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,29 +14,32 @@ class LicenceCategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('licence_categories')->insert(array(
+        DB::table('transmissions')->insert(array(
             0 => array(
-                'label_en' => 'LicenceCategory en',
-                'label_de' => 'camLicenceCategoryper de',
-                'label_fr' => 'LicenceCategory fr',
+                'id' => '1',
+                'label_en' => 'transmission 1 en',
+                'label_de' => 'transmission 1 de',
+                'label_fr' => 'transmission 1 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             1 => array(
-                'label_en' => 'LicenceCategory2 en',
-                'label_de' => 'LicenceCategory2 de',
-                'label_fr' => 'LicenceCategory2 fr',
+                'id' => '2',
+                'label_en' => 'transmission 2 en',
+                'label_de' => 'transmission 2 de',
+                'label_fr' => 'transmission 2 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             2 => array(
-                'label_en' => 'LicenceCategory3 en',
-                'label_de' => 'LicenceCategory3 de',
-                'label_fr' => 'LicenceCategory3 fr',
+                'id' => '3',
+                'label_en' => 'transmission 3 en',
+                'label_de' => 'transmission 3 de',
+                'label_fr' => 'transmission 3 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,

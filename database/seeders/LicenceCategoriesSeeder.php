@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 
-class FuelSeeder extends Seeder
+class LicenceCategoriesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,29 +14,32 @@ class FuelSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('fuels')->insert(array(
+        DB::table('licence_categories')->insert(array(
             0 => array(
-                'label_en' => 'Fuel en',
-                'label_de' => 'Fuel de',
-                'label_fr' => 'Fuel fr',
+                'id' => '1',
+                'label_en' => 'Licence category 1 en',
+                'label_de' => 'Licence category 1 de',
+                'label_fr' => 'Licence category 1 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             1 => array(
-                'label_en' => 'Fuel2 en',
-                'label_de' => 'Fuel2 de',
-                'label_fr' => 'Fuel2 fr',
+                'id' => '2',
+                'label_en' => 'Licence category 2 en',
+                'label_de' => 'Licence category 2 de',
+                'label_fr' => 'Licence category 2 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             2 => array(
-                'label_en' => 'Fuel3 en',
-                'label_de' => 'Fuel3 de',
-                'label_fr' => 'Fuel3 fr',
+                'id' => '3',
+                'label_en' => 'Licence category 3 en',
+                'label_de' => 'Licence category 3 de',
+                'label_fr' => 'Licence category 3 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,

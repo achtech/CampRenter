@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 
-class CamperCategorySeeder extends Seeder
+class InsuranceCompaniesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,29 +14,32 @@ class CamperCategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('camper_categories')->insert(array(
+        DB::table('insurance_companies')->insert(array(
             0 => array(
-                'label_en' => 'CamperCategory en',
-                'label_de' => 'CamperCategory de',
-                'label_fr' => 'CamperCategory fr',
+                'id' => 1,
+                'label_en' => 'Insurance companies 1 en',
+                'label_de' => 'Insurance companies 1 de',
+                'label_fr' => 'Insurance companies 1 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             1 => array(
-                'label_en' => 'CamperCategory2 en',
-                'label_de' => 'CamperCategory2 de',
-                'label_fr' => 'CamperCategory2 fr',
+                'id' => 2,
+                'label_en' => 'Insurance companies 2 en',
+                'label_de' => 'Insurance companies 2 de',
+                'label_fr' => 'Insurance companies 2 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             2 => array(
-                'label_en' => 'CamperCategory3 en',
-                'label_de' => 'CamperCategory3 de',
-                'label_fr' => 'CamperCategory3 fr',
+                'id' => 3,
+                'label_en' => 'Insurance companies 3 en',
+                'label_de' => 'Insurance companies 3 de',
+                'label_fr' => 'Insurance companies 3 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,

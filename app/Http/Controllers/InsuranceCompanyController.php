@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-  
- 
-use App\Models\Bookings;
 use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
@@ -65,8 +62,10 @@ class InsuranceCompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        $data = Bookings::create($input);
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
+        $data = InsuranceCompany::create($input);
         return redirect(route('insuranceCompany.index'))->with('success', 'Item added succesfully');
     }
 
@@ -79,6 +78,9 @@ class InsuranceCompanyController extends Controller
      */
     public function edit($id)
     {
+        $data = InsuranceCompany::find($id);
+        return view('insuranceCompany.edit')->with('data', $data);
+ 
     }
 
     /**
@@ -94,7 +96,9 @@ class InsuranceCompanyController extends Controller
         if (empty($data)) {
             return redirect(route('insuranceCompany.index'));
         }
-        $data = InsuranceCompany::where('id', $id)->update(request()->except(['_token', '_method']));
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['updated_by']=auth()->user()->id;
+        $data = InsuranceCompany::where('id', $id)->update($input);
         return redirect(route('insuranceCompany.index'))->with('success', 'Item Updated succesfully');
     }
 
@@ -108,7 +112,7 @@ class InsuranceCompanyController extends Controller
      */
     public function destroy($id)
     {
-        $data = Bookings::find($id);
+        $data = InsuranceCompany::find($id);
         if (empty($data)) {
             return redirect(route('insuranceCompany.index'));
         }

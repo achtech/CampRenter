@@ -67,7 +67,7 @@ Breadcrumbs::for('create_insurance', function ($trail) {
     $trail->push('Create Insurance', route('insurance.index'));
 });
 
-// Dashboard > Insurance
+// Dashboard > insurance_company
 Breadcrumbs::for('insurance_company', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Insurances company', route('inssuranceCompany.index'));

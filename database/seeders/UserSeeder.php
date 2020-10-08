@@ -16,12 +16,13 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert(array(
             0 => array(
+                'id' => '1',
                 'name' => 'admin',
                 'email' => 'admin@mail.com',
                 'password' => bcrypt('123456789'),
                 'telephone' => '10210',
                 'adress' => 'image',
-                'picture' => '1',
+                'picture' => '1.jpg',
                 'role' => 'admin',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
@@ -29,19 +30,19 @@ class UserSeeder extends Seeder
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             1 => array(
-                'name' => 'admin_s',
+                'id' => '2',
+                'name' => 'super-admin',
                 'email' => 'admin_s@mail.com',
                 'password' => bcrypt('123456789'),
                 'telephone' => '10210',
                 'adress' => 'image',
-                'picture' => '1',
+                'picture' => '1.jpg',
                 'role' => 'super-admin',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
-            ),
-
+            )
         ));
     }
 }

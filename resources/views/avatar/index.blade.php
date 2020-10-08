@@ -49,7 +49,7 @@
                                                                 <p>{{ __('backend.message_delete_avatar.lbl') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="{{ route('avatar.delete',$item->id) }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
+                                                                    <a href="{{ route('avatar.destroy',$item->id) }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
                                                                     <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                                 </div>
                                                             </div>

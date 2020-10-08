@@ -64,8 +64,10 @@ class CamperStatusController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        $data = CamperStatus::create($input);
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['created_by']=auth()->user()->id;
+        $input['updated_by']=auth()->user()->id;
+       $data = CamperStatus::create($input);
         return redirect(route('camperStatus.index'))->with('success', 'Item added succesfully');
     }
 
@@ -94,7 +96,9 @@ class CamperStatusController extends Controller
         if (empty($data)) {
             return redirect(route('camperStatus.index'));
         }
-        $data = CamperStatus::where('id', $id)->update(request()->except(['_token', '_method', 'action']));
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['updated_by']=auth()->user()->id;
+        $data = CamperStatus::where('id', $id)->update($input);
         return redirect(route('camperStatus.index'))->with('success', 'Item Updated succesfully');
     }
 
