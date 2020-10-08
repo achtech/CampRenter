@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <a href="{{ route('insurance.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
+                        <a href="{{ route('insurance.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
                             style="width:200px;margin:0px 10px">{{ __('backend.new_insurance.btn') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
@@ -30,13 +30,13 @@
                                     <td>{{$item->description_en}}</td>
                                     <td>{{$item->description_fr}}</td>
                                     <td>{{App\Http\Controllers\InsuranceController::getLabel('insurance_companies',$item->id_insurance_companies)}}</td>
-                                    <td>{{App\Http\Controllers\InsuranceController::getLabel('camper_names',$item->id_camper_names)}}</td>
+                                    <td>$item->id_camper_name}}</td>
                                     <td>{{$item->price_per_day}}</td>
                                    <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
                                                 <a href="{{ route('insurance.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
-                                            </li>  
+                                            </li>
                                             <li class="list-inline-item">
                                                 <div class="container">
                                                 <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
@@ -59,7 +59,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </li> 
+                                            </li>
                                     </td>
                                 </tr>
                                 @endforeach

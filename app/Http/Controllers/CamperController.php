@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
-use App\Models\CamperName;
-use App\Models\CamperStatus;
 use App\Models\Client;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
@@ -106,26 +104,21 @@ class CamperController extends Controller
     {
         $camper = Camper::find($id);
         $owner = Client::find($camper->id_clients);
-        $camper_name = CamperName::find($camper->id_camper_names);
         $camper_categories = CamperCategory::find($camper->id_licence_categories);
         $licenceCategories = LicenceCategory::find($camper->id_licence_categories);
         $transmissions = Transmission::find($camper->id_transmissions);
         $fuels = Fuel::find($camper->id_fuels);
-        $camper_status = CamperStatus::find($camper->id_camper_status);
         $booking_camper = Booking::leftjoin('clients', 'Bookings.id_clients', '=', 'clients.id')
             ->where('id_campers', $id)->get();
 
         return view('camper.details')
             ->with('data', $camper)
             ->with('clients', $owner)
-            ->with('camper_categories', $camper_categories)
             ->with('licenceCategories', $licenceCategories)
             ->with('fuels', $fuels)
             ->with('transmissions', $transmissions)
-            ->with('camper_name', $camper_name)
             ->with('booking_camper', $booking_camper)
-            // ->with('booking_client', $booking_client)
-            ->with('camper_status', $camper_status);
+            ->with('camper_categories', $camper_categories);
     }
 
     /**
@@ -137,8 +130,8 @@ class CamperController extends Controller
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Camper::create($input);
         return redirect(route('camper.index'))->with('success', 'Item added succesfully');
     }
@@ -180,7 +173,7 @@ class CamperController extends Controller
         }
 
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Camper::where('id', $id)->update($input);
         return redirect(route('camper.index'))->with('success', 'Item Updated succesfully');
     }
@@ -195,7 +188,7 @@ class CamperController extends Controller
     {
         $data = Camper::find($id);
         $data->is_confirmed = $data->is_confirmed == '0' ? '1' : '0';
-        $data->updated_by=auth()->user()->id;
+        $data->updated_by = auth()->user()->id;
         $data = $data->update();
         return redirect(route('camper.index'));
     }
@@ -244,7 +237,7 @@ class CamperController extends Controller
     {
         $datas = Camper::find($id);
         $datas->is_confirmed = 1;
-        $data->updated_by=auth()->user()->id;
+        $data->updated_by = auth()->user()->id;
         $datas->save();
         return redirect(route('dashboard'));
     }

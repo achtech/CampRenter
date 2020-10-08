@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 
-class CamperNamesSeeder extends Seeder
+class BookingStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,12 +14,12 @@ class CamperNamesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('camper_names')->insert(array(
+        DB::table('booking_status')->insert(array(
             0 => array(
                 'id' => 1,
-                'label_en' => 'camper 1 en',
-                'label_de' => 'camper 1 de',
-                'label_fr' => 'camper 1 fr',
+                'label_en' => 'Booking Status 1 en',
+                'label_de' => 'Booking Status 2 de',
+                'label_fr' => 'Booking Status 3 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -27,9 +27,9 @@ class CamperNamesSeeder extends Seeder
             ),
             1 => array(
                 'id' => 2,
-                'label_en' => 'camper 2 en',
-                'label_de' => 'camper 2 de',
-                'label_fr' => 'camper 2 fr',
+                'label_en' => 'Booking Status 2 en',
+                'label_de' => 'Booking Status 2 de',
+                'label_fr' => 'Booking Status 2 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -37,9 +37,9 @@ class CamperNamesSeeder extends Seeder
             ),
             2 => array(
                 'id' => 3,
-                'label_en' => 'camper 3 en',
-                'label_de' => 'camper 3 de',
-                'label_fr' => 'camper 3 fr',
+                'label_en' => 'Booking Status 3 en',
+                'label_de' => 'Booking Status 3 de',
+                'label_fr' => 'Booking Status 3 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,

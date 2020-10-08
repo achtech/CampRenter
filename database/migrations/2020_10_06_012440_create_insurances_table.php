@@ -20,7 +20,7 @@ class CreateInsurancesTable extends Migration
             $table->string('description_fr')->nullable();
             $table->double('price_per_day');
             $table->unsignedBigInteger('id_insurance_companies');
-            $table->unsignedBigInteger('id_camper_names');
+            $table->unsignedBigInteger('id_campers');
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -28,7 +28,7 @@ class CreateInsurancesTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
 
             $table->foreign('id_insurance_companies')->references('id')->on('insurance_companies');
-            $table->foreign('id_camper_names')->references('id')->on('camper_names');
+            $table->foreign('id_campers')->references('id')->on('campers');
 
         });
     }

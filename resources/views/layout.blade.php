@@ -308,14 +308,6 @@
                                             class="hide-menu"> {{ __('backend.menu_camper_category.lbl') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a  href="{{route('camperNames.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> {{ __('backend.menu_camper_names.lbl') }}
-                                    </span></a>
-                            </li>
-                            <li class="sidebar-item"><a  href="{{route('camperStatus.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> {{ __('backend.menu_camper_status.lbl') }}
-                                    </span></a>
-                            </li>
                             <li class="sidebar-item">
                                 <a href="{{route('inssuranceCompany.index')}}" class="sidebar-link">
                                     <span class="hide-menu">{{ __('backend.menu_inssurance_providers.lbl') }}</span>

@@ -16,9 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             AvatarsSeeder::class,
-            CamperNamesSeeder::class,
 
-            CamperStatusSeeder::class,
+            BookingStatusSeeder::class,
             CamperCategoriesSeeder::class,
             CommissionsSeeder::class,
 

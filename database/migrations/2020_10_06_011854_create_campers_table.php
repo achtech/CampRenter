@@ -15,7 +15,7 @@ class CreateCampersTable extends Migration
     {
         Schema::create('campers', function (Blueprint $table) {
             $table->id();
-            $table->string('camper_names')->nullable();
+            $table->string('camper_name')->nullable();
             $table->string('camper_status')->nullable();
             $table->string('image', 50)->nullable();
             $table->string('brand', 100)->nullable();
