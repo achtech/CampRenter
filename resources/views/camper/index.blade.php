@@ -38,9 +38,11 @@
                                         @endif
                                     <td style="vertical-align: middle;">
                                         @if($item->availability==0)
-                                            Blocked by {{App\Http\Controllers\Controller::getUser($item->updated_by)}}
+                                            Blocked by Owner {{App\Http\Controllers\CamperController::getName('clients',$item->id_clients)}}
                                         @elseif($item->availability==1)
                                             Reserved by {{App\Http\Controllers\CamperController::getName('clients',$item->id_clients)}}
+                                            <br />From : {{App\Http\Controllers\CamperController::getBookingCamperStart($item->id)}}
+                                            <br />To  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp{{App\Http\Controllers\CamperController::getBookingCamperEnd($item->id)}}
                                         @else
                                             Available
                                         @endif

@@ -40,7 +40,7 @@ class BookingsSeeder extends Seeder
                 'status_billings' => 'Payed',
                 'commission' => 30,
                 'id_campers' => 2,
-                'id_clients' => 3,
+                'id_clients' => 2,
                 'id_booking_status' => 3,
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
