@@ -81,7 +81,7 @@ class DashboardController extends Controller
     public function getIncome($startDate, $end_date, $owner)
     {
         /* $data = Booking::where('start_date','<=',$owner?$end_date:$startDate)
-        ->where('end_date','>=',$owner?$end_date:$startDate);
+                       ->where('end_date','>=',$owner?$end_date:$startDate);
          */
         $data = '';
         if ($owner) {
@@ -95,7 +95,6 @@ class DashboardController extends Controller
         }
         $data = $data->first(['total']);
         return $data->total;
-
     }
 
     public function confirmCamper($id)
