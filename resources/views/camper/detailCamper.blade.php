@@ -39,17 +39,7 @@
                             <tbody>
                                 @foreach($data as $item)
                                 <tr>
-                                    <td>
-                                        @if(app()->getLocale()=='en')
-                                            {{$item->label_en}}
-                                        @endif
-                                        @if(app()->getLocale()=='de')
-                                            {{$item->label_de}}
-                                        @endif
-                                        @if(app()->getLocale()=='fr')
-                                            {{$item->label_fr}}
-                                        @endif
-                                    </td>
+                                    <td>{{$item->camper_name}}</td>
                                     <td >{{$item->description_equipment}}</td>
                                     <td>{{$item->location}}</td>
                                     <td>{{$item->price_per_day}}</td>
