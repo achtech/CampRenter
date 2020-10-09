@@ -59,7 +59,7 @@
                                             <li class="list-inline-item">
                                                 <a href="{{ route('client.index').'/'.$item->id.'/detail'}}" class="btn btn-success btn-sm rounded-0" title="Detail"><i class="fas fa-eye"></i></a>
                                             </li>
-                                            @if($item->status=='1')
+                                             @if($item->status=='1')
                                             <li class="list-inline-item" >
                                                 <a href="" class="btn btn-info btn-sm rounded-0" data-toggle="modal" data-target="#block" title="Block" id="blockClient" data-id="{{$item->id}}"><i class="fas fa-check"></i></a>
                                             <!-- Modal -->
