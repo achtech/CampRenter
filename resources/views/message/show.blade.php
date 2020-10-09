@@ -6,7 +6,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form method="GET" action="mailto:{{$datas->email}}">
+                <form method="GET" action="mailto:{{$datas->email}}?subject={{$datas->subject}}">
                         <div class="form-body">
                             <div class="form-group row">
                                 <label class="col-md-2">{{ __('backend.message_contact_name.lbl') }} : </label>
@@ -28,6 +28,10 @@
                         <div class="form-group row">
                             <label class="col-md-2">{{ __('backend.message_email_subject.lbl') }} </label>
                             <label class="col-md-2">: {{$datas->subject }} </label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2">{{ __('backend.message_content.lbl') }} </label>
+                            <label class="col-md8">: {{$datas->message }} </label>
                         </div>
                         <div class="form-actions">
                             <div class="text-right">
