@@ -49,9 +49,11 @@
                                     </td>
                                     <td style="vertical-align: middle;text-align:center">
                                         @if($item->is_confirmed==1)
-                                        <i class="fa fa-circle text-success mr-2"></i>
+                                            <i class="btn waves-effect waves-light btn-outline-success">&nbsp&nbsp&nbspConfirmed &nbsp&nbsp&nbsp</i></br>
+                                            by {{App\Http\Controllers\CamperController::getUserName($item->updated_by)}}
                                         @else
-                                        <i class="fa fa-circle text-danger mr-2"></i>
+                                            <i class="btn waves-effect waves-light btn-outline-danger">Not Confirmed</i></br>
+                                            by {{App\Http\Controllers\CamperController::getUserName($item->updated_by)}}
                                         @endif
                                     </td>
                                     <td style="vertical-align: middle;">
