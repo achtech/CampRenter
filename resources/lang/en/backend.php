@@ -49,6 +49,9 @@ return [
     'client_total_solde.lbl' => 'Total Solde',
     'client_current_solde.lbl' => 'Current Solde',
     'clients.lbl' => 'Clients',
+    'client_status_1.lbl'=>'Active',
+    'client_status_0.lbl' => 'Blocked',
+    'image_national.lbl' => 'Picture of National card',
     /** End Client */
 
     /** Insurance */

@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'insuranceCompany', 'titlePage' => __('backend.insurance_company_managment.lbl')])
+@extends('layout', ['activePage' => 'insurance_company', 'titlePage' => __('backend.insurance_company_managment.lbl')])
 @section('content')
 {{ Breadcrumbs::render('create_insurance_company') }}
 <div class="container-fluid">
