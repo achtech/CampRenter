@@ -6,7 +6,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form method="GET" action="mailto:{{$datas->email}}?subject={{$datas->subject}}">
+                <form method="GET" action="mailto:{{$datas->email}}?subject=RE: {{$datas->subject}}">
                         <div class="form-body">
                             <div class="form-group row">
                                 <label class="col-md-2">{{ __('backend.message_contact_name.lbl') }} : </label>
