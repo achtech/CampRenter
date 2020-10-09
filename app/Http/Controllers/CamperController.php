@@ -9,6 +9,7 @@ use App\Models\Client;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
 use App\Models\Transmission;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -242,6 +243,11 @@ class CamperController extends Controller
     public static function getName($table, $id)
     {
         return DB::table($table)->find($id)->client_name;
+    }
+
+    public static function getUserName($id)
+    {
+        return User::find($id)->name;
     }
 
     public static function getCamperName($table, $id)
