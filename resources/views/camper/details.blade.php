@@ -418,10 +418,12 @@
                             <h4 class="card-title">{{__('backend.confirmed.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                    @if($data->is_confirmed==1)
-                                        <i class="fa fa-circle text-success mr-2"></i>
+                                        @if($data->is_confirmed==1)
+                                            <i class="btn waves-effect waves-light btn-outline-success">&nbsp&nbsp&nbspConfirmed &nbsp&nbsp&nbsp</i></br>
+                                            by {{App\Http\Controllers\CamperController::getUserName($data->updated_by)}}
                                         @else
-                                        <i class="fa fa-circle text-danger mr-2"></i>
+                                            <i class="btn waves-effect waves-light btn-outline-danger">Not Confirmed</i></br>
+                                            by {{App\Http\Controllers\CamperController::getUserName($data->updated_by)}}
                                         @endif
                                 </div>
                             </form>
@@ -442,11 +444,8 @@
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner" role="listbox">
                                         <div class="carousel-item active"> <img class="img-fluid"
-                                                src="../../assets/images/big/img4.jpg" alt="First slide"> </div>
-                                        <div class="carousel-item"> <img class="img-fluid"
-                                                src="../../assets/images/big/img5.jpg" alt="Second slide"> </div>
-                                        <div class="carousel-item"> <img class="img-fluid"
-                                                src="../../assets/images/big/img6.jpg" alt="Third slide"> </div>
+                                                src="../../assets/images/campers/{{$data->image}}" alt="First slide"> </div>
+
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                                         data-slide="prev"> <span class="carousel-control-prev-icon"
