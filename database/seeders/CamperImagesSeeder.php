@@ -14,7 +14,7 @@ class CamperImagesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('fuels')->insert(array(
+        DB::table('camper_images')->insert(array(
             0 => array(
                 'id' => 1,
                 'image' => 'camp1.jpg',

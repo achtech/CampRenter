@@ -31,7 +31,7 @@ class BookingController extends Controller
     {
         $datas = DB::table('v_bookings_details')->get();
         $datasClients = DB::table('clients')->get();
-        return view('booking.index')->with('datas', $datas)->with('datasClients', $datasClients);
+        return view('booking.index')->with('renter', '')->with('datas', $datas)->with('datasClients', $datasClients);
     }
     /**
      * Show the form for creating a new resource.
@@ -143,17 +143,23 @@ class BookingController extends Controller
         $end_date = $request->get('end_date'); 
         $date1 = Carbon::parse($start_date)->format('yy-m-d');
         $date2 = Carbon::parse($end_date)->format('yy-m-d');
-        $owner = $request->get('ownerId');
-        $datas = DB::table('v_bookings_details')->Where('client_id',$owner)
-        ->orWhere(function ($q) use ($date1,$date2) {
-            $q->where('start_date','>=', $date1)
-                ->where('end_date', '<=',$date2);
-        })->get();
-
+        $renter = $request->get('renterId');
+        $datas = DB::table('v_bookings_details');
+        if(!empty($renter) && $renter != 'Choose'){
+            $datas = $datas->Where('renter_id',$renter);
+        }
+        if(!empty($start_date)){
+            $datas = $datas->whereDate('start_date','>=', $date1);
+        }
+        if(!empty($end_date)){
+            $datas = $datas->whereDate('end_date','<=', $date2);
+        }
+        $datas = $datas->get();        
         return view('booking.index')
             ->with('datas', $datas)
             ->with('start_date',$start_date)
             ->with('end_date',$end_date)
+            ->with('renter',$renter)
             ->with('datasClients', $datasClients);
     }
     public function chat($id)
@@ -176,4 +182,5 @@ class BookingController extends Controller
         ->with('datas', $datas)
         ->with('datasClients', $datasClients);
     }
+
 }

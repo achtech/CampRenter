@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCamperStatusTable extends Migration
+class CreateBookingStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCamperStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('camper_status', function (Blueprint $table) {
+        Schema::create('booking_status', function (Blueprint $table) {
             $table->id();
             $table->string('label_en');
             $table->string('label_de');
@@ -33,6 +33,6 @@ class CreateCamperStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('camper_status');
+        Schema::dropIfExists('booking_status');
     }
 }

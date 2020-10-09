@@ -27,8 +27,10 @@ class PromotionController extends Controller
      */
     public function index(Request $request)
     {
-        $datasPromo = Promotion::paginate(10);
-        return view('promotion.index')->with('datasPromo', $datasPromo);
+        $datas = Promotion::orderBy('status', 'desc')->paginate(10);
+        $dataPromoActivate = Promotion::where('status',1)->first();
+        return view('promotion.index')->with('datas', $datas)
+        ->with('dataPromoActivate', $dataPromoActivate);
     }
     /**
      * Show the form for creating a new resource.
@@ -60,10 +62,17 @@ class PromotionController extends Controller
         $input = request()->except(['_token','action', '_method']);
         $input['created_by']=auth()->user()->id;
         $input['updated_by']=auth()->user()->id;
+        $input['status']=0;
         $data = Promotion::create($input);
         return redirect(route('promotion.index'))->with('success', 'Item added succesfully');
     }
 
+    public function activate($id)
+    {
+        $affected = Promotion::where('status', '=', 1)->update(array('status' => 0));
+        $affected = Promotion::find($id)->update(array('status' => 1));
+        return redirect(route('promotion.index'))->with('success', 'Item added succesfully');
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -72,6 +81,9 @@ class PromotionController extends Controller
      */
     public function edit($id)
     {
+        $data = Promotion::find($id);
+        return view('promotion.edit', ['id' => 1])->with('data', $data);
+
     }
 
     /**

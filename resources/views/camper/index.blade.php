@@ -25,7 +25,7 @@
                                 @foreach($datas as $item)
                                 <tr>
                                     <td style="vertical-align: middle;text-align:center"><img style="width:100px" src="/assets/images/gallery/{{$item->image}}"/></td>
-                                    <td style="vertical-align: middle;">{{App\Http\Controllers\CamperController::getCamperName('camper_names',$item->id_camper_names)}}</td>
+                                    <td style="vertical-align: middle;">{{$item->camper_name}}</td>
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\CamperController::getName('clients',$item->id_clients)}}</td>
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\CamperController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
                                     <td style="vertical-align: middle;text-align:center">
@@ -34,7 +34,7 @@
                                         @else
                                         <i class="fa fa-circle text-danger mr-2"></i>
                                         @endif
-                                    <td style="vertical-align: middle;">{{App\Http\Controllers\CamperController::getCamperName('camper_status',$item->id_camper_status)}}</td>
+                                    <td style="vertical-align: middle;">{{$item->camper_status}} by {{App\Http\Controllers\Controller::getUser($item->updated_by)}}</td>
                                     <td style="vertical-align: middle;text-align:center">
                                         @if($item->is_confirmed==1)
                                         <i class="fa fa-circle text-success mr-2"></i>
@@ -49,7 +49,7 @@
                                             </li>
                                             @if($item->is_confirmed==1)
                                             <li class="list-inline-item" >
-                                                <a href="" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#block" data-toggle="tooltip" title="Block"><i class="fas fa-ban"></i></a>
+                                                <a href="" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#block"  title="Block"><i class="fas fa-ban"></i></a>
                                             <!-- Modal -->
                                                 <div class="modal fade" id="block" role="dialog">
                                                     <div class="modal-dialog">
@@ -73,7 +73,7 @@
                                             </li>
                                             @else
                                             <li class="list-inline-item">
-                                                <a href="{{ route('camper.edit',$item->id)}}" class="btn btn-info btn-sm rounded-0" data-toggle="tooltip" data-toggle="modal" data-target="#activate" title="Activate"><i class="fas fa-check"></i></a>
+                                                <a href="" class="btn btn-info btn-sm rounded-0" data-toggle="modal" data-target="#activate"  title="Confirm"><i class="fas fa-check"></i></a>
                                                                               <!-- Modal -->
                                                 <div class="modal fade" id="activate" role="dialog">
                                                     <div class="modal-dialog">

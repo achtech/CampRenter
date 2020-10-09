@@ -127,6 +127,7 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     Route::get('promotion/{id}/delete', 'App\Http\Controllers\PromotionController@destroy')->name('promotion.destroy');
+    Route::get('promotion/{id}/activate', 'App\Http\Controllers\PromotionController@activate')->name('promotion.activate');
     Route::resource('promotion', 'App\Http\Controllers\PromotionController', ['except' => 'destroy', 'names' => [
         'index' => 'promotion.index',
         'create' => 'promotion.create',
@@ -262,6 +263,7 @@ Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' =
 
     //ADMIN->MESSAGE
     Route::get('message/{id}/delete', ['MessageController', 'destroy'])->name('message.destroy');
+    Route::get('message/sendEmail', 'App\Http\Controllers\MessageController@sendEmail')->name('message.sendEmail');
     Route::resource('message', 'App\Http\Controllers\MessageController', ['except' => 'destroy', 'names' => [
         'index' => 'message.index',
         'store' => 'message.store',

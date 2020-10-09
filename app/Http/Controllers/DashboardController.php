@@ -23,7 +23,6 @@ class DashboardController extends Controller
     {
         $datas = Camper::where('is_confirmed', 0)
             ->join('clients', 'campers.id_clients', '=', 'clients.id')
-            ->join('camper_names', 'campers.id_camper_names', '=', 'camper_names.id')
             ->get();
         $bookings = Booking::join('clients', 'bookings.id_clients', '=', 'clients.id')
             ->get();
@@ -59,6 +58,7 @@ class DashboardController extends Controller
             ->with('datas', $datas)
             ->with('bookings', $bookings)
             ->with('messages', $messages);
+
     }
 
     public function getTotal($period, $user)
@@ -70,8 +70,8 @@ class DashboardController extends Controller
         $end_week = date("Y-m-d", strtotime('sunday this week'));
         $start_month = date("Y-m-d", strtotime('first day of this month'));
         $end_month = date("Y-m-d", strtotime('last day of this month'));
-        $start_last_month = date("Y-m-d", strtotime('first day of last month'));;
-        $end_last_month = date("Y-m-d", strtotime('last day of last month'));;
+        $start_last_month = date("Y-m-d", strtotime('first day of last month'));
+        $end_last_month = date("Y-m-d", strtotime('last day of last month'));
         $startDate = $period == 'today' ? $today : ($period == 'week' ? $start_week : ($period == 'month' ? $start_month : $start_last_month));
         $end_date = $period == 'today' ? $today : ($period == 'week' ? $end_week : ($period == 'month' ? $end_month : $end_last_month));
         $owner = $user == 'owner';
@@ -83,22 +83,19 @@ class DashboardController extends Controller
         /* $data = Booking::where('start_date','<=',$owner?$end_date:$startDate)
                        ->where('end_date','>=',$owner?$end_date:$startDate);
          */
-        $data = Booking::leftjoin('commissions', 'Bookings.id_commissions', '=', 'commissions.id')
-            ->leftjoin('Promotions', 'Promotions.id', '=', 'Bookings.id_promotions');
+        $data = '';
         if ($owner) {
-            $data = $data->select(DB::raw('sum((Bookings.total/100) * (100-(IFNULL(Commissions.rate,0)+ IFNULL(Promotions.rate,0)))) as total'))
-                ->where('Bookings.end_date', '>=', $startDate)
-                ->where('Bookings.end_date', '<=', $end_date);
+            $data = Booking::select(DB::raw('sum((total/100) * (100-commission)) as total'))
+                ->whereDate('end_date', '>=', $startDate)
+                ->whereDate('end_date', '<=', $end_date);
         } else {
-            $data = $data->select(DB::raw('sum((Bookings.total/100) * (IFNULL(Commissions.rate,0)+ IFNULL(Promotions.rate,0))) as total'))
-                ->where('Bookings.start_date', '>=', $startDate)
-                ->where('Bookings.start_date', '<=', $end_date);
+            $data = Booking::select(DB::raw('sum((total/100) * commission) as total'))
+                ->whereDate('start_date', '>=', $startDate)
+                ->whereDate('start_date', '<=', $end_date);
         }
-
         $data = $data->first(['total']);
         return $data->total;
     }
-
 
     public function confirmCamper($id)
     {

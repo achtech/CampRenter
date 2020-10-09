@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 
-class CommissionsSeeder extends Seeder
+class BookingStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,10 +14,12 @@ class CommissionsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('commissions')->insert(array(
+        DB::table('booking_status')->insert(array(
             0 => array(
                 'id' => 1,
-                'rate' => 10,
+                'label_en' => 'Booking Status 1 en',
+                'label_de' => 'Booking Status 2 de',
+                'label_fr' => 'Booking Status 3 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -25,7 +27,9 @@ class CommissionsSeeder extends Seeder
             ),
             1 => array(
                 'id' => 2,
-                'rate' => 15,
+                'label_en' => 'Booking Status 2 en',
+                'label_de' => 'Booking Status 2 de',
+                'label_fr' => 'Booking Status 2 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -33,7 +37,9 @@ class CommissionsSeeder extends Seeder
             ),
             2 => array(
                 'id' => 3,
-                'rate' => 20,
+                'label_en' => 'Booking Status 3 en',
+                'label_de' => 'Booking Status 3 de',
+                'label_fr' => 'Booking Status 3 fr',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,

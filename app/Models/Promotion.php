@@ -8,9 +8,9 @@ class Promotion extends Base
     public $primarykey = 'id';
 
     protected $fillable = [
-        'rate',
-        'start_date',
-        'end_date',
+        'commission',
+        'details',
+        'status',
         'created_by',
         'updated_by'
     ];

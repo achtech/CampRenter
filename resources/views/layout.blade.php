@@ -289,31 +289,20 @@
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
                             <li class="sidebar-item"><a href="{{route('user.profile')}}" class="sidebar-link"><span
                                         class="hide-menu"> {{ __('backend.menu_profil.lbl') }}
-                                    </span></a>
+                                        </span></a>
                             </li>
-                            <li class="sidebar-item">
-                                <a href="{{route('commission.index')}}" class="sidebar-link"><span
-                                            class="hide-menu">{{ __('backend.menu_commision.lbl') }}
-                                    </span></a>
-                            </li>
+                            @if(auth()->user()->role == 'super-admin')
                             <li class="sidebar-item"><a href="{{route('promotion.index')}}" class="sidebar-link"><span
                                 class="hide-menu">{{ __('backend.menu_promotion.lbl') }}
-                        </span></a>
-                </li>
+                                    </span></a>
+                            </li>
+                            @endif
                             <li class="sidebar-item"><a href="{{route('licenceCategory.index')}}" class="sidebar-link"><span
                                         class="hide-menu">{{ __('backend.menu_licence_category.lbl') }}
                                     </span></a>
                             </li>
                             <li class="sidebar-item"><a  href="{{route('camperCategory.index')}}" class="sidebar-link"><span
                                             class="hide-menu"> {{ __('backend.menu_camper_category.lbl') }}
-                                    </span></a>
-                            </li>
-                            <li class="sidebar-item"><a  href="{{route('camperNames.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> {{ __('backend.menu_camper_names.lbl') }}
-                                    </span></a>
-                            </li>
-                            <li class="sidebar-item"><a  href="{{route('camperStatus.index')}}" class="sidebar-link"><span
-                                            class="hide-menu"> {{ __('backend.menu_camper_status.lbl') }}
                                     </span></a>
                             </li>
                             <li class="sidebar-item">

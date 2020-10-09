@@ -25,7 +25,7 @@
                                 @foreach($datas as $item)
                                 <tr>
                                     <td><img src="/assets/images/gallery/{{$item->image}}"/></td>
-                                    <td>{{App\Http\Controllers\CamperController::getCamperName('camper_names',$item->id_campers_name)}}</td>
+                                    <td>$item->camper_name}}</td>
                                     <td>{{App\Http\Controllers\CamperController::getName('clients',$item->id_client)}}</td>
                                     <td>{{App\Http\Controllers\CamperController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
                                     <td>{{$item->availability}}</td>
@@ -35,7 +35,7 @@
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
                                                 <a href="{{ route('camper.confirm',$item->id) }}" class="btn btn-primary btn-sm rounded-0"><i class="fas fa-check"></i></a>
-                                            </li> 
+                                            </li>
                                     </td>
                                 </tr>
                                 @endforeach

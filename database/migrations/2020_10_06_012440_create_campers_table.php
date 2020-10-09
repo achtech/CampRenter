@@ -15,6 +15,8 @@ class CreateCampersTable extends Migration
     {
         Schema::create('campers', function (Blueprint $table) {
             $table->id();
+            $table->string('camper_name')->nullable();
+            $table->string('camper_status')->nullable();
             $table->string('image', 50)->nullable();
             $table->string('brand', 100)->nullable();
             $table->string('model', 100)->nullable();
@@ -48,26 +50,26 @@ class CreateCampersTable extends Migration
             $table->string("position_y")->nullable();
 
             $table->unsignedBigInteger('id_clients')->nullable();
-            $table->unsignedBigInteger('id_camper_names')->nullable();
             $table->unsignedBigInteger('id_licence_categories')->nullable();
             $table->unsignedBigInteger('id_camper_categories')->nullable();
             $table->unsignedBigInteger('id_transmissions')->nullable();
             $table->unsignedBigInteger('id_fuels')->nullable();
-            $table->unsignedBigInteger('id_camper_status')->nullable();
-            
+            $table->unsignedBigInteger('confirmed_by')->nullable();
+            $table->unsignedBigInteger('id_insurances')->nullable();
+
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
-            
+            $table->foreign('confirmed_by')->references('id')->on('users');
+
             $table->foreign('id_clients')->references('id')->on('clients');
-            $table->foreign('id_camper_names')->references('id')->on('camper_names');
+            $table->foreign('id_insurances')->references('id')->on('insurances');
             $table->foreign('id_licence_categories')->references('id')->on('licence_categories');
             $table->foreign('id_camper_categories')->references('id')->on('camper_categories');
             $table->foreign('id_transmissions')->references('id')->on('transmissions');
             $table->foreign('id_fuels')->references('id')->on('fuels');
-            $table->foreign('id_camper_status')->references('id')->on('camper_status');
         });
     }
 

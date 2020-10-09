@@ -58,7 +58,7 @@
                             <h4 class="card-title">{{__('backend.camper_name.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_campers_name',App\Http\Controllers\CamperController::getCamperName('camper_names',$camper_name->id),['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('camper_name',$data->camper_name,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -406,7 +406,7 @@
                             <h4 class="card-title">{{__('backend.status.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_campers_name',App\Http\Controllers\CamperController::getCamperName('camper_status',$camper_status->id),['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('camper_status',$data->camper_status,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>

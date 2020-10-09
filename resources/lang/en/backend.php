@@ -18,6 +18,7 @@ return [
     'confirm_password.lbl' => 'Confirm password',
     'current_password.lbl' => 'Current password',
     'message_delete_avatar.lbl' => 'DO you really want to delete this avatar ?',
+    'action.lbl'=>'Action',
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
@@ -249,6 +250,9 @@ return [
     'message_status_0.lbl' => 'Not read',
     'message_status_1.lbl' => 'Read',
     'message_email_sent_date.lbl' => 'Date sent',
+    'message_contact_tel.lbl'=>'Telephone',
+    'message_contact_name.lbl'=>'Contact name',
+    'answer_message.btn'=>'Answer',
 
     /** licence_category */
     'licence_category_managment.lbl' => 'Licence Category Managment',
@@ -292,6 +296,14 @@ return [
     'promotion_createdAt.lbl' => 'Created At',
     'promotion_rate.lbl' => 'Amount of Promotion',
     'promotion_list.lbl' => 'List of Promotion',
+    'commission_label.lbl'=>'Commission',
+    'commission_description.lbl' => 'Description',
+    'commission_Status.lbl' => 'Status',
+    'new_promotion.btn' => 'New promotion',
+    'current_commission.lbl' => 'Current commission',
+    'promotion_managment.lbl' => 'Promotion Management',
+    'promotion_status_active.lbl' =>'Active',
+    'promotion_status_disactivate.lbl'=>'Disactivate',
     /** End promotion */
     'billings.lbl' => 'Billings',
     'billing_list.lbl' => 'List of Billings',
@@ -394,6 +406,12 @@ return [
     'renter_last_name.lbl' => 'Last name of renter',
     'booking_total_days.lbl' => 'Total days',
     'booking_total_price.lbl' => 'Total price',
+    'status_booking_0.lbl'=>'Closed',
+    'status_booking_1.lbl'=>'Open',
+    'status_billing_0.lbl'=>'Non paid',
+    'status_billing_1.lbl'=>'Paid',
+    'status_booking.lbl'=>'Status booking',
+    'status_billing.lbl'=>'Status billing',
 
     'camper_description.lbl' => 'Description',
     'client_management.lbl' => 'Client Management',
@@ -409,5 +427,8 @@ return [
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Users',
     'no_data_to_confirm.lbl' => 'No campers to confirm',
+    'booking_status_booking.lbl' => 'Booking Status',
+    'booking_status_billing.lbl' => 'Billing Status',
+    'renter.lbl' => 'Renter',
 
 ];

@@ -15,7 +15,8 @@ return [
     'update.btn' => 'Update',
     'no_data_found.lbl' => 'No data found',
     'new_password.lbl' => 'New password',
-    'confirm_password.lbl' => 'confirm password',    
+    'confirm_password.lbl' => 'confirm password',
+    'action.lbl' => 'Actions',     
     /** Client  */
     'client_name.lbl' => 'Name',
     'client_last_name.lbl' => 'Last Name',
@@ -280,6 +281,12 @@ return [
     'promotion_createdAt.lbl' => 'Created At',
     'promotion_rate.lbl' => 'Amount of Promotion',
     'promotion_list.lbl' => 'List of Promotion',
+    'commission_label.lbl'=>'Commission',
+    'commission_description.lbl' => 'Description',
+    'commission_Status.lbl' => 'Status',
+    'new_promotion.btn' => 'New promotion',
+    'current_commission.lbl' => 'Current commission',
+
     /** End promotion */
     'billings.lbl' => 'Billings',
     'billing_list.lbl' => 'List of Billings',

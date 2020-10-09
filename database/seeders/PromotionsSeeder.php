@@ -17,9 +17,9 @@ class PromotionsSeeder extends Seeder
         DB::table('promotions')->insert(array(
             0 => array(
                 'id' => '1',
-                'rate' => 10,
-                'start_date' => '2020-09-01',
-                'end_date' => '2020-09-15',
+                'commission' => 10,
+                'details' => 'test',
+                'status' => 1,
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -27,9 +27,9 @@ class PromotionsSeeder extends Seeder
             ),
             1 => array(
                 'id' => '2',
-                'rate' => 15,
-                'start_date' => '2020-10-01',
-                'end_date' => '2020-10-15',
+                'commission' => 15,
+                'details' => 'test 1',
+                'status' => 0,
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -37,9 +37,9 @@ class PromotionsSeeder extends Seeder
             ),
             2 => array(
                 'id' => '3',
-                'rate' => 20,
-                'start_date' => '2020-11-01',
-                'end_date' => '2020-11-15',
+                'commission' => 20,
+                'details' => 'test 2',
+                'status' => 0,
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,

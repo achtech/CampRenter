@@ -7,14 +7,13 @@
         <div class="col-sm-12 col-md-4 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.booking_owner.lbl') }}</h4>
+                    <h4 class="card-title">{{ __('backend.renter.lbl') }}</h4>
                         <div class="form-group mb-4">
-                            <select class="custom-select mr-sm-2" id="ownerId" name="ownerId">
+                            <select class="custom-select mr-sm-2" id="renterId" name="renterId">
                                 <option selected>{{ __('backend.booking_select_choose.lbl') }}</option>
                                 @foreach($datasClients as $item)
-                                    <option value="{{$item->id}}">{{$item->client_name}} {{$item->client_last_name}}</option>
+                                    <option value="{{$item->id}}" @if($item->id==$renter) selected @endif>{{$item->client_name}} {{$item->client_last_name}}</option>
                                 @endforeach
-                                <option value="3">Three</option>
                             </select>
                         </div>
                 </div>
@@ -66,17 +65,21 @@
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
+                                    <th>{{ __('backend.booking_status_booking.lbl') }}</th>
+                                    <th>{{ __('backend.booking_status_billing.lbl') }}</th>
                                     <th>{{ __('backend.operation.lbl') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($datas as $item)
                                     <tr>
-                                        <td>{{$item->client_name }} {{$item->client_last_name }}</td>
-                                        <td>{{$item->camper_name_en}}</td>        
+                                        <td>{{$item->renter_name }} {{$item->renter_last_name }}</td>
+                                        <td>{{$item->camper_name}}</td>        
                                         <td>{{$item->start_date}}</td>
                                         <td>{{$item->end_date}}</td>
                                         <td>{{$item->price_per_day}}</td>
+                                        <td>{{ app()->getLocale() == 'de' ? $item->status_booking_de : $item->status_booking_en }}</td>
+                                        <td>{{ $item->status_billings }}</td>
                                         <td>
                                             <li class="list-inline-item">
                                                 <a href="{{ route('booking.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
@@ -95,6 +98,8 @@
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
+                                    <th>{{ __('backend.booking_status_booking.lbl') }}</th>
+                                    <th>{{ __('backend.booking_status_billing.lbl') }}</th>
                                     <th>{{ __('backend.operation.lbl') }}</th>
                                 </tr>
                             </tfoot>
