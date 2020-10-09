@@ -29,12 +29,22 @@
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\CamperController::getName('clients',$item->id_clients)}}</td>
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\CamperController::getLabel('licence_categories',$item->id_licence_categories)}}</td>
                                     <td style="vertical-align: middle;text-align:center">
-                                        @if($item->availability==1)
-                                        <i class="fa fa-circle text-success mr-2"></i>
+                                        @if($item->availability==0)
+                                        <i class="btn waves-effect waves-light btn-danger">Blocked</i>
+                                        @elseif($item->availability==1)
+                                        <i class="btn waves-effect waves-light btn-warning">Reserved</i>
                                         @else
-                                        <i class="fa fa-circle text-danger mr-2"></i>
+                                        <i class="btn waves-effect waves-light btn-success">Available</i>
                                         @endif
-                                    <td style="vertical-align: middle;">{{$item->camper_status}} by {{App\Http\Controllers\Controller::getUser($item->updated_by)}}</td>
+                                    <td style="vertical-align: middle;">
+                                        @if($item->availability==0)
+                                            Blocked by {{App\Http\Controllers\Controller::getUser($item->updated_by)}}
+                                        @elseif($item->availability==1)
+                                            Reserved by {{App\Http\Controllers\CamperController::getName('clients',$item->id_clients)}}
+                                        @else
+                                            Available
+                                        @endif
+                                    </td>
                                     <td style="vertical-align: middle;text-align:center">
                                         @if($item->is_confirmed==1)
                                         <i class="fa fa-circle text-success mr-2"></i>
