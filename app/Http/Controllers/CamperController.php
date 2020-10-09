@@ -211,6 +211,28 @@ class CamperController extends Controller
         return redirect(route('camper.index'));
     }
 
+    public static function getBookingCamperStart($id)
+    {
+        $today = date('Y-m-d');
+        $data = Booking::where('id_campers', $id)->whereDate('start_date', '<=', $today)->whereDate('end_date', '>=', $today)->first();
+        if ($data) {
+            return date('Y-m-d', strtotime($data->start_date));
+        } else {
+            return '';
+        }
+    }
+
+    public static function getBookingCamperEnd($id)
+    {
+        $today = date('Y-m-d');
+        $data = Booking::where('id_campers', $id)->whereDate('start_date', '<=', $today)->whereDate('end_date', '>=', $today)->first();
+        if ($data) {
+            return date('Y-m-d', strtotime($data->end_date));
+        } else {
+            return '';
+        }
+    }
+
     public static function getLabel($table, $id)
     {
         $data = DB::table($table)->find($id);
