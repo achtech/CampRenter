@@ -49,9 +49,8 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->CLIENT
+    Route::get('client/{id}/blockActivateClient', 'App\Http\Controllers\ClientController@blockActivateClient')->name('client.blockActivateClient');
     Route::get('client/{id}/delete', 'App\Http\Controllers\ClientController@destroy')->name('client.destroy');
-    Route::get('client/{id}/block', 'App\Http\Controllers\ClientController@blockClient')->name('client.block');
-    Route::get('client/{id}/active', 'App\Http\Controllers\ClientController@activateClient')->name('client.active');
     Route::get('client/{id}/detail', 'App\Http\Controllers\ClientController@detail')->name('client.detail');
     Route::get('client/{id}/camperDetail', 'App\Http\Controllers\ClientController@checkCamperDetail')->name('client.camperDetail');
     Route::get('client/{id}/rentDetail', 'App\Http\Controllers\ClientController@checkBookingDetail')->name('client.rentDetail');
@@ -103,16 +102,16 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'insurance.show',
     ]]);
 
-        //ADMIN->INSURANCE
-        Route::get('insuranceCompany/{id}/delete', 'App\Http\Controllers\InsuranceCompanyController@destroy')->name('insuranceCompany.destroy');
-        Route::resource('insuranceCompany', 'App\Http\Controllers\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
-            'index' => 'insuranceCompany.index',
-            'create' => 'insuranceCompany.create',
-            'update' => 'insuranceCompany.update',
-            'edit' => 'insuranceCompany.edit',
-            'store' => 'insuranceCompany.store',
-            'show' => 'insuranceCompany.show',
-        ]]);
+    //ADMIN->INSURANCE
+    Route::get('insuranceCompany/{id}/delete', 'App\Http\Controllers\InsuranceCompanyController@destroy')->name('insuranceCompany.destroy');
+    Route::resource('insuranceCompany', 'App\Http\Controllers\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
+        'index' => 'insuranceCompany.index',
+        'create' => 'insuranceCompany.create',
+        'update' => 'insuranceCompany.update',
+        'edit' => 'insuranceCompany.edit',
+        'store' => 'insuranceCompany.store',
+        'show' => 'insuranceCompany.show',
+    ]]);
 
     //ADMIN->COMIMSSION
     Route::get('commission/{id}/delete', 'App\Http\Controllers\CommissionController@destroy')->name('commission.destroy');
@@ -223,18 +222,18 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->BOOKING
-Route::get('booking/{id}/delete', 'App\Http\Controllers\Bookingcontroller@destroy')->name('booking.destroy');
-Route::get('booking/{id}/detail', 'App\Http\Controllers\Bookingcontroller@detail')->name('booking.detail');
-Route::get('booking/search', 'App\Http\Controllers\Bookingcontroller@search')->name('booking.search');
-Route::get('booking/{id}/chat', 'App\Http\Controllers\Bookingcontroller@chat')->name('booking.chat');
-Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
-    'index' => 'booking.index',
-    'create' => 'booking.create',
-    'update' => 'booking.update',
-    'edit' => 'booking.edit',
-    'store' => 'booking.store',
-    'show' => 'booking.show',
-]]);
+    Route::get('booking/{id}/delete', 'App\Http\Controllers\Bookingcontroller@destroy')->name('booking.destroy');
+    Route::get('booking/{id}/detail', 'App\Http\Controllers\Bookingcontroller@detail')->name('booking.detail');
+    Route::get('booking/search', 'App\Http\Controllers\Bookingcontroller@search')->name('booking.search');
+    Route::get('booking/{id}/chat', 'App\Http\Controllers\Bookingcontroller@chat')->name('booking.chat');
+    Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
+        'index' => 'booking.index',
+        'create' => 'booking.create',
+        'update' => 'booking.update',
+        'edit' => 'booking.edit',
+        'store' => 'booking.store',
+        'show' => 'booking.show',
+    ]]);
 
     //ADMIN->billings
     //Route::get('inssuranceCompany/{id}/delete', 'InsuranceCompanyController@destroy')->name('inssuranceCompany.destroy');

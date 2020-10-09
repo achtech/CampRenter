@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Avatar;
 use App\Models\Booking;
-use App\Models\Client;
 use App\Models\Camper;
+use App\Models\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -65,8 +64,8 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $input['driving_licence_image'] = 1;
         $input['id_avatars'] = 1;
         $input['image_national_id'] = 1;
@@ -87,13 +86,12 @@ class ClientController extends Controller
     }
     public function detail($id)
     {
-        $client  = Client::find($id);
+        $client = Client::find($id);
         $data = Client::find($id);
         $datas = Avatar::where('id', $data->id_avatars)->first();
         $avatar = $datas != null ? $datas['image'] : 'default.jpg';
         return view('client.detail')->with('data', $data)->with('avatar', $avatar)->with('client', $client);
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -110,9 +108,24 @@ class ClientController extends Controller
             return redirect(route('client.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Client::where('id', $id)->update($input);
         return redirect(route('client.index'))->with('success', 'Item Updated succesfully');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function blockActivateClient($id)
+    {
+        $data = Client::find($id);
+        $data->status = $data->status == '0' ? '1' : '0';
+        $data->updated_by = auth()->user()->id;
+        $data = $data->update();
+        return redirect(route('client.index'));
     }
 
     //
@@ -152,18 +165,18 @@ class ClientController extends Controller
         }
         $data->status = 'active';
         $data->save();
-        
+
         return redirect(route('client.index'));
     }
     public function checkCamperDetail($id)
     {
         $datas = Camper::where('id_clients', $id)->get();
-        $client  = Client::find($id);
+        $client = Client::find($id);
         return view('client.detailCamper')->with('datas', $datas)->with('client', $client);
     }
     public function checkBookingDetail($id)
     {
-        $client  = Client::find($id);
+        $client = Client::find($id);
         $remaining_days = 0;
         $datas = Booking::where('id_clients', $id)
             ->join('campers', 'bookings.id_campers', '=', 'campers.id')

@@ -59,53 +59,53 @@
                                             <li class="list-inline-item">
                                                 <a href="{{ route('client.index').'/'.$item->id.'/detail'}}" class="btn btn-success btn-sm rounded-0" title="Detail"><i class="fas fa-eye"></i></a>
                                             </li>
-                                            @if($item->status=='active')
+                                            @if($item->status=='1')
                                             <li class="list-inline-item" >
-                                                <a href="{{ route('client.edit',$item->id)}}" class="btn btn-info btn-sm rounded-0" data-toggle="modal" data-target="#block" title="Block" id="blockClient" data-id="{{$item->id}}"><i class="fas fa-check"></i>{{$item->id}}</a>
+                                                <a href="" class="btn btn-info btn-sm rounded-0" data-toggle="modal" data-target="#block" title="Block" id="blockClient" data-id="{{$item->id}}"><i class="fas fa-check"></i></a>
                                             <!-- Modal -->
- <div class="modal fade" id="block" role="dialog">
-    <div class="modal-dialog">
+                                                <div class="modal fade" id="block" role="dialog">
+                                                    <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-        </div>
-        <div class="modal-body">
-          <p>{{ __('backend.client_block_message.lbl') }}</p>
-        </div>
-        <div class="modal-footer">
-            <a href="{{ route('client.block',$item->id) }}" class="btn btn-danger btn-sm rounded-0" id="block"> {{ __('backend.client_block.btn') }} {{$item->id}}</a>
-            <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
-        </div>
-      </div>
-    </div>
-    </div>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <p>{{ __('backend.client_block_message.lbl') }}</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="{{ route('client.blockActivateClient',$item->id) }}" class="btn btn-danger btn-sm rounded-0" id="block"> {{ __('backend.client_block.btn') }}</a>
+                                                            <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>
                                             </li>
                                             @else
                                             <li class="list-inline-item">
-                                                <a href="{{ route('client.edit',$item->id)}}" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#activate"  id="activateClient" title="Activate" data-id="{{$item->id}}"><i class="fas fa-ban"></i>{{$item->id}}</a>
+                                                <a href="" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#activate"  id="activateClient" title="Activate" data-id="{{$item->id}}"><i class="fas fa-ban"></i></a>
                                                                               <!-- Modal -->
- <div class="modal fade" id="activate" role="dialog">
-    <div class="modal-dialog">
+                                                <div class="modal fade" id="activate" role="dialog">
+                                                    <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-        </div>
-        <div class="modal-body">
-          <p>{{ __('backend.client_active_message.lbl') }}</p>
-        </div>
-        <div class="modal-footer">
-        <input type="text"  id="activ" name="activ" value=""/>
-            <a href="{{ route('client.active',$item->id) }}" class="btn btn-info btn-sm rounded-0"> {{ __('backend.client_activate.btn') }} {{$item->id}}</a>
-        </div>
-      </div>
-    </div>
-    </div>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <p>{{ __('backend.client_active_message.lbl') }}</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="{{ route('client.blockActivateClient', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block.btn') }}</a>
+                                                            <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
+                                                         </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>
                                             </li>
                                             @endif
                                             </ul>
