@@ -90,7 +90,9 @@ class ClientController extends Controller
         $data = Client::find($id);
         $datas = Avatar::where('id', $data->id_avatars)->first();
         $avatar = $datas != null ? $datas['image'] : 'default.jpg';
-        return view('client.detail')->with('data', $data)->with('avatar', $avatar)->with('client', $client);
+        $driving_licence_image = $datas != null ? $datas['driving_licence_image'] : 'default.jpg';
+        $image_national_id = $datas != null ? $datas['image_national_id'] : 'default.jpg';
+        return view('client.detail')->with('data', $data)->with('avatar', $avatar)->with('client', $client)->with('driving_licence_image', $driving_licence_image)->with('image_national_id', $image_national_id);
     }
 
     /**
