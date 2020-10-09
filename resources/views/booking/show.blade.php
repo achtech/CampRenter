@@ -31,15 +31,7 @@
                                         <div class="col-md-7">
                                             <div class="form-group">
                                                 <label >
-                                                    @if(app()->getLocale()=='en')
-                                                    {{$data->camper_name_en}} 
-                                                    @if(app()->getLocale()=='de')
-                                                        {{$data->camper_name_de}}     
-                                                    @if(app()->getLocale()=='fr')
-                                                        {{$data->camper_name_fr}}
-                                                    @endif
-                                                    @endif
-                                                    @endif
+                                                    {{$data->camper_name}} 
                                             </label>
                                             </div>
                                         </div>     
@@ -114,7 +106,7 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label>{{ __('backend.status_booking_'.$data->status_booking.'.lbl') }}</label>
+                                                <label>{{ app()->getLocale() =='de' ? $data->status_booking_de : $data->status_booking_en }}</label>
                                             </div>
                                         </div>     
                                     </div>
@@ -126,7 +118,7 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label>{{ __('backend.status_billing_'.$data->status_billings.'.lbl') }}</label>
+                                                <label>{{$data->status_billings}}</label>
                                             </div>
                                         </div>     
                                     </div>

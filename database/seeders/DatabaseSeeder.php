@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
 
             BookingStatusSeeder::class,
             CamperCategoriesSeeder::class,
-            CommissionsSeeder::class,
 
             FuelsSeeder::class,
             InsuranceCompaniesSeeder::class,

@@ -427,5 +427,8 @@ return [
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Users',
     'no_data_to_confirm.lbl' => 'No campers to confirm',
+    'booking_status_booking.lbl' => 'Booking Status',
+    'booking_status_billing.lbl' => 'Billing Status',
+    'renter.lbl' => 'Renter',
 
 ];

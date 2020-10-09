@@ -56,8 +56,8 @@
                     </div>
                     <div class="col-md-4">
                         <div style="margin:10px">
-                            <a href="{{ route('commission.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
-                            style="position: absolute;bottom:10px;width: 90%;">{{ __('backend.dashboard_change_commission.btn') }}</a>
+                            <a href="#" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
+                            style="position: absolute;bottom:10px;width: 90%;">TODO</a>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -87,15 +87,7 @@
                                             <tr>
 
                                                 <td>
-                                                    @if(app()->getLocale()=='en')
-                                                        {{$item->label_en}}
-                                                    @if(app()->getLocale()=='de')
-                                                        {{$item->label_de}}
-                                                    @if(app()->getLocale()=='fr')
-                                                        {{$item->label_fr}}
-                                                    @endif
-                                                    @endif
-                                                    @endif
+                                                    {{$item->camper_name}}
                                                 </td>
                                                 <td>{{$item->client_name}} {{$item->client_last_name}}</td>
                                                 <td><a href="{{ route('camper.detail',$item->id) }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
@@ -166,7 +158,8 @@
                                     <table id="default_order" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>{{ __('backend.dashboard_client_name.lbl') }}</th>
+                                                <th>{{ __('backend.contact.lbl') }}</th>
+                                                <th>{{ __('backend.telephone.lbl') }}</th>
                                                 <th>{{ __('backend.dashboard_message.lbl') }}</th>
                                                 <th>{{ __('backend.dashboard_view_details.lbl') }}</th>
                                             </tr>
@@ -180,8 +173,9 @@
 
                                             @foreach($messages as $item)
                                             <tr>
-                                                <td>{{$item->client_name}} {{$item->client_last_name}}</td>
-                                                <td>{{$item->message}}</td>
+                                                <td>{{$item->full_name}}</td>
+                                                <td>{{$item->telephone}}</td>
+                                                <td>{{$item->subject}}</td>
                                                 <td><a href="{{ route('message.index') }}">{{ __('backend.dashboard_view_message_details.lbl') }}</a></td>
                                             </tr>
                                             @endforeach

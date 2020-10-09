@@ -16,7 +16,7 @@ class CreatePromotionsTable extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
             $table->integer('commission');
-            $table->string('Details')->nullable();
+            $table->string('details')->nullable();
             $table->integer('status');
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();

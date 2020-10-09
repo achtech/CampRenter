@@ -11,7 +11,7 @@
                                 <label class="col-md-3">{{ __('backend.current_commission.lbl') }} </label>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" value="{{$dataPromoActivate->commission}}"
+                                        <input type="text" class="form-control" value="{{$dataPromoActivate->commission}} %"
                                             placeholder="" readonly>
                                     </div>            
                                 </div>  
@@ -43,7 +43,7 @@
                             <tbody>
                                 @foreach($datas as $item)
                                     <tr>
-                                        <td>{{$item->commission}}</td>
+                                        <td>{{$item->commission}} %</td>
                                         <td>{{$item->details}}</td>
                                         <td>{{App\Http\Controllers\Controller::getUser($item->created_by)}}</td>
                                         <td>{{$item->created_at}}</td>
@@ -60,16 +60,18 @@
                                         <td>
                                             <ul class="list-inline m-0">
                                                 <li class="list-inline-item">
-                                                    <a href="{{ route('avatar.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
+                                                    <a href="{{ route('promotion.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
                                                 </li> 
+                                                @if($item->status == 1)
                                                 <li class="list-inline-item">
-                                                    <button type="button"
-                                                        class="btn waves-effect waves-light btn-rounded btn-success">{{ __('backend.promotion_status_active.lbl') }}</button>
+                                                    <span style="width:90px"
+                                                        class="btn rounded-0 btn-sm btn-success">{{ __('backend.promotion_status_active.lbl') }}</span>
                                                 </li>
+                                                @else
                                                 <li class="list-inline-item">
-                                                    <button type="button"
-                                                        class="btn waves-effect waves-light btn-rounded btn-danger">{{ __('backend.promotion_status_disactivate.lbl') }}</button>
+                                                        <a href="{{ route('promotion.activate',$item->id)}}" class="btn btn-danger rounded-0 btn-sm ">{{ __('backend.promotion_status_disactivate.lbl') }}</a>
                                                 </li>
+                                                @endif
                                             </ul>
                                         </td>
                                     </tr>

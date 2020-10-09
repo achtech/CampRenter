@@ -236,6 +236,18 @@ Breadcrumbs::for('promotion', function ($trail) {
     $trail->push('Promotion', route('promotion.index'));
 });
 
+// Settings > Transmission > Edit Transmission
+Breadcrumbs::for('edit_promotion', function ($trail,$data) {
+    $trail->parent('promotion');
+    $trail->push('Edit promotion', route('promotion.edit',$data->id));
+});
+
+// Settings > Transmission > Create Transmission
+Breadcrumbs::for('create_promotion', function ($trail) {
+    $trail->parent('promotion');
+    $trail->push('Create promotion', route('promotion.create'));
+});
+
 // Booking
 Breadcrumbs::for('booking', function ($trail) {
     $trail->parent('dashboard');

@@ -126,6 +126,7 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     Route::get('promotion/{id}/delete', 'App\Http\Controllers\PromotionController@destroy')->name('promotion.destroy');
+    Route::get('promotion/{id}/activate', 'App\Http\Controllers\PromotionController@activate')->name('promotion.activate');
     Route::resource('promotion', 'App\Http\Controllers\PromotionController', ['except' => 'destroy', 'names' => [
         'index' => 'promotion.index',
         'create' => 'promotion.create',
