@@ -2,20 +2,6 @@
 @section('content')
 {{ Breadcrumbs::render('billing') }}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{route('insurance.index')}}">
-                            </a>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        
-    </div>
     {{ Form::open(['action'=>'App\Http\Controllers\BillingController@filter','autocomplete'=>'off','method'=>'GET']) }}
     <div class="card">
         <div class="card-body">
@@ -44,7 +30,9 @@
       </div>
     </div>
     </fieldset>
-</div></div>{{ Form::close() }}
+            </div>
+        </div>
+    {{ Form::close() }}
     <br>
     <div class="row">
         <div class="col-12">
@@ -56,20 +44,22 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('backend.owner_name.lbl') }} </th>
-                                    <th>{{ __('backend.last_booking.lbl') }} </th>
-                                    <th>{{ __('backend.current_amount.lbl') }} </th>
-                                    <th>{{ __('backend.confirmed_amount.lbl') }}</th>
+                                    <th>{{ __('backend.amount.lbl') }} </th>
+                                    <th>{{ __('backend.date.lbl') }}</th>
                                     <th>{{ __('backend.status.lbl') }}</th>
+                                    <th>{{ __('backend.last_booking.lbl') }} </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($datas as $item)
                                 <tr>
                                     <td>{{$item->client_name}} {{$item->client_last_name}}</td>
-                                    <td><a href="#"> {{ __('backend.detail.lbl') }}</a></td>
                                     <td>{{$item->current_amount}}</td>
-                                    <td>{{$item->confirmed_amount}}</td>
-                                    <td>{{$item->billing_status}}</td>
+                                    <td>{{$item->created_at}}</td>
+                                    <td>{{$item->status}}</td>
+                                    <td>
+                                    <a href="{{ route('billing.bookings',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.dashboard_last_booking.lbl') }}</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

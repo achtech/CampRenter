@@ -242,6 +242,8 @@ Route::group(['middleware' => 'Lang'], function () {
 
     Route::get('applyFilter', 'App\Http\Controllers\BillingController@filter')->name('applyFilter');
     Route::get('excel-export', 'App\Http\Controllers\BillingController@export')->name('excel-export');
+Route::get('billing.bookings', 'App\Http\Controllers\BillingController@bookings')->name('billing.bookings');
+
     Route::resource('billing', 'App\Http\Controllers\BillingController', ['except' => 'destroy', 'names' => [
         'index' => 'billing.index',
         'create' => 'billing.create',
