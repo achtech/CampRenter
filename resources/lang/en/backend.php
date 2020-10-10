@@ -272,5 +272,6 @@ return [
     'current_amount.lbl' => 'Current Amount',
     'confirmed_amount.lbl' => 'Confirmed Amount',
     'detail.lbl' => 'Detail',
+    ''
 
 ];
