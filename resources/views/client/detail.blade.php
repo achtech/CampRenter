@@ -22,10 +22,10 @@
                         <div class="col-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.client_email.lbl') }}</h4>
+                                    <h4 class="card-title">{{ __('backend.client_name.lbl') }}</h4>
                                     <div class="mt-4">
                                         <div class="form-group">
-                                            <label>{{$data->email}}</label>
+                                            <label>{{$data->client_name}} {{$data->client_last_name}}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -34,14 +34,14 @@
                             <div class="col-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">{{ __('backend.client_name.lbl') }}</h4>
-                                        <div class="mt-4">
-                                            <div class="form-group">
-                                                <label>{{$data->client_name}} {{$data->client_last_name}}</label>
-                                            </div>
+                                    <h4 class="card-title">{{ __('backend.client_email.lbl') }}</h4>
+                                    <div class="mt-4">
+                                        <div class="form-group">
+                                            <label>{{$data->email}}</label>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                             <div class="col-3"></div>
                             <div class="col-4">
