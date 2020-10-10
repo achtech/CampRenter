@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
+use App\Models\CamperImage;
 use App\Models\Client;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
@@ -92,6 +93,8 @@ class CamperController extends Controller
         $licenceCategories = LicenceCategory::find($camper->id_licence_categories);
         $transmissions = Transmission::find($camper->id_transmissions);
         $fuels = Fuel::find($camper->id_fuels);
+        $gallery = CamperImage::where('id_campers', $id)
+            ->get();
         $booking_camper = Booking::leftjoin('clients', 'Bookings.id_clients', '=', 'clients.id')
             ->where('id_campers', $id)->get();
 
@@ -102,7 +105,8 @@ class CamperController extends Controller
             ->with('fuels', $fuels)
             ->with('transmissions', $transmissions)
             ->with('booking_camper', $booking_camper)
-            ->with('camper_categories', $camper_categories);
+            ->with('camper_categories', $camper_categories)
+            ->with('gallery', $gallery);
     }
 
     /**
