@@ -230,22 +230,6 @@
                             {{ __('backend.dashboard.lbl') }}</span>
                         </a>
                     </li>
-                    @if(auth()->user()->role == 'super-admin')
-                    <li class="sidebar-item{{ $activePage == 'user' ? ' selected' : '' }}">
-                        <a class="sidebar-link sidebar-link" href="{{route('user.index')}}" aria-expanded="false">
-                        <i class="icon-user"></i>
-                            <span class="hide-menu"> {{ __('backend.menu_user_managment.lbl') }}</span>
-                        </a>
-                    </li>
-@endif
-
-
-                    <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}">
-                        <a class="sidebar-link sidebar-link" href="{{route('client.index')}}" aria-expanded="false">
-                        <i class="icon-people"></i>
-                            <span class="hide-menu"> {{ __('backend.menu_clients.lbl') }}</span>
-                        </a>
-                    </li>
                     <li class="sidebar-item{{ $activePage == 'camper' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('camper.index')}}" aria-expanded="false">
                         <i class="icon-grid"></i>
@@ -261,16 +245,22 @@
                             <span class="hide-menu">{{ __('backend.menu_booking.lbl') }}</span>
                         </a>
                     </li>
-                    <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}">
-                        <a class="sidebar-link sidebar-link" href="{{route('insurance.index')}}" aria-expanded="false">
-                        <i class="icon-book-open"></i>
-                            <span class="hide-menu">{{ __('backend.menu_insurances.lbl') }}</span>
-                        </a>
-                    </li>
                     <li class="sidebar-item{{ $activePage == 'billing' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('billing.index')}}" aria-expanded="false">
                             <i class="fas fa-money-bill-alt"></i>
                             <span class="hide-menu">{{ __('backend.billings.lbl') }}</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item{{ $activePage == 'client' ? ' selected' : '' }}">
+                        <a class="sidebar-link sidebar-link" href="{{route('client.index')}}" aria-expanded="false">
+                        <i class="icon-people"></i>
+                            <span class="hide-menu"> {{ __('backend.menu_clients.lbl') }}</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}">
+                        <a class="sidebar-link sidebar-link" href="{{route('insurance.index')}}" aria-expanded="false">
+                        <i class="icon-book-open"></i>
+                            <span class="hide-menu">{{ __('backend.menu_insurances.lbl') }}</span>
                         </a>
                     </li>
                     <li class="sidebar-item{{ $activePage == 'message' ? ' selected' : '' }}">
@@ -281,6 +271,14 @@
                             <span class="hide-menu">{{ __('backend.menu_message.lbl') }} </span>
                         </a>
                     </li>
+                    @if(auth()->user()->role == 'super-admin')
+                        <li class="sidebar-item{{ $activePage == 'user' ? ' selected' : '' }}">
+                            <a class="sidebar-link sidebar-link" href="{{route('user.index')}}" aria-expanded="false">
+                            <i class="icon-user"></i>
+                                <span class="hide-menu"> {{ __('backend.menu_user_managment.lbl') }}</span>
+                            </a>
+                        </li>
+                    @endif
                     <li class="sidebar-item {{ $activePage == 'profil' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' selected' : '' }}">
                         <a class="sidebar-link has-arrow" aria-expanded="false">
                         <i class="icon-settings"></i>
@@ -297,12 +295,16 @@
                                     </span></a>
                             </li>
                             @endif
-                            <li class="sidebar-item {{$activePage == 'licenceCategory' ? 'active' : ''}}"><a href="{{route('licenceCategory.index')}}" class="sidebar-link {{$activePage == 'licenceCategory' ? 'active' : ''}}"><span
-                                        class="hide-menu">{{ __('backend.menu_licence_category.lbl') }}
+                            <li class="sidebar-item {{$activePage == 'avatar' ? 'active' : ''}}"><a href="{{route('avatar.index')}}" class="sidebar-link {{$activePage == 'avatar' ? 'active' : ''}}"><span
+                                            class="hide-menu">  {{ __('backend.menu_avatars.lbl') }}
                                     </span></a>
                             </li>
                             <li class="sidebar-item {{$activePage == 'camperCategory' ? 'active' : ''}}"><a  href="{{route('camperCategory.index')}}" class="sidebar-link {{$activePage == 'camperCategory' ? 'active' : ''}}"><span
                                             class="hide-menu"> {{ __('backend.menu_camper_category.lbl') }}
+                                    </span></a>
+                            </li>
+                            <li class="sidebar-item {{$activePage == 'licenceCategory' ? 'active' : ''}}"><a href="{{route('licenceCategory.index')}}" class="sidebar-link {{$activePage == 'licenceCategory' ? 'active' : ''}}"><span
+                                        class="hide-menu">{{ __('backend.menu_licence_category.lbl') }}
                                     </span></a>
                             </li>
                             <li class="sidebar-item {{$activePage == 'insurance_company' ? 'active' : ''}}">
@@ -310,17 +312,17 @@
                                     <span class="hide-menu">{{ __('backend.menu_inssurance_providers.lbl') }}</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item {{$activePage == 'transmission' ? 'active' : ''}}"><a href="{{route('transmission.index')}}" class="sidebar-link {{$activePage == 'transmission' ? 'active' : ''}}"><span
-                                            class="hide-menu"> {{ __('backend.menu_transmissions.lbl') }}
-                                    </span></a>
+                            <li class="sidebar-item {{$activePage == 'fuel' ? 'active' : ''}}">
+                                <a href="{{route('fuel.index')}}" 
+                                   class="sidebar-link {{$activePage == 'fuel' ? 'active' : ''}}">
+                                       <span  class="hide-menu"> {{ __('backend.menu_fuels.lbl') }}</span>
+                                </a>
                             </li>
-                            <li class="sidebar-item sidebar-link {{$activePage == 'fuel' ? 'active' : ''}}"><a href="{{route('fuel.index')}}" class="sidebar-link {{$activePage == 'fuel' ? 'active' : ''}}"><span
-                                            class="hide-menu"> {{ __('backend.menu_fuels.lbl') }}
-                                    </span></a>
-                            </li>
-                            <li class="sidebar-item {{$activePage == 'avatar' ? 'active' : ''}}"><a href="{{route('avatar.index')}}" class="sidebar-link {{$activePage == 'avatar' ? 'active' : ''}}"><span
-                                            class="hide-menu">  {{ __('backend.menu_avatars.lbl') }}
-                                    </span></a>
+                            <li class="sidebar-item {{$activePage == 'transmission' ? 'active' : ''}}">
+                                <a href="{{route('transmission.index')}}" 
+                                    class="sidebar-link {{$activePage == 'transmission' ? 'active' : ''}}">
+                                        <span class="hide-menu"> {{ __('backend.menu_transmissions.lbl') }}</span>
+                                </a>
                             </li>
                             <li class="sidebar-item {{$activePage == 'backup' ? 'active' : ''}}"><a href="{{route('backup.index')}}" class="sidebar-link {{$activePage == 'backup' ? 'active' : ''}}">
                                 <span class="hide-menu"> {{ __('backend.menu_backup.lbl') }}

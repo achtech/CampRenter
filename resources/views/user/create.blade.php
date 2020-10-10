@@ -11,7 +11,7 @@
                         <h4 class="card-title">{{ __('backend.user_name.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('name','test',['class'=>'form-control','required'])}}
+                                {{Form::text('name','',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                         <h4 class="card-title">{{ __('backend.tel.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('telephone','test',['class'=>'form-control','required'])}}
+                                {{Form::text('telephone','',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                     <h4 class="card-title">{{ __('backend.email.lbl') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('email','test@test2.com',['class'=>'form-control','required'])}}
+                                {{Form::text('email','',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         <h4 class="card-title">{{ __('backend.adress.lbl') }} </h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                 {{Form::textarea('adress','test',['class'=>'form-control','required'])}} 
+                                 {{Form::textarea('adress','',['class'=>'form-control','required'])}} 
                             </div>
                         </div>
                     </div>

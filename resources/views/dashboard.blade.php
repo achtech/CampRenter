@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-4">
                         <div style="margin:10px">
-                                <a href="{{ route('insurance.create') }}" 
+                                <a href="{{ route('user.create') }}"
                                     class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
                                     style="position: absolute;bottom:10px;width: 90%;">{{ __('backend.dashboard_add_user.btn') }}</a>
                         </div>
@@ -135,7 +135,9 @@
 
                                         <td>{{$item->client_name}} {{$item->client_last_name}}</td>
                                         <td>{{$item->start_date}}</td>
-                                        <td><a href="{{ route('booking.index') }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
+                                        <td>
+                                        <a href="{{ route('booking.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                </tbody>
@@ -176,7 +178,9 @@
                                                 <td>{{$item->full_name}}</td>
                                                 <td>{{$item->telephone}}</td>
                                                 <td>{{$item->subject}}</td>
-                                                <td><a href="{{ route('message.index') }}">{{ __('backend.dashboard_view_message_details.lbl') }}</a></td>
+                                                <td>
+                                                <a href="{{ route('message.show',$item->id)}}" class="btn btn-success btn-sm rounded-0" data-toggle="tooltip" title="Detail Message"><i class="fa fa-newspaper"></i></a>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
