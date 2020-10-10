@@ -24,7 +24,7 @@ class BillingController extends Controller
     public function index(Request $request)
     {
         $todayDate = date("Y-m-d");
-        $datas = Billing::join('clients', 'billings.id_client', '=', 'clients.id')
+        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
             ->get();
         return view('billing.index')->with('datas', $datas)->with('todayDate', $todayDate);
         //Session::put('end_date', $todayDate);
