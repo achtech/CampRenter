@@ -43,7 +43,7 @@
                                     <td>{{$item->status_booking}}</td>
                                     <td>{{$item->status_billings}}</td>
                                     <td>
-                                        <a href="{{ route('booking.detail',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.check_equipment_detail.btn') }}</a>
+                                        <a href="{{ route('booking.detail',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.check_camper_detail.btn') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

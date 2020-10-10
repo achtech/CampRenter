@@ -1,21 +1,6 @@
 @extends('layout', ['activePage' => 'camper', 'titlePage' => __('backend.camper_managment.lbl')])
 @section('content')
 {{ Breadcrumbs::render('details_camper') }}
-<div class="page-breadcrumb">
-    <div class="row">
-        <div class="col-7 align-self-center">
-            <div class="d-flex align-items-center">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 p-0">
-                        <li class="breadcrumb-item"><a href="index.html">{{__('backend.camper_details.lbl')}}</a>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <div class="card">
     <div class="card-body">
@@ -346,7 +331,7 @@
                             <h4 class="card-title">{{__('backend.license_needed.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('license_needed',$data->license_needed,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('licence_needed',$data->licence_needed,['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -394,7 +379,13 @@
                             <h4 class="card-title">{{__('backend.availability.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('availability',$data->availability,['class'=>'form-control','required','disabled'])}}
+                                    @if($data->availability==0)
+                                        <i class="btn waves-effect waves-light btn-danger">Blocked</i>
+                                    @elseif($data->availability==1)
+                                        <i class="btn waves-effect waves-light btn-warning">Reserved</i>
+                                    @else
+                                        <i class="btn waves-effect waves-light btn-success">Available</i>
+                                    @endif
                                 </div>
                             </form>
                         </div>
@@ -406,7 +397,15 @@
                             <h4 class="card-title">{{__('backend.status.lbl')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('camper_status',$data->camper_status,['class'=>'form-control','required','disabled'])}}
+                                    @if($data->availability==0)
+                                        Blocked by Owner {{App\Http\Controllers\CamperController::getName('clients',$data->id_clients)}}
+                                    @elseif($data->availability==1)
+                                        Reserved by {{App\Http\Controllers\CamperController::getName('clients',$data->id_clients)}}
+                                        <br />From : {{App\Http\Controllers\CamperController::getBookingCamperStart($data->id)}}
+                                        <br />To  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp{{App\Http\Controllers\CamperController::getBookingCamperEnd($data->id)}}
+                                    @else
+                                        Available
+                                    @endif
                                 </div>
                             </form>
                         </div>
@@ -445,7 +444,10 @@
                                     <div class="carousel-inner" role="listbox">
                                         <div class="carousel-item active"> <img class="img-fluid"
                                                 src="../../assets/images/campers/{{$data->image}}" alt="First slide"> </div>
-
+                                                <div class="carousel-item "> <img class="img-fluid"
+                                                src="../../assets/images/campers/{{$data->image}}" alt="First slide"> </div>
+                                                <div class="carousel-item       "> <img class="img-fluid"
+                                                src="../../assets/images/campers/{{$data->image}}" alt="First slide"> </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                                         data-slide="prev"> <span class="carousel-control-prev-icon"

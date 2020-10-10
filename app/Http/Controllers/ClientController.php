@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Avatar;
 use App\Models\Booking;
 use App\Models\Camper;
+use App\Models\CamperCategory;
 use App\Models\Client;
+use App\Models\Fuel;
+use App\Models\LicenceCategory;
+use App\Models\Transmission;
+use App\Models\User;
+use App\Models\Avatar;
 use Illuminate\Http\Request;
+use DB;
 
 class ClientController extends Controller
 {
@@ -192,12 +198,64 @@ class ClientController extends Controller
         }
         return view('client.bookingDetail')->with('datas', $datas)->with('remaining_days', $remaining_days)->with('client', $client);
     }
+
     public static function getCurrentSolde($id)
     {
-        return $id;
+        $bookings = Booking::leftjoin('campers', 'Bookings.id_campers', '=', 'campers.id')
+        ->where('campers.id_clients', $id)
+        ->where('bookings.status_billings', 'Not Payed')
+        ->where('bookings.id_booking_status', '2')
+        ->select(DB::raw('sum((total/100) * (100-commission)) as total'));
+        return $bookings->first()->total ?? '0';
+    }
+
+    public static function toTransfertSolde($id)
+    {
+        $bookings = Booking::leftjoin('campers', 'Bookings.id_campers', '=', 'campers.id')
+        ->where('campers.id_clients', $id)
+        ->where('bookings.status_billings', 'Not Payed')
+        ->where('bookings.id_booking_status', '3')
+        ->select(DB::raw('sum((total/100) * (100-commission)) as total'));
+        return $bookings->first()->total ?? '0';
     }
     public static function getTotalsSolde($id)
     {
-        return $id;
+        $bookings = Booking::leftjoin('campers', 'Bookings.id_campers', '=', 'campers.id')
+        ->where('campers.id_clients', $id)
+        ->where('bookings.id_booking_status', '3')
+        ->select(DB::raw('sum((total/100) * (100-commission)) as total'));
+        return $bookings->first()->total ?? '0';
     }
+
+    public static function getCampUnitPart($id)
+    {
+        $bookings = Booking::leftjoin('campers', 'Bookings.id_campers', '=', 'campers.id')
+        ->where('campers.id_clients', $id)
+        ->where('bookings.id_booking_status','>=', '2')
+        ->select(DB::raw('sum((total/100) * commission) as total'));
+        return $bookings->first()->total ?? '0';
+    }
+    public function clientCampers($id)
+    {
+        $datas = Camper::where('id_clients',$id)->get();
+        $client = Client::find($id)->first();
+        $camper_categories = CamperCategory::find($datas[0]->id_camper_categories)->first();
+        $licenceCategories = LicenceCategory::find($datas[0]->id_licence_categories)->first();
+        $transmissions = Transmission::find($datas[0]->id_transmissions)->first();
+        $fuels = Fuel::find($datas[0]->id_fuels)->first();
+        return view('client.clientCampers')
+            ->with('datas', $datas)
+            ->with('client', $client)
+            ->with('camperCategory', $camper_categories)
+            ->with('licenceCategories', $licenceCategories)
+            ->with('fuels', $fuels)
+            ->with('transmissions', $transmissions);
+    }
+    public function clientBookings($id)
+    {
+        $datas = DB::table('v_bookings_details')->where('renter_id',$id)->get();
+        $client = Client::find($id);
+        return view('client.clientBookings')->with('datas', $datas)->with('client', $client);
+    }
+
 }

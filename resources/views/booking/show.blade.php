@@ -25,7 +25,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-4">{{ __('backend.booking_equipement.lbl') }} </label>
+                                <label class="col-md-4">{{ __('backend.booking_camper.lbl') }} </label>
                                 <div class="col-md-8">
                                     <div class="row">
                                         <div class="col-md-7">

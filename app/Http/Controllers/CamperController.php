@@ -84,23 +84,6 @@ class CamperController extends Controller
             ->with('transmissions', $transmissions);
     }
 
-    public function detailCamper($id)
-    {
-        $data = Camper::find($id);
-        $clients = Client::find($data->id_client) != null ? Client::find($data->id_client)->first() : new Client();
-        $camper_categories = CamperCategory::find($data->id_licence_categories)->first();
-        $licenceCategories = LicenceCategory::find($data->id_licence_categories)->first();
-        $transmissions = Transmission::find($data->id_transmissions) != null ? Transmission::find($data->id_transmissions)->first() : new Transmission();
-        $fuels = Fuel::find($data->id_fuels) != null ? Fuel::find($data->id_fuels)->first() : new Fuel();
-        return view('camper.detailCamper')
-            ->with('data', $data)
-            ->with('clients', $clients)
-            ->with('camperCategory', $camper_categories)
-            ->with('licenceCategories', $licenceCategories)
-            ->with('fuels', $fuels)
-            ->with('transmissions', $transmissions);
-    }
-
     public function detail($id)
     {
         $camper = Camper::find($id);

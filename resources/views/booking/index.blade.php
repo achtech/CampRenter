@@ -61,7 +61,7 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('backend.booking_renter.lbl') }}</th>
-                                    <th>{{ __('backend.booking_equipement.lbl') }}</th>
+                                    <th>{{ __('backend.booking_camper.lbl') }}</th>
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
@@ -94,7 +94,7 @@
                             <tfoot>
                                 <tr>
                                     <th>{{ __('backend.booking_renter.lbl') }}</th>
-                                    <th>{{ __('backend.booking_equipement.lbl') }}</th>
+                                    <th>{{ __('backend.booking_camper.lbl') }}</th>
                                     <th>{{ __('backend.booking_from.lbl') }}</th>
                                     <th>{{ __('backend.booking_to.lbl') }}</th>
                                     <th>{{ __('backend.booking_price_per_day.lbl') }}</th>

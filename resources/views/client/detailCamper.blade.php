@@ -1,6 +1,6 @@
 @extends('layout',['activePage' => 'client', 'titlePage' => __('backend.camper_detail.lbl').': '.strtoupper($client->client_last_name) . " " . $client->client_name]))
 @section('content')
-{{ Breadcrumbs::render('detail_camper',$client) }}
+{{ Breadcrumbs::render('clients_campers',$client) }}DDD
 <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">

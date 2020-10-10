@@ -371,7 +371,7 @@ return [
     /* ------------ Booking -----------*/
     'booking_management.lbl' => 'Booking Management',
     'booking_renter.lbl' => 'Renter',
-    'booking_equipement.lbl' => 'Equipement',
+    'booking_camper.lbl' => 'Equipement',
     'booking_from.lbl' => 'From',
     'booking_to.lbl' => 'To',
     'booking_list.lbl' => 'List of booking',

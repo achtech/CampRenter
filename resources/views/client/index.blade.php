@@ -1,20 +1,6 @@
 @extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management.lbl')])
 @section('content')
 {{ Breadcrumbs::render('client') }}
-<div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-7 align-self-center">
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item">
-                                    </li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -30,9 +16,11 @@
                                     <th>{{ __('backend.client_email.lbl') }}</th>
                                     <th>{{ __('backend.client_national_number.lbl') }}</th>
                                     <th>{{ __('backend.client_current_solde.lbl') }}</th>
+                                    <th>{{ __('backend.client_totransfert_solde.lbl') }}</th>
                                     <th>{{ __('backend.client_total_solde.lbl') }}</th>
+                                    <th>{{ __('backend.campunit_part.lbl') }}</th>
                                     <th>{{ __('backend.client_campers.lbl') }}</th>
-                                    <th>{{ __('backend.client_rents.lbl') }}</th>
+                                    <th>{{ __('backend.booking_title.lbl') }}</th>
                                     <th>{{ __('backend.client_action.lbl') }}</th>
                                 </tr>
                             </thead>
@@ -44,14 +32,15 @@
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->national_id}}</td>
                                     <td>{{App\Http\Controllers\ClientController::getCurrentSolde($item->id)}}</td>
+                                    <td>{{App\Http\Controllers\ClientController::toTransfertSolde($item->id)}}</td>
                                     <td>{{App\Http\Controllers\ClientController::getTotalsSolde($item->id)}}</td>
+                                    <td>{{App\Http\Controllers\ClientController::getCampUnitPart($item->id)}}</td>
                                     <td>
-                                        <a href="{{ route('camper.detailCamper',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.camper.btn') }}</a>
+                                        <a href="{{ route('client.campers',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.camper.btn') }}</a>
 
                                     </td>
                                     <td>
-                                        <a href="{{ route('camper.detailBooking',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.rentes.btn') }}</a>
-
+                                        <a href="{{ route('client.bookings',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.view_booking.btn') }}</a>
                                     </td>
                                     <td>
                                         <ul class="list-inline m-0">
@@ -122,7 +111,6 @@
         </div>
     </div>
 </div>
-@endsection
 <script>
 
 
@@ -138,3 +126,4 @@ $(document).on("click", "#blockClient", function () {
 
 });
 </script>
+@endsection

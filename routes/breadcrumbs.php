@@ -38,9 +38,14 @@ Breadcrumbs::for('detail_client', function ($trail, $client) {
     $trail->push('Detail Client', route('client.detail', $client->id));
 });
 //detail camper
-Breadcrumbs::for('detail_camper', function ($trail, $client) {
+Breadcrumbs::for('clients_campers', function ($trail, $client) {
     $trail->parent('client');
-    $trail->push('Detail Camper', route('client.camperDetail', $client->id));
+    $trail->push('Campers of : '.$client->client_name." ".$client->client_last_name , route('client.campers', $client->id));
+});
+//detail camper
+Breadcrumbs::for('client_bookings', function ($trail, $client) {
+    $trail->parent('client');
+    $trail->push('Bookings of : '.$client->client_name." ".$client->client_last_name , route('client.bookings', $client->id));
 });
 
 //rent detail

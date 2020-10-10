@@ -394,7 +394,7 @@ return [
     /* ------------ Booking -----------*/
     'booking_management.lbl' => 'Booking Management',
     'booking_renter.lbl' => 'Renter',
-    'booking_equipement.lbl' => 'Equipement',
+    'booking_camper.lbl' => 'Equipement',
     'booking_from.lbl' => 'From',
     'booking_to.lbl' => 'To',
     'booking_list.lbl' => 'List of booking',
@@ -424,12 +424,14 @@ return [
     'current_amount.lbl' => 'Current Amount',
     'confirmed_amount.lbl' => 'Confirmed Amount',
     'detail.lbl' => 'Detail',
-
+    'client_totransfert_solde.lbl' => 'To transfert',
+    'campunit_part.lbl' => 'Campunit part',
     /*----------------BREADCRUMB ----------*/
     'users.breadcrumb' => 'Users',
     'no_data_to_confirm.lbl' => 'No campers to confirm',
     'booking_status_booking.lbl' => 'Booking Status',
     'booking_status_billing.lbl' => 'Billing Status',
     'renter.lbl' => 'Renter',
+    'view_booking.btn' => 'View bookings'
 
 ];

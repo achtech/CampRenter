@@ -30,25 +30,19 @@
                                     <th>{{ __('backend.camper_location.lbl') }}</th>
                                     <th>{{ __('backend.camper_price_per_day.lbl') }}</th>
                                     <th>{{ __('backend.camper_availability.lbl') }}</th>
-                                    <th>{{ __('backend.camper_kilometres.lbl') }}</th>
-                                    <th>{{ __('backend.camper_model.lbl') }}</th>
-                                    <th>{{ __('backend.vehicle_licence.lbl') }}</th>
                                     <th>{{ __('backend.client_action.lbl') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $item)
+                            @foreach($campers as $item)
                                 <tr>
                                     <td>{{$item->camper_name}}</td>
-                                    <td >{{$item->description_equipment}}</td>
+                                    <td >{{$item->description_camper}}</td>
                                     <td>{{$item->location}}</td>
                                     <td>{{$item->price_per_day}}</td>
                                     <td>{{$item->availability}}</td>
-                                    <td>{{$item->included_kilometres}}</td>
-                                    <td>{{$item->model}}</td>
-                                    <td>{{$item->vehicle_licence}}</td>
                                     <td>
-                                        <a href="{{ route('equipment.detail',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.check_equipment_detail.btn') }}</a>
+                                        <a href="{{ route('camper.detail',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.detail.btn') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach
