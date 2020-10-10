@@ -281,48 +281,48 @@
                             <span class="hide-menu">{{ __('backend.menu_message.lbl') }} </span>
                         </a>
                     </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                    <li class="sidebar-item {{ $activePage == 'profil' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' selected' : '' }}">
+                        <a class="sidebar-link has-arrow" aria-expanded="false">
                         <i class="icon-settings"></i>
                             <span class="hide-menu">{{ __('backend.menu_settings.lbl') }}</span>
                         </a>
-                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            <li class="sidebar-item"><a href="{{route('user.profile')}}" class="sidebar-link"><span
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line {{ $activePage == 'profil' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' in' : '' }}">
+                            <li class="sidebar-item {{$activePage == 'profil' ? 'active' : ''}}"><a href="{{route('user.profile')}}" class="sidebar-link {{$activePage == 'profil' ? 'active' : ''}}"><span
                                         class="hide-menu"> {{ __('backend.menu_profil.lbl') }}
                                         </span></a>
                             </li>
                             @if(auth()->user()->role == 'super-admin')
-                            <li class="sidebar-item"><a href="{{route('promotion.index')}}" class="sidebar-link"><span
+                            <li class="sidebar-item {{$activePage == 'promotion' ? 'active' : ''}}"><a href="{{route('promotion.index')}}" class="sidebar-link {{$activePage == 'promotion' ? 'active' : ''}}"><span
                                 class="hide-menu">{{ __('backend.menu_promotion.lbl') }}
                                     </span></a>
                             </li>
                             @endif
-                            <li class="sidebar-item"><a href="{{route('licenceCategory.index')}}" class="sidebar-link"><span
+                            <li class="sidebar-item {{$activePage == 'licenceCategory' ? 'active' : ''}}"><a href="{{route('licenceCategory.index')}}" class="sidebar-link {{$activePage == 'licenceCategory' ? 'active' : ''}}"><span
                                         class="hide-menu">{{ __('backend.menu_licence_category.lbl') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a  href="{{route('camperCategory.index')}}" class="sidebar-link"><span
+                            <li class="sidebar-item {{$activePage == 'camperCategory' ? 'active' : ''}}"><a  href="{{route('camperCategory.index')}}" class="sidebar-link {{$activePage == 'camperCategory' ? 'active' : ''}}"><span
                                             class="hide-menu"> {{ __('backend.menu_camper_category.lbl') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item">
-                                <a href="{{route('inssuranceCompany.index')}}" class="sidebar-link">
+                            <li class="sidebar-item {{$activePage == 'insurance_company' ? 'active' : ''}}">
+                                <a href="{{route('inssuranceCompany.index')}}" class="sidebar-link {{$activePage == 'insurance_company' ? 'active' : ''}}">
                                     <span class="hide-menu">{{ __('backend.menu_inssurance_providers.lbl') }}</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item"><a href="{{route('transmission.index')}}" class="sidebar-link"><span
+                            <li class="sidebar-item {{$activePage == 'transmission' ? 'active' : ''}}"><a href="{{route('transmission.index')}}" class="sidebar-link {{$activePage == 'transmission' ? 'active' : ''}}"><span
                                             class="hide-menu"> {{ __('backend.menu_transmissions.lbl') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="{{route('fuel.index')}}" class="sidebar-link"><span
+                            <li class="sidebar-item sidebar-link {{$activePage == 'fuel' ? 'active' : ''}}"><a href="{{route('fuel.index')}}" class="sidebar-link {{$activePage == 'fuel' ? 'active' : ''}}"><span
                                             class="hide-menu"> {{ __('backend.menu_fuels.lbl') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="{{route('avatar.index')}}" class="sidebar-link"><span
+                            <li class="sidebar-item {{$activePage == 'avatar' ? 'active' : ''}}"><a href="{{route('avatar.index')}}" class="sidebar-link {{$activePage == 'avatar' ? 'active' : ''}}"><span
                                             class="hide-menu">  {{ __('backend.menu_avatars.lbl') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="{{route('backup.index')}}" class="sidebar-link">
+                            <li class="sidebar-item {{$activePage == 'backup' ? 'active' : ''}}"><a href="{{route('backup.index')}}" class="sidebar-link {{$activePage == 'backup' ? 'active' : ''}}">
                                 <span class="hide-menu"> {{ __('backend.menu_backup.lbl') }}
                                     </span></a>
                             </li>

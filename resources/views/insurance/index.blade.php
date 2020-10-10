@@ -18,7 +18,6 @@
                                     <th>{{ __('backend.description.lbl') }} EN</th>
                                     <th>{{ __('backend.description.lbl') }} FR</th>
                                     <th>{{ __('backend.insurance_company.lbl') }}</th>
-                                    <th>{{ __('backend.camper_name.lbl') }}</th>
                                     <th>{{ __('backend.price_per_day.lbl') }}</th>
                                      <th>{{ __('backend.action.btn') }}</th>
                                 </tr>
@@ -30,7 +29,6 @@
                                     <td>{{$item->description_en}}</td>
                                     <td>{{$item->description_fr}}</td>
                                     <td>{{App\Http\Controllers\InsuranceController::getLabel('insurance_companies',$item->id_insurance_companies)}}</td>
-                                    <td>$item->id_camper_name}}</td>
                                     <td>{{$item->price_per_day}}</td>
                                    <td>
                                         <ul class="list-inline m-0">
@@ -70,7 +68,6 @@
                                     <th>{{ __('backend.description.lbl') }} EN</th>
                                     <th>{{ __('backend.description.lbl') }} FR</th>
                                     <th>{{ __('backend.insurance_company.lbl') }}</th>
-                                    <th>{{ __('backend.camper_name.lbl') }}</th>
                                     <th>{{ __('backend.price_per_day.lbl') }}</th>
                                     <th>{{ __('backend.action.btn') }}</th>
                                 </tr>
