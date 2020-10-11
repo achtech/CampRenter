@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBillingsTable extends Migration
+class CreateBillingBookingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateBillingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('billings', function (Blueprint $table) {
+        Schema::create('billing_bookings', function (Blueprint $table) {
             $table->id();
-
-            $table->string('iban')->nullable();
-            $table->string('billings_methods')->nullable();
-            $table->double('total')->nullable();
-            $table->string('status')->nullable();
-            $table->date('payment_date')->nullable();
-            $table->unsignedBigInteger('id_clients')->nullable();
+            $table->unsignedBigInteger('id_billings')->nullable();
+            $table->unsignedBigInteger('id_bookings')->nullable();
 
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
@@ -29,7 +24,8 @@ class CreateBillingsTable extends Migration
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
 
-            $table->foreign('id_clients')->references('id')->on('clients');
+            $table->foreign('id_billings')->references('id')->on('billings');
+            $table->foreign('id_bookings')->references('id')->on('bookings');
         });
     }
 
@@ -40,6 +36,6 @@ class CreateBillingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('billings');
+        Schema::dropIfExists('billing_bookings');
     }
 }

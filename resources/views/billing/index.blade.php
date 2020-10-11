@@ -3,37 +3,76 @@
 {{ Breadcrumbs::render('billing') }}
 <div class="container-fluid">
     {{ Form::open(['action'=>'App\Http\Controllers\BillingController@filter','autocomplete'=>'off','method'=>'GET']) }}
-    <div class="card">
-        <div class="card-body">
-    <fieldset class="border p-2">
-        <legend  class="w-auto">{{ __('backend.billing_date_filter.lbl') }}</legend>
-    <div class="form-group row">
-        <div class="col-3">
-            <label style="white-space: nowrap;" for="example-date-input" class="col-2 col-form-label">{{ __('backend.billing_date_from.lbl') }}</label>
-            {{ Form::date('start_date', $startDate?? $todayDate,['class'=>'form-control','required','id'=>'example-date-input'])}}
-        </div>
-   
-        <div class="col-3">
-            <label style="white-space: nowrap;"  for="example-date-input" class="col-2 col-form-label">{{ __('backend.billing_date_to.lbl') }}</label>
-            {{ Form::date('end_date', $end_date?? $todayDate,['class'=>'form-control','required','id'=>'example-date-input'])}}
-        </div>
-        <div class="col-3">
-            {{Form::submit('Apply',['style' => 'width:200px;bottom: 3px;position: absolute;','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class','name' => 'action'])}}
-        </div>
-        
- 
-        <div class="col-1"></div>
-        <div class="col-2">
-        <a href="{{ route('excel-export') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                style="width:200px;bottom: 3px;position: absolute;"><i class="far fa-file-excel"></i>
-                {{ __('backend.export.btn') }}</a>
-      </div>
-    </div>
-    </fieldset>
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.owner.lbl') }}</h4>
+                        <div class="form-group mb-4">
+                            <select class="custom-select mr-sm-2" id="ownerId" name="ownerId">
+                                <option selected>{{ __('backend.booking_select_choose.lbl') }}</option>
+                                @foreach($clients as $item)
+                                    <option value="{{$item->id}}" @if($item->id==$renter) selected @endif>{{$item->client_name}} {{$item->client_last_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.booking_from.lbl') }}</h4>
+                        <div class="form-group">
+                            <input type="date" class="form-control"  id="start_date"  name="start_date" value="{{ $start_date ?? '' }}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.booking_to.lbl') }}</h4>
+                        <div class="form-group">             
+                            <input type="date" class="form-control"  id="end_date" name="end_date"  value="{{ $end_date ?? '' }}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.status.lbl') }}</h4>
+                        <div class="form-group">           
+                            {{ Form::radio('status','1', $status==1,['id'=>'status-0'])}}
+                            {{ Form::label('status-0', 'Payed') }} 
+                            {{ Form::radio('status','2',$status==2,['id'=>'status-1'])}}
+                            {{ Form::label('status-1', 'Not payed') }} 
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4"></div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="text-right">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="text-right">
+                    <button style="width:200px;" type="submit" class="btn btn-info">Search</button>
+                    <a href="{{ route('excel-export') }}" 
+                        class="btn btn-info" 
+                        style="width:200px;">
+                            <i class="far fa-file-excel"></i>
+                            {{ __('backend.export.btn') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+            <br />
     {{ Form::close() }}
-    <br>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -45,7 +84,7 @@
                                 <tr>
                                     <th>{{ __('backend.owner_name.lbl') }} </th>
                                     <th>{{ __('backend.amount.lbl') }} </th>
-                                    <th>{{ __('backend.date.lbl') }}</th>
+                                    <th>{{ __('backend.payment_date.lbl') }}</th>
                                     <th>{{ __('backend.status.lbl') }}</th>
                                     <th>{{ __('backend.last_booking.lbl') }} </th>
                                 </tr>
@@ -54,12 +93,10 @@
                                 @foreach($datas as $item)
                                 <tr>
                                     <td>{{$item->client_name}} {{$item->client_last_name}}</td>
-                                    <td>{{$item->current_amount}}</td>
-                                    <td>{{$item->created_at}}</td>
-                                    <td>{{$item->status}}</td>
-                                    <td>
-                                    <a href="{{ route('billing.bookings',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.dashboard_last_booking.lbl') }}</a>
-                                    </td>
+                                    <td>{{$item->total}}</td>
+                                    <td>{{$item->payment_date}}</td>
+                                    <td>@if($item->status==0) <span style="color:red">{{__('backend.not_payed.lbl')}}</span> @else <span style="color:green">{{__('backend.payed.lbl')}}</span> @endif</td> 
+                                    <td><a href="{{ route('billing.bookings',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.dashboard_last_booking.lbl') }}</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

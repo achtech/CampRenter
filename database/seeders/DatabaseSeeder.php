@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             BookingsSeeder::class,
             ChatsSeeder::class,
             BillingsSeeder::class,
+            BillingsBookingsSeeder::class,
 
         ]);
 

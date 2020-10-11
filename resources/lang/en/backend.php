@@ -3,6 +3,7 @@
 return [
     'hello.lbl' => 'Hello',
     'owners.lbl' => 'Owners',
+    'owner.lbl' => 'Owner',
     'new_owner.btn' => 'New owner',
     'owner_list.lbl' => 'List of owners',
     'operation.lbl' => 'Operation',
@@ -397,7 +398,7 @@ return [
     /* ------------ Booking -----------*/
     'booking_management.lbl' => 'Booking Management',
     'booking_renter.lbl' => 'Renter',
-    'booking_camper.lbl' => 'Equipement',
+    'booking_camper.lbl' => 'Camper',
     'booking_from.lbl' => 'From',
     'booking_to.lbl' => 'To',
     'booking_list.lbl' => 'List of booking',
@@ -435,6 +436,10 @@ return [
     'booking_status_booking.lbl' => 'Booking Status',
     'booking_status_billing.lbl' => 'Billing Status',
     'renter.lbl' => 'Renter',
-    'view_booking.btn' => 'View bookings'
+    'view_booking.btn' => 'View bookings',
+    'amount.lbl' => 'Amount',
+    'payment_date.lbl' => 'Payment date',
+    'payed.lbl' => 'Payed',
+    'not_payed.lbl' => 'Not payed',
 
 ];

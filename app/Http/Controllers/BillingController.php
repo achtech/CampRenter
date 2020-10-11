@@ -7,7 +7,9 @@ namespace App\Http\Controllers;
 use App\Exports\BillingExport;
 use App\Models\Avatars;
 use App\Models\Billing;
+use App\Models\Client;
 use App\Models\Booking;
+use App\Models\BillingBookings;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
@@ -35,17 +37,33 @@ class BillingController extends Controller
     public function index(Request $request)
     {
         $todayDate = date("Y-m-d");
+        $clients = Client::all();
         $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
-            ->get();
-        return view('billing.index')->with('datas', $datas)->with('todayDate', $todayDate);
+        ->select('Billings.id as id' , 'Billings.id', 'Billings.iban', 'Billings.billings_methods', 'Billings.total', 'Billings.status', 'Billings.payment_date', 'Billings.id_clients','clients.client_name', 'clients.client_last_name')    
+        ->get();
+        return view('billing.index')
+                ->with('datas', $datas)
+                ->with('clients', $clients)
+                ->with('renter', '')
+                ->with('todayDate', $todayDate);
     }
 
     public function bookings($id)
     {
         $todayDate = date("Y-m-d");
-        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
-            ->get();
-        return view('billing.index')->with('datas', $datas)->with('todayDate', $todayDate);
+        $datas = DB::table('v_bookings_details')
+            ->whereIn('id', function ($query) use ($id) {
+                $query->select(['id_bookings'])
+                    ->from((new BillingBookings)->getTable())
+                    ->where('id_billings', $id);
+            })->get();
+
+        $clients = Client::all();
+        return view('billing.billing_bookings')
+                ->with('datas', $datas)
+                ->with('clients', $clients)
+                ->with('renter', '')
+                ->with('todayDate', $todayDate);
     }
     public function export(Request $request)
     {
@@ -54,11 +72,8 @@ class BillingController extends Controller
         $current_date = date("Y-m-d");
         //$end_date = $request->end_date ?? '';
         $end_date = Session::get('end_date');
-        $datas = Billing::join('bookings', 'billings.id_bookings', '=', 'bookings.id')
-            ->join('clients', 'billings.id_clients', '=', 'clients.id')
-            ->where('end_date', '=', $end_date)
-            ->where('end_date', '<', $current_date)->get();
-
+        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
+            ->where('status', '=', 0);
         $headers = array(
             "Content-type"        => "text/csv",
             "Content-Disposition" => "attachment; filename=$fileName",
@@ -89,20 +104,39 @@ class BillingController extends Controller
         return response()->stream($callback, 200, $headers);
         // return Excel::download(new BillingExport, 'billings.xlsx');
     }
+
     public function filter(Request $request)
     {
         $todayDate = date("Y-m-d");
+        $clients = Client::all();
         $startDate = $request->start_date ?? '';
         $end_date = $request->end_date ?? '';
+        $status = $request->status ?? '';
+        $client = $request->ownerId ??'';
+        Session::put('startDate', $startDate);
         Session::put('end_date', $end_date);
-        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
-            ->join('bookings', 'billings.id_bookings', '=', 'bookings.id')
-            ->where('start_date', '>=', $startDate)
-            ->where('end_date', '<=', $end_date)
-            ->get();
+        Session::put('status', $status);
+        Session::put('client', $client);
+        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id');
+        if(!empty($startDate)){
+            $datas = $datas->whereDate('payment_date', '>=', $startDate);
+        }
+        if(!empty($endDate)){
+            $datas = $datas->whereDate('payment_date', '<=', $endDate);
+        }
+        if(!empty($status)){
+            $datas = $datas->where('billings.status', $status ==2 ? 1 : 0);
+        }
+        if(!empty($client) && $client!='Choose'){
+            $datas = $datas->where('billings.id_clients', $client);
+        }
+        $datas = $datas->get();
         return view('billing.index')
             ->with('datas', $datas)
-            ->with('startDate', $startDate)
+            ->with('clients', $clients)
+            ->with('status', $status)
+            ->with('renter', $client)
+            ->with('start_date', $startDate)
             ->with('end_date', $end_date)
             ->with('todayDate', $todayDate);
     }

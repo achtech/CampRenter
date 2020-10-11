@@ -2,12 +2,12 @@
 @section('content')
 {{ Breadcrumbs::render('booking') }}
 <div class="container-fluid ">
-<form method="GET" action="{{ route('booking.search') }}">
-<div class="row">
-        <div class="col-sm-12 col-md-4 col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.renter.lbl') }}</h4>
+    <form method="GET" action="{{ route('booking.search') }}">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.renter.lbl') }}</h4>
                         <div class="form-group mb-4">
                             <select class="custom-select mr-sm-2" id="renterId" name="renterId">
                                 <option selected>{{ __('backend.booking_select_choose.lbl') }}</option>
@@ -16,40 +16,39 @@
                                 @endforeach
                             </select>
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-12 col-md-4 col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.booking_from.lbl') }}</h4>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.booking_from.lbl') }}</h4>
                         <div class="form-group">
                             <input type="date" class="form-control"  id="start_date"  name="start_date" value="{{ $start_date ?? '' }}"/>
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-12 col-md-4 col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.booking_to.lbl') }}</h4>
-                        <div class="form-group">
-                           
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.booking_to.lbl') }}</h4>
+                        <div class="form-group">             
                             <input type="date" class="form-control"  id="end_date" name="end_date"  value="{{ $end_date ?? '' }}" />
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
-   </div>
-   <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6"></div>
-        <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="text-right">
-                <button type="submit" class="btn btn-info">Search</button>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6"></div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="text-right">
+                    <button type="submit" class="btn btn-info">Search</button>
+                </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
     <div class="row space-top">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="card">

@@ -53,7 +53,7 @@ class CamperImagesSeeder extends Seeder
             ),
             4 => array(
                 'id' => 5,
-                'image' => 'camp5.jpg',
+                'image' => 'camp5.png',
                 'id_campers' => '2',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
@@ -62,7 +62,7 @@ class CamperImagesSeeder extends Seeder
             ),
             5 => array(
                 'id' => 6,
-                'image' => 'camp6.jpg',
+                'image' => 'camp6.png',
                 'id_campers' => '2',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
