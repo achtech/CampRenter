@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'fuel', 'titlePage' => __('backend.fuel_managment.lbl')])
+@extends('layout', ['activePage' => 'fuel', 'titlePage' => __('backend.fuel_managment')])
 @section('content')
 {{ Breadcrumbs::render('fuel') }}
 <div class="container-fluid">
@@ -8,15 +8,15 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <a href="{{ route('fuel.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                            style="width:200px;margin:0px 10px">{{ __('backend.new_fuel.btn') }}</a>
+                            style="width:200px;margin:0px 10px">{{ __('backend.new_fuel') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.label.lbl') }} DE</th>
-                                    <th>{{ __('backend.label.lbl') }} EN</th>
-                                    <th>{{ __('backend.label.lbl') }} FR</th>
-                                     <th>{{ __('backend.action.btn') }}</th>
+                                    <th>{{ __('backend.label') }} DE</th>
+                                    <th>{{ __('backend.label') }} EN</th>
+                                    <th>{{ __('backend.label') }} FR</th>
+                                     <th>{{ __('backend.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,7 +42,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                <p>{{ __('backend.message_delete_fuel.lbl') }}</p>
+                <p>{{ __('backend.message_delete_fuel') }}</p>
                 </div>
                 <div class="modal-footer">
                     <a href="{{ route('fuel.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
@@ -59,10 +59,10 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.label.lbl') }} DE</th>
-                                    <th>{{ __('backend.label.lbl') }} EN</th>
-                                    <th>{{ __('backend.label.lbl') }} FR</th>
-                                    <th>{{ __('backend.action.btn') }}</th>
+                                <th>{{ __('backend.label') }} DE</th>
+                                    <th>{{ __('backend.label') }} EN</th>
+                                    <th>{{ __('backend.label') }} FR</th>
+                                    <th>{{ __('backend.action') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

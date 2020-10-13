@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance_managment.lbl')])
+@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance_managment')])
 @section('content')
 {{ Breadcrumbs::render('insurance') }}
 <div class="container-fluid">
@@ -9,17 +9,17 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <a href="{{ route('insurance.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
-                            style="width:200px;margin:0px 10px">{{ __('backend.new_insurance.btn') }}</a>
+                            style="width:200px;margin:0px 10px">{{ __('backend.new_insurance') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.description.lbl') }} DE</th>
-                                    <th>{{ __('backend.description.lbl') }} EN</th>
-                                    <th>{{ __('backend.description.lbl') }} FR</th>
-                                    <th>{{ __('backend.insurance_company.lbl') }}</th>
-                                    <th>{{ __('backend.price_per_day.lbl') }}</th>
-                                     <th>{{ __('backend.action.btn') }}</th>
+                                    <th>{{ __('backend.description') }} DE</th>
+                                    <th>{{ __('backend.description') }} EN</th>
+                                    <th>{{ __('backend.description') }} FR</th>
+                                    <th>{{ __('backend.insurance_company') }}</th>
+                                    <th>{{ __('backend.price_per_day') }}</th>
+                                     <th>{{ __('backend.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,7 +47,7 @@
                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                <p>{{ __('backend.message_delete_insurance.lbl') }}</p>
+                                                                <p>{{ __('backend.message_delete_insurance') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <a href="{{ route('insurance.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
@@ -64,12 +64,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.description.lbl') }} DE</th>
-                                    <th>{{ __('backend.description.lbl') }} EN</th>
-                                    <th>{{ __('backend.description.lbl') }} FR</th>
-                                    <th>{{ __('backend.insurance_company.lbl') }}</th>
-                                    <th>{{ __('backend.price_per_day.lbl') }}</th>
-                                    <th>{{ __('backend.action.btn') }}</th>
+                                <th>{{ __('backend.description') }} DE</th>
+                                    <th>{{ __('backend.description') }} EN</th>
+                                    <th>{{ __('backend.description') }} FR</th>
+                                    <th>{{ __('backend.insurance_company') }}</th>
+                                    <th>{{ __('backend.price_per_day') }}</th>
+                                    <th>{{ __('backend.action') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

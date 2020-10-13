@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'client', 'titlePage' => __('backend.client_management.lbl')])
+@extends('layout', ['activePage' => 'client', 'titlePage' => __('backend.client_management')])
 @section('content')
 {{ Breadcrumbs::render('clients_campers',$client) }}
 <div class="container-fluid">
@@ -11,12 +11,12 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.image.lbl') }}</th>
-                                    <th>{{ __('backend.camper_name.lbl') }}</th>
-                                    <th>{{ __('backend.category.lbl') }}</th>
-                                    <th>{{ __('backend.availability.lbl') }}</th>
-                                    <th>{{ __('backend.status.lbl') }}</th>
-                                    <th>{{ __('backend.confirmed.lbl') }}</th>
+                                    <th>{{ __('backend.image') }}</th>
+                                    <th>{{ __('backend.camper_name') }}</th>
+                                    <th>{{ __('backend.category') }}</th>
+                                    <th>{{ __('backend.availability') }}</th>
+                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.confirmed') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,12 +57,12 @@
                                 @endforeach
                             </tbody>
                             <tfoot>
-                            <th>{{ __('backend.image.lbl') }}</th>
-                                    <th>{{ __('backend.camper_name.lbl') }}</th>
-                                    <th>{{ __('backend.category.lbl') }}</th>
-                                    <th>{{ __('backend.availability.lbl') }}</th>
-                                    <th>{{ __('backend.status.lbl') }}</th>
-                                    <th>{{ __('backend.confirmed.lbl') }}</th>
+                            <th>{{ __('backend.image') }}</th>
+                                    <th>{{ __('backend.camper_name') }}</th>
+                                    <th>{{ __('backend.category') }}</th>
+                                    <th>{{ __('backend.availability') }}</th>
+                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.confirmed') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

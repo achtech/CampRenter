@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance.lbl')])
+@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance')])
 @section('content')
 <div class="page-breadcrumb">
                 <div class="row">

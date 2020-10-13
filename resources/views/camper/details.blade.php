@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'camper', 'titlePage' => __('backend.camper_managment.lbl')])
+@extends('layout', ['activePage' => 'camper', 'titlePage' => __('backend.camper_managment')])
 @section('content')
 {{ Breadcrumbs::render('details_camper') }}
 
@@ -40,7 +40,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.camper_name.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.camper_name')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('camper_name',$data->camper_name,['class'=>'form-control','required','disabled'])}}
@@ -52,7 +52,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.client.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.client')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('id_clients',$clients->client_name,['class'=>'form-control','required','disabled'])}}
@@ -64,7 +64,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.brand.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.brand')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('brand',$data->brand,['class'=>'form-control','required','disabled'])}}
@@ -76,7 +76,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.model.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.model')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('model',$data->model,['class'=>'form-control','required','disabled'])}}
@@ -88,7 +88,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.licence_categories.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.licence_categories')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('id_licence_categories',$licenceCategories->label_en,['class'=>'form-control','required','disabled'])}}
@@ -100,7 +100,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.value_of_vehicle.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.value_of_vehicle')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('value_of_vehicle',$data->value_of_vehicule,['class'=>'form-control','required','disabled'])}}
@@ -112,7 +112,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.license_plate_number.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.license_plate_number')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('license_plate_number',$data->license_plate_number,['class'=>'form-control','required','disabled'])}}
@@ -124,7 +124,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.seat_number.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.seat_number')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('seat_number',$data->seat_number,['class'=>'form-control','required','disabled'])}}
@@ -136,7 +136,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.sleeping_places.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.sleeping_places')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('sleeping_places',$data->sleeping_places,['class'=>'form-control','required','disabled'])}}
@@ -148,7 +148,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.category.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.category')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('id_camper_categories',$camper_categories->label_en,['class'=>'form-control','required','disabled'])}}
@@ -160,7 +160,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.transmissions.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.transmissions')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('id_transmissions',$transmissions->label_en,['class'=>'form-control','required','disabled'])}}
@@ -172,7 +172,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.vehicle_licence.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.vehicle_licence')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('vehicle_licence',$data->vehicle_licence,['class'=>'form-control','required','disabled'])}}
@@ -184,7 +184,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.length.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.length')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('length',$data->length,['class'=>'form-control','required','disabled'])}}
@@ -196,7 +196,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.width.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.width')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('width',$data->width,['class'=>'form-control','required','disabled'])}}
@@ -208,7 +208,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.height.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.height')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('height',$data->height,['class'=>'form-control','required','disabled'])}}
@@ -220,7 +220,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.description.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.description')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::textArea('description',$data->description_camper,['class'=>'form-control','required','disabled'])}}
@@ -232,7 +232,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.animal_description.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.animal_description')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::textArea('animal_description',$data->animal_description,['class'=>'form-control','required','disabled'])}}
@@ -244,7 +244,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.licence_age_desc.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.licence_age_desc')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::textArea('licence_age_desc',$data->licence_age_desc,['class'=>'form-control','required','disabled'])}}
@@ -256,7 +256,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.fuels.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.fuels')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('id_fuels',$fuels->label_en,['class'=>'form-control','required','disabled'])}}
@@ -268,7 +268,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.price_per_day.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.price_per_day')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('price_per_day',$data->price_per_day,['class'=>'form-control','required','disabled'])}}
@@ -280,7 +280,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.minimal_rent_days.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.minimal_rent_days')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('minimal_rent_days',$data->minimal_rent_days,['class'=>'form-control','required','disabled'])}}
@@ -292,7 +292,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.included_kilometres.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.included_kilometres')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('included_kilometres',$data->included_kilometres,['class'=>'form-control','required','disabled'])}}
@@ -304,7 +304,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.minimum_age.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.minimum_age')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('minimum_age',$data->minimum_age,['class'=>'form-control','required','disabled'])}}
@@ -316,7 +316,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.animals_allowed.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.animals_allowed')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('animals_allowed',$data->animals_allowed,['class'=>'form-control','required','disabled'])}}
@@ -328,7 +328,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.license_needed.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.license_needed')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('licence_needed',$data->licence_needed,['class'=>'form-control','required','disabled'])}}
@@ -340,7 +340,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.licence_desc.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.licence_desc')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('licence_needed_desc',$data->licence_needed_desc,['class'=>'form-control','required','disabled'])}}
@@ -352,7 +352,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.license_age.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.license_age')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('license_age',$data->license_age,['class'=>'form-control','required','disabled'])}}
@@ -364,7 +364,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.smoking_allowed.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.smoking_allowed')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('smoking_allowed',$data->smoking_allowed,['class'=>'form-control','required','disabled'])}}
@@ -376,7 +376,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.availability.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.availability')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                     @if($data->availability==0)
@@ -394,7 +394,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.status.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.status')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                     @if($data->availability==0)
@@ -414,7 +414,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.confirmed.lbl')}}</h4>
+                            <h4 class="card-title">{{__('backend.confirmed')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                         @if($data->is_confirmed==1)
@@ -470,11 +470,11 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.booking_renter.lbl') }}</th>
-                                    <th>{{ __('backend.booking_from.lbl') }}</th>
-                                    <th>{{ __('backend.booking_to.lbl') }}</th>
-                                    <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
-                                    <th>{{ __('backend.booking_total_price.lbl') }}</th>
+                                    <th>{{ __('backend.booking_renter') }}</th>
+                                    <th>{{ __('backend.booking_from') }}</th>
+                                    <th>{{ __('backend.booking_to') }}</th>
+                                    <th>{{ __('backend.booking_price_per_day') }}</th>
+                                    <th>{{ __('backend.booking_total_price') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

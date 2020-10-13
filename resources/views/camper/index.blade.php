@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'camper', 'titlePage' => __('backend.camper_managment.lbl')])
+@extends('layout', ['activePage' => 'camper', 'titlePage' => __('backend.camper_managment')])
 @section('content')
 {{ Breadcrumbs::render('camper') }}
 <div class="container-fluid">
@@ -11,14 +11,14 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.image.lbl') }}</th>
-                                    <th>{{ __('backend.camper_name.lbl') }}</th>
-                                    <th>{{ __('backend.client.lbl') }}</th>
-                                    <th>{{ __('backend.category.lbl') }}</th>
-                                    <th>{{ __('backend.availability.lbl') }}</th>
-                                    <th>{{ __('backend.status.lbl') }}</th>
-                                    <th>{{ __('backend.confirmed.lbl') }}</th>
-                                    <th>{{ __('backend.action.btn') }}</th>
+                                    <th>{{ __('backend.image') }}</th>
+                                    <th>{{ __('backend.camper_name') }}</th>
+                                    <th>{{ __('backend.client') }}</th>
+                                    <th>{{ __('backend.category') }}</th>
+                                    <th>{{ __('backend.availability') }}</th>
+                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.confirmed') }}</th>
+                                    <th>{{ __('backend.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,10 +75,10 @@
 
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p>{{ __('backend.block_camper_message.lbl') }}</p>
+                                                                <p>{{ __('backend.block_camper_message') }}</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="{{ route('camper.blockActivateCamper', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block.btn') }}</a>
+                                                                <a href="{{ route('camper.blockActivateCamper', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block') }}</a>
                                                                 <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                             </div>
                                                         </div>
@@ -99,10 +99,10 @@
 
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p>{{ __('backend.confirm_camper_message.lbl') }}</p>
+                                                                <p>{{ __('backend.confirm_camper_message') }}</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="{{ route('camper.blockActivateCamper', $item->id) }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_activate.btn') }}</a>
+                                                                <a href="{{ route('camper.blockActivateCamper', $item->id) }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_activate') }}</a>
                                                                 <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                             </div>
                                                         </div>
@@ -115,14 +115,14 @@
                                 @endforeach
                             </tbody>
                             <tfoot>
-                            <th>{{ __('backend.image.lbl') }}</th>
-                                    <th>{{ __('backend.camper_name.lbl') }}</th>
-                                    <th>{{ __('backend.client.lbl') }}</th>
-                                    <th>{{ __('backend.category.lbl') }}</th>
-                                    <th>{{ __('backend.availability.lbl') }}</th>
-                                    <th>{{ __('backend.status.lbl') }}</th>
-                                    <th>{{ __('backend.confirmed.lbl') }}</th>
-                                    <th>{{ __('backend.action.btn') }}</th>
+                            <th>{{ __('backend.image') }}</th>
+                                    <th>{{ __('backend.camper_name') }}</th>
+                                    <th>{{ __('backend.client') }}</th>
+                                    <th>{{ __('backend.category') }}</th>
+                                    <th>{{ __('backend.availability') }}</th>
+                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.confirmed') }}</th>
+                                    <th>{{ __('backend.action') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

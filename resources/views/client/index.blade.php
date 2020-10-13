@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management.lbl')])
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management')])
 @section('content')
 {{ Breadcrumbs::render('client') }}
 <div class="container-fluid">
@@ -11,17 +11,17 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.client_name.lbl') }}</th>
-                                    <th>{{ __('backend.client_last_name.lbl') }}</th>
-                                    <th>{{ __('backend.client_email.lbl') }}</th>
-                                    <th>{{ __('backend.client_national_number.lbl') }}</th>
-                                    <th>{{ __('backend.client_current_solde.lbl') }}</th>
-                                    <th>{{ __('backend.client_totransfert_solde.lbl') }}</th>
-                                    <th>{{ __('backend.client_total_solde.lbl') }}</th>
-                                    <th>{{ __('backend.campunit_part.lbl') }}</th>
-                                    <th>{{ __('backend.client_campers.lbl') }}</th>
-                                    <th>{{ __('backend.booking_title.lbl') }}</th>
-                                    <th>{{ __('backend.client_action.lbl') }}</th>
+                                    <th>{{ __('backend.client_name') }}</th>
+                                    <th>{{ __('backend.client_last_name') }}</th>
+                                    <th>{{ __('backend.client_email') }}</th>
+                                    <th>{{ __('backend.client_national_number') }}</th>
+                                    <th>{{ __('backend.client_current_solde') }}</th>
+                                    <th>{{ __('backend.client_totransfert_solde') }}</th>
+                                    <th>{{ __('backend.client_total_solde') }}</th>
+                                    <th>{{ __('backend.campunit_part') }}</th>
+                                    <th>{{ __('backend.client_campers') }}</th>
+                                    <th>{{ __('backend.booking_title') }}</th>
+                                    <th>{{ __('backend.client_action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,11 +36,11 @@
                                     <td>{{App\Http\Controllers\ClientController::getTotalsSolde($item->id)}}</td>
                                     <td>{{App\Http\Controllers\ClientController::getCampUnitPart($item->id)}}</td>
                                     <td>
-                                        <a href="{{ route('client.campers',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.camper.btn') }}</a>
+                                        <a href="{{ route('client.campers',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.camper') }}</a>
 
                                     </td>
                                     <td>
-                                        <a href="{{ route('client.bookings',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.view_booking.btn') }}</a>
+                                        <a href="{{ route('client.bookings',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.view_booking') }}</a>
                                     </td>
                                     <td>
                                         <ul class="list-inline m-0">
@@ -62,10 +62,10 @@
 
                                                         </div>
                                                         <div class="modal-body">
-                                                        <p>{{ __('backend.client_block_message.lbl') }}</p>
+                                                        <p>{{ __('backend.client_block_message') }}</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="{{ route('client.blockActivateClient',$item->id) }}" class="btn btn-danger btn-sm rounded-0" id="block"> {{ __('backend.client_block.btn') }}</a>
+                                                            <a href="{{ route('client.blockActivateClient',$item->id) }}" class="btn btn-danger btn-sm rounded-0" id="block"> {{ __('backend.client_block') }}</a>
                                                             <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                         </div>
                                                     </div>
@@ -86,10 +86,10 @@
 
                                                         </div>
                                                         <div class="modal-body">
-                                                        <p>{{ __('backend.client_active_message.lbl') }}</p>
+                                                        <p>{{ __('backend.client_active_message') }}</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="{{ route('client.blockActivateClient', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block.btn') }}</a>
+                                                            <a href="{{ route('client.blockActivateClient', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block') }}</a>
                                                             <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                          </div>
                                                     </div>

@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.rent_management.lbl').': '.strtoupper($client->client_last_name) . " " . $client->client_name])
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.rent_management').': '.strtoupper($client->client_last_name) . " " . $client->client_name])
 @section('content')
 {{ Breadcrumbs::render('rent_detail',$client) }}
 <div class="page-breadcrumb">
@@ -25,12 +25,12 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.owner_name.lbl') }}</th>
-                                    <th>{{ __('backend.camper_name.lbl') }}</th>
-                                    <th>{{ __('backend.booking_from.lbl') }}</th>
-                                    <th>{{ __('backend.booking_to.lbl') }}</th>
-                                    <th>{{ __('backend.remaining_days_number.lbl') }}</th>
-                                    <th>{{ __('backend.dashboard_action.lbl') }}</th>    
+                                    <th>{{ __('backend.owner_name') }}</th>
+                                    <th>{{ __('backend.camper_name') }}</th>
+                                    <th>{{ __('backend.booking_from') }}</th>
+                                    <th>{{ __('backend.booking_to') }}</th>
+                                    <th>{{ __('backend.remaining_days_number') }}</th>
+                                    <th>{{ __('backend.dashboard_action') }}</th>    
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,7 +41,7 @@
                                     <td >{{$item->start_date}}</td>
                                     <td>{{$item->end_date}}</td>
                                     <td>{{$remaining_days}}</td>
-                                    <td><a href="{{ route('billing.index') }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail.btn') }}</span></a></td>
+                                    <td><a href="{{ route('billing.index') }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail') }}</span></a></td>
                                 </tr>
                                 <br/>
                                 @endforeach

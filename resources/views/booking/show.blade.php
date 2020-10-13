@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'booking', 'titlePage' => __('backend.booking_management.lbl')])
+@extends('layout', ['activePage' => 'booking', 'titlePage' => __('backend.booking_management')])
 @section('content')
 {{ Breadcrumbs::render('detail_booking',$data) }}
 <div class="container-fluid">
@@ -11,7 +11,7 @@
                          <div class="row">
                                 <div class="col-md-12">
                             <div class="row">
-                                <label class="col-md-4">{{ __('backend.booking_owner.lbl') }}</label>
+                                <label class="col-md-4">{{ __('backend.booking_owner') }}</label>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->owner_name}} {{$data->owner_last_name}}
@@ -20,7 +20,7 @@
                                         </div>    
                                     </div>
                             <div class="form-group row">
-                                <label class="col-md-4">{{ __('backend.booking_camper.lbl') }} </label>
+                                <label class="col-md-4">{{ __('backend.booking_camper') }} </label>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->renter_name}} {{$data->renter_last_name}}
@@ -29,7 +29,7 @@
                                         </div>     
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-4">{{ __('backend.booking_from.lbl') }} </label>
+                                        <label class="col-md-4">{{ __('backend.booking_from') }} </label>
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->start_date}}</label>
@@ -37,7 +37,7 @@
                             </div>
                                     </div>
                             <div class="form-group row">
-                                        <label class="col-md-4">{{ __('backend.booking_to.lbl') }} </label>
+                                        <label class="col-md-4">{{ __('backend.booking_to') }} </label>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->end_date}}</label>
@@ -45,7 +45,7 @@
                                         </div>    
                                     </div>
                             <div class="form-group row">
-                                        <label class="col-md-4">{{ __('backend.status_booking.lbl') }} </label>
+                                        <label class="col-md-4">{{ __('backend.status_booking') }} </label>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{ app()->getLocale() =='de' ? $data->status_booking_de : $data->status_booking_en }}</label>
@@ -67,7 +67,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <label class="col-md-4">{{ __('backend.booking_camper.lbl') }} </label>
+                                        <label class="col-md-4">{{ __('backend.booking_camper') }} </label>
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>
@@ -77,7 +77,7 @@
                                         </div>     
                                     </div>
                             <div class="form-group row">
-                                        <div  class="col-md-4"><label>{{ __('backend.booking_price_per_day.lbl') }}</label></div>
+                                        <div  class="col-md-4"><label>{{ __('backend.booking_price_per_day') }}</label></div>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->price_per_day }}</label>
@@ -85,7 +85,7 @@
                                         </div>     
                                     </div>
                             <div class="form-group row">
-                                        <label class="col-md-4">{{ __('backend.booking_total_price.lbl') }} </label>
+                                        <label class="col-md-4">{{ __('backend.booking_total_price') }} </label>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->total }}</label>
@@ -93,7 +93,7 @@
                                         </div>     
                                     </div>
                             <div class="form-group row">
-                                <label class="col-md-4">{{ __('backend.status_billing.lbl') }} </label>
+                                <label class="col-md-4">{{ __('backend.status_billing') }} </label>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->status_billings}}</label>

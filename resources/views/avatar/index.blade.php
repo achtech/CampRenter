@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'avatar', 'titlePage' => __('backend.avatar_managment.lbl')])
+@extends('layout', ['activePage' => 'avatar', 'titlePage' => __('backend.avatar_managment')])
 @section('content')
 {{ Breadcrumbs::render('avatar') }}
 <div class="container-fluid">
@@ -8,20 +8,20 @@
                 <div class="card-body">
                     <div class="table-responsive">
                     <a href="{{ route('avatar.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                        style="width:200px;margin:10px">{{ __('backend.new_avatar.btn') }}</a>
+                        style="width:200px;margin:10px">{{ __('backend.new_avatar') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.avatar.lbl') }}</th>
-                                    <th>{{ __('backend.avatar_name.lbl') }}</th>
-                                    <th>{{ __('backend.operations.lbl') }}</th>
+                                    <th>{{ __('backend.avatar') }}</th>
+                                    <th>{{ __('backend.avatar_name') }}</th>
+                                    <th>{{ __('backend.operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @if(count($datas)==0)
                             <tr>
-                                <td colspan="3">{{__('backend.no_data_found.lbl')}}</td>
+                                <td colspan="3">{{__('backend.no_data_found')}}</td>
                             </tr>
                             @endif
                             @foreach($datas as $item)
@@ -46,7 +46,7 @@
                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                <p>{{ __('backend.message_delete_avatar.lbl') }}</p>
+                                                                <p>{{ __('backend.message_delete_avatar') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <a href="{{ route('avatar.destroy',$item->id) }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
@@ -65,9 +65,9 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.avatar.lbl') }}</th>
-                                    <th>{{ __('backend.avatar_name.lbl') }}</th>
-                                    <th>{{ __('backend.operations.lbl') }}</th>
+                                <th>{{ __('backend.avatar') }}</th>
+                                    <th>{{ __('backend.avatar_name') }}</th>
+                                    <th>{{ __('backend.operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

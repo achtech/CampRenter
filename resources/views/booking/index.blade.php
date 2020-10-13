@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'booking', 'titlePage' => __('backend.booking_management.lbl')])
+@extends('layout', ['activePage' => 'booking', 'titlePage' => __('backend.booking_management')])
 @section('content')
 {{ Breadcrumbs::render('booking') }}
 <div class="container-fluid ">
@@ -7,10 +7,10 @@
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.renter.lbl') }}</h4>
+                        <h4 class="card-title">{{ __('backend.renter') }}</h4>
                         <div class="form-group mb-4">
                             <select class="custom-select mr-sm-2" id="renterId" name="renterId">
-                                <option selected>{{ __('backend.booking_select_choose.lbl') }}</option>
+                                <option selected>{{ __('backend.booking_select_choose') }}</option>
                                 @foreach($datasClients as $item)
                                     <option value="{{$item->id}}" @if($item->id==$renter) selected @endif>{{$item->client_name}} {{$item->client_last_name}}</option>
                                 @endforeach
@@ -22,7 +22,7 @@
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.booking_from.lbl') }}</h4>
+                        <h4 class="card-title">{{ __('backend.booking_from') }}</h4>
                         <div class="form-group">
                             <input type="date" class="form-control"  id="start_date"  name="start_date" value="{{ $start_date ?? '' }}"/>
                         </div>
@@ -32,7 +32,7 @@
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.booking_to.lbl') }}</h4>
+                        <h4 class="card-title">{{ __('backend.booking_to') }}</h4>
                         <div class="form-group">             
                             <input type="date" class="form-control"  id="end_date" name="end_date"  value="{{ $end_date ?? '' }}" />
                         </div>
@@ -53,20 +53,20 @@
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.booking_list.lbl') }}</h4>
+                    <h4 class="card-title">{{ __('backend.booking_list') }}</h4>
                     <div class="table-responsive">
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.booking_renter.lbl') }}</th>
-                                    <th>{{ __('backend.booking_camper.lbl') }}</th>
-                                    <th>{{ __('backend.booking_from.lbl') }}</th>
-                                    <th>{{ __('backend.booking_to.lbl') }}</th>
-                                    <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
-                                    <th>{{ __('backend.booking_status_booking.lbl') }}</th>
-                                    <th>{{ __('backend.booking_status_billing.lbl') }}</th>
-                                    <th>{{ __('backend.operation.lbl') }}</th>
+                                    <th>{{ __('backend.booking_renter') }}</th>
+                                    <th>{{ __('backend.booking_camper') }}</th>
+                                    <th>{{ __('backend.booking_from') }}</th>
+                                    <th>{{ __('backend.booking_to') }}</th>
+                                    <th>{{ __('backend.booking_price_per_day') }}</th>
+                                    <th>{{ __('backend.booking_status_booking') }}</th>
+                                    <th>{{ __('backend.booking_status_billing') }}</th>
+                                    <th>{{ __('backend.operation') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -92,14 +92,14 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>{{ __('backend.booking_renter.lbl') }}</th>
-                                    <th>{{ __('backend.booking_camper.lbl') }}</th>
-                                    <th>{{ __('backend.booking_from.lbl') }}</th>
-                                    <th>{{ __('backend.booking_to.lbl') }}</th>
-                                    <th>{{ __('backend.booking_price_per_day.lbl') }}</th>
-                                    <th>{{ __('backend.booking_status_booking.lbl') }}</th>
-                                    <th>{{ __('backend.booking_status_billing.lbl') }}</th>
-                                    <th>{{ __('backend.operation.lbl') }}</th>
+                                    <th>{{ __('backend.booking_renter') }}</th>
+                                    <th>{{ __('backend.booking_camper') }}</th>
+                                    <th>{{ __('backend.booking_from') }}</th>
+                                    <th>{{ __('backend.booking_to') }}</th>
+                                    <th>{{ __('backend.booking_price_per_day') }}</th>
+                                    <th>{{ __('backend.booking_status_booking') }}</th>
+                                    <th>{{ __('backend.booking_status_billing') }}</th>
+                                    <th>{{ __('backend.operation') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

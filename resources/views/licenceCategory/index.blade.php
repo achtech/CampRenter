@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => __('backend.licence_category_managment.lbl')])
+@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => __('backend.licence_category_managment')])
 @section('content')
 {{ Breadcrumbs::render('licenceCategory') }}
 <div class="container-fluid">
@@ -8,15 +8,15 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <a href="{{ route('licenceCategory.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                            style="width:200px;margin:0px 10px">{{ __('backend.new_licence_category.btn') }}</a>
+                            style="width:200px;margin:0px 10px">{{ __('backend.new_licence_category') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.label.lbl') }} DE</th>
-                                    <th>{{ __('backend.label.lbl') }} EN</th>
-                                    <th>{{ __('backend.label.lbl') }} FR</th>
-                                     <th>{{ __('backend.action.btn') }}</th>
+                                    <th>{{ __('backend.label') }} DE</th>
+                                    <th>{{ __('backend.label') }} EN</th>
+                                    <th>{{ __('backend.label') }} FR</th>
+                                     <th>{{ __('backend.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,7 +42,7 @@
                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                <p>{{ __('backend.message_delete_licence_category.lbl') }}</p>
+                                                                <p>{{ __('backend.message_delete_licence_category') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <a href="{{ route('licenceCategory.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
@@ -58,10 +58,10 @@
                                 @endforeach
                             </tbody>
                             <tfoot>
-                                <tr><th>{{ __('backend.label.lbl') }} DE</th>
-                                    <th>{{ __('backend.label.lbl') }} EN</th>
-                                    <th>{{ __('backend.label.lbl') }} FR</th>
-                                    <th>{{ __('backend.action.btn') }}</th>
+                                <tr><th>{{ __('backend.label') }} DE</th>
+                                    <th>{{ __('backend.label') }} EN</th>
+                                    <th>{{ __('backend.label') }} FR</th>
+                                    <th>{{ __('backend.action') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

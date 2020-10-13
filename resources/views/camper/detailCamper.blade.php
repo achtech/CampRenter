@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management.lbl')])
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management')])
 @section('content')
 {{ Breadcrumbs::render('client') }}
 <div class="page-breadcrumb">
@@ -25,12 +25,12 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.camper_name.lbl') }}</th>
-                                    <th>{{ __('backend.camper_description.lbl') }}</th>
-                                    <th>{{ __('backend.camper_location.lbl') }}</th>
-                                    <th>{{ __('backend.camper_price_per_day.lbl') }}</th>
-                                    <th>{{ __('backend.camper_availability.lbl') }}</th>
-                                    <th>{{ __('backend.client_action.lbl') }}</th>
+                                    <th>{{ __('backend.camper_name') }}</th>
+                                    <th>{{ __('backend.camper_description') }}</th>
+                                    <th>{{ __('backend.camper_location') }}</th>
+                                    <th>{{ __('backend.camper_price_per_day') }}</th>
+                                    <th>{{ __('backend.camper_availability') }}</th>
+                                    <th>{{ __('backend.client_action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,7 +42,7 @@
                                     <td>{{$item->price_per_day}}</td>
                                     <td>{{$item->availability}}</td>
                                     <td>
-                                        <a href="{{ route('camper.detail',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.detail.btn') }}</a>
+                                        <a href="{{ route('camper.detail',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.detail') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

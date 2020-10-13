@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'message', 'titlePage' => __('backend.message_managment.lbl')])
+@extends('layout', ['activePage' => 'message', 'titlePage' => __('backend.message_managment')])
 @section('content')
 {{ Breadcrumbs::render('message') }}
 <div class="container-fluid">
@@ -11,13 +11,13 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.contact.lbl') }}</th>
-                                    <th>{{ __('backend.email.lbl') }}</th>
-                                    <th>{{ __('backend.telephone.lbl') }}</th>
-                                    <th>{{ __('backend.subject.lbl') }}</th>
-                                    <th>{{ __('backend.send_date.lbl') }}</th>
-                                    <th>{{ __('backend.status.lbl') }}</th>
-                                    <th>{{ __('backend.operations.lbl') }}</th>
+                                    <th>{{ __('backend.contact') }}</th>
+                                    <th>{{ __('backend.email') }}</th>
+                                    <th>{{ __('backend.telephone') }}</th>
+                                    <th>{{ __('backend.subject') }}</th>
+                                    <th>{{ __('backend.send_date') }}</th>
+                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,7 +28,7 @@
                                     <td>{{$item->telephone}}</td>
                                     <td>{{$item->subject}}</td>
                                     <td>{{$item->send_date}}</td>
-                                    <td>{{ __('backend.message_status_'.$item->status.'.lbl') }}</td>
+                                    <td>{{ __('backend.message_status_'.$item->status.'') }}</td>
                                    <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
@@ -46,7 +46,7 @@
                                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                <p>{{ __('backend.message_delete_message.lbl') }}</p>
+                                                                <p>{{ __('backend.message_delete_message') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <a href="{{ route('message.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0" data-toggle="tooltip" title="Delete">Delete</a>
@@ -65,13 +65,13 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>{{ __('backend.contact.lbl') }}</th>
-                                    <th>{{ __('backend.email.lbl') }}</th>
-                                    <th>{{ __('backend.telephone.lbl') }}</th>
-                                    <th>{{ __('backend.subject.lbl') }}</th>
-                                    <th>{{ __('backend.send_date.lbl') }}</th>
-                                    <th>{{ __('backend.status.lbl') }}</th>
-                                    <th>{{ __('backend.operations.lbl') }}</th>
+                                    <th>{{ __('backend.contact') }}</th>
+                                    <th>{{ __('backend.email') }}</th>
+                                    <th>{{ __('backend.telephone') }}</th>
+                                    <th>{{ __('backend.subject') }}</th>
+                                    <th>{{ __('backend.send_date') }}</th>
+                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'promotion', 'titlePage' => __('backend.promotion_managment.lbl')])
+@extends('layout', ['activePage' => 'promotion', 'titlePage' => __('backend.promotion_managment')])
 @section('content')
 {{ Breadcrumbs::render('promotion') }}
 <div class="container-fluid">
@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-body">   
                             <div class="form-group row">
-                                <label class="col-md-3">{{ __('backend.current_commission.lbl') }} </label>
+                                <label class="col-md-3">{{ __('backend.current_commission') }} </label>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <input type="text" class="form-control" value="{{$dataPromoActivate->commission}} %"
@@ -27,17 +27,17 @@
                 <div class="card-body">
                     <div class="table-responsive">
                     <a href="{{ route('promotion.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                    style="width:200px;margin:0px 10px" >{{ __('backend.new_promotion.btn') }}</a>
+                    style="width:200px;margin:0px 10px" >{{ __('backend.new_promotion') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.commission_label.lbl') }}</th>
-                                    <th>{{ __('backend.commission_description.lbl') }}</th>
-                                    <th>{{ __('backend.commission_createdBy.lbl') }}</th>
-                                    <th>{{ __('backend.commission_createdAt.lbl') }}</th>
-                                    <th>{{ __('backend.commission_Status.lbl') }}</th>
-                                    <th>{{ __('backend.action.lbl') }}</th>
+                                    <th>{{ __('backend.commission_label') }}</th>
+                                    <th>{{ __('backend.commission_description') }}</th>
+                                    <th>{{ __('backend.commission_createdBy') }}</th>
+                                    <th>{{ __('backend.commission_createdAt') }}</th>
+                                    <th>{{ __('backend.commission_Status') }}</th>
+                                    <th>{{ __('backend.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,11 +65,11 @@
                                                 @if($item->status == 1)
                                                 <li class="list-inline-item">
                                                     <span style="width:90px"
-                                                        class="btn rounded-0 btn-sm btn-success">{{ __('backend.promotion_status_active.lbl') }}</span>
+                                                        class="btn rounded-0 btn-sm btn-success">{{ __('backend.promotion_status_active') }}</span>
                                                 </li>
                                                 @else
                                                 <li class="list-inline-item">
-                                                        <a href="{{ route('promotion.activate',$item->id)}}" class="btn btn-danger rounded-0 btn-sm ">{{ __('backend.promotion_status_disactivate.lbl') }}</a>
+                                                        <a href="{{ route('promotion.activate',$item->id)}}" class="btn btn-danger rounded-0 btn-sm ">{{ __('backend.promotion_status_disactivate') }}</a>
                                                 </li>
                                                 @endif
                                             </ul>
@@ -79,12 +79,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.commission_label.lbl') }}</th>
-                                <th>{{ __('backend.commission_description.lbl') }}</th>
-                                <th>{{ __('backend.commission_createdBy.lbl') }}</th>
-                                <th>{{ __('backend.commission_createdAt.lbl') }}</th>
-                                <th>{{ __('backend.commission_Status.lbl') }}</th>
-                                <th>{{ __('backend.action.lbl') }}</th>
+                                <th>{{ __('backend.commission_label') }}</th>
+                                <th>{{ __('backend.commission_description') }}</th>
+                                <th>{{ __('backend.commission_createdBy') }}</th>
+                                <th>{{ __('backend.commission_createdAt') }}</th>
+                                <th>{{ __('backend.commission_Status') }}</th>
+                                <th>{{ __('backend.action') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

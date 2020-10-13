@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management.lbl').':
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management').':
 '.strtoupper($client->client_last_name) . " " . $client->client_name])
 @section('content')
 {{ Breadcrumbs::render('detail_client',$client) }}
@@ -23,7 +23,7 @@
                         <div class="col-4">    
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.client_name.lbl') }}</h4>
+                                    <h4 class="card-title">{{ __('backend.client_name') }}</h4>
                                     <div class="mt-4">
                                         <div class="form-group">
                                             <label>{{$data->client_name}} {{$data->client_last_name}}</label>
@@ -35,7 +35,7 @@
                             <div class="col-4">
                                 <div class="card">
                             <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.client_email.lbl') }}</h4>
+                                    <h4 class="card-title">{{ __('backend.client_email') }}</h4>
                                 <div class="mt-4">
                                     <div class="form-group">
                                             <label>{{$data->email}}</label>
@@ -48,10 +48,10 @@
                             <div class="col-4">
                                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.status.lbl') }}</h4>
+                        <h4 class="card-title">{{ __('backend.status') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                                <label for="">{{ __('backend.client_status_'.$data->status.'.lbl') }}</label>
+                                                <label for="">{{ __('backend.client_status_'.$data->status.'') }}</label>
                             </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                             <div class="col-4">
                                 <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">{{ __('backend.driving_licence.lbl') }}</h4>
+                                <h4 class="card-title">{{ __('backend.driving_licence') }}</h4>
                                 <div class="mt-4">
                                     <div class="form-group">
                                                 <label for="">{{$data->driving_licence}}</label>
@@ -73,7 +73,7 @@
                             <div class="col-4">
                                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.driving_licence_image.lbl') }}</h4>
+                        <h4 class="card-title">{{ __('backend.driving_licence_image') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
                                                 <a data-fancybox="gallery" class="primary-btn"
@@ -88,7 +88,7 @@
                             <div class="col-4">
                                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.image_national.lbl') }}</h4>
+                        <h4 class="card-title">{{ __('backend.image_national') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
                                                 <a data-fancybox="gallery" class="primary-btn"

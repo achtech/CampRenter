@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management.lbl')])
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management')])
 @section('content')
 {{ Breadcrumbs::render('client') }}
 <div class="page-breadcrumb">
@@ -25,12 +25,12 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.start_date.lbl') }}</th>
-                                    <th>{{ __('backend.end_date.lbl') }}</th>
-                                    <th>{{ __('backend.total.lbl') }}</th>
-                                    <th>{{ __('backend.booking_status.lbl') }}</th>
-                                    <th>{{ __('backend.billing_status.lbl') }}</th>
-                                    <th>{{ __('backend.client_action.lbl') }}</th>
+                                    <th>{{ __('backend.start_date') }}</th>
+                                    <th>{{ __('backend.end_date') }}</th>
+                                    <th>{{ __('backend.total') }}</th>
+                                    <th>{{ __('backend.booking_status') }}</th>
+                                    <th>{{ __('backend.billing_status') }}</th>
+                                    <th>{{ __('backend.client_action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,7 +43,7 @@
                                     <td>{{$item->status_booking}}</td>
                                     <td>{{$item->status_billings}}</td>
                                     <td>
-                                        <a href="{{ route('booking.detail',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.check_camper_detail.btn') }}</a>
+                                        <a href="{{ route('booking.detail',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.check_camper_detail') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

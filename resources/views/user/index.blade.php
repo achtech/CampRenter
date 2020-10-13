@@ -1,5 +1,5 @@
 @if(auth()->user()->role == 'super-admin')
-@extends('layout', ['activePage' => 'user', 'titlePage' => __('backend.user_managment.lbl')])
+@extends('layout', ['activePage' => 'user', 'titlePage' => __('backend.user_managment')])
 @section('content')
 {{ Breadcrumbs::render('user') }}
 <div class="container-fluid">
@@ -9,18 +9,18 @@
                 <div class="card-body">
                     <div class="table-responsive">
                     <a href="{{ route('user.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                        style="width:200px;margin:0px 10px">{{ __('backend.new_user.btn') }}</a>
+                        style="width:200px;margin:0px 10px">{{ __('backend.new_user') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.avatar.lbl') }}</th>
-                                    <th>{{ __('backend.user_name.lbl') }}</th>
-                                    <th>{{ __('backend.tel.lbl') }}</th>
-                                    <th>{{ __('backend.email.lbl') }}</th>
-                                    <th>{{ __('backend.role.lbl') }}</th>
-                                    <th>{{ __('backend.adress.lbl') }}</th>
-                                    <th>{{ __('backend.operations.lbl') }}</th>
+                                    <th>{{ __('backend.avatar') }}</th>
+                                    <th>{{ __('backend.user_name') }}</th>
+                                    <th>{{ __('backend.tel') }}</th>
+                                    <th>{{ __('backend.email') }}</th>
+                                    <th>{{ __('backend.role') }}</th>
+                                    <th>{{ __('backend.adress') }}</th>
+                                    <th>{{ __('backend.operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,7 +50,7 @@
                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                <p>{{ __('backend.message_delete_user.lbl') }}</p>
+                                                                <p>{{ __('backend.message_delete_user') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <a href="{{ route('user.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
@@ -69,13 +69,13 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>{{ __('backend.avatar.lbl') }}</th>
-                                    <th>{{ __('backend.user_name.lbl') }}</th>
-                                    <th>{{ __('backend.tel.lbl') }}</th>
-                                    <th>{{ __('backend.email.lbl') }}</th>
-                                    <th>{{ __('backend.role.lbl') }}</th>
-                                    <th>{{ __('backend.adress.lbl') }}</th>
-                                    <th>{{ __('backend.operations.lbl') }}</th>
+                                    <th>{{ __('backend.avatar') }}</th>
+                                    <th>{{ __('backend.user_name') }}</th>
+                                    <th>{{ __('backend.tel') }}</th>
+                                    <th>{{ __('backend.email') }}</th>
+                                    <th>{{ __('backend.role') }}</th>
+                                    <th>{{ __('backend.adress') }}</th>
+                                    <th>{{ __('backend.operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>
