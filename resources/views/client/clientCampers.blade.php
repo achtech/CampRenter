@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'client', 'titlePage' => __('backend.client_management')])
+@extends('layout', ['activePage' => 'client', 'titlePage' => __('backend.Clients Management')])
 @section('content')
 {{ Breadcrumbs::render('clients_campers',$client) }}
 <div class="container-fluid">
@@ -15,7 +15,7 @@
                                     <th>{{ __('backend.camper_name') }}</th>
                                     <th>{{ __('backend.category') }}</th>
                                     <th>{{ __('backend.availability') }}</th>
-                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.confirmed') }}</th>
                                 </tr>
                             </thead>
@@ -61,7 +61,7 @@
                                     <th>{{ __('backend.camper_name') }}</th>
                                     <th>{{ __('backend.category') }}</th>
                                     <th>{{ __('backend.availability') }}</th>
-                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.confirmed') }}</th>
                                 </tr>
                             </tfoot>

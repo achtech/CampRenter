@@ -16,7 +16,7 @@
                                     <th>{{ __('backend.label') }} DE</th>
                                     <th>{{ __('backend.label') }} EN</th>
                                     <th>{{ __('backend.label') }} FR</th>
-                                     <th>{{ __('backend.action') }}</th>
+                                     <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,7 +62,7 @@
                                 <th>{{ __('backend.label') }} DE</th>
                                     <th>{{ __('backend.label') }} EN</th>
                                     <th>{{ __('backend.label') }} FR</th>
-                                    <th>{{ __('backend.action') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

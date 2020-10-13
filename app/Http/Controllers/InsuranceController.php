@@ -44,12 +44,9 @@ class InsuranceController extends Controller
      */
     public function create()
     {
-        //TODO : IF ENG
-        $camperNames = CamperName::all()->pluck('label_en', 'id');
         $insuranceCompanies = InsuranceCompany::all()->pluck('label_en', 'id');
 
         return view('insurance.create')                
-            ->with('camperNames', $camperNames)
             ->with('insuranceCompanies', $insuranceCompanies);
     }
     /**
@@ -86,11 +83,9 @@ class InsuranceController extends Controller
     public function edit($id)
     {
         $data = Insurance::find($id);
-        $camperNames = CamperName::all()->pluck('label_en', 'id');
         $insuranceCompanies = InsuranceCompany::all()->pluck('label_en', 'id');
         return view('insurance.edit', ['id' => 1])
         ->with('data', $data)
-        ->with('camperNames', $camperNames)
         ->with('insuranceCompanies', $insuranceCompanies);
     }
 

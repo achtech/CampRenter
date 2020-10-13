@@ -90,12 +90,12 @@
                                                     {{$item->camper_name}}
                                                 </td>
                                                 <td>{{$item->client_name}} {{$item->client_last_name}}</td>
-                                                <td><a href="{{ route('camper.detail',$item->id) }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.detail') }}</span></a></td>
+                                                <td><a href="{{ route('camper.detail',$item->id) }}" class="btn btn-info btn-sm rounded-0" style="height: 28px;width: 67px;" title="Confirm"><span style="color: white;vertical-align:top;">{{ __('backend.Detail') }}</span></a></td>
                                             </tr>
                                         @endforeach
                                         @else
                                         <tr>
-                                            <td colspan="3" style="text-align: center;">{{ __('backend.no_data_to_confirm') }}</td>
+                                            <td colspan="3" style="text-align: center;">{{ __('backend.no_camper_to_confirm') }}</td>
                                         </tr>
 
                                         @endif
@@ -105,7 +105,7 @@
                                  
 
                                 <a style="position: absolute;bottom:10px;width: 90%;" href="{{ route('camper.unconfirmedCamper') }}" class="btn btn-md waves-effect waves-light btn-rounded btn-primary"
-                >{{ __('backend.read_more') }}</a>
+                >{{ __('backend.Read more') }}</a>
 
                             </div>
                         </div>
@@ -118,8 +118,8 @@
                             <thead>
 
                                 <tr>
-                                    <th>{{ __('backend.renter_name') }}</th>
-                                    <th>{{ __('backend.date_booking') }}</th>
+                                    <th>{{ __('backend.Renter') }}</th>
+                                    <th>{{ __('backend.Date') }}</th>
                                     <th>{{ __('backend.dashboard_action') }}</th>
 
                                 </tr>
@@ -127,7 +127,7 @@
                             <tbody>
                                 @if(count($bookings)==0)
                                     <tr>
-                                        <td colspan="3" style="text-align: center;">{{ __('backend.no_data_found') }}</td>
+                                        <td colspan="3" style="text-align: center;">{{ __('backend.No data found') }}</td>
                                     </tr>
                                 @endif
                                 @foreach($bookings as $item)
@@ -144,7 +144,7 @@
 
                         </table>
                         <a style="position: absolute;bottom:10px;width: 90%;"  href="{{ route('booking.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary"
-                >{{ __('backend.read_more') }}</a>
+                >{{ __('backend.Read more') }}</a>
                             </div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                                         <thead>
                                             <tr>
                                                 <th>{{ __('backend.contact') }}</th>
-                                                <th>{{ __('backend.telephone') }}</th>
+                                                <th>{{ __('backend.Phone') }}</th>
                                                 <th>{{ __('backend.dashboard_message') }}</th>
                                                 <th>{{ __('backend.dashboard_view_details') }}</th>
                                             </tr>
@@ -169,7 +169,7 @@
                                         <tbody>
                                         @if(count($messages)==0)
                                             <tr>
-                                                <td colspan="3" style="text-align: center;">{{ __('backend.no_data_found') }}</td>
+                                                <td colspan="3" style="text-align: center;">{{ __('backend.No data found') }}</td>
                                             </tr>
                                         @endif
 

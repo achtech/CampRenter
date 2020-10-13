@@ -7,10 +7,10 @@
             <div class="col-sm-12 col-md-4 col-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.owner') }}</h4>
+                        <h4 class="card-title">{{ __('backend.Owner') }}</h4>
                         <div class="form-group mb-4">
                             <select class="custom-select mr-sm-2" id="ownerId" name="ownerId">
-                                <option selected>{{ __('backend.booking_select_choose') }}</option>
+                                <option selected>{{ __('backend.Choose') }}</option>
                                 @foreach($clients as $item)
                                     <option value="{{$item->id}}" @if($item->id==$renter) selected @endif>{{$item->client_name}} {{$item->client_last_name}}</option>
                                 @endforeach
@@ -22,7 +22,7 @@
             <div class="col-sm-12 col-md-4 col-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.booking_from') }}</h4>
+                        <h4 class="card-title">{{ __('backend.From') }}</h4>
                         <div class="form-group">
                             <input type="date" class="form-control"  id="start_date"  name="start_date" value="{{ $start_date ?? '' }}"/>
                         </div>
@@ -32,7 +32,7 @@
             <div class="col-sm-12 col-md-4 col-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.booking_to') }}</h4>
+                        <h4 class="card-title">{{ __('backend.To') }}</h4>
                         <div class="form-group">             
                             <input type="date" class="form-control"  id="end_date" name="end_date"  value="{{ $end_date ?? '' }}" />
                         </div>
@@ -42,7 +42,7 @@
             <div class="col-sm-12 col-md-4 col-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.status') }}</h4>
+                        <h4 class="card-title">{{ __('backend.Status') }}</h4>
                         <div class="form-group">           
                             {{ Form::radio('status','1', $status==1,['id'=>'status-0'])}}
                             {{ Form::label('status-0', 'Payed') }} 
@@ -66,7 +66,7 @@
                         class="btn btn-info" 
                         style="width:200px;">
                             <i class="far fa-file-excel"></i>
-                            {{ __('backend.export') }}
+                            {{ __('backend.Export') }}
                     </a>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                                     <th>{{ __('backend.owner_name') }} </th>
                                     <th>{{ __('backend.amount') }} </th>
                                     <th>{{ __('backend.payment_date') }}</th>
-                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.last_booking') }} </th>
                                 </tr>
                             </thead>

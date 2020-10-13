@@ -13,12 +13,12 @@
                                 <tr>
                                     <th>{{ __('backend.image') }}</th>
                                     <th>{{ __('backend.camper_name') }}</th>
-                                    <th>{{ __('backend.client') }}</th>
+                                    <th>{{ __('backend.Client') }}</th>
                                     <th>{{ __('backend.category') }}</th>
                                     <th>{{ __('backend.availability') }}</th>
-                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.confirmed') }}</th>
-                                    <th>{{ __('backend.action') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,7 +78,7 @@
                                                                 <p>{{ __('backend.block_camper_message') }}</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="{{ route('camper.blockActivateCamper', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_block') }}</a>
+                                                                <a href="{{ route('camper.blockActivateCamper', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.block') }}</a>
                                                                 <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                             </div>
                                                         </div>
@@ -102,7 +102,7 @@
                                                                 <p>{{ __('backend.confirm_camper_message') }}</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="{{ route('camper.blockActivateCamper', $item->id) }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.client_activate') }}</a>
+                                                                <a href="{{ route('camper.blockActivateCamper', $item->id) }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.activate') }}</a>
                                                                 <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                             </div>
                                                         </div>
@@ -117,12 +117,12 @@
                             <tfoot>
                             <th>{{ __('backend.image') }}</th>
                                     <th>{{ __('backend.camper_name') }}</th>
-                                    <th>{{ __('backend.client') }}</th>
+                                    <th>{{ __('backend.Client') }}</th>
                                     <th>{{ __('backend.category') }}</th>
                                     <th>{{ __('backend.availability') }}</th>
-                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.confirmed') }}</th>
-                                    <th>{{ __('backend.action') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

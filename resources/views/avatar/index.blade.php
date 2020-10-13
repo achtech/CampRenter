@@ -8,20 +8,20 @@
                 <div class="card-body">
                     <div class="table-responsive">
                     <a href="{{ route('avatar.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                        style="width:200px;margin:10px">{{ __('backend.new_avatar') }}</a>
+                        style="width:200px;margin:10px">{{ __('backend.New avatar') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
                                     <th>{{ __('backend.Avatar') }}</th>
-                                    <th>{{ __('backend.avatar_name') }}</th>
-                                    <th>{{ __('backend.operations') }}</th>
+                                    <th>{{ __('backend.label') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @if(count($datas)==0)
                             <tr>
-                                <td colspan="3">{{__('backend.no_data_found')}}</td>
+                                <td colspan="3">{{__('backend.No data found')}}</td>
                             </tr>
                             @endif
                             @foreach($datas as $item)
@@ -66,8 +66,8 @@
                             <tfoot>
                                 <tr>
                                 <th>{{ __('backend.Avatar') }}</th>
-                                    <th>{{ __('backend.avatar_name') }}</th>
-                                    <th>{{ __('backend.operations') }}</th>
+                                    <th>{{ __('backend.label') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

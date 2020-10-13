@@ -13,12 +13,12 @@
                                 <tr>
                                     <th>{{ __('backend.image') }}</th>
                                     <th>{{ __('backend.camper_name') }}</th>
-                                    <th>{{ __('backend.client') }}</th>
+                                    <th>{{ __('backend.Client') }}</th>
                                     <th>{{ __('backend.category') }}</th>
                                     <th>{{ __('backend.availability') }}</th>
-                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.confirmed') }}</th>
-                                    <th>{{ __('backend.action') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,12 +43,12 @@
                             <tfoot>
                             <th>{{ __('backend.image') }}</th>
                                     <th>{{ __('backend.camper_name') }}</th>
-                                    <th>{{ __('backend.client') }}</th>
+                                    <th>{{ __('backend.Client') }}</th>
                                     <th>{{ __('backend.category') }}</th>
                                     <th>{{ __('backend.availability') }}</th>
-                                    <th>{{ __('backend.status') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.confirmed') }}</th>
-                                    <th>{{ __('backend.action') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

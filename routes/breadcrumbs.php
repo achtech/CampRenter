@@ -33,9 +33,9 @@ Breadcrumbs::for('billing', function ($trail) {
     $trail->push('Billing', route('billing.index'));
 });
 //billings
-Breadcrumbs::for('billing_bookings', function ($trail,$billing) {
+Breadcrumbs::for('billing_bookings', function ($trail) {
     $trail->parent('billing');
-    $trail->push('Billing of : '.$billing->client_name.' '.$billing->client_last_name.' in : '.$billing->payment_date, route('billing.index'));
+    $trail->push('Bookings', route('billing.index'));
 });
 //detail client
 Breadcrumbs::for('detail_client', function ($trail, $client) {

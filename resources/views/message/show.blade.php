@@ -9,24 +9,24 @@
                 <form method="POST" action="mailto:{{$datas->email}}?subject={{$datas->subject}}">
                         <div class="form-body">
                             <div class="form-group row">
-                                <label class="col-md-2">{{ __('backend.message_contact_name') }} : </label>
+                                <label class="col-md-2">{{ __('backend.Contact name') }} : </label>
                                 <label class="col-md-2">: {{$datas->full_name }} </label>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-2">{{ __('backend.message_email_from') }} </label>
+                            <label class="col-md-2">{{ __('backend.From') }} </label>
                             <label class="col-md-2">: {{$datas->email }} </label>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-2">{{ __('backend.message_email_sent_date') }} </label>
+                            <label class="col-md-2">{{ __('backend.Date sent') }} </label>
                             <label class="col-md-2">: {{$datas->send_date }} </label>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-2">{{ __('backend.message_contact_tel') }} </label>
+                            <label class="col-md-2">{{ __('backend.Phone') }} </label>
                             <label class="col-md-2">: {{$datas->telephone }} </label>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-2">{{ __('backend.message_email_subject') }} </label>
+                            <label class="col-md-2">{{ __('backend.Subject') }} </label>
                             <label class="col-md-2">: {{$datas->subject }} </label>
                         </div>
                         <div class="form-group row">
@@ -35,8 +35,8 @@
                         </div>
                         <div class="form-actions">
                             <div class="text-right">
-                                <button  type="submit" class="btn btn-info">{{ __('backend.answer_message') }}</button>
-                                <button type="reset" class="btn btn-dark">{{ __('backend.cancel') }}</button>
+                                <button  type="submit" class="btn btn-info">{{ __('backend.Answer') }}</button>
+                                <button type="reset" class="btn btn-dark">{{ __('backend.Cancel') }}</button>
                             </div>
                         </div>
                 </form>

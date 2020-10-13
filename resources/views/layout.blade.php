@@ -156,7 +156,7 @@
                                                     <span class="btn btn-primary rounded-circle btn-circle"><i
                                                             data-feather="box" class="text-white"></i></span>
                                                     <div class="w-75 d-inline-block v-middle pl-2">
-                                                       <span class="font-12 text-nowrap d-block text-muted">{{'backend.no_data_found'}}</span>
+                                                       <span class="font-12 text-nowrap d-block text-muted">{{'backend.No data found'}}</span>
                                                     </div>
                                                 </a>
                                             @endif

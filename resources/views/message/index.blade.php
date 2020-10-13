@@ -13,11 +13,11 @@
                                 <tr>
                                     <th>{{ __('backend.contact') }}</th>
                                     <th>{{ __('backend.email') }}</th>
-                                    <th>{{ __('backend.telephone') }}</th>
+                                    <th>{{ __('backend.Phone') }}</th>
                                     <th>{{ __('backend.subject') }}</th>
                                     <th>{{ __('backend.send_date') }}</th>
-                                    <th>{{ __('backend.status') }}</th>
-                                    <th>{{ __('backend.operations') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,11 +67,11 @@
                                 <tr>
                                     <th>{{ __('backend.contact') }}</th>
                                     <th>{{ __('backend.email') }}</th>
-                                    <th>{{ __('backend.telephone') }}</th>
+                                    <th>{{ __('backend.Phone') }}</th>
                                     <th>{{ __('backend.subject') }}</th>
                                     <th>{{ __('backend.send_date') }}</th>
-                                    <th>{{ __('backend.status') }}</th>
-                                    <th>{{ __('backend.operations') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

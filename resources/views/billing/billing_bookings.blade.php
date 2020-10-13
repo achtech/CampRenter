@@ -1,24 +1,23 @@
-@extends('layout', ['activePage' => 'booking', 'titlePage' => __('backend.booking_management')])
+@extends('layout', ['activePage' => 'billing', 'titlePage' => __('backend.billing_managment')])
 @section('content')
-{{ Breadcrumbs::render('booking') }}
+{{ Breadcrumbs::render('billing_bookings') }}
 <div class="container-fluid ">
     <div class="row space-top">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.booking_list') }}</h4>
                     <div class="table-responsive">
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.booking_renter') }}</th>
-                                    <th>{{ __('backend.booking_camper') }}</th>
-                                    <th>{{ __('backend.booking_from') }}</th>
-                                    <th>{{ __('backend.booking_to') }}</th>
-                                    <th>{{ __('backend.booking_price_per_day') }}</th>
+                                    <th>{{ __('backend.Renter') }}</th>
+                                    <th>{{ __('backend.Camper') }}</th>
+                                    <th>{{ __('backend.From') }}</th>
+                                    <th>{{ __('backend.To') }}</th>
+                                    <th>{{ __('backend.Price per day') }}</th>
                                     <th>{{ __('backend.booking_status_booking') }}</th>
-                                    <th>{{ __('backend.booking_status_billing') }}</th>
+                                    <th>{{ __('backend.status_billing') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,13 +35,13 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>{{ __('backend.booking_renter') }}</th>
-                                    <th>{{ __('backend.booking_camper') }}</th>
-                                    <th>{{ __('backend.booking_from') }}</th>
-                                    <th>{{ __('backend.booking_to') }}</th>
-                                    <th>{{ __('backend.booking_price_per_day') }}</th>
+                                    <th>{{ __('backend.Renter') }}</th>
+                                    <th>{{ __('backend.Camper') }}</th>
+                                    <th>{{ __('backend.From') }}</th>
+                                    <th>{{ __('backend.To') }}</th>
+                                    <th>{{ __('backend.Price per day') }}</th>
                                     <th>{{ __('backend.booking_status_booking') }}</th>
-                                    <th>{{ __('backend.booking_status_billing') }}</th>
+                                    <th>{{ __('backend.status_billing') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

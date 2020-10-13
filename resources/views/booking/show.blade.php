@@ -11,7 +11,7 @@
                          <div class="row">
                                 <div class="col-md-12">
                             <div class="row">
-                                <label class="col-md-4">{{ __('backend.booking_owner') }}</label>
+                                <label class="col-md-4">{{ __('backend.Owner') }}</label>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->owner_name}} {{$data->owner_last_name}}
@@ -20,7 +20,7 @@
                                         </div>    
                                     </div>
                             <div class="form-group row">
-                                <label class="col-md-4">{{ __('backend.booking_camper') }} </label>
+                                <label class="col-md-4">{{ __('backend.Camper') }} </label>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->renter_name}} {{$data->renter_last_name}}
@@ -29,7 +29,7 @@
                                         </div>     
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-4">{{ __('backend.booking_from') }} </label>
+                                        <label class="col-md-4">{{ __('backend.From') }} </label>
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->start_date}}</label>
@@ -37,7 +37,7 @@
                             </div>
                                     </div>
                             <div class="form-group row">
-                                        <label class="col-md-4">{{ __('backend.booking_to') }} </label>
+                                        <label class="col-md-4">{{ __('backend.To') }} </label>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->end_date}}</label>
@@ -67,7 +67,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <label class="col-md-4">{{ __('backend.booking_camper') }} </label>
+                                        <label class="col-md-4">{{ __('backend.Camper') }} </label>
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>
@@ -77,7 +77,7 @@
                                         </div>     
                                     </div>
                             <div class="form-group row">
-                                        <div  class="col-md-4"><label>{{ __('backend.booking_price_per_day') }}</label></div>
+                                        <div  class="col-md-4"><label>{{ __('backend.Price per day') }}</label></div>
                                 <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>{{$data->price_per_day }}</label>

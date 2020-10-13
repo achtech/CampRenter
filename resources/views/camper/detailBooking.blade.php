@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management')])
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.Clients Management')])
 @section('content')
 {{ Breadcrumbs::render('client') }}
 <div class="page-breadcrumb">
@@ -30,7 +30,7 @@
                                     <th>{{ __('backend.total') }}</th>
                                     <th>{{ __('backend.booking_status') }}</th>
                                     <th>{{ __('backend.billing_status') }}</th>
-                                    <th>{{ __('backend.client_action') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

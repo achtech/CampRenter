@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management')])
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.Clients Management')])
 @section('content')
 {{ Breadcrumbs::render('client') }}
 <div class="page-breadcrumb">
@@ -26,11 +26,11 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('backend.camper_name') }}</th>
-                                    <th>{{ __('backend.camper_description') }}</th>
-                                    <th>{{ __('backend.camper_location') }}</th>
-                                    <th>{{ __('backend.camper_price_per_day') }}</th>
-                                    <th>{{ __('backend.camper_availability') }}</th>
-                                    <th>{{ __('backend.client_action') }}</th>
+                                    <th>{{ __('backend.description') }}</th>
+                                    <th>{{ __('backend.location') }}</th>
+                                    <th>{{ __('backend.Price per day') }}</th>
+                                    <th>{{ __('backend.availability') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,7 +42,7 @@
                                     <td>{{$item->price_per_day}}</td>
                                     <td>{{$item->availability}}</td>
                                     <td>
-                                        <a href="{{ route('camper.detail',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.detail') }}</a>
+                                        <a href="{{ route('camper.detail',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.Detail') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

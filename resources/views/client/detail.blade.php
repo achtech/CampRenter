@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.client_management').':
+@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.Clients Management').':
 '.strtoupper($client->client_last_name) . " " . $client->client_name])
 @section('content')
 {{ Breadcrumbs::render('detail_client',$client) }}
@@ -23,7 +23,7 @@
                         <div class="col-4">    
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.client_name') }}</h4>
+                                    <h4 class="card-title">{{ __('backend.name') }}</h4>
                                     <div class="mt-4">
                                         <div class="form-group">
                                             <label>{{$data->client_name}} {{$data->client_last_name}}</label>
@@ -35,7 +35,7 @@
                             <div class="col-4">
                                 <div class="card">
                             <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.client_email') }}</h4>
+                                    <h4 class="card-title">{{ __('backend.email') }}</h4>
                                 <div class="mt-4">
                                     <div class="form-group">
                                             <label>{{$data->email}}</label>
@@ -48,10 +48,10 @@
                             <div class="col-4">
                                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.status') }}</h4>
+                        <h4 class="card-title">{{ __('backend.Status') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                                <label for="">{{ __('backend.client_status_'.$data->status.'') }}</label>
+                                                <label for="">{{ __('backend.status_'.$data->status.'') }}</label>
                             </div>
                     </div>
                 </div>

@@ -35,28 +35,28 @@
                                
                                 <table>
                                     <tr>
-                                        <td> <span style="color: black;font-weight: 400;">{{ __('backend.camper_description') }} :</span> {{$item->description_en}}</td>
+                                        <td> <span style="color: black;font-weight: 400;">{{ __('backend.description') }} :</span> {{$item->description_en}}</td>
                                     </tr>
                                     <tr>
                                         <td><span style="color: black;font-weight: 400;"> {{ __('backend.camper_name') }} :</span> {{$item->camper_name}}</td>
                                     </tr>
                                     <tr>
-                                        <td> <span style="color: black;font-weight: 400;"> {{ __('backend.camper_model') }} :</span> {{$item->model}}</td>
+                                        <td> <span style="color: black;font-weight: 400;"> {{ __('backend.model') }} :</span> {{$item->model}}</td>
                                     </tr>
                                     <tr>
-                                        <td><span style="color: black;font-weight: 400;"> {{ __('backend.camper_sleeping_places') }} :</span> {{$item->sleeping_places}}</td>
+                                        <td><span style="color: black;font-weight: 400;"> {{ __('backend.sleeping_places') }} :</span> {{$item->sleeping_places}}</td>
                                     </tr>
                                     <tr>
-                                        <td><span style="color: black;font-weight: 400;"> {{ __('backend.camper_price_per_day') }} :</span> {{$item->price_per_day}}</td>
+                                        <td><span style="color: black;font-weight: 400;"> {{ __('backend.Price per day') }} :</span> {{$item->price_per_day}}</td>
                                     </tr>
                                     <tr>
-                                        <td><span style="color: black;font-weight: 400;"> {{ __('backend.camper_number_kilometre') }} :</span> {{$item->included_kilometres}}</td>
+                                        <td><span style="color: black;font-weight: 400;"> {{ __('backend.number_kilometre') }} :</span> {{$item->included_kilometres}}</td>
                                     </tr>
                                     <tr>
-                                        <td><span style="color: black;font-weight: 400;"> {{ __('backend.camper_availability') }} :</span> {{$item->availability}}</td>
+                                        <td><span style="color: black;font-weight: 400;"> {{ __('backend.availability') }} :</span> {{$item->availability}}</td>
                                     </tr>
                                     <tr>
-                                        <td><span style="color: black;font-weight: 400;"> {{ __('backend.camper_smoking_allowed') }} :</span> {{$item->smoking_allowed}}</td>
+                                        <td><span style="color: black;font-weight: 400;"> {{ __('backend.smoking_allowed') }} :</span> {{$item->smoking_allowed}}</td>
                                     </tr>
                                       
                                 </table>
@@ -70,7 +70,7 @@
                 </li>
                 @endforeach
                 @else
-                <h4>{{ __('backend.no_camper') }}</h4>
+                <h4>{{ __('backend.No data found') }}</h4>
                 @endif
             </ul>
         </div> </div> </div> </div> </div>

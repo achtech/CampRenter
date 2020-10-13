@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'user', 'titlePage' => __('backend.user')])
+@extends('layout', ['activePage' => 'user', 'titlePage' => __('backend.user_managment')])
 @section('content')
 {{ Breadcrumbs::render('add_user') }}
 <div class="container-fluid">
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.tel') }}</h4>
+                        <h4 class="card-title">{{ __('backend.Phone') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
                                 {{Form::text('telephone','',['class'=>'form-control','required'])}}
@@ -42,7 +42,7 @@
                             </div>
                             <div class="custom-file">
                                 <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01">
-                                <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.choose_file') }} </label>
+                                <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
             <div class="col-sm-12">
                 {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
  
-                <a href="{{ route('user.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.cancel') }}</a>
+                <a href="{{ route('user.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>
     {{ Form::close() }}

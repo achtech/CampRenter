@@ -20,7 +20,7 @@
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.client_email') }}</h4>
+                    <h4 class="card-title">{{ __('backend.email') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
                             <label class='form-control'>{{$data->email ?? ''}}</label>
@@ -32,7 +32,7 @@
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.tel') }}</h4>
+                        <h4 class="card-title">{{ __('backend.Phone') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
                                 <label class='form-control'>{{$data->telephone ?? ''}}</label>
@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-            <a href="{{ route('user.updateProfile') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.edit') }}</a>
+            <a href="{{ route('user.updateProfile') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Edit') }}</a>
             <a href="{{ route('user.changePassword') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Change password') }}</a>
             </div>
     </div>

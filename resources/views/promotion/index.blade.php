@@ -32,12 +32,12 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.commission_label') }}</th>
-                                    <th>{{ __('backend.commission_description') }}</th>
-                                    <th>{{ __('backend.commission_createdBy') }}</th>
-                                    <th>{{ __('backend.commission_createdAt') }}</th>
-                                    <th>{{ __('backend.commission_Status') }}</th>
-                                    <th>{{ __('backend.action') }}</th>
+                                    <th>{{ __('backend.Commission') }}</th>
+                                    <th>{{ __('backend.Description') }}</th>
+                                    <th>{{ __('backend.Created by') }}</th>
+                                    <th>{{ __('backend.Created at') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,11 +65,11 @@
                                                 @if($item->status == 1)
                                                 <li class="list-inline-item">
                                                     <span style="width:90px"
-                                                        class="btn rounded-0 btn-sm btn-success">{{ __('backend.promotion_status_active') }}</span>
+                                                        class="btn rounded-0 btn-sm btn-success">{{ __('backend.status_1') }}</span>
                                                 </li>
                                                 @else
                                                 <li class="list-inline-item">
-                                                        <a href="{{ route('promotion.activate',$item->id)}}" class="btn btn-danger rounded-0 btn-sm ">{{ __('backend.promotion_status_disactivate') }}</a>
+                                                        <a href="{{ route('promotion.activate',$item->id)}}" class="btn btn-danger rounded-0 btn-sm ">{{ __('backend.status_2') }}</a>
                                                 </li>
                                                 @endif
                                             </ul>
@@ -79,12 +79,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.commission_label') }}</th>
-                                <th>{{ __('backend.commission_description') }}</th>
-                                <th>{{ __('backend.commission_createdBy') }}</th>
-                                <th>{{ __('backend.commission_createdAt') }}</th>
-                                <th>{{ __('backend.commission_Status') }}</th>
-                                <th>{{ __('backend.action') }}</th>
+                                <th>{{ __('backend.Commission') }}</th>
+                                <th>{{ __('backend.Description') }}</th>
+                                <th>{{ __('backend.Created by') }}</th>
+                                <th>{{ __('backend.Created at') }}</th>
+                                <th>{{ __('backend.Status') }}</th>
+                                <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

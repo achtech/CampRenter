@@ -14,12 +14,12 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.description') }} DE</th>
-                                    <th>{{ __('backend.description') }} EN</th>
-                                    <th>{{ __('backend.description') }} FR</th>
+                                    <th>{{ __('backend.Description') }} DE</th>
+                                    <th>{{ __('backend.Description') }} EN</th>
+                                    <th>{{ __('backend.Description') }} FR</th>
                                     <th>{{ __('backend.insurance_company') }}</th>
-                                    <th>{{ __('backend.price_per_day') }}</th>
-                                     <th>{{ __('backend.action') }}</th>
+                                    <th>{{ __('backend.Price per day') }}</th>
+                                     <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,12 +64,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.description') }} DE</th>
-                                    <th>{{ __('backend.description') }} EN</th>
-                                    <th>{{ __('backend.description') }} FR</th>
+                                <th>{{ __('backend.Description') }} DE</th>
+                                    <th>{{ __('backend.Description') }} EN</th>
+                                    <th>{{ __('backend.Description') }} FR</th>
                                     <th>{{ __('backend.insurance_company') }}</th>
-                                    <th>{{ __('backend.price_per_day') }}</th>
-                                    <th>{{ __('backend.action') }}</th>
+                                    <th>{{ __('backend.Price per day') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

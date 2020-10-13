@@ -52,7 +52,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.client')}}</h4>
+                            <h4 class="card-title">{{__('backend.Client')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('id_clients',$clients->client_name,['class'=>'form-control','required','disabled'])}}
@@ -220,7 +220,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.description')}}</h4>
+                            <h4 class="card-title">{{__('backend.Description')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::textArea('description',$data->description_camper,['class'=>'form-control','required','disabled'])}}
@@ -268,7 +268,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.price_per_day')}}</h4>
+                            <h4 class="card-title">{{__('backend.Price per day')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                 {{Form::text('price_per_day',$data->price_per_day,['class'=>'form-control','required','disabled'])}}
@@ -394,7 +394,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{__('backend.status')}}</h4>
+                            <h4 class="card-title">{{__('backend.Status')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
                                     @if($data->availability==0)
@@ -470,10 +470,10 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.booking_renter') }}</th>
-                                    <th>{{ __('backend.booking_from') }}</th>
-                                    <th>{{ __('backend.booking_to') }}</th>
-                                    <th>{{ __('backend.booking_price_per_day') }}</th>
+                                    <th>{{ __('backend.Renter') }}</th>
+                                    <th>{{ __('backend.From') }}</th>
+                                    <th>{{ __('backend.To') }}</th>
+                                    <th>{{ __('backend.Price per day') }}</th>
                                     <th>{{ __('backend.booking_total_price') }}</th>
                                 </tr>
                             </thead>
