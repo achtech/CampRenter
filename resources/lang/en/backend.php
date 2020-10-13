@@ -353,4 +353,8 @@ return [
     /**************************************************
     Please put your new labels here : Achraf 
     *********************************************** */
+    // -----------------Backup -----------------//
+    'backup_managment' => 'Backup Management',
+    'backup.file.lbl' => 'File',
+    'backup.download.lbl' => 'Download',
 ];
