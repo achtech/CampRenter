@@ -176,7 +176,7 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <img src="../../assets/images/users/{{auth()->user()->picture ?? '1.jpg'}}" alt="user" class="rounded-circle"
                                     width="40">
-                                <span class="ml-2 d-none d-lg-inline-block"><span>{{__('backend.hello')}},</span> <span
+                                <span class="ml-2 d-none d-lg-inline-block"><span>{{__('backend.Hello')}},</span> <span
                                         class="text-dark">{{auth()->user()->name}}</span> <i data-feather="chevron-down"
                                         class="svg-icon"></i></span>
                             </a>
@@ -227,7 +227,7 @@
                             aria-expanded="false">
                             <i class="icon-home"></i>
                             <span class="hide-menu">
-                            {{ __('backend.dashboard') }}</span>
+                            {{ __('backend.Dashboard') }}</span>
                         </a>
                     </li>
                     <li class="sidebar-item{{ $activePage == 'camper' ? ' selected' : '' }}">

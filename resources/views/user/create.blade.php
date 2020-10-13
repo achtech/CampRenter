@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.picture') }}</h4>
+                        <h4 class="card-title">{{ __('backend.Photo') }}</h4>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Upload</span>

@@ -8,7 +8,7 @@
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.avatar') }}</h4>
+                        <h4 class="card-title">{{ __('backend.Avatar') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
                                 {{Form::text('label',$data->label,['class'=>'form-control','required'])}}
@@ -20,7 +20,7 @@
             <div class="col-sm-12 col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title"> {{ __('backend.avatar') }}</h4>
+                        <h4 class="card-title"> {{ __('backend.Avatar') }}</h4>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Upload</span>

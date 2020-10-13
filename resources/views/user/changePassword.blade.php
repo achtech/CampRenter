@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'profile', 'titlePage' => __('backend.profile_managment')])
+@extends('layout', ['activePage' => 'profile', 'titlePage' => __('backend.Profile managment')])
 @section('content')
 {{ Breadcrumbs::render('change_password') }}
 <div class="container-fluid">
@@ -27,7 +27,7 @@
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.new_password') }}</h4>
+                    <h4 class="card-title">{{ __('backend.New password') }}</h4>
                     <div class="mt-5">
                         <div class="form-group">
                             {{ Form::password('password',array('class' => 'form-control','placeholder' => 'password','required','confirmed')) }}
@@ -45,7 +45,7 @@
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                <h4 class="card-title">{{ __('backend.confirm_password') }}</h4>
+                <h4 class="card-title">{{ __('backend.Confirm password') }}</h4>
                     <div class="mt-5">
                         <div class="form-group">
                           {{ Form::password('password_confirmation',array('class' => 'form-control','placeholder' => 'password','required')) }}

@@ -14,7 +14,7 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.avatar') }}</th>
+                                    <th>{{ __('backend.Avatar') }}</th>
                                     <th>{{ __('backend.user_name') }}</th>
                                     <th>{{ __('backend.tel') }}</th>
                                     <th>{{ __('backend.email') }}</th>
@@ -69,7 +69,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>{{ __('backend.avatar') }}</th>
+                                    <th>{{ __('backend.Avatar') }}</th>
                                     <th>{{ __('backend.user_name') }}</th>
                                     <th>{{ __('backend.tel') }}</th>
                                     <th>{{ __('backend.email') }}</th>

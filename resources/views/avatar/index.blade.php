@@ -13,7 +13,7 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.avatar') }}</th>
+                                    <th>{{ __('backend.Avatar') }}</th>
                                     <th>{{ __('backend.avatar_name') }}</th>
                                     <th>{{ __('backend.operations') }}</th>
                                 </tr>
@@ -65,7 +65,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.avatar') }}</th>
+                                <th>{{ __('backend.Avatar') }}</th>
                                     <th>{{ __('backend.avatar_name') }}</th>
                                     <th>{{ __('backend.operations') }}</th>
                                 </tr>

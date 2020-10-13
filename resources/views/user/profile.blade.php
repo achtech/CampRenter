@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'profile', 'titlePage' => __('backend.profile_managment')])
+@extends('layout', ['activePage' => 'profile', 'titlePage' => __('backend.Profile managment')])
 @section('content')
 {{ Breadcrumbs::render('profile') }}
 <div class="container-fluid">
@@ -44,7 +44,7 @@
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.picture') }}</h4>
+                        <h4 class="card-title">{{ __('backend.Photo') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
                                 <img src="/assets/images/users/{{$data->picture ?? '1.jpg'}}" style="width:254px" />
@@ -67,7 +67,7 @@
             </div>
             <div class="col-sm-12">
             <a href="{{ route('user.updateProfile') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.edit') }}</a>
-            <a href="{{ route('user.changePassword') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.change_password') }}</a>
+            <a href="{{ route('user.changePassword') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Change password') }}</a>
             </div>
     </div>
     {{ Form::close() }}

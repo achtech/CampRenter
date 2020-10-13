@@ -66,7 +66,7 @@
                                     <th>{{ __('backend.booking_price_per_day') }}</th>
                                     <th>{{ __('backend.booking_status_booking') }}</th>
                                     <th>{{ __('backend.booking_status_billing') }}</th>
-                                    <th>{{ __('backend.operation') }}</th>
+                                    <th>{{ __('backend.operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,7 +99,7 @@
                                     <th>{{ __('backend.booking_price_per_day') }}</th>
                                     <th>{{ __('backend.booking_status_booking') }}</th>
                                     <th>{{ __('backend.booking_status_billing') }}</th>
-                                    <th>{{ __('backend.operation') }}</th>
+                                    <th>{{ __('backend.operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

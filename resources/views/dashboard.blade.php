@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'dashboard', 'titlePage' => __('backend.dashboard')])
+@extends('layout', ['activePage' => 'dashboard', 'titlePage' => __('backend.Dashboard')])
 @section('content')
 {{ Breadcrumbs::render('dashboard') }}
 

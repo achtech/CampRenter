@@ -45,6 +45,7 @@ class BillingController extends Controller
                 ->with('datas', $datas)
                 ->with('clients', $clients)
                 ->with('renter', '')
+                ->with('status', '')
                 ->with('todayDate', $todayDate);
     }
 
