@@ -2,6 +2,13 @@
 @section('content')
 {{ Breadcrumbs::render('backup') }}
 <div class="container-fluid">
+<script>
+$(document).ready(function() {
+    var table = $('#default_order').DataTable();
+    // Hide two columns
+    table.columns( [0,1] ).visible( false );
+} );
+</script>
     <div class="card-body">
     <div class="row">
         <div class="col-12">
@@ -12,18 +19,22 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                <th>{{ __('backend.backup.file.lbl') }} </th>
-                                <th>{{ __('backend.backup.download.lbl') }}</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                    <th>{{ __('backend.backup.file.lbl') }} </th>
+                                    <th>{{ __('backend.backup.download.lbl') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($files as $file)
                                 <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
                                     <td>{{$file['filename']}}</td> 
-                                   <td>
+                                    <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <a href="{{ route('backup.download',$file['filename']) }}" class="btn btn-success btn-sm rounded-0"><i class="fas fa-download"></i></a>
+                                                <a href="{{ route('backup.download',$file['filename']) }}" class="btn btn-success btn-sm rounded-0" ><i class="fas fa-download"></i></a>
                                             </li>
                                         </ul>
                                     </td>
@@ -32,6 +43,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
                                     <th>{{ __('backend.backup.file.lbl') }} </th>
                                     <th>{{ __('backend.backup.download.lbl') }}</th>
                                 </tr>

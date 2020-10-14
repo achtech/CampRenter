@@ -2,17 +2,25 @@
 @section('content')
 {{ Breadcrumbs::render('avatar') }}
 <div class="container-fluid">
+<script>
+$(document).ready(function() {
+    var table = $('#default_order').DataTable();
+    // Hide two columns
+    table.columns( [0] ).visible( false );
+} );
+</script>
  <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
                     <a href="{{ route('avatar.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
-                        style="width:200px;margin:10px">{{ __('backend.New avatar') }}</a>
+                    style="width:200px;margin-left:5px">{{ __('backend.New avatar') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>&nbsp;</th>
                                     <th>{{ __('backend.Avatar') }}</th>
                                     <th>{{ __('backend.label') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
@@ -26,6 +34,7 @@
                             @endif
                             @foreach($datas as $item)
                                 <tr>
+                                    <td>&nbsp;</td>
                                     <td>
                                 <img style="width:64px;height:64px;" src="/assets/images/avatar/{{$item->image}}" ></td>
                                     <td>{{$item->label}}</td>
@@ -65,7 +74,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.Avatar') }}</th>
+                                    <th>&nbsp;</th>
+                                    <th>{{ __('backend.Avatar') }}</th>
                                     <th>{{ __('backend.label') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
                                 </tr>

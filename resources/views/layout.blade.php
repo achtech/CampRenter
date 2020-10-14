@@ -279,13 +279,13 @@
                             </a>
                         </li>
                     @endif
-                    <li class="sidebar-item {{ $activePage == 'profil' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' selected' : '' }}">
+                    <li class="sidebar-item {{ $activePage == 'profile' || $activePage == 'user' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' selected' : '' }}">
                         <a class="sidebar-link has-arrow" aria-expanded="false">
                         <i class="icon-settings"></i>
                             <span class="hide-menu">{{ __('backend.menu_settings') }}</span>
                         </a>
-                        <ul aria-expanded="false" class="collapse  first-level base-level-line {{ $activePage == 'profil' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' in' : '' }}">
-                            <li class="sidebar-item {{$activePage == 'profil' ? 'active' : ''}}"><a href="{{route('user.profile')}}" class="sidebar-link {{$activePage == 'profil' ? 'active' : ''}}"><span
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line {{ $activePage == 'profile' || $activePage == 'user' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' in' : '' }}">
+                            <li class="sidebar-item {{$activePage == 'profile' || $activePage == 'user' ? 'active' : ''}}"><a href="{{route('user.profile')}}" class="sidebar-link {{$activePage == 'profile' || $activePage == 'user' ? 'active' : ''}}"><span
                                         class="hide-menu"> {{ __('backend.menu_profil') }}
                                         </span></a>
                             </li>

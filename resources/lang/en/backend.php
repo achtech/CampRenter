@@ -50,6 +50,9 @@ return [
     'dashboard_recent_message' => 'Recent Messages',
     'dashboard_action' => 'Action',
 
+    /** BREADCRUMB */
+    'users.breadcrumb' => 'Users',
+
     /** Menu */
     'Dashboard' => "Dashboard",
     'menu_avatars' => 'Avatars',
@@ -263,8 +266,6 @@ return [
     'To' => 'To',
     'Phone' => 'Phone',
     
-    'users.breadcrumb' => 'Users',
-
     'value_of_vehicle' => 'Value of Vehicle',
     'vehicle_licence' => 'Vehicle Licence',
     'view_booking' => 'View bookings',
