@@ -318,4 +318,9 @@ Breadcrumbs::for('detail_message', function ($trail,$id) {
     $trail->push('Detail Message', route('message.show',$id));
 });
 
+// Settings > backup
+Breadcrumbs::for('backup', function ($trail) {
+    $trail->parent('settings');
+    $trail->push('Backup', route('backup.index'));
+});
 ?>

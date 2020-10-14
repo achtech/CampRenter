@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
   
  
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BackupController extends Controller
 {
@@ -25,6 +26,22 @@ class BackupController extends Controller
      */
     public function index(Request $request)
     {
+        $files =  Storage::allFiles('Laravel') ;
+        $result = array();
+        foreach($files as $file){
+            $obj = [];
+            $str = substr($file,8);
+            $obj['filename'] = substr($str,0,strlen($str)-4);
+            $obj['filesrc'] = $file;
+            $result[] = $obj;
+        }
+        return view('backup.index')
+        ->with('files', $result);
+    }
+
+    public function download($filename){
+        $file = "app\Laravel\\".$filename.".zip";
+        return response()->download(storage_path($file));
     }
     /**
      * Show the form for creating a new resource.
