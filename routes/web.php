@@ -273,6 +273,8 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
     //ADMIN->BACKUP
     Route::get('backup/{id}/delete', ['BackupController', 'destroy'])->name('backup.destroy');
+    Route::get('backup/{id}/download', 'App\Http\Controllers\BackupController@download')->name('backup.download');
+    
     Route::resource('backup', 'App\Http\Controllers\BackupController', ['except' => 'destroy', 'names' => [
         'index' => 'backup.index',
         'store' => 'backup.store',

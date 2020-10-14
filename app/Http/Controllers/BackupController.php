@@ -26,25 +26,23 @@ class BackupController extends Controller
      */
     public function index(Request $request)
     {
-        $files = $this->getFilesOfBackup();
+        $files =  Storage::allFiles('Laravel') ;
+        $result = array();
+        foreach($files as $file){
+            $obj = [];
+            $str = substr($file,8);
+            $obj['filename'] = substr($str,0,strlen($str)-4);
+            $obj['filesrc'] = $file;
+            $result[] = $obj;
+        }
         return view('backup.index')
-        ->with('files', $files);
+        ->with('files', $result);
     }
 
-    public function getFilesOfBackup(){
-        $files = Storage::allFiles('Laravel') ;
-        return $files;
+    public function download($filename){
+        $file = "app\Laravel\\".$filename.".zip";
+        return response()->download(storage_path($file));
     }
-    public static function getFilesUrlsOfBackup($fileName){
-        //$url = Storage::url($fileName) ;
-       // $path = storage_path($fileName);
-       // return response()->download($path);
-       $myFile = public_path($fileName);
-        $headers = ['Content-Type: application/sql'];
-        $newName = 'nicesnippets-sql-file-'.time().'.sql';
-
-        return response()->download($myFile, $newName, $headers);
-	}
     /**
      * Show the form for creating a new resource.
      *

@@ -19,11 +19,11 @@
                             <tbody>
                                 @foreach($files as $file)
                                 <tr>
-                                    <td>{{$file}}</td> 
+                                    <td>{{$file['filename']}}</td> 
                                    <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <a href="{{\App\Http\Controllers\BackupController::getFilesUrlsOfBackup($file)}}" class="btn btn-success btn-sm rounded-0"><i class="fas fa-download"></i></a>
+                                                <a href="{{ route('backup.download',$file['filename']) }}" class="btn btn-success btn-sm rounded-0"><i class="fas fa-download"></i></a>
                                             </li>
                                         </ul>
                                     </td>
