@@ -21,8 +21,8 @@ $(document).ready(function() {
                                 <tr>
                                     <th>&nbsp;</th>
                                     <th>&nbsp;</th>
-                                    <th>{{ __('backend.backup.file.lbl') }} </th>
-                                    <th>{{ __('backend.backup.download.lbl') }}</th>
+                                    <th>{{ __('backend.File') }} </th>
+                                    <th>{{ __('backend.Download') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,7 +34,7 @@ $(document).ready(function() {
                                     <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <a href="{{ route('backup.download',$file['filename']) }}" class="btn btn-success btn-sm rounded-0" ><i class="fas fa-download"></i></a>
+                                                <a href="{{ route('backup.download',$file['filename']) }}" class="btn btn-success btn-sm rounded-0" data-toggle="tooltip" title="Download"><i class="fas fa-download"></i></a>
                                             </li>
                                         </ul>
                                     </td>
@@ -45,8 +45,8 @@ $(document).ready(function() {
                                 <tr>
                                     <th>&nbsp;</th>
                                     <th>&nbsp;</th>
-                                    <th>{{ __('backend.backup.file.lbl') }} </th>
-                                    <th>{{ __('backend.backup.download.lbl') }}</th>
+                                    <th>{{ __('backend.File') }} </th>
+                                    <th>{{ __('backend.Download') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

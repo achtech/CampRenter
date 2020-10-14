@@ -41,7 +41,7 @@ $(document).ready(function() {
                                    <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <a href="{{ route('avatar.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
+                                                <a href="{{ route('avatar.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0" data-toggle="tooltip" title="edit"><i class="far fa-edit"></i></a>
                                             </li>  
                                             <li class="list-inline-item">
                                                 <div class="container">

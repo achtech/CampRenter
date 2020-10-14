@@ -15,6 +15,8 @@ return [
     'status_0' => 'Blocked',
     'status_1'=>'Active',
     'status_2' => 'Disactivate',
+    'File' => 'File',
+    'Download' => 'Download',
     
     /** Delete Message */
     'message_delete_avatar' => 'Do you want to delete this avatar ?',
@@ -277,6 +279,5 @@ return [
     *********************************************** */
     // -----------------Backup -----------------//
     'backup_managment' => 'Backup Management',
-    'backup.file.lbl' => 'File',
-    'backup.download.lbl' => 'Download',
+
 ];
