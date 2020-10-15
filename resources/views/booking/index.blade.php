@@ -44,7 +44,7 @@
             <div class="col-sm-12 col-md-6 col-lg-6"></div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="text-right">
-                    <button type="submit" class="btn btn-info">Search</button>
+                    <button type="submit" class="btn btn-info">{{ __('backend.search') }}</button>
                 </div>
             </div>
         </div>

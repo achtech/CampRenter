@@ -35,7 +35,7 @@
                                     <th>{{ __('backend.Commission') }}</th>
                                     <th>{{ __('backend.Description') }}</th>
                                     <th>{{ __('backend.Created by') }}</th>
-                                    <th>{{ __('backend.Created at') }}</th>
+                                    <th>{{ __('backend.created at') }}</th>
                                     <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
                                 </tr>
@@ -82,7 +82,7 @@
                                 <th>{{ __('backend.Commission') }}</th>
                                 <th>{{ __('backend.Description') }}</th>
                                 <th>{{ __('backend.Created by') }}</th>
-                                <th>{{ __('backend.Created at') }}</th>
+                                <th>{{ __('backend.created at') }}</th>
                                 <th>{{ __('backend.Status') }}</th>
                                 <th>{{ __('backend.Operations') }}</th>
                                 </tr>

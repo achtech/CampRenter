@@ -45,9 +45,29 @@
                         <h4 class="card-title">{{ __('backend.Status') }}</h4>
                         <div class="form-group">           
                             {{ Form::radio('status','1', $status==1,['id'=>'status-0'])}}
-                            {{ Form::label('status-0', 'Payed') }} 
+                            @if(app()->getLocale()== 'en')
+                                {{ Form::label('status-0', 'Payed') }}
+                            
+                            @endif
+                            @if(app()->getLocale()== 'fr')
+                                {{ Form::label('status-0', 'Payé') }}
+                            
+                            @endif
+                            @if(app()->getLocale()== 'de')
+                                {{ Form::label('status-0', 'Bezahlt') }}
+                            
+                            @endif
+                            
                             {{ Form::radio('status','2',$status==2,['id'=>'status-1'])}}
+                            @if(app()->getLocale()== 'en')
                             {{ Form::label('status-1', 'Not payed') }} 
+                            @endif
+                            @if(app()->getLocale()== 'fr')
+                            {{ Form::label('status-1', 'Impayé') }} 
+                            @endif
+                            @if(app()->getLocale()== 'de')
+                            {{ Form::label('status-1', 'Nicht bezahlt') }} 
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -61,7 +81,7 @@
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="text-right">
-                    <button style="width:200px;" type="submit" class="btn btn-info">Search</button>
+                    <button style="width:200px;" type="submit" class="btn btn-info">{{ __('backend.search') }}</button>
                     <a href="{{ route('excel-export') }}" 
                         class="btn btn-info" 
                         style="width:200px;">

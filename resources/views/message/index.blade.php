@@ -14,7 +14,7 @@
                                     <th>{{ __('backend.contact') }}</th>
                                     <th>{{ __('backend.email') }}</th>
                                     <th>{{ __('backend.Phone') }}</th>
-                                    <th>{{ __('backend.subject') }}</th>
+                                    <th>{{ __('backend.Subject') }}</th>
                                     <th>{{ __('backend.send_date') }}</th>
                                     <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
@@ -68,7 +68,7 @@
                                     <th>{{ __('backend.contact') }}</th>
                                     <th>{{ __('backend.email') }}</th>
                                     <th>{{ __('backend.Phone') }}</th>
-                                    <th>{{ __('backend.subject') }}</th>
+                                    <th>{{ __('backend.Subject') }}</th>
                                     <th>{{ __('backend.send_date') }}</th>
                                     <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
