@@ -13,14 +13,14 @@
                                 <div class="card-body">
                                     <div class="mt-4">
                                         <div class="form-group">
-                                            
-                                            <img style="height: 107px;" src="/assets/images/avatar/{{$avatar}}"/>
+
+                                            <img style="height: 107px;" src="{{ asset('assets/images/avatar') }}/{{$avatar}}"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                     </div>
-                        <div class="col-4">    
+                        <div class="col-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">{{ __('backend.name') }}</h4>
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                 </div>
-                            </div>  
+                            </div>
                             <div class="col-3"></div>
                             <div class="col-4">
                                 <div class="card">
@@ -77,14 +77,14 @@
                         <div class="mt-4">
                             <div class="form-group">
                                                 <a data-fancybox="gallery" class="primary-btn"
-                                                    href="/assets/images/clients/{{$data->driving_licence_image}}"><img
+                                                    href="{{ asset('assets/images/clients') }}/{{$data->driving_licence_image}}"><img
                                                         style="height: 107px;width: 158px;"
-                                                        src="/assets/images/clients/{{$data->driving_licence_image}}" /></a>
+                                                        src="{{ asset('assets/images/clients') }}/{{$data->driving_licence_image}}" /></a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>   
+            </div>
                             <div class="col-4">
                                 <div class="card">
                     <div class="card-body">
@@ -92,15 +92,15 @@
                         <div class="mt-4">
                             <div class="form-group">
                                                 <a data-fancybox="gallery" class="primary-btn"
-                                                    href="/assets/images/clients/{{$data->image_national_id}}"><img
+                                                    href="{{ asset('assets/images/clients') }}/{{$data->image_national_id}}"><img
                                                         style="height: 107px;width: 158px;"
-                                                        src="/assets/images/clients/{{$data->image_national_id}}" /></a>
+                                                        src="{{ asset('assets/images/clients') }}/{{$data->image_national_id}}" /></a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>  
-                    
+            </div>
+
                         </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 @section('content')
 {{ Breadcrumbs::render('profile') }}
 <div class="container-fluid">
-    <!--'action'=>'App\Http\Controllers\InsuranceController@update',-->    
+    <!--'action'=>'App\Http\Controllers\InsuranceController@update',-->
     @csrf
      <div class="row">
      <div class="col-sm-12 col-md-6 col-lg-4">
@@ -47,7 +47,7 @@
                         <h4 class="card-title">{{ __('backend.Photo') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                <img src="/assets/images/users/{{$data->picture ?? '1.jpg'}}" style="width:254px" />
+                                <img src="{{ asset('assets/images/users') }}/{{$data->picture ?? '1.jpg'}}" style="width:254px" />
                             </div>
                         </div>
                     </div>

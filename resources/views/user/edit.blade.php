@@ -3,7 +3,7 @@
 {{ Breadcrumbs::render('edit_user',$data->id) }}
 <div class="container-fluid">
     {{ Form::open(array('method'=>'PUT', 'enctype'=>'multipart/form-data' ,'route' => ['user.update', $data->id ?? 1])) }}
-    
+
     @csrf
      <div class="row">
      <div class="col-sm-12 col-md-6 col-lg-4">
@@ -49,8 +49,8 @@
                             <div class="form-group">
                                 <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01" />
                                 <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
-                                <img src="/assets/images/users/{{$data->picture ?? '1.jpg'}}" style="width:254px" />
-                                
+                                <img src="{{ asset('assets/images/users') }}/{{$data->picture ?? '1.jpg'}}" style="width:254px" />
+
                             </div>
                         </div>
                     </div>

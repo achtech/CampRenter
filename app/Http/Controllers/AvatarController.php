@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-  
- 
 use App\Models\Avatar;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
 
 class AvatarController extends Controller
 {
@@ -44,7 +40,7 @@ class AvatarController extends Controller
      */
     public function create()
     {
-        return view('Avatar.create');
+        return view('avatar.create');
     }
     /**
      * Display the specified resource.
@@ -67,19 +63,17 @@ class AvatarController extends Controller
         $file = $request->file('image');
 
         $input = request()->except(['_token', '_method', 'action']);
-        if($request->file('image') && $request->file('image')->getClientOriginalName()){
+        if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $input['image'] = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\avatar'),$file->getClientOriginalName());
+            $file->move(base_path('public\assets\images\avatar'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Avatar::create($input);
         return redirect(route('avatar.index'))->with('success', 'Item added succesfully');
     }
-
-
 
     /**
      * Show the form for editing the specified resource.
@@ -110,13 +104,13 @@ class AvatarController extends Controller
 
         $file = $request->file('image');
         $input = request()->except(['_token', '_method', 'action']);
-        if($request->file('image') && $request->file('image')->getClientOriginalName()){
+        if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $input['image'] = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\avatar'),$file->getClientOriginalName());
+            $file->move(base_path('public\assets\images\avatar'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Avatar::where('id', $id)->update($input);
         return redirect(route('avatar.index'))->with('success', 'Item Updated succesfully');
     }

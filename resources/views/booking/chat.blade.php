@@ -15,7 +15,7 @@
                                 <!--chat Row -->
                                 <li class="chat-item list-style-none mt-3">
                                     <div class="chat-img d-inline-block"><img
-                                            src="/assets/images/avatar/{{$item->image_owner}}" alt="user"
+                                            src="{{ asset('assets/images') }}/avatar/{{$item->image_owner}}" alt="user"
                                             class="rounded-circle" width="45">
                                     </div>
                                     <div class="chat-content d-inline-block pl-3">
@@ -25,12 +25,12 @@
                                     <div class="chat-time d-block font-10 mt-1 mr-0 mb-3">{{$item->date_sent}}
                                     </div>
                                 </li>
-                                @endforeach 
+                                @endforeach
                                 @foreach($dataMessRenter as $item)
                                 <!--chat Row -->
                                 <li class="chat-item list-style-none mt-3">
                                     <div class="chat-img d-inline-block"><img
-                                            src="/assets/images/avatar/{{$item->image_renter}}" alt="user"
+                                            src="{{ asset('assets/images/avatar') }}/{{$item->image_renter}}" alt="user"
                                             class="rounded-circle" width="45">
                                     </div>
                                     <div class="chat-content d-inline-block pl-3">
@@ -40,10 +40,10 @@
                                     <div class="chat-time d-block font-10 mt-1 mr-0 mb-3">{{$item->date_sent}}
                                     </div>
                                 </li>
-                                @endforeach 
+                                @endforeach
                             </ul>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

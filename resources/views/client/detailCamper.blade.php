@@ -20,19 +20,19 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                 
+
             <ul style="list-style-type: none;">
                 @if($datas->count()>0)
                 @foreach($datas as $item)
                 <li >
                     <table>
-                       
+
                         <tr>
                             <td><div>
-                            <img src="/assets/images/clients/{{$item->image}}"/>
+                            <img src="{{ asset('assets/images/clients') }}/{{$item->image}}"/>
                             </div></td>
                             <td style="vertical-align: top !important;">
-                               
+
                                 <table>
                                     <tr>
                                         <td> <span style="color: black;font-weight: 400;">{{ __('backend.description') }} :</span> {{$item->description_en}}</td>
@@ -58,15 +58,15 @@
                                     <tr>
                                         <td><span style="color: black;font-weight: 400;"> {{ __('backend.smoking_allowed') }} :</span> {{$item->smoking_allowed}}</td>
                                     </tr>
-                                      
+
                                 </table>
                             </td>
                         </tr>
 
-                        
+
                     </table>
-                    
-                    
+
+
                 </li>
                 @endforeach
                 @else

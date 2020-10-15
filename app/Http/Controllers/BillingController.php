@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
-
-use App\Exports\BillingExport;
-use App\Models\Avatars;
 use App\Models\Billing;
-use App\Models\Client;
-use App\Models\Booking;
 use App\Models\BillingBookings;
-use Illuminate\Support\Facades\Session;
+use App\Models\Client;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Session;
 
 class BillingController extends Controller
 {
@@ -28,7 +21,6 @@ class BillingController extends Controller
         $this->middleware('auth');
     }
 
-    
     /**
      * Display a listing of the resource.
      *
@@ -39,14 +31,14 @@ class BillingController extends Controller
         $todayDate = date("Y-m-d");
         $clients = Client::all();
         $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
-        ->select('Billings.id as id' , 'Billings.id', 'Billings.iban', 'Billings.billings_methods', 'Billings.total', 'Billings.status', 'Billings.payment_date', 'Billings.id_clients','clients.client_name', 'clients.client_last_name')    
-        ->get();
+            ->select('billings.id as id', 'billings.id', 'billings.iban', 'billings.billings_methods', 'billings.total', 'billings.status', 'Billings.payment_date', 'billings.id_clients', 'clients.client_name', 'clients.client_last_name')
+            ->get();
         return view('billing.index')
-                ->with('datas', $datas)
-                ->with('clients', $clients)
-                ->with('renter', '')
-                ->with('status', '')
-                ->with('todayDate', $todayDate);
+            ->with('datas', $datas)
+            ->with('clients', $clients)
+            ->with('renter', '')
+            ->with('status', '')
+            ->with('todayDate', $todayDate);
     }
 
     public function bookings($id)
@@ -61,10 +53,10 @@ class BillingController extends Controller
 
         $clients = Client::all();
         return view('billing.billing_bookings')
-                ->with('datas', $datas)
-                ->with('clients', $clients)
-                ->with('renter', '')
-                ->with('todayDate', $todayDate);
+            ->with('datas', $datas)
+            ->with('clients', $clients)
+            ->with('renter', '')
+            ->with('todayDate', $todayDate);
     }
     public function export(Request $request)
     {
@@ -76,11 +68,11 @@ class BillingController extends Controller
         $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
             ->where('status', '=', 0);
         $headers = array(
-            "Content-type"        => "text/csv",
+            "Content-type" => "text/csv",
             "Content-Disposition" => "attachment; filename=$fileName",
-            "Pragma"              => "no-cache",
-            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
-            "Expires"             => "0"
+            "Pragma" => "no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0",
         );
 
         $columns = array('Owner', 'IBAN', 'Amount');
@@ -89,14 +81,14 @@ class BillingController extends Controller
             fputcsv($file, $columns);
             if ($datas->count() > 0) {
                 foreach ($datas as $elem) {
-                    $row['Owner']  = $elem->client_name;
-                    $row['IBAN']    = $elem->IBAN;
-                    $row['Amount']    = $elem->confirmed_amount;
+                    $row['Owner'] = $elem->client_name;
+                    $row['IBAN'] = $elem->IBAN;
+                    $row['Amount'] = $elem->confirmed_amount;
                 }
             } else {
-                $row['Owner']  = '';
-                $row['IBAN']    = '';
-                $row['Amount']    = '';
+                $row['Owner'] = '';
+                $row['IBAN'] = '';
+                $row['Amount'] = '';
             }
             fputcsv($file, array($row['Owner'], $row['IBAN'], $row['Amount']));
             fclose($file);
@@ -113,22 +105,22 @@ class BillingController extends Controller
         $startDate = $request->start_date ?? '';
         $end_date = $request->end_date ?? '';
         $status = $request->status ?? '';
-        $client = $request->ownerId ??'';
+        $client = $request->ownerId ?? '';
         Session::put('startDate', $startDate);
         Session::put('end_date', $end_date);
         Session::put('status', $status);
         Session::put('client', $client);
         $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id');
-        if(!empty($startDate)){
+        if (!empty($startDate)) {
             $datas = $datas->whereDate('payment_date', '>=', $startDate);
         }
-        if(!empty($endDate)){
+        if (!empty($endDate)) {
             $datas = $datas->whereDate('payment_date', '<=', $endDate);
         }
-        if(!empty($status)){
-            $datas = $datas->where('billings.status', $status ==2 ? 1 : 0);
+        if (!empty($status)) {
+            $datas = $datas->where('billings.status', $status == 2 ? 1 : 0);
         }
-        if(!empty($client) && $client!='Choose'){
+        if (!empty($client) && $client != 'Choose') {
             $datas = $datas->where('billings.id_clients', $client);
         }
         $datas = $datas->get();
@@ -170,14 +162,12 @@ class BillingController extends Controller
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
 
         $data = Billing::create($input);
         return redirect(route('billing.index'))->with('success', 'Item added succesfully');
     }
-
-
 
     /**
      * Show the form for editing the specified resource.
@@ -203,7 +193,7 @@ class BillingController extends Controller
             return redirect(route('billing.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Billing::where('id', $id)->update($input);
         return redirect(route('billing.index'))->with('success', 'Item Updated succesfully');
     }

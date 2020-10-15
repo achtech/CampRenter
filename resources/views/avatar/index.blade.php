@@ -14,7 +14,7 @@ $(document).ready(function() {
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                    <a href="{{ route('avatar.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
+                    <a href="{{ route('avatar.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
                     style="width:200px;margin-left:5px">{{ __('backend.New avatar') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
@@ -36,13 +36,13 @@ $(document).ready(function() {
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>
-                                <img style="width:64px;height:64px;" src="/assets/images/avatar/{{$item->image}}" ></td>
+                                <img style="width:64px;height:64px;" src="{{ asset('assets/images') }}/avatar/{{$item->image}}" ></td>
                                     <td>{{$item->label}}</td>
                                    <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
                                                 <a href="{{ route('avatar.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0" data-toggle="tooltip" title="edit"><i class="far fa-edit"></i></a>
-                                            </li>  
+                                            </li>
                                             <li class="list-inline-item">
                                                 <div class="container">
                                                 <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
@@ -65,12 +65,12 @@ $(document).ready(function() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </li> 
+                                            </li>
                                     </td>
                                 </tr>
                                 @endforeach
 
-                                
+
                             </tbody>
                             <tfoot>
                                 <tr>

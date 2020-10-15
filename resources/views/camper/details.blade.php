@@ -445,7 +445,7 @@
 
                                         @foreach($gallery as $item)
                                         <div class="carousel-item @if ($loop->first) active @endif" >
-                                            <img class="img-fluid" src="../../assets/images/campers/{{$item->image}}" alt="First slide">
+                                            <img class="img-fluid" src="{{ asset('assets/images/campers')}}/{{$item->image}}" alt="First slide">
                                         </div>
                                         @endforeach
 

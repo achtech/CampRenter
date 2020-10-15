@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                    <a href="{{ route('user.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
+                    <a href="{{ route('user.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
                         style="width:200px;margin:0px 10px">{{ __('backend.new_user') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
@@ -27,7 +27,7 @@
                             @foreach($datas as $item)
                                 <tr>
                                     <td>
-                                <img style="width:64px;height:64px;" src="/assets/images/users/{{$item->picture ?? '1.jpg'}}" ></td>
+                                <img style="width:64px;height:64px;" src="{{ asset('assets/images/users') }}/{{$item->picture ?? '1.jpg'}}" ></td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->telephone}}</td>
                                     <td>{{$item->email}}</td>
@@ -37,7 +37,7 @@
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
                                                 <a href="{{ route('user.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
-                                            </li>  
+                                            </li>
                                             <li class="list-inline-item">
                                                 <div class="container">
                                                 <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
@@ -60,12 +60,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </li> 
+                                            </li>
                                     </td>
                                 </tr>
                                 @endforeach
 
-                                
+
                             </tbody>
                             <tfoot>
                                 <tr>

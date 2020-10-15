@@ -95,7 +95,7 @@ class CamperController extends Controller
         $fuels = Fuel::find($camper->id_fuels);
         $gallery = CamperImage::where('id_campers', $id)
             ->get();
-        $booking_camper = Booking::leftjoin('clients', 'Bookings.id_clients', '=', 'clients.id')
+        $booking_camper = Booking::leftjoin('clients', 'bookings.id_clients', '=', 'clients.id')
             ->where('id_campers', $id)->get();
 
         return view('camper.details')
