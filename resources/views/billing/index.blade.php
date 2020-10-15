@@ -46,7 +46,7 @@
                         <div class="form-group">           
                             {{ Form::radio('status','1', $status==1,['id'=>'status-0'])}}
                             {{ Form::label('status-0', 'Payed') }} 
-                            {{ Form::radio('status','2',$status==2,['id'=>'status-1'])}}
+                            {{ Form::radio('status','2',$status==2 ,['id'=>'status-1'])}}
                             {{ Form::label('status-1', 'Not payed') }} 
                         </div>
                     </div>
