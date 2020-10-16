@@ -9,27 +9,27 @@
             <li class="nav-item">
                 <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link active">
                     <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
-                    <span class="d-none d-lg-block">Details</span>
+                    <span class="d-none d-lg-block">{{ __('backend.Detail') }}</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#galery" data-toggle="tab" aria-expanded="true"
                     class="nav-link">
                     <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
-                    <span class="d-none d-lg-block">Galery</span>
+                    <span class="d-none d-lg-block">{{ __('backend.galery') }}</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#bookings" data-toggle="tab" aria-expanded="false" class="nav-link">
                     <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
-                    <span class="d-none d-lg-block">Bookings</span>
+                    <span class="d-none d-lg-block">{{ __('backend.menu_booking') }}</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a href="#location" data-toggle="tab" aria-expanded="false" class="nav-link">
                     <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
-                    <span class="d-none d-lg-block">Location</span>
+                    <span class="d-none d-lg-block">{{ __('backend.location') }}</span>
                 </a>
             </li>
         </ul>

@@ -5,6 +5,7 @@ return [
     'Choose file' => 'Choose file',
     'Cancel' => 'Cancel',
     'Edit' => 'Edit',
+    'Update' => 'Update',
     'Export' => 'Export',
     'No data found' => 'No data found',
     'Operations' => 'Operation',
@@ -13,11 +14,11 @@ return [
     'block' => 'Block',
     'activate' => 'Activate',
     'status_0' => 'Blocked',
-    'status_1'=>'Active',
+    'status_1' => 'Active',
     'status_2' => 'Disactivate',
     'File' => 'File',
     'Download' => 'Download',
-    
+
     /** Delete Message */
     'message_delete_avatar' => 'Do you want to delete this avatar ?',
     'message_delete_camperCategory' => 'Do you want to delete this Camper Category',
@@ -31,7 +32,7 @@ return [
     'message_delete_transmission' => 'Do you want to delete this Transmission',
     'block_message' => 'Do you want to block this client?',
     'active_message' => 'Do you want to activate this client?',
-        
+
     /** Dashboard */
     'Hello' => 'Hello',
     'dashboard_confirm_camper' => 'Campers to be confirmed',
@@ -41,6 +42,7 @@ return [
     'dashboard_current_month' => 'Current Month',
     'dashboard_last_month' => 'Previous Month',
     'dashboard_new_promotion' => 'New Promotion',
+    'dashboard_to_do' => 'To do',
     'dashboard_add_user' => 'New User',
     'dashboard_client_name' => 'Client',
     'dashboard_message' => 'Subject',
@@ -54,7 +56,56 @@ return [
 
     /** BREADCRUMB */
     'users.breadcrumb' => 'Users',
-
+    'dashboard.breadcrumb' => 'Dashboard',
+    'settings.breadcrumb' => 'Settings',
+    'promotion.breadcrumb' => 'Promotion',
+    'create_promotion.breadcrumb' => 'create a promotion',
+    'new_user.breadcrumb' => 'New user',
+    'camper.breadcrumb' => 'camper',
+    'detail_camper.breadcrumb' => 'detail camper',
+    'booking.breadcrumb' => 'Booking',
+    'booking_detail.breadcrumb' => 'Booking detail',
+    'billing.breadcrumb' => 'Billing',
+    'client.breadcrumb' => 'Client',
+    'campers_of.breadcrumb' => 'Campers of: ',
+    'bookings_of.breadcrumb' => 'Bookings of: ',
+    'detail_client.breadcrumb' => 'detail client',
+    'message.breadcrumb' => 'Message',
+    'bookings.breadcrumb' => 'Bookings',
+    'inssurance.breadcrumb' => 'Insurance',
+    'edit_inssurance.breadcrumb' => 'Edit Insurance',
+    'create_inssurance.breadcrumb' => 'Create Insurance',
+    'detail_message.breadcrumb' => 'Detail message',
+    'edit_user.breadcrumb' => 'Edit user',
+    'profile.breadcrumb' => 'Profile',
+    'change_password.breadcrumb' => 'Change password',
+    'update_profile.breadcrumb' => 'Update profile',
+    'edit_promotion.breadcrumb' => 'Edit promotion',
+    'avatar.breadcrumb' => 'Avatar',
+    'new_avatar.breadcrumb' => 'New avatar',
+    'edit_avatar.breadcrumb' => 'Edit avatar',
+    'camper_category.breadcrumb' => 'Camper Category',
+    'edit_camper_category.breadcrumb' => 'edit camper category',
+    'create_camper_category.breadcrumb' => 'create camper category',
+    'licence_category.breadcrumb' => 'licence category',
+    'create_licence_category.breadcrumb' => 'Create Licence Category',
+    'edit_licence_category.breadcrumb' => 'Edit Licence Category',
+    'inssurance_company.breadcrumb' => 'Insurances company',
+    'edit_inssurance_company.breadcrumb' => 'edit insurance company',
+    'create_inssurance_company.breadcrumb' => 'create insurance company',
+    'fuel.breadcrumb' => 'Fuel',
+    'edit_fuel.breadcrumb' => 'Edit Fuel',
+    'create_fuel.breadcrumb' => 'create Fuel',
+    'transmission.breadcrumb' => 'Transmission',
+    'edit_transmission.breadcrumb' => 'Edit Transmission',
+    'create_transmission.breadcrumb' => 'create transmission',
+    'chat_detail.breadcrumb' => 'chat detail',
+    'new_message.breadcrumb' => 'new message',
+    'edit_message.breadcrumb' => 'edit message',
+    'backup.breadcrumb' => 'Backup',
+    'create_camper_status.breadcrumb' => 'Create Camper Status',
+    'edit_camper_status.breadcrumb' => 'Edit Camper Status',
+    'camper_status.breadcrumb' => 'Camper Status',
     /** Menu */
     'Dashboard' => "Dashboard",
     'menu_avatars' => 'Avatars',
@@ -75,7 +126,7 @@ return [
     'menu_settings' => 'Settings',
     'menu_transmissions' => 'Transmissions',
     'menu_user_managment' => 'User Managment',
-    
+
     /** Users and authentification */
     'Change password' => 'Change password',
     'Confirm password' => 'Confirm password',
@@ -86,7 +137,7 @@ return [
     'Profile managment' => 'Profile managment',
     'user_name' => 'User name',
     'user_managment' => 'User managment',
-    
+
     /** CAMPERS */
     'block_camper_message' => 'Do you want to block this Camper?',
     'camper_detail' => 'Camper Detail',
@@ -106,7 +157,7 @@ return [
     'booking_total_days' => 'Total days',
     'booking_total_price' => 'Total price',
     'last_booking' => 'Last Booking',
-    
+
     /** BILLINGS */
     'status_billing_0' => 'Non paid',
     'status_billing_1' => 'Paid',
@@ -124,7 +175,7 @@ return [
     'insurance_managment' => 'Insurance Managment',
     'insurance_list' => 'List of insurances',
     'new_insurance' => 'New Insurance',
-   
+
     /** Messages  */
     'message_content' => 'Message',
     'message_managment' => 'Message Managment',
@@ -137,12 +188,12 @@ return [
     'Commission' => 'Commission',
     'new_promotion' => 'New promotion',
     'current_commission' => 'Current commission',
-        
+
     /** Avatar */
     'Avatar' => 'Avatar',
     'avatar_managment' => 'Avatar managment',
     'New avatar' => 'New avatar',
-    
+
     /** Camper category */
     'camperCategory_managment' => 'Camper Category Managment',
     'new_camperCategory' => 'New Category',
@@ -179,10 +230,10 @@ return [
     'animal_description' => 'Animal Description',
     'Answer' => 'Answer',
     'age' => 'Age',
-    'availability' => 'Availability', 
+    'availability' => 'Availability',
 
     'brand' => 'Brand',
-    
+
     'category' => 'Category',
     'confirmed' => 'Confirmed',
     'current_amount' => 'Current Amount',
@@ -194,7 +245,7 @@ return [
     'current_solde' => 'Current Solde',
     'Created by' => 'Created By',
     'created at' => 'Created at',
-    
+
     'Detail' => 'Detail',
     'Description' => 'Description',
     'driving_licence' => 'Driving Licence',
@@ -203,17 +254,17 @@ return [
     'detail_client' => 'Detail Client',
     'Date' => 'Date',
     'driver_licence_image' => 'Driving Licence Image',
-    
+
     'email' => 'Email',
     'From' => 'From',
 
     'height' => 'Height',
-
+    'galery' => 'Galery',
     'image' => 'Personal image',
     'image' => 'Image',
-    'image_national' => 'Picture of National card',    
+    'image_national' => 'Picture of National card',
     'included_kilometres' => 'Included Kilometres',
-    
+
     'location' => 'Location',
     'license_plate_number' => 'License Plate Number',
     'length' => 'Length',
@@ -227,17 +278,17 @@ return [
     'model' => 'Model',
     'minimal_rent_days' => 'Minimal Rent Days',
     'minimum_age' => 'Minimum Age',
-    
+
     'national' => 'National',
     'not_payed' => 'Not payed',
     'number_kilometre' => 'Number of kilometers',
     'name' => 'Name',
     'national_image' => 'Image of National ID',
     'national_number' => 'National ID number',
-    
+
     'owner_name' => 'Owner Name',
     'office' => 'Office',
-    
+
     'paiment' => 'Paiement',
     'paypal_account' => 'Paypal account',
     'payment_date' => 'Payment date',
@@ -246,12 +297,13 @@ return [
     'position' => 'Position',
     'Price per day' => 'Price per day',
     'Photo' => 'Photo',
-    
+
     'remaining_days_number' => 'Number of days remaining',
     'rent_management' => 'Rent Management',
     'role' => 'Role',
-    
+
     'sleeping_places' => 'Sleeping Places',
+    'search' => 'Search',
     'send_date' => 'Date',
     'seat_number' => 'Seats Number',
     'smoking_allowed' => 'Smoking Allowed',
@@ -262,12 +314,12 @@ return [
     'sleeping_places' => 'number of places',
     'smoking_allowed' => 'Smoking Allowed',
     'Status' => 'Status',
-    
+
     'total_solde' => 'Total Solde',
     'totransfert_solde' => 'To transfert',
     'To' => 'To',
     'Phone' => 'Phone',
-    
+
     'value_of_vehicle' => 'Value of Vehicle',
     'vehicle_licence' => 'Vehicle Licence',
     'view_booking' => 'View bookings',

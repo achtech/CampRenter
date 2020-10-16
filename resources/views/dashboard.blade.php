@@ -57,7 +57,7 @@
                     <div class="col-md-4">
                         <div style="margin:10px">
                             <a href="#" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
-                            style="position: absolute;bottom:10px;width: 90%;">TODO</a>
+                            style="position: absolute;bottom:10px;width: 90%;">{{ __('backend.dashboard_to_do') }}</a>
                         </div>
                     </div>
                     <div class="col-md-4">

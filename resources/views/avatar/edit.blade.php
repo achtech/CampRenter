@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'avatar', 'titlePage' => trans('backend.avatar_managment')])
+@extends('layout', ['activePage' => 'avatar', 'titlePage' => __('backend.avatar_managment')])
 @section('content')
 {{ Breadcrumbs::render('edit_avatar',$data) }}
 <div class="container-fluid">
@@ -30,13 +30,14 @@
                                     <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
                                 </div>
                             </div>
-                                    <img src="{{ asset('assets/images/avatar') }}/{{$data->image}}"  style="with:200px"/>
+                                    <img src="/assets/images/avatar/{{$data->image}}"  style="with:200px"/>
                     </div>
                 </div>
-            </div>
+            </div>  
             <div class="col-sm-12">
-                {{Form::submit('Update',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
-
+                
+                {{Form::submit(__('backend.Update'),['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
+                
                 <a href="{{ route('avatar.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>
