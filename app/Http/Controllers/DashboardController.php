@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\Message;
+use App\Models\user;
 use DB;
 
 class DashboardController extends Controller
@@ -17,10 +19,13 @@ class DashboardController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     public function index()
     {
+        \Session::put('locale', auth()->user()->lang);
+        App::setLocale(auth()->user()->lang);
         $datas = Camper::where('is_confirmed', 0)
             ->join('clients', 'campers.id_clients', '=', 'clients.id')
             ->get();
@@ -81,7 +86,7 @@ class DashboardController extends Controller
     public function getIncome($startDate, $end_date, $owner)
     {
         /* $data = Booking::where('start_date','<=',$owner?$end_date:$startDate)
-                       ->where('end_date','>=',$owner?$end_date:$startDate);
+        ->where('end_date','>=',$owner?$end_date:$startDate);
          */
         $data = '';
         if ($owner) {

@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
-use Session;
 use App;
+use Closure;
 use Config;
 use Illuminate\Http\Request;
+use Session;
 
 class Lang
 {
@@ -19,11 +19,10 @@ class Lang
      */
     public function handle($request, Closure $next)
     {
-        if (!Session::has('locale'))
-        {
-          Session::put('locale',Config::get('app.locale'));
-       }
-       App::setLocale(session('locale'));
-       return $next($request);
+        if (!Session::has('locale')) {
+            Session::put('locale', Config::get('app.locale'));
+        }
+        App::setLocale(session('locale'));
+        return $next($request);
     }
 }
