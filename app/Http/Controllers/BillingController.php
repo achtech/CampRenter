@@ -81,18 +81,127 @@ class BillingController extends Controller
         $dom->xmlVersion = '1.0';
         $dom->formatOutput = true;
         $xml_file_name = 'movies_list.xml';
-        if ($datas->count() > 0) {
-            foreach ($datas as $elem) {
-                $node = $dom->createElement('row');
-                $child_node_title = $dom->createElement('Owner', $elem->client_name . ' ' . $elem->client_last_name);
-                $node->appendChild($child_node_title);
-                $child_node_title = $dom->createElement('IBAN', $elem->iban);
-                $node->appendChild($child_node_title);
-                $child_node_title = $dom->createElement('Amount', $elem->total);
-                $node->appendChild($child_node_title);
-                $dom->appendChild($node);
-            }
-        }
+        //  if ($datas->count() > 0) {
+        //     foreach ($datas as $elem) {
+        $root = $dom->createElement('CstmrCdtTrfInitn');
+        $node = $dom->createElement('GrpHdr');
+        $child_node_title = $dom->createElement('MsgId', '7aeb9c4d264990e6fefc96affed9cd1b');
+        $node->appendChild($child_node_title);
+        $child_node_year = $dom->createElement('CreDtTm', 'tets');
+        $node->appendChild($child_node_year);
+        $child_node_genre = $dom->createElement('NbOfTxs', 1);
+        $node->appendChild($child_node_genre);
+        $child_node_ratings = $dom->createElement('CtrlSum', 14.9);
+        $node->appendChild($child_node_ratings);
+        $child_node_ratings = $dom->createElement('InitgPty');
+        $child_node_title = $dom->createElement('Nm', 'Webgorilla GmbH');
+        $child_node_ratings->appendChild($child_node_title);
+        $child_node_title = $dom->createElement('CtctDtls');
+        $child_node_titl = $dom->createElement('Nm', 'bexio');
+        $child_node_title->appendChild($child_node_titl);
+        $child_node_titl = $dom->createElement('Othr', '1.0.0');
+        $child_node_title->appendChild($child_node_titl);
+        $child_node_ratings->appendChild($child_node_title);
+        $node->appendChild($child_node_ratings);
+        $root->appendChild($node);
+        //Second Element
+        $second_element = $dom->createElement('PmtInf');
+        $second_element_node = $dom->createElement('PmtInfId', 'Webgorilla GmbH');
+        $second_element->appendChild($second_element_node);
+        $second_element_node = $dom->createElement('PmtMtd', 'TRF');
+        $second_element->appendChild($second_element_node);
+        $second_element_node = $dom->createElement('BtchBookg', 'false');
+        $second_element->appendChild($second_element_node);
+        $second_element_node = $dom->createElement('ReqdExctnDt', '2020-10-12');
+        $second_element->appendChild($second_element_node);
+
+        $second_element_root = $dom->createElement('Dbtr');
+        $second_element->appendChild($second_element_root);
+        $second_element_node_db = $dom->createElement('Nm', 'Webgorilla GmbH');
+        $second_element_root->appendChild($second_element_node_db);
+        $second_element_root = $dom->createElement('DbtrAcct');
+        $second_element->appendChild($second_element_root);
+        $second_element_node_id = $dom->createElement('Id');
+        $second_element_root->appendChild($second_element_node_id);
+        $second_element_node_db = $dom->createElement('IBAN', 'CH2309000000889109007');
+        $second_element_node_id->appendChild($second_element_node_db);
+
+        //Third Element
+        $third_element = $dom->createElement('DbtrAgt');
+        $second_element->appendChild($third_element);
+        $third_element_node_id = $dom->createElement('FinInstnId');
+        $third_element->appendChild($third_element_node_id);
+        $third_element_bic = $dom->createElement('BIC', 'POFICHBEXXX');
+        $third_element_node_id->appendChild($third_element_bic);
+        $third_element = $dom->createElement('CdtTrfTxInf');
+        $second_element->appendChild($third_element);
+        $third_element_node_id = $dom->createElement('PmtId');
+        $third_element->appendChild($third_element_node_id);
+        $third_element_instr_id = $dom->createElement('InstrId', '5f6df097c5fc95.97866708');
+        $third_element_node_id->appendChild($third_element_instr_id);
+        $third_element_end = $dom->createElement('EndToEndId', '5f6df097c5fc95.97866708');
+        $third_element_node_id->appendChild($third_element_end);
+        $third_element->appendChild($third_element_node_id);
+        $third_element_node_pmt = $dom->createElement('PmtTpInf');
+        $third_element->appendChild($third_element_node_pmt);
+        $third_element_lcl = $dom->createElement('LclInstrm');
+        $third_element_node_pmt->appendChild($third_element_lcl);
+        $third_element_prtry = $dom->createElement('Prtry', 'CH01');
+        $third_element_lcl->appendChild($third_element_prtry);
+        $third_element_node_amount = $dom->createElement('Amt');
+        $third_element->appendChild($third_element_node_amount);
+        $third_element_instd_amnt = $dom->createElement('InstdAmt', '14.9');
+        $third_element_node_amount->appendChild($third_element_instd_amnt);
+        $third_element_instd_amnt->setAttribute("Ccy", "CHF");
+        $third_element_cdtr = $dom->createElement('Cdtr');
+        $third_element->appendChild($third_element_cdtr);
+        $third_element_name = $dom->createElement('Nm', 'Cyon GmbH');
+        $third_element_cdtr->appendChild($third_element_name);
+        $third_element_adr = $dom->createElement('PstlAdr');
+        $third_element_cdtr->appendChild($third_element_adr);
+        $third_element_city = $dom->createElement('Ctry', 'CH');
+        $third_element_adr->appendChild($third_element_city);
+        $third_element_adrline = $dom->createElement('AdrLine', 'Brunngässlein 12');
+        $third_element_adr->appendChild($third_element_adrline);
+        $third_element_adrline = $dom->createElement('AdrLine', '4052, Basel');
+        $third_element_adr->appendChild($third_element_adrline);
+        $third_element_cdtr_acct = $dom->createElement('CdtrAcct');
+        $third_element->appendChild($third_element_cdtr_acct);
+        $third_element_id = $dom->createElement('Id');
+        $third_element_cdtr_acct->appendChild($third_element_id);
+        $third_element_other = $dom->createElement('Othr');
+        $third_element_id->appendChild($third_element_other);
+        $third_element_other_id = $dom->createElement('Id', '010575181');
+        $third_element_other->appendChild($third_element_other_id);
+        $third_element_rmtinf = $dom->createElement('RmtInf');
+        $third_element->appendChild($third_element_rmtinf);
+        $third_element_strd = $dom->createElement('Strd');
+        $third_element_rmtinf->appendChild($third_element_strd);
+        $third_element_cdtr_ref = $dom->createElement('CdtrRefInf');
+        $third_element_strd->appendChild($third_element_cdtr_ref);
+        $third_element_ref = $dom->createElement('Ref', '000001987972000000017179312');
+        $third_element_cdtr_ref->appendChild($third_element_ref);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $root->appendChild($second_element);
+        //  $node->appendChild($child_node_title);
+        /*third element*/
+        $dom->appendChild($root);
+        $dom->save($xml_file_name);
+        dd($dom);
+        //   }
+        // }
 
         $file = "billing.xml";
         $xml_file = fopen($file, "w") or die("Unable to open file!");
