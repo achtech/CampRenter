@@ -2,12 +2,26 @@
 
 namespace App\Http\Controllers;
 
+
+
+use App\Exports\BillingExport;
+use App\Models\Avatars;
 use App\Models\Billing;
-use App\Models\BillingBookings;
 use App\Models\Client;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Booking;
+use App\Models\BillingBookings;
+use DOMAttr;
+use DOMDocument;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
+use Maatwebsite\Excel\Facades\Excel;
+use SimpleXMLElement;
 
 class BillingController extends Controller
 {
@@ -21,6 +35,7 @@ class BillingController extends Controller
         $this->middleware('auth');
     }
 
+
     /**
      * Display a listing of the resource.
      *
@@ -31,14 +46,14 @@ class BillingController extends Controller
         $todayDate = date("Y-m-d");
         $clients = Client::all();
         $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
-            ->select('billings.id as id', 'billings.id', 'billings.iban', 'billings.billings_methods', 'billings.total', 'billings.status', 'Billings.payment_date', 'billings.id_clients', 'clients.client_name', 'clients.client_last_name')
+            ->select('Billings.id as id', 'Billings.id', 'Billings.iban', 'Billings.billings_methods', 'Billings.total', 'Billings.status', 'Billings.payment_date', 'Billings.id_clients', 'clients.client_name', 'clients.client_last_name')
             ->get();
         return view('billing.index')
             ->with('datas', $datas)
             ->with('clients', $clients)
             ->with('renter', '')
-            ->with('status', '')
-            ->with('todayDate', $todayDate);
+            ->with('todayDate', $todayDate)
+            ->with('status', '');
     }
 
     public function bookings($id)
@@ -60,42 +75,135 @@ class BillingController extends Controller
     }
     public function export(Request $request)
     {
+        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')->where('status', 0)->get();
+        $dom = new DOMDocument();
+        $dom->encoding = 'utf-8';
+        $dom->xmlVersion = '1.0';
+        $dom->formatOutput = true;
+        $xml_file_name = 'billings.xml';
+        $first_element = $dom->createElement('Document');
+        $first_element->setAttribute("xmlns", "http://www.six-interbank-clearing.com/de/pain.001.001.03.ch.02.xsd");
+        $first_element->setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+        $first_element->setAttribute("xmlns:schemaLocation", "http://www.six-interbank-clearing.com/de/pain.001.001.03.ch.02.xsd");
+        $dom->appendChild($first_element);
+        if ($datas->count() > 0) {
+            foreach ($datas as $elem) {
+                $root = $dom->createElement('CstmrCdtTrfInitn');
+                $first_element->appendChild($root);
+                $node = $dom->createElement('GrpHdr');
+                $child_node_title = $dom->createElement('MsgId', '7aeb9c4d264990e6fefc96affed9cd1b');
+                $node->appendChild($child_node_title);
+                $child_node_year = $dom->createElement('CreDtTm', 'tets');
+                $node->appendChild($child_node_year);
+                $child_node_genre = $dom->createElement('NbOfTxs', 1);
+                $node->appendChild($child_node_genre);
+                $child_node_ratings = $dom->createElement('CtrlSum', 14.9);
+                $node->appendChild($child_node_ratings);
+                $child_node_ratings = $dom->createElement('InitgPty');
+                $child_node_title = $dom->createElement('Nm', $elem->client_name . ' ' . $elem->client_last_name);
+                $child_node_ratings->appendChild($child_node_title);
+                $child_node_title = $dom->createElement('CtctDtls');
+                $child_node_titl = $dom->createElement('Nm', 'bexio');
+                $child_node_title->appendChild($child_node_titl);
+                $child_node_titl = $dom->createElement('Othr', '1.0.0');
+                $child_node_title->appendChild($child_node_titl);
+                $child_node_ratings->appendChild($child_node_title);
+                $node->appendChild($child_node_ratings);
+                $root->appendChild($node);
+                //Second Element
+                $second_element = $dom->createElement('PmtInf');
+                $second_element_node = $dom->createElement('PmtInfId', 'Webgorilla GmbH');
+                $second_element->appendChild($second_element_node);
+                $second_element_node = $dom->createElement('PmtMtd', 'TRF');
+                $second_element->appendChild($second_element_node);
+                $second_element_node = $dom->createElement('BtchBookg', 'false');
+                $second_element->appendChild($second_element_node);
+                $second_element_node = $dom->createElement('ReqdExctnDt', '2020-10-12');
+                $second_element->appendChild($second_element_node);
 
-        $fileName = 'billings.csv';
-        $current_date = date("Y-m-d");
-        //$end_date = $request->end_date ?? '';
-        $end_date = Session::get('end_date');
-        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
-            ->where('status', '=', 0);
-        $headers = array(
-            "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=$fileName",
-            "Pragma" => "no-cache",
-            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
-            "Expires" => "0",
-        );
+                $second_element_root = $dom->createElement('Dbtr');
+                $second_element->appendChild($second_element_root);
+                $second_element_node_db = $dom->createElement('Nm', 'Webgorilla GmbH');
+                $second_element_root->appendChild($second_element_node_db);
+                $second_element_root = $dom->createElement('DbtrAcct');
+                $second_element->appendChild($second_element_root);
+                $second_element_node_id = $dom->createElement('Id');
+                $second_element_root->appendChild($second_element_node_id);
+                $second_element_node_db = $dom->createElement('IBAN', $elem->iban);
+                $second_element_node_id->appendChild($second_element_node_db);
 
-        $columns = array('Owner', 'IBAN', 'Amount');
-        $callback = function () use ($datas, $columns) {
-            $file = fopen('php://output', 'w');
-            fputcsv($file, $columns);
-            if ($datas->count() > 0) {
-                foreach ($datas as $elem) {
-                    $row['Owner'] = $elem->client_name;
-                    $row['IBAN'] = $elem->IBAN;
-                    $row['Amount'] = $elem->confirmed_amount;
-                }
-            } else {
-                $row['Owner'] = '';
-                $row['IBAN'] = '';
-                $row['Amount'] = '';
+                //Third Element
+                $third_element = $dom->createElement('DbtrAgt');
+                $second_element->appendChild($third_element);
+                $third_element_node_id = $dom->createElement('FinInstnId');
+                $third_element->appendChild($third_element_node_id);
+                $third_element_bic = $dom->createElement('BIC', 'POFICHBEXXX');
+                $third_element_node_id->appendChild($third_element_bic);
+                $third_element = $dom->createElement('CdtTrfTxInf');
+                $second_element->appendChild($third_element);
+                $third_element_node_id = $dom->createElement('PmtId');
+                $third_element->appendChild($third_element_node_id);
+                $third_element_instr_id = $dom->createElement('InstrId', '5f6df097c5fc95.97866708');
+                $third_element_node_id->appendChild($third_element_instr_id);
+                $third_element_end = $dom->createElement('EndToEndId', '5f6df097c5fc95.97866708');
+                $third_element_node_id->appendChild($third_element_end);
+                $third_element->appendChild($third_element_node_id);
+                $third_element_node_pmt = $dom->createElement('PmtTpInf');
+                $third_element->appendChild($third_element_node_pmt);
+                $third_element_lcl = $dom->createElement('LclInstrm');
+                $third_element_node_pmt->appendChild($third_element_lcl);
+                $third_element_prtry = $dom->createElement('Prtry', 'CH01');
+                $third_element_lcl->appendChild($third_element_prtry);
+                $third_element_node_amount = $dom->createElement('Amt');
+                $third_element->appendChild($third_element_node_amount);
+                $third_element_instd_amnt = $dom->createElement('InstdAmt', $elem->total);
+                $third_element_node_amount->appendChild($third_element_instd_amnt);
+                $third_element_instd_amnt->setAttribute("Ccy", "CHF");
+                $third_element_cdtr = $dom->createElement('Cdtr');
+                $third_element->appendChild($third_element_cdtr);
+                $third_element_name = $dom->createElement('Nm', 'Cyon GmbH');
+                $third_element_cdtr->appendChild($third_element_name);
+                $third_element_adr = $dom->createElement('PstlAdr');
+                $third_element_cdtr->appendChild($third_element_adr);
+                $third_element_city = $dom->createElement('Ctry', 'CH');
+                $third_element_adr->appendChild($third_element_city);
+                $third_element_adrline = $dom->createElement('AdrLine', 'Brunngässlein 12');
+                $third_element_adr->appendChild($third_element_adrline);
+                $third_element_adrline = $dom->createElement('AdrLine', '4052, Basel');
+                $third_element_adr->appendChild($third_element_adrline);
+                $third_element_cdtr_acct = $dom->createElement('CdtrAcct');
+                $third_element->appendChild($third_element_cdtr_acct);
+                $third_element_id = $dom->createElement('Id');
+                $third_element_cdtr_acct->appendChild($third_element_id);
+                $third_element_other = $dom->createElement('Othr');
+                $third_element_id->appendChild($third_element_other);
+                $third_element_other_id = $dom->createElement('Id', '010575181');
+                $third_element_other->appendChild($third_element_other_id);
+                $third_element_rmtinf = $dom->createElement('RmtInf');
+                $third_element->appendChild($third_element_rmtinf);
+                $third_element_strd = $dom->createElement('Strd');
+                $third_element_rmtinf->appendChild($third_element_strd);
+                $third_element_cdtr_ref = $dom->createElement('CdtrRefInf');
+                $third_element_strd->appendChild($third_element_cdtr_ref);
+                $third_element_ref = $dom->createElement('Ref', '000001987972000000017179312');
+                $third_element_cdtr_ref->appendChild($third_element_ref);
+                $root->appendChild($second_element);
+                $dom->save($xml_file_name);
+                $file = "billing.xml";
+                $xml_file = fopen($file, "w") or die("Unable to open file!");
+                $billingData = $dom->saveXML();
+                fwrite($xml_file, $billingData);
+                fclose($xml_file);
+                header('Content-Description: File Transfer');
+                header('Content-Disposition: attachment; filename=' . basename($file));
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($file));
+                header("Content-Type: text/xml");
+                readfile($file);
             }
-            fputcsv($file, array($row['Owner'], $row['IBAN'], $row['Amount']));
-            fclose($file);
-        };
-
-        return response()->stream($callback, 200, $headers);
-        // return Excel::download(new BillingExport, 'billings.xlsx');
+        }
     }
 
     public function filter(Request $request)
@@ -168,6 +276,8 @@ class BillingController extends Controller
         $data = Billing::create($input);
         return redirect(route('billing.index'))->with('success', 'Item added succesfully');
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

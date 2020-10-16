@@ -11,7 +11,6 @@ class Billing extends Base
         'billings_methods',
         'total',
         'id_clients',
-        'id_bookings',
         'billings_status',
         'created_by',
         'updated_by'
