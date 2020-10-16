@@ -1,10 +1,10 @@
-@extends('layout', ['activePage' => 'camperCategory', 'titlePage' => __('backend.camperCategory_managment')])
+@extends('layout', ['activePage' => 'camperCategory', 'titlePage' => trans('backend.camperCategory_managment')])
 @section('content')
 {{ Breadcrumbs::render('edit_camperCategory') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\CamperCategoryController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['camperCategory.update', $data->id])) }}
-    
+
     @csrf
      <div class="row">
      <div class="col-sm-12 col-md-6 col-lg-4">

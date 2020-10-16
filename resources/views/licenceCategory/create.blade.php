@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => __('backend.licence_category_managment')])
+@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => trans('backend.licence_category_managment')])
 @section('content')
 {{ Breadcrumbs::render('create_licenceCategory') }}
 <div class="container-fluid">
@@ -41,10 +41,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-sm-12">
                 {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
- 
+
                 <a href="{{ route('licenceCategory.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>

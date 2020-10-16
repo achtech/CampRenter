@@ -1,10 +1,10 @@
-@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance_managment')])
+@extends('layout', ['activePage' => 'insurance', 'titlePage' => trans('backend.insurance_managment')])
 @section('content')
 {{ Breadcrumbs::render('edit_insurance') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\InsuranceController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['insurance.update', $data->id])) }}
-    
+
     @csrf
      <div class="row">
      <div class="col-sm-12 col-md-6 col-lg-4">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
             <div class="col-sm-12">
                 {{Form::submit('Update',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}

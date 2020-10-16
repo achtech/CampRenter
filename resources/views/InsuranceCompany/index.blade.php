@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'insurance_company', 'titlePage' => __('backend.insurance_company_managment')])
+@extends('layout', ['activePage' => 'insurance_company', 'titlePage' => trans('backend.insurance_company_managment')])
 @section('content')
 {{ Breadcrumbs::render('insurance_company') }}
 <div class="container-fluid">
@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <a href="{{ route('inssuranceCompany.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class" 
+                        <a href="{{ route('inssuranceCompany.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
                             style="margin:0px 10px">{{ __('backend.new_insurance_company') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
@@ -29,7 +29,7 @@
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
                                                 <a href="{{ route('insuranceCompany.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
-                                            </li>  
+                                            </li>
                                             <li class="list-inline-item">
                                                 <div class="container">
                                                 <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
@@ -52,7 +52,7 @@
         </div>
     </div>
   </div>
-                                            </li> 
+                                            </li>
                                     </td>
                                 </tr>
                                 @endforeach

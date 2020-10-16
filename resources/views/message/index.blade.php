@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'message', 'titlePage' => __('backend.message_managment')])
+@extends('layout', ['activePage' => 'message', 'titlePage' => trans('backend.message_managment')])
 @section('content')
 {{ Breadcrumbs::render('message') }}
 <div class="container-fluid">
@@ -14,7 +14,7 @@
                                     <th>{{ __('backend.contact') }}</th>
                                     <th>{{ __('backend.email') }}</th>
                                     <th>{{ __('backend.Phone') }}</th>
-                                    <th>{{ __('backend.subject') }}</th>
+                                    <th>{{ __('backend.Subject') }}</th>
                                     <th>{{ __('backend.send_date') }}</th>
                                     <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
@@ -33,7 +33,7 @@
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
                                                 <a href="{{ route('message.show',$item->id)}}" class="btn btn-success btn-sm rounded-0" data-toggle="tooltip" title="Detail Message"><i class="fa fa-newspaper"></i></a>
-                                            </li> 
+                                            </li>
                                             <li class="list-inline-item">
                                                 <div class="container">
                                                 <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
@@ -56,19 +56,19 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </li> 
+                                            </li>
                                     </td>
                                 </tr>
                                 @endforeach
 
-                                
+
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>{{ __('backend.contact') }}</th>
                                     <th>{{ __('backend.email') }}</th>
                                     <th>{{ __('backend.Phone') }}</th>
-                                    <th>{{ __('backend.subject') }}</th>
+                                    <th>{{ __('backend.Subject') }}</th>
                                     <th>{{ __('backend.send_date') }}</th>
                                     <th>{{ __('backend.Status') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
@@ -83,7 +83,7 @@
 </div>
 <script>
 $(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();   
+  $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
 @endsection

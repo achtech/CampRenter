@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'user', 'titlePage' => __('backend.user_managment')])
+@extends('layout', ['activePage' => 'user', 'titlePage' => trans('backend.user_managment')])
 @section('content')
 {{ Breadcrumbs::render('add_user') }}
 <div class="container-fluid">
@@ -30,7 +30,7 @@
                                 {{ Form::radio('role','super-admin',['class'=>'form-control','id'=>'role-0'])}}
                                 {{ Form::label('role-0', 'Super admin') }} &nbsp;&nbsp;&nbsp;
                                 {{ Form::radio('role','admin',['class'=>'form-control','id'=>'role-1'])}}
-                                {{ Form::label('role-1', 'Admin') }} 
+                                {{ Form::label('role-1', 'Admin') }}
                             </div>
                         </div>
                     </div>
@@ -63,16 +63,16 @@
                         <h4 class="card-title">{{ __('backend.adress') }} </h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                 {{Form::textarea('adress','',['class'=>'form-control','required'])}} 
+                                 {{Form::textarea('adress','',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-               
+
             <div class="col-sm-12">
                 {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
- 
+
                 <a href="{{ route('user.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>

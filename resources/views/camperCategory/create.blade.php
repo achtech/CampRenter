@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'camperCategory', 'titlePage' => __('backend.camperCategory_managment')])
+@extends('layout', ['activePage' => 'camperCategory', 'titlePage' => trans('backend.camperCategory_managment')])
 @section('content')
 {{ Breadcrumbs::render('edit_camperCategory') }}
 <div class="container-fluid">
@@ -43,7 +43,7 @@
             </div>
             <div class="col-sm-12">
                 {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
- 
+
                 <a href="{{ route('camperCategory.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>

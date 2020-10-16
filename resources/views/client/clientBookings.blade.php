@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'client', 'titlePage' => __('backend.Clients Management')])
+@extends('layout', ['activePage' => 'client', 'titlePage' => trans('backend.Clients Management')])
 @section('content')
 {{ Breadcrumbs::render('client_bookings',$client) }}
 <div class="container-fluid ">
@@ -25,14 +25,14 @@
                                 @foreach($datas as $item)
                                     <tr>
                                         <td>{{$item->owner_name }} {{$item->owner_last_name }}</td>
-                                        <td>{{$item->camper_name}}</td>        
+                                        <td>{{$item->camper_name}}</td>
                                         <td>{{$item->start_date}}</td>
                                         <td>{{$item->end_date}}</td>
                                         <td>{{$item->price_per_day}}</td>
                                         <td>{{ app()->getLocale() == 'de' ? $item->status_booking_de : $item->status_booking_en }}</td>
                                         <td>{{ $item->status_billings }}</td>
                                     </tr>
-                                @endforeach     
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>

@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance_managment')])
+@extends('layout', ['activePage' => 'insurance', 'titlePage' => trans('backend.insurance_managment')])
 @section('content')
 {{ Breadcrumbs::render('create_insurance') }}
 <div class="container-fluid">
@@ -65,10 +65,10 @@
                     </div>
                 </div>
             </div>
-               
+
             <div class="col-sm-12">
                 {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
- 
+
                 <a href="{{ route('insurance.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>

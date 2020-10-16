@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'insurance', 'titlePage' => __('backend.insurance')])
+@extends('layout', ['activePage' => 'insurance', 'titlePage' => trans('backend.insurance')])
 @section('content')
 <div class="page-breadcrumb">
                 <div class="row">
@@ -115,7 +115,7 @@
                             <label class="custom-control-label" for="customControlValidation3">Crediot card</label>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
     </div>

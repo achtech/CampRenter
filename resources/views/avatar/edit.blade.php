@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'avatar', 'titlePage' => __('backend.avatar_managment')])
+@extends('layout', ['activePage' => 'avatar', 'titlePage' => trans('backend.avatar_managment')])
 @section('content')
 {{ Breadcrumbs::render('edit_avatar',$data) }}
 <div class="container-fluid">

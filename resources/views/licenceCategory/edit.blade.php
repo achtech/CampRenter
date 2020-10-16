@@ -1,10 +1,10 @@
-@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => __('backend.licence_category_managment')])
+@extends('layout', ['activePage' => 'licenceCategory', 'titlePage' => trans('backend.licence_category_managment')])
 @section('content')
 {{ Breadcrumbs::render('edit_licenceCategory') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\LicenceCategoryController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['licenceCategory.update', $data->id])) }}
-    
+
     @csrf
      <div class="row">
      <div class="col-sm-12 col-md-6 col-lg-4">

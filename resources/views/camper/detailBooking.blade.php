@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.Clients Management')])
+@extends('layout',['activePage' => 'client', 'titlePage' => trans('backend.Clients Management')])
 @section('content')
 {{ Breadcrumbs::render('client') }}
 <div class="page-breadcrumb">
@@ -36,7 +36,7 @@
                             <tbody>
                                 @foreach($data as $item)
                                 <tr>
-                                    
+
                                     <td >{{$item->start_date}}</td>
                                     <td>{{$item->end_date}}</td>
                                     <td>{{$item->total}}</td>

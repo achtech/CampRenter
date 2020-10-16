@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'camper', 'titlePage' => __('backend.camper_managment')])
+@extends('layout', ['activePage' => 'camper', 'titlePage' => trans('backend.camper_managment')])
 @section('content')
 {{ Breadcrumbs::render('camper') }}
 <div class="container-fluid">

@@ -1,10 +1,10 @@
-@extends('layout', ['activePage' => 'transmission', 'titlePage' => __('backend.transmission_managment')])
+@extends('layout', ['activePage' => 'transmission', 'titlePage' => trans('backend.transmission_managment')])
 @section('content')
 {{ Breadcrumbs::render('edit_transmission') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\TransmissionController@update',-->
     {{ Form::open(array('method'=>'PUT','route' => ['transmission.update', $data->id])) }}
-    
+
     @csrf
      <div class="row">
      <div class="col-sm-12 col-md-6 col-lg-4">
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-sm-12">
                 {{Form::submit('Update',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
                 <a href="{{ route('transmission.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>

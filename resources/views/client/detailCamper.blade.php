@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.camper_detail').': '.strtoupper($client->client_last_name) . " " . $client->client_name]))
+@extends('layout',['activePage' => 'client', 'titlePage' => trans('backend.camper_detail').': '.strtoupper($client->client_last_name) . " " . $client->client_name]))
 @section('content')
 {{ Breadcrumbs::render('clients_campers',$client) }}DDD
 <div class="page-breadcrumb">

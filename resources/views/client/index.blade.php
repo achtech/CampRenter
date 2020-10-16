@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.Clients Management')])
+@extends('layout',['activePage' => 'client', 'titlePage' => trans('backend.Clients Management')])
 @section('content')
 {{ Breadcrumbs::render('client') }}
 <div class="container-fluid">

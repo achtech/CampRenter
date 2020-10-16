@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
 
 use App\Models\Message;
 use Mail;
@@ -44,23 +43,25 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        $datas = Message :: find($id);
+        $datas = Message::find($id);
+        $datas->status = 1;
+        $datas->update();
         if (empty($datas)) {
             return view('message.index')->with('datas', $datas);
         }
-        return view('message.show')->with('datas', $datas)->with('messageId',$id);
+        return view('message.show')->with('datas', $datas)->with('messageId', $id);
     }
     public function sendEmail()
     {
-        $data = array('name'=>"Our Code World");
+        $data = array('name' => "Our Code World");
         // Path or name to the blade template to be rendered
         $template_path = 'message.index';
         $datas = Message::paginate(10);
-        Mail::send($template_path, $data, function($message) {
+        Mail::send($template_path, $data, function ($message) {
             // Set the receiver and subject of the mail.
             $message->to('achraf.saloumi@exo-it.com', 'Receiver Name')->subject('Laravel HTML Mail');
             // Set the sender
-            $message->from('noura.bouchbaat@exo-it.com','Our Code World');
+            $message->from('noura.bouchbaat@exo-it.com', 'Our Code World');
         });
         $datas = Message::paginate(10);
         return view('message.index')->with('datas', $datas);
@@ -74,8 +75,6 @@ class MessageController extends Controller
     public function store(Request $request)
     {
     }
-
-
 
     /**
      * Show the form for editing the specified resource.

@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'backup', 'titlePage' => __('backend.backup_managment')])
+@extends('layout', ['activePage' => 'backup', 'titlePage' => trans('backend.backup_managment')])
 @section('content')
 {{ Breadcrumbs::render('backup') }}
 <div class="container-fluid">
@@ -30,7 +30,7 @@ $(document).ready(function() {
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td>{{$file['filename']}}</td> 
+                                    <td>{{$file['filename']}}</td>
                                     <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">

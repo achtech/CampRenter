@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'booking', 'titlePage' => __('backend.booking_management')])
+@extends('layout', ['activePage' => 'booking', 'titlePage' => trans('backend.booking_management')])
 @section('content')
 {{ Breadcrumbs::render('booking') }}
 <div class="container-fluid ">
@@ -33,7 +33,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.To') }}</h4>
-                        <div class="form-group">             
+                        <div class="form-group">
                             <input type="date" class="form-control"  id="end_date" name="end_date"  value="{{ $end_date ?? '' }}" />
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                                 @foreach($datas as $item)
                                     <tr>
                                         <td>{{$item->renter_name }} {{$item->renter_last_name }}</td>
-                                        <td>{{$item->camper_name}}</td>        
+                                        <td>{{$item->camper_name}}</td>
                                         <td>{{$item->start_date}}</td>
                                         <td>{{$item->end_date}}</td>
                                         <td>{{$item->price_per_day}}</td>
@@ -82,13 +82,13 @@
                                         <td>
                                             <li class="list-inline-item">
                                                 <a href="{{ route('booking.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
-                                            </li>  
+                                            </li>
                                             <li class="list-inline-item">
                                                 <a href="{{ route('booking.chat',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="fa fa-newspaper"></i></a>
-                                            </li> 
+                                            </li>
                                         </td>
                                     </tr>
-                                @endforeach     
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>

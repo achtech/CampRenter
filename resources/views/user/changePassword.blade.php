@@ -1,9 +1,9 @@
-@extends('layout', ['activePage' => 'profile', 'titlePage' => __('backend.Profile managment')])
+@extends('layout', ['activePage' => 'profile', 'titlePage' => trans('backend.Profile managment')])
 @section('content')
 {{ Breadcrumbs::render('change_password') }}
 <div class="container-fluid">
     {{ Form::open(array('method'=>'PUT','route' => ['user.updatePassword'])) }}
-    
+
     @csrf
      <div class="row">
      <div class="col-sm-12 col-md-6 col-lg-4">
@@ -13,7 +13,7 @@
                     <div class="mt-5">
                         <div class="form-group">
                             {{ Form::password('old_password',array('class' => 'form-control','placeholder' => 'password','required')) }}
-          
+
                         </div>
                         @if ($errors->has('password'))
                             <span class="help-block" style="color:red">
@@ -31,7 +31,7 @@
                     <div class="mt-5">
                         <div class="form-group">
                             {{ Form::password('password',array('class' => 'form-control','placeholder' => 'password','required','confirmed')) }}
-          
+
                         </div>
                         @if ($errors->has('password'))
                             <span class="help-block" style="color:red">

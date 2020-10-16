@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'profile', 'titlePage' => __('backend.Profile managment')])
+@extends('layout', ['activePage' => 'profile', 'titlePage' => trans('backend.Profile managment')])
 @section('content')
 {{ Breadcrumbs::render('profile') }}
 <div class="container-fluid">

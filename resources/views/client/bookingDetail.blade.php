@@ -1,4 +1,4 @@
-@extends('layout',['activePage' => 'client', 'titlePage' => __('backend.rent_management').': '.strtoupper($client->client_last_name) . " " . $client->client_name])
+@extends('layout',['activePage' => 'client', 'titlePage' => trans('backend.rent_management').': '.strtoupper($client->client_last_name) . " " . $client->client_name])
 @section('content')
 {{ Breadcrumbs::render('rent_detail',$client) }}
 <div class="page-breadcrumb">
@@ -30,7 +30,7 @@
                                     <th>{{ __('backend.From') }}</th>
                                     <th>{{ __('backend.To') }}</th>
                                     <th>{{ __('backend.remaining_days_number') }}</th>
-                                    <th>{{ __('backend.dashboard_action') }}</th>    
+                                    <th>{{ __('backend.dashboard_action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,7 +45,7 @@
                                 </tr>
                                 <br/>
                                 @endforeach
-                 
+
                             </tbody>
                         </table>
                     </div>

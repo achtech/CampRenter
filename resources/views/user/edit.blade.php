@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'user', 'titlePage' => __('backend.user_managment')])
+@extends('layout', ['activePage' => 'user', 'titlePage' => trans('backend.user_managment')])
 @section('content')
 {{ Breadcrumbs::render('edit_user',$data->id) }}
 <div class="container-fluid">

@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'booking', 'titlePage' => __('backend.booking_management')])
+@extends('layout', ['activePage' => 'booking', 'titlePage' => trans('backend.booking_management')])
 @section('content')
 {{ Breadcrumbs::render('chat_booking',$bookingId) }}
 <div class="container-fluid">

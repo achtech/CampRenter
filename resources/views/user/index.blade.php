@@ -1,5 +1,5 @@
 @if(auth()->user()->role == 'super-admin')
-@extends('layout', ['activePage' => 'user', 'titlePage' => __('backend.user_managment')])
+@extends('layout', ['activePage' => 'user', 'titlePage' => trans('backend.user_managment')])
 @section('content')
 {{ Breadcrumbs::render('user') }}
 <div class="container-fluid">

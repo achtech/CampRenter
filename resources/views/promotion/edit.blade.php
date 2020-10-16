@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'promotion', 'titlePage' => __('backend.promotion_managment')])
+@extends('layout', ['activePage' => 'promotion', 'titlePage' => trans('backend.promotion_managment')])
 @section('content')
 {{ Breadcrumbs::render('edit_promotion',$data) }}
 <div class="container-fluid">
@@ -28,10 +28,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-sm-12">
             {{Form::submit('Update',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
- 
+
                 <a href="{{ route('promotion.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>

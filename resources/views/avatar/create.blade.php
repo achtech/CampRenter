@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'avatar', 'titlePage' => __('backend.avatar_managment')])
+@extends('layout', ['activePage' => 'avatar', 'titlePage' => trans('backend.avatar_managment')])
 @section('content')
 {{ Breadcrumbs::render('add_avatar') }}
 <div class="container-fluid">
@@ -32,10 +32,10 @@
                             </div>
                     </div>
                 </div>
-            </div>  
+            </div>
             <div class="col-sm-12">
                 {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
- 
+
                 <a href="{{ route('user.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>

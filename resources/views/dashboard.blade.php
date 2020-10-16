@@ -1,9 +1,9 @@
-@extends('layout', ['activePage' => 'dashboard', 'titlePage' => __('backend.Dashboard')])
+@extends('layout', ['activePage' => 'dashboard', 'titlePage' => trans('backend.Dashboard')])
 @section('content')
 {{ Breadcrumbs::render('dashboard') }}
 
        <div class="container-fluid">
-           
+
                 <!-- *************************************************************** -->
                 <!-- Start First Cards -->
                 <!-- *************************************************************** -->
@@ -66,7 +66,7 @@
                                     class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
                                     style="position: absolute;bottom:10px;width: 90%;">{{ __('backend.dashboard_add_user') }}</a>
                         </div>
-                    </div> 
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -102,7 +102,7 @@
                                     </tbody>
 
                                 </table>
-                                 
+
 
                                 <a style="position: absolute;bottom:10px;width: 90%;" href="{{ route('camper.unconfirmedCamper') }}" class="btn btn-md waves-effect waves-light btn-rounded btn-primary"
                 >{{ __('backend.Read more') }}</a>
@@ -148,9 +148,9 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
-                    
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card" >

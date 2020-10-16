@@ -1,4 +1,4 @@
-@extends('layout', ['activePage' => 'message', 'titlePage' => __('backend.message_managment')])
+@extends('layout', ['activePage' => 'message', 'titlePage' => trans('backend.message_managment')])
 @section('content')
 {{ Breadcrumbs::render('detail_message',$messageId) }}
 <div class="container-fluid">
@@ -36,7 +36,7 @@
                         <div class="form-actions">
                             <div class="text-right">
                                 <button  type="submit" class="btn btn-info">{{ __('backend.Answer') }}</button>
-                                <button type="reset" class="btn btn-dark">{{ __('backend.Cancel') }}</button>
+                                <a href="{{ route('message.index') }}" class="btn btn-dark">{{ __('backend.Cancel') }}</a>
                             </div>
                         </div>
                 </form>
