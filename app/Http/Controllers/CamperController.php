@@ -51,7 +51,7 @@ class CamperController extends Controller
     public function create()
     {
         $clients = Client::all()->pluck('client_name', 'id');
-        $camperCategories = CamperCategory::all()->pluck('label_en', 'id');
+        $camperCategories = CamperCategory::all()->pluck(app()->getLocale() == 'de' ? 'label_de' : (app()->getLocale() == 'en' ? 'label_en' : 'label_fr'), 'id');
 
         return view('camper.create')
             ->with('clients', $clients)
@@ -224,7 +224,7 @@ class CamperController extends Controller
     public static function getLabel($table, $id)
     {
         $data = DB::table($table)->find($id);
-        return $data->label_en;
+        return app()->getLocale() == 'de' ? $data->label_de : (app()->getLocale() == 'en' ? $data->label_en : $data->label_fr);
     }
 
     public static function getName($table, $id)

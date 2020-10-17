@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\LicenceCategory;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
 class LicenceCategoryController extends Controller
@@ -29,7 +28,7 @@ class LicenceCategoryController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = LicenceCategory::where('label_en', 'like', '%' . $search . '%')->paginate(10);
+            $datas = LicenceCategory::where(app()->getLocale() == 'de' ? 'label_de' : (app()->getLocale() == 'en' ? 'label_en' : 'label_fr'), 'like', '%' . $search . '%')->paginate(10);
         } else {
             $datas = LicenceCategory::paginate(10);
         }
@@ -41,7 +40,7 @@ class LicenceCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
+    {
         return view('licenceCategory.create');
     }
     /**
@@ -63,8 +62,8 @@ class LicenceCategoryController extends Controller
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = LicenceCategory::create($input);
         return redirect(route('licenceCategory.index'))->with('success', 'Item added succesfully');
     }
@@ -79,7 +78,7 @@ class LicenceCategoryController extends Controller
     {
         $data = LicenceCategory::find($id);
         return view('licenceCategory.edit', ['id' => 1])
-        ->with('data', $data);
+            ->with('data', $data);
     }
 
     /**
@@ -96,7 +95,7 @@ class LicenceCategoryController extends Controller
             return redirect(route('licenceCategory.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = LicenceCategory::where('id', $id)->update($input);
         return redirect(route('licenceCategory.index'))->with('success', 'Item Updated succesfully');
     }
@@ -119,7 +118,9 @@ class LicenceCategoryController extends Controller
         return redirect(route('licenceCategory.index'));
     }
 
-    public static function getLabel($table,$id){
-        return DB::table($table)->find($id)->label_en;
+    public static function getLabel($table, $id)
+    {
+        $data = DB::table($table)->find($id);
+        return (app()->getLocale() == 'de' ? $data->label_de : (app()->getLocale() == 'en' ? $data->label_en : $data->label_fr));
     }
 }
