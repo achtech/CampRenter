@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Insurance;
-use App\Models\CamperName;
 use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
 class InsuranceController extends Controller
 {
-        /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -44,9 +42,9 @@ class InsuranceController extends Controller
      */
     public function create()
     {
-        $insuranceCompanies = InsuranceCompany::all()->pluck('label_en', 'id');
+        $insuranceCompanies = InsuranceCompany::all()->pluck(app()->getLocale() == 'de' ? 'label_de' : (app()->getLocale() == 'en' ? 'label_en' : 'label_fr'), 'id');
 
-        return view('insurance.create')                
+        return view('insurance.create')
             ->with('insuranceCompanies', $insuranceCompanies);
     }
     /**
@@ -68,8 +66,8 @@ class InsuranceController extends Controller
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Insurance::create($input);
         return redirect(route('insurance.index'))->with('success', 'Item added succesfully');
     }
@@ -83,10 +81,10 @@ class InsuranceController extends Controller
     public function edit($id)
     {
         $data = Insurance::find($id);
-        $insuranceCompanies = InsuranceCompany::all()->pluck('label_en', 'id');
+        $insuranceCompanies = InsuranceCompany::all()->pluck(app()->getLocale() == 'de' ? 'label_de' : (app()->getLocale() == 'en' ? 'label_en' : 'label_fr'), 'id');
         return view('insurance.edit', ['id' => 1])
-        ->with('data', $data)
-        ->with('insuranceCompanies', $insuranceCompanies);
+            ->with('data', $data)
+            ->with('insuranceCompanies', $insuranceCompanies);
     }
 
     /**
@@ -98,12 +96,12 @@ class InsuranceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Insurance::find($id); 
+        $data = Insurance::find($id);
         if (empty($data)) {
             return redirect(route('insurance.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Insurance::where('id', $id)->update($input);
         return redirect(route('insurance.index'))->with('success', 'Item Updated succesfully');
     }
@@ -126,8 +124,9 @@ class InsuranceController extends Controller
         return redirect(route('insurance.index'));
     }
 
-    public static function getLabel($table,$id){
-        $data =  DB::table($table)->find($id);
-        return $data ? $data->label_en : '';
+    public static function getLabel($table, $id)
+    {
+        $data = DB::table($table)->find($id);
+        return $data ? (app()->getLocale() == 'de' ? $data->label_de : (app()->getLocale() == 'en' ? $data->label_en : $data->label_fr)) : '';
     }
 }
