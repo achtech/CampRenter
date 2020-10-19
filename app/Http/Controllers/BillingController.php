@@ -2,26 +2,16 @@
 
 namespace App\Http\Controllers;
 
-
-
-use App\Exports\BillingExport;
-use App\Models\Avatars;
 use App\Models\Billing;
-use App\Models\Client;
-use App\Models\Booking;
 use App\Models\BillingBookings;
-use DOMAttr;
+use App\Models\Client;
 use DOMDocument;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
-use Maatwebsite\Excel\Facades\Excel;
-use SimpleXMLElement;
 
 class BillingController extends Controller
 {
@@ -35,7 +25,6 @@ class BillingController extends Controller
         $this->middleware('auth');
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +35,7 @@ class BillingController extends Controller
         $todayDate = date("Y-m-d");
         $clients = Client::all();
         $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')
-            ->select('Billings.id as id', 'Billings.id', 'Billings.iban', 'Billings.billings_methods', 'Billings.total', 'Billings.status', 'Billings.payment_date', 'Billings.id_clients', 'clients.client_name', 'clients.client_last_name')
+            ->select('billings.id as id', 'billings.id', 'billings.iban', 'billings.billings_methods', 'billings.total', 'billings.status', 'billings.payment_date', 'billings.id_clients', 'clients.client_name', 'clients.client_last_name')
             ->get();
         return view('billing.index')
             ->with('datas', $datas)
@@ -276,8 +265,6 @@ class BillingController extends Controller
         $data = Billing::create($input);
         return redirect(route('billing.index'))->with('success', 'Item added succesfully');
     }
-
-
 
     /**
      * Show the form for editing the specified resource.

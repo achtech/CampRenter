@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
 
 class InsuranceCompanyController extends Controller
 {
@@ -42,7 +40,7 @@ class InsuranceCompanyController extends Controller
      */
     public function create()
     {
-        return view('InsuranceCompany.create');
+        return view('insuranceCompany.create');
     }
     /**
      * Display the specified resource.
@@ -63,12 +61,11 @@ class InsuranceCompanyController extends Controller
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = InsuranceCompany::create($input);
         return redirect(route('insuranceCompany.index'))->with('success', 'Item added succesfully');
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -80,7 +77,7 @@ class InsuranceCompanyController extends Controller
     {
         $data = InsuranceCompany::find($id);
         return view('insuranceCompany.edit')->with('data', $data);
- 
+
     }
 
     /**
@@ -97,7 +94,7 @@ class InsuranceCompanyController extends Controller
             return redirect(route('insuranceCompany.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = InsuranceCompany::where('id', $id)->update($input);
         return redirect(route('insuranceCompany.index'))->with('success', 'Item Updated succesfully');
     }
