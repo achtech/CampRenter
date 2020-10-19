@@ -100,9 +100,35 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
                 </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="card-body">
+                                        <a href="{{ route('booking.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Return') }}</a>
+                                    </div>
+                            </div>
                 </div>
             </div>
         </div>

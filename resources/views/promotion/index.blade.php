@@ -49,27 +49,26 @@
                                         <td>{{$item->created_at}}</td>
                                         <td>
                                             @if($item->status == 1)
-                                            <i class="fa fa-circle text-success font-12" data-toggle="tooltip"
-                                                        data-placement="top" title="Active"></i>
+                                            <i class="btn waves-effect waves-light btn-outline-success">Current</i>
+
                                             @else
-                                            <i class="fa fa-circle text-danger font-12" data-toggle="tooltip"
-                                                        data-placement="top" title="Desactivate"></i>
+                                            <i class="btn waves-effect waves-light btn-outline-danger">Inactive</i>
                                             @endif
 
                                         </td>
                                         <td>
                                             <ul class="list-inline m-0">
                                                 <li class="list-inline-item">
-                                                    <a href="{{ route('promotion.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
+                                                    <a href="{{ route('promotion.edit',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="far fa-edit"></i></a>
                                                 </li>
                                                 @if($item->status == 1)
                                                 <li class="list-inline-item">
-                                                    <span style="width:90px"
-                                                        class="btn rounded-0 btn-sm btn-success">{{ __('backend.status_1') }}</span>
+                                                 <span
+                                                        class="btn btn-danger btn-circle"><i class="fa fa-times"></i></span>
                                                 </li>
                                                 @else
                                                 <li class="list-inline-item">
-                                                        <a href="{{ route('promotion.activate',$item->id)}}" class="btn btn-danger rounded-0 btn-sm ">{{ __('backend.status_2') }}</a>
+                                                        <a href="{{ route('promotion.activate',$item->id)}}" class="btn btn-warning btn-circle"><i class="fa fa-check"></i></a>
                                                 </li>
                                                 @endif
                                             </ul>

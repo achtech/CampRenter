@@ -104,6 +104,21 @@
                                 @endforeach
 
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>{{ __('backend.name') }}</th>
+                                    <th>{{ __('backend.last_name') }}</th>
+                                    <th>{{ __('backend.email') }}</th>
+                                    <th>{{ __('backend.national_number') }}</th>
+                                    <th>{{ __('backend.current_solde') }}</th>
+                                    <th>{{ __('backend.totransfert_solde') }}</th>
+                                    <th>{{ __('backend.total_solde') }}</th>
+                                    <th>{{ __('backend.campunit_part') }}</th>
+                                    <th>{{ __('backend.campers') }}</th>
+                                    <th>{{ __('backend.Booking') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

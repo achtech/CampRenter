@@ -55,7 +55,7 @@
                     <h4 class="card-title">{{ __('backend.email') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
-                                {{Form::text('email','',['class'=>'form-control','required'])}}
+                                {{Form::email('email','',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>

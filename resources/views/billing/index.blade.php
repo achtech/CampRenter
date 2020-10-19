@@ -44,9 +44,10 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.Status') }}</h4>
                         <div class="form-group">
-                            {{ Form::radio('status','1', $status==1,['id'=>'status-0'])}}
-                            {{ Form::label('status-0', 'Payed') }}
-                            {{ Form::radio('status','2',$status==2 ,['id'=>'status-1'])}}
+
+                            {{ Form::checkbox('status','1', $status==1,['id'=>'status-0'])}}
+                            {{ Form::label('status-0', 'Payed') }} </br>
+                            {{ Form::checkbox('status','2',$status==2 ,['id'=>'status-1'])}}
                             {{ Form::label('status-1', 'Not payed') }}
                         </div>
                     </div>
@@ -100,6 +101,15 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                    <th>{{ __('backend.owner_name') }} </th>
+                                    <th>{{ __('backend.amount') }} </th>
+                                    <th>{{ __('backend.payment_date') }}</th>
+                                    <th>{{ __('backend.Status') }}</th>
+                                    <th>{{ __('backend.last_booking') }} </th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

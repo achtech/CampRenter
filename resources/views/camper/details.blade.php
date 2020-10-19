@@ -415,18 +415,64 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">{{__('backend.confirmed')}}</h4>
-                            <form class="mt-4">
-                                <div class="form-group">
+                            <div class="form-group">
                                         @if($data->is_confirmed==1)
-                                            <i class="btn waves-effect waves-light btn-outline-success">&nbsp&nbsp&nbspConfirmed &nbsp&nbsp&nbsp</i></br>
+                                            <i class="btn waves-effect waves-light btn-outline-success" data-toggle="modal" data-target="#block">&nbsp&nbsp&nbspConfirmed &nbsp&nbsp&nbsp</i></br>
                                             by {{App\Http\Controllers\CamperController::getUserName($data->updated_by)}}
+                                            <div class="modal fade" id="block" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>{{ __('backend.block_camper_message') }}</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="{{ route('camper.blockActivateCamper', $data->id) }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.block') }}</a>
+                                                            <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @else
-                                            <i class="btn waves-effect waves-light btn-outline-danger">Not Confirmed</i></br>
+                                            <i class="btn waves-effect waves-light btn-outline-danger" data-toggle="modal" data-target="#activate">Not Confirmed</i></br>
                                             by {{App\Http\Controllers\CamperController::getUserName($data->updated_by)}}
+                                            <div class="modal fade" id="activate" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>{{ __('backend.confirm_camper_message') }}</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="{{ route('camper.blockActivateCamper', $data->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.activate') }}</a>
+                                                            <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
                                 </div>
-                            </form>
                         </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card-body">
+                        <a href="{{ route('camper.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Return') }}</a>
                     </div>
                 </div>
         </div>
@@ -461,6 +507,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="card-body">
+                            <a href="{{ route('camper.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Return') }}</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- End row -->
             </div>
 
@@ -490,6 +549,19 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="row" style="width: 100% !important;">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card-body">
+                                    <a href="{{ route('camper.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Return') }}</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
             </div>
 

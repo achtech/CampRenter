@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2">{{ __('backend.message_content') }} </label>
-                            <label class="col-md8">: {{$datas->message }} </label>
+                            <label class="col-md-8">: {{$datas->message }} </label>
                         </div>
                         <div class="form-actions">
                             <div class="text-right">

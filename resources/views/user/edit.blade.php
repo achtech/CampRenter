@@ -24,7 +24,7 @@
                     <h4 class="card-title">{{ __('backend.email') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('email',$data->email ?? '',['class'=>'form-control','required'])}}
+                                {{Form::email('email',$data->email ?? '',['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -69,9 +69,9 @@
                 </div>
             </div>
             <div class="col-sm-12">
-               
+
                 {{Form::submit(__('backend.Update'),['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
-                <a href="{{ route('user.profile') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
+                <a href="{{ route('user.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>
     {{ Form::close() }}

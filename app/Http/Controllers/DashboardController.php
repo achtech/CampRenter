@@ -26,10 +26,13 @@ class DashboardController extends Controller
     {
         \Session::put('locale', auth()->user()->lang);
         App::setLocale(auth()->user()->lang);
-        $datas = Camper::where('is_confirmed', 0)
+        $campers = DB::table('campers')->where('is_confirmed', 0)
             ->join('clients', 'campers.id_clients', '=', 'clients.id')
+            ->select('campers.id as id', 'campers.camper_name', 'client_name', 'client_last_name')
             ->get();
-        $bookings = Booking::join('clients', 'bookings.id_clients', '=', 'clients.id')
+        $bookings = DB::table('bookings')
+            ->join('clients', 'bookings.id_clients', '=', 'clients.id')
+            ->select('bookings.id as id', 'bookings.created_at', 'client_name', 'client_last_name')
             ->get();
         $today_owner = $this->getTotal('today', 'owner');
         $week_owner = $this->getTotal('week', 'owner');
@@ -60,7 +63,7 @@ class DashboardController extends Controller
             ->with('week_total', $week_total)
             ->with('month_total', $month_total)
             ->with('previous_month_total', $previous_month_total)
-            ->with('datas', $datas)
+            ->with('campers', $campers)
             ->with('bookings', $bookings)
             ->with('messages', $messages);
 

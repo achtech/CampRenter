@@ -97,27 +97,33 @@
                                 id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <span><i data-feather="mail" class="svg-icon"></i></span>
-                        @if(App\Http\Controllers\Controller::getMessageCount()!=0)
-                                <span class="badge badge-primary notify-no rounded-circle">{{App\Http\Controllers\Controller::getMessageCount()}}</span>
-                        @endif
+                                @if(App\Http\Controllers\Controller::getMessageCount()!=0)
+                                    <span class="badge badge-primary notify-no rounded-circle">{{App\Http\Controllers\Controller::getMessageCount()}}</span>
+                                @endif
                             </a>
                             <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
                                 <ul class="list-style-none">
                                     <li>
-                                        <div class="message-center notifications position-relative">
+                                        <div class="message-center notifications position-relative" style="width: 194px !important;">
                                             <!-- Message -->
-                                            @foreach(App\Http\Controllers\Controller::getNotReadedMessages() as $msg)
-                                                <a href="{{route('message.show',$msg->id)}}"
-                                                    class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                    <span class="btn btn-primary rounded-circle btn-circle"><i
-                                                            data-feather="box" class="text-white"></i></span>
-                                                    <div class="w-75 d-inline-block v-middle pl-2">
-                                                        <h6 class="message-title mb-0 mt-1">{{$msg->full_name}}</h6> <span
-                                                            class="font-12 text-nowrap d-block text-muted">{{$msg->subject}}</span>
-                                                        <span class="font-12 text-nowrap d-block text-muted">{{$msg->send_date}}</span>
-                                                    </div>
-                                                </a>
-                                            @endforeach
+                                            @if(App\Http\Controllers\Controller::getMessageCount() == 0)
+                                                <div class="w-2 d-inline-block v-middle pl-1">
+                                                    <span class="message-item d-flex align-items-center border-bottom px-3 py-2">{{__('backend.No Messages')}}</span>
+                                                </div>
+                                            @else
+                                                @foreach(App\Http\Controllers\Controller::getNotReadedMessages() as $msg)
+                                                    <a href="{{route('message.show',$msg->id)}}"
+                                                        class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                        <span class="btn btn-primary rounded-circle btn-circle"><i
+                                                                data-feather="box" class="text-white"></i></span>
+                                                        <div class="w-75 d-inline-block v-middle pl-2">
+                                                            <h6 class="message-title mb-0 mt-1">{{$msg->full_name}}</h6> <span
+                                                                class="font-12 text-nowrap d-block text-muted">{{$msg->subject}}</span>
+                                                            <span class="font-12 text-nowrap d-block text-muted">{{$msg->send_date}}</span>
+                                                        </div>
+                                                    </a>
+                                                @endforeach
+                                            @endif
                                             <!-- Message -->
                                         </div>
                                     </li>
@@ -138,27 +144,28 @@
                                 <ul class="list-style-none">
                                     <li>
                                         <div class="message-center notifications position-relative">
-                                            @foreach(App\Http\Controllers\Controller::getNotConfirmedcampers() as $camps)
-                                                <a href="{{route('camper.detail',$camps->id)}}"
-                                                    class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                    <span class="btn btn-primary rounded-circle btn-circle"><i
-                                                            data-feather="box" class="text-white"></i></span>
-                                                    <div class="w-75 d-inline-block v-middle pl-2">
-                                                        <h6 class="message-title mb-0 mt-1">{{$camps->client_last_name." ".$camps->client_name}}</h6> <span
-                                                            class="font-12 text-nowrap d-block text-muted">{{(app()->getLocale()== 'fr' ? $camps->label_fr : (app()->getLocale()== 'en' ? $camps->label_en : $camps->label_de))}}</span>
-                                                        <span class="font-12 text-nowrap d-block text-muted">{{$camps->created_at}}</span>
-                                                    </div>
-                                                </a>
-                                            @endforeach
-                                            @if(count(App\Http\Controllers\Controller::getNotConfirmedcampers())==0)
+                                        @if(count(App\Http\Controllers\Controller::getNotConfirmedcampers())==0)
                                             <a href="{{route('message.index')}}"
                                                     class="message-item d-flex align-items-center border-bottom px-3 py-2">
                                                     <span class="btn btn-primary rounded-circle btn-circle"><i
                                                             data-feather="box" class="text-white"></i></span>
                                                     <div class="w-75 d-inline-block v-middle pl-2">
-                                                       <span class="font-12 text-nowrap d-block text-muted">{{'backend.No data found'}}</span>
+                                                       <span class="font-12 text-nowrap d-block text-muted">{{__('backend.No data found')}}</span>
                                                     </div>
                                                 </a>
+                                            @else
+                                                @foreach(App\Http\Controllers\Controller::getNotConfirmedcampers() as $camps)
+                                                    <a href="{{route('camper.detail',$camps->id)}}"
+                                                        class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                        <span class="btn btn-primary rounded-circle btn-circle"><i
+                                                                data-feather="box" class="text-white"></i></span>
+                                                        <div class="w-75 d-inline-block v-middle pl-2">
+                                                            <h6 class="message-title mb-0 mt-1">{{$camps->client_last_name." ".$camps->client_name}}</h6> <span
+                                                                class="font-12 text-nowrap d-block text-muted">{{(app()->getLocale()== 'fr' ? $camps->label_fr : (app()->getLocale()== 'en' ? $camps->label_en : $camps->label_de))}}</span>
+                                                            <span class="font-12 text-nowrap d-block text-muted">{{$camps->created_at}}</span>
+                                                        </div>
+                                                    </a>
+                                                @endforeach
                                             @endif
                                             <!-- Message -->
                                         </div>

@@ -311,9 +311,11 @@ return [
     'width' => 'Largeur',
 
     /**************************************************
-    Please put your new labels here : Achraf 
-    *********************************************** */
+    Please put your new labels here : Achraf
+     *********************************************** */
     // -----------------Backup -----------------//
     'backup_managment' => 'Gestion des sauvegardes',
+    'No Messages' => "Aucun message non lu",
+    'Return' => "Retour",
 
 ];

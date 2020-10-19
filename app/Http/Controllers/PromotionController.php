@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Avatars;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 
 class PromotionController extends Controller
@@ -27,10 +25,10 @@ class PromotionController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = Promotion::orderBy('status', 'desc')->paginate(10);
-        $dataPromoActivate = Promotion::where('status',1)->first();
+        $datas = DB::table('promotions')->orderBy('status', 'desc')->paginate(10);
+        $dataPromoActivate = Promotion::where('status', 1)->first();
         return view('promotion.index')->with('datas', $datas)
-        ->with('dataPromoActivate', $dataPromoActivate);
+            ->with('dataPromoActivate', $dataPromoActivate);
     }
     /**
      * Show the form for creating a new resource.
@@ -59,10 +57,10 @@ class PromotionController extends Controller
      */
     public function store(Request $request)
     {
-        $input = request()->except(['_token','action', '_method']);
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
-        $input['status']=0;
+        $input = request()->except(['_token', 'action', '_method']);
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
+        $input['status'] = 0;
         $data = Promotion::create($input);
         return redirect(route('promotion.index'))->with('success', 'Item added succesfully');
     }
@@ -100,7 +98,7 @@ class PromotionController extends Controller
             return redirect(route('promotion.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Promotion::where('id', $id)->update($input);
         return redirect(route('promotion.index'))->with('success', 'Item Updated succesfully');
     }

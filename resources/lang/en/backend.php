@@ -331,5 +331,7 @@ return [
      *********************************************** */
     // -----------------Backup -----------------//
     'backup_managment' => 'Backup Management',
+    'No Messages' => "No unread messages",
+    'Return' => "Return",
 
 ];

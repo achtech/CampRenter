@@ -82,8 +82,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if($datas->count()>0)
-                                        @foreach($datas as $item)
+                                        @if($campers->count()>0)
+                                        @foreach($campers as $item)
                                             <tr>
 
                                                 <td>
@@ -134,7 +134,7 @@
                                     <tr>
 
                                         <td>{{$item->client_name}} {{$item->client_last_name}}</td>
-                                        <td>{{$item->start_date}}</td>
+                                        <td>{{$item->created_at}}</td>
                                         <td>
                                         <a href="{{ route('booking.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
                                         </td>

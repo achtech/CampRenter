@@ -332,5 +332,7 @@ return [
      *********************************************** */
     // -----------------Backup -----------------//
     'backup_managment' => 'Backup-Verwaltung',
+    'No Messages' => "Keine ungelesenen Nachrichten",
+    'Return' => "Return",
 
 ];
