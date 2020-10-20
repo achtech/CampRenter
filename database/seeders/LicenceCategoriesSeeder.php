@@ -17,9 +17,9 @@ class LicenceCategoriesSeeder extends Seeder
         DB::table('licence_categories')->insert(array(
             0 => array(
                 'id' => '1',
-                'label_en' => 'Licence category 1 en',
-                'label_de' => 'Licence category 1 de',
-                'label_fr' => 'Licence category 1 fr',
+                'label_en' => 'A',
+                'label_de' => 'A',
+                'label_fr' => 'A',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -27,9 +27,9 @@ class LicenceCategoriesSeeder extends Seeder
             ),
             1 => array(
                 'id' => '2',
-                'label_en' => 'Licence category 2 en',
-                'label_de' => 'Licence category 2 de',
-                'label_fr' => 'Licence category 2 fr',
+                'label_en' => 'B',
+                'label_de' => 'B',
+                'label_fr' => 'B',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -37,9 +37,9 @@ class LicenceCategoriesSeeder extends Seeder
             ),
             2 => array(
                 'id' => '3',
-                'label_en' => 'Licence category 3 en',
-                'label_de' => 'Licence category 3 de',
-                'label_fr' => 'Licence category 3 fr',
+                'label_en' => 'C',
+                'label_de' => 'C',
+                'label_fr' => 'C',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,

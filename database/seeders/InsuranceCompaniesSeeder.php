@@ -17,9 +17,9 @@ class InsuranceCompaniesSeeder extends Seeder
         DB::table('insurance_companies')->insert(array(
             0 => array(
                 'id' => 1,
-                'label_en' => 'Insurance companies 1 en',
-                'label_de' => 'Insurance companies 1 de',
-                'label_fr' => 'Insurance companies 1 fr',
+                'label_en' => 'Insurance company 1',
+                'label_de' => 'Insurance company 1',
+                'label_fr' => 'Insurance company 1',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -27,9 +27,9 @@ class InsuranceCompaniesSeeder extends Seeder
             ),
             1 => array(
                 'id' => 2,
-                'label_en' => 'Insurance companies 2 en',
-                'label_de' => 'Insurance companies 2 de',
-                'label_fr' => 'Insurance companies 2 fr',
+                'label_en' => 'Insurance company 2',
+                'label_de' => 'Insurance company 2',
+                'label_fr' => 'Insurance company 2',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -37,9 +37,9 @@ class InsuranceCompaniesSeeder extends Seeder
             ),
             2 => array(
                 'id' => 3,
-                'label_en' => 'Insurance companies 3 en',
-                'label_de' => 'Insurance companies 3 de',
-                'label_fr' => 'Insurance companies 3 fr',
+                'label_en' => 'Insurance company 3',
+                'label_de' => 'Insurance company 3',
+                'label_fr' => 'Insurance company 3',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,

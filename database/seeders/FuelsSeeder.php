@@ -17,9 +17,9 @@ class FuelsSeeder extends Seeder
         DB::table('fuels')->insert(array(
             0 => array(
                 'id' => 1,
-                'label_en' => 'Fuel 1 en',
-                'label_de' => 'Fuel 1 de',
-                'label_fr' => 'Fuel 1 fr',
+                'label_en' => 'Diesel',
+                'label_de' => 'Diesel',
+                'label_fr' => 'Diesel',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -27,9 +27,9 @@ class FuelsSeeder extends Seeder
             ),
             1 => array(
                 'id' => 2,
-                'label_en' => 'Fuel 2 en',
-                'label_de' => 'Fuel 2 de',
-                'label_fr' => 'Fuel 2 fr',
+                'label_en' => 'Gasoline',
+                'label_de' => 'Benzin',
+                'label_fr' => 'Essence',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -37,9 +37,9 @@ class FuelsSeeder extends Seeder
             ),
             2 => array(
                 'id' => 3,
-                'label_en' => 'Fuel 3 en',
-                'label_de' => 'Fuel 3 de',
-                'label_fr' => 'Fuel 3 fr',
+                'label_en' => 'Electric',
+                'label_de' => 'Elektrisch',
+                'label_fr' => 'Électrique',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
