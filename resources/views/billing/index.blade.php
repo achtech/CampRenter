@@ -9,8 +9,8 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.Owner') }}</h4>
                         <div class="form-group mb-4">
-                            <select class="custom-select mr-sm-2" id="ownerId" name="ownerId">
-                                <option selected>{{ __('backend.Choose') }}</option>
+                            <select class="custom-select mr-sm-2" id="ownerId" name="ownerId" onchange="this.form.submit()">
+                                <option value="0" selected>{{ __('backend.All') }}</option>
                                 @foreach($clients as $item)
                                     <option value="{{$item->id}}" @if($item->id==$renter) selected @endif>{{$item->client_name}} {{$item->client_last_name}}</option>
                                 @endforeach
@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.From') }}</h4>
                         <div class="form-group">
-                            <input type="date" class="form-control"  id="start_date"  name="start_date" value="{{ $start_date ?? '' }}"/>
+                            <input type="date" class="form-control"  id="start_date"  onchange="this.form.submit()" name="start_date" value="{{ $start_date ?? '' }}"/>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.To') }}</h4>
                         <div class="form-group">
-                            <input type="date" class="form-control"  id="end_date" name="end_date"  value="{{ $end_date ?? '' }}" />
+                            <input type="date" class="form-control"  id="end_date"  onchange="this.form.submit()" name="end_date"  value="{{ $end_date ?? '' }}" />
                         </div>
                     </div>
                 </div>
@@ -45,9 +45,9 @@
                         <h4 class="card-title">{{ __('backend.Status') }}</h4>
                         <div class="form-group">
 
-                            {{ Form::checkbox('status','1', $status==1,['id'=>'status-0'])}}
+                            {{ Form::checkbox('payed','1', $payed,[ 'onClick'=>"this.form.submit()", 'id'=>'status-0'])}}
                             {{ Form::label('status-0', 'Payed') }} </br>
-                            {{ Form::checkbox('status','2',$status==2 ,['id'=>'status-1'])}}
+                            {{ Form::checkbox('notPayed','2',$notPayed ,['onClick'=>"this.form.submit()", 'id'=>'status-1'])}}
                             {{ Form::label('status-1', 'Not payed') }}
                         </div>
                     </div>
@@ -96,7 +96,12 @@
                                     <td>{{$item->client_name}} {{$item->client_last_name}}</td>
                                     <td>{{$item->total}}</td>
                                     <td>{{$item->payment_date}}</td>
-                                    <td>@if($item->status==0) <span style="color:red">{{__('backend.not_payed')}}</span> @else <span style="color:green">{{__('backend.payed')}}</span> @endif</td>
+                                    <td>
+                                    @if($item->status==0) 
+                                            <span style="color:red">{{__('backend.not_payed')}}</span> 
+                                        @else 
+                                            <span style="color:green">{{__('backend.payed')}}</span> 
+                                        @endif</td>
                                     <td><a href="{{ route('billing.bookings',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.dashboard_last_booking') }}</a></td>
                                 </tr>
                                 @endforeach

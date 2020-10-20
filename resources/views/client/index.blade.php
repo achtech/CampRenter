@@ -12,8 +12,6 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('backend.name') }}</th>
-                                    <th>{{ __('backend.last_name') }}</th>
-                                    <th>{{ __('backend.email') }}</th>
                                     <th>{{ __('backend.national_number') }}</th>
                                     <th>{{ __('backend.current_solde') }}</th>
                                     <th>{{ __('backend.totransfert_solde') }}</th>
@@ -27,20 +25,25 @@
                             <tbody>
                                 @foreach($datas as $item)
                                 <tr>
-                                    <td >{{$item->client_name}}</td>
-                                    <td>{{$item->client_last_name}}</td>
-                                    <td>{{$item->email}}</td>
+                                    <td >{{$item->client_name}} {{$item->client_last_name}}</td>
                                     <td>{{$item->national_id}}</td>
                                     <td>{{App\Http\Controllers\ClientController::getCurrentSolde($item->id)}}</td>
                                     <td>{{App\Http\Controllers\ClientController::toTransfertSolde($item->id)}}</td>
                                     <td>{{App\Http\Controllers\ClientController::getTotalsSolde($item->id)}}</td>
                                     <td>{{App\Http\Controllers\ClientController::getCampUnitPart($item->id)}}</td>
                                     <td>
+                                    @if(App\Http\Controllers\ClientController::containCamper($item->id))
                                         <a href="{{ route('client.campers',$item->id ) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.view_camper') }}</a>
-
+                                    @else
+                                        {{__('backend.No campers')}}
+                                    @endif
                                     </td>
                                     <td>
+                                    @if(App\Http\Controllers\ClientController::containBooking($item->id))
                                         <a href="{{ route('client.bookings',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.view_booking') }}</a>
+                                    @else
+                                        {{__('backend.No bookings')}}
+                                    @endif
                                     </td>
                                     <td>
                                         <ul class="list-inline m-0">
@@ -107,8 +110,6 @@
                             <tfoot>
                                 <tr>
                                     <th>{{ __('backend.name') }}</th>
-                                    <th>{{ __('backend.last_name') }}</th>
-                                    <th>{{ __('backend.email') }}</th>
                                     <th>{{ __('backend.national_number') }}</th>
                                     <th>{{ __('backend.current_solde') }}</th>
                                     <th>{{ __('backend.totransfert_solde') }}</th>

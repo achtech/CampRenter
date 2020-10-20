@@ -2,7 +2,7 @@
 @section('content')
 {{ Breadcrumbs::render('edit_profile') }}
 <div class="container-fluid">
-    {{ Form::open(array('method'=>'PUT', 'enctype'=>'multipart/form-data' ,'route' => ['user.update', $data->id ?? 1])) }}
+    {{ Form::open(array('method'=>'PUT', 'enctype'=>'multipart/form-data' ,'route' => ['user.updateDataProfile'])) }}
 
     @csrf
      <div class="row">

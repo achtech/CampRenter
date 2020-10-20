@@ -18,7 +18,10 @@ return [
     'status_2' => 'Disactivate',
     'File' => 'File',
     'Download' => 'Download',
-
+    'All' => 'All',
+    'Create' => 'Create',
+    'Back' => 'Back',
+    
     /** Delete Message */
     'message_delete_avatar' => 'Do you want to delete this avatar ?',
     'message_delete_camperCategory' => 'Do you want to delete this Camper Category',
@@ -106,6 +109,11 @@ return [
     'create_camper_status.breadcrumb' => 'Create Camper Status',
     'edit_camper_status.breadcrumb' => 'Edit Camper Status',
     'camper_status.breadcrumb' => 'Camper Status',
+    'blog.breadcrumb' => 'Blog',
+    'new_blog.breadcrumb' => 'New blog',
+    'edit_blog.breadcrumb' => 'Edit blog',
+
+    
     /** Menu */
     'Dashboard' => "Dashboard",
     'menu_avatars' => 'Avatars',
@@ -126,7 +134,8 @@ return [
     'menu_settings' => 'Settings',
     'menu_transmissions' => 'Transmissions',
     'menu_user_managment' => 'User Managment',
-
+    'menu_blog' => 'Blog',
+    
     /** Users and authentification */
     'Change password' => 'Change password',
     'Confirm password' => 'Confirm password',
@@ -148,9 +157,11 @@ return [
     'confirm_camper_message' => 'Do you want to confirm this Camper?',
     'no_camper_to_confirm' => 'No campers to confirm',
     'view_camper' => 'View campers',
+    'No campers' => 'No campers',
 
     /** BOOKINGS */
     'Booking' => 'Booking',
+    'No Bookings' => 'No bookings',
     'booking_management' => 'Booking Management',
     'booking_list' => 'List of booking',
     'booking_status_booking' => 'Booking Status',
@@ -169,7 +180,7 @@ return [
     'Renter' => 'Renter',
     'Owner' => 'Owner',
     'Client' => 'Client',
-    'Clients Management' => 'Clientx Management',
+    'Clients Management' => 'Client Management',
 
     /** INSURANCES */
     'insurance_managment' => 'Insurance Managment',
@@ -221,6 +232,15 @@ return [
     'transmissions' => 'Transmission',
     'transmission_managment' => 'Transmission Managment',
     'new_transmission' => 'New Transmission',
+
+    /** Blog */
+    'blog' => 'Blog',
+    'blog_managment' => 'Blog Managment',
+    'New Blog' => 'New Blog',
+    'Title' => 'Title',
+    'Author' => 'Author',
+    'Article' => 'Article',
+    'Date creation' => 'Date creation',
 
     /************************************************** */
     /** Fields */

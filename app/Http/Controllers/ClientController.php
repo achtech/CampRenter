@@ -121,6 +121,13 @@ class ClientController extends Controller
         return redirect(route('client.index'))->with('success', 'Item Updated succesfully');
     }
 
+    public static function containCamper($clientId){
+        return Camper::where('id_clients',$clientId)->count() > 0;
+    }
+
+    public static function containBooking($clientId){
+        return Booking::where('id_clients',$clientId)->count() > 0;
+    }
     /**
      * Update the specified resource in storage.
      *

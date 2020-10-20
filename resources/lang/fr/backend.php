@@ -17,20 +17,24 @@ return [
     'status_2' => 'Désactiver',
     'File' => 'Fichier',
     'Download' => 'Télécharger',
+    'All' => 'Tous',
+    'Create' => 'Créer',
+    'Back' => 'Retour',
 
     /** Delete Message */
     'message_delete_avatar' => 'Voulez-vous supprimer cet avatar?',
-    'message_delete_camperCategory' => 'Voulez-vous supprimer cette catégorie de campeur',
+    'message_delete_camperCategory' => 'Voulez-vous supprimer cette catégorie de campeur ?',
     'message_delete_camper' => 'Voulez-vous supprimer ce campeur?',
-    'message_delete_camperStatus' => 'Voulez-vous supprimer ce statut de campeur',
-    'message_delete_fuel' => 'Voulez-vous supprimer ce carburant',
-    'message_delete_insurance' => 'Voulez-vous supprimer cette assurance?',
-    'message_delete_insurance_company' => 'Voulez-vous supprimer cette compagnie d assurance',
-    'message_delete_licence_category' => 'Voulez-vous supprimer cette catégorie de licence',
-    'message_delete_user' => 'Voulez-vous supprimer cet utilisateur',
-    'message_delete_transmission' => 'Voulez-vous supprimer cette transmission',
+    'message_delete_camperStatus' => 'Voulez-vous supprimer ce statut de campeur ?',
+    'message_delete_fuel' => 'Voulez-vous supprimer ce carburant ?',
+    'message_delete_insurance' => 'Voulez-vous supprimer cette assurance ?',
+    'message_delete_insurance_company' => 'Voulez-vous supprimer cette compagnie d assurance ?',
+    'message_delete_licence_category' => 'Voulez-vous supprimer cette catégorie de licence ?',
+    'message_delete_user' => 'Voulez-vous supprimer cet utilisateur ?',
+    'message_delete_transmission' => 'Voulez-vous supprimer cette transmission ?',
     'block_message' => 'Voulez-vous bloquer ce client?',
     'active_message' => 'Voulez-vous activer ce client?',
+    'message_delete_blog' => 'Voulez-vous supprimer cette Blog ?',
 
     /** Dashboard */
     'Hello' => 'Bonjour',
@@ -105,6 +109,10 @@ return [
     'create_camper_status.breadcrumb' => 'Créer un statut de campeur',
     'edit_camper_status.breadcrumb' => 'modifier le statut du campeur',
     'camper_status.breadcrumb' => 'statut de campeur',
+    'blog.breadcrumb' => 'Blog',
+    'new_blog.breadcrumb' => 'Nouveau blog',
+    'edit_blog.breadcrumb' => 'Modifier le blog',
+
     /** Menu */
     'Dashboard' => "Tableau de bord",
     'menu_avatars' => 'Les avatars',
@@ -112,7 +120,7 @@ return [
     'menu_billings' => 'Facturation',
     'menu_booking' => 'Réservations',
     'menu_clients' => 'Clients',
-    'menu_campers' => 'Les campeurs',
+    'menu_campers' => 'Campeurs',
     'menu_camper_category' => 'Catégories de campeurs',
     'menu_camper_status' => 'Statut du campeur',
     'menu_fuels' => 'Carburants',
@@ -123,8 +131,9 @@ return [
     'menu_profil' => 'Profil',
     'menu_promotion' => 'Promotion',
     'menu_settings' => 'Réglages',
-    'menu_transmissions' => 'Les transmissions',
+    'menu_transmissions' => 'Transmissions',
     'menu_user_managment' => 'Gestion des utilisateurs',
+    'menu_blog' => 'Blog',
 
     /** Users and authentification */
     'Change password' => 'Changer le mot de passe',
@@ -147,8 +156,10 @@ return [
     'confirm_camper_message' => 'Voulez-vous confirmer ce campeur?',
     'no_camper_to_confirm' => 'Aucun campeur à confirmer',
     'view_camper' => 'Voir les campeurs',
+    'No campers' => 'Aucun campeur',
 
     /** BOOKINGS */
+    'Booking' => 'Aucune Réservation',
     'Booking' => 'Réservation',
     'booking_management' => 'Gestion des réservations',
     'booking_list' => 'Liste de réservation',
@@ -221,6 +232,15 @@ return [
     'transmission_managment' => 'Gestion de la transmission',
     'new_transmission' => 'Nouvelle transmission',
 
+    /** Blog */
+    'blog' => 'Blog',
+    'blog_managment' => 'Gestion des Blogs',
+    'New Blog' => 'Nouvelle Blog',
+    'Title' => 'Titre',
+    'Author' => 'Auteur',
+    'Article' => 'Article',
+    'Date creation' => 'Date de création',
+    
     /************************************************** */
     /** Fields */
     'adress' => 'Adresse',

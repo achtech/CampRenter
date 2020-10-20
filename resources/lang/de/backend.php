@@ -17,6 +17,9 @@ return [
     'status_2' => 'Deaktivieren',
     'File' => 'Datei',
     'Download' => 'Herunterladen',
+    'All' => 'Alle',
+    'Create' => 'Erstellen',
+    'Back' => 'Zurück', 
 
     /** Delete Message */
     'message_delete_avatar' => 'Möchten Sie diesen avatar löschen ?',
@@ -31,6 +34,7 @@ return [
     'message_delete_transmission' => 'Möchten Sie diese Übertragung löschen',
     'block_message' => 'Möchten Sie diesen client blockieren?',
     'active_message' => 'Möchten Sie diesen client aktivieren?',
+    'message_delete_blog' => 'Möchten Sie diesen Blog löschen',
 
     /** Dashboard */
     'Hello' => 'Hallo',
@@ -106,6 +110,10 @@ return [
     'create_camper_status.breadcrumb' => 'Camper Status erstellen',
     'edit_camper_status.breadcrumb' => 'Camper Status bearbeiten',
     'camper_status.breadcrumb' => 'Camper Status',
+    'blog.breadcrumb' => 'Blog',
+    'new_blog.breadcrumb' => 'Blog erstellen',
+    'edit_blog.breadcrumb' => 'Blog bearbeiten',
+
     /** Menu */
     'Dashboard' => "Dashboard",
     'menu_avatars' => 'Avataren',
@@ -126,6 +134,7 @@ return [
     'menu_settings' => 'Einstellung',
     'menu_transmissions' => 'Übertragung',
     'menu_user_managment' => 'Benutzerverwaltung',
+    'menu_blog' => 'Blog',
 
     /** Users and authentification */
     'Change password' => 'Passwort ändern',
@@ -148,8 +157,10 @@ return [
     'confirm_camper_message' => 'Möchten Sie diesen Camper bestätigen?',
     'no_camper_to_confirm' => 'Keine Camper zu bestätigen',
     'view_camper' => 'Ansicht Camper',
+    'No campers' => 'Keine Camper',
 
     /** BOOKINGS */
+    'Booking' => 'Keine Buchung',
     'Booking' => 'Buchung',
     'booking_management' => 'Buchungsverwaltung',
     'booking_list' => 'Liste der Buchung',
@@ -222,6 +233,15 @@ return [
     'transmission_managment' => 'Übertragungsmanagement',
     'new_transmission' => 'Neue Übertragung',
 
+    /** Blog */
+    'blog' => 'Blog',
+    'blog_managment' => 'Blogs Management',
+    'New Blog' => 'Neuer Blog',
+    'Title' => 'Titel',
+    'Author' => 'Autor',
+    'Article' => 'Artikel',
+    'Date creation' => 'Erstellungsdatum',
+    
     /************************************************** */
     /** Fields */
     'adress' => 'Anschrift',

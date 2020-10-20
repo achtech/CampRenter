@@ -41,7 +41,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.role') }}</h4>
+                        <div class="mt-5">
+                            <div class="form-group">
+                                <label class='form-control'>{{$data->role ?? ''}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.Photo') }}</h4>
@@ -53,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.adress') }}</h4>

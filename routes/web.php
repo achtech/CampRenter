@@ -38,6 +38,7 @@ Route::group(['middleware' => 'Lang'], function () {
 
     //ADMIN->USER
     Route::get('user/updateProfile', 'App\Http\Controllers\UserController@updateProfile')->name('user.updateProfile');
+    Route::PUT('user/updateDataProfile', 'App\Http\Controllers\UserController@updateDataProfile')->name('user.updateDataProfile');
     Route::get('user/changePassword', 'App\Http\Controllers\UserController@changePassword')->name('user.changePassword');
     Route::PUT('user/updatePassword', 'App\Http\Controllers\UserController@updatePassword')->name('user.updatePassword');
 
@@ -51,6 +52,18 @@ Route::group(['middleware' => 'Lang'], function () {
         'store' => 'user.store',
         'show' => 'user.show',
     ]]);
+
+    //ADMIN -> Blog
+    Route::get('blog/{id}/delete', 'App\Http\Controllers\BlogController@destroy')->name('blog.destroy');
+    Route::resource('blog', 'App\Http\Controllers\BlogController', ['except' => 'destroy', 'names' => [
+        'index' => 'blog.index',
+        'create' => 'blog.create',
+        'update' => 'blog.update',
+        'edit' => 'blog.edit',
+        'store' => 'blog.store',
+        'show' => 'blog.show',
+    ]]);
+
 
     //ADMIN->CLIENT
     Route::get('client/{id}/blockActivateClient', 'App\Http\Controllers\ClientController@blockActivateClient')->name('client.blockActivateClient');

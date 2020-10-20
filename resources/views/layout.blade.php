@@ -264,6 +264,12 @@
                             <span class="hide-menu"> {{ __('backend.menu_clients') }}</span>
                         </a>
                     </li>
+                    <li class="sidebar-item{{ $activePage == 'blog' ? ' selected' : '' }}">
+                        <a class="sidebar-link sidebar-link" href="{{route('blog.index')}}" aria-expanded="false">
+                        <i class="icon-blog"></i>
+                            <span class="hide-menu"> {{ __('backend.menu_blog') }}</span>
+                        </a>
+                    </li>
                     <li class="sidebar-item{{ $activePage == 'insurance' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('insurance.index')}}" aria-expanded="false">
                         <i class="icon-book-open"></i>
@@ -291,7 +297,7 @@
                         <i class="icon-settings"></i>
                             <span class="hide-menu">{{ __('backend.menu_settings') }}</span>
                         </a>
-                        <ul aria-expanded="false" class="collapse  first-level base-level-line {{ $activePage == 'profile' || $activePage == 'user' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' in' : '' }}">
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line {{ $activePage == 'profile' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' in' : '' }}">
                             <li class="sidebar-item {{$activePage == 'profile' || $activePage == 'user' ? 'active' : ''}}"><a href="{{route('user.profile')}}" class="sidebar-link {{$activePage == 'profile' || $activePage == 'user' ? 'active' : ''}}"><span
                                         class="hide-menu"> {{ __('backend.menu_profil') }}
                                         </span></a>

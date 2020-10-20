@@ -122,24 +122,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $file = $request->file('picture');
-        $data = User::find($id);
-        if (empty($data)) {
-            return redirect(route('user.profile'));
-        }
-        if($request->file('picture') && $request->file('picture')->getClientOriginalName()){
-            $input = request()->except(['_token', '_method', 'action']);
-            $input['picture'] = $request->file('picture')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\users'),$file->getClientOriginalName());
-        } else {
-            $input = request()->except(['_token', '_method', 'action', 'picture']);
-        }
-        $input['updated_by']=auth()->user()->id;
-
-        $data = User::where('id', $id)->update($input);
-        return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
+        $this->updateUser($request,$id);
+        return redirect(route('user.index'))->with('success', 'Item Updated succesfully');
     }
     
+    public function updateDataProfile(Request $request)
+    {
+        $this->updateUser($request,auth()->user()->id);
+        return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
+    }
     
     public function updatePassword(UpdateProfile $request)
     {
@@ -167,6 +158,23 @@ class UserController extends Controller
         $input['updated_by']=auth()->user()->id;
         $data = User::where('id', auth()->user()->id)->update($input);
         return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
+    }
+
+    private function updateUser($request, $id){
+        $file = $request->file('picture');
+        $data = User::find($id);
+        if (empty($data)) {
+            return redirect(route('user.index'));
+        }
+        if($request->file('picture') && $request->file('picture')->getClientOriginalName()){
+            $input = request()->except(['_token', '_method', 'action']);
+            $input['picture'] = $request->file('picture')->getClientOriginalName();
+            $file->move(base_path('public\assets\images\users'),$file->getClientOriginalName());
+        } else {
+            $input = request()->except(['_token', '_method', 'action', 'picture']);
+        }
+        $input['updated_by']=auth()->user()->id;
+        $data = User::where('id', $id)->update($input);
     }
     //
 

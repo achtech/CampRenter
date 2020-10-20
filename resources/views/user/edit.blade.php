@@ -42,7 +42,23 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.role') }}</h4>
+                        <div class="mt-4">
+                            <div class="form-group">
+                                {{ Form::radio('role','super-admin',$data->role == 'super-admin',['id'=>'role-0'])}}
+                                {{ Form::label('role-0', 'Super admin') }} &nbsp;&nbsp;&nbsp;
+                                {{ Form::radio('role','admin',$data->role == 'admin',['id'=>'role-1'])}}
+                                {{ Form::label('role-1', 'Admin') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="mt-5">
@@ -56,7 +72,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.adress') }}</h4>
