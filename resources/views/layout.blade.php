@@ -21,6 +21,7 @@
     <link href="../../dist/css/style.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.css" rel="stylesheet" />
     <link href="../../assets/libs/bootstrap/dist/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="{{asset('css/main.css')}}"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.js"></script>
 
@@ -397,6 +398,8 @@
       <!--This page plugins -->
     <script src="../../assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="../../dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvsDxP6iwLao3lGAtzr9tsVxguLxqMCsc"></script>
+    <script src="{{asset('js/script.js')}} "></script>
     <script>
         $(function () {
             $(document).on('keypress', "#textarea1", function (e) {

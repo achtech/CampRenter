@@ -495,7 +495,7 @@
 
             <div class="tab-pane" id="location">
                     <div class="table-responsive">
-
+                        <div id="map"></div>
                     </div>
             </div>
         </div>

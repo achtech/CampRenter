@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('lang/{lang}', function ($lang) {
     \Session::put('locale', $lang);
+    $user = User::find(auth()->user()->id);
+    $user->lang = $lang;
+    $user->update();    
     return back();
 });
 Route::group(['middleware' => 'Lang'], function () {
@@ -24,6 +28,7 @@ Route::group(['middleware' => 'Lang'], function () {
         if (auth()->user() == null) {
             return view('/auth/login');
         } else {
+            \Session::put('locale',auth()->user()->lang );
             return redirect(route('dashboard'));
         }
     });
