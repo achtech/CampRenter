@@ -35,13 +35,14 @@ class CamperController extends Controller
     public function index(Request $request)
     {
         $search = '';
+        $camper_categories = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
             $datas = Camper::where('camper_name', 'like', '%' . $search . '%')->paginate(10);
         } else {
             $datas = Camper::paginate(10);
         }
-        return view('camper.index')->with('datas', $datas)->with('search', $search);
+        return view('camper.index')->with('datas', $datas)->with('search', $search, $camper_categories);
     }
     /**
      * Show the form for creating a new resource.
@@ -89,7 +90,7 @@ class CamperController extends Controller
     {
         $camper = Camper::find($id);
         $owner = Client::find($camper->id_clients);
-        $camper_categories = CamperCategory::find($camper->id_licence_categories);
+        $camper_categories = CamperCategory::find($camper->id_camper_categories);
         $licenceCategories = LicenceCategory::find($camper->id_licence_categories);
         $transmissions = Transmission::find($camper->id_transmissions);
         $fuels = Fuel::find($camper->id_fuels);
