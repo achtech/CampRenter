@@ -19,7 +19,7 @@ return [
     'Download' => 'Herunterladen',
     'All' => 'Alle',
     'Create' => 'Erstellen',
-    'Back' => 'Zurück', 
+    'Back' => 'Zurück',
 
     /** Delete Message */
     'message_delete_avatar' => 'Möchten Sie diesen avatar löschen ?',
@@ -241,7 +241,7 @@ return [
     'Author' => 'Autor',
     'Article' => 'Artikel',
     'Date creation' => 'Erstellungsdatum',
-    
+
     /************************************************** */
     /** Fields */
     'adress' => 'Anschrift',
@@ -353,6 +353,7 @@ return [
     // -----------------Backup -----------------//
     'backup_managment' => 'Backup-Verwaltung',
     'No Messages' => "Keine ungelesenen Nachrichten",
-    'Return' => "Return",
+    'Return' => 'Return',
+    'message_delete_blog' => 'Möchten Sie diesen Blog löschen?',
 
 ];

@@ -45,7 +45,7 @@ class BlogController extends Controller
     public function show($id)
     {
         $data = Blog::find($id);
-        return view('blog.show')->with('data',$data);
+        return view('blog.show')->with('data', $data);
     }
     /**
      * Store a newly created resource in storage.

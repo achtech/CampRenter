@@ -97,10 +97,10 @@
                                     <td>{{$item->total}}</td>
                                     <td>{{$item->payment_date}}</td>
                                     <td>
-                                    @if($item->status==0) 
-                                            <span style="color:red">{{__('backend.not_payed')}}</span> 
-                                        @else 
-                                            <span style="color:green">{{__('backend.payed')}}</span> 
+                                    @if($item->status==0)
+                                            <span style="color:red">{{__('backend.not_payed')}}</span>
+                                        @else
+                                            <span style="color:green">{{__('backend.payed')}}</span>
                                         @endif</td>
                                     <td><a href="{{ route('billing.bookings',$item->id) }}" class="btn btn-info btn-sm rounded-0">{{ __('backend.dashboard_last_booking') }}</a></td>
                                 </tr>

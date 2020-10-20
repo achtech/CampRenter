@@ -21,7 +21,7 @@ return [
     'All' => 'All',
     'Create' => 'Create',
     'Back' => 'Back',
-    
+
     /** Delete Message */
     'message_delete_avatar' => 'Do you want to delete this avatar ?',
     'message_delete_camperCategory' => 'Do you want to delete this Camper Category',
@@ -113,7 +113,6 @@ return [
     'new_blog.breadcrumb' => 'New blog',
     'edit_blog.breadcrumb' => 'Edit blog',
 
-    
     /** Menu */
     'Dashboard' => "Dashboard",
     'menu_avatars' => 'Avatars',
@@ -135,7 +134,7 @@ return [
     'menu_transmissions' => 'Transmissions',
     'menu_user_managment' => 'User Managment',
     'menu_blog' => 'Blog',
-    
+
     /** Users and authentification */
     'Change password' => 'Change password',
     'Confirm password' => 'Confirm password',
@@ -352,6 +351,7 @@ return [
     // -----------------Backup -----------------//
     'backup_managment' => 'Backup Management',
     'No Messages' => "No unread messages",
-    'Return' => "Return",
+    'Return' => 'Return',
+    'message_delete_blog' => 'Do you want to delete this Blog',
 
 ];

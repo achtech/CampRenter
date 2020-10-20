@@ -240,7 +240,7 @@ return [
     'Author' => 'Auteur',
     'Article' => 'Article',
     'Date creation' => 'Date de création',
-    
+
     /************************************************** */
     /** Fields */
     'adress' => 'Adresse',
@@ -336,6 +336,6 @@ return [
     // -----------------Backup -----------------//
     'backup_managment' => 'Gestion des sauvegardes',
     'No Messages' => "Aucun message non lu",
-    'Return' => "Retour",
-
+    'Return' => 'Retour',
+    'message_delete_blog' => 'Voulez-vous supprimer ce Blog',
 ];

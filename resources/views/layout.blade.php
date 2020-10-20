@@ -266,7 +266,7 @@
                     </li>
                     <li class="sidebar-item{{ $activePage == 'blog' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link" href="{{route('blog.index')}}" aria-expanded="false">
-                        <i class="icon-blog"></i>
+                        <i class="fab fa-blogger-b"></i>
                             <span class="hide-menu"> {{ __('backend.menu_blog') }}</span>
                         </a>
                     </li>

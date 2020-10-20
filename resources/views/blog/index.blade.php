@@ -32,11 +32,12 @@
                             @foreach($datas as $item)
                                 <tr>
                                     <td>
-                                <img style="width:64px;height:64px;" src="{{ asset('assets/images') }}/blog/{{$item->photo}}" ></td>
+                                        <img style="width:64px;height:64px;" src="{{ asset('assets/images') }}/blog/{{$item->photo}}" >
+                                    </td>
                                     <td>{{$item->title}}</td>
                                     <td>{{App\Http\Controllers\CamperController::getUserName($item->created_by)}}</td>
                                     <td>{{$item->created_at}}</td>
-                                    <td>{{$item->article}}</td>
+                                    <td>{{ Illuminate\Support\Str::limit($item->article, 50)}}</td>
                                     <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
@@ -57,7 +58,7 @@
                                                                 <p>{{ __('backend.message_delete_blog') }}</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="{{ route('blog.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
+                                                                    <a href="{{ route('blog.delete', $item->id) }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
                                                                     <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
                                                                 </div>
                                                             </div>

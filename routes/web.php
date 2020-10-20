@@ -54,7 +54,7 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN -> Blog
-    Route::get('blog/{id}/delete', 'App\Http\Controllers\BlogController@destroy')->name('blog.destroy');
+    Route::get('blog/{id}/delete', 'App\Http\Controllers\BlogController@destroy')->name('blog.delete');
     Route::resource('blog', 'App\Http\Controllers\BlogController', ['except' => 'destroy', 'names' => [
         'index' => 'blog.index',
         'create' => 'blog.create',
@@ -63,7 +63,6 @@ Route::group(['middleware' => 'Lang'], function () {
         'store' => 'blog.store',
         'show' => 'blog.show',
     ]]);
-
 
     //ADMIN->CLIENT
     Route::get('client/{id}/blockActivateClient', 'App\Http\Controllers\ClientController@blockActivateClient')->name('client.blockActivateClient');

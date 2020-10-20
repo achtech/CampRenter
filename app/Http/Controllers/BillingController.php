@@ -40,9 +40,10 @@ class BillingController extends Controller
         return view('billing.index')
             ->with('datas', $datas)
             ->with('clients', $clients)
-            ->with('renter', '')
             ->with('todayDate', $todayDate)
-            ->with('status', '');
+            ->with('renter', '')
+            ->with('payed', '')
+            ->with('notPayed', '');
     }
 
     public function bookings($id)
@@ -210,16 +211,16 @@ class BillingController extends Controller
         Session::put('notPayed', $notPayed);
         Session::put('client', $client);
         $datas = DB::table('billings')->join('clients', 'billings.id_clients', '=', 'clients.id')
-                    ->select('billings.id','billings.status','billings.total','billings.payment_date','clients.client_name','clients.client_last_name');
+            ->select('billings.id', 'billings.status', 'billings.total', 'billings.payment_date', 'clients.client_name', 'clients.client_last_name');
         if (!empty($startDate)) {
             $datas = $datas->whereDate('payment_date', '>=', $startDate);
         }
         if (!empty($endDate)) {
             $datas = $datas->whereDate('payment_date', '<=', $endDate);
         }
-        $status = ((empty($payed) && empty($notPayed)) || (!empty($payed) && !empty($notPayed) )) ?  '' : (!empty($payed) ? 1 :  2); 
-        if (!empty($status))  {
-            $datas = $datas->where('billings.status', $status ==2 ? 0 : 1);
+        $status = ((empty($payed) && empty($notPayed)) || (!empty($payed) && !empty($notPayed))) ? '' : (!empty($payed) ? 1 : 2);
+        if (!empty($status)) {
+            $datas = $datas->where('billings.status', $status == 2 ? 0 : 1);
         }
         if (!empty($client) && $client != '0') {
             $datas = $datas->where('billings.id_clients', $client);
