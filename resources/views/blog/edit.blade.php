@@ -30,14 +30,16 @@
                                     <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
                                 </div>
                             </div>
-                                    <img src="/assets/images/blog/{{$data->photo}}"  style="with:200px"/>
+                            <div>
+                                <img src="/assets/images/blog/{{$data->photo}}"  style="width:80%; height: 80%;"/>
+                            </div>
                     </div>
                 </div>
-            </div>  
+            </div>
             <div class="col-sm-12">
-                
+
                 {{Form::submit(__('backend.Update'),['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
-                
+
                 <a href="{{ route('blog.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>
