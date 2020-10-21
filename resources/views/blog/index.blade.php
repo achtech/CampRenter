@@ -32,7 +32,9 @@
                             @foreach($datas as $item)
                                 <tr>
                                     <td>
+                                    @if(!empty($item->photo))
                                         <img style="width:64px;height:64px;" src="{{ asset('assets/images') }}/blog/{{$item->photo}}" >
+                                    @endif
                                     </td>
                                     <td>{{$item->title}}</td>
                                     <td>{{App\Http\Controllers\Controller::getUser($item->created_by)}}</td>
@@ -41,19 +43,17 @@
                                     <td>
                                         <ul class="list-inline m-0">
                                            <li class="list-inline-item">
-                                                <a href="{{ route('blog.show',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="fab fa-microblog"></i></a>
+                                                <a href="{{ route('blog.show',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="fa fa-list"></i></a>
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="{{ route('blog.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <div class="container">
                                                     <button
                                                         class="btn btn-danger btn-sm rounded-0"
                                                         id="deletePrgButton"
                                                         data-id="{{$item->id}}" data-toggle="modal" data-target="#delete"data-placement="top" title="Delete"><i class="far fa-trash-alt"></i>
                                                         </button>          
-                                                </div>                          
                                             </li>
                                         </ul>
                                     </td>

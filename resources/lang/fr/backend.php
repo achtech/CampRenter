@@ -112,7 +112,8 @@ return [
     'blog.breadcrumb' => 'Blog',
     'new_blog.breadcrumb' => 'Nouveau blog',
     'edit_blog.breadcrumb' => 'Modifier le blog',
-
+    'reviews_camper.breadcrumb' => 'Revue',
+    
     /** Menu */
     'Dashboard' => "Tableau de bord",
     'menu_avatars' => 'Les avatars',
@@ -269,7 +270,7 @@ return [
     'Date sent' => 'Date d envoi',
     'detail_client' => 'Détail client',
     'Date' => 'Date',
-    'email' => 'Email',
+    'Email' => 'Email',
     'From' => 'De',
     'height' => 'la taille',
     'galery' => 'Galerie',
@@ -328,7 +329,10 @@ return [
     'vehicle_licence' => 'Permis de véhicule',
     'view_booking' => 'Voir les réservations',
     'width' => 'Largeur',
-
+    'Comment' => 'Commentaire',
+    'Service' => 'Service',
+    'Managing' => 'Gestion',
+    'Cleanliness' => 'Propreté',
     /**************************************************
     Please put your new labels here : Achraf
      *********************************************** */

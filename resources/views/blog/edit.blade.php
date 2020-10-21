@@ -15,6 +15,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.Article') }}</h4>
+                        <div class="mt-4">
+                            <div class="form-group">
+                                {{Form::textarea('article',$data->article,['class'=>'form-control','required'])}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">

@@ -5,8 +5,8 @@ return [
     'Choose file' => 'Choose file',
     'Cancel' => 'Cancel',
     'Edit' => 'Edit',
-    'Update' => 'Update',
     'Export' => 'Export',
+    'Update' => 'Update',
     'No data found' => 'No data found',
     'Operations' => 'Operation',
     'Read more' => 'Read More',
@@ -23,7 +23,8 @@ return [
     'Back' => 'Back',
     'Delete' => 'Delete',
     'delete_confirmation' => 'Delete confirmaton',
-
+    'Return' => 'Return',
+    'No Messages' => "No unread messages",
 
     /** Delete Message */
     'message_delete_avatar' => 'Do you want to delete this avatar ?',
@@ -38,6 +39,7 @@ return [
     'message_delete_user' => 'Do you want to delete this user ?',
     'message_delete_transmission' => 'Do you want to delete this Transmission?',
     'message_delete_promotion' => 'Do you want to delete this Promotion ?',
+    'message_delete_blog' => 'Do you want to delete this Blog ?',
     'block_message' => 'Do you want to block this client?',
     'active_message' => 'Do you want to activate this client?',
 
@@ -118,6 +120,8 @@ return [
     'new_blog.breadcrumb' => 'New blog',
     'edit_blog.breadcrumb' => 'Edit blog',
     'show_blog.breadcrumb' => 'Show blog',
+    'reviews_camper.breadcrumb' => 'Reviews',
+
     /** Menu */
     'Dashboard' => "Dashboard",
     'menu_avatars' => 'Avatars',
@@ -246,7 +250,9 @@ return [
     'Article' => 'Article',
     'Date creation' => 'Date creation',
 
-    /************************************************** */
+    /** Backup */
+    'backup_managment' => 'Backup Management',
+
     /** Fields */
     'adress' => 'Adress',
     'amount' => 'Amount',
@@ -255,9 +261,7 @@ return [
     'Answer' => 'Answer',
     'age' => 'Age',
     'availability' => 'Availability',
-
     'brand' => 'Brand',
-
     'category' => 'Category',
     'confirmed' => 'Confirmed',
     'current_amount' => 'Current Amount',
@@ -269,7 +273,8 @@ return [
     'current_solde' => 'Current Solde',
     'Created by' => 'Created By',
     'created at' => 'Created at',
-
+    'Cleanliness' => 'Cleanliness',
+    'Comment' => 'Comment',
     'Detail' => 'Detail',
     'Description' => 'Description',
     'driving_licence' => 'Driving Licence',
@@ -278,16 +283,13 @@ return [
     'detail_client' => 'Detail Client',
     'Date' => 'Date',
     'driver_licence_image' => 'Driving Licence Image',
-
-    'email' => 'Email',
+    'Email' => 'Email',
     'From' => 'From',
-
     'Image' => 'Image',
     'height' => 'Height',
     'galery' => 'Galery',
     'image_national' => 'Picture of National card',
     'included_kilometres' => 'Included Kilometres',
-
     'location' => 'Location',
     'license_plate_number' => 'License Plate Number',
     'length' => 'Length',
@@ -297,21 +299,20 @@ return [
     'licence_age_desc' => 'Licence Age Desc',
     'last_name' => 'Last Name',
     'label' => 'Label',
-
+    'Logo' => 'Logo',
+    'Language' => 'Language',
+    'Managing' => 'Managing',
     'model' => 'Model',
     'minimal_rent_days' => 'Minimal Rent Days',
     'minimum_age' => 'Minimum Age',
-
     'national' => 'National',
     'not_payed' => 'Not payed',
     'number_kilometre' => 'Number of kilometers',
     'Name' => 'Name',
     'national_image' => 'Image of National ID',
     'national_number' => 'National ID number',
-
     'owner_name' => 'Owner Name',
     'office' => 'Office',
-
     'paiment' => 'Paiement',
     'paypal_account' => 'Paypal account',
     'payment_date' => 'Payment date',
@@ -320,11 +321,11 @@ return [
     'position' => 'Position',
     'Price per day' => 'Price per day',
     'Photo' => 'Photo',
-
     'remaining_days_number' => 'Number of days remaining',
+    'Review' => 'Review',
     'rent_management' => 'Rent Management',
     'role' => 'Role',
-
+    'Service' => 'Service',
     'sleeping_places' => 'Sleeping Places',
     'search' => 'Search',
     'send_date' => 'Date',
@@ -337,26 +338,12 @@ return [
     'sleeping_places' => 'Number of places',
     'smoking_allowed' => 'Smoking Allowed',
     'Status' => 'Status',
-
     'total_solde' => 'Total Solde',
     'totransfert_solde' => 'To transfert',
     'To' => 'To',
     'Phone' => 'Phone',
-
     'value_of_vehicle' => 'Value of Vehicle',
     'vehicle_licence' => 'Vehicle Licence',
     'view_booking' => 'View bookings',
-
-    'width' => 'Width',
-
-    /**************************************************
-    Please put your new labels here : Achraf
-     *********************************************** */
-    // -----------------Backup -----------------//
-    'backup_managment' => 'Backup Management',
-    'No Messages' => "No unread messages",
-    'Return' => 'Return',
-    'message_delete_blog' => 'Do you want to delete this Blog',
-    'Logo' => 'Logo',
-
+    'width' => 'Width',    
 ];

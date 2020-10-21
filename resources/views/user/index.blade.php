@@ -17,7 +17,7 @@
                                     <th>{{ __('backend.Avatar') }}</th>
                                     <th>{{ __('backend.user_name') }}</th>
                                     <th>{{ __('backend.Phone') }}</th>
-                                    <th>{{ __('backend.email') }}</th>
+                                    <th>{{ __('backend.Email') }}</th>
                                     <th>{{ __('backend.role') }}</th>
                                     <th>{{ __('backend.adress') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
@@ -72,7 +72,7 @@
                                     <th>{{ __('backend.Avatar') }}</th>
                                     <th>{{ __('backend.user_name') }}</th>
                                     <th>{{ __('backend.Phone') }}</th>
-                                    <th>{{ __('backend.email') }}</th>
+                                    <th>{{ __('backend.Email') }}</th>
                                     <th>{{ __('backend.role') }}</th>
                                     <th>{{ __('backend.adress') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>

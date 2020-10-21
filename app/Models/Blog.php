@@ -10,5 +10,7 @@ class Blog extends Base
         'photo',
         'title',
         'article',
+        'created_by',
+        'updated_by',
     ];
 }

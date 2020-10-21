@@ -252,4 +252,10 @@ class CamperController extends Controller
         $datas->save();
         return redirect(route('dashboard'));
     }
+
+    public function reviews($id){
+        $datas = DB::table('camper_reviews')->where('id_campers',$id)->get();
+        $camper = Camper::find($id);
+        return view('camper.camperReviews')->with('datas',$datas)->with('camper',$camper);
+    }
 }

@@ -107,6 +107,10 @@
                                                 </div>
                                             </li>
                                             @endif
+                                            <li class="list-inline-item">
+                                                <a href="{{ route('camper.reviews',$item->id)}}" class="btn btn-primary btn-sm rounded-0"  data-toggle="tooltip" title="Details"><i class="far fa-star"></i></a>
+                                            </li>
+                                            
                                     </td>
                                 </tr>
                                 @endforeach

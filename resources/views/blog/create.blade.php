@@ -33,6 +33,18 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-12 col-md-6 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ __('backend.Article') }}</h4>
+                        <div class="mt-4">
+                            <div class="form-group">
+                                {{Form::textarea('article','',['class'=>'form-control','required'])}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-sm-12">
                 {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
 

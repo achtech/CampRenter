@@ -82,6 +82,7 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->EQUIPMENT
+    Route::get('camper/{id}/reviews', 'App\Http\Controllers\CamperController@reviews')->name('camper.reviews');
     Route::get('camper/{id}/confirm', 'App\Http\Controllers\CamperController@confirm')->name('camper.confirm');
     Route::get('camper/{id}/detail', 'App\Http\Controllers\CamperController@detail')->name('camper.detail');
     Route::delete('camper/{id}/delete', 'App\Http\Controllers\CamperController@destroy')->name('camper.delete');

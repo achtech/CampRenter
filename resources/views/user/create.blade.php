@@ -52,7 +52,7 @@
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.email') }}</h4>
+                    <h4 class="card-title">{{ __('backend.Email') }}</h4>
                         <div class="mt-4">
                             <div class="form-group">
                                 {{Form::email('email','',['class'=>'form-control','required'])}}

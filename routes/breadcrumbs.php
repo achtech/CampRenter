@@ -107,6 +107,12 @@ Breadcrumbs::for('details_camper', function ($trail) {
     $trail->push(__('backend.detail_camper.breadcrumb'), route('camper.index'));
 });
 
+// Dashboard > Camper > Review Camper
+Breadcrumbs::for('camper_reviews', function ($trail,$camper) {
+    $trail->parent('camper');
+    $trail->push(__('backend.reviews_camper.breadcrumb').": ".$camper->camper_name, route('camper.reviews',$camper->id));
+});
+
 // settings
 Breadcrumbs::for('settings', function ($trail) {
     $trail->push(__('backend.settings.breadcrumb'));
