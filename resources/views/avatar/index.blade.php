@@ -2,13 +2,6 @@
 @section('content')
 {{ Breadcrumbs::render('avatar') }}
 <div class="container-fluid">
-<script>
-$(document).ready(function() {
-    var table = $('#default_order').DataTable();
-    // Hide two columns
-    table.columns( [0] ).visible( false );
-} );
-</script>
  <div class="row">
         <div class="col-12">
             <div class="card">
@@ -20,24 +13,24 @@ $(document).ready(function() {
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>&nbsp;</th>
                                     <th>{{ __('backend.Avatar') }}</th>
                                     <th>{{ __('backend.label') }}</th>
+                                    <th style="width:0px">&nbsp;</th>
                                     <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @if(count($datas)==0)
                             <tr>
-                                <td colspan="3">{{__('backend.No data found')}}</td>
+                                <td colspan="4">{{__('backend.No data found')}}</td>
                             </tr>
                             @endif
                             @foreach($datas as $item)
                                 <tr>
-                                    <td>&nbsp;</td>
                                     <td>
                                 <img style="width:64px;height:64px;" src="{{ asset('assets/images') }}/avatar/{{$item->image}}" ></td>
                                     <td>{{$item->label}}</td>
+                                    <td>&nbsp;</td>
                                    <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
@@ -45,38 +38,22 @@ $(document).ready(function() {
                                             </li>
                                             <li class="list-inline-item">
                                                 <div class="container">
-                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="myModal" role="dialog">
-                                                    <div class="modal-dialog">
-                                                            <!-- Modal content-->
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                <p>{{ __('backend.message_delete_avatar') }}</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <a href="{{ route('avatar.destroy',$item->id) }}" class="btn btn-danger btn-sm rounded-0">Delete</a>
-                                                                    <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <button
+                                                        class="btn btn-danger btn-sm rounded-0"
+                                                        id="deletePrgButton"
+                                                        data-id="{{$item->id}}" data-toggle="modal" data-target="#delete"data-placement="top" title="Delete"><i class="far fa-trash-alt"></i>
+                                                    </button>  
                                                 </div>
                                             </li>
                                     </td>
                                 </tr>
                                 @endforeach
-
-
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>&nbsp;</th>
                                     <th>{{ __('backend.Avatar') }}</th>
                                     <th>{{ __('backend.label') }}</th>
+                                    <th>&nbsp;</th>
                                     <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </tfoot>
@@ -87,4 +64,36 @@ $(document).ready(function() {
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal modal-danger fade" id="deletePrgModal" tabindex="-1"
+  role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center" id="myModalLabel"> {{__('backend.delete_confirmation')}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <form  action="{{route('avatar.delete','test')}}" method="post">
+            {{method_field('delete')}}
+            {{csrf_field()}}
+          <div class="modal-body">
+                    {{__('backend.message_delete_avatar')}}
+                <input type="hidden" name="id" id="id" value="">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal"> {{__('backend.Cancel')}}</button>
+            <button type="submit" class="btn btn-info">{{__('backend.Delete')}}</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>                                            
+<script>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).on("click", "#deletePrgButton", function () {
+        var prg = $(this).data('id');
+        $(".modal-body #id").val( prg );
+        $('#deletePrgModal').modal('show');
+    });
+</script>
 @endsection

@@ -24,14 +24,8 @@ class InsuranceCompanyController extends Controller
      */
     public function index(Request $request)
     {
-        $search = '';
-        if (isset($request) && null !== $request->get('search')) {
-            $search = $request->get('search');
-            $datas = InsuranceCompany::where('name', 'like', '%' . $search . '%')->paginate(10);
-        } else {
-            $datas = InsuranceCompany::paginate(10);
-        }
-        return view('insuranceCompany.index')->with('datas', $datas)->with('search', $search);
+        $datas = InsuranceCompany::paginate(10);
+        return view('insuranceCompany.index')->with('datas', $datas);
     }
     /**
      * Show the form for creating a new resource.
@@ -60,7 +54,14 @@ class InsuranceCompanyController extends Controller
      */
     public function store(Request $request)
     {
+        $file = $request->file('logo');
         $input = request()->except(['_token', '_method', 'action']);
+        if ($request->file('logo') && $request->file('logo')->getClientOriginalName()) {
+            $input['logo'] = $request->file('logo')->getClientOriginalName();
+            $file->move(base_path('public\assets\images\insuranceCompany'), $file->getClientOriginalName());
+        } else {
+            $input = request()->except(['_token', '_method', 'action', 'picture']);
+        }
         $input['created_by'] = auth()->user()->id;
         $input['updated_by'] = auth()->user()->id;
         $data = InsuranceCompany::create($input);
@@ -77,7 +78,6 @@ class InsuranceCompanyController extends Controller
     {
         $data = InsuranceCompany::find($id);
         return view('insuranceCompany.edit')->with('data', $data);
-
     }
 
     /**
@@ -93,7 +93,15 @@ class InsuranceCompanyController extends Controller
         if (empty($data)) {
             return redirect(route('insuranceCompany.index'));
         }
+        $file = $request->file('logo');
         $input = request()->except(['_token', '_method', 'action']);
+        if ($request->file('logo') && $request->file('logo')->getClientOriginalName()) {
+            $input['logo'] = $request->file('logo')->getClientOriginalName();
+            $file->move(base_path('public\assets\images\insuranceCompany'), $file->getClientOriginalName());
+        } else {
+            $input = request()->except(['_token', '_method', 'action', 'picture']);
+        }
+        
         $input['updated_by'] = auth()->user()->id;
         $data = InsuranceCompany::where('id', $id)->update($input);
         return redirect(route('insuranceCompany.index'))->with('success', 'Item Updated succesfully');
@@ -107,9 +115,9 @@ class InsuranceCompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $data = InsuranceCompany::find($id);
+        $data = InsuranceCompany::find($request->id);
         if (empty($data)) {
             return redirect(route('insuranceCompany.index'));
         }

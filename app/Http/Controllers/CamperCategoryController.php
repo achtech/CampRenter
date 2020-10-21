@@ -60,7 +60,14 @@ class CamperCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $file = $request->file('image');
         $input = request()->except(['_token', '_method', 'action']);
+        if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
+            $input['image'] = $request->file('image')->getClientOriginalName();
+            $file->move(base_path('public\assets\images\camperCategories'), $file->getClientOriginalName());
+        } else {
+            $input = request()->except(['_token', '_method', 'action', 'picture']);
+        }
         $input['created_by']=auth()->user()->id;
         $input['updated_by']=auth()->user()->id;
         $data = CamperCategory::create($input);
@@ -92,7 +99,14 @@ class CamperCategoryController extends Controller
         if (empty($data)) {
             return redirect(route('camperCategory.index'));
         }
+        $file = $request->file('image');
         $input = request()->except(['_token', '_method', 'action']);
+        if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
+            $input['image'] = $request->file('image')->getClientOriginalName();
+            $file->move(base_path('public\assets\images\camperCategories'), $file->getClientOriginalName());
+        } else {
+            $input = request()->except(['_token', '_method', 'action', 'picture']);
+        }
         $input['updated_by']=auth()->user()->id;
         $data = CamperCategory::where('id', $id)->update($input);
         return redirect(route('camperCategory.index'))->with('success', 'Item Updated succesfully');
@@ -106,9 +120,9 @@ class CamperCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $data = CamperCategory::find($id);
+        $data = CamperCategory::find($request->id);
         if (empty($data)) {
             return redirect(route('camperCategory.index'));
         }

@@ -278,6 +278,12 @@ Breadcrumbs::for('add_blog', function ($trail) {
 });
 
 // Home > Blog > edit [Category]
+Breadcrumbs::for('show_blog', function ($trail, $blog) {
+    $trail->parent('blog');
+    $trail->push(__('backend.show_blog.breadcrumb'), route('blog.show', $blog->id));
+});
+
+// Home > Blog > edit [Category]
 Breadcrumbs::for('edit_blog', function ($trail, $blog) {
     $trail->parent('blog');
     $trail->push(__('backend.edit_blog.breadcrumb'), route('blog.edit', $blog->id));

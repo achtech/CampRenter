@@ -18,6 +18,7 @@ class CreateCamperCategoriesTable extends Migration
             $table->string('label_en');
             $table->string('label_de');
             $table->string('label_fr');
+            $table->string('image');
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

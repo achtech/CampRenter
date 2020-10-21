@@ -15,9 +15,8 @@ class CreateInsurancesCompaniesTable extends Migration
     {
         Schema::create('insurance_companies', function (Blueprint $table) {
             $table->id();
-            $table->string('label_en');
-            $table->string('label_de');
-            $table->string('label_fr');
+            $table->string('name');
+            $table->string('logo');
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

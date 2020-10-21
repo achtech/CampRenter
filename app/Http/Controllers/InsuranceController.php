@@ -114,9 +114,9 @@ class InsuranceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $data = Insurance::find($id);
+        $data = Insurance::find($request->id);
         if (empty($data)) {
             return redirect(route('insurance.index'));
         }

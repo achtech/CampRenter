@@ -110,9 +110,9 @@ class TransmissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $data = transmission::find($id);
+        $data = transmission::find($request->id);
         if (empty($data)) {
             return redirect(route('transmission.index'));
         }

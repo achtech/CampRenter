@@ -11,7 +11,7 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.image') }}</th>
+                                    <th>{{ __('backend.Image') }}</th>
                                     <th>{{ __('backend.camper_name') }}</th>
                                     <th>{{ __('backend.Client') }}</th>
                                     <th>{{ __('backend.category') }}</th>
@@ -37,10 +37,10 @@
                                     <td>
                                         @if($item->is_confirmed==1)
                                             <i class="btn waves-effect waves-light btn-outline-success">&nbsp&nbsp&nbspConfirmed &nbsp&nbsp&nbsp</i></br>
-                                            by {{App\Http\Controllers\CamperController::getUserName($item->updated_by)}}
+                                            by {{App\Http\Controllers\Controller::getUser($item->updated_by)}}
                                         @else
                                             <i class="btn waves-effect waves-light btn-outline-danger">Not Confirmed</i></br>
-                                            by {{App\Http\Controllers\CamperController::getUserName($item->updated_by)}}
+                                            by {{App\Http\Controllers\Controller::getUser($item->updated_by)}}
                                         @endif
                                     </td>
                                     <td>
@@ -73,7 +73,7 @@
                                 @endforeach
                             </tbody>
                             <tfoot>
-                            <th>{{ __('backend.image') }}</th>
+                            <th>{{ __('backend.Image') }}</th>
                                     <th>{{ __('backend.camper_name') }}</th>
                                     <th>{{ __('backend.Client') }}</th>
                                     <th>{{ __('backend.category') }}</th>

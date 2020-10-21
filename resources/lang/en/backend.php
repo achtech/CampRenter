@@ -21,18 +21,23 @@ return [
     'All' => 'All',
     'Create' => 'Create',
     'Back' => 'Back',
+    'Delete' => 'Delete',
+    'delete_confirmation' => 'Delete confirmaton',
+
 
     /** Delete Message */
     'message_delete_avatar' => 'Do you want to delete this avatar ?',
-    'message_delete_camperCategory' => 'Do you want to delete this Camper Category',
+    'message_delete_camperCategory' => 'Do you want to delete this Camper Category ?',
     'message_delete_camper' => 'Do you want to delete this Camper ?',
-    'message_delete_camperStatus' => 'Do you want to delete this camper status',
-    'message_delete_fuel' => 'Do you want to delete this Fuel',
+    'message_delete_message' => 'Do you want to delete this Message ?',
+    'message_delete_camperStatus' => 'Do you want to delete this camper status ?',
+    'message_delete_fuel' => 'Do you want to delete this Fuel ?',
     'message_delete_insurance' => 'Do you want to delete this Insurance ?',
-    'message_delete_insurance_company' => 'Do you want to delete this insurance company',
-    'message_delete_licence_category' => 'Do you want to delete this licence category',
-    'message_delete_user' => 'Do you want to delete this user',
-    'message_delete_transmission' => 'Do you want to delete this Transmission',
+    'message_delete_insurance_company' => 'Do you want to delete this insurance company ?',
+    'message_delete_licence_category' => 'Do you want to delete this licence category ?',
+    'message_delete_user' => 'Do you want to delete this user ?',
+    'message_delete_transmission' => 'Do you want to delete this Transmission?',
+    'message_delete_promotion' => 'Do you want to delete this Promotion ?',
     'block_message' => 'Do you want to block this client?',
     'active_message' => 'Do you want to activate this client?',
 
@@ -112,7 +117,7 @@ return [
     'blog.breadcrumb' => 'Blog',
     'new_blog.breadcrumb' => 'New blog',
     'edit_blog.breadcrumb' => 'Edit blog',
-
+    'show_blog.breadcrumb' => 'Show blog',
     /** Menu */
     'Dashboard' => "Dashboard",
     'menu_avatars' => 'Avatars',
@@ -277,10 +282,9 @@ return [
     'email' => 'Email',
     'From' => 'From',
 
+    'Image' => 'Image',
     'height' => 'Height',
     'galery' => 'Galery',
-    'image' => 'Personal image',
-    'image' => 'Image',
     'image_national' => 'Picture of National card',
     'included_kilometres' => 'Included Kilometres',
 
@@ -301,7 +305,7 @@ return [
     'national' => 'National',
     'not_payed' => 'Not payed',
     'number_kilometre' => 'Number of kilometers',
-    'name' => 'Name',
+    'Name' => 'Name',
     'national_image' => 'Image of National ID',
     'national_number' => 'National ID number',
 
@@ -353,5 +357,6 @@ return [
     'No Messages' => "No unread messages",
     'Return' => 'Return',
     'message_delete_blog' => 'Do you want to delete this Blog',
+    'Logo' => 'Logo',
 
 ];

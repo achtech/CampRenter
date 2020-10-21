@@ -11,7 +11,7 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.name') }}</th>
+                                    <th>{{ __('backend.Name') }}</th>
                                     <th>{{ __('backend.national_number') }}</th>
                                     <th>{{ __('backend.current_solde') }}</th>
                                     <th>{{ __('backend.totransfert_solde') }}</th>
@@ -109,7 +109,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>{{ __('backend.name') }}</th>
+                                    <th>{{ __('backend.Name') }}</th>
                                     <th>{{ __('backend.national_number') }}</th>
                                     <th>{{ __('backend.current_solde') }}</th>
                                     <th>{{ __('backend.totransfert_solde') }}</th>

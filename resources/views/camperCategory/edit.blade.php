@@ -3,11 +3,11 @@
 {{ Breadcrumbs::render('edit_camperCategory') }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\CamperCategoryController@update',-->
-    {{ Form::open(array('method'=>'PUT','route' => ['camperCategory.update', $data->id])) }}
+    {{ Form::open(array('method'=>'PUT','enctype'=>'multipart/form-data','route' => ['camperCategory.update', $data->id])) }}
 
     @csrf
      <div class="row">
-     <div class="col-sm-12 col-md-6 col-lg-4">
+     <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label') }} DE</h4>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label') }} EN</h4>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label') }} FR</h4>
@@ -43,6 +43,25 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-12 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"> {{ __('backend.Image') }}</h4>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                                    <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
+                                </div>
+                            </div>
+                                <img style="max-width:100%" src="/assets/images/camperCategories/{{$data->image}}"  style="with:200px"/>
+                    </div>
+                </div>
+            </div>  
+
             <div class="col-sm-12">
                 
                

@@ -23,7 +23,7 @@
                         <div class="col-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">{{ __('backend.name') }}</h4>
+                                    <h4 class="card-title">{{ __('backend.Name') }}</h4>
                                     <div class="mt-4">
                                         <div class="form-group">
                                             <label>{{$data->client_name}} {{$data->client_last_name}}</label>

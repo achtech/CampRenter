@@ -3,46 +3,39 @@
 {{ Breadcrumbs::render('edit_insurance_company',$data) }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\FuelController@update',-->
-    {{ Form::open(array('method'=>'PUT','route' => ['insuranceCompany.update', $data->id])) }}
+    {{ Form::open(array('method'=>'PUT', 'enctype'=>'multipart/form-data', 'route' => ['insuranceCompany.update', $data->id])) }}
 
     @csrf
      <div class="row">
-     <div class="col-sm-12 col-md-6 col-lg-4">
+     <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.label') }} DE</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                {{Form::text('label_de',$data->label_de,['class'=>'form-control','required'])}}
+                                {{Form::text('name',$data->name,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.label') }} EN</h4>
-                        <div class="mt-5">
-                            <div class="form-group">
-                                {{Form::text('label_en',$data->label_en,['class'=>'form-control','required'])}}
+                        <h4 class="card-title"> {{ __('backend.Logo') }}</h4>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name="logo" class="custom-file-input" id="inputGroupFile01">
+                                    <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
+                                </div>
                             </div>
-                        </div>
+                                <img style="max-width:100%" src="/assets/images/insuranceCompany/{{$data->logo}}"  style="with:200px"/>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.label') }} FR</h4>
-                        <div class="mt-5">
-                            <div class="form-group">
-                                {{ Form::text('label_fr',$data->label_fr,['class'=>'form-control','required'])}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div>  
 
             <div class="col-sm-12">
                 

@@ -281,8 +281,7 @@ return [
     'height' => 'Höhe',
 
     'galery' => 'Galerie',
-    'image' => 'Persönliches Bild',
-    'image' => 'Bild',
+    'Image' => 'Bild',
     'image_national' => 'Bild der Nationalen Karte',
     'included_kilometres' => 'Inklusive Kilometer',
 
@@ -303,7 +302,7 @@ return [
     'national' => 'National',
     'not_payed' => 'Nicht gespielt',
     'number_kilometre' => 'Anzahl der Kilometer',
-    'name' => 'Name',
+    'Name' => 'Name',
     'national_image' => 'Bild der Nationalen ID',
     'national_number' => 'Nationale ID-Nummer',
 
@@ -355,5 +354,5 @@ return [
     'No Messages' => "Keine ungelesenen Nachrichten",
     'Return' => 'Return',
     'message_delete_blog' => 'Möchten Sie diesen Blog löschen?',
-
+    'Logo' => 'Logo',
 ];

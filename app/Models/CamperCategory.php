@@ -10,6 +10,7 @@ class CamperCategory extends Base
         'label_en',
         'label_de',
         'label_fr',
+        'image',
         'created_by',
         'updated_by'
     ];

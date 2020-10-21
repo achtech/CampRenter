@@ -7,9 +7,8 @@ class InsuranceCompany extends Base
     protected $table = 'insurance_companies';
     public $primarykey = 'id';
     protected $fillable = [
-        'label_en',
-        'label_de',
-        'label_fr',
+        'name',
+        'logo',
         'created_by',
         'updated_by'
     ];

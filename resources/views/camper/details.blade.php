@@ -418,7 +418,7 @@
                             <div class="form-group">
                                         @if($data->is_confirmed==1)
                                             <i class="btn waves-effect waves-light btn-outline-success" data-toggle="modal" data-target="#block">&nbsp&nbsp&nbspConfirmed &nbsp&nbsp&nbsp</i></br>
-                                            by {{App\Http\Controllers\CamperController::getUserName($data->updated_by)}}
+                                            by {{App\Http\Controllers\Controller::getUser($data->updated_by)}}
                                             <div class="modal fade" id="block" role="dialog">
                                                 <div class="modal-dialog">
 
@@ -440,7 +440,7 @@
                                             </div>
                                         @else
                                             <i class="btn waves-effect waves-light btn-outline-danger" data-toggle="modal" data-target="#activate">Not Confirmed</i></br>
-                                            by {{App\Http\Controllers\CamperController::getUserName($data->updated_by)}}
+                                            by {{App\Http\Controllers\Controller::getUser($data->updated_by)}}
                                             <div class="modal fade" id="activate" role="dialog">
                                                 <div class="modal-dialog">
 

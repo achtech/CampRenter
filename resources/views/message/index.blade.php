@@ -36,27 +36,13 @@
                                             </li>
                                             <li class="list-inline-item">
                                                 <div class="container">
-                                                <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-target="#myModal" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></button>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="myModal" role="dialog">
-                                                    <div class="modal-dialog">
-                                                            <!-- Modal content-->
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                <p>{{ __('backend.message_delete_message') }}</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <a href="{{ route('message.index').'/'.$item->id.'/delete' }}" class="btn btn-danger btn-sm rounded-0" data-toggle="tooltip" title="Delete">Delete</a>
-                                                                    <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                                    <button
+                                                        class="btn btn-danger btn-sm rounded-0"
+                                                        id="deletePrgButton"
+                                                        data-id="{{$item->id}}" data-toggle="modal" data-target="#delete"data-placement="top" title="Delete"><i class="far fa-trash-alt"></i>
+                                                    </button>          
+                                              </div>                                             </li>
+                                          </li>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -81,6 +67,38 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal modal-danger fade" id="deletePrgModal" tabindex="-1"
+  role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center" id="myModalLabel"> {{__('backend.delete_confirmation')}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <form  action="{{route('message.delete','test')}}" method="post">
+            {{method_field('delete')}}
+            {{csrf_field()}}
+          <div class="modal-body">
+                    {{__('backend.message_delete_message')}}
+                <input type="hidden" name="id" id="id" value="">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal"> {{__('backend.Cancel')}}</button>
+            <button type="submit" class="btn btn-info">{{__('backend.Delete')}}</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>                                            
+<script>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).on("click", "#deletePrgButton", function () {
+        var prg = $(this).data('id');
+        $(".modal-body #id").val( prg );
+        $('#deletePrgModal').modal('show');
+    });
+</script>
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();

@@ -121,9 +121,9 @@ class AvatarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $data = Avatar::find($id);
+        $data = Avatar::find($request->id);
         if (empty($data)) {
             return redirect(route('avatar.index'));
         }

@@ -110,9 +110,9 @@ class FuelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $data = Fuel::find($id);
+        $data = Fuel::find($request->id);
         if (empty($data)) {
             return redirect(route('fuel.index'));
         }

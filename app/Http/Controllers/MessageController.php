@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Mail;
+use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
@@ -105,7 +106,15 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $id = $request ? $request->id: 0;
+        $data = Message::find($request->id);
+        if (empty($data)) {
+            return redirect(route('message.index'));
+        }
+        $data->delete();
+        return redirect(route('message.index'));
+
     }
 }

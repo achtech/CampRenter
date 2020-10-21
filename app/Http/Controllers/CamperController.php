@@ -232,11 +232,6 @@ class CamperController extends Controller
         return DB::table($table)->find($id)->client_name;
     }
 
-    public static function getUserName($id)
-    {
-        return User::find($id)->name;
-    }
-
     public static function getCamperName($table, $id)
     {
         $data = DB::table($table)->find($id);

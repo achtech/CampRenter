@@ -116,9 +116,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $data = Blog::find($id);
+        $data = Blog::find($request->id);
         if (empty($data)) {
             return redirect(route('blog.index'));
         }
