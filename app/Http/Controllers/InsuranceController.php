@@ -124,6 +124,11 @@ class InsuranceController extends Controller
         return redirect(route('insurance.index'));
     }
 
+    public static function getName($table, $id)
+    {
+        return DB::table($table)->find($id)->name;
+    }
+
     public static function getLabel($table, $id)
     {
         $data = DB::table($table)->find($id);
