@@ -45,17 +45,17 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
     Route::get('/imprint', [FContactController::class, 'imprint'])->name('imprint');
     Route::get('/help', [FContactController::class, 'help'])->name('help');
-    Route::post('login', 'App\Http\Controllers\frontend\FClientController@doLogin');
+    Route::post('signIn', 'App\Http\Controllers\frontend\FClientController@doLogin')->name('signIn');
     Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
     Route::post('/signUp', [FClientController::class, 'sign_up']);
 
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
- //   Route::get('/logout', '\App\Http\Controllers\admin\Auth\LoginController@logout')->name('logout');
+    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     Route::get('/dashboard', function () {
         if (auth()->user() == null) {
-           // return view('/auth/login');
+            return view('/auth/login');
         } else {
             return redirect(route('dashboard'));
         }
@@ -302,3 +302,6 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'backup.show',
     ]]);
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
