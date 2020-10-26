@@ -2,7 +2,11 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Message;
+use App\Http\Controllers\admin\Message;
+use App\Http\Controllers\frontend\FCamperController;
+use App\Http\Controllers\frontend\FContactController;
+use App\Http\Controllers\frontend\FClientController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,34 +21,59 @@ use App\Http\Controllers\Message;
 Route::get('lang/{lang}', function ($lang) {
     \Session::put('locale', $lang);
     $user = User::find(auth()->user()->id);
-    $user->lang = $lang;
-    $user->update();
+    if($user){
+        $user->lang = $lang;
+        $user->update();    
+    }
     return back();
 });
 Route::group(['middleware' => 'Lang'], function () {
-    Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
-    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-    Route::get('/', function () {
+    /** Frontend */
+    Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
+    Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
+    Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
+    Route::get('/blog', [FBlogController::class, 'index'])->name('blog');
+    //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
+    Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
+    Route::resource('client', FClientController::class, ['except' => ['destroy','store'], 'names' => [
+        'index' => 'client.index',
+        'show' => 'frontend.client.show',
+        ]]);    
+    Route::get('/rent_out', [FCamperController::class, 'rent_out'])->name('rent_out');
+    Route::get('/contact', [FContactController::class, 'index'])->name('contact');
+    Route::get('/terms', [FContactController::class, 'terms'])->name('terms');
+    Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
+    Route::get('/imprint', [FContactController::class, 'imprint'])->name('imprint');
+    Route::get('/help', [FContactController::class, 'help'])->name('help');
+    Route::post('login', 'App\Http\Controllers\frontend\FClientController@doLogin');
+    Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);
+    Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
+    Route::post('/signUp', [FClientController::class, 'sign_up']);
+
+    /** Backend */
+    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
+ //   Route::get('/logout', '\App\Http\Controllers\admin\Auth\LoginController@logout')->name('logout');
+    Route::get('/dashboard', function () {
         if (auth()->user() == null) {
-            return view('/auth/login');
+           // return view('/auth/login');
         } else {
             return redirect(route('dashboard'));
         }
     });
 
-    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
-    Route::get('/confirm/{id}', 'App\Http\Controllers\DashboardController@confirmCamper')->name('dashboard.confirm');
-    //Route::get('/lastBookings', 'App\Http\Controllers\DashboardController@getLastBookings')->name('dashboard');
+    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
+    Route::get('/confirm/{id}', 'App\Http\Controllers\admin\DashboardController@confirmCamper')->name('dashboard.confirm');
+    //Route::get('/lastBookings', 'App\Http\Controllers\admin\DashboardController@getLastBookings')->name('dashboard');
 
     //ADMIN->USER
-    Route::get('user/updateProfile', 'App\Http\Controllers\UserController@updateProfile')->name('user.updateProfile');
-    Route::PUT('user/updateDataProfile', 'App\Http\Controllers\UserController@updateDataProfile')->name('user.updateDataProfile');
-    Route::get('user/changePassword', 'App\Http\Controllers\UserController@changePassword')->name('user.changePassword');
-    Route::PUT('user/updatePassword', 'App\Http\Controllers\UserController@updatePassword')->name('user.updatePassword');
+    Route::get('user/updateProfile', 'App\Http\Controllers\admin\UserController@updateProfile')->name('user.updateProfile');
+    Route::PUT('user/updateDataProfile', 'App\Http\Controllers\admin\UserController@updateDataProfile')->name('user.updateDataProfile');
+    Route::get('user/changePassword', 'App\Http\Controllers\admin\UserController@changePassword')->name('user.changePassword');
+    Route::PUT('user/updatePassword', 'App\Http\Controllers\admin\UserController@updatePassword')->name('user.updatePassword');
 
-    Route::get('user/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
-    Route::delete('user/{id}/delete', 'App\Http\Controllers\UserController@destroy')->name('user.delete');
-    Route::resource('user', 'App\Http\Controllers\UserController', ['except' => 'destroy', 'names' => [
+    Route::get('user/userprofile', 'App\Http\Controllers\admin\UserController@profile')->name('user.profile');
+    Route::delete('user/{id}/delete', 'App\Http\Controllers\admin\UserController@destroy')->name('user.delete');
+    Route::resource('user', 'App\Http\Controllers\admin\UserController', ['except' => 'destroy', 'names' => [
         'index' => 'user.index',
         'create' => 'user.create',
         'update' => 'user.update',
@@ -54,40 +83,40 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN -> Blog
-    Route::delete('blog/{id}/delete', 'App\Http\Controllers\BlogController@destroy')->name('blog.delete');
-    Route::resource('blog', 'App\Http\Controllers\BlogController', ['except' => 'destroy', 'names' => [
-        'index' => 'blog.index',
-        'create' => 'blog.create',
-        'update' => 'blog.update',
-        'edit' => 'blog.edit',
-        'store' => 'blog.store',
-        'show' => 'blog.show',
+    Route::delete('blog/{id}/delete', 'App\Http\Controllers\admin\BlogController@destroy')->name('admin.blog.delete');
+    Route::resource('admin/blog', 'App\Http\Controllers\admin\BlogController', ['except' => 'destroy', 'names' => [
+        'index' => 'admin.blog.index',
+        'create' => 'admin.blog.create',
+        'update' => 'admin.blog.update',
+        'edit' => 'admin.blog.edit',
+        'store' => 'admin.blog.store',
+        'show' => 'admin.blog.show',
     ]]);
 
     //ADMIN->CLIENT
-    Route::get('client/{id}/blockActivateClient', 'App\Http\Controllers\ClientController@blockActivateClient')->name('client.blockActivateClient');
-    Route::delete('client/{id}/delete', 'App\Http\Controllers\ClientController@destroy')->name('client.delete');
-    Route::get('client/{id}/detail', 'App\Http\Controllers\ClientController@detail')->name('client.detail');
-    Route::get('client/{id}/campers', 'App\Http\Controllers\ClientController@clientCampers')->name('client.campers');
-    Route::get('client/{id}/bookings', 'App\Http\Controllers\ClientController@clientBookings')->name('client.bookings');
-    Route::get('client/{id}/camperDetail', 'App\Http\Controllers\ClientController@checkCamperDetail')->name('client.camperDetail');
-    Route::get('client/{id}/rentDetail', 'App\Http\Controllers\ClientController@checkBookingDetail')->name('client.rentDetail');
+    Route::get('client/{id}/blockActivateClient', 'App\Http\Controllers\admin\ClientController@blockActivateClient')->name('client.blockActivateClient');
+    Route::delete('client/{id}/delete', 'App\Http\Controllers\admin\ClientController@destroy')->name('client.delete');
+    Route::get('client/{id}/detail', 'App\Http\Controllers\admin\ClientController@detail')->name('client.detail');
+    Route::get('client/{id}/campers', 'App\Http\Controllers\admin\ClientController@clientCampers')->name('client.campers');
+    Route::get('client/{id}/bookings', 'App\Http\Controllers\admin\ClientController@clientBookings')->name('client.bookings');
+    Route::get('client/{id}/camperDetail', 'App\Http\Controllers\admin\ClientController@checkCamperDetail')->name('client.camperDetail');
+    Route::get('client/{id}/rentDetail', 'App\Http\Controllers\admin\ClientController@checkBookingDetail')->name('client.rentDetail');
 
-    Route::resource('client', 'App\Http\Controllers\ClientController', ['except' => 'destroy', 'names' => [
-        'index' => 'client.index',
-        'create' => 'client.create',
-        'update' => 'client.update',
-        'store' => 'client.store',
-        'show' => 'client.show',
+    Route::resource('client', 'App\Http\Controllers\admin\ClientController', ['except' => 'destroy', 'names' => [
+        'index' => 'admin.client.index',
+        'create' => 'admin.client.create',
+        'update' => 'admin.client.update',
+        'store' => 'admin.client.store',
+        'show' => 'admin.client.show',
     ]]);
 
     //ADMIN->EQUIPMENT
-    Route::get('camper/{id}/reviews', 'App\Http\Controllers\CamperController@reviews')->name('camper.reviews');
-    Route::get('camper/{id}/confirm', 'App\Http\Controllers\CamperController@confirm')->name('camper.confirm');
-    Route::get('camper/{id}/detail', 'App\Http\Controllers\CamperController@detail')->name('camper.detail');
-    Route::delete('camper/{id}/delete', 'App\Http\Controllers\CamperController@destroy')->name('camper.delete');
-    Route::get('camper/unconfirmedCamper', 'App\Http\Controllers\CamperController@getUnconfirmedCampers')->name('camper.unconfirmedCamper');
-    Route::resource('camper', 'App\Http\Controllers\CamperController', ['except' => 'destroy', 'names' => [
+    Route::get('camper/{id}/reviews', 'App\Http\Controllers\admin\CamperController@reviews')->name('camper.reviews');
+    Route::get('camper/{id}/confirm', 'App\Http\Controllers\admin\CamperController@confirm')->name('camper.confirm');
+    Route::get('camper/{id}/detail', 'App\Http\Controllers\admin\CamperController@detail')->name('camper.detail');
+    Route::delete('camper/{id}/delete', 'App\Http\Controllers\admin\CamperController@destroy')->name('camper.delete');
+    Route::get('camper/unconfirmedCamper', 'App\Http\Controllers\admin\CamperController@getUnconfirmedCampers')->name('camper.unconfirmedCamper');
+    Route::resource('camper', 'App\Http\Controllers\admin\CamperController', ['except' => 'destroy', 'names' => [
         'index' => 'camper.index',
         'create' => 'camper.create',
         'update' => 'camper.update',
@@ -96,12 +125,12 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'camper.show',
     ]]);
 
-    Route::get('camper/{id}/blockActivateCamper', 'App\Http\Controllers\CamperController@blockActivateCamper')->name('camper.blockActivateCamper');
-    Route::get('camper/{id}/detailBooking', 'App\Http\Controllers\CamperController@detailBooking')->name('camper.detailBooking');
-    Route::get('camper/{id}/detailCamper', 'App\Http\Controllers\CamperController@detailCamper')->name('camper.detailCamper');
-    Route::get('camper/{id}/detail', 'App\Http\Controllers\CamperController@detail')->name('camper.detail');
-    Route::delete('camper/{id}/delete', 'App\Http\Controllers\CamperController@destroy')->name('camper.delete');
-    Route::resource('camper', 'App\Http\Controllers\CamperController', ['except' => 'destroy', 'names' => [
+    Route::get('camper/{id}/blockActivateCamper', 'App\Http\Controllers\admin\CamperController@blockActivateCamper')->name('camper.blockActivateCamper');
+    Route::get('camper/{id}/detailBooking', 'App\Http\Controllers\admin\CamperController@detailBooking')->name('camper.detailBooking');
+    Route::get('camper/{id}/detailCamper', 'App\Http\Controllers\admin\CamperController@detailCamper')->name('camper.detailCamper');
+    Route::get('camper/{id}/detail', 'App\Http\Controllers\admin\CamperController@detail')->name('camper.detail');
+    Route::delete('camper/{id}/delete', 'App\Http\Controllers\admin\CamperController@destroy')->name('camper.delete');
+    Route::resource('camper', 'App\Http\Controllers\admin\CamperController', ['except' => 'destroy', 'names' => [
         'index' => 'camper.index',
         'create' => 'camper.create',
         'update' => 'camper.update',
@@ -111,8 +140,8 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->INSURANCE
-    Route::delete('insurance/{id}/delete', 'App\Http\Controllers\InsuranceController@destroy')->name('insurance.delete');
-    Route::resource('insurance', 'App\Http\Controllers\InsuranceController', ['except' => 'destroy', 'names' => [
+    Route::delete('insurance/{id}/delete', 'App\Http\Controllers\admin\InsuranceController@destroy')->name('insurance.delete');
+    Route::resource('insurance', 'App\Http\Controllers\admin\InsuranceController', ['except' => 'destroy', 'names' => [
         'index' => 'insurance.index',
         'create' => 'insurance.create',
         'update' => 'insurance.update',
@@ -122,8 +151,8 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->INSURANCE
-    Route::delete('insuranceCompany/{id}/delete', 'App\Http\Controllers\InsuranceCompanyController@destroy')->name('insuranceCompany.delete');
-    Route::resource('insuranceCompany', 'App\Http\Controllers\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
+    Route::delete('insuranceCompany/{id}/delete', 'App\Http\Controllers\admin\InsuranceCompanyController@destroy')->name('insuranceCompany.delete');
+    Route::resource('insuranceCompany', 'App\Http\Controllers\admin\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
         'index' => 'insuranceCompany.index',
         'create' => 'insuranceCompany.create',
         'update' => 'insuranceCompany.update',
@@ -133,8 +162,8 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->COMIMSSION
-    Route::get('commission/{id}/delete', 'App\Http\Controllers\CommissionController@destroy')->name('commission.destroy');
-    Route::resource('commission', 'App\Http\Controllers\CommissionController', ['except' => 'destroy', 'names' => [
+    Route::get('commission/{id}/delete', 'App\Http\Controllers\admin\CommissionController@destroy')->name('commission.destroy');
+    Route::resource('commission', 'App\Http\Controllers\admin\CommissionController', ['except' => 'destroy', 'names' => [
         'index' => 'commission.index',
         'create' => 'commission.create',
         'update' => 'commission.update',
@@ -143,9 +172,9 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'commission.show',
     ]]);
 
-    Route::delete('promotion/{id}/delete', 'App\Http\Controllers\PromotionController@destroy')->name('promotion.delete');
-    Route::get('promotion/{id}/activate', 'App\Http\Controllers\PromotionController@activate')->name('promotion.activate');
-    Route::resource('promotion', 'App\Http\Controllers\PromotionController', ['except' => 'destroy', 'names' => [
+    Route::delete('promotion/{id}/delete', 'App\Http\Controllers\admin\PromotionController@destroy')->name('promotion.delete');
+    Route::get('promotion/{id}/activate', 'App\Http\Controllers\admin\PromotionController@activate')->name('promotion.activate');
+    Route::resource('promotion', 'App\Http\Controllers\admin\PromotionController', ['except' => 'destroy', 'names' => [
         'index' => 'promotion.index',
         'create' => 'promotion.create',
         'update' => 'promotion.update',
@@ -154,7 +183,7 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'promotion.show',
     ]]);
     //ADMIN->PROMOTION
-    Route::resource('promotion', 'App\Http\Controllers\PromotionController', ['except' => 'destroy', 'names' => [
+    Route::resource('promotion', 'App\Http\Controllers\admin\PromotionController', ['except' => 'destroy', 'names' => [
         'index' => 'promotion.index',
         'create' => 'promotion.create',
         'update' => 'promotion.update',
@@ -164,8 +193,8 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->AVATAR
-    Route::delete('avatar/{id}/delete', 'App\Http\Controllers\AvatarController@destroy')->name('avatar.delete');
-    Route::resource('avatar', 'App\Http\Controllers\AvatarController', ['except' => 'destroy', 'names' => [
+    Route::delete('avatar/{id}/delete', 'App\Http\Controllers\admin\AvatarController@destroy')->name('avatar.delete');
+    Route::resource('avatar', 'App\Http\Controllers\admin\AvatarController', ['except' => 'destroy', 'names' => [
         'index' => 'avatar.index',
         'create' => 'avatar.create',
         'update' => 'avatar.update',
@@ -175,8 +204,8 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->FUEL
-    Route::delete('fuel/{id}/delete', 'App\Http\Controllers\FuelController@destroy')->name('fuel.delete');
-    Route::resource('fuel', 'App\Http\Controllers\FuelController', ['except' => 'destroy', 'names' => [
+    Route::delete('fuel/{id}/delete', 'App\Http\Controllers\admin\FuelController@destroy')->name('fuel.delete');
+    Route::resource('fuel', 'App\Http\Controllers\admin\FuelController', ['except' => 'destroy', 'names' => [
         'index' => 'fuel.index',
         'create' => 'fuel.create',
         'update' => 'fuel.update',
@@ -186,8 +215,8 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->LICENCECATEGORIES
-    Route::delete('licenceCategory/{id}/delete', 'App\Http\Controllers\LicenceCategoryController@destroy')->name('licenceCategory.delete');
-    Route::resource('licenceCategory', 'App\Http\Controllers\LicenceCategoryController', ['except' => 'destroy', 'names' => [
+    Route::delete('licenceCategory/{id}/delete', 'App\Http\Controllers\admin\LicenceCategoryController@destroy')->name('licenceCategory.delete');
+    Route::resource('licenceCategory', 'App\Http\Controllers\admin\LicenceCategoryController', ['except' => 'destroy', 'names' => [
         'index' => 'licenceCategory.index',
         'create' => 'licenceCategory.create',
         'update' => 'licenceCategory.update',
@@ -197,8 +226,8 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->TRANSMISSION
-    Route::delete('transmission/{id}/delete', 'App\Http\Controllers\TransmissionController@destroy')->name('transmission.delete');
-    Route::resource('transmission', 'App\Http\Controllers\TransmissionController', ['except' => 'destroy', 'names' => [
+    Route::delete('transmission/{id}/delete', 'App\Http\Controllers\admin\TransmissionController@destroy')->name('transmission.delete');
+    Route::resource('transmission', 'App\Http\Controllers\admin\TransmissionController', ['except' => 'destroy', 'names' => [
         'index' => 'transmission.index',
         'create' => 'transmission.create',
         'update' => 'transmission.update',
@@ -208,8 +237,8 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->EQUIPMENTCATEGORY
-    Route::delete('camperCategory/{id}/delete', 'App\Http\Controllers\CamperCategoryController@destroy')->name('camperCategory.delete');
-    Route::resource('camperCategory', 'App\Http\Controllers\CamperCategoryController', ['except' => 'destroy', 'names' => [
+    Route::delete('camperCategory/{id}/delete', 'App\Http\Controllers\admin\CamperCategoryController@destroy')->name('camperCategory.delete');
+    Route::resource('camperCategory', 'App\Http\Controllers\admin\CamperCategoryController', ['except' => 'destroy', 'names' => [
         'index' => 'camperCategory.index',
         'create' => 'camperCategory.create',
         'update' => 'camperCategory.update',
@@ -219,11 +248,11 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->BOOKING
-    Route::get('booking/{id}/delete', 'App\Http\Controllers\Bookingcontroller@destroy')->name('booking.destroy');
-    Route::get('booking/{id}/detail', 'App\Http\Controllers\Bookingcontroller@detail')->name('booking.detail');
-    Route::get('booking/search', 'App\Http\Controllers\Bookingcontroller@search')->name('booking.search');
-    Route::get('booking/{id}/chat', 'App\Http\Controllers\Bookingcontroller@chat')->name('booking.chat');
-    Route::resource('booking', 'App\Http\Controllers\BookingController', ['except' => 'destroy', 'names' => [
+    Route::get('booking/{id}/delete', 'App\Http\Controllers\admin\Bookingcontroller@destroy')->name('booking.destroy');
+    Route::get('booking/{id}/detail', 'App\Http\Controllers\admin\Bookingcontroller@detail')->name('booking.detail');
+    Route::get('booking/search', 'App\Http\Controllers\admin\Bookingcontroller@search')->name('booking.search');
+    Route::get('booking/{id}/chat', 'App\Http\Controllers\admin\Bookingcontroller@chat')->name('booking.chat');
+    Route::resource('booking', 'App\Http\Controllers\admin\BookingController', ['except' => 'destroy', 'names' => [
         'index' => 'booking.index',
         'create' => 'booking.create',
         'update' => 'booking.update',
@@ -232,11 +261,11 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'booking.show',
     ]]);
 
-    Route::get('applyFilter', 'App\Http\Controllers\BillingController@filter')->name('applyFilter');
-    Route::get('excel-export', 'App\Http\Controllers\BillingController@export')->name('excel-export');
-    Route::get('billing/{id}/bookings', 'App\Http\Controllers\BillingController@bookings')->name('billing.bookings');
+    Route::get('applyFilter', 'App\Http\Controllers\admin\BillingController@filter')->name('applyFilter');
+    Route::get('excel-export', 'App\Http\Controllers\admin\BillingController@export')->name('excel-export');
+    Route::get('billing/{id}/bookings', 'App\Http\Controllers\admin\BillingController@bookings')->name('billing.bookings');
 
-    Route::resource('billing', 'App\Http\Controllers\BillingController', ['except' => 'destroy', 'names' => [
+    Route::resource('billing', 'App\Http\Controllers\admin\BillingController', ['except' => 'destroy', 'names' => [
         'index' => 'billing.index',
         'create' => 'billing.create',
         'update' => 'billing.update',
@@ -245,8 +274,8 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'billing.show',
     ]]);
     //ADMIN->INSURANCECOMPANY
-    Route::delete('inssuranceCompany/{id}/delete', 'App\Http\Controllers\InsuranceCompanyController@destroy')->name('inssuranceCompany.delete');
-    Route::resource('inssuranceCompany', 'App\Http\Controllers\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
+    Route::delete('inssuranceCompany/{id}/delete', 'App\Http\Controllers\admin\InsuranceCompanyController@destroy')->name('inssuranceCompany.delete');
+    Route::resource('inssuranceCompany', 'App\Http\Controllers\admin\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
         'index' => 'inssuranceCompany.index',
         'create' => 'inssuranceCompany.create',
         'update' => 'inssuranceCompany.update',
@@ -256,24 +285,20 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->MESSAGE
-    Route::delete('message/{id}/delete','App\Http\Controllers\MessageController@destroy')->name('message.delete');
-    Route::get('message/sendEmail', 'App\Http\Controllers\MessageController@sendEmail')->name('message.sendEmail');
-    Route::resource('message', 'App\Http\Controllers\MessageController', ['except' => 'destroy', 'names' => [
+    Route::delete('message/{id}/delete','App\Http\Controllers\admin\MessageController@destroy')->name('message.delete');
+    Route::get('message/sendEmail', 'App\Http\Controllers\admin\MessageController@sendEmail')->name('message.sendEmail');
+    Route::resource('message', 'App\Http\Controllers\admin\MessageController', ['except' => 'destroy', 'names' => [
         'index' => 'message.index',
         'store' => 'message.store',
         'show' => 'message.show',
     ]]);
     //ADMIN->BACKUP
     Route::delete('backup/{id}/delete', ['BackupController', 'destroy'])->name('backup.delete');
-    Route::get('backup/{id}/download', 'App\Http\Controllers\BackupController@download')->name('backup.download');
+    Route::get('backup/{id}/download', 'App\Http\Controllers\admin\BackupController@download')->name('backup.download');
 
-    Route::resource('backup', 'App\Http\Controllers\BackupController', ['except' => 'destroy', 'names' => [
+    Route::resource('backup', 'App\Http\Controllers\admin\BackupController', ['except' => 'destroy', 'names' => [
         'index' => 'backup.index',
         'store' => 'backup.store',
         'show' => 'backup.show',
     ]]);
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
