@@ -141,11 +141,11 @@
 				</li>
 				<li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
 				<li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
-				<li><a href="dashboard-add-listing.html"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
+				<li><a href="/rentout" class="{{ $activePage == 'rent_out' || $activePage == 'rent_out_details'  ? ' active' : '' }}"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
 			</ul>
 
 			<ul data-submenu-title="Account">
-				<li class="active"><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
+				<li class=""><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
 				<li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
 			</ul>
 

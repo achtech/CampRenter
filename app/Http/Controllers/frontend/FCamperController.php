@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\frontend;
 
-use DB;
 use App\Http\Controllers\Controller;
+use DB;
 
 class FCamperController extends Controller
 {
@@ -21,6 +21,13 @@ class FCamperController extends Controller
         $categories = DB::table('camper_categories')->paginate(10);
 
         return view('frontend.camper.rent_out')->with('categories', $categories);
+    }
+
+    public function rent_out_details()
+    {
+        $categories = DB::table('camper_categories')->paginate(10);
+
+        return view('frontend.camper.rent_out_details')->with('categories', $categories);
     }
 
 }
