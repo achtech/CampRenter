@@ -17,6 +17,8 @@ class Client extends Base
         'client_name',
         'client_last_name',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'email',
+        'password'
     ];
 }

@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-class Client extends Base
+class Chat extends Base
 {
-    protected $table = 'clients';
+    protected $table = 'chats';
     public $primarykey = 'id';
-    protected $fillable = ['message','date_sent','ordre_message','id_owners','id_renters','id_bookings',
-    'created_by',
-    'updated_by'];
+    protected $fillable = [
+        'message', 'date_sent', 'ordre_message', 'id_owners', 'id_renters', 'id_bookings',
+        'created_by',
+        'updated_by'
+    ];
 }

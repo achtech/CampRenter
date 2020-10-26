@@ -29,25 +29,27 @@
 			<div class="col-md-12">
 				<div class="simple-slick-carousel dots-nav">
 				<!-- Listing Item -->
-				@foreach($campers as $camper)
-					<div class="carousel-item">
-						<a href="listings-single-page.html" class="listing-item-container">
-							<div class="listing-item">
-								<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
-								<div class="listing-item-content">
-									<span class="tag">{{App\Http\Controllers\Controller::getLabel('camper_categories',$camper->id_camper_categories)}}</span>
-									<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
-									<span>{{$camper->description_camper}}</span>
+				@if(count($campers)>0)
+					@foreach($campers as $camper)
+						<div class="carousel-item">
+							<a href="listings-single-page.html" class="listing-item-container">
+								<div class="listing-item">
+									<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
+									<div class="listing-item-content">
+										<span class="tag">{{App\Http\Controllers\Controller::getLabel('camper_categories',$camper->id_camper_categories)}}</span>
+										<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
+										<span>{{$camper->description_camper}}</span>
+									</div>
+									<span class="like-icon"></span>
 								</div>
-								<span class="like-icon"></span>
-							</div>
-							<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}">
-							{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}<div class="rating-counter">({{App\Http\Controllers\frontend\FHomeController::getReviewsCount($camper->id)}} {{__('front.Reviews')}})</div>
-							</div>
-						</a>
-					</div>
-				<!-- Listing Item / End -->
-				@endforeach
+								<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}">
+								{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}<div class="rating-counter">({{App\Http\Controllers\frontend\FHomeController::getReviewsCount($camper->id)}} {{__('front.Reviews')}})</div>
+								</div>
+							</a>
+						</div>
+					<!-- Listing Item / End -->
+					@endforeach
+					@endif
 				</div>
 
 			</div>
@@ -68,7 +70,7 @@
 
 		<div class="col-md-12">
 			<div class="row">
-
+				@if(count($categories)>0)
 				@foreach($categories as $category)
 					<!-- Box -->
 					<div class="col-md-3 alternative-imagebox">
@@ -78,8 +80,8 @@
 							<span class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} Listings</span>
 						</a>
 					</div>
-
 				@endforeach
+				@endif
 			</div>
 		</div>
 	</div>

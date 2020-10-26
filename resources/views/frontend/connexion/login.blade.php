@@ -39,15 +39,15 @@
                             
                             <div class="titles-container"><h3 class="text-center">{{trans('front.to_connect')}}</h3></div>
                             
-                                <form>
+                            {{ Form::open(['route'=>'frontend.client.resetPassword', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
                                     <div class="form-group"><label  class="sr-only">
                                         {{trans('front.email_address')}}
                                       </label> <input type="text" placeholder="Email address" autocomplete="username" class=" form-control w-727" >
                                     </div>
-                                    <button type="button" class="btn btn-primary connexion w-727"><!---->
+                                    <button type="submit" class="btn btn-primary connexion w-727"><!---->
                                         {{trans('front.reset_password_link')}}
                                     </button>
-                                </form>
+                            {{ Form::close() }}
                                                                             <div>
                                     <a style="color: #f15424;" id="log_in">{{trans('front.want_to_log')}}</a>
                                 </div>

@@ -21,9 +21,9 @@ use App\Http\Controllers\frontend\FClientController;
 Route::get('lang/{lang}', function ($lang) {
     \Session::put('locale', $lang);
     $user = User::find(auth()->user()->id);
-    if($user){
+    if ($user) {
         $user->lang = $lang;
-        $user->update();    
+        $user->update();
     }
     return back();
 });
@@ -35,10 +35,11 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/blog', [FBlogController::class, 'index'])->name('blog');
     //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
-    Route::resource('client', FClientController::class, ['except' => ['destroy','store'], 'names' => [
-        'index' => 'client.index',
+    Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
+    Route::resource('/fclient', FClientController::class, ['except' => ['destroy', 'store'], 'names' => [
+        'index' => 'frontend.client.index',
         'show' => 'frontend.client.show',
-        ]]);    
+    ]]);
     Route::get('/rent_out', [FCamperController::class, 'rent_out'])->name('rent_out');
     Route::get('/contact', [FContactController::class, 'index'])->name('contact');
     Route::get('/terms', [FContactController::class, 'terms'])->name('terms');
@@ -52,10 +53,10 @@ Route::group(['middleware' => 'Lang'], function () {
 
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
- //   Route::get('/logout', '\App\Http\Controllers\admin\Auth\LoginController@logout')->name('logout');
+    //   Route::get('/logout', '\App\Http\Controllers\admin\Auth\LoginController@logout')->name('logout');
     Route::get('/dashboard', function () {
         if (auth()->user() == null) {
-           // return view('/auth/login');
+            // return view('/auth/login');
         } else {
             return redirect(route('dashboard'));
         }
@@ -285,7 +286,7 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->MESSAGE
-    Route::delete('message/{id}/delete','App\Http\Controllers\admin\MessageController@destroy')->name('message.delete');
+    Route::delete('message/{id}/delete', 'App\Http\Controllers\admin\MessageController@destroy')->name('message.delete');
     Route::get('message/sendEmail', 'App\Http\Controllers\admin\MessageController@sendEmail')->name('message.sendEmail');
     Route::resource('message', 'App\Http\Controllers\admin\MessageController', ['except' => 'destroy', 'names' => [
         'index' => 'message.index',
