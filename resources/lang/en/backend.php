@@ -30,7 +30,6 @@ return [
     'message_delete_avatar' => 'Do you want to delete this avatar ?',
     'message_delete_camperCategory' => 'Do you want to delete this Camper Category ?',
     'message_delete_camper' => 'Do you want to delete this Camper ?',
-    'message_delete_message' => 'Do you want to delete this Message ?',
     'message_delete_camperStatus' => 'Do you want to delete this camper status ?',
     'message_delete_fuel' => 'Do you want to delete this Fuel ?',
     'message_delete_insurance' => 'Do you want to delete this Insurance ?',
@@ -38,10 +37,11 @@ return [
     'message_delete_licence_category' => 'Do you want to delete this licence category ?',
     'message_delete_user' => 'Do you want to delete this user ?',
     'message_delete_transmission' => 'Do you want to delete this Transmission?',
-    'message_delete_promotion' => 'Do you want to delete this Promotion ?',
-    'message_delete_blog' => 'Do you want to delete this Blog ?',
     'block_message' => 'Do you want to block this client?',
     'active_message' => 'Do you want to activate this client?',
+    'message_delete_blog' => 'Do you want to delete this Blog ?',
+    'message_delete_message' => 'Do you want to delete this Message ?',
+    'message_delete_promotion' => 'Do you want to delete this Promotion ?',
 
     /** Dashboard */
     'Hello' => 'Hello',
