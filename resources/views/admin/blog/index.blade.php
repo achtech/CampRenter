@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                    <a href="{{ route('blog.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
+                    <a href="{{ route('admin.blog.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
                     style="width:200px;margin-left:5px">{{ __('backend.New Blog') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
@@ -43,10 +43,10 @@
                                     <td>
                                         <ul class="list-inline m-0">
                                            <li class="list-inline-item">
-                                                <a href="{{ route('blog.show',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="fa fa-list"></i></a>
+                                                <a href="{{ route('admin.blog.show',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="fa fa-list"></i></a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <a href="{{ route('blog.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
+                                                <a href="{{ route('admin.blog.edit',$item->id)}}" class="btn btn-success btn-sm rounded-0"><i class="far fa-edit"></i></a>
                                             </li>
                                             <li class="list-inline-item">
                                                     <button
@@ -88,7 +88,7 @@
         <h4 class="modal-title text-center" id="myModalLabel"> {{__('backend.delete_confirmation')}}</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
-      <form  action="{{route('blog.delete','test')}}" method="post">
+      <form  action="{{route('admin.blog.delete','test')}}" method="post">
             {{method_field('delete')}}
             {{csrf_field()}}
           <div class="modal-body">

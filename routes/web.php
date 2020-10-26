@@ -3,6 +3,10 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\Message;
+use App\Http\Controllers\frontend\FCamperController;
+use App\Http\Controllers\frontend\FContactController;
+use App\Http\Controllers\frontend\FClientController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,16 +21,41 @@ use App\Http\Controllers\admin\Message;
 Route::get('lang/{lang}', function ($lang) {
     \Session::put('locale', $lang);
     $user = User::find(auth()->user()->id);
-    $user->lang = $lang;
-    $user->update();
+    if($user){
+        $user->lang = $lang;
+        $user->update();    
+    }
     return back();
 });
 Route::group(['middleware' => 'Lang'], function () {
-    Route::get('/', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
+    /** Frontend */
+    Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
+    Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
+    Route::get('/camper', [FCamperController::class, 'index'])->name('frontend.camper');
+    Route::get('/blog', [FBlogController::class, 'index'])->name('blog');
+    //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
+    Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
+    Route::resource('client', FClientController::class, ['except' => ['destroy','store'], 'names' => [
+        'index' => 'client.index',
+        'show' => 'frontend.client.show',
+        ]]);    
+    Route::get('/rent_out', [FCamperController::class, 'rent_out'])->name('rent_out');
+    Route::get('/contact', [FContactController::class, 'index'])->name('contact');
+    Route::get('/terms', [FContactController::class, 'terms'])->name('terms');
+    Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
+    Route::get('/imprint', [FContactController::class, 'imprint'])->name('imprint');
+    Route::get('/help', [FContactController::class, 'help'])->name('help');
+    Route::post('login', 'App\Http\Controllers\frontend\FClientController@doLogin');
+    Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);
+    Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
+    Route::post('/signUp', [FClientController::class, 'sign_up']);
+
+    /** Backend */
+    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
  //   Route::get('/logout', '\App\Http\Controllers\admin\Auth\LoginController@logout')->name('logout');
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         if (auth()->user() == null) {
-            return view('/auth/login');
+           // return view('/auth/login');
         } else {
             return redirect(route('dashboard'));
         }
@@ -42,7 +71,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('user/changePassword', 'App\Http\Controllers\admin\UserController@changePassword')->name('user.changePassword');
     Route::PUT('user/updatePassword', 'App\Http\Controllers\admin\UserController@updatePassword')->name('user.updatePassword');
 
-    Route::get('user/profile', 'App\Http\Controllers\admin\UserController@profile')->name('user.profile');
+    Route::get('user/userprofile', 'App\Http\Controllers\admin\UserController@profile')->name('user.profile');
     Route::delete('user/{id}/delete', 'App\Http\Controllers\admin\UserController@destroy')->name('user.delete');
     Route::resource('user', 'App\Http\Controllers\admin\UserController', ['except' => 'destroy', 'names' => [
         'index' => 'user.index',
@@ -54,14 +83,14 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN -> Blog
-    Route::delete('blog/{id}/delete', 'App\Http\Controllers\admin\BlogController@destroy')->name('blog.delete');
-    Route::resource('blog', 'App\Http\Controllers\admin\BlogController', ['except' => 'destroy', 'names' => [
-        'index' => 'blog.index',
-        'create' => 'blog.create',
-        'update' => 'blog.update',
-        'edit' => 'blog.edit',
-        'store' => 'blog.store',
-        'show' => 'blog.show',
+    Route::delete('blog/{id}/delete', 'App\Http\Controllers\admin\BlogController@destroy')->name('admin.blog.delete');
+    Route::resource('admin/blog', 'App\Http\Controllers\admin\BlogController', ['except' => 'destroy', 'names' => [
+        'index' => 'admin.blog.index',
+        'create' => 'admin.blog.create',
+        'update' => 'admin.blog.update',
+        'edit' => 'admin.blog.edit',
+        'store' => 'admin.blog.store',
+        'show' => 'admin.blog.show',
     ]]);
 
     //ADMIN->CLIENT
@@ -74,11 +103,11 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('client/{id}/rentDetail', 'App\Http\Controllers\admin\ClientController@checkBookingDetail')->name('client.rentDetail');
 
     Route::resource('client', 'App\Http\Controllers\admin\ClientController', ['except' => 'destroy', 'names' => [
-        'index' => 'client.index',
-        'create' => 'client.create',
-        'update' => 'client.update',
-        'store' => 'client.store',
-        'show' => 'client.show',
+        'index' => 'admin.client.index',
+        'create' => 'admin.client.create',
+        'update' => 'admin.client.update',
+        'store' => 'admin.client.store',
+        'show' => 'admin.client.show',
     ]]);
 
     //ADMIN->EQUIPMENT

@@ -25,7 +25,7 @@ Breadcrumbs::for('edit_user', function ($trail, $id) {
 //client
 Breadcrumbs::for('client', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push(__('backend.client.breadcrumb'), route('client.index'));
+    $trail->push(__('backend.client.breadcrumb'), route('admin.client.index'));
 });
 //billings
 Breadcrumbs::for('billing', function ($trail) {

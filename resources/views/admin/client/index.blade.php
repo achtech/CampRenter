@@ -49,7 +49,7 @@
                                         <ul class="list-inline m-0">
 
                                             <li class="list-inline-item">
-                                                <a href="{{ route('client.index').'/'.$item->id.'/detail'}}" class="btn btn-success btn-sm rounded-0" title="Detail"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ route('admin.client.index').'/'.$item->id.'/detail'}}" class="btn btn-success btn-sm rounded-0" title="Detail"><i class="fas fa-eye"></i></a>
                                             </li>
                                              @if($item->status=='1')
                                             <li class="list-inline-item" >

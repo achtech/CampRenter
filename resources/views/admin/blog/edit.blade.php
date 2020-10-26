@@ -3,7 +3,7 @@
 {{ Breadcrumbs::render('edit_blog',$data) }}
 <div class="container-fluid">
     <!--'action'=>'InsuranceController@store',-->
-    {{ Form::open(array('method'=>'PUT', 'enctype'=>'multipart/form-data' ,'route' => ['blog.update', $data->id ?? 1])) }}
+    {{ Form::open(array('method'=>'PUT', 'enctype'=>'multipart/form-data' ,'route' => ['admin.blog.update', $data->id ?? 1])) }}
     <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
@@ -48,7 +48,7 @@
 
                 {{Form::submit(__('backend.Update'),['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
 
-                <a href="{{ route('blog.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
+                <a href="{{ route('admin.blog.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>
     {{ Form::close() }}

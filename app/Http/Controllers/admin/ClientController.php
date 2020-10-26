@@ -41,7 +41,7 @@ class ClientController extends Controller
         } else {
             $datas = Client::paginate(10);
         }
-        return view('admin.client.index')->with('datas', $datas)->with('search', $search);
+        return view('admin.admin.client.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -77,7 +77,7 @@ class ClientController extends Controller
         $input['id_avatars'] = 1;
         $input['image_national_id'] = 1;
         $data = Client::create($input);
-        return redirect(route('client.index'))->with('success', 'Item added succesfully');
+        return redirect(route('admin.client.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -114,12 +114,12 @@ class ClientController extends Controller
         //   dd($request->all());
         $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('client.index'));
+            return redirect(route('admin.client.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
         $input['updated_by'] = auth()->user()->id;
         $data = Client::where('id', $id)->update($input);
-        return redirect(route('client.index'))->with('success', 'Item Updated succesfully');
+        return redirect(route('admin.client.index'))->with('success', 'Item Updated succesfully');
     }
 
     public static function containCamper($clientId){
@@ -141,7 +141,7 @@ class ClientController extends Controller
         $data->status = $data->status == '0' ? '1' : '0';
         $data->updated_by = auth()->user()->id;
         $data = $data->update();
-        return redirect(route('client.index'));
+        return redirect(route('admin.client.index'));
     }
 
     //
@@ -156,33 +156,33 @@ class ClientController extends Controller
     {
         $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('client.index'));
+            return redirect(route('admin.client.index'));
         }
         $data->delete();
-        return redirect(route('client.index'));
+        return redirect(route('admin.client.index'));
     }
 
     public function blockClient($id)
     {
         $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('client.index'));
+            return redirect(route('admin.client.index'));
         }
         $data->status = 'blocked';
         $data->save();
-        return redirect(route('client.index'));
+        return redirect(route('admin.client.index'));
     }
     public function activateClient($id)
     {
         //dd($id);
         $data = Client::find($id);
         if (empty($data)) {
-            return redirect(route('client.index'));
+            return redirect(route('admin.client.index'));
         }
         $data->status = 'active';
         $data->save();
 
-        return redirect(route('client.index'));
+        return redirect(route('admin.client.index'));
     }
     public function checkCamperDetail($id)
     {

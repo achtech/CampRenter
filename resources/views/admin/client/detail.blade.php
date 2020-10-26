@@ -93,6 +93,6 @@
             </div>
         </div>
     </div>
-                        <a href="{{ route('client.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Back') }}</a>
+                        <a href="{{ route('admin.client.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Back') }}</a>
 </div>
 @endsection
