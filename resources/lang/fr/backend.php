@@ -6,6 +6,7 @@ return [
     'Cancel' => 'Annuler',
     'Edit' => 'Modifier',
     'Export' => 'Exporter',
+    'Update' => 'Update',
     'No data found' => 'Aucune donnée disponible',
     'Operations' => 'Opération',
     'Read more' => 'Lire la suite',
@@ -20,6 +21,10 @@ return [
     'All' => 'Tous',
     'Create' => 'Créer',
     'Back' => 'Retour',
+    'Delete' => 'Delete',
+    'delete_confirmation' => 'Delete confirmaton',
+    'Return' => 'Return',
+    'No Messages' => "Aucun message non lu",
 
     /** Delete Message */
     'message_delete_avatar' => 'Voulez-vous supprimer cet avatar?',
@@ -35,6 +40,8 @@ return [
     'block_message' => 'Voulez-vous bloquer ce client?',
     'active_message' => 'Voulez-vous activer ce client?',
     'message_delete_blog' => 'Voulez-vous supprimer cette Blog ?',
+    'message_delete_message' => 'Do you want to delete this Message ?',
+    'message_delete_promotion' => 'Do you want to delete this Promotion ?',
 
     /** Dashboard */
     'Hello' => 'Bonjour',
@@ -242,7 +249,9 @@ return [
     'Article' => 'Article',
     'Date creation' => 'Date de création',
 
-    /************************************************** */
+    /** Backup */
+    'backup_managment' => 'Gestion des sauvegardes',
+
     /** Fields */
     'adress' => 'Adresse',
     'amount' => 'Montant',
@@ -289,7 +298,6 @@ return [
     'model' => 'Modèle',
     'minimal_rent_days' => 'Jours de location minimaux',
     'minimum_age' => 'Âge minimum',
-
     'national' => 'Nationale',
     'not_payed' => 'Non payé',
     'number_kilometre' => 'Nombre de kilomètres',
@@ -333,12 +341,6 @@ return [
     'Service' => 'Service',
     'Managing' => 'Gestion',
     'Cleanliness' => 'Propreté',
-    /**************************************************
-    Please put your new labels here : Achraf
-     *********************************************** */
-    // -----------------Backup -----------------//
-    'backup_managment' => 'Gestion des sauvegardes',
-    'No Messages' => "Aucun message non lu",
     'Return' => 'Retour',
     'message_delete_blog' => 'Voulez-vous supprimer ce Blog',
     'Logo' => 'Logo',
