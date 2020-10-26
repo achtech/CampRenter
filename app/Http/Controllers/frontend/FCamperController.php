@@ -10,7 +10,6 @@ class FCamperController extends Controller
     //
     public function index()
     {
-        dd(5);
         $categories = DB::table('camper_categories')->paginate(10);
         //$campers = DB::table('campers')->paginate(10);
         //$review = DB::table('campers')->get();

@@ -31,7 +31,7 @@ Route::group(['middleware' => 'Lang'], function () {
     /** Frontend */
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
-    Route::get('/camper', [FCamperController::class, 'index'])->name('frontend.camper');
+    Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
     Route::get('/blog', [FBlogController::class, 'index'])->name('blog');
     //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
