@@ -295,6 +295,7 @@ return [
     'licence_age_desc' => 'Description de l âge de la licence',
     'last_name' => 'Nom de famille',
     'label' => 'Étiquette',
+    'Logo' => 'Logo',
     'model' => 'Modèle',
     'minimal_rent_days' => 'Jours de location minimaux',
     'minimum_age' => 'Âge minimum',
@@ -341,7 +342,5 @@ return [
     'Service' => 'Service',
     'Managing' => 'Gestion',
     'Cleanliness' => 'Propreté',
-    'Return' => 'Retour',
     'message_delete_blog' => 'Voulez-vous supprimer ce Blog',
-    'Logo' => 'Logo',
 ];
