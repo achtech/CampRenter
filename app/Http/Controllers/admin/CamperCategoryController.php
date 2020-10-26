@@ -65,7 +65,7 @@ class CamperCategoryController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $input['image'] = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\camperCategories'), $file->getClientOriginalName());
+            $file->move(base_path('public\images\camper_categories'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
@@ -104,7 +104,7 @@ class CamperCategoryController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $input['image'] = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\camperCategories'), $file->getClientOriginalName());
+            $file->move(base_path('public\images\camper_categories'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }

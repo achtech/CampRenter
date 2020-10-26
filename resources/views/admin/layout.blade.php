@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/admin/images/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}"  type='image/x-icon'>
     <title>Campunit</title>
     <!-- Custom CSS -->
     <link href="{{ asset('assets/admin/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">

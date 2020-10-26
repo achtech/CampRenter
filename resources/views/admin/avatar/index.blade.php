@@ -28,7 +28,7 @@
                             @foreach($datas as $item)
                                 <tr>
                                     <td>
-                                <img style="width:64px;height:64px;" src="{{ asset('assets/admin/images') }}/avatar/{{$item->image}}" ></td>
+                                <img style="width:64px;height:64px;" src="{{ asset('images') }}/avatar/{{$item->image}}" ></td>
                                     <td>{{$item->label}}</td>
                                     <td>&nbsp;</td>
                                    <td>
