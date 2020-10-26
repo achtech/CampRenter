@@ -154,7 +154,7 @@
 								<li>{{$blog->created_at}}</li>
 							</ul>
 							<h3>{{$blog->title}}</h3>
-							<p>{{$blog->article}}</p>
+							<p>{{ Illuminate\Support\Str::limit($blog->article, 80)}}</p>
 						</div>
 					</div>
 				</a>

@@ -27,7 +27,6 @@ class FClientController extends Controller
     }
     public function doLogin()
     {
-        dd(1);
         $rules = array(
             'email' => 'required|email', // make sure the email is an actual email
             'password' => 'required|alphaNum|min:8'
@@ -37,7 +36,7 @@ class FClientController extends Controller
         $validator = Validator::make(Input::all(), $rules);
         // if the validator fails, redirect back to the form
         if ($validator->fails()) {
-            return Redirect::to('login')->withErrors($validator) // send back all errors to the login form
+            return Redirect::to('signIn')->withErrors($validator) // send back all errors to the login form
                 ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
         } else {
             // create our user data for the authentication
@@ -86,7 +85,6 @@ class FClientController extends Controller
                     'facebook_id' => $client->id,
                     'password' => encrypt($client->password)
                 ]);
-                dd($newClient);
                 Auth::login($newClient);
 
                 return redirect(route('client.index'));

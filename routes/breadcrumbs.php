@@ -274,25 +274,25 @@ Breadcrumbs::for('edit_avatar', function ($trail, $avatar) {
 //  Home >Blog
 Breadcrumbs::for('blog', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push(__('backend.blog.breadcrumb'), route('blog.index'));
+    $trail->push(__('backend.blog.breadcrumb'), route('admin.blog.index'));
 });
 
 // Home > Blog > New blog
 Breadcrumbs::for('add_blog', function ($trail) {
     $trail->parent('blog');
-    $trail->push(__('backend.new_blog.breadcrumb'), route('blog.create'));
+    $trail->push(__('backend.new_blog.breadcrumb'), route('admin.blog.create'));
 });
 
 // Home > Blog > edit [Category]
 Breadcrumbs::for('show_blog', function ($trail, $blog) {
     $trail->parent('blog');
-    $trail->push(__('backend.show_blog.breadcrumb'), route('blog.show', $blog->id));
+    $trail->push(__('backend.show_blog.breadcrumb'), route('admin.blog.show', $blog->id));
 });
 
 // Home > Blog > edit [Category]
 Breadcrumbs::for('edit_blog', function ($trail, $blog) {
     $trail->parent('blog');
-    $trail->push(__('backend.edit_blog.breadcrumb'), route('blog.edit', $blog->id));
+    $trail->push(__('backend.edit_blog.breadcrumb'), route('admin.blog.edit', $blog->id));
 });
 
 // Message

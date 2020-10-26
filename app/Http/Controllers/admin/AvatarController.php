@@ -66,7 +66,7 @@ class AvatarController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $input['image'] = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\avatar'), $file->getClientOriginalName());
+            $file->move(base_path('public\images\avatar'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
@@ -107,7 +107,7 @@ class AvatarController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $input['image'] = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\avatar'), $file->getClientOriginalName());
+            $file->move(base_path('public\images\avatar'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
