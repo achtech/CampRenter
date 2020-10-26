@@ -80,6 +80,9 @@ return [
     'choose_data_request' => 'If you have selected a camper, you will see all further details on the overview. Does the camper suit you? Then choose your preferred date and send the request to the landlord.',
     'receive_request' => 'Now you just need a little patience. As soon as the landlord has received your request, he can confirm it and nothing stands in the way of your camping holiday. Have fun with your adventure.',
     'our_bloc' => 'From The Blog',
+    'client_camper_detail' => 'Detail',
+    'client_camper_edit' => 'Edit',
+    'client_camper_delete' => 'Delete',
 
     /*
     ---------------------- Rent out Camper page ------------------
