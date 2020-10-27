@@ -3,7 +3,8 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
+
 <title>CampUnit</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -67,7 +68,7 @@
 
 						<li><a href="#">{{trans('front.menu_user_panel')}}</a>
 							<ul>
-								<li><a href="dashboard-my-listings.html">{{trans('front.menu_panel_camper')}}</a></li>
+								<li><a href="{{route('frontend.clients.camper')}}">{{trans('front.menu_panel_camper')}}</a></li>
 								<li><a href="dashboard-messages.html">{{trans('front.menu_panel_message')}}</a></li>
 								<li><a href="dashboard-messages.html">{{trans('front.menu_panel_notification')}}</a></li>
 								<li><a href="dashboard-bookings.html">{{trans('front.menu_panel_booking')}}</a></li>

@@ -81,7 +81,7 @@ return [
     'receive_request'=>'Now you just need a little patience. As soon as the landlord has received your request, he can confirm it and nothing stands in the way of your camping holiday. Have fun with your adventure.',
     'our_bloc'=>'From The Blog',
     'Reviews' => 'Review(s)',
-
+    'find_blog' => 'See all blogs',
     /*
     ---------------------- Rent out Camper page ------------------
      */

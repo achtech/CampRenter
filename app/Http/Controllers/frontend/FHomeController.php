@@ -14,7 +14,7 @@ class FHomeController extends Controller
             ['is_confirmed',1],
             ['availability',2],
             ])->paginate(10);
-        $blogs =  DB::table('blogs')->get();
+        $blogs =  DB::table('blogs')->orderBy('created_at','desc')->get();
         return view('frontend.home.index')->with('blogs',$blogs)->with('categories', $categories)->with('campers', $campers);
     }
     public static function getReviewsCount($id){

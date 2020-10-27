@@ -29,7 +29,7 @@
 
                         <tr>
                             <td><div>
-                            <img src="{{ asset('assets/admin/images/clients') }}/{{$item->image}}"/>
+                            <img src="{{ asset('images/clients') }}/{{$item->image}}"/>
                             </div></td>
                             <td style="vertical-align: top !important;">
 

@@ -5,7 +5,7 @@
 <!-- Content
 ================================================== -->
 
-
+<div class="dashboard-content">
 <!-- Titlebar -->
 <div id="titlebar">
 	<div class="row">
@@ -92,5 +92,6 @@
 			<!-- Section / End -->
 		</div>
 	</div>
+</div>
 </div>
 @endsection

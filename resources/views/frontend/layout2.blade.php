@@ -6,6 +6,7 @@
 <title>Campunit</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
 
 <!-- CSS
 ================================================== -->
@@ -61,10 +62,10 @@
 
 						<li><a href="#">{{trans('front.menu_user_panel')}}</a>
 							<ul>
-								<li><a href="dashboard-my-listings.html">{{trans('front.menu_panel_camper')}}</a></li>
-								<li><a href="dashboard-messages.html">{{trans('front.menu_panel_message')}}</a></li>
-								<li><a href="dashboard-messages.html">{{trans('front.menu_panel_notification')}}</a></li>
-								<li><a href="dashboard-bookings.html">{{trans('front.menu_panel_booking')}}</a></li>
+								<li><a href="{{route('frontend.clients.camper')}}">{{trans('front.menu_panel_camper')}}</a></li>
+								<li><a href="{{route('frontend.clients.message')}}">{{trans('front.menu_panel_message')}}</a></li>
+								<li><a href="{{route('frontend.clients.notification')}}">{{trans('front.menu_panel_notification')}}</a></li>
+								<li><a href="{{route('frontend.clients.booking')}}">{{trans('front.menu_panel_booking')}}</a></li>
 								<li><a href="dashboard-wallet.html">{{trans('front.menu_panel_wallet')}}</a></li>
 								<li><a href="dashboard-reviews.html">{{trans('front.menu_panel_review')}}</a></li>
 								<li><a href="{{route('clients.user.profile')}}">{{trans('front.menu_panel_profil')}}</a></li>
@@ -119,16 +120,18 @@
 	================================================== -->
 
 	<!-- Responsive Navigation Trigger -->
-	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> {{trans('front.menu_panel_dashboard_navigator')}}</a>
 
 	<div class="dashboard-nav">
 		<div class="dashboard-nav-inner">
 
 			<ul data-submenu-title="Main">
-				<li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-				<li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages <span class="nav-tag messages">2</span></a></li>
-				<li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
-				<li><a href="dashboard-wallet.html"><i class="sl sl-icon-wallet"></i> Wallet</a></li>
+				<li><a href="{{route('frontend.clients.camper')}}"><i class="sl sl-icon-settings"></i> {{trans('front.menu_panel_camper')}}</a></li>
+				<li><a href="{{route('frontend.clients.message')}}"><i class="sl sl-icon-envelope-open"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">2</span></a></li>
+				<li><a href="{{route('frontend.clients.notification')}}"><i class="fa fa-calendar-check-o"></i> {{trans('front.menu_panel_notification')}}</a></li>
+				<li><a href="{{route('frontend.clients.booking')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_booking')}}</a></li>
+				<li><a href="dashboard-wallet.html"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_wallet')}}</a></li>
+				<li><a href="dashboard-wallet.html"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_review')}}</a></li>
 			</ul>
 
 			<ul data-submenu-title="Listings">
@@ -145,19 +148,16 @@
 			</ul>
 
 			<ul data-submenu-title="Account">
-				<li class=""><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
-				<li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
+				<li class="active"><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
+				<li><a href="index.html"><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
+				<li><a href="index.html"><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_invoice')}}</a></li>
 			</ul>
 
 	</div>
 	</div>
 	<!-- Navigation / End -->
 	<!-- Main Navigation -->
-	<div class="dashboard-content">
 		@yield('content')
-	</div>
-
-
 </div>
 <!-- Dashboard / End -->
 

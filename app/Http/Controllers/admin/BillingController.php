@@ -66,7 +66,7 @@ class BillingController extends Controller
     }
     public function export(Request $request)
     {
-        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')->where('status', 0)->get();
+        $datas = $this->getBillingData($request)->where('status', 0)->get();
         $dom = new DOMDocument();
         $dom->encoding = 'utf-8';
         $dom->xmlVersion = '1.0';
@@ -197,20 +197,12 @@ class BillingController extends Controller
         }
     }
 
-    public function filter(Request $request)
-    {
-        $todayDate = date("Y-m-d");
-        $clients = Client::all();
+    public function getBillingData(Request $request){
         $startDate = $request->start_date ?? '';
         $end_date = $request->end_date ?? '';
         $payed = $request->payed ?? '';
         $notPayed = $request->notPayed ?? '';
         $client = $request->ownerId ?? '';
-        Session::put('startDate', $startDate);
-        Session::put('end_date', $end_date);
-        Session::put('payed', $payed);
-        Session::put('notPayed', $notPayed);
-        Session::put('client', $client);
         $datas = DB::table('billings')->join('clients', 'billings.id_clients', '=', 'clients.id')
             ->select('billings.id', 'billings.status', 'billings.total', 'billings.payment_date', 'clients.client_name', 'clients.client_last_name');
         if (!empty($startDate)) {
@@ -226,7 +218,24 @@ class BillingController extends Controller
         if (!empty($client) && $client != '0') {
             $datas = $datas->where('billings.id_clients', $client);
         }
-        $datas = $datas->get();
+        return $datas;
+    }
+    
+    public function filter(Request $request)
+    {
+        $todayDate = date("Y-m-d");
+        $clients = Client::all();
+        $startDate = $request->start_date ?? '';
+        $end_date = $request->end_date ?? '';
+        $payed = $request->payed ?? '';
+        $notPayed = $request->notPayed ?? '';
+        $client = $request->ownerId ?? '';
+        Session::put('startDate', $startDate);
+        Session::put('end_date', $end_date);
+        Session::put('payed', $payed);
+        Session::put('notPayed', $notPayed);
+        Session::put('client', $client);
+        $datas = $this->getBillingData($request)->get();
         return view('admin.billing.index')
             ->with('datas', $datas)
             ->with('clients', $clients)
