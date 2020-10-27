@@ -6,6 +6,10 @@ use App\Http\Controllers\admin\Message;
 use App\Http\Controllers\frontend\FCamperController;
 use App\Http\Controllers\frontend\FContactController;
 use App\Http\Controllers\frontend\FClientController;
+use App\Http\Controllers\frontend\FC_CamperController;
+use App\Http\Controllers\frontend\FC_messageController;
+use App\Http\Controllers\frontend\FC_notificationController;
+use App\Http\Controllers\frontend\FC_bookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +54,12 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
     Route::post('/signUp', [FClientController::class, 'sign_up']);
 
+    /************* Clients FrentEnd **********************/
+    Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');
+    Route::get('/message_client', [FC_messageController::class, 'index'])->name('frontend.clients.message');
+    Route::get('/detail_message_client', [FC_messageController::class, 'show'])->name('frontend.clients.message.detail');
+    Route::get('/notification_client', [FC_notificationController::class, 'index'])->name('frontend.clients.notification');
+    Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

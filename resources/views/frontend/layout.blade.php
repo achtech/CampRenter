@@ -68,7 +68,7 @@
 
 						<li><a href="#">{{trans('front.menu_user_panel')}}</a>
 							<ul>
-								<li><a href="dashboard-my-listings.html">{{trans('front.menu_panel_camper')}}</a></li>
+								<li><a href="{{route('frontend.clients.camper')}}">{{trans('front.menu_panel_camper')}}</a></li>
 								<li><a href="dashboard-messages.html">{{trans('front.menu_panel_message')}}</a></li>
 								<li><a href="dashboard-messages.html">{{trans('front.menu_panel_notification')}}</a></li>
 								<li><a href="dashboard-bookings.html">{{trans('front.menu_panel_booking')}}</a></li>

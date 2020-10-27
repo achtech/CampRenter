@@ -1,6 +1,6 @@
-@extends('clients.layout')
+@extends('frontend.layout2',['activePage'=>'camperClient'])
 @section('content')
-    <!-- Content
+<!-- Content
 	================================================== -->
 	<div class="dashboard-content">
 
@@ -8,13 +8,13 @@
 		<div id="titlebar">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>My Listings</h2>
+					<h2>My Campers</h2>
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
 							<li><a href="#">Home</a></li>
 							<li><a href="#">Dashboard</a></li>
-							<li>My Listings</li>
+							<li>My Campers</li>
 						</ul>
 					</nav>
 				</div>
@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="row">
-
+			
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
@@ -43,8 +43,9 @@
 								</div>
 							</div>
 							<div class="buttons-to-right">
-								<a href="#" class="button gray"><i class="sl sl-icon-note"></i> Edit</a>
-								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
+								<a href="#" class="button gray"><i class="sl sl-icon-list"></i> {{trans('front.client_camper_detail')}}</a>
+								<a href="#" class="button gray"><i class="sl sl-icon-note"></i> {{trans('front.client_camper_edit')}}</a>
+								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> {{trans('front.client_camper_delete')}}</a>
 							</div>
 						</li>
 
@@ -62,11 +63,12 @@
 								</div>
 							</div>
 							<div class="buttons-to-right">
+								<a href="#" class="button gray"><i class="sl sl-icon-list"></i> Detail</a>
 								<a href="#" class="button gray"><i class="sl sl-icon-note"></i> Edit</a>
 								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
 							</div>
 						</li>
-
+						
 						<li>
 							<div class="list-box-listing">
 								<div class="list-box-listing-img"><a href="#"><img src="{{asset('frontend/asset/images/listing-item-03.jpg')}}" alt=""></a></div>
@@ -81,6 +83,7 @@
 								</div>
 							</div>
 							<div class="buttons-to-right">
+								<a href="#" class="button gray"><i class="sl sl-icon-list"></i> Detail</a>
 								<a href="#" class="button gray"><i class="sl sl-icon-note"></i> Edit</a>
 								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
 							</div>
@@ -100,6 +103,7 @@
 								</div>
 							</div>
 							<div class="buttons-to-right">
+								<a href="#" class="button gray"><i class="sl sl-icon-list"></i> Detail</a>
 								<a href="#" class="button gray"><i class="sl sl-icon-note"></i> Edit</a>
 								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
 							</div>
@@ -119,6 +123,7 @@
 								</div>
 							</div>
 							<div class="buttons-to-right">
+								<a href="#" class="button gray"><i class="sl sl-icon-list"></i> Detail</a>
 								<a href="#" class="button gray"><i class="sl sl-icon-note"></i> Edit</a>
 								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
 							</div>
@@ -146,8 +151,6 @@
 					</ul>
 				</div>
 			</div>
-
-
 			<!-- Copyrights -->
 			<div class="col-md-12">
 				<div class="copyrights">© 2019 Listeo. All Rights Reserved.</div>
@@ -155,5 +158,5 @@
 		</div>
 
 	</div>
-    <!-- Content / End -->
-    @endsection
+	<!-- Content / End -->
+@endsection
