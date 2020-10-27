@@ -69,14 +69,14 @@
 						<li><a href="#">{{trans('front.menu_user_panel')}}</a>
 							<ul>
 								<li><a href="{{route('frontend.clients.camper')}}">{{trans('front.menu_panel_camper')}}</a></li>
-								<li><a href="dashboard-messages.html">{{trans('front.menu_panel_message')}}</a></li>
-								<li><a href="dashboard-messages.html">{{trans('front.menu_panel_notification')}}</a></li>
-								<li><a href="dashboard-bookings.html">{{trans('front.menu_panel_booking')}}</a></li>
-								<li><a href="dashboard-wallet.html">{{trans('front.menu_panel_wallet')}}</a></li>
-								<li><a href="dashboard-reviews.html">{{trans('front.menu_panel_review')}}</a></li>
+								<li><a href="{{route('frontend.clients.message')}}">{{trans('front.menu_panel_message')}}</a></li>
+								<li><a href="{{route('frontend.clients.notification')}}">{{trans('front.menu_panel_notification')}}</a></li>
+								<li><a href="{{route('frontend.clients.booking')}}">{{trans('front.menu_panel_booking')}}</a></li>
+								<li><a href="{{route('frontend.clients.wallet')}}">{{trans('front.menu_panel_wallet')}}</a></li>
+								<li><a href="{{route('frontend.clients.review')}}">{{trans('front.menu_panel_review')}}</a></li>
 								<li><a href="{{route('clients.user.profile')}}">{{trans('front.menu_panel_profil')}}</a></li>
-								<li><a href="dashboard-my-profile.html">{{trans('front.menu_panel_logout')}}</a></li>
 								<li><a href="dashboard-invoice.html">{{trans('front.menu_panel_invoice')}}</a></li>
+								<li><a href="dashboard-my-profile.html">{{trans('front.menu_panel_logout')}}</a></li>
 							</ul>
 						</li>
 						
@@ -236,33 +236,33 @@
 			paswwordModel.style.display = "none";
 		  }
 		}
-</script>
-<script>
-	$.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
-function showDiv() {
-	if(document.getElementById('client_name').value == "ouma"){
-		document.getElementById('signUpRequirments').style.display = "block";
+	</script>
+	<script>
+		$.ajaxSetup({
+	headers: {
+		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	}
-   
-}
-</script>
-	<!-- Typed Script -->
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/typed.js')}}"></script>
-<script>
-var typed = new Typed('.typed-words', {
-strings: [""," "," "],
-	typeSpeed: 80,
-	backSpeed: 80,
-	backDelay: 4000,
-	startDelay: 1000,
-	loop: true,
-	showCursor: true
-});
-</script>
+	});
+	function showDiv() {
+		if(document.getElementById('client_name').value == "ouma"){
+			document.getElementById('signUpRequirments').style.display = "block";
+		}
+	
+	}
+	</script>
+		<!-- Typed Script -->
+	<script type="text/javascript" src="{{asset('frontend/asset/scripts/typed.js')}}"></script>
+	<script>
+	var typed = new Typed('.typed-words', {
+	strings: [""," "," "],
+		typeSpeed: 80,
+		backSpeed: 80,
+		backDelay: 4000,
+		startDelay: 1000,
+		loop: true,
+		showCursor: true
+	});
+	</script>
 
 
 <!-- Style Switcher
@@ -295,6 +295,50 @@ strings: [""," "," "],
 
 </div>
 <!-- Style Switcher / End -->
+<!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
+<script src="{{asset('frontend/asset/scripts/moment.min.js')}}"></script>
+<script src="{{asset('frontend/asset/scripts/daterangepicker.js')}}"></script>
+
+<script>
+$(function() {
+
+    var start = moment().subtract(29, 'days');
+    var end = moment();
+
+    function cb(start, end) {
+        $('#booking-date-range span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+    cb(start, end);
+    $('#booking-date-range').daterangepicker({
+    	"opens": "left",
+	    "autoUpdateInput": false,
+	    "alwaysShowCalendars": true,
+        startDate: start,
+        endDate: end,
+        ranges: {
+           'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    }, cb);
+
+    cb(start, end);
+
+});
+
+// Calendar animation and visual settings
+$('#booking-date-range').on('show.daterangepicker', function(ev, picker) {
+	$('.daterangepicker').addClass('calendar-visible calendar-animated bordered-style');
+	$('.daterangepicker').removeClass('calendar-hidden');
+});
+$('#booking-date-range').on('hide.daterangepicker', function(ev, picker) {
+	$('.daterangepicker').removeClass('calendar-visible');
+	$('.daterangepicker').addClass('calendar-hidden');
+});
+</script>
 
 </body>
 </html>

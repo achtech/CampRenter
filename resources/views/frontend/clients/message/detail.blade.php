@@ -1,4 +1,4 @@
-@extends('frontend.layout2',['activePage'=>'detailsMessage'])
+@extends('frontend.layout2',['activePage'=>'FC_message'])
 @section('content')
 <!-- Content
 	================================================== -->

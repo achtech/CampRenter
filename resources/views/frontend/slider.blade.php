@@ -21,13 +21,9 @@
 							<a href="#"><i class="fa fa-map-marker"></i></a>
 						</div>
 
-						<div class="main-search-input-item">
-							<select data-placeholder="All Categories" class="chosen-select" name="categorie">
-								<option>{{trans('front.slider_categories')}}</option>
-								@foreach($categories as $cat)	
-								<option value="{{$cat -> id}}">{{App\Http\Controllers\Controller::getLabelFromObject($cat) }}</option>
-								@endforeach
-							</select>
+						<!-- Date Range -->
+						<div id="booking-date-range">
+						    <span></span>
 						</div>
 
 						<button class="button" onclick="window.location.href='listings-half-screen-map-list.html'">{{trans('front.slider_search')}}</button>
