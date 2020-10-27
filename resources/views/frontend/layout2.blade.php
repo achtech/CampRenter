@@ -144,11 +144,11 @@
 				</li>
 				<li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
 				<li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
-				<li><a href="/rentout" class="{{ $activePage == 'rent_out' || $activePage == 'rent_out_details'  ? ' active' : '' }}"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
+				<li><a href="/rentout" class="{{ $activePage == 'rent_out' ? 'active' : '' }}"><i class="sl sl-icon-plus"></i> Rent out</a></li>
 			</ul>
 
 			<ul data-submenu-title="Account">
-				<li class="active"><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
+				<li class=""><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
 				<li><a href="index.html"><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
 				<li><a href="index.html"><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_invoice')}}</a></li>
 			</ul>
