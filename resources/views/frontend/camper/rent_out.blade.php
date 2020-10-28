@@ -10,7 +10,7 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Create your camper profile</h2>
+				<h2>{{trans('front.create_camper')}}</h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
@@ -34,7 +34,7 @@
 					<div class="col-md-12">
 						<div class="row">
 							<div class="add-listing-headline">
-								<h3>1. Which type of vehicle do you want to rent out?</h3>
+								<h3>1. {{trans('front.witch_camper_type')}}</h3>
 							</div>
 						</div>
 					</div>
@@ -58,7 +58,7 @@
 					<div class="col-md-12">
 						<div class="row">
 							<div class="add-listing-headline" style="margin-top: 65px;">
-								<h3>2. Give your camper a lovely name</h3>
+								<h3>2. {{trans('front.give_name')}}</h3>
 							</div>
 						</div>
 					</div>
@@ -68,7 +68,7 @@
 						<div class="row">
 								<div class="col-md-12">
 									<input type="text" placeholder="My sweet Camper">
-									<h6>You can still change the name later on</h6>
+									<h6>{{trans('front.still_can_change')}}</h6>
 								</div>
 						</div>
 					</div>
@@ -77,15 +77,15 @@
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<input type="text" placeholder="e.g. 964 School Street">
-								<h6>If you have a recommendation code you can enter it here</h6>
+								<h6>{{trans('front.recommandation')}}</h6>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
 						<div style="float: right;">
-							<a href="/rentoutdetails" class="button">Apply <i class="fa fa-check-circle"></i></a>
-							<a href="{{route('frontend.camper')}}" class="button border">Cancel</a>
+							<a href="/rentoutdetails" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
+							<a href="{{route('frontend.camper')}}" class="button border">{{trans('front.cancel')}}</a>
 						</div>
 					</div>
 				</div>

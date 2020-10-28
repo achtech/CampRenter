@@ -38,27 +38,27 @@
 							<h3><strong>Camp Name</strong></h3>
 						</div>
 						<div class="row">
-							<h6>State:</h6>
+							<h6>{{trans('front.state')}}:</h6>
 							<p>Camp Name</p>
 						</div>
 					</li>
 					<li>
 						<div class="row">
-							<h5 style="margin-top: 0px; color:#39b7cd;">Complete the details about your vehicle now.</h5>
+							<h5 style="margin-top: 0px; color:#39b7cd;">{{trans('front.complete_details')}}</h5>
 							<div>
-								<h3 style="margin-top: 20px;"><strong>The vehicle</strong></h3>
+								<h3 style="margin-top: 20px;"><strong>{{trans('front.the_vehicle')}}</strong></h3>
 								<div class="payment-tab-trigger">
 									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">Vehicle data</label>
+									<label style="padding: 0px;" for="vehicle">{{trans('front.vehicle_data')}}</label>
 
 									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">Equipment</label>
+									<label style="padding: 0px;" for="vehicle">{{trans('front.equipment')}}</label>
 
 									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">Extras</label>
+									<label style="padding: 0px;" for="vehicle">{{trans('front.extras')}}</label>
 
 									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">Description</label>
+									<label style="padding: 0px;" for="vehicle">{{trans('front.description')}}</label>
 								</div>
 							</div>
 						</div>
@@ -66,7 +66,7 @@
 					<li>
 						<div class="row">
 							<div class="col-md-10" style="margin-top: 0px;">
-								<h3><strong>Photos</strong></h3>
+								<h3><strong>{{trans('front.photos')}}</strong></h3>
 							</div>
 							<div class="col-md-2" style="margin-top: 0px;">
 								<a href="/slidecamper"><h3><i class="sl sl-icon-plus"></i></h3></a>
@@ -75,19 +75,19 @@
 					</li>
 					<li>
 						<div class="row">
-							<h3 style="margin-top: 0px;"><strong>Rent out</strong></h3>
+							<h3 style="margin-top: 0px;"><strong>{{trans('front.menu_panel_rentout')}}</strong></h3>
 							<div class="payment-tab-trigger">
 								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">Insurance</label>
+								<label style="padding: 0px;" for="vehicle">{{trans('front.insurance')}}</label>
 
 								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">Rental terms</label>
+								<label style="padding: 0px;" for="vehicle">{{trans('front.rental_terms')}}</label>
 
 								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">Terms</label>
+								<label style="padding: 0px;" for="vehicle">{{trans('front.terms')}}</label>
 
 								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">Calendar</label>
+								<label style="padding: 0px;" for="vehicle">{{trans('front.Calendar')}}</label>
 							</div>
 						</div>
 					</li>
@@ -104,8 +104,8 @@
 							<div class="col-md-10">
 								<select class="chosen-select" data-placeholder="Sex">
 									<option label="Opening Time"></option>
-									<option>Female</option>
-									<option>Male</option>
+									<option>{{trans('front.female')}}</option>
+									<option>{{trans('front.male')}}</option>
 								</select>
 							</div>
 						</div>
@@ -114,12 +114,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" placeholder="First name">
+								<input type="text" placeholder="{{trans('front.first_name')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Last name">
+								<input type="text" placeholder="{{trans('front.last_name')}}">
 							</div>
 						</div>
 					</li>
@@ -127,12 +127,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-8">
-								<input type="text" placeholder="Street">
+								<input type="text" placeholder="{{trans('front.street')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-4">
-								<input type="text" placeholder="Street Num">
+								<input type="text" placeholder="{{trans('front.street_um')}}">
 							</div>
 						</div>
 					</li>
@@ -140,12 +140,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-8">
-								<input type="text" placeholder="Location">
+								<input type="text" placeholder="{{trans('front.location')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-4">
-								<input type="text" placeholder="Postal Code">
+								<input type="text" placeholder="{{trans('front.postal_code')}}">
 							</div>
 						</div>
 					</li>
@@ -153,7 +153,7 @@
 						<!-- Phone -->
 						<div class="row opening-day">
 							<div class="col-md-5">
-								<select class="chosen-select" data-placeholder="Country">
+								<select class="chosen-select" data-placeholder="{{trans('front.country')}}">
 									<option label="Opening Time"></option>
 									<option>Switezland</option>
 									<option>Germany</option>
@@ -166,36 +166,36 @@
 								<input type="text" placeholder="+41">
 							</div>
 							<div class="col-md-4">
-								<input type="text" placeholder="Mobile Number">
-								<h6> Format: 79 123 45 67; Communicated only after booking request is accepted</h6>
+								<input type="text" placeholder="{{trans('front.mobile_number')}}">
+								<h6>{{trans('front.format_num')}}</h6>
 							</div>
 						</div>
 					</li>
 
 					<li>
 						<!-- Phone -->
-						<h3>Date of birth</h3>
+						<h3>{{trans('front.date_birth')}}</h3>
 						<div class="row opening-day">
 							<div class="col-md-5">
-								<input type="text" placeholder="Day">
+								<input type="text" placeholder="{{trans('front.day')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-3">
-								<input type="text" placeholder="Month">
+								<input type="text" placeholder="{{trans('front.month')}}">
 							</div>
 							<div class="col-md-4">
-								<input type="text" placeholder="Year">
+								<input type="text" placeholder="{{trans('front.year')}}">
 							</div>
 						</div>
 					</li>
 
 					<li>
 						<!-- Phone -->
-						<h3>Your profile picture</h3>
+						<h3>{{trans('front.profile_pic')}}</h3>
 						<div class="submit-section" style="margin-top:40px;">
 							<div>
-								<a href="" class="button medium border">Upload</a>
+								<a href="" class="button medium border">{{trans('front.upload')}}</a>
 							</div>
 							<div class="user-profile-avatar"  style="float:right;"><img src="" alt=""></div>
 						</div>
@@ -203,21 +203,21 @@
 				</ul>
 				<ul style="list-style-type:none; margin-top:30px; padding-left: 0px;">
 					<li>
-					Additonal information about the vehicle owner
+					{{trans('front.additional_info')}}
 					</li>
 					<li>
 						<div class="checkboxes in-row margin-bottom-20">
 
 							<input id="check-a" type="checkbox" name="check">
-							<label for="check-a">Professional Rental Company</label>
-							<h6> Is the renting out of campers your main source of income?</h6>
+							<label for="check-a">{{trans('front.pro_rental_campany')}}</label>
+							<h6>{{trans('front.renting_income')}}</h6>
 						</div>
 					</li>
 					<li>
-					Banking date vehicle owner
+					{{trans('front.banking_date')}}
 					</li>
 					<li>
-						<h3>Account Holder</h3>
+						<h3>{{trans('front.account_holder')}}</h3>
 
 					</li>
 					<li>
@@ -266,11 +266,11 @@
 						</div>
 					</li>
 					<li>
-						<h3>Bank data</h3>
+						<h3>{{trans('front.bank_data')}}</h3>
 					</li>
 					<li>
 						<div class="form">
-							<h5>Adress</h5>
+							<h5>{{trans('front.adress')}}</h5>
 							<textarea class="WYSIWYG" name="summary" cols="20" rows="1" id="summary" spellcheck="true"></textarea>
 						</div>
 					</li>
@@ -285,34 +285,34 @@
 						<div class="row">
 							<div class="col-md-12">
 								<input type="text" placeholder="BIC">
-								<h6>Required for international transfers.</h6>
+								<h6>{{trans('front.bic_require')}}</h6>
 							</div>
 						</div>
 					</li>
 					<li>
-						<h3>Languages</h3>
+						<h3>{{trans('front.languages')}}</h3>
 					</li>
 					<li>
 
 							<div class="checkboxes in-row">
 								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">German</label>
+								<label for="check-a">{{trans('front.german')}}</label>
 							</div>
 							<div class="checkboxes in-row">
 								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">English</label>
+								<label for="check-a">{{trans('front.english')}}</label>
 							</div>
 							<div class="checkboxes in-row">
 								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">Italian</label>
+								<label for="check-a">{{trans('front.italian')}}</label>
 							</div>
 							<div class="checkboxes in-row">
 								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">French</label>
+								<label for="check-a">{{trans('front.french')}}</label>
 							</div>
 					</li>
 					<li>
-						<h3>Where did you see us last?</h3>
+						<h3>{{trans('front.where_see_us')}}</h3>
 					</li>
 					<li>
 							<div class="checkboxes in-row">
@@ -321,11 +321,11 @@
 							</div>
 							<div class="checkboxes in-row">
 								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">Billboard</label>
+								<label for="check-a">{{trans('front.billboard')}}</label>
 							</div>
 							<div class="checkboxes in-row">
 								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">Print advertisement</label>
+								<label for="check-a">{{trans('front.print_advertisement')}}</label>
 							</div>
 							<div class="checkboxes in-row">
 								<input id="check-a" type="checkbox" name="check">
@@ -346,7 +346,7 @@
 							<div class="checkboxes in-row ">
 								<input id="check-a" type="checkbox" name="check">
 								<label for="check-a">Flyer</label>
-								<h6>Please let us know where you came across us the last time.</h6>
+								<h6>{{trans('front.where_you_came')}}</h6>
 							</div>
 					</li>
 					<li>
@@ -358,7 +358,7 @@
 					</li>
 					<li>
 						<div class="row">
-							<h3 class="col-md-12">Who are you?</h3>
+							<h3 class="col-md-12">{{trans('front.who_are_you')}}</h3>
 						</div>
 					</li>
 					<li>
@@ -372,8 +372,8 @@
 						<div class="row">
 							<div class="col-md-12">
 							<div style="float: right;">
-								<a href="" class="button">Apply <i class="fa fa-check-circle"></i></a>
-								<a href="/rentout" class="button border">Cancel</a>
+								<a href="" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
+								<a href="/rentout" class="button border">{{trans('front.cancel')}}</a>
 							</div>
 						</div>
 					</li>

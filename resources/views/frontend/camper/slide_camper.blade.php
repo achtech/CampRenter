@@ -29,7 +29,7 @@
 			<div class="submit-section margin-top-45">
 				<form action="/file-upload" class="dropzone dz-clickable">
 					<div class="dz-default dz-message">
-							<span><i class="sl sl-icon-plus"></i> Click here or drop Photos to upload</span>
+							<span><i class="sl sl-icon-plus"></i> {{trans('front.drop_photos')}}</span>
 					</div>
 				</form>
 			</div>
