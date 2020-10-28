@@ -65,7 +65,12 @@
 					</li>
 					<li>
 						<div class="row">
-							<h3 style="margin-top: 0px;"><strong>Photos</strong></h3>
+							<div class="col-md-10" style="margin-top: 0px;">
+								<h3><strong>Photos</strong></h3>
+							</div>
+							<div class="col-md-2" style="margin-top: 0px;">
+								<a href="/slidecamper"><h3><i class="sl sl-icon-plus"></i></h3></a>
+							</div>
 						</div>
 					</li>
 					<li>

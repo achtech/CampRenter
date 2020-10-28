@@ -53,7 +53,7 @@ return [
     'slider_categories' => 'All Categories',
     'slider_search' => 'Search',
     'Rent out your vehicle or your equipment and insurance is included' => 'Rent out your vehicle or your equipment and insurance is included',
-    'Rent out Camper' => 'Rent out Camper',
+    'rent_out_camper' => 'Rent out Camper',
 
     /*
     -----------------------Footer ----------
@@ -97,7 +97,7 @@ return [
     'text_content_3' => "When you've created your account, you can start creating an entry for your camper. Let people know where to find your camper, show you some photos, and set a price.",
     'title_4' => 'Done!',
     'text_content_4' => 'Now all you have to do is wait. If someone is interested in serving campers, you will be notified and you can clarify details via the chat function if you wish.',
-    '' => '',
+    'gallery' => 'Gallery',
 
     /*
     ----------------------Login ------------------

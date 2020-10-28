@@ -3,14 +3,14 @@
 use App\Http\Controllers\frontend\FCamperController;
 use App\Http\Controllers\frontend\FClientController;
 use App\Http\Controllers\frontend\FContactController;
-use App\Models\User;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\frontend\FC_bookingController;
 use App\Http\Controllers\frontend\FC_CamperController;
 use App\Http\Controllers\frontend\FC_messageController;
 use App\Http\Controllers\frontend\FC_notificationController;
-use App\Http\Controllers\frontend\FC_bookingController;
-use App\Http\Controllers\frontend\FC_walletController;
 use App\Http\Controllers\frontend\FC_reviewController;
+use App\Http\Controllers\frontend\FC_walletController;
+use App\Models\User;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +46,7 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
     Route::get('/rentout', [FCamperController::class, 'rent_out'])->name('rent_out');
     Route::get('/rentoutdetails', [FCamperController::class, 'rent_out_details'])->name('rent_out_details');
+    Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
     Route::get('/contact', [FContactController::class, 'index'])->name('contact');
     Route::get('/terms', [FContactController::class, 'terms'])->name('terms');
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');

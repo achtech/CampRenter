@@ -30,4 +30,11 @@ class FCamperController extends Controller
         return view('frontend.camper.rent_out_details')->with('categories', $categories);
     }
 
+    public function slide_camper()
+    {
+        $categories = DB::table('camper_categories')->paginate(10);
+
+        return view('frontend.camper.slide_camper')->with('categories', $categories);
+    }
+
 }

@@ -15,8 +15,7 @@
 			<P>
 				{{trans('front.text_content_1_2')}}
 			</p>
-			<a class="button" href="/rentout">{{trans('front.Rent out Camper')}}</a>
-			<a class="button" >{{trans('front.learn_more')}}</a>
+			<a class="button" href="/rentout">{{trans('front.rent_out_camper')}}</a>
 		</div>
 		<div class="col-md-6">
 			<div>
@@ -39,6 +38,7 @@
 			<P>
 				{{trans('front.text_content_2_2')}}
 			</p>
+			<a class="button" href="/rentout"><i class="sl sl-icon-login"></i> {{trans('front.register')}}</a>
 		</div>
 	</div>
 	<div class="row">
@@ -49,7 +49,7 @@
 			<p>
 			{{trans('front.text_content_3')}}
 			</p>
-			<button class="button" onclick="">{{trans('front.Rent out Camper')}}</button>
+			<a class="button" href="">{{trans('front.rent_out_camper')}}</a>
 
 		</div>
 		<div class="col-md-6">
@@ -66,7 +66,7 @@
 			<p>
 			{{trans('front.text_content_4')}}
 			</p>
-			<button class="button" onclick="">{{trans('front.Rent out Camper')}}</button>
+			<a class="button" href="/rentout">{{trans('front.rent_out_camper')}}</a>
 
 		</div>
 	</div>
