@@ -36,7 +36,9 @@ Route::group(['middleware' => 'Lang'], function () {
     //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
     Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
-    Route::resource('/fclient', FClientController::class, ['except' => ['destroy', 'store'], 'names' => [
+    Route::get('/editPass', [FClientController::class, 'edit'])->name('frontend.client.editClient');
+    Route::put('/updateClient', [FClientController::class, 'updateF'])->name('frontend.client.updateF');
+    Route::resource('/fclient', FClientController::class, ['except' => ['destroy', 'store', 'edit', 'update'], 'names' => [
         'index' => 'frontend.client.index',
         'show' => 'frontend.client.show',
     ]]);

@@ -3,7 +3,8 @@
 {{ Breadcrumbs::render('edit_avatar',$data) }}
 <div class="container-fluid">
     <!--'action'=>'InsuranceController@store',-->
-    {{ Form::open(array('method'=>'PUT', 'enctype'=>'multipart/form-data' ,'route' => ['avatar.update', $data->id ?? 1])) }}
+    {{ Form::open(array('method'=>'PUT', 'enctype'=>'multipart/form-data'
+     ,'route' => ['avatar.update', $data->id ?? 1])) }}
     <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">

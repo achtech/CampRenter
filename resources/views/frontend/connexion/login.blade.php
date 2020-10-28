@@ -13,7 +13,7 @@
         </header>
         <div class="modal-body">
                 <div class="container">
-                    {{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@doLogin', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+                    {{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@resetPassword', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
                     
                         <div  class="form-group">
                             <label class="sr-only">

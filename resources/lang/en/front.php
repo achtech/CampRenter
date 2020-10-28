@@ -146,5 +146,9 @@ return [
     'verified_login' => 'Your email address has been successfully verified. You can now log in. We are looking forward to our journey together!',
     'forget_password' => 'Forgot password',
     'button_reset_pass' => 'Click the button to reset your password.',
-    'ignore_message_reset_pass' => 'If you didn t ask for a reset of your password you can ignore this message.'
+    'ignore_message_reset_pass' => 'If you didn t ask for a reset of your password you can ignore this message.',
+    'set_new_password' => 'Set new password',
+    'password_reset' => 'Reset password',
+    'set_new_password' => 'Set a new password',
+    'save_new_password' => 'Save',
 ];
