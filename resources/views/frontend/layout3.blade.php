@@ -68,7 +68,6 @@
 										<li><a href="{{route('frontend.clients.wallet')}}">{{trans('front.menu_panel_wallet')}}</a></li>
 										<li><a href="{{route('frontend.clients.review')}}">{{trans('front.menu_panel_review')}}</a></li>
 										<li><a href="{{route('clients.user.profile')}}">{{trans('front.menu_panel_profil')}}</a></li>
-										<li><a href="dashboard-invoice.html">{{trans('front.menu_panel_invoice')}}</a></li>
 										<li><a href="dashboard-my-profile.html">{{trans('front.menu_panel_logout')}}</a></li>
 									</ul>
 								</li>
@@ -224,6 +223,12 @@
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/tooltips.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/custom.js')}}"></script>
+
+<!-- Maps -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+<script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/asset/scripts/maps.js')}}"></script>
 
 <!-- Google Autocomplete -->
 <script>

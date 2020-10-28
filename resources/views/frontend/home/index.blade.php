@@ -31,7 +31,7 @@
 				<!-- Listing Item -->
 				@foreach($campers as $camper)
 					<div class="carousel-item">
-						<a href="listings-single-page.html" class="listing-item-container">
+						<a href="{{route('frontend.camper.detail')}}" class="listing-item-container">
 							<div class="listing-item">
 								<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
 								<div class="listing-item-content">
@@ -72,7 +72,7 @@
 				@foreach($categories as $category)
 					<!-- Box -->
 					<div class="col-md-3 alternative-imagebox">
-						<a href="listings-list-with-sidebar.html" >
+						<a href="{{route('frontend.camper.search')}}" >
 						<img src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
 							<h4>{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
 							<span class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} Listings</span>
