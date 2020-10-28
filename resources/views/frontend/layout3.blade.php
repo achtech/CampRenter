@@ -61,15 +61,15 @@
 
 								<li><a href="#">{{trans('front.menu_user_panel')}}</a>
 									<ul>
-										<li><a href="dashboard-my-listings.html">{{trans('front.menu_panel_camper')}}</a></li>
-										<li><a href="dashboard-messages.html">{{trans('front.menu_panel_message')}}</a></li>
-										<li><a href="dashboard-messages.html">{{trans('front.menu_panel_notification')}}</a></li>
-										<li><a href="dashboard-bookings.html">{{trans('front.menu_panel_booking')}}</a></li>
-										<li><a href="dashboard-wallet.html">{{trans('front.menu_panel_wallet')}}</a></li>
-										<li><a href="dashboard-reviews.html">{{trans('front.menu_panel_review')}}</a></li>
+										<li><a href="{{route('frontend.clients.camper')}}">{{trans('front.menu_panel_camper')}}</a></li>
+										<li><a href="{{route('frontend.clients.message')}}">{{trans('front.menu_panel_message')}}</a></li>
+										<li><a href="{{route('frontend.clients.notification')}}">{{trans('front.menu_panel_notification')}}</a></li>
+										<li><a href="{{route('frontend.clients.booking')}}">{{trans('front.menu_panel_booking')}}</a></li>
+										<li><a href="{{route('frontend.clients.wallet')}}">{{trans('front.menu_panel_wallet')}}</a></li>
+										<li><a href="{{route('frontend.clients.review')}}">{{trans('front.menu_panel_review')}}</a></li>
 										<li><a href="{{route('clients.user.profile')}}">{{trans('front.menu_panel_profil')}}</a></li>
-										<li><a href="dashboard-my-profile.html">{{trans('front.menu_panel_logout')}}</a></li>
 										<li><a href="dashboard-invoice.html">{{trans('front.menu_panel_invoice')}}</a></li>
+										<li><a href="dashboard-my-profile.html">{{trans('front.menu_panel_logout')}}</a></li>
 									</ul>
 								</li>
 					</ul>

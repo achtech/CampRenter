@@ -9,6 +9,8 @@ use App\Http\Controllers\frontend\FC_CamperController;
 use App\Http\Controllers\frontend\FC_messageController;
 use App\Http\Controllers\frontend\FC_notificationController;
 use App\Http\Controllers\frontend\FC_bookingController;
+use App\Http\Controllers\frontend\FC_walletController;
+use App\Http\Controllers\frontend\FC_reviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +62,9 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/detail_message_client', [FC_messageController::class, 'show'])->name('frontend.clients.message.detail');
     Route::get('/notification_client', [FC_notificationController::class, 'index'])->name('frontend.clients.notification');
     Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
+    Route::get('/wallet_client', [FC_walletController::class, 'index'])->name('frontend.clients.wallet');
+    Route::get('/review_client', [FC_reviewController::class, 'index'])->name('frontend.clients.review');
+
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
