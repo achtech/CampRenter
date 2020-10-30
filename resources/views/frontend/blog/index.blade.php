@@ -38,7 +38,7 @@
 			<div class="blog-post">
 				
 				<!-- Img -->
-				<a href="pages-blog-post.html" class="post-img">
+				<a href="{{route('frontend.blog.detail')}}" class="post-img">
 					<img src="{{asset('frontend/asset/images/blog-post-01.jpg')}}" alt="">
 				</a>
 				
@@ -65,7 +65,7 @@
 			<div class="blog-post">
 				
 				<!-- Img -->
-				<a href="pages-blog-post.html" class="post-img">
+				<a href="{{route('frontend.blog.detail')}}" class="post-img">
 					<img src="{{asset('frontend/asset/images/blog-post-02.jpg')}}" alt="">
 				</a>
 				
@@ -92,7 +92,7 @@
 			<div class="blog-post">
 				
 				<!-- Img -->
-				<a href="pages-pages-blog-post.html" class="post-img">
+				<a href="{{route('frontend.blog.detail')}}" class="post-img">
 					<img src="{{asset('frontend/asset/images/blog-post-03.jpg')}}" alt="">
 				</a>
 				

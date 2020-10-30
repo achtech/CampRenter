@@ -14,4 +14,11 @@ class FBlogController extends Controller
         $categories = DB::table('camper_categories')->paginate(10);
         return view('frontend.blog.index')->with('blogs', $blogs)->with('categories', $categories);
     }
+     //
+    public function show()
+    {
+        $blogs = DB::table('blogs')->get();
+        $categories = DB::table('camper_categories')->paginate(10);
+        return view('frontend.blog.detail')->with('blogs', $blogs)->with('categories', $categories);
+    }
 }
