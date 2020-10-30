@@ -6,7 +6,6 @@ return [
     'Cancel' => 'Abbrechen',
     'Edit' => 'Bearbeiten',
     'Export' => 'Export',
-    'Update' => 'Update',
     'No data found' => 'Keine Daten gefunden',
     'Operations' => 'Operation',
     'Read more' => 'Lesen Sie Mehr',
@@ -25,7 +24,6 @@ return [
     'delete_confirmation' => 'Delete confirmaton',
     'Return' => 'Return',
     'No Messages' => "Keine ungelesenen Nachrichten",
-    
 
     /** Delete Message */
     'message_delete_avatar' => 'Möchten Sie diesen avatar löschen ?',
@@ -121,6 +119,7 @@ return [
     'new_blog.breadcrumb' => 'Blog erstellen',
     'edit_blog.breadcrumb' => 'Blog bearbeiten',
     'reviews_camper.breadcrumb' => 'Rezension',
+    'show_blog.breadcrumb' => 'Blog anzeigen',
 
     /** Menu */
     'Dashboard' => "Dashboard",
@@ -168,8 +167,8 @@ return [
     'No campers' => 'Keine Camper',
 
     /** BOOKINGS */
-    'Booking' => 'Keine Buchung',
     'Booking' => 'Buchung',
+    'No Bookings' => 'Keine Buchung',
     'booking_management' => 'Buchungsverwaltung',
     'booking_list' => 'Liste der Buchung',
     'booking_status_booking' => 'Buchungsstatus',
@@ -282,15 +281,13 @@ return [
     'Date sent' => 'Datum gesendet',
     'detail_client' => 'Detail-Client',
     'Date' => 'Datum',
-    'driver_licence_image' => 'Führerscheinbild',
     'Email' => 'Email',
     'From' => 'Von',
+    'Image' => 'Bild',
     'height' => 'Höhe',
     'galery' => 'Galerie',
-    'Image' => 'Bild',
     'image_national' => 'Bild der Nationalen Karte',
     'included_kilometres' => 'Inklusive Kilometer',
-    'Logo' => 'Logo',
     'location' => 'Lage',
     'license_plate_number' => 'Kennzeichen',
     'length' => 'Länge',
@@ -300,10 +297,12 @@ return [
     'licence_age_desc' => 'Lizenz Alter Desc',
     'last_name' => 'Nachname',
     'label' => 'Etikett',
+    'Logo' => 'Logo',
+    'Language' => 'Sprache',
+    'Managing' => 'Verwaltung',
     'model' => 'Modell',
     'minimal_rent_days' => 'Minimale Miete Tage',
     'minimum_age' => 'Mindestlohn',
-    'Managing' => 'Verwalten',
     'national' => 'National',
     'not_payed' => 'Nicht gespielt',
     'number_kilometre' => 'Anzahl der Kilometer',
@@ -321,8 +320,10 @@ return [
     'Price per day' => 'Preis pro Tag',
     'Photo' => 'Foto',
     'remaining_days_number' => 'Anzahl der verbleibenden Tage',
+    'Review' => 'Rezension',
     'rent_management' => 'Mietmanagement',
     'role' => 'Rolle',
+    'Service' => 'Bedienung',
     'sleeping_places' => 'Schlafplatz',
     'search' => 'Suche',
     'send_date' => 'Datum',
@@ -335,14 +336,14 @@ return [
     'sleeping_places' => 'Anzahl der Plätze',
     'smoking_allowed' => 'Rauchen Erlaubt',
     'Status' => 'Status',
-    'Service' => 'Service',
     'total_solde' => 'Insgesamt Verkauft',
     'totransfert_solde' => 'Übertragen',
     'To' => 'Zu',
     'Phone' => 'Telefon',
-    'Update' => 'Aktualisieren',
     'value_of_vehicle' => 'Wert des Fahrzeugs',
     'vehicle_licence' => 'Fahrzeugschein',
     'view_booking' => 'Buchungen anzeigen',
     'width' => 'Breite',    
+    /**  PLEASE ADD YOUR NEW LABELS HERE */
+    
 ];
