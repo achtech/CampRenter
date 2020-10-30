@@ -26,7 +26,7 @@ use App\Http\Controllers\frontend\FBlogController;
 
 Route::get('lang/{lang}', function ($lang) {
     \Session::put('locale', $lang);
-    $user = User::find(auth()->user()->id);
+    $user = User::find(auth()->user() ? auth()->user()->id : 0);
     if ($user) {
         $user->lang = $lang;
         $user->update();

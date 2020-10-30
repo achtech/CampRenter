@@ -3,7 +3,7 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     /** Menu */
-    'menu_home' => 'Home',
+    'menu_home' => 'Zuhause',
     'menu_take-lease' => 'Take on lease',
     'menu_insert_vehicule' => 'Rent out',
     'menu_magazine' => 'Magazine',
