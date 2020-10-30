@@ -11,6 +11,7 @@ use App\Http\Controllers\frontend\FC_notificationController;
 use App\Http\Controllers\frontend\FC_bookingController;
 use App\Http\Controllers\frontend\FC_walletController;
 use App\Http\Controllers\frontend\FC_reviewController;
+use App\Http\Controllers\frontend\FBlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
     Route::post('/signUp', [FClientController::class, 'sign_up']);
+    Route::get('/blog', [FBlogController::class, 'index'])->name('frontend.blog');
+
 
     /************* Clients FrentEnd **********************/
     Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');
@@ -64,6 +67,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
     Route::get('/wallet_client', [FC_walletController::class, 'index'])->name('frontend.clients.wallet');
     Route::get('/review_client', [FC_reviewController::class, 'index'])->name('frontend.clients.review');
+    Route::get('/search_camper_client', [FC_CamperController::class, 'show'])->name('frontend.camper.search');
+    Route::get('/details_camper_client', [FC_CamperController::class, 'detail'])->name('frontend.camper.detail');
 
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');

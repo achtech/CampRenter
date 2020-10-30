@@ -11,6 +11,7 @@ class FBlogController extends Controller
     public function index()
     {
         $blogs = DB::table('blogs')->get();
-        return view('frontend.blog.index')->with('blogs', $blogs);
+        $categories = DB::table('camper_categories')->paginate(10);
+        return view('frontend.blog.index')->with('blogs', $blogs)->with('categories', $categories);
     }
 }

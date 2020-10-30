@@ -59,7 +59,7 @@
 							</ul>
 						</li>
 						<li><a class="{{ $activePage == 'camper' ? ' current' : '' }}" href="{{route('frontend.camper')}}">{{trans('front.menu_insert_vehicule')}}</a></li>
-
+						<li><a class="{{ $activePage == 'blog' ? ' current' : '' }}" href="{{route('frontend.blog')}}">{{trans('front.menu_blog')}}</a></li>
 						<li><a href="#">{{trans('front.menu_user_panel')}}</a>
 							<ul>
 								<li><a href="{{route('frontend.clients.camper')}}">{{trans('front.menu_panel_camper')}}</a></li>
@@ -70,7 +70,6 @@
 								<li><a href="{{route('frontend.clients.review')}}">{{trans('front.menu_panel_review')}}</a></li>
 								<li><a href="{{route('clients.user.profile')}}">{{trans('front.menu_panel_profil')}}</a></li>
 								<li><a href="dashboard-my-profile.html">{{trans('front.menu_panel_logout')}}</a></li>
-								<li><a href="dashboard-invoice.html">{{trans('front.menu_panel_invoice')}}</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -135,7 +134,6 @@
 			</ul>
 			<ul data-submenu-title="Account">
 				<li class=""><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
-				<li><a href="index.html"><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_invoice')}}</a></li>
 				<li><a href="index.html"><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
 			</ul>
 
@@ -167,6 +165,12 @@
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/tooltips.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/custom.js')}}"></script>
 
+<!-- Maps -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+<script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/asset/scripts/maps.js')}}"></script>
+
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
 <script src="{{asset('frontend/asset/scripts/moment.min.js')}}"></script>
 <script src="{{asset('frontend/asset/scripts/daterangepicker.js')}}"></script>
@@ -187,14 +191,6 @@ $(function() {
 	    "alwaysShowCalendars": true,
         startDate: start,
         endDate: end,
-        ranges: {
-           'Today': [moment(), moment()],
-           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-           'This Month': [moment().startOf('month'), moment().endOf('month')],
-           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        }
     }, cb);
 
     cb(start, end);
