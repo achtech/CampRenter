@@ -27,6 +27,7 @@ return [
     'menu_panel_dashboard_navigator' => 'Dashboard Navigation',
     'menu_panel_account' => 'My Account',
     'menu_panel_rentout' => 'Rent out',
+	'menu_blog' =>'Blog',
     /** Slider */
     'slider_title' => 'Rent motorhomes, campervans and caravans from private owners',
     'slider_looking_for' => 'What are you looking for?',
@@ -60,6 +61,7 @@ return [
     'our_bloc' => 'From The Blog',
     'Reviews' => 'Review(s)',
     'find_blog' => 'See all blogs',
+	'find_camper_now' =>'Find camper now',
     'client_camper_detail' => 'Detail',
     'client_camper_edit' => 'Edit',
     'client_camper_delete' => 'Delete',
