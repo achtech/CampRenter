@@ -114,7 +114,7 @@
 
 				<!-- Blog Post Item -->
 				<div class="col-md-6">
-					<a href="#" class="blog-compact-item-container">
+					<a href="#" class="{{route('frontend.blog.detail')}}">
 						<div class="blog-compact-item">
 							<img src="{{asset('frontend/asset/images/blog-compact-post-01.jpg')}}" alt="">
 							<span class="blog-item-tag">Tips</span>
@@ -132,7 +132,7 @@
 
 				<!-- Blog Post Item -->
 				<div class="col-md-6">
-					<a href="#" class="blog-compact-item-container">
+					<a href="{{route('frontend.blog.detail')}}" class="blog-compact-item-container">
 						<div class="blog-compact-item">
 							<img src="{{asset('frontend/asset/images/blog-compact-post-03.jpg')}}" alt="">
 							<span class="blog-item-tag">Tips</span>
