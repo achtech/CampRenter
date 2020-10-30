@@ -162,7 +162,7 @@
 			@endforeach
 
 			<div class="col-md-12 centered-content">
-				<a href="{{route('blog')}}" class="button border margin-top-10">{{trans('front.find_blog')}}</a>
+				<a href="{{route('frontend.blog')}}" class="button border margin-top-10">{{trans('front.find_blog')}}</a>
 			</div>
 
 		</div>

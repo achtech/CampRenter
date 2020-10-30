@@ -12,6 +12,7 @@ use App\Http\Controllers\frontend\FC_notificationController;
 use App\Http\Controllers\frontend\FC_bookingController;
 use App\Http\Controllers\frontend\FC_walletController;
 use App\Http\Controllers\frontend\FC_reviewController;
+use App\Http\Controllers\frontend\FBlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
     Route::post('/signUp', [FClientController::class, 'sign_up']);
+    Route::get('/blog', [FBlogController::class, 'index'])->name('frontend.blog');
+
 
     /************* Clients FrentEnd **********************/
     Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');

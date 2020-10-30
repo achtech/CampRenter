@@ -43,6 +43,8 @@ return [
     'menu_panel_invoice' =>'Invoice',
     'menu_panel_dashboard_navigator'=>'Dashboard Navigation',
     'menu_panel_account'=>'My Account',
+    'menu_blog' =>'Blog
+    ',
     /*
     -----------------------Slider ----------
     */
@@ -82,6 +84,7 @@ return [
     'our_bloc'=>'From The Blog',
     'Reviews' => 'Review(s)',
     'find_blog' => 'See all blogs',
+    'find_camper_now' =>'Find camper now',
     /*
     ---------------------- Rent out Camper page ------------------
      */

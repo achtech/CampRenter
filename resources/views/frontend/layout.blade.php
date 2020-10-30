@@ -5,7 +5,7 @@
 ================================================== -->
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
 
-<title>CampUnit</title>
+<title>Campunit</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -65,6 +65,7 @@
 								{{trans('front.menu_insert_vehicule')}}
 							</a>
 						</li>
+						<li><a class="{{ $activePage == 'blog' ? ' current' : '' }}" href="{{route('frontend.blog')}}">{{trans('front.menu_blog')}}</a></li>
 
 						<li><a href="#">{{trans('front.menu_user_panel')}}</a>
 							<ul>
