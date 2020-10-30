@@ -171,6 +171,9 @@
 <script src="{{asset('frontend/asset/scripts/moment.min.js')}}"></script>
 <script src="{{asset('frontend/asset/scripts/daterangepicker.js')}}"></script>
 
+<!-- DropZone | Documentation: http://dropzonejs.com -->
+<script type="text/javascript" src="{{asset('frontend/asset/scripts/dropzone.js')}}"></script>
+
 <script>
 $(function() {
 
