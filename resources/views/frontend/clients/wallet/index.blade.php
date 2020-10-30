@@ -26,14 +26,14 @@
 		<div class="row">
 
 			<!-- Item -->
-			<div class="col-lg-4 col-md-6">
+			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-1">
 					<div class="dashboard-stat-content wallet-totals"><h4>84.50</h4> <span>Withdrawable Balance <strong class="wallet-currency">USD</strong></span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
 			<!-- Item -->
-			<div class="col-lg-4 col-md-6">
+			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-3">
 					<div class="dashboard-stat-content wallet-totals"><h4>245.15</h4> <span>Total Earnings <strong class="wallet-currency">USD</strong></span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Money-Bag"></i></div>
@@ -41,13 +41,35 @@
 			</div>
 
 			<!-- Item -->
-			<div class="col-lg-4 col-md-6">
-				<div class="dashboard-stat color-2">
+			<div class="col-lg-2 col-md-6">
+				<div class="dashboard-stat color-5">
 					<div class="dashboard-stat-content"><h4>3</h4> <span>Total Orders</span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Shopping-Cart"></i></div>
 				</div>
 			</div>
 
+			<!-- Item -->
+			<div class="col-lg-2 col-md-6">
+				<div class="dashboard-stat color-6">
+					<div class="dashboard-stat-content"><h4>3</h4> <span>Total Orders</span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Shopping-Cart"></i></div>
+				</div>
+			</div>
+			<!-- Item -->
+			<div class="col-lg-2 col-md-6">
+				<div class="dashboard-stat color-7">
+					<div class="dashboard-stat-content"><h4>3</h4> <span>Total Orders</span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Shopping-Cart"></i></div>
+				</div>
+			</div>
+			<!-- Item -->
+			<div class="col-lg-2 col-md-6">
+				<div class="dashboard-stat color-2">
+					<div class="dashboard-stat-content"><h4>3</h4> <span>Total Orders</span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Shopping-Cart"></i></div>
+				</div>
+			</div>
+		
 		</div>
 
 		<div class="row">

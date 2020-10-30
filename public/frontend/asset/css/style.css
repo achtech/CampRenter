@@ -14375,7 +14375,7 @@ a.dashboard-responsive-nav-trigger {
 }
 
 .dashboard-stat-content h4 {
-    font-size: 42px;
+    font-size: 27px;
     font-weight: 600;
     padding: 0;
     margin: 0;
@@ -14385,7 +14385,7 @@ a.dashboard-responsive-nav-trigger {
 }
 
 .dashboard-stat-content span {
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 4px;
     line-height: 24px;
     font-weight: 300;
@@ -14424,6 +14424,21 @@ a.dashboard-responsive-nav-trigger {
     background-color: #f3103c;
 }
 
+.dashboard-stat.color-5 {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
+    background-color: #d21309;
+}
+
+
+.dashboard-stat.color-6 {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
+    background-color: #136dd5;
+}
+
+.dashboard-stat.color-7 {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
+    background-color: #9251a2;
+}
 
 /* ---------------------------------- */
 
