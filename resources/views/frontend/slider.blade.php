@@ -9,11 +9,6 @@
 						<!-- Typed words can be configured in script settings at the bottom of this HTML file -->
 					</h2>
 					<div class="main-search-input">
-
-						<div class="main-search-input-item">
-							<input type="text" placeholder="{{trans('front.slider_looking_for')}}" value=""/>
-						</div>
-
 						<div class="main-search-input-item location">
 							<div id="autocomplete-container">
 								<input id="autocomplete-input" type="text" placeholder="{{trans('front.slider_location')}}">

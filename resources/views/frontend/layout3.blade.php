@@ -50,28 +50,28 @@
 					<ul id="responsive">
 
 						<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="/">{{trans('front.menu_home')}}</a></li>
-								<li><a  href="#">{{trans('front.menu_rent')}}</a>
-									<ul>
-										@foreach($categories as $cat)
-											<li><a href="index-3.html">{{App\Http\Controllers\Controller::getLabelFromObject($cat)}}</a></li>
-										@endforeach
-									</ul>
-								</li>
-								<li><a class="{{ $activePage == 'camper' ? ' current' : '' }}" href="{{route('frontend.camper')}}">{{trans('front.menu_insert_vehicule')}}</a></li>
+						<li><a  href="#">{{trans('front.menu_rent')}}</a>
+							<ul>
+								@foreach($categories as $cat)
+									<li><a href="index-3.html">{{App\Http\Controllers\Controller::getLabelFromObject($cat)}}</a></li>
+								@endforeach
+							</ul>
+						</li>
+						<li><a class="{{ $activePage == 'camper' ? ' current' : '' }}" href="{{route('frontend.camper')}}">{{trans('front.menu_insert_vehicule')}}</a></li>
+						<li><a class="{{ $activePage == 'blog' ? ' current' : '' }}" href="{{route('frontend.blog')}}">{{trans('front.menu_blog')}}</a></li>
 
-								<li><a href="#">{{trans('front.menu_user_panel')}}</a>
-									<ul>
-										<li><a href="{{route('frontend.clients.camper')}}">{{trans('front.menu_panel_camper')}}</a></li>
-										<li><a href="{{route('frontend.clients.message')}}">{{trans('front.menu_panel_message')}}</a></li>
-										<li><a href="{{route('frontend.clients.notification')}}">{{trans('front.menu_panel_notification')}}</a></li>
-										<li><a href="{{route('frontend.clients.booking')}}">{{trans('front.menu_panel_booking')}}</a></li>
-										<li><a href="{{route('frontend.clients.wallet')}}">{{trans('front.menu_panel_wallet')}}</a></li>
-										<li><a href="{{route('frontend.clients.review')}}">{{trans('front.menu_panel_review')}}</a></li>
-										<li><a href="{{route('clients.user.profile')}}">{{trans('front.menu_panel_profil')}}</a></li>
-										<li><a href="dashboard-invoice.html">{{trans('front.menu_panel_invoice')}}</a></li>
-										<li><a href="dashboard-my-profile.html">{{trans('front.menu_panel_logout')}}</a></li>
-									</ul>
-								</li>
+						<li><a href="#">{{trans('front.menu_user_panel')}}</a>
+							<ul>
+								<li><a href="{{route('frontend.clients.camper')}}">{{trans('front.menu_panel_camper')}}</a></li>
+								<li><a href="{{route('frontend.clients.message')}}">{{trans('front.menu_panel_message')}}</a></li>
+								<li><a href="{{route('frontend.clients.notification')}}">{{trans('front.menu_panel_notification')}}</a></li>
+								<li><a href="{{route('frontend.clients.booking')}}">{{trans('front.menu_panel_booking')}}</a></li>
+								<li><a href="{{route('frontend.clients.wallet')}}">{{trans('front.menu_panel_wallet')}}</a></li>
+								<li><a href="{{route('frontend.clients.review')}}">{{trans('front.menu_panel_review')}}</a></li>
+								<li><a href="{{route('clients.user.profile')}}">{{trans('front.menu_panel_profil')}}</a></li>
+								<li><a href="dashboard-my-profile.html">{{trans('front.menu_panel_logout')}}</a></li>
+							</ul>
+						</li>
 					</ul>
 				</nav>
 				<div class="clearfix"></div>
@@ -225,26 +225,9 @@
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/tooltips.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/custom.js')}}"></script>
 
-<!-- Google Autocomplete -->
-<script>
-  function initAutocomplete() {
-    var input = document.getElementById('autocomplete-input');
-    var autocomplete = new google.maps.places.Autocomplete(input);
+<!-- Maps -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
 
-    autocomplete.addListener('place_changed', function() {
-      var place = autocomplete.getPlace();
-      if (!place.geometry) {
-        return;
-      }
-    });
-
-	if ($('.main-search-input-item')[0]) {
-	    setTimeout(function(){
-	        $(".pac-container").prependTo("#autocomplete-container");
-	    }, 300);
-	}
-}
-</script>
 
 <!-- Leaflet // Docs: https://leafletjs.com/ -->
 <script src="{{asset('frontend/asset/scripts/leaflet.min.js')}}"></script>

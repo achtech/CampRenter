@@ -66,7 +66,7 @@ class BillingController extends Controller
     }
     public function export(Request $request)
     {
-        $datas = $this->getBillingData($request)->where('status', 0)->get();
+        $datas = $this->getBillingData($request)->where('billings.status', 0)->get();
         $dom = new DOMDocument();
         $dom->encoding = 'utf-8';
         $dom->xmlVersion = '1.0';
@@ -204,7 +204,7 @@ class BillingController extends Controller
         $notPayed = $request->notPayed ?? '';
         $client = $request->ownerId ?? '';
         $datas = DB::table('billings')->join('clients', 'billings.id_clients', '=', 'clients.id')
-            ->select('billings.id', 'billings.status', 'billings.total', 'billings.payment_date', 'clients.client_name', 'clients.client_last_name');
+            ->select('billings.*', 'clients.client_name', 'clients.client_last_name');
         if (!empty($startDate)) {
             $datas = $datas->whereDate('payment_date', '>=', $startDate);
         }
