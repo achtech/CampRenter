@@ -79,6 +79,8 @@ return [
     'title_4' => 'Done!',
     'text_content_4' => 'Now all you have to do is wait. If someone is interested in serving campers, you will be notified and you can clarify details via the chat function if you wish.',
     '' => '',
+    'tab_owner' => 'Owner',
+    'tab_renter' => 'Renter',
 
     /** Login */
     'to_connect' => 'Log In',
