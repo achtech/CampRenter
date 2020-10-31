@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\frontend\FBlogController;
 use App\Http\Controllers\frontend\FCamperController;
 use App\Http\Controllers\frontend\FClientController;
 use App\Http\Controllers\frontend\FContactController;
@@ -11,7 +12,6 @@ use App\Http\Controllers\frontend\FC_reviewController;
 use App\Http\Controllers\frontend\FC_walletController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\frontend\FBlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +48,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/rentout', [FCamperController::class, 'rent_out'])->name('rent_out');
     Route::get('/rentoutdetails', [FCamperController::class, 'rent_out_details'])->name('rent_out_details');
     Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
+    Route::get('/campersteps', [FCamperController::class, 'camper_steps'])->name('camper_steps');
+    Route::get('/fillinvehicle', [FCamperController::class, 'fill_in_vehicle'])->name('fill_in_vehicle');
     Route::get('/contact', [FContactController::class, 'index'])->name('contact');
     Route::get('/terms', [FContactController::class, 'terms'])->name('terms');
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
@@ -58,7 +60,6 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
     Route::post('/signUp', [FClientController::class, 'sign_up']);
     Route::get('/blog', [FBlogController::class, 'index'])->name('frontend.blog');
-
 
     /************* Clients FrentEnd **********************/
     Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');

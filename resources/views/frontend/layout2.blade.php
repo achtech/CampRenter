@@ -12,6 +12,7 @@
 ================================================== -->
 <link rel="stylesheet" href="{{asset('frontend/asset/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/asset/css/main-color.css')}}" id="colors">
+<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
 
 </head>
 
@@ -211,7 +212,65 @@ $('#booking-date-range').on('hide.daterangepicker', function(ev, picker) {
 	$('.daterangepicker').addClass('calendar-hidden');
 });
 </script>
+<script>
+	let curOpen;
 
+$(document).ready(function() {
+  curOpen = $('.step')[0];
 
+  $('.next-btn').on('click', function() {
+    let cur = $(this).closest('.step');
+    let next = $(cur).next();
+    $(cur).addClass('minimized');
+    setTimeout(function() {
+      $(next).removeClass('minimized');
+      curOpen = $(next);
+    }, 400);
+  });
+
+  $('.close-btn').on('click', function() {
+    let cur = $(this).closest('.step');
+    $(cur).addClass('minimized');
+    curOpen = null;
+  });
+
+  $('.step .step-content').on('click' ,function(e) {
+    e.stopPropagation();
+  });
+
+  $('.step').on('click', function() {
+    if (!$(this).hasClass("minimized")) {
+      curOpen = null;
+      $(this).addClass('minimized');
+    }
+    else {
+      let next = $(this);
+      if (curOpen === null) {
+        curOpen = next;
+        $(curOpen).removeClass('minimized');
+      }
+      else {
+        $(curOpen).addClass('minimized');
+        setTimeout(function() {
+          $(next).removeClass('minimized');
+          curOpen = $(next);
+        }, 300);
+      }
+    }
+  });
+})
+</script>
+
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+<style>
+	#map {
+		width: 95%;
+		height: 450px;
+		background: grey;
+	}
+</style>
 </body>
 </html>

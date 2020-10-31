@@ -69,7 +69,7 @@
 								<h3><strong>{{trans('front.photos')}}</strong></h3>
 							</div>
 							<div class="col-md-2" style="margin-top: 0px;">
-								<a href="/slidecamper"><h3><i class="sl sl-icon-plus"></i></h3></a>
+								<a href="{{route('slide_camper')}}"><h3><i class="sl sl-icon-plus"></i></h3></a>
 							</div>
 						</div>
 					</li>
@@ -372,8 +372,8 @@
 						<div class="row">
 							<div class="col-md-12">
 							<div style="float: right;">
-								<a href="" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-								<a href="/rentout" class="button border">{{trans('front.cancel')}}</a>
+								<a href="{{route('camper_steps')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
+								<a href="{{route('rent_out')}}" class="button border">{{trans('front.cancel')}}</a>
 							</div>
 						</div>
 					</li>
