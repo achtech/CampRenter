@@ -56,7 +56,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
     Route::post('/signUp', [FClientController::class, 'sign_up']);
     Route::get('/blog', [FBlogController::class, 'index'])->name('frontend.blog');
-    Route::get('/blog_detail', [FBlogController::class, 'show'])->name('frontend.blog.detail');
+    Route::get('blog/{id}/detail', [FBlogController::class, 'show'])->name('frontend.blog.fdetail');
+    Route::get('blog/search', [FBlogController::class, 'search'])->name('frontend.blog.search');
 
     /************* Clients FrentEnd **********************/
     Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');

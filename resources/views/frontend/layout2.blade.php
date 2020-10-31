@@ -95,9 +95,9 @@
 							<li><a href="index.html"><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
 						</ul>
 					</div>
-					<a href="dashboard-add-listing.html" class="button border with-icon min-width_lang current">EN</a>
-					<a href="dashboard-add-listing.html" class="button border with-icon min-width_lang">DE</a>
-					<a href="dashboard-add-listing.html" class="button border with-icon min-width_lang">FR</a>
+					<a href="{{ url('lang/en') }}" class="button border with-icon min-width_lang {{app()->getLocale()== 'en' ? 'current' : ''}}">EN</a>
+					<a href="{{ url('lang/de') }}" class="button border with-icon min-width_lang {{app()->getLocale()== 'de' ? 'current' : ''}}">DE</a>
+					<a href="{{ url('lang/fr') }}" class="button border with-icon min-width_lang {{app()->getLocale()== 'fr' ? 'current' : ''}}">FR</a>
 				</div>
 				<!-- Header Widget / End -->
 			</div>

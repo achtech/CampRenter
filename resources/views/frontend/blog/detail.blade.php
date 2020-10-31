@@ -9,13 +9,13 @@
 		<div class="row">
 			<div class="col-md-12">
 
-				<h2>Blog</h2><span>Latest News</span>
+				<h2>{{__('front.Blog')}}</h2><span>{{__('front.Latest News')}}</span>
 
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li>Blog</li>
+						<li><a href="/">{{__('front.menu_home')}}</a></li>
+						<li>{{__('front.Blog')}}</li>
 					</ul>
 				</nav>
 
@@ -42,31 +42,21 @@
 			<div class="blog-post single-post">
 				
 				<!-- Img -->
-				<img class="post-img" src="{{asset('frontend/asset/images/blog-post-02.jpg')}}" alt="">
-
+				<img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{$blog->title}}">
 				
 				<!-- Content -->
 				<div class="post-content">
 
-					<h3>The 50 Greatest Street Arts In London</h3>
+					<h3>{{$blog->title}}</h3>
 
 					<ul class="post-meta">
-						<li>August 22, 2019</li>
-						<li><a href="#">Tips</a></li>
-						<li><a href="#">5 Comments</a></li>
+						<li>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}</li>
+						<li>{{$blog->created_at}}</li>
+						<li>{{App\Http\Controllers\frontend\FBlogController::getBlogReviews($blog->id)}} Comments</li>
 					</ul>
 
-					<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae, tempus sed augue. Curabitur quis lectus quis augue dapibus facilisis. Vivamus tincidunt orci est, in vehicula nisi eleifend ut. Vestibulum sagittis varius orci vitae.</p>
+					<p>{{$blog->article}}</p>
 
-					<div class="post-quote">
-						<span class="icon"></span>
-						<blockquote>
-							Mauris aliquet ultricies ante, non faucibus ante gravida sed. Sed ultrices pellentesque purus, vulputate volutpat ipsum hendrerit sed neque sed sapien rutrum.
-						</blockquote>
-					</div>
-
-					<p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Cras suscipit, quam vitae adipiscing faucibus, risus nibh laoreet odio, a porttitor metus eros ut enim. Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium lorem hendrerit eros sagittis fermentum.</p>
-					<p>Phasellus enim magna, varius et commodo ut, ultricies vitae velit. Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo. In libero urna, venenatis sit amet ornare non, suscipit nec risus. Sed consequat justo non mauris pretium at tempor justo sodales. Quisque tincidunt laoreet malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer vitae ante enim. Fusce sed elit est. Suspendisse sit amet mauris in quam pretium faucibus et aliquam odio. </p>
 
 
 					<!-- Share Buttons -->
@@ -85,78 +75,23 @@
 
 			<!-- Post Navigation -->
 			<ul id="posts-nav" class="margin-top-0 margin-bottom-45">
+			@if($next)
 				<li class="next-post">
-					<a href="#"><span>Next Post</span>
-					The Best Cofee Shops In Sydney Neighborhoods</a>
+					<a href="{{route('frontend.blog.fdetail',$next ?? 0)}}"><span>Next Post</span>{{$nextTitle ?? ''}}</a>
 				</li>
+			@endif
+			@if($previous)
 				<li class="prev-post">
-					<a href="#"><span>Previous Post</span>
-					Hotels for All Budgets</a>
+					<a href="{{route('frontend.blog.fdetail',$previous ?? 0)}}"><span>Previous Post</span>{{$previousTitle ?? ''}}</a>
 				</li>
+			@endif
 			</ul>
-
-
-			<!-- About Author -->
-			<div class="about-author">
-				<img src="{{asset('frontend/asset/images/user-avatar.jpg')}}" alt="" />
-				<div class="about-description">
-					<h4>Tom Perrin</h4>
-					<a href="#">tom@example.com</a>
-					<p>Nullam ultricies, velit ut varius molestie, ante metus condimentum nisi, dignissim facilisis turpis ex in libero. Sed porta ante tortor, a pulvinar mi facilisis nec. Proin finibus dolor ac convallis congue.</p>
-				</div>
-			</div>
-
-
-			<!-- Related Posts -->
-			<div class="clearfix"></div>
-			<h4 class="headline margin-top-25">Related Posts</h4>
-			<div class="row">
-
-				<!-- Blog Post Item -->
-				<div class="col-md-6">
-					<a href="#" class="{{route('frontend.blog.detail')}}">
-						<div class="blog-compact-item">
-							<img src="{{asset('frontend/asset/images/blog-compact-post-01.jpg')}}" alt="">
-							<span class="blog-item-tag">Tips</span>
-							<div class="blog-compact-item-content">
-								<ul class="blog-post-tags">
-									<li>22 August 2019</li>
-								</ul>
-								<h3>Hotels for All Budgets</h3>
-								<p>Sed sed tristique nibh iam porta volutpat finibus. Donec in aliquet urneget mattis lorem. Pellentesque pellentesque.</p>
-							</div>
-						</div>
-					</a>
-				</div>
-				<!-- Blog post Item / End -->
-
-				<!-- Blog Post Item -->
-				<div class="col-md-6">
-					<a href="{{route('frontend.blog.detail')}}" class="blog-compact-item-container">
-						<div class="blog-compact-item">
-							<img src="{{asset('frontend/asset/images/blog-compact-post-03.jpg')}}" alt="">
-							<span class="blog-item-tag">Tips</span>
-							<div class="blog-compact-item-content">
-								<ul class="blog-post-tags">
-									<li>10 August 2019</li>
-								</ul>
-								<h3>The Best Cofee Shops In Sydney Neighborhoods</h3>
-								<p>Sed sed tristique nibh iam porta volutpat finibus. Donec in aliquet urneget mattis lorem. Pellentesque pellentesque.</p>
-							</div>
-						</div>
-					</a>
-				</div>
-				<!-- Blog post Item / End -->
-
-			</div>
-			<!-- Related Posts / End -->
-
 
 			<div class="margin-top-50"></div>
 
 			<!-- Reviews -->
 			<section class="comments">
-			<h4 class="headline margin-bottom-35">Comments <span class="comments-amount">(5)</span></h4>
+			<h4 class="headline margin-bottom-35">Comments <span class="comments-amount">({{App\Http\Controllers\frontend\FBlogController::getBlogReviews($blog->id)}})</span></h4>
 
 				<ul>
 					<li>
@@ -263,99 +198,69 @@
 
 	<!-- Widgets -->
 	<div class="col-lg-3 col-md-4">
-		<div class="sidebar right">
-
-			<!-- Widget -->
-			<div class="widget">
-				<h3 class="margin-top-0 margin-bottom-25">Search Blog</h3>
-				<div class="search-blog-input">
-					<div class="input"><input class="search-field" type="text" placeholder="Type and hit enter" value=""/></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<!-- Widget / End -->
-
-
-			<!-- Widget -->
-			<div class="widget margin-top-40">
-				<h3>Got any questions?</h3>
-				<div class="info-box margin-bottom-10">
-					<p>Having any questions? Feel free to ask!</p>
-					<a href="pages-contact.html" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> Drop Us a Line</a>
-				</div>
-			</div>
-			<!-- Widget / End -->
-
-
-			<!-- Widget -->
-			<div class="widget margin-top-40">
-
-				<h3>Popular Posts</h3>
-				<ul class="widget-tabs">
-
-					<!-- Post #1 -->
-					<li>
-						<div class="widget-content">
-								<div class="widget-thumb">
-								<a href="pages-blog-post.html"><img src="{{asset('frontend/asset/images/blog-widget-03.jpg')}}" alt=""></a>
-							</div>
-							
-							<div class="widget-text">
-								<h5><a href="pages-blog-post.html">Hotels for All Budgets </a></h5>
-								<span>October 26, 2016</span>
-							</div>
-							<div class="clearfix"></div>
+				<div class="sidebar right">
+				{{ Form::open(['action'=>'App\Http\Controllers\frontend\FBlogController@search','method'=>'GET']) }}
+					<!-- Widget -->
+					<div class="widget">
+						<h3 class="margin-top-0 margin-bottom-25">Search Blog</h3>
+						<div class="search-blog-input">
+							<div class="input"><input class="search-field" type="text" placeholder="Type and hit enter" name="searchBlog" value="{{$searchBlog ?? ''}}" /></div>
 						</div>
-					</li>
-					
-					<!-- Post #2 -->
-					<li>
-						<div class="widget-content">
-							<div class="widget-thumb">
-								<a href="pages-blog-post.html"><img src="{{asset('frontend/asset/images/blog-widget-02.jpg')}}" alt=""></a>
-							</div>
-							
-							<div class="widget-text">
-								<h5><a href="pages-blog-post.html">The 50 Greatest Street Arts In London</a></h5>
-								<span>November 9, 2016</span>
-							</div>
-							<div class="clearfix"></div>
+						<div class="clearfix"></div>
+					</div>
+					<!-- Widget / End -->
+					{{ Form::close() }} 
+
+					<!-- Widget -->
+					<div class="widget margin-top-40">
+						<h3>Got any questions?</h3>
+						<div class="info-box margin-bottom-10">
+							<p>Having any questions? Feel free to ask!</p>
+							<a href="/contact" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> Drop Us a Line</a>
 						</div>
-					</li>
-					
-					<!-- Post #3 -->
-					<li>
-						<div class="widget-content">
-							<div class="widget-thumb">
-								<a href="pages-blog-post.html"><img src="{{asset('frontend/asset/images/blog-widget-01.jpg')}}" alt=""></a>
-							</div>
-							
-							<div class="widget-text">
-								<h5><a href="pages-blog-post.html">The Best Cofee Shops In Sydney Neighborhoods</a></h5>
-								<span>November 12, 2016</span>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</li>
-
-				</ul>
-
-			</div>
-			<!-- Widget / End-->
+					</div>
+					<!-- Widget / End -->
 
 
-			<!-- Widget -->
-			<div class="widget margin-top-40">
-				<h3 class="margin-bottom-25">Social</h3>
-				<ul class="social-icons rounded">
-					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-					<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
-				</ul>
+					<!-- Widget -->
+					<div class="widget margin-top-40">
 
-			</div>
-			<!-- Widget / End-->
+						<h3>Popular Posts</h3>
+						<ul class="widget-tabs">
+							@foreach($populairePost as $blog)
+							<li>
+								<div class="widget-content">
+										<div class="widget-thumb">
+										<a href="{{route('frontend.blog.fdetail',$blog->id)}}"><img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{$blog->title}}"></a>
+									</div>
+
+									<div class="widget-text">
+										<h5><a href="pages-blog-post.html">{{$blog->title}}</a></h5>
+										<span>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}, {{$blog->created_at}}</span>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</li>
+							@endforeach
+
+						</ul>
+
+					</div>
+					<!-- Widget / End-->
+
+
+					<!-- Widget -->
+					<div class="widget margin-top-40">
+						<h3 class="margin-bottom-25">Social</h3>
+						<ul class="social-icons rounded">
+							<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+							<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+							<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+							<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+						</ul>
+
+					</div>
+					<!-- Widget / End-->
 
 			<div class="clearfix"></div>
 			<div class="margin-bottom-40"></div>
