@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('lang/{lang}', function ($lang) {
     \Session::put('locale', $lang);
-    $user = User::find(auth()->user()->id);
+    $user = User::find(auth()->user() ? auth()->user()->id : 0);
     if ($user) {
         $user->lang = $lang;
         $user->update();
@@ -38,7 +38,6 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
-    Route::get('/blog', [FBlogController::class, 'index'])->name('blog');
     //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
     Route::resource('client', FClientController::class, ['except' => ['destroy', 'store'], 'names' => [
@@ -60,6 +59,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
     Route::post('/signUp', [FClientController::class, 'sign_up']);
     Route::get('/blog', [FBlogController::class, 'index'])->name('frontend.blog');
+    Route::get('blog/{id}/detail', [FBlogController::class, 'show'])->name('frontend.blog.fdetail');
+    Route::get('blog/search', [FBlogController::class, 'search'])->name('frontend.blog.search');
 
     /************* Clients FrentEnd **********************/
     Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');

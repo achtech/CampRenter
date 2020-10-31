@@ -145,7 +145,7 @@
 			<!-- Blog Post Item -->
 			@foreach($blogs as $blog)
 			<div class="col-md-4">
-				<a href="pages-blog-post.html" class="blog-compact-item-container">
+				<a href="{{route('frontend.blog.fdetail',$blog->id)}}" class="blog-compact-item-container">
 					<div class="blog-compact-item">
 						<img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="">
 						<span class="blog-item-tag">Tips</span>

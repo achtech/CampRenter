@@ -1,25 +1,8 @@
 <?php
-
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-     */
-
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
-    /*
-    |-----------------Menu ------------------
-
-     */
+    /** Menu */
     'menu_home' => 'Home',
     'menu_take-lease' => 'Take on lease',
     'menu_insert_vehicule' => 'Rent out',
@@ -44,11 +27,8 @@ return [
     'menu_panel_dashboard_navigator' => 'Dashboard Navigation',
     'menu_panel_account' => 'My Account',
     'menu_panel_rentout' => 'Rent out',
-    'menu_blog' =>'Blog
-    ',
-    /*
-    -----------------------Slider ----------
-     */
+	'menu_blog' =>'Blog',
+    /** Slider */
     'slider_title' => 'Rent motorhomes, campervans and caravans from private owners',
     'slider_looking_for' => 'What are you looking for?',
     'slider_location' => 'Location',
@@ -57,9 +37,7 @@ return [
     'Rent out your vehicle or your equipment and insurance is included' => 'Rent out your vehicle or your equipment and insurance is included',
     'rent_out_camper' => 'Rent out Camper',
 
-    /*
-    -----------------------Footer ----------
-     */
+    /** Footer */
     'footer_title_presentation' => 'What is Campunite?',
     'footer_presentation' => 'Campunite is the platform for renting and renting mobile homes for individuals. We bring people together! Just rent a motorhome or rent your own today.',
     'footer_social' => 'Social',
@@ -73,9 +51,7 @@ return [
     'footer_campunit_title' => 'Campunit',
     'footer_reserved_right' => 'All Rights Reserved',
 
-    /*
-    ---------------------- Home ------------------
-     */
+    /** Home */
     'content_most_visited' => 'Most Visited Campers',
     'title_categories' => 'the right one for camping',
     'content_user_review' => 'This is how it goes on vacation',
@@ -85,10 +61,12 @@ return [
     'our_bloc' => 'From The Blog',
     'Reviews' => 'Review(s)',
     'find_blog' => 'See all blogs',
-    'find_camper_now' =>'Find camper now',
-    /*
-    ---------------------- Rent out Camper page ------------------
-     */
+	'find_camper_now' =>'Find camper now',
+    'client_camper_detail' => 'Detail',
+    'client_camper_edit' => 'Edit',
+    'client_camper_delete' => 'Delete',
+    
+    /** Rent out Camper page */
     'title_1' => 'Earn money with your camper',
     'text_content_1_1' => 'Share your camper with people from all over the world. Campunite makes it as easy as possible for you. We offer simple means of payment such as PayPal, Visa and Mastercard. Read the steps and get started!',
     'text_content_1_2' => 'Greetings to your Campunite team',
@@ -163,10 +141,10 @@ return [
     '' => '',
     '' => '',
     '' => '',
+    'tab_owner' => 'Owner',
+    'tab_renter' => 'Renter',
 
-    /*
-    ----------------------Login ------------------
-     */
+    /** Login */
     'to_connect' => 'Log In',
     'email_address' => 'Email address',
     'password' => 'Password',
@@ -209,4 +187,9 @@ return [
     'camp_team' => 'Your CamperUnit team ',
     'address_verified' => 'Your email address has been successfully verified',
     'verified_login' => 'Your email address has been successfully verified. You can now log in. We are looking forward to our journey together!',
+
+    /** Blog */
+    'Blog' => 'Blog',
+    'Latest News' => 'Latest News',
+    
 ];
