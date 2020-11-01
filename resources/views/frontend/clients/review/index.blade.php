@@ -21,7 +21,7 @@
 		</div>
 
 		<div class="row">
-			
+
 			<!-- Listings -->
 			<div class="col-lg-6 col-md-12">
 
@@ -31,7 +31,7 @@
 					<div class="sort-by">
 						<div class="sort-by-select">
 							<select data-placeholder="Default order" class="chosen-select-no-single">
-								<option>All Listings</option>	
+								<option>All Listings</option>
 								<option>Tom's Restaurant</option>
 								<option>Sticky Band</option>
 								<option>Hotel Govendor</option>
@@ -42,7 +42,7 @@
 						</div>
 					</div>
 
-					<h4>Visitor Reviews</h4> 
+					<h4>Visitor Reviews</h4>
 
 					<!-- Reply to review popup -->
 					<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
@@ -67,7 +67,7 @@
 												<div class="star-rating" data-rating="5"></div>
 											</div>
 											<p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
-											
+
 											<div class="review-images mfp-gallery-container">
 												<a href="images/review-image-01.jpg" class="mfp-gallery"><img src="images/review-image-01.jpg" alt=""></a>
 											</div>
@@ -105,7 +105,7 @@
 												<div class="star-rating" data-rating="5"></div>
 											</div>
 											<p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
-											
+
 											<div class="review-images mfp-gallery-container">
 												<a href="images/review-image-02.jpg" class="mfp-gallery"><img src="images/review-image-02.jpg" alt=""></a>
 												<a href="images/review-image-03.jpg" class="mfp-gallery"><img src="images/review-image-03.jpg" alt=""></a>

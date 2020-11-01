@@ -12,6 +12,7 @@
 ================================================== -->
 <link rel="stylesheet" href="{{asset('frontend/asset/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/asset/css/main-color.css')}}" id="colors">
+<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
 
 </head>
 
@@ -124,17 +125,18 @@
 	<div class="dashboard-nav">
 		<div class="dashboard-nav-inner">
 			<ul data-submenu-title="Main">
-				<li class="{{ $activePage == 'FC_camper' ? ' active' : '' }}"><a href="{{route('frontend.clients.camper')}}"><i class="sl sl-icon-settings"></i> {{trans('front.menu_panel_camper')}}</a></li>
-				<li class="{{ $activePage == 'FC_message' ? ' active' : '' }}"><a href="{{route('frontend.clients.message')}}"><i class="sl sl-icon-envelope-open"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">2</span></a></li>
-				<li class="{{ $activePage == 'FC_notification' ? ' active' : '' }}"><a href="{{route('frontend.clients.notification')}}"><i class="fa fa-calendar-check-o"></i> {{trans('front.menu_panel_notification')}}</a></li>
-				<li class="{{ $activePage == 'FC_booking' ? ' active' : '' }}"><a href="{{route('frontend.clients.booking')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_booking')}}</a></li>
-				<li class="{{ $activePage == 'FC_wallet' ? ' active' : '' }}"><a href="{{route('frontend.clients.wallet')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_wallet')}}</a></li>
-				<li class="{{ $activePage == 'FC_review' ? ' active' : '' }}"><a href="{{route('frontend.clients.review')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_review')}}</a></li>
-				<li class="{{ $activePage == 'rent_out' ? ' active' : '' }}"><a href="/rentout"><i class="sl sl-icon-plus"></i>{{trans('front.menu_panel_rentout')}}</a></li>
+				<li class="{{ $activePage == 'FC_camper' ? 'active' : '' }}"><a href="{{route('frontend.clients.camper')}}"><i class="sl sl-icon-settings"></i> {{trans('front.menu_panel_camper')}}</a></li>
+				<li class="{{ $activePage == 'FC_message' ? 'active' : '' }}"><a href="{{route('frontend.clients.message')}}"><i class="sl sl-icon-envelope-open"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">2</span></a></li>
+				<li class="{{ $activePage == 'FC_notification' ? 'active' : '' }}"><a href="{{route('frontend.clients.notification')}}"><i class="fa fa-calendar-check-o"></i> {{trans('front.menu_panel_notification')}}</a></li>
+				<li class="{{ $activePage == 'FC_booking' ? 'active' : '' }}"><a href="{{route('frontend.clients.booking')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_booking')}}</a></li>
+				<li class="{{ $activePage == 'FC_wallet' ? 'active' : '' }}"><a href="{{route('frontend.clients.wallet')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_wallet')}}</a></li>
+				<li class="{{ $activePage == 'FC_review' ? 'active' : '' }}"><a href="{{route('frontend.clients.review')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_review')}}</a></li>
+				<li class="{{ $activePage == 'rent_out' ? 'active' : '' }}"><a href="{{route('rent_out')}}"><i class="sl sl-icon-plus"></i>{{trans('front.menu_panel_rentout')}}</a></li>
 			</ul>
 			<ul data-submenu-title="Account">
-				<li class=""><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
-				<li><a href="index.html"><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
+				<li class="{{ $activePage == 'FC_profile' ? 'active' : '' }}"><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
+				<li><a href=""><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_invoice')}}</a></li>
+				<li><a href=""><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
 			</ul>
 
 	</div>
@@ -175,6 +177,9 @@
 <script src="{{asset('frontend/asset/scripts/moment.min.js')}}"></script>
 <script src="{{asset('frontend/asset/scripts/daterangepicker.js')}}"></script>
 
+<!-- DropZone | Documentation: http://dropzonejs.com -->
+<script type="text/javascript" src="{{asset('frontend/asset/scripts/dropzone.js')}}"></script>
+
 <script>
 $(function() {
 
@@ -207,7 +212,65 @@ $('#booking-date-range').on('hide.daterangepicker', function(ev, picker) {
 	$('.daterangepicker').addClass('calendar-hidden');
 });
 </script>
+<script>
+	let curOpen;
 
+$(document).ready(function() {
+  curOpen = $('.step')[0];
 
+  $('.next-btn').on('click', function() {
+    let cur = $(this).closest('.step');
+    let next = $(cur).next();
+    $(cur).addClass('minimized');
+    setTimeout(function() {
+      $(next).removeClass('minimized');
+      curOpen = $(next);
+    }, 400);
+  });
+
+  $('.close-btn').on('click', function() {
+    let cur = $(this).closest('.step');
+    $(cur).addClass('minimized');
+    curOpen = null;
+  });
+
+  $('.step .step-content').on('click' ,function(e) {
+    e.stopPropagation();
+  });
+
+  $('.step').on('click', function() {
+    if (!$(this).hasClass("minimized")) {
+      curOpen = null;
+      $(this).addClass('minimized');
+    }
+    else {
+      let next = $(this);
+      if (curOpen === null) {
+        curOpen = next;
+        $(curOpen).removeClass('minimized');
+      }
+      else {
+        $(curOpen).addClass('minimized');
+        setTimeout(function() {
+          $(next).removeClass('minimized');
+          curOpen = $(next);
+        }, 300);
+      }
+    }
+  });
+})
+</script>
+
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+<style>
+	#map {
+		width: 95%;
+		height: 450px;
+		background: grey;
+	}
+</style>
 </body>
 </html>
