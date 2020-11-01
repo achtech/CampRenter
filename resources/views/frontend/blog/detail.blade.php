@@ -52,7 +52,7 @@
 					<ul class="post-meta">
 						<li>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}</li>
 						<li>{{$blog->created_at}}</li>
-						<li>{{App\Http\Controllers\frontend\FBlogController::getBlogReviews($blog->id)}} Comments</li>
+						<li>{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} Comments</li>
 					</ul>
 
 					<p>{{$blog->article}}</p>
@@ -91,7 +91,7 @@
 
 			<!-- Reviews -->
 			<section class="comments">
-			<h4 class="headline margin-bottom-35">Comments <span class="comments-amount">({{App\Http\Controllers\frontend\FBlogController::getBlogReviews($blog->id)}})</span></h4>
+			<h4 class="headline margin-bottom-35">Comments <span class="comments-amount">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}})</span></h4>
 
 				<ul>
 					<li>

@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             BillingsBookingsSeeder::class,
             BlogSeeder::class,
             CamperReviewsSeeder::class,
+            BlogCommentSeeder::class,
         ]);
 
     }
