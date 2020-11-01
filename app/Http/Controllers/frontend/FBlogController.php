@@ -43,6 +43,12 @@ class FBlogController extends Controller
         $categories = DB::table('camper_categories')->paginate(10);
 
         $comments = DB::table('blog_comments')->where('id_parent1')->where('id_blogs',$id)->get();
+        foreach($comments as $comment){
+            $comment->subComments = DB::table('blog_comments')->where('id_parent1',$comment->id)->whereNull('id_parent2')->get();
+            foreach($comment->subComments as $subComment){
+                $subComment->subSubComments = DB::table('blog_comments')->where('id_parent1',$comment->id)->where('id_parent2',$subComment->id)->get();
+            }
+        }
         // get previous blog id
         $previous = DB::table('blogs')->where('id', '<', $id)->max('id');
         $previousTitle = $previous ? DB::table('blogs')->where('id', $previous)->first()->title : '';

@@ -94,61 +94,46 @@
 			<h4 class="headline margin-bottom-35">Comments <span class="comments-amount">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}})</span></h4>
 
 				<ul>
+					@foreach($comments as $comment)
 					<li>
 						<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
 						<div class="comment-content"><div class="arrow-comment"></div>
-							<div class="comment-by">Kathy Brown<span class="date">22 August 2019</span>
+							<div class="comment-by">{{$comment->name}}<span class="date">{{date('j F Y', strtotime($comment->created_at))}}</span>
 								<a href="#" class="reply"><i class="fa fa-reply"></i> Reply</a>
 							</div>
-							<p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
+							<p>{{$comment->comment}}</p>
 						</div>
 
 						<ul>
+							@foreach($comment->subComments as $subComment)
 							<li>
 								<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
 								<div class="comment-content"><div class="arrow-comment"></div>
-									<div class="comment-by">Tom Smith<span class="date">22 August 2019</span>
+									<div class="comment-by">{{$subComment->name}}<span class="date">{{date('j F Y', strtotime($subComment->created_at))}}</span>
 										<a href="#" class="reply"><i class="fa fa-reply"></i> Reply</a>
 									</div>
-									<p>Rrhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque.</p>
-								</div>
-							</li>
-							<li>
-								<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-								<div class="comment-content"><div class="arrow-comment"></div>
-									<div class="comment-by">Kathy Brown<span class="date">20 August 2019</span>
-										<a href="#" class="reply"><i class="fa fa-reply"></i> Reply</a>
-									</div>
-									<p>Nam posuere tristique sem, eu ultricies tortor.</p>
+									<p>{{$subComment->comment}}</p>
 								</div>
 
 								<ul>
+									@foreach($subComment->subSubComments as $subSubComment)
 									<li>
 										<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
 										<div class="comment-content"><div class="arrow-comment"></div>
-											<div class="comment-by">John Doe<span class="date">18 August 2019</span>
+											<div class="comment-by">{{$subSubComment->name}}<span class="date">{{date('j F Y', strtotime($subSubComment->created_at))}}</span>
 												<a href="#" class="reply"><i class="fa fa-reply"></i> Reply</a>
 											</div>
-											<p>Great template!</p>
+											<p>{{$subSubComment->comment}}</p>
 										</div>
 									</li>
+									@endforeach
 								</ul>
-
 							</li>
+							@endforeach
 						</ul>
 
 					</li>
-
-					<li>
-						<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> </div>
-						<div class="comment-content"><div class="arrow-comment"></div>
-							<div class="comment-by">John Doe<span class="date">18 August 2019</span>
-								<a href="#" class="reply"><i class="fa fa-reply"></i> Reply</a>
-							</div>
-							<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-						</div>
-
-					</li>
+					@endforeach
 				 </ul>
 
 			</section>
