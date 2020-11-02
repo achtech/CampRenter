@@ -5,9 +5,7 @@
 	<div class="row">
         <h1>{{trans('front.password_reset')}}</h1> 
         {{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@updateF', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'PUT']) }}
-        
-        <input type="hidden" name="clientId" value="{{ $client_id }}">
-        
+            <input type="hidden" id="client_id" name="client_id" value="{{$client_id}}">
         <div class="col-md-12">
             <div class="wrapper" >
                 <div class="container" >

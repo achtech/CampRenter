@@ -48,7 +48,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
     Route::get('/imprint', [FContactController::class, 'imprint'])->name('imprint');
     Route::get('/help', [FContactController::class, 'help'])->name('help');
-    Route::post('login', 'App\Http\Controllers\frontend\FClientController@doLogin');
+    Route::post('login', 'App\Http\Controllers\Auth\LoginController@doLogin');
     Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
     Route::post('/signUp', [FClientController::class, 'sign_up']);

@@ -8,41 +8,42 @@
                  <a  href="#" class="control-right">
                     </a>
                 </div> 
-                <div  class="titles-container">
+                <div  class="small-dialog-header">
                     <h3 class="text-center">{{trans('front.to_connect')}}</h3></div>
         </header>
         <div class="modal-body">
                 <div class="container">
-                    {{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@resetPassword', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
-                    
+                    {{ Form::open(['action'=>'App\Http\Controllers\Auth\LoginController@doLogin', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
                         <div  class="form-group">
                             <label class="sr-only">
                                 {{trans('front.email_address')}}
                               </label>
-                            <input id="email" name="email" type="text" placeholder="Adresse e-mail" autocomplete="username" class="login-username form-control" style="width:727px !important;">
+                            <input id="email" name="email" type="email" placeholder="Adresse e-mail" autocomplete="username" class="login-username form-control" style="width:727px !important;">
                         </div>
                         <div  class="form-group">
                             <label class="sr-only">
                                 {{trans('front.password')}}
                               </label>
-                            <input id="password" name="password" type="password" placeholder="Adresse e-mail" autocomplete="username" class="login-username form-control" style="width:727px !important;">
+                            <input id="password" name="password" type="password" placeholder="Password" autocomplete="username" class="login-username form-control" style="width:727px !important;">
                         </div>
-                        <div >
-                            <button type="button" class="btn btn-primary btn-block w-727 connexion">
+                        <div>
+                            <button type="submit"  class="btn btn-primary btn-block w-727 connexion">
                                 {{trans('front.to_connect')}}
                             </button>
                         </div>
+                        {{ Form::close() }}
                         <a style="color: #f15424;" id="forget-password"><small >{{trans('front.forget_password')}}</small></a>
                         <div id="passwordModel" class="modal">
                             <div class="modal-content" style="background: #f4f4f4;margin-top: 82px;">
                                 <span class="close-forget-password-model">&times;</span>
                             
                             <div class="titles-container"><h3 class="text-center">{{trans('front.to_connect')}}</h3></div>
-                            
                             {{ Form::open(['route'=>'frontend.client.resetPassword', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
-                                    <div class="form-group"><label  class="sr-only">
+                                    <div class="form-group">
+                                        <label  class="sr-only">
                                         {{trans('front.email_address')}}
-                                      </label> <input type="text" placeholder="Email address" autocomplete="username" class=" form-control w-727" >
+                                        </label>
+                                        <input id="email" name="email" type="email" placeholder="Adresse e-mail" autocomplete="username" class="login-username form-control" style="width:727px !important;">
                                     </div>
                                     <button type="submit" class="btn btn-primary connexion w-727"><!---->
                                         {{trans('front.reset_password_link')}}
@@ -66,7 +67,7 @@
                         <a class="btn btn-primary w-727 with-facebook" style="color: whihte !important;text-align: center;"  target="popup"  href="{{ url('auth/facebook') }}">
                             <i class="icon-facebook fb-design"></i><small class="fb-design"> {{trans('front.facebook_connexion')}}</small>
                         </a>
-                        {{ Form::close() }}
+                        
                 </div>
         </div>
         <br/>

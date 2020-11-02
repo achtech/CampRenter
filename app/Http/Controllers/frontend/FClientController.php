@@ -15,11 +15,14 @@ use Symfony\Component\Console\Input\Input;
 use App\Http\Controllers\Controller;
 use App\Mail\ForgotPasswordEmail;
 use App\Mail\RegistrationMail;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class FClientController extends Controller
 {
+    use AuthenticatesUsers;
+
     /**
      * Create a new controller instance.
      *
@@ -29,34 +32,31 @@ class FClientController extends Controller
     {
         return Socialite::driver('facebook')->redirect();
     }
-    public function doLogin()
+    /* public function doLogin(Request $request)
     {
-        //dd(1);
-        $rules = array(
-            'email' => 'required|email', // make sure the email is an actual email
-            'password' => 'required|alphaNum|min:8'
-        );
-        // password has to be greater than 3 characters and can only be alphanumeric and);
-        // checking all field
-        $validator = Validator::make(Input::all(), $rules);
-        // if the validator fails, redirect back to the form
-        if ($validator->fails()) {
-            return Redirect::to('login')->withErrors($validator) // send back all errors to the login form
-                ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
+        $input = request()->except(['_token', '_method', 'action']);
+        $input['password'] = md5($input['password']);
+        $client = Client::where('email', $input['email'])
+            ->where('password', $input['password'])
+            ->first();
+        if ($client != null) {
+            $categories = DB::table('camper_categories')->paginate(10);
+            return view('frontend.client.index2')->with('categories', $categories);
+        }
+    }*/
+    public function doLogin(Request $request)
+    {
+        $input = $request->all();
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $fieldType = 'email';
+        if (auth()->attempt(array($fieldType => $input['email'], 'password' => $input['password']))) {
+            return redirect()->route('frontend.home.index');
         } else {
-            // create our user data for the authentication
-            $userdata = array(
-                'email' => Input::get('email'),
-                'password' => Input::get('password')
-            );
-            // attempt to do the login
-            if (Auth::attempt($userdata)) {
-                // validation successful
-                // do whatever you want on success
-            } else {
-                // validation not successful, send back to form
-                return Redirect::to('checklogin');
-            }
+            return redirect()->route('frontend.home.index')
+                ->with('error', 'Email-Address And Password Are Wrong.');
         }
     }
     public function doLogout()
@@ -129,26 +129,24 @@ class FClientController extends Controller
         $input['client_name'] = $client['client_name'];
         $input['client_last_name'] = $client['client_last_name'];
         $input['id'] = $client['id'];
-        //dd($input);
         Mail::to($input['email'])->send(new ForgotPasswordEmail($input));
         return redirect()->route('frontend.client.index');
     }
 
     public function updateF(Request $request)
     {
-        dd($request->all());
-        $id = $request->get('clientId');
+        $id = $request->get('client_id');
         $password = $request->get('password');
         $confirmed_password = $request->get('confirmed');
         if ($password == $confirmed_password) {
             $client = Client::find($id);
-            $encrypted_pass = password_hash($request->password, PASSWORD_DEFAULT);
+            $encrypted_pass = md5($request->password);
             $client->update(['password' => $encrypted_pass]);
             $categories = DB::table('camper_categories')->paginate(10);
             return view('frontend.client.index')->with('categories', $categories);
         }
     }
-    public function index()
+    public function index(Request $request)
     {
 
         $categories = DB::table('camper_categories')->paginate(10);

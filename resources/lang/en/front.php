@@ -147,7 +147,6 @@ return [
     'forget_password' => 'Forgot password',
     'button_reset_pass' => 'Click the button to reset your password.',
     'ignore_message_reset_pass' => 'If you didn t ask for a reset of your password you can ignore this message.',
-    'set_new_password' => 'Set new password',
     'password_reset' => 'Reset password',
     'set_new_password' => 'Set a new password',
     'save_new_password' => 'Save',
