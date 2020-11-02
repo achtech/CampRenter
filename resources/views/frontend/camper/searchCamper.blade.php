@@ -1,5 +1,5 @@
 
-@extends('frontend.layout3',['activePage' => 'camper'])
+@extends('frontend.layout3',['activePage' => 'campersearch'])
 
 @section('content')
 <!-- Content
@@ -43,7 +43,7 @@
 					<div class="sort-by">
 						<div class="sort-by-select">
 							<select data-placeholder="Default order" class="chosen-select-no-single">
-								<option>Default Order</option>	
+								<option>Default Order</option>
 								<option>Highest Rated</option>
 								<option>Most Reviewed</option>
 								<option>Newest Listings</option>
@@ -62,13 +62,13 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
 						<a href="{{route('frontend.camper.detail')}}" class="listing-item">
-							
+
 							<!-- Image -->
 							<div class="listing-item-image">
 								<img src="{{asset('frontend/asset/images/listing-item-01.jpg')}}" alt="">
 								<span class="tag">Eat & Drink</span>
 							</div>
-							
+
 							<!-- Content -->
 							<div class="listing-item-content">
 								<div class="listing-badge now-open">Now Open</div>
@@ -92,13 +92,13 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
 						<a href="listings-single-page.html" class="listing-item">
-							
+
 							<!-- Image -->
 							<div class="listing-item-image">
 								<img src="{{asset('frontend/asset/images/listing-item-02.jpg')}}" alt="">
 								<span class="tag">Events</span>
 							</div>
-							
+
 							<!-- Content -->
 							<div class="listing-item-content">
 
@@ -123,13 +123,13 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
 						<a href="listings-single-page.html" class="listing-item">
-							
+
 							<!-- Image -->
 							<div class="listing-item-image">
 								<img src="{{asset('frontend/asset/images/listing-item-03.jpg')}}" alt="">
 								<span class="tag">Hotels</span>
 							</div>
-							
+
 							<!-- Content -->
 							<div class="listing-item-content">
 
@@ -154,17 +154,17 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
 						<a href="listings-single-page.html" class="listing-item">
-							
+
 							<!-- Image -->
 							<div class="listing-item-image">
 								<img src="{{asset('frontend/asset/images/listing-item-04.jpg')}}" alt="">
 								<span class="tag">Eat & Drink</span>
 							</div>
-							
+
 							<!-- Content -->
 							<div class="listing-item-content">
 								<div class="listing-badge now-open">Now Open</div>
-								
+
 								<div class="listing-item-inner">
 								<h3>Burger House <i class="verified-icon"></i></h3>
 								<span>2726 Shinn Street, New York</span>
@@ -184,13 +184,13 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
 						<a href="listings-single-page.html" class="listing-item">
-							
+
 							<!-- Image -->
 							<div class="listing-item-image">
 								<img src="{{asset('frontend/asset/images/listing-item-05.jpg')}}" alt="">
 								<span class="tag">Other</span>
 							</div>
-							
+
 							<!-- Content -->
 							<div class="listing-item-content">
 
@@ -213,13 +213,13 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
 						<a href="listings-single-page.html" class="listing-item">
-							
+
 							<!-- Image -->
 							<div class="listing-item-image">
 								<img src="{{asset('frontend/asset/images/listing-item-06.jpg')}}" alt="">
 								<span class="tag">Eat & Drink</span>
 							</div>
-							
+
 							<!-- Content -->
 							<div class="listing-item-content">
 								<div class="listing-badge now-closed">Now Closed</div>
@@ -287,7 +287,7 @@
 						<!-- Type -->
 						<div class="col-md-12">
 							<select data-placeholder="All Categories" class="chosen-select" >
-								<option>All Categories</option>	
+								<option>All Categories</option>
 								<option>Shops</option>
 								<option>Hotels</option>
 								<option>Restaurants</option>
@@ -329,7 +329,7 @@
 
 						<!-- Checkboxes -->
 						<div class="checkboxes one-in-row margin-bottom-15">
-					
+
 							<input id="check-a" type="checkbox" name="check">
 							<label for="check-a">Elevator in building</label>
 
@@ -349,11 +349,11 @@
 							<label for="check-f">Free parking on street</label>
 
 							<input id="check-g" type="checkbox" name="check">
-							<label for="check-g">Smoking allowed</label>	
+							<label for="check-g">Smoking allowed</label>
 
 							<input id="check-h" type="checkbox" name="check">
 							<label for="check-h">Events</label>
-					
+
 						</div>
 						<!-- Checkboxes / End -->
 
