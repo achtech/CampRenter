@@ -13465,6 +13465,24 @@ section.fullwidth .listing-item-container.list-layout,
     margin: 15px 32px;
 }
 
+.blog-title {
+    color: #888;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
+    line-height: 26px;
+    height: 26px;
+    width: 100%;
+    display: inline-block;
+    font-family: "Open Sans";
+    position: relative;
+    border-radius: 50px;
+    letter-spacing: -0.5px;
+    background-color: #f2f2f2;
+    margin-top: 10px;
+    min-width: 140px;
+}
 .compact .numerical-rating {
     margin: 0 0 8px 0;
 }

@@ -196,5 +196,6 @@ return [
     'Add comment' => 'Add comment',
     'Comment' => 'Comment',
     'Submit Comment' => 'Submit Comment',
+    'blog_comment' => 'comments',
     
 ];
