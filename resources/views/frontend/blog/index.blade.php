@@ -51,7 +51,7 @@
 									<h3>{{$blog->title}} <i class="verified-icon"></i></h3>
 									
 									<span>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}, {{$blog->created_at}}</span>
-										<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FBlogController::getBlogRating($blog->id)}}">
+										<div class="star-rating" data-rating="5">
 											<div class="rating-counter">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} reviews)</div>
 										</div>
 									</div>

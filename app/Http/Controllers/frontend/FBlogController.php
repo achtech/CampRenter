@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\BlogComment;
 
 class FBlogController extends Controller
 {
@@ -42,13 +43,13 @@ class FBlogController extends Controller
         $populairePost = DB::table('blogs')->paginate(3);
         $categories = DB::table('camper_categories')->paginate(10);
 
-        $comments = DB::table('blog_comments')->where('id_parent1')->where('id_blogs',$id)->get();
-        foreach($comments as $comment){
-            $comment->subComments = DB::table('blog_comments')->where('id_parent1',$comment->id)->whereNull('id_parent2')->get();
+        $comments = DB::table('blog_comments')->where('id_parent')->where('id_blogs',$id)->get();
+        /*foreach($comments as $comment){
+            $comment->subComments = DB::table('blog_comments')->where('id_parent',$comment->id)->whereNull('id_parent2')->get();
             foreach($comment->subComments as $subComment){
-                $subComment->subSubComments = DB::table('blog_comments')->where('id_parent1',$comment->id)->where('id_parent2',$subComment->id)->get();
+                $subComment->subSubComments = DB::table('blog_comments')->where('id_parent',$comment->id)->where('id_parent2',$subComment->id)->get();
             }
-        }
+        }*/
         // get previous blog id
         $previous = DB::table('blogs')->where('id', '<', $id)->max('id');
         $previousTitle = $previous ? DB::table('blogs')->where('id', $previous)->first()->title : '';
@@ -65,23 +66,28 @@ class FBlogController extends Controller
                 ->with('blog', $blog)
                 ->with('categories', $categories);
     }
-
-    public static function getBlogRating($id){
-        return $id;
-    }
-
-    public static function getBlogReviews($id){
-        return $id;
-    }
     public static function getBlogReviewsCount($id){
         return DB::table('blog_comments')->where('id_blogs',$id)->count();
     }
 
-    public static function getPreviousBlog($id){
-        return $id;        
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $input = request()->except(['_token', '_method']);
+        $input['created_by']=1;
+        $input['updated_by']=1;
+        $data = BlogComment::create($input);
+        return redirect(route('frontend.blog.fdetail',$request->id_blogs))->with('success', 'Item added succesfully');
     }
 
-    public static function getNextBlog($id){
-        return $id;        
+    public static function getChildComments($id)
+    {
+        return DB::table('blog_comments')->where('id_parent',$id)->get();
     }
+
 }

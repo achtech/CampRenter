@@ -13,4 +13,9 @@ class Blog extends Base
         'created_by',
         'updated_by',
     ];
+    
+    public function comments()
+    {
+        return $this->morphMany(BlogComment::class, 'blog_comments')->whereNull('parent_id');
+    }
 }

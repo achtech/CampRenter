@@ -23,11 +23,9 @@ class CreateBlogCommentsTable extends Migration
             $table->unsignedBigInteger('updated_by')->nullable();
 
             $table->unsignedBigInteger('id_blogs')->nullable();
-            $table->unsignedBigInteger('id_parent1')->nullable();
-            $table->unsignedBigInteger('id_parent2')->nullable();
+            $table->unsignedBigInteger('id_parent')->nullable();
             $table->foreign('id_blogs')->references('id')->on('blogs');
-            $table->foreign('id_parent1')->references('id')->on('blog_comments');
-            $table->foreign('id_parent2')->references('id')->on('blog_comments');
+            $table->foreign('id_parent')->references('id')->on('blog_comments');
         });
     }
 

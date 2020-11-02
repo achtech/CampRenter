@@ -91,51 +91,10 @@
 
 			<!-- Reviews -->
 			<section class="comments">
-			<h4 class="headline margin-bottom-35">Comments <span class="comments-amount">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}})</span></h4>
-
+				<h4 class="headline margin-bottom-35">Comments <span class="comments-amount">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}})</span></h4>
 				<ul>
-					@foreach($comments as $comment)
-					<li>
-						<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-						<div class="comment-content"><div class="arrow-comment"></div>
-							<div class="comment-by">{{$comment->name}}<span class="date">{{date('j F Y', strtotime($comment->created_at))}}</span>
-								<a href="#" class="reply"><i class="fa fa-reply"></i> Reply</a>
-							</div>
-							<p>{{$comment->comment}}</p>
-						</div>
-
-						<ul>
-							@foreach($comment->subComments as $subComment)
-							<li>
-								<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-								<div class="comment-content"><div class="arrow-comment"></div>
-									<div class="comment-by">{{$subComment->name}}<span class="date">{{date('j F Y', strtotime($subComment->created_at))}}</span>
-										<a href="#" class="reply"><i class="fa fa-reply"></i> Reply</a>
-									</div>
-									<p>{{$subComment->comment}}</p>
-								</div>
-
-								<ul>
-									@foreach($subComment->subSubComments as $subSubComment)
-									<li>
-										<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-										<div class="comment-content"><div class="arrow-comment"></div>
-											<div class="comment-by">{{$subSubComment->name}}<span class="date">{{date('j F Y', strtotime($subSubComment->created_at))}}</span>
-												<a href="#" class="reply"><i class="fa fa-reply"></i> Reply</a>
-											</div>
-											<p>{{$subSubComment->comment}}</p>
-										</div>
-									</li>
-									@endforeach
-								</ul>
-							</li>
-							@endforeach
-						</ul>
-
-					</li>
-					@endforeach
-				 </ul>
-
+				@include('frontend.blog.comment', ['comments' => $comments, 'id_blogs' => $blog->id])
+				</ul>
 			</section>
 			<div class="clearfix"></div>
 
@@ -144,34 +103,36 @@
 			<div id="add-review" class="add-review-box">
 
 				<!-- Add Review -->
-				<h3 class="listing-desc-headline margin-bottom-35">Add Review</h3>
+				<h3 class="listing-desc-headline margin-bottom-35">{{__('front.Add comment')}}</h3>
 	
 				<!-- Review Comment -->
-				<form id="add-comment" class="add-comment">
-					<fieldset>
+				{{ Form::open(['action'=>'App\Http\Controllers\frontend\FBlogController@store','method'=>'POST','id'=>'add-comment','class'=>"add-comment"]) }}
+				<input type="hidden" name="id_blogs" value="{{ $blog->id }}">	
+				<fieldset>
 
 						<div class="row">
 							<div class="col-md-6">
-								<label>Name:</label>
-								<input type="text" value=""/>
+								<label>{{__('front.Name')}} :</label>
+								{{Form::text('name','')}}
 							</div>
 								
 							<div class="col-md-6">
-								<label>Email:</label>
-								<input type="text" value=""/>
+								<label>{{__('front.Email')}} :</label>
+								{{Form::email('email','')}}
 							</div>
 						</div>
 
 						<div>
-							<label>Comment:</label>
-							<textarea cols="40" rows="3"></textarea>
+							<label>{{__('front.Comment')}} :</label>
+							<textarea cols="40" rows="3" name="comment"></textarea>
 						</div>
 
 					</fieldset>
 
-					<button class="button">Submit Comment</button>
+					{{Form::submit(__('front.Submit Comment'))}}
+
 					<div class="clearfix"></div>
-				</form>
+					{{ Form::close() }}
 
 			</div>
 			<!-- Add Review Box / End -->

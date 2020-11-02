@@ -191,5 +191,10 @@ return [
     /** Blog */
     'Blog' => 'Blog',
     'Latest News' => 'Latest News',
+    'Name' => 'Name',
+    'Email' => 'Email',
+    'Add comment' => 'Add comment',
+    'Comment' => 'Comment',
+    'Submit Comment' => 'Submit Comment',
     
 ];

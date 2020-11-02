@@ -61,6 +61,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/blog', [FBlogController::class, 'index'])->name('frontend.blog');
     Route::get('blog/{id}/detail', [FBlogController::class, 'show'])->name('frontend.blog.fdetail');
     Route::get('blog/search', [FBlogController::class, 'search'])->name('frontend.blog.search');
+    Route::post('blog/storeComment', [FBlogController::class, 'store'])->name('frontend.blog.storeComment');
 
     /************* Clients FrentEnd **********************/
     Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');
