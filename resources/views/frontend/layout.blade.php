@@ -35,7 +35,7 @@
 
 				<!-- Logo -->
 				<div id="logo">
-					<a href="/"><img src="{{asset('frontend/asset/images/logo-icon.png')}}" 
+					<a href="{{route('home.index')}}"><img src="{{asset('frontend/asset/images/logo-icon.png')}}"
 						data-sticky-logo="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
 				</div>
 
@@ -52,7 +52,7 @@
 				<nav id="navigation" class="style-1">
 					<ul id="responsive">
 
-						<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="/">{{trans('front.menu_home')}}</a></li>
+						<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="{{route('home.index')}}">{{trans('front.menu_home')}}</a></li>
 						<li><a  href="#">{{trans('front.menu_rent')}}</a>
 							<ul>
 								@foreach($categories as $cat)
@@ -76,10 +76,10 @@
 								<li><a href="{{route('frontend.clients.wallet')}}">{{trans('front.menu_panel_wallet')}}</a></li>
 								<li><a href="{{route('frontend.clients.review')}}">{{trans('front.menu_panel_review')}}</a></li>
 								<li><a href="{{route('clients.user.profile')}}">{{trans('front.menu_panel_profil')}}</a></li>
-								<li><a href="dashboard-my-profile.html">{{trans('front.menu_panel_logout')}}</a></li>
+								<li><a href="{{route('logout')}}">{{trans('front.menu_panel_logout')}}</a></li>
 							</ul>
 						</li>
-						
+
 						<li>
 							<a  id="myBtn">{{trans('front.menu_login')}}</a>
 							@include('frontend.connexion.login');
@@ -160,7 +160,7 @@
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/maps.js')}}"></script>
-	
+
 <!-- Leaflet Geocoder + Search Autocomplete // Docs: https://github.com/perliedman/leaflet-control-geocoder -->
 <script src="{{asset('frontend/asset/scripts/leaflet-autocomplete.js')}}"></script>
 <script src="{{asset('frontend/asset/scripts/leaflet-control-geocoder.js')}}"></script>
@@ -175,7 +175,7 @@
 	span.onclick = function() {
 	  modal.style.display = "none";
 	}
-	
+
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
 	  if (event.target == modal) {
@@ -253,7 +253,7 @@
 		if(document.getElementById('client_name').value == "ouma"){
 			document.getElementById('signUpRequirments').style.display = "block";
 		}
-	
+
 	}
 	</script>
 		<!-- Typed Script -->

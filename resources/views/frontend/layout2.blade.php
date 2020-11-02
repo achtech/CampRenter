@@ -34,8 +34,8 @@
 
 				<!-- Logo -->
 				<div id="logo" style="padding-left: 75px;">
-					<a href="index.html"><img src="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
-					<a href="index.html" class="dashboard-logo"><img src="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
+					<a href="{{route('home.index')}}"><img src="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
+					<a href="{{route('home.index')}}" class="dashboard-logo"><img src="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
 				</div>
 
 				<!-- Mobile Navigation -->
@@ -51,7 +51,7 @@
 				<nav id="navigation" class="style-1">
 					<ul id="responsive">
 
-					<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="/">{{trans('front.menu_home')}}</a></li>
+					<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="{{route('home.index')}}">{{trans('front.menu_home')}}</a></li>
 					<li><a  href="#">{{trans('front.menu_rent')}}</a>
 							<ul>
 								@foreach($categories as $cat)

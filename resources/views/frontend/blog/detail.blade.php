@@ -40,10 +40,10 @@
 
 			<!-- Blog Post -->
 			<div class="blog-post single-post">
-				
+
 				<!-- Img -->
 				<img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{$blog->title}}">
-				
+
 				<!-- Content -->
 				<div class="post-content">
 
@@ -104,10 +104,10 @@
 
 				<!-- Add Review -->
 				<h3 class="listing-desc-headline margin-bottom-35">{{__('front.Add comment')}}</h3>
-	
+
 				<!-- Review Comment -->
 				{{ Form::open(['action'=>'App\Http\Controllers\frontend\FBlogController@store','method'=>'POST','id'=>'add-comment','class'=>"add-comment"]) }}
-				<input type="hidden" name="id_blogs" value="{{ $blog->id }}">	
+				<input type="hidden" name="id_blogs" value="{{ $blog->id }}">
 				<fieldset>
 
 						<div class="row">
@@ -115,7 +115,7 @@
 								<label>{{__('front.Name')}} :</label>
 								{{Form::text('name','')}}
 							</div>
-								
+
 							<div class="col-md-6">
 								<label>{{__('front.Email')}} :</label>
 								{{Form::email('email','')}}
@@ -155,14 +155,14 @@
 						<div class="clearfix"></div>
 					</div>
 					<!-- Widget / End -->
-					{{ Form::close() }} 
+					{{ Form::close() }}
 
 					<!-- Widget -->
 					<div class="widget margin-top-40">
 						<h3>Got any questions?</h3>
 						<div class="info-box margin-bottom-10">
 							<p>Having any questions? Feel free to ask!</p>
-							<a href="/contact" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> Drop Us a Line</a>
+							<a href="{{route('contact')}}" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> Drop Us a Line</a>
 						</div>
 					</div>
 					<!-- Widget / End -->
