@@ -49,8 +49,11 @@
 								<div class="listing-item-content">
 									<div class="listing-item-inner">
 									<h3>{{$blog->title}} <i class="verified-icon"></i></h3>
-									
-									<span>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}, {{$blog->created_at}}</span>
+									<div class="row">
+										<div class="col-lg-4"><div class="numerical-rating mid" data-rating="{{App\Http\Controllers\Controller::getUser($blog->created_by)}}"></div></div>
+										<div class="col-lg-4"><div class="numerical-rating mid" data-rating="{{$blog->created_at}}"></div></div>
+										<div class="col-lg-4"><div class="numerical-rating mid" data-rating="{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}}/comment"></div></div>
+									</div>
 										<div class="star-rating" data-rating="5">
 											<div class="rating-counter">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} reviews)</div>
 										</div>
@@ -118,7 +121,6 @@
 										<div class="widget-thumb">
 										<a href="{{route('frontend.blog.fdetail',$blog->id)}}"><img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{$blog->title}}"></a>
 									</div>
-
 									<div class="widget-text">
 										<h5><a href="pages-blog-post.html">{{$blog->title}}</a></h5>
 										<span>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}, {{$blog->created_at}}</span>
