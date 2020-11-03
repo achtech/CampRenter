@@ -32,7 +32,7 @@ class Controller extends BaseController
     public static function getLabel($table, $id)
     {
         $data =DB::table($table)->find($id);
-        return  self::getLabelFromObject($data);
+        return  $data ? self::getLabelFromObject($data) : '';
     }
 
     public static function getMessageCount()

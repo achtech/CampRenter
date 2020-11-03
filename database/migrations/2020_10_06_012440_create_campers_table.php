@@ -52,6 +52,7 @@ class CreateCampersTable extends Migration
             $table->unsignedBigInteger('id_clients')->nullable();
             $table->unsignedBigInteger('id_licence_categories')->nullable();
             $table->unsignedBigInteger('id_camper_categories')->nullable();
+            $table->unsignedBigInteger('id_camper_sub_categories')->nullable();
             $table->unsignedBigInteger('id_transmissions')->nullable();
             $table->unsignedBigInteger('id_fuels')->nullable();
             $table->unsignedBigInteger('confirmed_by')->nullable();
@@ -68,6 +69,7 @@ class CreateCampersTable extends Migration
             $table->foreign('id_insurances')->references('id')->on('insurances');
             $table->foreign('id_licence_categories')->references('id')->on('licence_categories');
             $table->foreign('id_camper_categories')->references('id')->on('camper_categories');
+            $table->foreign('id_camper_sub_categories')->references('id')->on('camper_sub_categories');
             $table->foreign('id_transmissions')->references('id')->on('transmissions');
             $table->foreign('id_fuels')->references('id')->on('fuels');
         });

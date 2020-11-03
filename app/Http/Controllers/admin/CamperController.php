@@ -136,7 +136,7 @@ class CamperController extends Controller
     {
         $data = Camper::find($id);
         $clients = Client::all()->pluck('name_client', 'id');
-        $camper_categories = CamperCategory::all()->pluck('label_en', 'id');
+        $camperCategories = CamperCategory::all()->pluck(app()->getLocale() == 'de' ? 'label_de' : (app()->getLocale() == 'en' ? 'label_en' : 'label_fr'), 'id');
         return view('admin.camper.edit', ['id' => 1])
             ->with('data', $data)
             ->with('clients', $clients)
