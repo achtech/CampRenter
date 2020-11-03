@@ -2,32 +2,10 @@
 @extends('frontend.layout3',['activePage' => 'camper'])
 
 @section('content')
-<!-- Content
-================================================== -->
-<!-- Titlebar
-================================================== -->
-<div id="titlebar" class="gradient">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-
-				<h2>Rent a Camping-car</h2>
-
-				<!-- Breadcrumbs -->
-				<nav id="breadcrumbs">
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li>Rent</li>
-					</ul>
-				</nav>
-
-			</div>
-		</div>
-	</div>
-</div>
+<!-- Content ================================================== -->
 <div class="fs-container">
 
-	<div class="fs-inner-container content">
+	<div class="fs-inner-container content" style="padding-top: 1px;">
 		<div class="fs-content">
 
 			<!-- Search -->
@@ -351,9 +329,7 @@
 					<div class="clearfix"></div>
 					<!-- Pagination / End -->
 					
-					<!-- Copyrights -->
-					<div class="copyrights margin-top-0">© 2019 Listeo. All Rights Reserved.</div>
-
+					
 				</div>
 			</div>
 			<!-- Pagination Container / End -->

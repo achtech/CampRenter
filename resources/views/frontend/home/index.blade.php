@@ -1,16 +1,12 @@
 
-@extends('frontend.layout',['activePage' => 'home'])
+@extends('frontend.layout.layoutGlobal',['activePage' => 'home'])
+@section('header')
+@include('frontend.layout.headerHome',['activePage' => 'home'])
+@endsection
 @section('banner')
-@include('frontend.slider')
+@include('frontend.layout.slider')
 @endsection
 @section('content')
-<!-- Content
-================================================== -->
-<div class="container">
-	<div class="row">
-
-	</div>
-</div>
 <!-- Content
 ================================================== -->
 
@@ -170,4 +166,7 @@
 	</div>
 </section>
 <!-- Recent Blog Posts / End -->
+@endsection
+@section('footer')
+@include('frontend.layout.footerHome')
 @endsection

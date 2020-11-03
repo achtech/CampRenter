@@ -1,4 +1,4 @@
-<div class="main-search-container centered" data-background-image="{{asset('frontend/asset/images/Campunite-Bild-Start-desktop.png')}}">
+<div class="main-search-container" data-background-image="{{asset('frontend/asset/images/Campunite-Bild-Start-desktop.png')}}">
 	<div class="main-search-inner">
 
 		<div class="container">
