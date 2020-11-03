@@ -45,7 +45,7 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'frontend.client.show',
     ]]);
     Route::get('/rentout', [FCamperController::class, 'rent_out'])->name('rent_out');
-    Route::get('/rentoutdetails', [FCamperController::class, 'rent_out_details'])->name('rent_out_details');
+    Route::get('/personnalData', [FCamperController::class, 'personnalData'])->name('personnalData');
     Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
     Route::get('/campersteps', [FCamperController::class, 'camper_steps'])->name('camper_steps');
     Route::get('/fillinvehicle', [FCamperController::class, 'fill_in_vehicle'])->name('fill_in_vehicle');
