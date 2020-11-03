@@ -23,11 +23,11 @@
                         <img style="max-width:100%" src="/images/camper_categories/{{$data->image}}"  style="with:200px"/>
                     </div>
                 </div>
-            </div>  
+            </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">{{ __('backend.camper_category') }} </h4>
+                        <h4 class="card-title">{{ __('backend.menu_camper_category') }} </h4>
                         <div class="mt-4">
                             <div class="form-group">
                                 {{ Form::select('id_camper_categories', $camperCategories, $data->id_camper_categories, ['class' => 'form-control','required']) }}
@@ -75,10 +75,10 @@
             </div>
 
             <div class="col-sm-12">
-                
-               
+
+
                 {{Form::submit(__('backend.Update'),['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
-                
+
                 <a href="{{ route('camperSubCategory.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>

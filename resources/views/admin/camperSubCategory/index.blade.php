@@ -10,11 +10,11 @@
                         <a href="{{ route('camperSubCategory.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
                             style="width:200px;margin:0px 10px">{{ __('backend.new_camperSubCategory') }}</a>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
-                            style="width:100%">s
+                            style="width:100%">
                             <thead>
                                 <tr>
                                     <th>{{ __('backend.Image') }}</th>
-                                    <th>{{ __('backend.Category') }}</th>
+                                    <th>{{ __('backend.category') }}</th>
                                     <th>{{ __('backend.label') }} DE</th>
                                     <th>{{ __('backend.label') }} EN</th>
                                     <th>{{ __('backend.label') }} FR</th>
@@ -42,7 +42,7 @@
                                                     class="btn btn-danger btn-sm rounded-0"
                                                     id="deletePrgButton"
                                                     data-id="{{$item->id}}" data-toggle="modal" data-target="#delete"data-placement="top" title="Delete"><i class="far fa-trash-alt"></i>
-                                                </button>          
+                                                </button>
                                             </div>                                             </li>
                                     </td>
                                 </tr>
@@ -51,7 +51,7 @@
                             <tfoot>
                                 <tr>
                                     <th>{{ __('backend.Image') }}</th>
-                                    <th>{{ __('backend.Category') }}</th>                                    
+                                    <th>{{ __('backend.Category') }}</th>
                                     <th>{{ __('backend.label') }} DE</th>
                                     <th>{{ __('backend.label') }} EN</th>
                                     <th>{{ __('backend.label') }} FR</th>
@@ -87,7 +87,7 @@
       </form>
     </div>
   </div>
-</div>                                            
+</div>
 <script>
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $(document).on("click", "#deletePrgButton", function () {
