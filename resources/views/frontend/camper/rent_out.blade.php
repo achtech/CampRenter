@@ -46,7 +46,6 @@
 									<a href="listings-list-with-sidebar.html" >
 									<img src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
 										<h4>{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
-
 									</a>
 								</div>
 							@endforeach

@@ -595,8 +595,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div style="float: right;">
-									<a href="{{route('camper_steps')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-									<a href="{{route('rent_out')}}" class="button border">{{trans('front.cancel')}}</a>
+									<a href="" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
+									<a href="" class="button border">{{trans('front.cancel')}}</a>
 								</div>
 							</div>
 						</div>
