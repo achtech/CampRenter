@@ -343,7 +343,14 @@ return [
     'value_of_vehicle' => 'Wert des Fahrzeugs',
     'vehicle_licence' => 'Fahrzeugschein',
     'view_booking' => 'Buchungen anzeigen',
-    'width' => 'Breite',    
+    'width' => 'Breite',
     /**  PLEASE ADD YOUR NEW LABELS HERE */
-    
+    'camperSubCategory_managment' => 'Unterkategorien Camper Management',
+    'camper_sub_category' => 'Camper Unterkategorie',
+    'new_camperSubCategory' => 'Neue Unterkategorie',
+    'camper_sub_category.breadcrumb' => 'Unterkategorie Camper',
+    'menu_camper_sub_category' => 'Unterkategorie',
+    'edit_camper_sub_category.breadcrumb' => 'Unterkategorie bearbeiten',
+    'message_delete_camperSubCategory' => 'Möchten Sie diese Unterkategorie löschen?',
+
 ];
