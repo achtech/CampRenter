@@ -27,7 +27,7 @@ return [
     'menu_panel_dashboard_navigator' => 'Dashboard Navigation',
     'menu_panel_account' => 'My Account',
     'menu_panel_rentout' => 'Rent out',
-	'menu_blog' =>'Blog',
+    'menu_blog' => 'Blog',
     /** Slider */
     'slider_title' => 'Rent motorhomes, campervans and caravans from private owners',
     'slider_looking_for' => 'What are you looking for?',
@@ -61,11 +61,11 @@ return [
     'our_bloc' => 'From The Blog',
     'Reviews' => 'Review(s)',
     'find_blog' => 'See all blogs',
-	'find_camper_now' =>'Find camper now',
+    'find_camper_now' => 'Find camper now',
     'client_camper_detail' => 'Detail',
     'client_camper_edit' => 'Edit',
     'client_camper_delete' => 'Delete',
-    
+
     /** Rent out Camper page */
     'title_1' => 'Earn money with your camper',
     'text_content_1_1' => 'Share your camper with people from all over the world. Campunite makes it as easy as possible for you. We offer simple means of payment such as PayPal, Visa and Mastercard. Read the steps and get started!',
@@ -132,7 +132,7 @@ return [
     'where_you_came' => 'Please let us know where you came across us the last time.',
     'who_are_you' => 'Who are you?',
     'drop_photos' => 'Click here or drop Photos to upload',
-    '' => '',
+    'favoris' => 'Favoris',
     '' => '',
     '' => '',
     '' => '',
@@ -196,5 +196,6 @@ return [
     'Add comment' => 'Add comment',
     'Comment' => 'Comment',
     'Submit Comment' => 'Submit Comment',
+    'blog_comment' => 'comments',
     
 ];

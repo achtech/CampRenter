@@ -34,8 +34,8 @@
 
 				<!-- Logo -->
 				<div id="logo" style="padding-left: 75px;">
-					<a href="index.html"><img src="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
-					<a href="index.html" class="dashboard-logo"><img src="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
+					<a href="{{route('home.index')}}"><img src="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
+					<a href="{{route('home.index')}}" class="dashboard-logo"><img src="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
 				</div>
 
 				<!-- Mobile Navigation -->
@@ -51,11 +51,11 @@
 				<nav id="navigation" class="style-1">
 					<ul id="responsive">
 
-					<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="/">{{trans('front.menu_home')}}</a></li>
-					<li><a  href="#">{{trans('front.menu_rent')}}</a>
+					<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="{{route('home.index')}}">{{trans('front.menu_home')}}</a></li>
+					<li><a class="{{ $activePage == 'campersearch' ? ' current' : '' }}" href="#">{{trans('front.menu_rent')}}</a>
 							<ul>
 								@foreach($categories as $cat)
-									<li><a href="index-3.html">{{App\Http\Controllers\Controller::getLabelFromObject($cat)}}</a></li>
+									<li><a href="{{route('frontend.camper.search')}}">{{App\Http\Controllers\Controller::getLabelFromObject($cat)}}</a></li>
 								@endforeach
 							</ul>
 						</li>
@@ -126,16 +126,16 @@
 		<div class="dashboard-nav-inner">
 			<ul data-submenu-title="Main">
 				<li class="{{ $activePage == 'FC_camper' ? 'active' : '' }}"><a href="{{route('frontend.clients.camper')}}"><i class="sl sl-icon-settings"></i> {{trans('front.menu_panel_camper')}}</a></li>
+				<li><a href=""><i class="sl sl-icon-star"></i> {{trans('front.favoris')}}</a></li>
 				<li class="{{ $activePage == 'FC_message' ? 'active' : '' }}"><a href="{{route('frontend.clients.message')}}"><i class="sl sl-icon-envelope-open"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">2</span></a></li>
 				<li class="{{ $activePage == 'FC_notification' ? 'active' : '' }}"><a href="{{route('frontend.clients.notification')}}"><i class="fa fa-calendar-check-o"></i> {{trans('front.menu_panel_notification')}}</a></li>
 				<li class="{{ $activePage == 'FC_booking' ? 'active' : '' }}"><a href="{{route('frontend.clients.booking')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_booking')}}</a></li>
 				<li class="{{ $activePage == 'FC_wallet' ? 'active' : '' }}"><a href="{{route('frontend.clients.wallet')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_wallet')}}</a></li>
 				<li class="{{ $activePage == 'FC_review' ? 'active' : '' }}"><a href="{{route('frontend.clients.review')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_review')}}</a></li>
-				<li class="{{ $activePage == 'rent_out' ? 'active' : '' }}"><a href="{{route('rent_out')}}"><i class="sl sl-icon-plus"></i>{{trans('front.menu_panel_rentout')}}</a></li>
+				<li class="{{ $activePage == 'rent_out' || $activePage == 'personnalData' ? 'active' : '' }}"><a href="{{route('rent_out')}}"><i class="sl sl-icon-plus"></i>{{trans('front.menu_panel_rentout')}}</a></li>
 			</ul>
 			<ul data-submenu-title="Account">
 				<li class="{{ $activePage == 'FC_profile' ? 'active' : '' }}"><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
-				<li><a href=""><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_invoice')}}</a></li>
 				<li><a href=""><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
 			</ul>
 

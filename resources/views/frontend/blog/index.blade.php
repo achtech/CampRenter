@@ -48,18 +48,16 @@
 								<!-- Content -->
 								<div class="listing-item-content">
 									<div class="listing-item-inner">
-									<h3>{{$blog->title}} <i class="verified-icon"></i></h3>
+									<h3>{{$blog->title}} </h3>
 									<div class="row">
-										<div class="col-lg-4"><div class="numerical-rating mid" data-rating="{{App\Http\Controllers\Controller::getUser($blog->created_by)}}"></div></div>
-										<div class="col-lg-4"><div class="numerical-rating mid" data-rating="{{$blog->created_at}}"></div></div>
-										<div class="col-lg-4"><div class="numerical-rating mid" data-rating="{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}}/comment"></div></div>
+										<div class="col-lg-4"><div class="blog-title " >{{App\Http\Controllers\Controller::getUser($blog->created_by)}}</div></div>
+										<div class="col-lg-4"><div class="blog-title " >{{$blog->created_at}}</div></div>
+										<div class="col-lg-4"><div class="blog-title " >{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} {{trans('front.blog_comment')}}</div></div>
 									</div>
-										<div class="star-rating" data-rating="5">
-											<div class="rating-counter">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} reviews)</div>
-										</div>
+										
+									<div class="rating-counter">{{ Illuminate\Support\Str::limit($blog->article, 100)}}</div>
+										
 									</div>
-
-									<span class="like-icon"></span>
 								</div>
 							</a>
 						</div>
