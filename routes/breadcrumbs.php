@@ -154,6 +154,25 @@ Breadcrumbs::for('create_camperCategory', function ($trail) {
     $trail->push(__('backend.create_camper_category.breadcrumb'), route('camperCategory.index'));
 });
 
+// Settings > CamperSubCategory
+Breadcrumbs::for('camperSubCategory', function ($trail) {
+    $trail->parent('settings');
+    $trail->push(__('backend.camper_sub_category.breadcrumb'), route('camperSubCategory.index'));
+});
+
+// Settings > camperSubCategory > Edit camperSubCategory
+Breadcrumbs::for('edit_camperSubCategory', function ($trail) {
+    $trail->parent('camperSubCategory');
+    $trail->push(__('backend.edit_camper_sub_category.breadcrumb'), route('camperSubCategory.index'));
+});
+
+// Settings > CamperCategory > Create CamperCategory
+Breadcrumbs::for('create_camperSubCategory', function ($trail) {
+    $trail->parent('camperCategory');
+    $trail->push(__('backend.create_camper_sub_category.breadcrumb'), route('camperCategory.index'));
+});
+
+
 // Settings > CamperCategory > Edit CamperCategory
 Breadcrumbs::for('edit_camperStatus', function ($trail, $data) {
     $trail->parent('camperStatus');

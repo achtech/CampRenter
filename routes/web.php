@@ -260,6 +260,18 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'transmission.show',
     ]]);
 
+    
+    //ADMIN->EQUIPMENTCATEGORY
+    Route::delete('camperSubCategory/{id}/delete', 'App\Http\Controllers\admin\CamperSubCategoryController@destroy')->name('camperSubCategory.delete');
+    Route::resource('camperSubCategory', 'App\Http\Controllers\admin\CamperSubCategoryController', ['except' => 'destroy', 'names' => [
+        'index' => 'camperSubCategory.index',
+        'create' => 'camperSubCategory.create',
+        'update' => 'camperSubCategory.update',
+        'edit' => 'camperSubCategory.edit',
+        'store' => 'camperSubCategory.store',
+        'show' => 'camperSubCategory.show',
+    ]]);
+
     //ADMIN->EQUIPMENTCATEGORY
     Route::delete('camperCategory/{id}/delete', 'App\Http\Controllers\admin\CamperCategoryController@destroy')->name('camperCategory.delete');
     Route::resource('camperCategory', 'App\Http\Controllers\admin\CamperCategoryController', ['except' => 'destroy', 'names' => [
