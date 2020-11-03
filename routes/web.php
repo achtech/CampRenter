@@ -50,6 +50,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/campersteps', [FCamperController::class, 'camper_steps'])->name('camper_steps');
     Route::get('/fillinvehicle', [FCamperController::class, 'fill_in_vehicle'])->name('fill_in_vehicle');
     Route::get('/equipment', [FCamperController::class, 'equipment'])->name('equipment');
+    Route::get('/accessories', [FCamperController::class, 'accessories'])->name('accessories');
+    Route::get('/description', [FCamperController::class, 'description'])->name('description');
     Route::get('/contact', [FContactController::class, 'index'])->name('contact');
     Route::get('/terms', [FContactController::class, 'terms'])->name('terms');
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
@@ -261,7 +263,6 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'transmission.show',
     ]]);
 
-    
     //ADMIN->EQUIPMENTCATEGORY
     Route::delete('camperSubCategory/{id}/delete', 'App\Http\Controllers\admin\CamperSubCategoryController@destroy')->name('camperSubCategory.delete');
     Route::resource('camperSubCategory', 'App\Http\Controllers\admin\CamperSubCategoryController', ['except' => 'destroy', 'names' => [

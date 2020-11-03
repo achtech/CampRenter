@@ -75,7 +75,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="col-md-12">
-								<input type="text" placeholder="e.g. 964 School Street">
+								<input type="text" placeholder="">
 								<h6>{{trans('front.recommandation')}}</h6>
 							</div>
 						</div>
@@ -83,8 +83,7 @@
 					<div class="row">
 						<div class="col-md-12">
 						<div style="float: right;">
-							<a href="{{route('personnalData')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-							<a href="{{route('frontend.camper')}}" class="button border">{{trans('front.cancel')}}</a>
+							<a href="" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
 						</div>
 					</div>
 				</div>
