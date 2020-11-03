@@ -49,6 +49,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
     Route::get('/campersteps', [FCamperController::class, 'camper_steps'])->name('camper_steps');
     Route::get('/fillinvehicle', [FCamperController::class, 'fill_in_vehicle'])->name('fill_in_vehicle');
+    Route::get('/equipment', [FCamperController::class, 'equipment'])->name('equipment');
     Route::get('/contact', [FContactController::class, 'index'])->name('contact');
     Route::get('/terms', [FContactController::class, 'terms'])->name('terms');
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');

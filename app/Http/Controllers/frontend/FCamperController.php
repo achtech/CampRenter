@@ -51,4 +51,11 @@ class FCamperController extends Controller
         return view('frontend.camper.fill_in_vehicle')->with('categories', $categories);
     }
 
+    public function equipment()
+    {
+        $categories = DB::table('camper_categories')->paginate(10);
+
+        return view('frontend.camper.equipment')->with('categories', $categories);
+    }
+
 }
