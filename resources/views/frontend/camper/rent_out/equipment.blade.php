@@ -24,76 +24,8 @@
 	</div>
 
 	<div class="row">
-		<!-- Listings -->
-		<div class="col-lg-5 col-md-12" style="margin-bottom:20px;">
-
-			<div class="dashboard-list-box margin-top-0">
-				<ul>
-					<li>
-						<img class="headline right" src="{{ asset('images/rent-out-camper/camper_rent.png') }}"/>
-					</li>
-					<li>
-					<div class="row">
-							<h6>Campervan</h6>
-							<h3><strong>Camp Name</strong></h3>
-						</div>
-						<div class="row">
-							<h6>{{trans('front.state')}}:</h6>
-							<p>Camp Name</p>
-						</div>
-					</li>
-					<li>
-						<div class="row">
-							<h5 style="margin-top: 0px; color:#39b7cd;">{{trans('front.complete_details')}}</h5>
-							<div>
-								<h3 style="margin-top: 20px;"><strong>{{trans('front.the_vehicle')}}</strong></h3>
-								<div class="payment-tab-trigger">
-									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">{{trans('front.vehicle_data')}}</label>
-
-									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">{{trans('front.equipment')}}</label>
-
-									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">{{trans('front.extras')}}</label>
-
-									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">{{trans('front.description')}}</label>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="row">
-							<div class="col-md-10" style="margin-top: 0px;">
-								<h3><strong>{{trans('front.photos')}}</strong></h3>
-							</div>
-							<div class="col-md-2" style="margin-top: 0px;">
-								<a href="{{route('slide_camper')}}"><h3><i class="sl sl-icon-plus"></i></h3></a>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="row">
-							<h3 style="margin-top: 0px;"><strong>{{trans('front.menu_panel_rentout')}}</strong></h3>
-							<div class="payment-tab-trigger">
-								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">{{trans('front.insurance')}}</label>
-
-								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">{{trans('front.rental_terms')}}</label>
-
-								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">{{trans('front.terms')}}</label>
-
-								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">{{trans('front.Calendar')}}</label>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
+		<!-- sub_menu -->
+		@include('frontend.camper.rent_out.sub_menu')
 
 		<div class="col-lg-7 col-md-12">
 		<h2 style="padding: 10px;"><strong>Equipment</strong></h2>
@@ -595,8 +527,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div style="float: right;">
-									<a href="" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-									<a href="" class="button border">{{trans('front.cancel')}}</a>
+								<a href="{{route('accessories')}}" class="button border">{{trans('front.apply')}}</a>
+								<a href="{{route('personnalData')}}" class="button border">{{trans('front.cancel')}}</a>
 								</div>
 							</div>
 						</div>

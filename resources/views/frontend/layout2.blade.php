@@ -266,7 +266,7 @@ $(document).ready(function() {
 <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
 <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 <style>
-	#map {
+	#mapCamper {
 		width: 95%;
 		height: 450px;
 		background: grey;

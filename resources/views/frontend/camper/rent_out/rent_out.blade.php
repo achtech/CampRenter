@@ -83,7 +83,7 @@
 					<div class="row">
 						<div class="col-md-12">
 						<div style="float: right;">
-							<a href="" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
+							<a href="{{route('personnalData')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
 						</div>
 					</div>
 				</div>
