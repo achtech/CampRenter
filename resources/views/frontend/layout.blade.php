@@ -83,7 +83,10 @@
 							<a  id="myBtn">{{trans('front.menu_login')}}</a>
 							@include('frontend.connexion.login');
 						</li>
-						<li><a>{{trans('front.menu_register')}}</a></li>
+						<li>
+							<a >{{trans('front.menu_register')}}</a>
+							
+						</li>
 
 					</ul>
 				</nav>
@@ -234,6 +237,10 @@
 		  if (event.target == paswwordModel) {
 			paswwordModel.style.display = "none";
 		  }
+		}
+		var log = document.getElementById("log");
+		log.onclick= function() {
+		  paswwordModel.style.display = "none";
 		}
 </script>
 <script>

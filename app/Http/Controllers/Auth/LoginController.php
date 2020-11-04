@@ -39,32 +39,34 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:client')->except('logout');
     }
-    public function create(array $data)
-    {
-        return Client::create([
-            'email' => $data['email'],
-            'client_name' => $data['client_name'],
-            'client_last_name' => $data['client_last_name'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
+
     public function doLogin(Request $request)
     {
-        $input = $request->all();
-        $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-        $fieldType = 'email';
-        dd(Auth::attempt(['email' => $input['email'], 'password' => md5($input['password'])]));
-        //dd(auth()->attempt(array($fieldType => $input['email'], 'password' => $input['password'])));
-        if (auth()->attempt(array($fieldType => $input['email'], 'password' => md5($input['password'])))) {
-            return redirect()->route('frontend.home.index');
-        } else {
-            return redirect()->route('frontend.index')
-                ->with('error', 'Email-Address And Password Are Wrong.');
+
+        $credentials = [
+            'email' => $request['email'],
+            'password' => md5($request['password']),
+        ];
+        //dd($credentials);
+        //dd($request['email'] . '' . $request['password']);
+        //  dd(Auth::attempt(array('email' => $request['email'], 'password' => $request['password'])));
+
+        dd(Auth::attempt(array([
+            'email' => 'inassekaram@gmail.com',
+            'password' => '123456',
+        ])));
+        dd(Auth::attempt($credentials));
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('dashboard');
         }
+
+        return 'Failure';
+    }
+    protected function guard()
+    {
+        return Auth::guard('client');
     }
 }

@@ -22259,3 +22259,21 @@ a::after {
     border-color: #f15424;
     float: left;
 }
+.connexion {
+    width: 62% !important;
+}
+.close-btn {
+    color: white;
+    background-color: #4cbed2;
+    border-radius: 76%;
+    right: 55px;
+    width: 40px;
+    height: 40px;
+    padding-left: 10px;
+    padding-top: 5px;
+    font-size: 35px;
+    cursor: grab;
+}
+.go-back {
+    color: #4cbed2 !important;
+}
