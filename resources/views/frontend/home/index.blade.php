@@ -1,8 +1,5 @@
 
-@extends('frontend.layout.layoutGlobal',['activePage' => 'home'])
-@section('header')
-@include('frontend.layout.headerHome',['activePage' => 'home'])
-@endsection
+@extends('frontend.layout.layout',['activePage' => 'home'])
 @section('banner')
 @include('frontend.layout.slider')
 @endsection
@@ -166,7 +163,4 @@
 	</div>
 </section>
 <!-- Recent Blog Posts / End -->
-@endsection
-@section('footer')
-@include('frontend.layout.footerHome')
 @endsection
