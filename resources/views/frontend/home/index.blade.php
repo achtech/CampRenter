@@ -32,15 +32,14 @@
 									<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
 									<span>{{$camper->description_camper}}</span>
 								</div>
-								<span class="like-icon"></span>
-							</div>
-							<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}">
-							{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}<div class="rating-counter">({{App\Http\Controllers\frontend\FHomeController::getReviewsCount($camper->id)}} {{__('front.Reviews')}})</div>
-							</div>
-						</a>
-					</div>
-				<!-- Listing Item / End -->
-				@endforeach
+								<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}">
+								{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}<div class="rating-counter">({{App\Http\Controllers\frontend\FHomeController::getReviewsCount($camper->id)}} {{__('front.Reviews')}})</div>
+								</div>
+							</a>
+						</div>
+					<!-- Listing Item / End -->
+					@endforeach
+					
 				</div>
 
 			</div>
@@ -61,7 +60,7 @@
 
 		<div class="col-md-12">
 			<div class="row">
-
+				@if(count($categories)>0)
 				@foreach($categories as $category)
 					<!-- Box -->
 					<div class="col-md-3 alternative-imagebox">
@@ -71,8 +70,8 @@
 							<span class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} Listings</span>
 						</a>
 					</div>
-
 				@endforeach
+				@endif
 			</div>
 		</div>
 	</div>

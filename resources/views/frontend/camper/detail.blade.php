@@ -365,8 +365,8 @@
 				<div class="row with-forms  margin-top-0">
 
 					<!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
-					<div class="col-lg-12">
-						<input type="text" id="date-picker" placeholder="Date" readonly="readonly">
+					<div class="col-lg-12 booking_date">
+						<input type="text" id="booking-date-range" placeholder="Check-In - Check-Out" value=""/>
 					</div>
 
 					<!-- Panel Dropdown -->

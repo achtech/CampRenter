@@ -27,7 +27,7 @@
 								
 								<!-- Main Search Input -->
 								<div class="col-fs-6">
-									<div class="input-with-icon">
+									<div class="input-with-icon date_range_search">
 										<i class="fa fa-calendar calendar-position"></i>
 										<input type="text" id="booking-date-range" placeholder="Check-In - Check-Out" value=""/>
 									</div>
@@ -165,9 +165,9 @@
 				
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="listings-single-page.html" class="listing-item-container" data-marker-id="1">
+					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="1">
 						<div class="listing-item">
-							<img src="images/listing-item-01.jpg" alt="">
+							<img src="{{asset('frontend/asset/images/listing-item-01.jpg')}}" alt="">
 
 							<div class="listing-badge now-open">Now Open</div>
 							
@@ -187,9 +187,9 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="listings-single-page.html" class="listing-item-container" data-marker-id="2">
+					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="2">
 						<div class="listing-item">
-							<img src="images/listing-item-02.jpg" alt="">
+							<img src="{{asset('frontend/asset/images/listing-item-02.jpg')}}" alt="">
 							<div class="listing-item-details">
 								<ul>
 									<li>Friday, August 10</li>
@@ -211,9 +211,9 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="listings-single-page.html" class="listing-item-container" data-marker-id="3">
+					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="3">
 						<div class="listing-item">
-							<img src="images/listing-item-03.jpg" alt="">
+							<img src="{{asset('frontend/asset/images/listing-item-03.jpg')}}" alt="">
 							<div class="listing-item-details">
 								<ul>
 									<li>Starting from $59 per night</li>
@@ -235,9 +235,9 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="listings-single-page.html" class="listing-item-container" data-marker-id="4">
+					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="4">
 						<div class="listing-item">
-							<img src="images/listing-item-04.jpg" alt="">
+							<img src="{{asset('frontend/asset/images/listing-item-04.jpg')}}" alt="">
 
 							<div class="listing-badge now-open">Now Open</div>
 
@@ -257,9 +257,9 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="listings-single-page.html" class="listing-item-container" data-marker-id="5">
+					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="5">
 						<div class="listing-item">
-							<img src="images/listing-item-05.jpg" alt="">
+							<img src="{{asset('frontend/asset/images/listing-item-05.jpg')}}" alt="">
 							<div class="listing-item-content">
 								<span class="tag">Other</span>
 								<h3>Airport</h3>
@@ -276,9 +276,9 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="listings-single-page.html" class="listing-item-container" data-marker-id="6">
+					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="6">
 						<div class="listing-item">
-							<img src="images/listing-item-06.jpg" alt="">
+							<img src="{{asset('frontend/asset/images/listing-item-06.jpg')}}" alt="">
 
 							<div class="listing-badge now-closed">Now Closed</div>
 

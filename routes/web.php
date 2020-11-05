@@ -34,14 +34,20 @@ Route::get('lang/{lang}', function ($lang) {
     return back();
 });
 Route::group(['middleware' => 'Lang'], function () {
+//    login
+    Route::get('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
+    Route::post('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
     //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
-    Route::resource('client', FClientController::class, ['except' => ['destroy', 'store'], 'names' => [
-        'index' => 'client.index',
+    Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
+    Route::get('/editPass', [FClientController::class, 'edit'])->name('frontend.client.editClient');
+    Route::put('/updateClient', [FClientController::class, 'updateF'])->name('frontend.client.updateF');
+    Route::resource('/fclient', FClientController::class, ['except' => ['destroy', 'store', 'edit', 'update'], 'names' => [
+        'index' => 'frontend.client.index',
         'show' => 'frontend.client.show',
     ]]);
     Route::get('/rentout', [FCamperController::class, 'rent_out'])->name('rent_out');
@@ -55,7 +61,13 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
     Route::get('/imprint', [FContactController::class, 'imprint'])->name('imprint');
     Route::get('/help', [FContactController::class, 'help'])->name('help');
-    Route::post('signIn', 'App\Http\Controllers\frontend\FClientController@doLogin')->name('signIn');
+    //Route::group(['prefix' => 'client', 'middleware' => 'client'], function () {
+    //Route::prefix('/client')->namespace('frontend')->group(function () {
+    // Route::post('login', 'App\Http\Controllers\frontend\FClientController@login');
+    //});
+
+    Route::get('/login/client', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm');
+    Route::post('/login/client', 'App\Http\Controllers\Auth\LoginController@adminLogin');
     Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
     Route::post('/signUp', [FClientController::class, 'sign_up']);
@@ -261,7 +273,7 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'transmission.show',
     ]]);
 
-    
+
     //ADMIN->EQUIPMENTCATEGORY
     Route::delete('camperSubCategory/{id}/delete', 'App\Http\Controllers\admin\CamperSubCategoryController@destroy')->name('camperSubCategory.delete');
     Route::resource('camperSubCategory', 'App\Http\Controllers\admin\CamperSubCategoryController', ['except' => 'destroy', 'names' => [

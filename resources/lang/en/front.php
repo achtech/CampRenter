@@ -26,9 +26,10 @@ return [
     'menu_panel_invoice' => 'Invoice',
     'menu_panel_dashboard_navigator' => 'Dashboard Navigation',
     'menu_panel_account' => 'My Account',
-    'menu_panel_rentout' => 'Rent out',
-    'menu_blog' => 'Blog',
-    /** Slider */
+ 'menu_panel_rentout' => 'Rent out',
+    /*
+    -----------------------Slider ----------
+    */
     'slider_title' => 'Rent motorhomes, campervans and caravans from private owners',
     'slider_looking_for' => 'What are you looking for?',
     'slider_location' => 'Location',
@@ -150,14 +151,14 @@ return [
     'password' => 'Password',
     'or' => 'or',
     'facebook_connexion' => 'Continue with Facebook',
-    'create_account' => 'You don t have an account yet?',
+    'create_account' => 'You don t have an account yet ?',
     'register' => 'Register',
     'create_an_account' => 'Create an Account',
     'welcome' => 'Welcome to MyCamper',
     'register_email_address' => 'Register with Email Address',
     'register_facebook' => 'Register with Facebook',
     'existed_account' => 'You already have an account?',
-    'forget_password' => 'Forgot password',
+    'forget_password' => 'Forgot password ?',
     'register_with_email_address' => 'Register with email address',
     'first_name' => 'First Name',
     'last_name' => 'Last Name',
@@ -187,6 +188,13 @@ return [
     'camp_team' => 'Your CamperUnit team ',
     'address_verified' => 'Your email address has been successfully verified',
     'verified_login' => 'Your email address has been successfully verified. You can now log in. We are looking forward to our journey together!',
+    'button_reset_pass' => 'Click the button to reset your password.',
+    'ignore_message_reset_pass' => 'If you didn t ask for a reset of your password you can ignore this message.',
+    'password_reset' => 'Reset password',
+    'set_new_password' => 'Set a new password',
+    'save_new_password' => 'Save',
+    'password' => 'Password',
+
 
     /** Blog */
     'Blog' => 'Blog',

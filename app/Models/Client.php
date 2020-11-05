@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Client extends Base
+class Client extends Authenticatable
 {
+    protected $guard = 'client';
     protected $table = 'clients';
     public $primarykey = 'id';
     protected $fillable = [
+        'name',
         'client_name',
         'client_last_name',
         'email',
@@ -18,6 +21,21 @@ class Client extends Base
         'status',
         'id_avatars',
         'created_by',
+        'updated_by',
+        'created_at',
+        'updated_at',
+        'created_by',
         'updated_by'
     ];
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+    // public function getAuthPassword()
+    // {
+    //     return $this->password;
+    // }
+    // public function getNameAttribute()
+    // {
+    //     return $this->client_name;
+    // }
 }

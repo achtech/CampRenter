@@ -7,10 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class registrationEmail extends Mailable
+class RegistrationMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $client;
+
     /**
      * Create a new message instance.
      *
@@ -28,6 +29,6 @@ class registrationEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.welcome');
+        return $this->view('frontend.emails.welcome');
     }
 }

@@ -1,7 +1,4 @@
-@extends('frontend.layoutFC',['activePage' => 'FC_booking'])
-@section('header')
-@include('frontend.headerFC',['activePage' => 'home'])
-@endsection
+@extends('frontend.layout.layout_panel',['activePage' => 'FC_booking'])
 @section('content')
 		<!-- Content
 	================================================== -->
@@ -274,7 +271,7 @@
 
 
 			<!-- Copyrights -->
-			@include('frontend.footerFC')
+			@include('frontend.layout.footer_panel')
 		</div>
 
 	</div>
