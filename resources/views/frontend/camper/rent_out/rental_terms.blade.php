@@ -60,7 +60,7 @@
 					<div class="col-md-12">
 						<strong>Animals allowed</strong>
 					</div>
-					<div class="col-md-6" style="padding-top: 12px;">
+					<div class="col-md-5" style="padding-top: 12px;">
 						<label class="containerRadio">Yes
 							<input type="radio" checked="checked" name="radio">
 							<span class="checkmarkRadio"></span>
@@ -70,7 +70,7 @@
 							<span class="checkmarkRadio"></span>
 						</label>
 					</div>
-					<div class="col-md-6" style="padding-top: 12px;">
+					<div class="col-md-7" style="padding-top: 12px;">
 						<label class="containerRadio">By-Agreement
 							<input type="radio" checked="checked" name="radio">
 							<span class="checkmarkRadio"></span>
