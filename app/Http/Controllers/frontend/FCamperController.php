@@ -23,11 +23,11 @@ class FCamperController extends Controller
         return view('frontend.camper.rent_out')->with('categories', $categories);
     }
 
-    public function rent_out_details()
+    public function personnalData()
     {
         $categories = DB::table('camper_categories')->paginate(10);
 
-        return view('frontend.camper.rent_out_details')->with('categories', $categories);
+        return view('frontend.camper.personnal_data')->with('categories', $categories);
     }
 
     public function slide_camper()
@@ -49,6 +49,13 @@ class FCamperController extends Controller
         $categories = DB::table('camper_categories')->paginate(10);
 
         return view('frontend.camper.fill_in_vehicle')->with('categories', $categories);
+    }
+
+    public function equipment()
+    {
+        $categories = DB::table('camper_categories')->paginate(10);
+
+        return view('frontend.camper.equipment')->with('categories', $categories);
     }
 
 }

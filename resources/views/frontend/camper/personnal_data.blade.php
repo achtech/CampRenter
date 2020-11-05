@@ -95,7 +95,7 @@
 		</div>
 
 		<div class="col-lg-7 col-md-12">
-
+		<h2 style="padding: 10px;"><strong>Complete your personnel data</strong></h2>
 			<div class="margin-top-0">
 				<ul style="list-style-type:none; padding-left: 0px;">
 					<li>
@@ -166,7 +166,7 @@
 							</div>
 							<div class="col-md-4">
 								<input type="text" placeholder="{{trans('front.mobile_number')}}">
-								<h6>{{trans('front.format_num')}}</h6>
+								<h6><i class="im im-icon-Danger"></i> {{trans('front.format_num')}}</h6>
 							</div>
 						</div>
 					</li>

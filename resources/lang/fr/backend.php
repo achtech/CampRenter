@@ -121,7 +121,7 @@ return [
     'edit_blog.breadcrumb' => 'Modifier le blog',
     'reviews_camper.breadcrumb' => 'Revue',
     'show_blog.breadcrumb' => 'Afficher le blog',
-    
+
     /** Menu */
     'Dashboard' => "Tableau de bord",
     'menu_avatars' => 'Les avatars',
@@ -346,5 +346,11 @@ return [
     'view_booking' => 'Voir les réservations',
     'width' => 'Largeur',
     /**  PLEASE ADD YOUR NEW LABELS HERE */
-    
+    'camperSubCategory_managment' => 'Gestion des campeurs sous-catégories',
+    'camper_sub_category' => 'Sous-catégorie Camper',
+    'new_camperSubCategory' => 'Nouvelle sous-catégorie',
+    'camper_sub_category.breadcrumb' => 'Sous-catégorie camping-car',
+    'menu_camper_sub_category' => 'Sous-catégorie',
+    'edit_camper_sub_category.breadcrumb' => 'Modifier sous-catégorie ',
+    'message_delete_camperSubCategory' => 'Voulez-vous supprimer cette sous-catégorie?',
 ];

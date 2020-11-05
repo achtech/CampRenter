@@ -46,7 +46,6 @@
 									<a href="listings-list-with-sidebar.html" >
 									<img src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
 										<h4>{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
-
 									</a>
 								</div>
 							@endforeach
@@ -84,7 +83,7 @@
 					<div class="row">
 						<div class="col-md-12">
 						<div style="float: right;">
-							<a href="{{route('rent_out_details')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
+							<a href="{{route('personnalData')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
 							<a href="{{route('frontend.camper')}}" class="button border">{{trans('front.cancel')}}</a>
 						</div>
 					</div>

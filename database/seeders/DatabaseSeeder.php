@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
 
             ClientsSeeder::class,
             InsurancesSeeder::class,
+            CamperSubCategoriesSeeder::class,
             CampersSeeder::class,
 
             CamperImagesSeeder::class,

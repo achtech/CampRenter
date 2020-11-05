@@ -2449,6 +2449,7 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out {
     height: auto;
 }
 
+
 /*.transparent-header .main-search-container:before {
     background: rgba(0, 0, 0, 0.5);
 }*/
@@ -7061,11 +7062,8 @@ input#date-picker:hover {
     margin: 0;
     box-sizing: border-box;
     color: #808080;
-    font-size: 16px
-    transition: 0.3s;
     background-color: #fff;
     margin-left: 15px;
-    top: -2px;
     line-height: 41px;
     padding-right: 62px;
 }
@@ -13860,10 +13858,10 @@ span.like-icon {
 ------------------------------------- */
 
 #titlebar {
-	background-color: #f8f8f8;
-	position: relative;
-	padding: 70px 0;
-	margin-bottom: 10px;
+    background-color: #f8f8f8;
+    position: relative;
+    padding: 70px 0;
+    margin-bottom: 10px;
 }
 
 #titlebar.gradient {
@@ -14447,7 +14445,6 @@ a.dashboard-responsive-nav-trigger {
     background-color: #d21309;
 }
 
-
 .dashboard-stat.color-6 {
     background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
     background-color: #136dd5;
@@ -14457,6 +14454,7 @@ a.dashboard-responsive-nav-trigger {
     background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
     background-color: #9251a2;
 }
+
 
 /* ---------------------------------- */
 
@@ -22473,18 +22471,22 @@ div.layout-style {
 #style-switcher {
     display: none;
 }
+
 #style-switcher {
     display: none;
 }
+
 .hr-bar {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
 }
+
 .hr-bar-content {
     display: block;
     overflow: hidden;
     text-align: center;
 }
+
 .hr-bar-content:after,
 .hr-bar-content:before {
     content: "";
@@ -22495,34 +22497,50 @@ div.layout-style {
     width: 50%;
     background-color: currentColor;
 }
+
 .hr-bar-content:before {
     right: 0.5em;
     margin-left: -50%;
 }
+
 .hr-bar-content:after {
     left: 0.5em;
     margin-right: -50%;
 }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
 /* The Modal (background) */
+
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
+
 /* Modal Content */
+
 .modal-content {
     background-color: #fefefe;
     margin: auto;
@@ -22531,7 +22549,9 @@ body {
     width: 44%;
 }
 
+
 /* The Close Button */
+
 .close {
     color: #aaaaaa;
     float: right;
@@ -22545,61 +22565,76 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
 .w-727 {
     width: 727px !important;
 }
+
 .connexion {
     background-color: #f15424;
     border-color: #f15424;
     color: white;
     font-weight: 700;
 }
+
 .with-facebook {
     background-color: #36518a;
     color: white;
     font-weight: 700;
 }
+
 .create-compte {
     display: inline-flex;
 }
+
 .inscription {
     margin-top: -5px;
     color: #f15424;
 }
+
 .gmail {
     background-color: #f15424;
     color: white;
     border-color: #f15424;
     font-weight: 700;
 }
+
+
 /* The Close Button second model */
+
 .close-second-model {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 .close-third-model {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 a::after {
     visibility: hidden;
 }
+
 .controls a.control-left {
     float: left;
 }
+
 .icons-design {
     font-size: 28px !important;
 }
+
 .close-forget-password-model {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 .fb-design {
     color: white;
     font-size: 91% !important;

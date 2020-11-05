@@ -292,12 +292,12 @@
                             </a>
                         </li>
                     @endif
-                    <li class="sidebar-item {{ $activePage == 'profile' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' selected' : '' }}">
+                    <li class="sidebar-item {{ $activePage == 'profile' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'camperSubCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' selected' : '' }}">
                         <a class="sidebar-link has-arrow" aria-expanded="false">
                         <i class="icon-settings"></i>
                             <span class="hide-menu">{{ __('backend.menu_settings') }}</span>
                         </a>
-                        <ul aria-expanded="false" class="collapse  first-level base-level-line {{ $activePage == 'profile' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' in' : '' }}">
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line {{ $activePage == 'profile' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory'  || $activePage == 'camperSubCategory'|| $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' in' : '' }}">
                             <li class="sidebar-item {{$activePage == 'profile' || $activePage == 'user' ? 'active' : ''}}"><a href="{{route('user.profile')}}" class="sidebar-link {{$activePage == 'profile' || $activePage == 'user' ? 'active' : ''}}"><span
                                         class="hide-menu"> {{ __('backend.menu_profil') }}
                                         </span></a>
@@ -314,6 +314,10 @@
                             </li>
                             <li class="sidebar-item {{$activePage == 'camperCategory' ? 'active' : ''}}"><a  href="{{route('camperCategory.index')}}" class="sidebar-link {{$activePage == 'camperCategory' ? 'active' : ''}}"><span
                                             class="hide-menu"> {{ __('backend.menu_camper_category') }}
+                                    </span></a>
+                            </li>
+                            <li class="sidebar-item {{$activePage == 'camperSubCategory' ? 'active' : ''}}"><a  href="{{route('camperSubCategory.index')}}" class="sidebar-link {{$activePage == 'camperSubCategory' ? 'active' : ''}}"><span
+                                            class="hide-menu"> {{ __('backend.menu_camper_sub_category') }}
                                     </span></a>
                             </li>
                             <li class="sidebar-item {{$activePage == 'licenceCategory' ? 'active' : ''}}"><a href="{{route('licenceCategory.index')}}" class="sidebar-link {{$activePage == 'licenceCategory' ? 'active' : ''}}"><span

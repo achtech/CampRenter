@@ -16,7 +16,7 @@ class CamperCategoriesSeeder extends Seeder
     {
         DB::table('camper_categories')->insert(array(
             0 => array(
-                'id' => 8,
+                'id' => 1,
                 'label_en' => 'motorhome',
                 'label_de' => 'Wohnmobil',
                 'label_fr' => 'Véhicules de camping',
@@ -27,7 +27,7 @@ class CamperCategoriesSeeder extends Seeder
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             1 => array(
-                'id' => 5,
+                'id' => 2,
                 'label_en' => 'Campervan',
                 'label_de' => 'Campingbus',
                 'label_fr' => 'Van aménagé',
@@ -38,7 +38,7 @@ class CamperCategoriesSeeder extends Seeder
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             2 => array(
-                'id' => 6,
+                'id' => 3,
                 'label_en' => 'Caravan',
                 'label_de' => 'Wohnwagen ',
                 'label_fr' => 'Caravane',
@@ -49,7 +49,7 @@ class CamperCategoriesSeeder extends Seeder
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
             3 => array(
-                'id' => 7,
+                'id' => 4,
                 'label_en' => 'Other',
                 'label_de' => 'Sonstiges',
                 'label_fr' => 'Autre',
