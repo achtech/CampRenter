@@ -41,21 +41,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
-        ],
         'client' => [
             'driver' => 'session',
             'provider' => 'clients',
         ],
-        'client-api' => [
-            'driver' => 'token',
-            'provider' => 'clients',
-            'hash' => false,
-        ],
+
     ],
 
     /*

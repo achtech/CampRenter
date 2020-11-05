@@ -5,22 +5,27 @@ namespace App\Models;
 //use Illuminate\Foundation\Auth\Client as Authenticatable;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 //use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class Client extends Authenticatable
+class Client extends Model implements AuthenticatableContract
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
+    use Authenticatable;
     use TwoFactorAuthenticatable;
 
+    protected $guarded = ['id'];
     protected $guard = 'client';
     protected $table = 'clients';
     public $primarykey = 'id';

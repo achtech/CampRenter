@@ -14,7 +14,7 @@
         </header>
         <div class="modal-body">
                 <div style="width: 152%;">
-                    {{ Form::open(['action'=>'App\Http\Controllers\Auth\LoginController@doLogin', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+                    {{ Form::open(['url'=>'login/client', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
                     <div class="row">    
                     <div  class="col-md-12">
                             <label for="username2">{{trans('front.email_address')}}:

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Providers\RouteServiceProvider;
@@ -22,51 +23,37 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-    protected $redirectTo = '/home';
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    //protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
+        $this->middleware('guest')->except('logout');
         $this->middleware('guest:client')->except('logout');
     }
-
-    public function doLogin(Request $request)
+    public function showAdminLoginForm()
     {
+        return view('auth.login', ['url' => 'admin']);
+    }
 
+    public function adminLogin(Request $request)
+    {
+        // $this->validate($request, [
+        //     'email'   => 'required|email',
+        //     'password' => 'required|min:6'
+        // ]);
+        // if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        //     return redirect()->intended('/');
+        // }
+        // return back()->withInput($request->only('email', 'remember'));
         $credentials = [
             'email' => $request['email'],
-            'password' => md5($request['password']),
+            'password' => $request['password'],
+            'status' => '1',
         ];
-        //dd($credentials);
-        //dd($request['email'] . '' . $request['password']);
-        //  dd(Auth::attempt(array('email' => $request['email'], 'password' => $request['password'])));
-
-        dd(Auth::attempt(array([
-            'email' => 'inassekaram@gmail.com',
-            'password' => '123456',
-        ])));
-        dd(Auth::attempt($credentials));
-
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard');
+        dd(Auth::guard('client')->attempt($credentials));
+        if (Auth::guard('client')->attempt($credentials)) {
+            dd(4);
         }
-
-        return 'Failure';
-    }
-    protected function guard()
-    {
-        return Auth::guard('client');
     }
 }

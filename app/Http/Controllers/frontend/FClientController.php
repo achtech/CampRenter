@@ -18,11 +18,23 @@ use App\Mail\RegistrationMail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Auth\LoginController as DefaultLoginController;
 
-class FClientController extends Controller
+class FClientController extends DefaultLoginController
 {
-    use AuthenticatesUsers;
+    protected $redirectTo = '/home';
 
+
+    public function __construct()
+    {
+        $this->middleware('guest:client')->except('logout');
+    }
+
+
+    protected function guard()
+    {
+        return Auth::guard('client');
+    }
     /**
      * Create a new controller instance.
      *
@@ -32,33 +44,24 @@ class FClientController extends Controller
     {
         return Socialite::driver('facebook')->redirect();
     }
-    /* public function doLogin(Request $request)
+    public function login(Request $request)
     {
-        $input = request()->except(['_token', '_method', 'action']);
-        $input['password'] = md5($input['password']);
-        $client = Client::where('email', $input['email'])
-            ->where('password', $input['password'])
-            ->first();
-        if ($client != null) {
-            $categories = DB::table('camper_categories')->paginate(10);
-            return view('frontend.client.index2')->with('categories', $categories);
+        $credentials = [
+            'email' => $request['email'],
+            'password' => md5($request['password']),
+        ];
+        dd(Auth::attempt(array([
+            'email' => 'inassekaram@gmail.com',
+            'password' => '123456',
+        ])));
+        //dd(Auth::guard('client')->attempt($credentials));
+        dd(Auth::attempt($credentials));
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('dashboard');
         }
-    }*/
-    public function doLogin(Request $request)
-    {
-        $input = $request->all();
-        $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-        $fieldType = 'email';
-        if (auth()->attempt(array($fieldType => $input['email'], 'password' => $input['password']))) {
-            return redirect()->route('frontend.home.index');
-        } else {
-            return redirect()->route('frontend.home.index')
-                ->with('error', 'Email-Address And Password Are Wrong.');
-        }
+        return 'Failure';
     }
+
     public function doLogout()
     {
         Auth::logout(); // logging out user
