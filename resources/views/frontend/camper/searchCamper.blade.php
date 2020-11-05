@@ -12,19 +12,18 @@
 
 				<div class="row">
 					<div class="col-md-12">
-
 							<!-- Row With Forms -->
 							<div class="row with-forms">
 								<!-- Main Search Input -->
 								<div class="col-fs-6">
-									<div class="input-with-icon location">				
+									<div class="input-with-icon location">
 										<div id="autocomplete-container" data-autocomplete-tip="type and hit enter">
 											<input id="autocomplete-input" type="text" placeholder="Location">
 										</div>
 										<a href="#"><i class="fa fa-map-marker"></i></a>
 									</div>
 								</div>
-								
+
 								<!-- Main Search Input -->
 								<div class="col-fs-6">
 									<div class="input-with-icon">
@@ -40,7 +39,7 @@
 									<div class="panel-dropdown">
 										<a href="#">Categories</a>
 										<div class="panel-dropdown-content checkboxes categories">
-											
+
 											<!-- Checkboxes -->
 											<div class="row">
 												<div class="col-md-6">
@@ -52,20 +51,20 @@
 
 													<input id="check-3" type="checkbox" name="check">
 													<label for="check-3">Hotels</label>
-												</div>	
+												</div>
 
 												<div class="col-md-6">
 													<input id="check-4" type="checkbox" name="check" >
 													<label for="check-4">Eat & Drink</label>
 
 													<input id="check-5" type="checkbox" name="check">
-													<label for="check-5">Fitness</label>	
+													<label for="check-5">Fitness</label>
 
 													<input id="check-6" type="checkbox" name="check">
 													<label for="check-6">Events</label>
 												</div>
 											</div>
-											
+
 											<!-- Buttons -->
 											<div class="panel-buttons">
 												<button class="panel-cancel">Cancel</button>
@@ -95,7 +94,7 @@
 
 													<input id="check-d" type="checkbox" name="check">
 													<label for="check-d">Wireless Internet</label>
-												</div>	
+												</div>
 
 												<div class="col-md-6">
 													<input id="check-e" type="checkbox" name="check" >
@@ -105,13 +104,13 @@
 													<label for="check-f">Free parking on street</label>
 
 													<input id="check-g" type="checkbox" name="check">
-													<label for="check-g">Smoking allowed</label>	
+													<label for="check-g">Smoking allowed</label>
 
 													<input id="check-h" type="checkbox" name="check">
 													<label for="check-h">Events</label>
 												</div>
 											</div>
-											
+
 											<!-- Buttons -->
 											<div class="panel-buttons">
 												<button class="panel-cancel">Cancel</button>
@@ -134,10 +133,10 @@
 										</div>
 									</div>
 									<!-- Panel Dropdown / End -->
-									
+
 								</div>
 								<!-- Filters / End -->
-	
+
 							</div>
 							<!-- Row With Forms / End -->
 
@@ -162,7 +161,7 @@
 
 			<!-- Listings -->
 			<div class="row fs-listings">
-				
+
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
 					<a href="listings-single-page.html" class="listing-item-container" data-marker-id="1">
@@ -170,7 +169,7 @@
 							<img src="images/listing-item-01.jpg" alt="">
 
 							<div class="listing-badge now-open">Now Open</div>
-							
+
 							<div class="listing-item-content">
 								<span class="tag">Eat & Drink</span>
 								<h3>Tom's Restaurant <i class="verified-icon"></i></h3>
@@ -207,7 +206,7 @@
 						</div>
 					</a>
 				</div>
-				<!-- Listing Item / End -->		
+				<!-- Listing Item / End -->
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
@@ -326,7 +325,7 @@
 					<!-- Pagination / End -->
 					<!-- Copyright -->
 					@include('frontend.layout.footer_detail')
-					
+
 				</div>
 			</div>
 			<!-- Pagination Container / End -->
@@ -344,7 +343,6 @@
 		</div>
 
 	</div>
-	
+
 </div>
 @endsection
-

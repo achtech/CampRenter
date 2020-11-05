@@ -302,20 +302,24 @@
 							<div class="col-md-12">
 								<strong>Location</strong>
 								<div class="markers-on-the-map" style="margin-top: 16px;">
+									<!-- Map -->
 									<div id="map"></div>
 
 									<script>
 										var api_key = "zdsQGxoHAnWQjAz094c1SW7jS8jmpqU9j2B5O09EWkE";
 										var latitude = 0;
 										var longitude = 0;
+
+
+
 										/**
-										* Adds a  draggable marker to the map..
-										*
-										* @param {H.Map} map                      A HERE Map instance within the
-										*                                         application
-										* @param {H.mapevents.Behavior} behavior  Behavior implements
-										*                                         default interactions for pan/zoom
-										*/
+										 * Adds a  draggable marker to the map..
+										 *
+										 * @param {H.Map} map                      A HERE Map instance within the
+										 *                                         application
+										 * @param {H.mapevents.Behavior} behavior  Behavior implements
+										 *                                         default interactions for pan/zoom
+										 */
 										function addDraggableMarker(map, behavior) {
 
 											var marker = new H.map.Marker({
@@ -367,7 +371,7 @@
 
 										function initHereMap() {
 
-											//console.log("initmap");
+											console.log("initmap");
 											/**
 											* Boilerplate map initialization code starts below:
 											*/
@@ -375,13 +379,13 @@
 											//Step 1: initialize communication with the platform
 											// In your own code, replace variable window.apikey with your own apikey
 
-											//console.log(api_key);
+											console.log(api_key);
 											var platform = new H.service.Platform({
 												apikey: api_key
 											});
 											var defaultLayers = platform.createDefaultLayers();
 
-											//console.log(H.service);
+											console.log(latitude);
 											//Step 2: initialize a map - this map is centered over Boston
 											var map = new H.Map(document.getElementById('map'),
 												defaultLayers.vector.normal.map, {
@@ -438,6 +442,7 @@
 
 										getLocation();
 									</script>
+
 								</div>
 							</div>
 						</div>
