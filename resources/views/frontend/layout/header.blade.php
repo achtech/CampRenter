@@ -66,6 +66,4 @@
 			<!-- Right Side Content / End -->
 		</div>
 	</div>
-	<!-- Header / End -->
-
-</header>
+	<!-- Header / End --></header>

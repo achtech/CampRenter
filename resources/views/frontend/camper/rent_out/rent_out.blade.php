@@ -42,13 +42,18 @@
 						<div class="row">
 							@foreach($categories as $category)
 								<!-- Box -->
-								<div class="col-md-3 alternative-imagebox">
-									<a href="listings-list-with-sidebar.html" >
+								<div class="col-md-3 alternative-imagebox" id="{{$category->label_en == 'motorhome' ? 'showSub' : 'category'}}">
+									<a>
 									<img src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
 										<h4>{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
 									</a>
 								</div>
 							@endforeach
+						</div>
+						<div class="row" id="sub_cat" style="display: none">
+							<div class="add-listing-headline">
+								<h3>Build type</h3>
+							</div>
 						</div>
 					</div>
 
@@ -75,7 +80,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="col-md-12">
-								<input type="text" placeholder="e.g. 964 School Street">
+								<input type="text" placeholder="">
 								<h6>{{trans('front.recommandation')}}</h6>
 							</div>
 						</div>
@@ -84,7 +89,6 @@
 						<div class="col-md-12">
 						<div style="float: right;">
 							<a href="{{route('personnalData')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-							<a href="{{route('frontend.camper')}}" class="button border">{{trans('front.cancel')}}</a>
 						</div>
 					</div>
 				</div>
@@ -93,4 +97,5 @@
 		</div>
 	</div>
 </div>
+
 @endsection
