@@ -40,20 +40,6 @@
 							</a>
 						</li>
 						<li><a class="{{ $activePage == 'blog' ? ' current' : '' }}" href="{{route('frontend.blog')}}">{{trans('front.menu_blog')}}</a></li>
-
-						<li><a href="#">{{trans('front.menu_user_panel')}}</a>
-							<ul>
-								<li><a href="{{route('frontend.clients.camper')}}">{{trans('front.menu_panel_camper')}}</a></li>
-								<li><a href="{{route('frontend.clients.message')}}">{{trans('front.menu_panel_message')}}</a></li>
-								<li><a href="{{route('frontend.clients.notification')}}">{{trans('front.menu_panel_notification')}}</a></li>
-								<li><a href="{{route('frontend.clients.booking')}}">{{trans('front.menu_panel_booking')}}</a></li>
-								<li><a href="{{route('frontend.clients.wallet')}}">{{trans('front.menu_panel_wallet')}}</a></li>
-								<li><a href="{{route('frontend.clients.review')}}">{{trans('front.menu_panel_review')}}</a></li>
-								<li><a href="{{route('clients.user.profile')}}">{{trans('front.menu_panel_profil')}}</a></li>
-								<li><a href="{{route('logout')}}">{{trans('front.menu_panel_logout')}}</a></li>
-							</ul>
-						</li>
-
 						<li>
 							<a  id="myBtn">{{trans('front.menu_login')}}</a>
 							@include('frontend.connexion.login');

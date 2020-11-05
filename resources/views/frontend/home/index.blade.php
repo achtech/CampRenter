@@ -34,14 +34,11 @@
 								</div>
 								<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}">
 								{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}<div class="rating-counter">({{App\Http\Controllers\frontend\FHomeController::getReviewsCount($camper->id)}} {{__('front.Reviews')}})</div>
-								</div>
-							</a>
-						</div>
-					<!-- Listing Item / End -->
-					@endforeach
-					
-				</div>
-
+								</div>	
+							</div>
+						</a>
+					</div>
+				@endforeach
 			</div>
 
 		</div>
