@@ -1,5 +1,5 @@
 
-@extends('frontend.layout2',['activePage'=>'conditions'])
+@extends('frontend.layout.layout_panel',['activePage'=>'conditions'])
 
 @section('content')
 <!-- Content
@@ -137,6 +137,8 @@
 				</div>
 			</div>
 		</div>
+		<!-- Copyrights -->
+		@include('frontend.layout.footer_panel')
 	</div>
 </div>
 @endsection

@@ -1,5 +1,5 @@
 
-@extends('frontend.layout2',['activePage'=>'insurance_front'])
+@extends('frontend.layout.layout_panel',['activePage'=>'insurance_front'])
 
 @section('content')
 <!-- Content

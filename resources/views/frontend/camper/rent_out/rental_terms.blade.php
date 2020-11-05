@@ -1,5 +1,5 @@
 
-@extends('frontend.layout2',['activePage'=>'rental_terms'])
+@extends('frontend.layout.layout_panel',['activePage'=>'rental_terms'])
 
 @section('content')
 <!-- Content
@@ -55,25 +55,25 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-12" style="padding-top: 20px;">
 				<div class="col-md-6">
 					<div class="col-md-12">
 						<strong>Animals allowed</strong>
 					</div>
-					<div class="col-md-6">
-						<label class="container">Yes
+					<div class="col-md-6" style="padding-top: 12px;">
+						<label class="containerRadio">Yes
 							<input type="radio" checked="checked" name="radio">
-							<span class="checkmark"></span>
+							<span class="checkmarkRadio"></span>
 						</label>
-						<label class="container">No
+						<label class="containerRadio">No
 							<input type="radio" checked="checked" name="radio">
-							<span class="checkmark"></span>
+							<span class="checkmarkRadio"></span>
 						</label>
 					</div>
-					<div class="col-md-4">
-						<label class="container">By-Agreement
+					<div class="col-md-6" style="padding-top: 12px;">
+						<label class="containerRadio">By-Agreement
 							<input type="radio" checked="checked" name="radio">
-							<span class="checkmark"></span>
+							<span class="checkmarkRadio"></span>
 						</label>
 					</div>
 				</div>
@@ -81,25 +81,25 @@
 					<div class="col-md-12">
 						<strong>Animals allowed</strong>
 					</div>
-					<div class="col-md-4">
-						<label class="container">Yes
+					<div class="col-md-4" style="padding-top: 12px;">
+						<label class="containerRadio">Yes
 							<input type="radio" checked="checked" name="radio">
-							<span class="checkmark"></span>
+							<span class="checkmarkRadio"></span>
 						</label>
 					</div>
-					<div class="col-md-4">
-						<label class="container">No
+					<div class="col-md-8" style="padding-top: 12px;">
+						<label class="containerRadio">No
 							<input type="radio" checked="checked" name="radio">
-							<span class="checkmark"></span>
+							<span class="checkmarkRadio"></span>
 						</label>
 					</div>
-					<div class="col-md-4">
 
-					</div>
 				</div>
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-12" >
 				<strong>Kilometres included per night</strong>
+			</div>
+			<div class="col-md-12" style="padding-top: 12px;">
 				<select class="chosen-select-no-single" >
 					<option label="blank">Select Category</option>
 					<option>Eat & Drink</option>
@@ -111,34 +111,30 @@
 				</select>
 				<h5>The higher the number of kilometres included, the more attractive your vehicle will be to renters.</h5>
 			</div>
-			<div class="col-md-6">
-				<div class="col-md-12">
+			<div class="col-md-6" style="padding-top: 12px;">
+				<div class="col-md-12" >
 					<strong>Instant booking</strong>
 				</div>
-				<div class="col-md-4">
-					<label class="container">Yes
+				<div class="col-md-4" style="padding-top: 12px;">
+					<label class="containerRadio">Yes
 						<input type="radio" checked="checked" name="radio">
-						<span class="checkmark"></span>
+						<span class="checkmarkRadio"></span>
 					</label>
 				</div>
-				<div class="col-md-4">
-					<label class="container">No
+				<div class="col-md-8" style="padding-top: 12px;">
+					<label class="containerRadio">No
 						<input type="radio" checked="checked" name="radio">
-						<span class="checkmark"></span>
+						<span class="checkmarkRadio"></span>
 					</label>
-				</div>
-				<div class="col-md-4">
-
 				</div>
 			</div>
 			<div class="col-md-12">
 				<h5>With activated instant booking, renters can book your vehicle directly and bindingly. Your calendar and delivery times must be kept up to date at all times.</h5>
 			</div>
-			<div class="col-md-6">
-				<div class="col-md-12">
+			<div class="col-md-12" style="padding-top: 12px;">
+
 					<strong>Parking space</strong>
-				</div>
-				<div class="col-md-12">
+				<div class="col-md-12" style="padding-top: 12px;">
 					<div class="checkboxes in-row margin-bottom-20">
 						<input id="check-a" type="checkbox" name="check">
 						<label for="check-a">Parking space for hirer available for duration of rental</label>
@@ -165,8 +161,8 @@
 					<h5>Please note that the additional rental conditions must not conflict with MyCamper's terms and conditions.</h5>
 				</div>
 
-			<div class="row">
-				<div class="col-md-12">
+			<div class="row" >
+				<div class="col-md-12" style="padding-top: 20px;">
 				<div style="float: right;">
 				<a href="" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
 				<a href="{{route('accessories')}}" class="button border">{{trans('front.cancel')}}</a>
@@ -175,72 +171,4 @@
 		</div>
 	</div>
 </div>
-<!DOCTYPE html>
-<html>
-<style>
-/* The container */
-.container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size:18px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width:50px;
-}
-
-/* Hide the browser's default radio button */
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom radio button */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-  border-radius: 50%;
-}
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.container input:checked ~ .checkmark {
-  background-color: #2196F3;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the indicator (dot/circle) when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the indicator (dot/circle) */
-.container .checkmark:after {
- 	top: 9px;
-	left: 9px;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: white;
-}
-</style>
 @endsection

@@ -1,5 +1,5 @@
 
-@extends('frontend.layout.layout',['activePage'=>'fill_in_vehicle','footerPage' => 'true'])
+@extends('frontend.layout.layout_panel',['activePage'=>'fill_in_vehicle','footerPage' => 'true'])
 
 @section('content')
 <!-- Content
@@ -107,19 +107,19 @@
 									<strong>Gearbox</strong>
 								</div>
 								<div class="col-md-6">
-									<label class="container">Automatic
+									<label class="containerRadio">Automatic
 										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
+										<span class="checkmarkRadio"></span>
 									</label>
-									<label class="container">Manual
+									<label class="containerRadio">Manual
 										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
+										<span class="checkmarkRadio"></span>
 									</label>
 								</div>
 								<div class="col-md-6">
-									<label class="container">Semi-automatic
+									<label class="containerRadio">Semi-automatic
 										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
+										<span class="checkmarkRadio"></span>
 									</label>
 								</div>
 							</div>
@@ -127,38 +127,42 @@
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<div class="col-md-12">
-									<strong>Mileage</strong>
+								<div class="row">
+									<div class="col-md-12">
+										<strong>Mileage</strong>
+									</div>
 								</div>
-								<div class="col-md-6">
-									<label class="container">0 - 50'000 km
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
-									</label>
-									<label class="container">50'000 - 100'000 km
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
-									</label>
-									<label class="container">100'000 - 150'000 km
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
-									</label>
-									<label class="container">150'000 - 200'000 km
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
-									</label>
-									<label class="container">200'000 - 250'000 km
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
-									</label>
-									<label class="container">250'000 - 300'000 km
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
-									</label>
-									<label class="container">More than 300'000 km
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
-									</label>
+								<div class="row">
+									<div class="col-md-12">
+										<label class="containerRadio">0 - 50'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">50'000 - 100'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">100'000 - 150'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">150'000 - 200'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">200'000 - 250'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">250'000 - 300'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">More than 300'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -171,23 +175,23 @@
 									<strong>Fuel</strong>
 								</div>
 								<div class="col-md-6">
-									<label class="container">Diesel
+									<label class="containerRadio">Diesel
 										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
+										<span class="checkmarkRadio"></span>
 									</label>
-									<label class="container">Gas
+									<label class="containerRadio">Gas
 										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
+										<span class="checkmarkRadio"></span>
 									</label>
 								</div>
 								<div class="col-md-6">
-									<label class="container">Petrol
+									<label class="containerRadio">Petrol
 										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
+										<span class="checkmarkRadio"></span>
 									</label>
-									<label class="container">Petroleum gas
+									<label class="containerRadio">Petroleum gas
 										<input type="radio" checked="checked" name="radio">
-										<span class="checkmark"></span>
+										<span class="checkmarkRadio"></span>
 									</label>
 								</div>
 							</div>
