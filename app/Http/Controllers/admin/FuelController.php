@@ -57,6 +57,7 @@ class FuelController extends Controller
     {
         return redirect(route('fuel.index'));
     }
+    
     /**
      * Store a newly created resource in storage.
      *

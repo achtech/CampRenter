@@ -15,7 +15,7 @@ class CampersSeeder extends Seeder
     public function run()
     {
         DB::table('campers')->insert(array(
-            4 => array(
+            0 => array(
                 'id' => '1',
                 'camper_name' => 'Camp5',
                 'image' => 'camp1.jpg',
@@ -53,7 +53,7 @@ class CampersSeeder extends Seeder
                 'position_y' => '-8.003592',
                 'id_clients' => '1',
                 'id_licence_categories' => '1',
-                'id_camper_categories' => '5',
+                'id_camper_categories' => '1',
                 'id_transmissions' => '1',
                 'id_fuels' => '1',
                 'created_by' => 1,
@@ -61,7 +61,7 @@ class CampersSeeder extends Seeder
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
-            5 => array(
+            1 => array(
                 'id' => '2',
                 'camper_name' => 'Camp6',
                 'image' => 'camp2.jpg',
@@ -99,7 +99,8 @@ class CampersSeeder extends Seeder
                 'position_y' => '-6.835734',
                 'id_clients' => '2',
                 'id_licence_categories' => '2',
-                'id_camper_categories' => '6',
+                'id_camper_categories' => '2',
+                'id_camper_sub_categories' => '2',
                 'id_transmissions' => '2',
                 'id_fuels' => '2',
                 'created_by' => 1,
@@ -107,7 +108,7 @@ class CampersSeeder extends Seeder
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
-            6 => array(
+            2 => array(
                 'id' => '3',
                 'camper_name' => 'Camp7',
                 'image' => 'camp3.jpg',
@@ -145,7 +146,7 @@ class CampersSeeder extends Seeder
                 'position_y' => '-6.835734',
                 'id_clients' => '2',
                 'id_licence_categories' => '2',
-                'id_camper_categories' => '7',
+                'id_camper_categories' => '3',
                 'id_transmissions' => '2',
                 'id_fuels' => '2',
                 'created_by' => 1,
@@ -153,7 +154,7 @@ class CampersSeeder extends Seeder
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
-            7 => array(
+            4 => array(
                 'id' => '4',
                 'camper_name' => 'Camp8',
                 'image' => 'camp4.jpg',
@@ -191,7 +192,8 @@ class CampersSeeder extends Seeder
                 'position_y' => '-6.835734',
                 'id_clients' => '1',
                 'id_licence_categories' => '2',
-                'id_camper_categories' => '8',
+                'id_camper_categories' => '4',
+                'id_camper_sub_categories' => '5',
                 'id_transmissions' => '1',
                 'id_fuels' => '1',
                 'created_by' => 1,

@@ -1,5 +1,5 @@
 
-@extends('frontend.layout3',['activePage' => 'contact'])
+@extends('frontend.layout.layout',['activePage' => 'contact','footerPage' => 'true'])
 
 @section('content')
 <!-- Content
@@ -57,8 +57,8 @@
 				<ul class="contact-details">
 					<li><i class="im im-icon-Phone-2"></i> <strong>Phone:</strong> <span>(123) 123-456 </span></li>
 					<li><i class="im im-icon-Fax"></i> <strong>Fax:</strong> <span>(123) 123-456 </span></li>
-					<li><i class="im im-icon-Globe"></i> <strong>Web:</strong> <span><a href="#">www.campunite.com</a></span></li>
-					<li><i class="im im-icon-Envelope"></i> <strong>E-Mail:</strong> <span><a href="#">support@campunite.com</a></span></li>
+					<li><i class="im im-icon-Globe"></i> <strong>Web:</strong> <span><a href="">www.campunite.com</a></span></li>
+					<li><i class="im im-icon-Envelope"></i> <strong>E-Mail:</strong> <span><a href="mailto:support@campunite.com">support@campunite.com</a></span></li>
 				</ul>
 			</div>
 

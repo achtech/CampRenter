@@ -1,11 +1,17 @@
 <?php
 
+use App\Http\Controllers\frontend\FBlogController;
+use App\Http\Controllers\frontend\FCamperController;
+use App\Http\Controllers\frontend\FClientController;
+use App\Http\Controllers\frontend\FContactController;
+use App\Http\Controllers\frontend\FC_bookingController;
+use App\Http\Controllers\frontend\FC_CamperController;
+use App\Http\Controllers\frontend\FC_messageController;
+use App\Http\Controllers\frontend\FC_notificationController;
+use App\Http\Controllers\frontend\FC_reviewController;
+use App\Http\Controllers\frontend\FC_walletController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\Message;
-use App\Http\Controllers\frontend\FCamperController;
-use App\Http\Controllers\frontend\FContactController;
-use App\Http\Controllers\frontend\FClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +26,7 @@ use App\Http\Controllers\frontend\FClientController;
 
 Route::get('lang/{lang}', function ($lang) {
     \Session::put('locale', $lang);
-    $user = User::find(auth()->user()->id);
+    $user = User::find(auth()->user() ? auth()->user()->id : 0);
     if ($user) {
         $user->lang = $lang;
         $user->update();
@@ -32,7 +38,6 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
-    Route::get('/blog', [FBlogController::class, 'index'])->name('blog');
     //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
     Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
@@ -42,7 +47,12 @@ Route::group(['middleware' => 'Lang'], function () {
         'index' => 'frontend.client.index',
         'show' => 'frontend.client.show',
     ]]);
-    Route::get('/rent_out', [FCamperController::class, 'rent_out'])->name('rent_out');
+    Route::get('/rentout', [FCamperController::class, 'rent_out'])->name('rent_out');
+    Route::get('/personnalData', [FCamperController::class, 'personnalData'])->name('personnalData');
+    Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
+    Route::get('/campersteps', [FCamperController::class, 'camper_steps'])->name('camper_steps');
+    Route::get('/fillinvehicle', [FCamperController::class, 'fill_in_vehicle'])->name('fill_in_vehicle');
+    Route::get('/equipment', [FCamperController::class, 'equipment'])->name('equipment');
     Route::get('/contact', [FContactController::class, 'index'])->name('contact');
     Route::get('/terms', [FContactController::class, 'terms'])->name('terms');
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
@@ -58,13 +68,28 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
     Route::post('/signUp', [FClientController::class, 'sign_up']);
+    Route::get('/blog', [FBlogController::class, 'index'])->name('frontend.blog');
+    Route::get('blog/{id}/detail', [FBlogController::class, 'show'])->name('frontend.blog.fdetail');
+    Route::get('blog/search', [FBlogController::class, 'search'])->name('frontend.blog.search');
+    Route::post('blog/storeComment', [FBlogController::class, 'store'])->name('frontend.blog.storeComment');
+
+    /************* Clients FrentEnd **********************/
+    Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');
+    Route::get('/message_client', [FC_messageController::class, 'index'])->name('frontend.clients.message');
+    Route::get('/detail_message_client', [FC_messageController::class, 'show'])->name('frontend.clients.message.detail');
+    Route::get('/notification_client', [FC_notificationController::class, 'index'])->name('frontend.clients.notification');
+    Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
+    Route::get('/wallet_client', [FC_walletController::class, 'index'])->name('frontend.clients.wallet');
+    Route::get('/review_client', [FC_reviewController::class, 'index'])->name('frontend.clients.review');
+    Route::get('/search_camper_client', [FC_CamperController::class, 'show'])->name('frontend.camper.search');
+    Route::get('/details_camper_client', [FC_CamperController::class, 'detail'])->name('frontend.camper.detail');
 
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
-    //   Route::get('/logout', '\App\Http\Controllers\admin\Auth\LoginController@logout')->name('logout');
+    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     Route::get('/dashboard', function () {
         if (auth()->user() == null) {
-            // return view('/auth/login');
+            return view('/auth/login');
         } else {
             return redirect(route('dashboard'));
         }
@@ -245,6 +270,18 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'transmission.show',
     ]]);
 
+    
+    //ADMIN->EQUIPMENTCATEGORY
+    Route::delete('camperSubCategory/{id}/delete', 'App\Http\Controllers\admin\CamperSubCategoryController@destroy')->name('camperSubCategory.delete');
+    Route::resource('camperSubCategory', 'App\Http\Controllers\admin\CamperSubCategoryController', ['except' => 'destroy', 'names' => [
+        'index' => 'camperSubCategory.index',
+        'create' => 'camperSubCategory.create',
+        'update' => 'camperSubCategory.update',
+        'edit' => 'camperSubCategory.edit',
+        'store' => 'camperSubCategory.store',
+        'show' => 'camperSubCategory.show',
+    ]]);
+
     //ADMIN->EQUIPMENTCATEGORY
     Route::delete('camperCategory/{id}/delete', 'App\Http\Controllers\admin\CamperCategoryController@destroy')->name('camperCategory.delete');
     Route::resource('camperCategory', 'App\Http\Controllers\admin\CamperCategoryController', ['except' => 'destroy', 'names' => [
@@ -311,3 +348,6 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'backup.show',
     ]]);
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

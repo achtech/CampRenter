@@ -1,25 +1,8 @@
 <?php
-
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
-    /*
-     |-----------------Menu ------------------
-      
-    */
+    /** Menu */
     'menu_home' => 'Home',
     'menu_take-lease' => 'Take on lease',
     'menu_insert_vehicule' => 'Rent out',
@@ -43,6 +26,7 @@ return [
     'menu_panel_invoice' => 'Invoice',
     'menu_panel_dashboard_navigator' => 'Dashboard Navigation',
     'menu_panel_account' => 'My Account',
+ 'menu_panel_rentout' => 'Rent out',
     /*
     -----------------------Slider ----------
     */
@@ -52,11 +36,9 @@ return [
     'slider_categories' => 'All Categories',
     'slider_search' => 'Search',
     'Rent out your vehicle or your equipment and insurance is included' => 'Rent out your vehicle or your equipment and insurance is included',
-    'Rent out Camper' => 'Rent out Camper',
+    'rent_out_camper' => 'Rent out Camper',
 
-    /*
-    -----------------------Footer ----------
-    */
+    /** Footer */
     'footer_title_presentation' => 'What is Campunite?',
     'footer_presentation' => 'Campunite is the platform for renting and renting mobile homes for individuals. We bring people together! Just rent a motorhome or rent your own today.',
     'footer_social' => 'Social',
@@ -70,9 +52,7 @@ return [
     'footer_campunit_title' => 'Campunit',
     'footer_reserved_right' => 'All Rights Reserved',
 
-    /*
-    ---------------------- Home ------------------
-    */
+    /** Home */
     'content_most_visited' => 'Most Visited Campers',
     'title_categories' => 'the right one for camping',
     'content_user_review' => 'This is how it goes on vacation',
@@ -81,10 +61,13 @@ return [
     'receive_request' => 'Now you just need a little patience. As soon as the landlord has received your request, he can confirm it and nothing stands in the way of your camping holiday. Have fun with your adventure.',
     'our_bloc' => 'From The Blog',
     'Reviews' => 'Review(s)',
+    'find_blog' => 'See all blogs',
+    'find_camper_now' => 'Find camper now',
+    'client_camper_detail' => 'Detail',
+    'client_camper_edit' => 'Edit',
+    'client_camper_delete' => 'Delete',
 
-    /*
-    ---------------------- Rent out Camper page ------------------
-     */
+    /** Rent out Camper page */
     'title_1' => 'Earn money with your camper',
     'text_content_1_1' => 'Share your camper with people from all over the world. Campunite makes it as easy as possible for you. We offer simple means of payment such as PayPal, Visa and Mastercard. Read the steps and get started!',
     'text_content_1_2' => 'Greetings to your Campunite team',
@@ -96,12 +79,73 @@ return [
     'text_content_3' => "When you've created your account, you can start creating an entry for your camper. Let people know where to find your camper, show you some photos, and set a price.",
     'title_4' => 'Done!',
     'text_content_4' => 'Now all you have to do is wait. If someone is interested in serving campers, you will be notified and you can clarify details via the chat function if you wish.',
+    'gallery' => 'Gallery',
+    'create_camper' => 'Create your camper profile',
+    'witch_camper_type' => 'Which type of vehicle do you want to rent out?',
+    'give_name' => 'Give your camper a lovely name',
+    'still_can_change' => 'You can still change the name later on',
+    'recommandation' => 'If you have a recommendation code you can enter it here',
+    'cancel' => 'Cancel',
+    'apply' => 'Apply',
+    'state' => 'State',
+    'complete_details' => 'Complete the details about your vehicle now.',
+    'the_vehicle' => 'The vehicle',
+    'vehicle_data' => 'Vehicle data',
+    'equipment' => 'Equipment',
+    'extras' => 'Extras',
+    'description' => 'Description',
+    'photos' => 'Photos',
+    'insurance' => 'Insurance',
+    'rental_terms' => 'Rental terms',
+    'terms' => 'Terms',
+    'calendar' => 'Calendar',
+    'female' => 'Female',
+    'male' => 'Male',
+    'street' => 'Street',
+    'street_um' => 'St. Num',
+    'location' => 'Location',
+    'postal_code' => 'Postal Code',
+    'country' => 'Country',
+    'mobile_number' => 'Mobile Number',
+    'format_num' => 'Format: 79 123 45 67; Communicated only after booking request is accepted',
+    'date_birth' => 'Date of birth',
+    'day' => 'Day',
+    'month' => 'Month',
+    'year' => 'Year',
+    'profile_pic' => 'Your profile picture',
+    'upload' => 'Upload',
+    'additional_info' => 'Additonal information about the vehicle owner',
+    'pro_rental_campany' => 'Professional Rental Company',
+    'renting_income' => ' Is the renting out of campers your main source of income?',
+    'banking_date' => 'Banking date vehicle owner',
+    'account_holder' => 'Account Holder',
+    'bank_data' => 'Bank data',
+    'adress' => 'Adress',
+    'bic_require' => 'Required for international transfers.',
+    'languages' => 'Languages',
+    'german' => 'German',
+    'english' => 'English',
+    'italian' => 'Italian',
+    'french' => 'French',
+    'where_see_us' => 'Where did you see us last?',
+    'billboard' => 'Billboard',
+    'print_advertisement' => 'Print advertisement',
+    'where_you_came' => 'Please let us know where you came across us the last time.',
+    'who_are_you' => 'Who are you?',
+    'drop_photos' => 'Click here or drop Photos to upload',
+    'favoris' => 'Favoris',
     '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    'tab_owner' => 'Owner',
+    'tab_renter' => 'Renter',
 
-
-    /*
-    ----------------------Login ------------------
-    */
+    /** Login */
     'to_connect' => 'Log In',
     'email_address' => 'Email address',
     'password' => 'Password',
@@ -150,4 +194,16 @@ return [
     'set_new_password' => 'Set a new password',
     'save_new_password' => 'Save',
     'password' => 'Password',
+
+
+    /** Blog */
+    'Blog' => 'Blog',
+    'Latest News' => 'Latest News',
+    'Name' => 'Name',
+    'Email' => 'Email',
+    'Add comment' => 'Add comment',
+    'Comment' => 'Comment',
+    'Submit Comment' => 'Submit Comment',
+    'blog_comment' => 'comments',
+    
 ];

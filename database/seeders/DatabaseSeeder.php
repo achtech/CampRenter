@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
 
             ClientsSeeder::class,
             InsurancesSeeder::class,
+            CamperSubCategoriesSeeder::class,
             CampersSeeder::class,
 
             CamperImagesSeeder::class,
@@ -39,6 +40,7 @@ class DatabaseSeeder extends Seeder
             BillingsBookingsSeeder::class,
             BlogSeeder::class,
             CamperReviewsSeeder::class,
+            BlogCommentSeeder::class,
         ]);
 
     }

@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>
                                     @if(!empty($item->photo))
-                                        <img style="width:64px;height:64px;" src="{{ asset('assets/admin/images') }}/blog/{{$item->photo}}" >
+                                        <img style="width:64px;height:64px;" src="{{ asset('/images') }}/blog/{{$item->photo}}" >
                                     @endif
                                     </td>
                                     <td>{{$item->title}}</td>

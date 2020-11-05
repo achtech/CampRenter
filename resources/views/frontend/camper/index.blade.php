@@ -1,10 +1,9 @@
 
-@extends('frontend.layout3',['activePage' => 'camper'])
-
+@extends('frontend.layout.layout',['activePage' => 'camper','footerPage' => 'true'])
 @section('content')
 <!-- Content
 ================================================== -->
-<div class="container" style="width=100%;">
+<div class="container padding-bottom-75" style="width=100%;">
 	<div class="row">
 		<div class="col-md-6">
 			<h3 class="headline margin-top-45" style="font-weight:normal;text-align:left;">
@@ -15,8 +14,7 @@
 			<P>
 				{{trans('front.text_content_1_2')}}
 			</p>
-			<a class="button" href="/rent_out">{{trans('front.Rent out Camper')}}</a>
-			<a class="button" >{{trans('front.learn_more')}}</a>
+			<a class="button" href="{{route('rent_out')}}">{{trans('front.rent_out_camper')}}</a>
 		</div>
 		<div class="col-md-6">
 			<div>
@@ -39,6 +37,7 @@
 			<P>
 				{{trans('front.text_content_2_2')}}
 			</p>
+			<a class="button" href="{{route('rent_out')}}"><i class="sl sl-icon-login"></i> {{trans('front.register')}}</a>
 		</div>
 	</div>
 	<div class="row">
@@ -49,7 +48,7 @@
 			<p>
 			{{trans('front.text_content_3')}}
 			</p>
-			<button class="button" onclick="">{{trans('front.Rent out Camper')}}</button>
+			<a class="button" href="{{route('rent_out')}}">{{trans('front.rent_out_camper')}}</a>
 
 		</div>
 		<div class="col-md-6">
@@ -66,14 +65,14 @@
 			<p>
 			{{trans('front.text_content_4')}}
 			</p>
-			<button class="button" onclick="">{{trans('front.Rent out Camper')}}</button>
+			<a class="button" href="{{route('rent_out')}}">{{trans('front.rent_out_camper')}}</a>
 
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<div>
-				<img class="headline right margin-top-45" src="{{ asset('images/rent-out-camper/Rent-Out-4.png') }}"/>
+				<img class="headline right margin-top-45" src="{{ asset('images/rent-out-camper/Rent-out-4.png') }}"/>
 			</div>
 		</div>
 	</div>

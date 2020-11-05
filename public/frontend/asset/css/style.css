@@ -2224,12 +2224,7 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out {
     height: 100%;
     width: 100%;
     display: block;
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.99) 20%,
-        rgba(255, 255, 255, 0.7) 70%,
-        rgba(255, 255, 255, 0) 95%
-    );
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.7) 20%, rgba(255, 255, 255, 0) 95%);
 }
 
 .main-search-container h2 {
@@ -2401,6 +2396,7 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out {
 .transparent-header .main-search-container {
     height: auto;
 }
+
 
 /*.transparent-header .main-search-container:before {
     background: rgba(0, 0, 0, 0.5);
@@ -4045,7 +4041,6 @@ button.panel-cancel:active {
     z-index: 995;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
     position: relative;
-    padding-top: 80px;
 }
 
 .fs-inner-container {
@@ -6971,12 +6966,11 @@ input#date-picker:hover {
     position: relative;
     margin: 0;
     box-sizing: border-box;
-    color: #666;
-    font-weight: 600;
-    transition: 0.3s;
+    color: #808080;
     background-color: #fff;
     margin-left: 15px;
-    top: -2px;
+    line-height: 41px;
+    padding-right: 62px;
 }
 
 @media (max-width: 768px) {
@@ -6990,7 +6984,7 @@ input#date-picker:hover {
 }
 
 #booking-date-range span {
-    padding-right: 7px;
+    padding-right: 34px;
 }
 
 #booking-date-range span:after {
@@ -7003,7 +6997,7 @@ input#date-picker:hover {
     width: auto;
     height: auto;
     display: inline-block;
-    color: #66676b;
+    color: #808080;
     float: right;
     font-weight: normal;
     transition: transform 0.3s;
@@ -13247,6 +13241,24 @@ section.fullwidth .listing-item-container.list-layout,
     margin: 15px 32px;
 }
 
+.blog-title {
+    color: #888;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
+    line-height: 26px;
+    height: 26px;
+    width: 100%;
+    display: inline-block;
+    font-family: "Open Sans";
+    position: relative;
+    border-radius: 50px;
+    letter-spacing: -0.5px;
+    background-color: #f2f2f2;
+    margin-top: 10px;
+    min-width: 140px;
+}
 .compact .numerical-rating {
     margin: 0 0 8px 0;
 }
@@ -13792,9 +13804,11 @@ span.like-icon {
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    padding-top: 80px;
 }
 
+#wrapper #dashboard{
+    padding-top: 0px !important;
+}
 /* Flexbox Adjustments */
 
 .dashboard-content,
@@ -14129,7 +14143,7 @@ a.dashboard-responsive-nav-trigger {
 }
 
 .dashboard-stat-content h4 {
-    font-size: 42px;
+    font-size: 27px;
     font-weight: 600;
     padding: 0;
     margin: 0;
@@ -14139,7 +14153,7 @@ a.dashboard-responsive-nav-trigger {
 }
 
 .dashboard-stat-content span {
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 4px;
     line-height: 24px;
     font-weight: 300;
@@ -14192,6 +14206,22 @@ a.dashboard-responsive-nav-trigger {
     );
     background-color: #f3103c;
 }
+
+.dashboard-stat.color-5 {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
+    background-color: #d21309;
+}
+
+.dashboard-stat.color-6 {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
+    background-color: #136dd5;
+}
+
+.dashboard-stat.color-7 {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
+    background-color: #9251a2;
+}
+
 
 /* ---------------------------------- */
 
@@ -22116,18 +22146,22 @@ div.layout-style {
 #style-switcher {
     display: none;
 }
+
 #style-switcher {
     display: none;
 }
+
 .hr-bar {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
 }
+
 .hr-bar-content {
     display: block;
     overflow: hidden;
     text-align: center;
 }
+
 .hr-bar-content:after,
 .hr-bar-content:before {
     content: "";
@@ -22138,34 +22172,50 @@ div.layout-style {
     width: 50%;
     background-color: currentColor;
 }
+
 .hr-bar-content:before {
     right: 0.5em;
     margin-left: -50%;
 }
+
 .hr-bar-content:after {
     left: 0.5em;
     margin-right: -50%;
 }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
 /* The Modal (background) */
+
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
+
 /* Modal Content */
+
 .modal-content {
     background-color: #fefefe;
     margin: auto;
@@ -22174,7 +22224,9 @@ body {
     width: 44%;
 }
 
+
 /* The Close Button */
+
 .close {
     color: #aaaaaa;
     float: right;
@@ -22188,64 +22240,88 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
 .w-727 {
     width: 62%;
 }
+
 .connexion {
     background-color: #f15424;
     border-color: #f15424;
     color: white;
     font-weight: 700;
 }
+
 .with-facebook {
     background-color: #36518a;
     color: white;
     font-weight: 700;
 }
+
 .create-compte {
     display: inline-flex;
 }
+
 .inscription {
     margin-top: -5px;
     color: #f15424;
 }
+
 .gmail {
     background-color: #f15424;
     color: white;
     border-color: #f15424;
     font-weight: 700;
 }
+
+
 /* The Close Button second model */
+
 .close-second-model {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 .close-third-model {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 a::after {
     visibility: hidden;
 }
+
 .controls a.control-left {
     float: left;
 }
+
 .icons-design {
     font-size: 28px !important;
 }
+
 .close-forget-password-model {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 .fb-design {
     color: white;
     font-size: 91% !important;
+}
+
+.fs-container .fs-inner-container.content.fs-container-padding{
+    padding-top: 0px !important;
+}
+
+.input-with-icon i.calendar-position {
+    left: 205px;
+    top: 21px;
 }
 .wrapper {
     background-color: #edeced;

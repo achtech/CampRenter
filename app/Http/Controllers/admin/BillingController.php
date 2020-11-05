@@ -66,7 +66,7 @@ class BillingController extends Controller
     }
     public function export(Request $request)
     {
-        $datas = Billing::join('clients', 'billings.id_clients', '=', 'clients.id')->where('status', 0)->get();
+        $datas = $this->getBillingData($request)->where('billings.status', 0)->get();
         $dom = new DOMDocument();
         $dom->encoding = 'utf-8';
         $dom->xmlVersion = '1.0';
@@ -197,6 +197,30 @@ class BillingController extends Controller
         }
     }
 
+    public function getBillingData(Request $request){
+        $startDate = $request->start_date ?? '';
+        $end_date = $request->end_date ?? '';
+        $payed = $request->payed ?? '';
+        $notPayed = $request->notPayed ?? '';
+        $client = $request->ownerId ?? '';
+        $datas = DB::table('billings')->join('clients', 'billings.id_clients', '=', 'clients.id')
+            ->select('billings.*', 'clients.client_name', 'clients.client_last_name');
+        if (!empty($startDate)) {
+            $datas = $datas->whereDate('payment_date', '>=', $startDate);
+        }
+        if (!empty($endDate)) {
+            $datas = $datas->whereDate('payment_date', '<=', $endDate);
+        }
+        $status = ((empty($payed) && empty($notPayed)) || (!empty($payed) && !empty($notPayed))) ? '' : (!empty($payed) ? 1 : 2);
+        if (!empty($status)) {
+            $datas = $datas->where('billings.status', $status == 2 ? 0 : 1);
+        }
+        if (!empty($client) && $client != '0') {
+            $datas = $datas->where('billings.id_clients', $client);
+        }
+        return $datas;
+    }
+    
     public function filter(Request $request)
     {
         $todayDate = date("Y-m-d");
@@ -211,22 +235,7 @@ class BillingController extends Controller
         Session::put('payed', $payed);
         Session::put('notPayed', $notPayed);
         Session::put('client', $client);
-        $datas = DB::table('billings')->join('clients', 'billings.id_clients', '=', 'clients.id')
-            ->select('billings.id', 'billings.status', 'billings.total', 'billings.payment_date', 'clients.client_name', 'clients.client_last_name');
-        if (!empty($startDate)) {
-            $datas = $datas->whereDate('payment_date', '>=', $startDate);
-        }
-        if (!empty($endDate)) {
-            $datas = $datas->whereDate('payment_date', '<=', $endDate);
-        }
-        $status = ((empty($payed) && empty($notPayed)) || (!empty($payed) && !empty($notPayed))) ? '' : (!empty($payed) ? 1 : 2);
-        if (!empty($status)) {
-            $datas = $datas->where('billings.status', $status == 2 ? 0 : 1);
-        }
-        if (!empty($client) && $client != '0') {
-            $datas = $datas->where('billings.id_clients', $client);
-        }
-        $datas = $datas->get();
+        $datas = $this->getBillingData($request)->get();
         return view('admin.billing.index')
             ->with('datas', $datas)
             ->with('clients', $clients)

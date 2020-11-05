@@ -1,4 +1,4 @@
-@extends('frontend.layout2',['activePage'=>'rent_out'])
+@extends('frontend.layout.layout_panel',['activePage'=>'FC_profile'])
 @section('content')
 	<!-- Content
 	================================================== -->
@@ -94,12 +94,8 @@
 					</div>
 				</div>
 			</div>
-
-
 			<!-- Copyrights -->
-			<div class="col-md-12">
-				<div class="copyrights">© 2019 Listeo. All Rights Reserved.</div>
-			</div>
+			@include('frontend.layout.footer_panel')
 
 		</div>
 

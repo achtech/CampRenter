@@ -2,34 +2,19 @@
 
 namespace App\Models;
 
-//use Illuminate\Foundation\Auth\Client as Authenticatable;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-//use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-
-class Client extends Model implements AuthenticatableContract
+class Client extends Authenticatable
 {
-    use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
-    use Notifiable;
-    use Authenticatable;
-    use TwoFactorAuthenticatable;
 
-    protected $guarded = ['id'];
     protected $guard = 'client';
     protected $table = 'clients';
     public $primarykey = 'id';
     protected $fillable = [
+        'name',
         'client_name',
         'client_last_name',
         'email',
@@ -50,8 +35,12 @@ class Client extends Model implements AuthenticatableContract
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function getAuthPassword()
-    {
-        return $this->passcode;
-    }
+    // public function getAuthPassword()
+    // {
+    //     return $this->password;
+    // }
+    // public function getNameAttribute()
+    // {
+    //     return $this->client_name;
+    // }
 }

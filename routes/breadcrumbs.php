@@ -154,6 +154,25 @@ Breadcrumbs::for('create_camperCategory', function ($trail) {
     $trail->push(__('backend.create_camper_category.breadcrumb'), route('camperCategory.index'));
 });
 
+// Settings > CamperSubCategory
+Breadcrumbs::for('camperSubCategory', function ($trail) {
+    $trail->parent('settings');
+    $trail->push(__('backend.camper_sub_category.breadcrumb'), route('camperSubCategory.index'));
+});
+
+// Settings > camperSubCategory > Edit camperSubCategory
+Breadcrumbs::for('edit_camperSubCategory', function ($trail) {
+    $trail->parent('camperSubCategory');
+    $trail->push(__('backend.edit_camper_sub_category.breadcrumb'), route('camperSubCategory.index'));
+});
+
+// Settings > CamperCategory > Create CamperCategory
+Breadcrumbs::for('create_camperSubCategory', function ($trail) {
+    $trail->parent('camperCategory');
+    $trail->push(__('backend.create_camper_sub_category.breadcrumb'), route('camperCategory.index'));
+});
+
+
 // Settings > CamperCategory > Edit CamperCategory
 Breadcrumbs::for('edit_camperStatus', function ($trail, $data) {
     $trail->parent('camperStatus');
@@ -274,25 +293,25 @@ Breadcrumbs::for('edit_avatar', function ($trail, $avatar) {
 //  Home >Blog
 Breadcrumbs::for('blog', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push(__('backend.blog.breadcrumb'), route('blog.index'));
+    $trail->push(__('backend.blog.breadcrumb'), route('admin.blog.index'));
 });
 
 // Home > Blog > New blog
 Breadcrumbs::for('add_blog', function ($trail) {
     $trail->parent('blog');
-    $trail->push(__('backend.new_blog.breadcrumb'), route('blog.create'));
+    $trail->push(__('backend.new_blog.breadcrumb'), route('admin.blog.create'));
 });
 
 // Home > Blog > edit [Category]
 Breadcrumbs::for('show_blog', function ($trail, $blog) {
     $trail->parent('blog');
-    $trail->push(__('backend.show_blog.breadcrumb'), route('blog.show', $blog->id));
+    $trail->push(__('backend.show_blog.breadcrumb'), route('admin.blog.show', $blog->id));
 });
 
 // Home > Blog > edit [Category]
 Breadcrumbs::for('edit_blog', function ($trail, $blog) {
     $trail->parent('blog');
-    $trail->push(__('backend.edit_blog.breadcrumb'), route('blog.edit', $blog->id));
+    $trail->push(__('backend.edit_blog.breadcrumb'), route('admin.blog.edit', $blog->id));
 });
 
 // Message

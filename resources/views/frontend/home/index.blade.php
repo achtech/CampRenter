@@ -1,16 +1,9 @@
 
-@extends('frontend.layout',['activePage' => 'home'])
+@extends('frontend.layout.layout',['activePage' => 'home','footerPage' => 'true'])
 @section('banner')
-@include('frontend.slider')
+@include('frontend.layout.slider')
 @endsection
 @section('content')
-<!-- Content
-================================================== -->
-<div class="container">
-	<div class="row">
-
-	</div>
-</div>
 <!-- Content
 ================================================== -->
 
@@ -29,18 +22,15 @@
 			<div class="col-md-12">
 				<div class="simple-slick-carousel dots-nav">
 				<!-- Listing Item -->
-				@if(count($campers)>0)
-					@foreach($campers as $camper)
-						<div class="carousel-item">
-							<a href="listings-single-page.html" class="listing-item-container">
-								<div class="listing-item">
-									<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
-									<div class="listing-item-content">
-										<span class="tag">{{App\Http\Controllers\Controller::getLabel('camper_categories',$camper->id_camper_categories)}}</span>
-										<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
-										<span>{{$camper->description_camper}}</span>
-									</div>
-									<span class="like-icon"></span>
+				@foreach($campers as $camper)
+					<div class="carousel-item">
+						<a href="{{route('frontend.camper.detail')}}" class="listing-item-container">
+							<div class="listing-item">
+								<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
+								<div class="listing-item-content">
+									<span class="tag">{{App\Http\Controllers\Controller::getLabel('camper_categories',$camper->id_camper_categories)}}</span>
+									<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
+									<span>{{$camper->description_camper}}</span>
 								</div>
 								<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}">
 								{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}<div class="rating-counter">({{App\Http\Controllers\frontend\FHomeController::getReviewsCount($camper->id)}} {{__('front.Reviews')}})</div>
@@ -49,7 +39,7 @@
 						</div>
 					<!-- Listing Item / End -->
 					@endforeach
-					@endif
+					
 				</div>
 
 			</div>
@@ -74,7 +64,7 @@
 				@foreach($categories as $category)
 					<!-- Box -->
 					<div class="col-md-3 alternative-imagebox">
-						<a href="listings-list-with-sidebar.html" >
+						<a href="{{route('frontend.camper.search')}}" >
 						<img src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
 							<h4>{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
 							<span class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} Listings</span>
@@ -147,7 +137,7 @@
 			<!-- Blog Post Item -->
 			@foreach($blogs as $blog)
 			<div class="col-md-4">
-				<a href="pages-blog-post.html" class="blog-compact-item-container">
+				<a href="{{route('frontend.blog.fdetail',$blog->id)}}" class="blog-compact-item-container">
 					<div class="blog-compact-item">
 						<img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="">
 						<span class="blog-item-tag">Tips</span>
@@ -156,7 +146,7 @@
 								<li>{{$blog->created_at}}</li>
 							</ul>
 							<h3>{{$blog->title}}</h3>
-							<p>{{$blog->article}}</p>
+							<p>{{ Illuminate\Support\Str::limit($blog->article, 80)}}</p>
 						</div>
 					</div>
 				</a>
@@ -164,7 +154,7 @@
 			@endforeach
 
 			<div class="col-md-12 centered-content">
-				<a href="{{route('blog')}}" class="button border margin-top-10">{{trans('front.find_blog')}}</a>
+				<a href="{{route('frontend.blog')}}" class="button border margin-top-10">{{trans('front.find_blog')}}</a>
 			</div>
 
 		</div>

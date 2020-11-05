@@ -59,7 +59,7 @@ class InsuranceCompanyController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('logo') && $request->file('logo')->getClientOriginalName()) {
             $input['logo'] = $request->file('logo')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\insuranceCompany'), $file->getClientOriginalName());
+            $file->move(base_path('public\images\insuranceCompany'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
@@ -98,7 +98,7 @@ class InsuranceCompanyController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('logo') && $request->file('logo')->getClientOriginalName()) {
             $input['logo'] = $request->file('logo')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\insuranceCompany'), $file->getClientOriginalName());
+            $file->move(base_path('public\images\insuranceCompany'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }

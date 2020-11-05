@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns="http://www.six-interbank-clearing.com/de/pain.001.001.03.ch.02.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schemaLocation="http://www.six-interbank-clearing.com/de/pain.001.001.03.ch.02.xsd">
+  <CstmrCdtTrfInitn>
+    <GrpHdr>
+      <MsgId>7aeb9c4d264990e6fefc96affed9cd1b</MsgId>
+      <CreDtTm>tets</CreDtTm>
+      <NbOfTxs>1</NbOfTxs>
+      <CtrlSum>14.9</CtrlSum>
+      <InitgPty>
+        <Nm>achraf saloumi</Nm>
+        <CtctDtls>
+          <Nm>bexio</Nm>
+          <Othr>1.0.0</Othr>
+        </CtctDtls>
+      </InitgPty>
+    </GrpHdr>
+    <PmtInf>
+      <PmtInfId>Webgorilla GmbH</PmtInfId>
+      <PmtMtd>TRF</PmtMtd>
+      <BtchBookg>false</BtchBookg>
+      <ReqdExctnDt>2020-10-12</ReqdExctnDt>
+      <Dbtr>
+        <Nm>Webgorilla GmbH</Nm>
+      </Dbtr>
+      <DbtrAcct>
+        <Id>
+          <IBAN>12421 12412 412411 121515</IBAN>
+        </Id>
+      </DbtrAcct>
+      <DbtrAgt>
+        <FinInstnId>
+          <BIC>POFICHBEXXX</BIC>
+        </FinInstnId>
+      </DbtrAgt>
+      <CdtTrfTxInf>
+        <PmtId>
+          <InstrId>5f6df097c5fc95.97866708</InstrId>
+          <EndToEndId>5f6df097c5fc95.97866708</EndToEndId>
+        </PmtId>
+        <PmtTpInf>
+          <LclInstrm>
+            <Prtry>CH01</Prtry>
+          </LclInstrm>
+        </PmtTpInf>
+        <Amt>
+          <InstdAmt Ccy="CHF">1201</InstdAmt>
+        </Amt>
+        <Cdtr>
+          <Nm>Cyon GmbH</Nm>
+          <PstlAdr>
+            <Ctry>CH</Ctry>
+            <AdrLine>Brunngässlein 12</AdrLine>
+            <AdrLine>4052, Basel</AdrLine>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>010575181</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Strd>
+            <CdtrRefInf>
+              <Ref>000001987972000000017179312</Ref>
+            </CdtrRefInf>
+          </Strd>
+        </RmtInf>
+      </CdtTrfTxInf>
+    </PmtInf>
+  </CstmrCdtTrfInitn>
+  <CstmrCdtTrfInitn>
+    <GrpHdr>
+      <MsgId>7aeb9c4d264990e6fefc96affed9cd1b</MsgId>
+      <CreDtTm>tets</CreDtTm>
+      <NbOfTxs>1</NbOfTxs>
+      <CtrlSum>14.9</CtrlSum>
+      <InitgPty>
+        <Nm>achraf saloumi</Nm>
+        <CtctDtls>
+          <Nm>bexio</Nm>
+          <Othr>1.0.0</Othr>
+        </CtctDtls>
+      </InitgPty>
+    </GrpHdr>
+    <PmtInf>
+      <PmtInfId>Webgorilla GmbH</PmtInfId>
+      <PmtMtd>TRF</PmtMtd>
+      <BtchBookg>false</BtchBookg>
+      <ReqdExctnDt>2020-10-12</ReqdExctnDt>
+      <Dbtr>
+        <Nm>Webgorilla GmbH</Nm>
+      </Dbtr>
+      <DbtrAcct>
+        <Id>
+          <IBAN>12421 12412 412411 121515</IBAN>
+        </Id>
+      </DbtrAcct>
+      <DbtrAgt>
+        <FinInstnId>
+          <BIC>POFICHBEXXX</BIC>
+        </FinInstnId>
+      </DbtrAgt>
+      <CdtTrfTxInf>
+        <PmtId>
+          <InstrId>5f6df097c5fc95.97866708</InstrId>
+          <EndToEndId>5f6df097c5fc95.97866708</EndToEndId>
+        </PmtId>
+        <PmtTpInf>
+          <LclInstrm>
+            <Prtry>CH01</Prtry>
+          </LclInstrm>
+        </PmtTpInf>
+        <Amt>
+          <InstdAmt Ccy="CHF">400</InstdAmt>
+        </Amt>
+        <Cdtr>
+          <Nm>Cyon GmbH</Nm>
+          <PstlAdr>
+            <Ctry>CH</Ctry>
+            <AdrLine>Brunngässlein 12</AdrLine>
+            <AdrLine>4052, Basel</AdrLine>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <Othr>
+              <Id>010575181</Id>
+            </Othr>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Strd>
+            <CdtrRefInf>
+              <Ref>000001987972000000017179312</Ref>
+            </CdtrRefInf>
+          </Strd>
+        </RmtInf>
+      </CdtTrfTxInf>
+    </PmtInf>
+  </CstmrCdtTrfInitn>
+</Document>

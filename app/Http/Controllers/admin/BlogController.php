@@ -25,7 +25,7 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = Blog::paginate(10);
+        $datas = Blog::orderBy('created_at', 'asc')->paginate(10);
         return view('admin.blog.index')->with('datas', $datas);
     }
     /**
@@ -61,14 +61,14 @@ class BlogController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
             $input['photo'] = $request->file('photo')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\blog'), $file->getClientOriginalName());
+            $file->move(base_path('public\images\blog'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'photo']);
         }
         $input['created_by'] = auth()->user()->id;
         $input['updated_by'] = auth()->user()->id;
         $data = Blog::create($input);
-        return redirect(route('blog.index'))->with('success', 'Item added succesfully');
+        return redirect(route('admin.blog.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -95,20 +95,20 @@ class BlogController extends Controller
     {
         $data = Blog::find($id);
         if (empty($data)) {
-            return redirect(route('blog.index'));
+            return redirect(route('admin.blog.index'));
         }
 
         $file = $request->file('photo');
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
             $input['photo'] = $request->file('photo')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\blog'), $file->getClientOriginalName());
+            $file->move(base_path('public\images\blog'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
         $input['updated_by'] = auth()->user()->id;
         $data = Blog::where('id', $id)->update($input);
-        return redirect(route('blog.index'))->with('success', 'Item Updated succesfully');
+        return redirect(route('admin.blog.index'))->with('success', 'Item Updated succesfully');
     }
 
     /**
@@ -121,9 +121,9 @@ class BlogController extends Controller
     {
         $data = Blog::find($request->id);
         if (empty($data)) {
-            return redirect(route('blog.index'));
+            return redirect(route('admin.blog.index'));
         }
         $data->delete();
-        return redirect(route('blog.index'));
+        return redirect(route('admin.blog.index'));
     }
 }

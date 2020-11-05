@@ -41,7 +41,7 @@ class ClientController extends Controller
         } else {
             $datas = Client::paginate(10);
         }
-        return view('admin.admin.client.index')->with('datas', $datas)->with('search', $search);
+        return view('admin.client.index')->with('datas', $datas)->with('search', $search);
     }
     /**
      * Show the form for creating a new resource.
@@ -111,7 +111,6 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //   dd($request->all());
         $data = Client::find($id);
         if (empty($data)) {
             return redirect(route('admin.client.index'));
@@ -174,7 +173,6 @@ class ClientController extends Controller
     }
     public function activateClient($id)
     {
-        //dd($id);
         $data = Client::find($id);
         if (empty($data)) {
             return redirect(route('admin.client.index'));

@@ -1,4 +1,4 @@
-@extends('frontend.layout3',['activePage' => 'imprint'])
+@extends('frontend.layout.layout',['activePage' => 'imprint','footerPage' => 'true'])
 
 @section('content')
 <!-- Content

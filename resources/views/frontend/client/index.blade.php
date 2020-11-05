@@ -1,4 +1,4 @@
-@extends('frontend.layout3',['activePage' => 'camper'])
+@extends('frontend.layout.layout',['activePage' => 'camper'])
 
 @section('content')
 <div class="container" style="width=100%;">
