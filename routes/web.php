@@ -34,6 +34,9 @@ Route::get('lang/{lang}', function ($lang) {
     return back();
 });
 Route::group(['middleware' => 'Lang'], function () {
+//    login
+    Route::get('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
+    Route::post('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
@@ -261,7 +264,7 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'transmission.show',
     ]]);
 
-    
+
     //ADMIN->EQUIPMENTCATEGORY
     Route::delete('camperSubCategory/{id}/delete', 'App\Http\Controllers\admin\CamperSubCategoryController@destroy')->name('camperSubCategory.delete');
     Route::resource('camperSubCategory', 'App\Http\Controllers\admin\CamperSubCategoryController', ['except' => 'destroy', 'names' => [

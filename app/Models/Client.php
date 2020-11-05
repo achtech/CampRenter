@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Client extends Base
+class Client extends Authenticatable
 {
+    protected $guard = 'client';
     protected $table = 'clients';
     public $primarykey = 'id';
     protected $fillable = [

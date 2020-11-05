@@ -7,14 +7,15 @@
             <div class="controls"><!---->
                  <a  href="#" class="control-right">
                     </a>
-                </div> 
+                </div>
                 <div  class="titles-container">
                     <h3 class="text-center">{{trans('front.to_connect')}}</h3></div>
         </header>
         <div class="modal-body">
                 <div class="container">
-                    {{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@doLogin', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
-                    
+{{--                    {{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@doLogin', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}--}}
+                    {{ Form::open(['url'=>'login/client', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+
                         <div  class="form-group">
                             <label class="sr-only">
                                 {{trans('front.email_address')}}
@@ -28,7 +29,7 @@
                             <input id="password" name="password" type="password" placeholder="Adresse e-mail" autocomplete="username" class="login-username form-control" style="width:727px !important;">
                         </div>
                         <div >
-                            <button type="button" class="btn btn-primary btn-block w-727 connexion">
+                            <button type="submit" class="btn btn-primary btn-block w-727 connexion">
                                 {{trans('front.to_connect')}}
                             </button>
                         </div>
@@ -36,9 +37,9 @@
                         <div id="passwordModel" class="modal">
                             <div class="modal-content" style="background: #f4f4f4;margin-top: 82px;">
                                 <span class="close-forget-password-model">&times;</span>
-                            
+
                             <div class="titles-container"><h3 class="text-center">{{trans('front.to_connect')}}</h3></div>
-                            
+
                                 <form>
                                     <div class="form-group"><label  class="sr-only">
                                         {{trans('front.email_address')}}
@@ -57,13 +58,13 @@
                                 </div>
                             </div>
                         </div>
-                            
+
                         <div class="hr-bar w-727">
                             <span  class="hr-bar-content" style="color: rgb(204, 204, 204);">
                                 <small >{{trans('front.or')}}</small>
                             </span>
                         </div>
-                        <a class="btn btn-primary w-727 with-facebook" style="color: whihte !important;text-align: center;"  target="popup"  href="{{ url('auth/facebook') }}">
+                        <a class="btn btn-primary w-727 with-facebook" style="color: white !important;text-align: center;"  target="popup"  href="{{ url('auth/facebook') }}">
                             <i class="icon-facebook fb-design"></i><small class="fb-design"> {{trans('front.facebook_connexion')}}</small>
                         </a>
                         {{ Form::close() }}
@@ -76,13 +77,13 @@
                 <div class="modal-content" style="background: #f4f4f4;margin-top: 82px;">
                     <span class="close-second-model">&times;</span>
                     <div class="titles-container">
-                        <h4 class="text-center">{{trans('front.create_an_account')}}</h4> 
+                        <h4 class="text-center">{{trans('front.create_an_account')}}</h4>
                         <h3 class="text-center">{{trans('front.welcome')}}</h3>
                         <br/>
                         <div id="signUpRequirments" style="display:none;">
                             <ul >
                                 <li >
-                                    <strong >{{trans('front.email')}}</strong> 
+                                    <strong >{{trans('front.email')}}</strong>
                                     <ul >
                                         <li >
                                             <span >{{trans('front.email_address_already_used')}}</span>
@@ -90,29 +91,29 @@
                                     </ul>
                                 </li>
                                 <li >
-                                    <strong >{{trans('front.password')}}</strong> 
+                                    <strong >{{trans('front.password')}}</strong>
                                     <ul >
                                         <li >
-                                            <strong >{{trans('front.password_requirment')}}</strong> 
+                                            <strong >{{trans('front.password_requirment')}}</strong>
                                             <ul >
                                                 <li >
                                                     <span >{{trans('front.capital_required')}}</span>
-                                                </li> 
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <strong >{{trans('front.terms_required')}}</strong> 
+                                    <strong >{{trans('front.terms_required')}}</strong>
                                     <ul >
                                         <li >
                                             <span >{{trans('front.mandatory_fields')}}</span>
-                                        </li> 
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
-                        <div class="modal-body"> 
+                        <div class="modal-body">
                             <div>
                             <button id="registrationEmail" class="btn btn-primary w-727 gmail">
                                 <i class="far fa-envelope-square"></i>{{trans('front.register_email_address')}}
@@ -125,26 +126,26 @@
                                         <span class="close-third-model">&times;</span>
                                     </div>
                                     <div class="titles-container">
-                                        <h1 class="text-center">{{trans('front.create_an_account')}}</h1> 
+                                        <h1 class="text-center">{{trans('front.create_an_account')}}</h1>
                                         <h4 class="text-center">{{trans('front.register_with_email_address')}}</h4>
                                         {{ Form::open(['route'=>'frontend.client.store', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
-                                        
+
                                             <div class="form-group">
                                                     <label  class="sr-only">
                                                     {{trans('front.first_name')}}
-                                                </label> 
+                                                </label>
                                                 <input   type="text" placeholder="First Name" id="client_name" name="client_name" class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label  class="sr-only">
                                                 {{trans('front.last_name')}}
-                                                </label> 
+                                                </label>
                                                 <input   type="text" placeholder="Last Name" id="client_last_name" name="client_last_name" class="form-control">
                                             </div>
                                         <div class="form-group">
                                             <label  class="sr-only">
                                             {{trans('front.email_add')}}
-                                            </label> 
+                                            </label>
                                             <input type="text" placeholder="Email Address" id="email" name="email" class="form-control">
                                         </div>
                                         <label  >
@@ -153,7 +154,7 @@
                                         <div class="form-group">
                                             <label  class="sr-only">
                                             {{trans('front.password')}}
-                                            </label> 
+                                            </label>
                                             <input type="password" placeholder="Password" id="password" name="password" class="form-control">
                                         </div>
                                         <div class="form-group">
@@ -164,14 +165,14 @@
                                         <button  type="submit" class="btn w-727 connexion fb-design" style="text-align: center;" onclick="showDiv()">
                                              {{trans('front.sign_up')}}
                                           </button>
-                                        
+
                                         {{ Form::close() }}
                                     <div class="create-compte" style="bottom: -19px;position: relative;">
                                         {{trans('front.existed_account')}}<a class="inscription" href="#" id="register" >{{trans('front.to_connect')}}</a>
                                     </div>
                                     </div>
-                                    
-                              
+
+
                             </div>
 
                         </div>	</div>
@@ -179,8 +180,8 @@
                                 <span  class="hr-bar-content" >
                                     <small>or</small>
                                 </span>
-                            </div> 
-                            
+                            </div>
+
                             <a class="btn btn-primary w-727 with-facebook" style="color: whihte !important;text-align: center;"  target="popup"  href="{{ url('auth/facebook') }}">
                                 <i class="icon-facebook fb-design"></i><small class="fb-design"> {{trans('front.register_facebook')}}</small>
                             </a>
@@ -190,11 +191,11 @@
                         {{trans('front.existed_account')}}<a class="inscription" href="#" id="register" >{{trans('front.to_connect')}}</a>
                     </div>
                     </div>
-                    
-              
+
+
             </div>
 
-        </div>	
+        </div>
     </div>
-  
+
 </div>
