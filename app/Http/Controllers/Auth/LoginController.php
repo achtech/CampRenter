@@ -36,7 +36,7 @@ class LoginController extends Controller
     public function adminLogin(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
+            'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
 

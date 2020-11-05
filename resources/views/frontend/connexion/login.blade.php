@@ -7,7 +7,7 @@
             <div class="controls"><!---->
                  <a  href="#" class="control-right">
                     </a>
-                </div> 
+                </div>
                 <div  class="titles-container">
                     <h3 class="text-center">{{trans('front.to_connect')}}</h3>
                 </div>
@@ -37,7 +37,7 @@
                         <div id="passwordModel" class="modal">
                             <div class="modal-content" style="background: #f4f4f4;margin-top: 82px;">
                                 <span class="close-forget-password-model close-btn">&times;</span>
-                            
+
                             <div class="titles-container"><h3 class="text-center">{{trans('front.to_connect')}}</h3></div>
                             {{ Form::open(['route'=>'frontend.client.resetPassword', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
                             <div class="row"> 
@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                         </div>
-                            
+
                         <div class="hr-bar w-727">
                             <span  class="hr-bar-content" style="color: rgb(204, 204, 204);">
                                 <small >{{trans('front.or')}}</small>
@@ -78,5 +78,5 @@
         </div>
         <br/>
         @include('frontend.connexion.register');
-  
+
 </div>
