@@ -7068,6 +7068,10 @@ input#date-picker:hover {
     padding-right: 62px;
 }
 
+.booking_date #booking-date-range{
+    margin-bottom:15px;
+}
+
 @media (max-width: 768px) {
     .booking-requests-filter {
         display: none;
@@ -22617,7 +22621,7 @@ body {
 }
 
 a::after {
-    visibility: hidden;
+    visibility: visible;
 }
 
 .controls a.control-left {
@@ -22645,6 +22649,10 @@ a::after {
 }
 
 .input-with-icon i.calendar-position {
-    left: 205px;
-    top: 21px;
+    left: 254px;
+    top: 24px;
+}
+
+.input-with-icon.date_range_search input {
+    padding-left: 20px !important;
 }
