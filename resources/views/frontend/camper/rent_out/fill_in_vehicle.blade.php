@@ -29,10 +29,9 @@
 
 		<div class="col-lg-7 col-md-12">
 			<div class="row">
-							<h6>The vehicle</h6>
-							<h3><strong>Vehicle Data</strong></h3>
-						</div>
-					</li>
+				<h6>The vehicle</h6>
+				<h3><strong>Vehicle Data</strong></h3>
+			</div>
 			<div class="margin-top-0">
 				<ul style="list-style-type:none; padding-left: 0px;">
 					<li>
@@ -104,12 +103,63 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<strong>Gearbox</strong>
+								<div class="col-md-12">
+									<strong>Gearbox</strong>
+								</div>
+								<div class="col-md-6">
+									<label class="container">Automatic
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">Manual
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<label class="container">Semi-automatic
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+								</div>
 							</div>
+
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<strong>Mileage</strong>
+								<div class="col-md-12">
+									<strong>Mileage</strong>
+								</div>
+								<div class="col-md-6">
+									<label class="container">0 - 50'000 km
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">50'000 - 100'000 km
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">100'000 - 150'000 km
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">150'000 - 200'000 km
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">200'000 - 250'000 km
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">250'000 - 300'000 km
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">More than 300'000 km
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -117,7 +167,29 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<strong>Fuel</strong>
+								<div class="col-md-12">
+									<strong>Fuel</strong>
+								</div>
+								<div class="col-md-6">
+									<label class="container">Diesel
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">Gas
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<label class="container">Petrol
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">Petroleum gas
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmark"></span>
+									</label>
+								</div>
 							</div>
 
 							<!-- Website -->
@@ -181,25 +253,23 @@
 					</li>
 					<li>
 						<div class="row">
-							<!-- Phone -->
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<strong>Additional attributes</strong>
+							</div>
+							<div class="col-md-6">
 								<div class="checkboxes in-row margin-bottom-20">
 
 									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Elevator in building</label>
+									<label for="check-a">Aircon in the driver's cabin</label>
 
 									<input id="check-b" type="checkbox" name="check">
-									<label for="check-b">Friendly workspace</label>
+									<label for="check-b">Rear view camera</label>
 
 									<input id="check-c" type="checkbox" name="check">
-									<label for="check-c">Instant Book</label>
+									<label for="check-c">Power steering</label>
 
 									<input id="check-d" type="checkbox" name="check">
-									<label for="check-d">Wireless Internet</label>
-
-									<input id="check-e" type="checkbox" name="check" >
-									<label for="check-e">Free parking on premises</label>
+									<label for="check-d">Four wheel drive</label>
 
 								</div>
 							</div>
@@ -209,16 +279,16 @@
 								<div class="checkboxes in-row margin-bottom-20">
 
 									<input id="check-f" type="checkbox" name="check">
-									<label for="check-f">Elevator in building</label>
+									<label for="check-f">Auxiliary heating</label>
 
 									<input id="check-g" type="checkbox" name="check">
-									<label for="check-g">Friendly workspace</label>
+									<label for="check-g">Reverse parking system</label>
 
 									<input id="check-h" type="checkbox" name="check">
-									<label for="check-h">Instant Book</label>
+									<label for="check-h">Anti-skid-system</label>
 
 									<input id="check-i" type="checkbox" name="check">
-									<label for="check-i">Wireless Internet</label>
+									<label for="check-i">Central locking</label>
 								</div>
 							</div>
 						</div>
@@ -228,7 +298,7 @@
 							<div class="col-md-12">
 								<strong>Location</strong>
 								<div class="markers-on-the-map" style="margin-top: 16px;">
-									<div id="mapCamper"></div>
+									<div id="map"></div>
 
 									<script>
 										var api_key = "zdsQGxoHAnWQjAz094c1SW7jS8jmpqU9j2B5O09EWkE";

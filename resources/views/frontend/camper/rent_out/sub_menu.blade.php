@@ -43,7 +43,7 @@
 						<li style="padding: 8px 5px !important;">{{trans('front.insurance')}}</li>
 						<li style="padding: 8px 5px !important;">{{trans('front.rental_terms')}}</li>
 						<li style="padding: 8px 5px !important;">{{trans('front.terms')}}</li>
-						<li style="padding: 8px 5px !important;">{{trans('front.Calendar')}}</li>
+						<li style="padding: 8px 5px !important;">{{trans('front.calendar')}}</li>
 						</ol>
 					</div>
 				</div>
