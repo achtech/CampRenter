@@ -1,10 +1,9 @@
 
-@extends('frontend.layout3',['activePage' => 'camper'])
-
+@extends('frontend.layout.layout',['activePage' => 'camper','footerPage' => 'true'])
 @section('content')
 <!-- Content
 ================================================== -->
-<div class="container" style="width=100%;">
+<div class="container padding-bottom-75" style="width=100%;">
 	<div class="row">
 		<div class="col-md-6">
 			<h3 class="headline margin-top-45" style="font-weight:normal;text-align:left;">

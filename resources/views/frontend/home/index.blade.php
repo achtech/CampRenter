@@ -1,16 +1,9 @@
 
-@extends('frontend.layout',['activePage' => 'home'])
+@extends('frontend.layout.layout',['activePage' => 'home','footerPage' => 'true'])
 @section('banner')
-@include('frontend.slider')
+@include('frontend.layout.slider')
 @endsection
 @section('content')
-<!-- Content
-================================================== -->
-<div class="container">
-	<div class="row">
-
-	</div>
-</div>
 <!-- Content
 ================================================== -->
 

@@ -346,12 +346,12 @@ return [
     'view_booking' => 'View bookings',
     'width' => 'Width',
     /**  PLEASE ADD YOUR NEW LABELS HERE */
-    'camperSubCategory_managment' => 'Sub-categories camper managment',
+    'camperSubCategory_managment' => 'Sub-categories camper management',
     'camper_sub_category' => 'Camper sub-category',
     'new_camperSubCategory' => 'New Sub-category',
     'camper_sub_category.breadcrumb' => 'Sub-category camper',
     'menu_camper_sub_category' => 'Sub-Category',
     'edit_camper_sub_category.breadcrumb' => 'Edit Sub-category',
-    'message_delete_camperSubCategory' => 'Do you want to delete this Sub-category',
+    'message_delete_camperSubCategory' => 'Do you want to delete this Sub-category?',
 
 ];

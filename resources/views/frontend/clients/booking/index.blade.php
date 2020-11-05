@@ -1,4 +1,7 @@
-@extends('frontend.layout2',['activePage'=>'FC_booking'])
+@extends('frontend.layoutFC',['activePage' => 'FC_booking'])
+@section('header')
+@include('frontend.headerFC',['activePage' => 'home'])
+@endsection
 @section('content')
 		<!-- Content
 	================================================== -->
@@ -271,11 +274,10 @@
 
 
 			<!-- Copyrights -->
-			<div class="col-md-12">
-				<div class="copyrights">© 2019 Listeo. All Rights Reserved.</div>
-			</div>
+			@include('frontend.footerFC')
 		</div>
 
 	</div>
 	<!-- Content / End -->
 @endsection
+

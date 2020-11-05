@@ -1,5 +1,5 @@
 
-@extends('frontend.layout2',['activePage'=>'rent_out'])
+@extends('frontend.layout.layout',['activePage'=>'rent_out','footerPage' => 'true'])
 
 @section('content')
 <!-- Content
@@ -42,13 +42,18 @@
 						<div class="row">
 							@foreach($categories as $category)
 								<!-- Box -->
-								<div class="col-md-3 alternative-imagebox">
-									<a href="listings-list-with-sidebar.html" >
+								<div class="col-md-3 alternative-imagebox" id="{{$category->label_en == 'motorhome' ? 'showSub' : 'category'}}">
+									<a>
 									<img src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
 										<h4>{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
 									</a>
 								</div>
 							@endforeach
+						</div>
+						<div class="row" id="sub_cat" style="display: none">
+							<div class="add-listing-headline">
+								<h3>Build type</h3>
+							</div>
 						</div>
 					</div>
 
@@ -92,4 +97,5 @@
 		</div>
 	</div>
 </div>
+
 @endsection

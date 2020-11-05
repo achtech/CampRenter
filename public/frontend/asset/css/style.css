@@ -2270,7 +2270,7 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out {
     height: 100%;
     width: 100%;
     display: block;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.99) 20%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0) 95%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.7) 20%, rgba(255, 255, 255, 0) 95%);
 }
 
 .main-search-container h2 {
@@ -4094,7 +4094,6 @@ button.panel-cancel:active {
     z-index: 995;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
     position: relative;
-    padding-top: 80px;
 }
 
 .fs-inner-container {
@@ -14039,10 +14038,11 @@ span.like-icon {
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    padding-top: 80px;
 }
 
-
+#wrapper #dashboard{
+    padding-top: 0px !important;
+}
 /* Flexbox Adjustments */
 
 .dashboard-content,
@@ -22639,4 +22639,13 @@ a::after {
 .fb-design {
     color: white;
     font-size: 91% !important;
+}
+
+.fs-container .fs-inner-container.content.fs-container-padding{
+    padding-top: 0px !important;
+}
+
+.input-with-icon i.calendar-position {
+    left: 205px;
+    top: 21px;
 }
