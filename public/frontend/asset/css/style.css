@@ -14039,10 +14039,11 @@ span.like-icon {
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    padding-top: 80px;
 }
 
-
+#wrapper #dashboard{
+    padding-top: 0px !important;
+}
 /* Flexbox Adjustments */
 
 .dashboard-content,

@@ -1,4 +1,4 @@
-@extends('frontend.layout2',['activePage'=>'FC_notification'])
+@extends('frontend.layout.layout_panel',['activePage'=>'FC_notification'])
 @section('content')
 <!-- Content
 	================================================== -->

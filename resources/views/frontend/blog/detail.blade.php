@@ -1,5 +1,5 @@
 
-@extends('frontend.layout.layout',['activePage' => 'blog'])
+@extends('frontend.layout.layout',['activePage' => 'blog','footerPage' => 'true'])
 
 @section('content')
 <!-- Titlebar

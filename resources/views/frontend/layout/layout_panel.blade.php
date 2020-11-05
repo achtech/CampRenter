@@ -20,7 +20,10 @@
 
 <!-- Wrapper -->
 <div id="wrapper">
-@yield('header')
+<!-- Header Container
+================================================== -->
+@include('frontend.layout.header')
+
 <div class="clearfix"></div>
 <!-- Header Container / End -->
 

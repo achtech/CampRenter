@@ -1,4 +1,4 @@
-@extends('frontend.layout2',['activePage'=>'FC_wallet'])
+@extends('frontend.layout.layout_panel',['activePage'=>'FC_wallet'])
 @section('content')
 
 	<!-- Content
@@ -142,13 +142,8 @@
 					</ul>
 				</div>
 			</div>
-			
-
-
 			<!-- Copyrights -->
-			<div class="col-md-12">
-				<div class="copyrights">© 2019 Listeo. All Rights Reserved.</div>
-			</div>
+			@include('frontend.layout.footer_panel')
 		</div>
 
 	</div>

@@ -1,5 +1,5 @@
 
-@extends('frontend.layout.layout',['activePage' => 'home'])
+@extends('frontend.layout.layout',['activePage' => 'home','footerPage' => 'true'])
 @section('banner')
 @include('frontend.layout.slider')
 @endsection
