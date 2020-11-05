@@ -83,6 +83,29 @@
 <script src="{{asset('frontend/asset/scripts/leaflet-autocomplete.js')}}"></script>
 <script src="{{asset('frontend/asset/scripts/leaflet-control-geocoder.js')}}"></script>
 
+<!-- Google Autocomplete -->
+<script>
+  function initAutocomplete() {
+    var input = document.getElementById('autocomplete-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (!place.geometry) {
+        return;
+      }
+    });
+
+	if ($('.main-search-input-item')[0]) {
+	    setTimeout(function(){ 
+	        $(".pac-container").prependTo("#autocomplete-container");
+	    }, 300);
+	}
+}
+</script>
+
+<!-- Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
 <script>
 	var modal = document.getElementById("myModal");
 	var btn = document.getElementById("myBtn");
@@ -240,7 +263,7 @@ $(function() {
 
     function cb(start, end) {
         $('#booking-date-range span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-		$(' input #booking-date-range').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+		$('#booking-date-range').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 
 	}
     cb(start, end);
