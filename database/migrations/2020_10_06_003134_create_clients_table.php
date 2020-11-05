@@ -26,7 +26,7 @@ class CreateClientsTable extends Migration
             $table->string('driving_licence')->nullable();
             $table->string('driving_licence_image')->nullable();
             $table->string('status')->nullable();
-            $table->unsignedBigInteger('id_avatars');
+            $table->unsignedBigInteger('id_avatars')->nullable();
             $table->foreign('id_avatars')->references('id')->on('avatars');
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();

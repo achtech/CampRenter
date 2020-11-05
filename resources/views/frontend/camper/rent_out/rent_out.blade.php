@@ -1,5 +1,5 @@
 
-@extends('frontend.layout.layout',['activePage'=>'rent_out','footerPage' => 'true'])
+@extends('frontend.layout.layout_panel',['activePage'=>'rent_out','footerPage' => 'true'])
 
 @section('content')
 <!-- Content
@@ -80,7 +80,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="col-md-12">
-								<input type="text" placeholder="e.g. 964 School Street">
+								<input type="text" placeholder="">
 								<h6>{{trans('front.recommandation')}}</h6>
 							</div>
 						</div>
@@ -89,7 +89,6 @@
 						<div class="col-md-12">
 						<div style="float: right;">
 							<a href="{{route('personnalData')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-							<a href="{{route('frontend.camper')}}" class="button border">{{trans('front.cancel')}}</a>
 						</div>
 					</div>
 				</div>

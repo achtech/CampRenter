@@ -1,5 +1,5 @@
 
-@extends('frontend.layout.layout',['activePage'=>'fill_in_vehicle','footerPage' => 'true'])
+@extends('frontend.layout.layout_panel',['activePage'=>'fill_in_vehicle','footerPage' => 'true'])
 
 @section('content')
 <!-- Content
@@ -24,83 +24,14 @@
 	</div>
 
 	<div class="row">
-		<!-- Listings -->
-		<div class="col-lg-5 col-md-12" style="margin-bottom:20px;">
-
-			<div class="dashboard-list-box margin-top-0">
-				<ul>
-					<li>
-						<img class="headline right" src="{{ asset('images/rent-out-camper/camper_rent.png') }}"/>
-					</li>
-					<li>
-					<div class="row">
-							<h6>Campervan</h6>
-							<h3><strong>Camp Name</strong></h3>
-						</div>
-						<div class="row">
-							<h6>{{trans('front.state')}}:</h6>
-							<p>Camp Name</p>
-						</div>
-					</li>
-					<li>
-						<div class="row">
-							<h5 style="margin-top: 0px; color:#39b7cd;">{{trans('front.complete_details')}}</h5>
-							<div>
-								<h3 style="margin-top: 20px;"><strong>{{trans('front.the_vehicle')}}</strong></h3>
-								<div class="payment-tab-trigger">
-									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">{{trans('front.vehicle_data')}}</label>
-
-									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">{{trans('front.equipment')}}</label>
-
-									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">{{trans('front.extras')}}</label>
-
-									<input name="cardType" type="radio" value="">
-									<label style="padding: 0px;" for="vehicle">{{trans('front.description')}}</label>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="row">
-							<div class="col-md-10" style="margin-top: 0px;">
-								<h3><strong>{{trans('front.photos')}}</strong></h3>
-							</div>
-							<div class="col-md-2" style="margin-top: 0px;">
-								<a href="{{route('slide_camper')}}"><h3><i class="sl sl-icon-plus"></i></h3></a>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="row">
-							<h3 style="margin-top: 0px;"><strong>{{trans('front.menu_panel_rentout')}}</strong></h3>
-							<div class="payment-tab-trigger">
-								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">{{trans('front.insurance')}}</label>
-
-								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">{{trans('front.rental_terms')}}</label>
-
-								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">{{trans('front.terms')}}</label>
-
-								<input name="cardType" type="radio" value="">
-								<label style="padding: 0px;" for="vehicle">{{trans('front.Calendar')}}</label>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
+		<!-- sub_menu -->
+		@include('frontend.camper.rent_out.sub_menu')
 
 		<div class="col-lg-7 col-md-12">
 			<div class="row">
-							<h6>The vehicle</h6>
-							<h3><strong>Vehicle Data</strong></h3>
-						</div>
-					</li>
+				<h6>The vehicle</h6>
+				<h3><strong>Vehicle Data</strong></h3>
+			</div>
 			<div class="margin-top-0">
 				<ul style="list-style-type:none; padding-left: 0px;">
 					<li>
@@ -172,12 +103,67 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<strong>Gearbox</strong>
+								<div class="col-md-12">
+									<strong>Gearbox</strong>
+								</div>
+								<div class="col-md-6">
+									<label class="containerRadio">Automatic
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+									<label class="containerRadio">Manual
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<label class="containerRadio">Semi-automatic
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+								</div>
 							</div>
+
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<strong>Mileage</strong>
+								<div class="row">
+									<div class="col-md-12">
+										<strong>Mileage</strong>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<label class="containerRadio">0 - 50'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">50'000 - 100'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">100'000 - 150'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">150'000 - 200'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">200'000 - 250'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">250'000 - 300'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+										<label class="containerRadio">More than 300'000 km
+											<input type="radio" checked="checked" name="radio">
+											<span class="checkmarkRadio"></span>
+										</label>
+									</div>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -185,7 +171,29 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<strong>Fuel</strong>
+								<div class="col-md-12">
+									<strong>Fuel</strong>
+								</div>
+								<div class="col-md-6">
+									<label class="containerRadio">Diesel
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+									<label class="containerRadio">Gas
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<label class="containerRadio">Petrol
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+									<label class="containerRadio">Petroleum gas
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+								</div>
 							</div>
 
 							<!-- Website -->
@@ -249,25 +257,23 @@
 					</li>
 					<li>
 						<div class="row">
-							<!-- Phone -->
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<strong>Additional attributes</strong>
+							</div>
+							<div class="col-md-6">
 								<div class="checkboxes in-row margin-bottom-20">
 
 									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Elevator in building</label>
+									<label for="check-a">Aircon in the driver's cabin</label>
 
 									<input id="check-b" type="checkbox" name="check">
-									<label for="check-b">Friendly workspace</label>
+									<label for="check-b">Rear view camera</label>
 
 									<input id="check-c" type="checkbox" name="check">
-									<label for="check-c">Instant Book</label>
+									<label for="check-c">Power steering</label>
 
 									<input id="check-d" type="checkbox" name="check">
-									<label for="check-d">Wireless Internet</label>
-
-									<input id="check-e" type="checkbox" name="check" >
-									<label for="check-e">Free parking on premises</label>
+									<label for="check-d">Four wheel drive</label>
 
 								</div>
 							</div>
@@ -277,16 +283,16 @@
 								<div class="checkboxes in-row margin-bottom-20">
 
 									<input id="check-f" type="checkbox" name="check">
-									<label for="check-f">Elevator in building</label>
+									<label for="check-f">Auxiliary heating</label>
 
 									<input id="check-g" type="checkbox" name="check">
-									<label for="check-g">Friendly workspace</label>
+									<label for="check-g">Reverse parking system</label>
 
 									<input id="check-h" type="checkbox" name="check">
-									<label for="check-h">Instant Book</label>
+									<label for="check-h">Anti-skid-system</label>
 
 									<input id="check-i" type="checkbox" name="check">
-									<label for="check-i">Wireless Internet</label>
+									<label for="check-i">Central locking</label>
 								</div>
 							</div>
 						</div>
@@ -296,20 +302,24 @@
 							<div class="col-md-12">
 								<strong>Location</strong>
 								<div class="markers-on-the-map" style="margin-top: 16px;">
+									<!-- Map -->
 									<div id="map"></div>
 
 									<script>
 										var api_key = "zdsQGxoHAnWQjAz094c1SW7jS8jmpqU9j2B5O09EWkE";
 										var latitude = 0;
 										var longitude = 0;
+
+
+
 										/**
-										* Adds a  draggable marker to the map..
-										*
-										* @param {H.Map} map                      A HERE Map instance within the
-										*                                         application
-										* @param {H.mapevents.Behavior} behavior  Behavior implements
-										*                                         default interactions for pan/zoom
-										*/
+										 * Adds a  draggable marker to the map..
+										 *
+										 * @param {H.Map} map                      A HERE Map instance within the
+										 *                                         application
+										 * @param {H.mapevents.Behavior} behavior  Behavior implements
+										 *                                         default interactions for pan/zoom
+										 */
 										function addDraggableMarker(map, behavior) {
 
 											var marker = new H.map.Marker({
@@ -361,7 +371,7 @@
 
 										function initHereMap() {
 
-											//console.log("initmap");
+											console.log("initmap");
 											/**
 											* Boilerplate map initialization code starts below:
 											*/
@@ -369,13 +379,13 @@
 											//Step 1: initialize communication with the platform
 											// In your own code, replace variable window.apikey with your own apikey
 
-											//console.log(api_key);
+											console.log(api_key);
 											var platform = new H.service.Platform({
 												apikey: api_key
 											});
 											var defaultLayers = platform.createDefaultLayers();
 
-											//console.log(H.service);
+											console.log(latitude);
 											//Step 2: initialize a map - this map is centered over Boston
 											var map = new H.Map(document.getElementById('map'),
 												defaultLayers.vector.normal.map, {
@@ -432,6 +442,7 @@
 
 										getLocation();
 									</script>
+
 								</div>
 							</div>
 						</div>
@@ -440,8 +451,8 @@
 						<div class="row">
 							<div class="col-md-12">
 							<div style="float: right;">
-								<a href="{{route('camper_steps')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-								<a href="{{route('rent_out')}}" class="button border">{{trans('front.cancel')}}</a>
+								<a href="{{route('equipment')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
+								<a href="{{route('personnalData')}}" class="button border">{{trans('front.cancel')}}</a>
 							</div>
 						</div>
 					</li>

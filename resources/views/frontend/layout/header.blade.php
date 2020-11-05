@@ -39,7 +39,7 @@
 								{{trans('front.menu_insert_vehicule')}}
 							</a>
 						</li>
-						<li><a class="{{ $activePage == 'blog' ? ' current' : '' }}" href="{{route('frontend.blog')}}">{{trans('front.menu_blog')}}</a></li>
+						<li><a class="{{ $activePage == 'blog' ? ' current' : '' }}" href="{{route('frontend.blog')}}">{{trans('front.Blog')}}</a></li>
 
 						<li><a href="#">{{trans('front.menu_user_panel')}}</a>
 							<ul>
