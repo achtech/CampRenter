@@ -1,6 +1,5 @@
 
-@extends('frontend.layout2',['activePage'=>'personnalData'])
-
+@extends('frontend.layout.layout',['activePage'=>'rent_out_details','footerPage' => 'true'])
 @section('content')
 <!-- Content
 ================================================== -->

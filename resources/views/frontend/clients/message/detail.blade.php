@@ -1,4 +1,4 @@
-@extends('frontend.layout2',['activePage'=>'FC_message'])
+@extends('frontend.layout.layout_panel',['activePage'=>'FC_message'])
 @section('content')
 <!-- Content
 	================================================== -->
@@ -269,9 +269,7 @@
 			</div>
 
 			<!-- Copyrights -->
-			<div class="col-md-12">
-				<div class="copyrights">© 2019 Listeo. All Rights Reserved.</div>
-			</div>
+			@include('frontend.layout.footer_panel')
 		</div>
 
 	</div>

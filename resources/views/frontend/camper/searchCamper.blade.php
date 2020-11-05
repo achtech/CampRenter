@@ -1,33 +1,10 @@
 
-@extends('frontend.layout3',['activePage' => 'camper'])
-
+@extends('frontend.layout.layout',['activePage' => 'camper', 'footerPage' => 'false'])
 @section('content')
-<!-- Content
-================================================== -->
-<!-- Titlebar
-================================================== -->
-<div id="titlebar" class="gradient">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-
-				<h2>Rent a Camping-car</h2>
-
-				<!-- Breadcrumbs -->
-				<nav id="breadcrumbs">
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li>Rent</li>
-					</ul>
-				</nav>
-
-			</div>
-		</div>
-	</div>
-</div>
+<!-- Content ================================================== -->
 <div class="fs-container">
 
-	<div class="fs-inner-container content">
+	<div class="fs-inner-container content fs-container-padding" >
 		<div class="fs-content">
 
 			<!-- Search -->
@@ -38,26 +15,23 @@
 
 							<!-- Row With Forms -->
 							<div class="row with-forms">
-
 								<!-- Main Search Input -->
 								<div class="col-fs-6">
-									<div class="input-with-icon">
-										<i class="sl sl-icon-magnifier"></i>
-										<input type="text" placeholder="What are you looking for?" value=""/>
-									</div>
-								</div>
-
-								<!-- Main Search Input -->
-								<div class="col-fs-6">
-									<div class="input-with-icon location">
-							
+									<div class="input-with-icon location">				
 										<div id="autocomplete-container" data-autocomplete-tip="type and hit enter">
 											<input id="autocomplete-input" type="text" placeholder="Location">
 										</div>
 										<a href="#"><i class="fa fa-map-marker"></i></a>
 									</div>
 								</div>
-						
+								
+								<!-- Main Search Input -->
+								<div class="col-fs-6">
+									<div class="input-with-icon">
+										<i class="fa fa-calendar calendar-position"></i>
+										<input type="text" id="booking-date-range" placeholder="Check-In - Check-Out" value=""/>
+									</div>
+								</div>
 
 								<!-- Filters -->
 								<div class="col-fs-12">
@@ -350,10 +324,9 @@
 					</div>
 					<div class="clearfix"></div>
 					<!-- Pagination / End -->
+					<!-- Copyright -->
+					@include('frontend.layout.footer_detail')
 					
-					<!-- Copyrights -->
-					<div class="copyrights margin-top-0">© 2019 Listeo. All Rights Reserved.</div>
-
 				</div>
 			</div>
 			<!-- Pagination Container / End -->
@@ -371,5 +344,7 @@
 		</div>
 
 	</div>
+	
 </div>
 @endsection
+

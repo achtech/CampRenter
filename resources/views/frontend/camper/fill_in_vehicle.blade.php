@@ -1,5 +1,5 @@
 
-@extends('frontend.layout2',['activePage'=>'fill_in_vehicle'])
+@extends('frontend.layout.layout',['activePage'=>'fill_in_vehicle','footerPage' => 'true'])
 
 @section('content')
 <!-- Content

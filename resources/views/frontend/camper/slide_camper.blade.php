@@ -1,6 +1,5 @@
 
-@extends('frontend.layout2',['activePage'=>'slide_camper'])
-
+@extends('frontend.layout.layout',['activePage'=>'slide_camper','footerPage' => 'true'])
 @section('content')
 <!-- Content
 ================================================== -->
