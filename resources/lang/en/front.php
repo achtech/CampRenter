@@ -205,5 +205,6 @@ return [
     'Comment' => 'Comment',
     'Submit Comment' => 'Submit Comment',
     'blog_comment' => 'comments',
+    'menu_blog' => 'Blog',
     
 ];
