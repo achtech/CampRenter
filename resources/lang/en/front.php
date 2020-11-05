@@ -54,7 +54,7 @@ return [
 
     /** Home */
     'content_most_visited' => 'Most Visited Campers',
-    'title_categories' => 'the right one for camping',
+    'title_categories' => 'The right one for camping',
     'content_user_review' => 'This is how it goes on vacation',
     'content_text_find_place' => 'Just look for the place where you would like to pick up your camper. You will be shown the nearest campers in this area and you can easily choose one of your choice.',
     'choose_data_request' => 'If you have selected a camper, you will see all further details on the overview. Does the camper suit you? Then choose your preferred date and send the request to the landlord.',

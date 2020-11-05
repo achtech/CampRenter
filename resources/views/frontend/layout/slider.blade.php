@@ -21,7 +21,7 @@
 						    <span></span>
 						</div>
 
-						<button class="button" onclick="window.location.href='listings-half-screen-map-list.html'">{{trans('front.slider_search')}}</button>
+						<button class="button" onclick="window.location.href='/search_camper_client'">{{trans('front.slider_search')}}</button>
 
 					</div>
 				</div>

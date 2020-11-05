@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\CamperCategory;
 use Illuminate\Http\Request;
-
+use DB;
 class CamperCategoryController extends Controller
 {
     /**
@@ -129,5 +129,11 @@ class CamperCategoryController extends Controller
         }
         $data->delete();
         return redirect(route('camperCategory.index'));
+    }
+
+    public static function hasSubCategories($id){
+        $data=  DB::table('camper_sub_categories')->where('id_camper_categories', $id)->count()>0;
+        return $data?2:1;
+
     }
 }

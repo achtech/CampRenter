@@ -54,8 +54,10 @@
 										<div class="col-lg-4"><div class="blog-title " >{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} {{trans('front.blog_comment')}}</div></div>
 									</div>
 										
-									<div class="rating-counter">{{ Illuminate\Support\Str::limit($blog->article, 100)}}</div>
-										
+									<div class="rating-counter">{{ Illuminate\Support\Str::limit($blog->article, 100)}}
+									
+									</div>
+									
 									</div>
 								</div>
 							</a>

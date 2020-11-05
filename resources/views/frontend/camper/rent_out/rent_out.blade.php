@@ -42,7 +42,7 @@
 						<div class="row">
 							@foreach($categories as $category)
 								<!-- Box -->
-								<div class="col-md-3 alternative-imagebox" id="{{$category->label_en == 'motorhome' ? 'showSub' : 'category'}}">
+								<div class="col-md-3 alternative-imagebox" id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id)==2 ? 'showSub' : 'category'}}">
 									<a>
 									<img src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
 										<h4>{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
