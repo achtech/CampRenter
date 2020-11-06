@@ -132,4 +132,5 @@ return [
     'Comment' => 'Kommentar',
     'Submit Comment' => 'Kommentar senden',
     'blog_comment' => 'Bemerkungen',
+    'register_google' => 'Register with Google',
 ];

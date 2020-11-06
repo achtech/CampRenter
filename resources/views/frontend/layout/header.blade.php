@@ -40,13 +40,32 @@
 							</a>
 						</li>
 						<li><a class="{{ $activePage == 'blog' ? ' current' : '' }}" href="{{route('frontend.blog')}}">{{trans('front.menu_blog')}}</a></li>
+                        @if(!Auth::guard('client')->check())
 						<li>
 							<a  id="myBtn">{{trans('front.menu_login')}}</a>
 							@include('frontend.connexion.login');
 						</li>
-						<li><a>{{trans('front.menu_register')}}</a></li>
+						<li ><a href="/register/client">{{trans('front.menu_register')}}</a></li>
+                        <li><a href="/login/client">New {{trans('front.menu_login')}}</a></li>
+                        @else
+                       <li>
+                           <a class="dropdown-item" href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                               {{ __('Logout') }}
+                           </a>
 
-					</ul>
+                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                               @csrf
+                           </form>
+                       </li>
+                            <li>
+                                <span>Hi {{Auth::guard('client')->user()->client_name}} {{Auth::guard('client')->user()->client_last_name}}</span>
+                            </li>
+                        @endif
+
+
+                    </ul>
 				</nav>
 				<div class="clearfix"></div>
 				<!-- Main Navigation / End -->

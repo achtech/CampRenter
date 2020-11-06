@@ -206,5 +206,5 @@ return [
     'Submit Comment' => 'Submit Comment',
     'blog_comment' => 'comments',
     'menu_blog' => 'Blog',
-    
+    'register_google' => 'Register with Google',
 ];
