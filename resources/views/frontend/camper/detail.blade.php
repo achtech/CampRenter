@@ -394,7 +394,7 @@
 				</div>
 				
 				<!-- Book Now -->
-				<a href="pages-booking.html" class="button book-now fullwidth margin-top-5">Request To Book</a>
+				<a href="{{route('frontend.camper.booking_paiement')}}" class="button book-now fullwidth margin-top-5">Request To Book</a>
 				
 				<!-- Estimated Cost -->
 <!-- 				<div class="booking-estimated-cost">

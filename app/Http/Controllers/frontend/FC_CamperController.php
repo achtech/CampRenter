@@ -25,4 +25,9 @@ class FC_CamperController extends Controller
         $categories = DB::table('camper_categories')->paginate(10);
         return view('frontend.camper.detail')->with('categories', $categories);
     }
+
+    public function bookingPaiement(){
+        $categories = DB::table('camper_categories')->paginate(10);
+        return view('frontend.camper.booking_paiement')->with('categories', $categories);
+    }
 }

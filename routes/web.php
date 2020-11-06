@@ -10,6 +10,7 @@ use App\Http\Controllers\frontend\FC_messageController;
 use App\Http\Controllers\frontend\FC_notificationController;
 use App\Http\Controllers\frontend\FC_reviewController;
 use App\Http\Controllers\frontend\FC_walletController;
+use App\Http\Controllers\frontend\FC_bookmarkController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -91,6 +92,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/review_client', [FC_reviewController::class, 'index'])->name('frontend.clients.review');
     Route::get('/search_camper_client', [FC_CamperController::class, 'show'])->name('frontend.camper.search');
     Route::get('/details_camper_client', [FC_CamperController::class, 'detail'])->name('frontend.camper.detail');
+    Route::get('/details_booking_paiement', [FC_CamperController::class, 'bookingPaiement'])->name('frontend.camper.booking_paiement');
+    Route::get('/bookmark_client', [FC_bookmarkController::class, 'index'])->name('frontend.clients.bookmark');
 
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
