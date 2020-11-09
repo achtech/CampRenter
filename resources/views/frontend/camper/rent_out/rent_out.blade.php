@@ -44,8 +44,8 @@
 								<!-- Box -->
 								<div class="col-md-3 alternative-imagebox" id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id)==2 ? 'showSub' : 'category'}}">
 									<a>
-									<img src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
-										<h4>{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
+									<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
+										<h4 style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
 									</a>
 								</div>
 							@endforeach

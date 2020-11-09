@@ -34,7 +34,7 @@
 								</div>
 								<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}">
 								{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}<div class="rating-counter">({{App\Http\Controllers\frontend\FHomeController::getReviewsCount($camper->id)}} {{__('front.Reviews')}})</div>
-								</div>	
+								</div>
 							</div>
 						</a>
 					</div>
@@ -56,15 +56,15 @@
 		</div>
 
 		<div class="col-md-12">
-			<div class="row">
+			<div class="row" style="max-width: 90%; margin-left:11%;">
 				@if(count($categories)>0)
 				@foreach($categories as $category)
 					<!-- Box -->
 					<div class="col-md-3 alternative-imagebox">
 						<a href="{{route('frontend.camper.search')}}" >
-						<img src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
-							<h4>{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
-							<span class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} Listings</span>
+						<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
+							<h4 style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
+							<span style="left:20%;" class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} Listings</span>
 						</a>
 					</div>
 				@endforeach
