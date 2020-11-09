@@ -50,7 +50,7 @@
 									<h3>{{$blog->title}} </h3>
 									<div class="row">
 										<div class="col-lg-4"><div class="blog-title " >{{App\Http\Controllers\Controller::getUser($blog->created_by)}}</div></div>
-										<div class="col-lg-4"><div class="blog-title " >{{$blog->created_at}}</div></div>
+										<div class="col-lg-4"><div class="blog-title " >{{date('j F Y', strtotime($blog->created_at))}}</div></div>
 										<div class="col-lg-4"><div class="blog-title " >{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} {{trans('front.blog_comment')}}</div></div>
 									</div>
 										
@@ -122,7 +122,7 @@
 									</div>
 									<div class="widget-text">
 										<h5><a href="pages-blog-post.html">{{$blog->title}}</a></h5>
-										<span>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}, {{$blog->created_at}}</span>
+										<span>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}, {{date('j F Y', strtotime($blog->created_at))}}</span>
 									</div>
 									<div class="clearfix"></div>
 								</div>

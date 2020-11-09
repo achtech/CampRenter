@@ -50,7 +50,7 @@
             <li>
                 <div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
                 <div class="comment-content"><div class="arrow-comment"></div>
-                    <div class="comment-by">{{$review->name}} <span class="date">{{$review->created_at}}</span>
+                    <div class="comment-by">{{$review->name}} <span class="date">{{date('j F Y', strtotime($review->created_at))}}</span>
                         <div class="star-rating" data-rating="{{number_format(($review->rate_service+$review->rate_managing+$review->rate_cleanliness)/3),1}}"></div>
                     </div>
                     <p>{{$review->comment}}</p>

@@ -140,7 +140,7 @@
 						<span class="blog-item-tag">Tips</span>
 						<div class="blog-compact-item-content">
 							<ul class="blog-post-tags">
-								<li>{{$blog->created_at}}</li>
+								<li>{{date('j F Y', strtotime($blog->created_at))}}</li>
 							</ul>
 							<h3>{{$blog->title}}</h3>
 							<p>{{ Illuminate\Support\Str::limit($blog->article, 80)}}</p>
