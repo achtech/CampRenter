@@ -21,8 +21,14 @@ class CreateCamperReviewsTable extends Migration
             $table->integer('rate_service')->nullable();
             $table->integer('rate_managing')->nullable();
             $table->integer('rate_cleanliness')->nullable();
+            $table->integer('helpfulReview')->default('0')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+
             $table->timestamps();
             $table->unsignedBigInteger('id_campers')->nullable();
+            $table->foreign('created_by')->references('id')->on('clients');
+            $table->foreign('updated_by')->references('id')->on('clients');
             $table->foreign('id_campers')->references('id')->on('campers');
         });
     }

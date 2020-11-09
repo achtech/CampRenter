@@ -24,7 +24,7 @@
 				<!-- Listing Item -->
 				@foreach($campers as $camper)
 					<div class="carousel-item">
-						<a href="{{route('frontend.camper.detail')}}" class="listing-item-container">
+						<a href="{{route('frontend.camper.detail',$camper->id)}}" class="listing-item-container">
 							<div class="listing-item">
 								<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
 								<div class="listing-item-content">

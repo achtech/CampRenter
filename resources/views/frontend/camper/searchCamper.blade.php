@@ -164,7 +164,7 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="1">
+					<a href="{{route('frontend.camper.detail',1)}}" class="listing-item-container" data-marker-id="1">
 						<div class="listing-item">
 							<img src="{{asset('frontend/asset/images/listing-item-01.jpg')}}" alt="">
 
@@ -186,7 +186,7 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="2">
+					<a href="{{route('frontend.camper.detail',1)}}" class="listing-item-container" data-marker-id="2">
 						<div class="listing-item">
 							<img src="{{asset('frontend/asset/images/listing-item-02.jpg')}}" alt="">
 							<div class="listing-item-details">
@@ -210,7 +210,7 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="3">
+					<a href="{{route('frontend.camper.detail',1)}}" class="listing-item-container" data-marker-id="3">
 						<div class="listing-item">
 							<img src="{{asset('frontend/asset/images/listing-item-03.jpg')}}" alt="">
 							<div class="listing-item-details">
@@ -234,7 +234,7 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="4">
+					<a href="{{route('frontend.camper.detail',1)}}" class="listing-item-container" data-marker-id="4">
 						<div class="listing-item">
 							<img src="{{asset('frontend/asset/images/listing-item-04.jpg')}}" alt="">
 
@@ -256,7 +256,7 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="5">
+					<a href="{{route('frontend.camper.detail',1)}}" class="listing-item-container" data-marker-id="5">
 						<div class="listing-item">
 							<img src="{{asset('frontend/asset/images/listing-item-05.jpg')}}" alt="">
 							<div class="listing-item-content">
@@ -275,7 +275,7 @@
 
 				<!-- Listing Item -->
 				<div class="col-lg-6 col-md-12">
-					<a href="{{route('frontend.camper.detail')}}" class="listing-item-container" data-marker-id="6">
+					<a href="{{route('frontend.camper.detail',1)}}" class="listing-item-container" data-marker-id="6">
 						<div class="listing-item">
 							<img src="{{asset('frontend/asset/images/listing-item-06.jpg')}}" alt="">
 

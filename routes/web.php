@@ -90,8 +90,10 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
     Route::get('/wallet_client', [FC_walletController::class, 'index'])->name('frontend.clients.wallet');
     Route::get('/review_client', [FC_reviewController::class, 'index'])->name('frontend.clients.review');
+    Route::get('/review_helpfulReview/{id}', [FC_reviewController::class, 'helpfulReview'])->name('frontend.clients.review.helpfulReview');
+    Route::post('/review_addReview', [FC_reviewController::class, 'addReview'])->name('frontend.clients.review.addReview');
     Route::get('/search_camper_client', [FC_CamperController::class, 'show'])->name('frontend.camper.search');
-    Route::get('/details_camper_client', [FC_CamperController::class, 'detail'])->name('frontend.camper.detail');
+    Route::get('/camper/detail/client/{id}', [FC_CamperController::class, 'detail'])->name('frontend.camper.detail');
     Route::get('/details_booking_paiement', [FC_CamperController::class, 'bookingPaiement'])->name('frontend.camper.booking_paiement');
     Route::get('/bookmark_client', [FC_bookmarkController::class, 'index'])->name('frontend.clients.bookmark');
 
