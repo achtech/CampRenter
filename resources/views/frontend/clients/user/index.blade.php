@@ -8,13 +8,13 @@
 		<div id="titlebar">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>My Profile</h2>
+					<h2>{{ __('front.my_profile') }}</h2>
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Dashboard</a></li>
-							<li>My Profile</li>
+							<li><a href="#">{{ __('front.home') }}</a></li>
+							<li><a href="#">{{ __('front.dashboard') }}</a></li>
+							<li>{{ __('front.my_profile') }}</li>
 						</ul>
 					</nav>
 				</div>
@@ -26,7 +26,7 @@
 			<!-- Profile -->
 			<div class="col-lg-6 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
-					<h4 class="gray">Profile Details</h4>
+					<h4 class="gray">{{ __('front.profile_details') }}</h4>
 					<div class="dashboard-list-box-static">
 						
 						<!-- Avatar -->
@@ -34,7 +34,7 @@
 							<img src="{{asset('frontend/asset/images/user-avatar.jpg')}}" alt="">
 							<div class="change-photo-btn">
 								<div class="photoUpload">
-								    <span><i class="fa fa-upload"></i> Upload Photo</span>
+								    <span><i class="fa fa-upload"></i> {{ __('front.upload_photos') }}</span>
 								    <input type="file" class="upload" />
 								</div>
 							</div>
@@ -43,13 +43,13 @@
 						<!-- Details -->
 						<div class="my-profile">
 
-							<label>Your Name</label>
-							<input value="Tom Perrin" type="text">
+							<label>{{ __('front.profil_name') }}</label>
+							<input value="{{Auth::guard('client')->user()->client_name}} {{Auth::guard('client')->user()->client_last_name}}" type="text">
 
-							<label>Phone</label>
+							<label>{{ __('front.phone') }}</label>
 							<input value="(123) 123-456" type="text">
 
-							<label>Email</label>
+							<label>{{ __('front.email') }}</label>
 							<input value="tom@example.com" type="text">
 
 							<label>Notes</label>

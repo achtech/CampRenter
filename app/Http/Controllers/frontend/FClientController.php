@@ -162,7 +162,7 @@ class FClientController extends DefaultLoginController
         return redirect()->route('frontend.client.index');
     }
 
-    public function updateF(Request $request)
+    public function updatePassword(Request $request)
     {
         $id = $request->get('client_id');
         $password = $request->get('password');
@@ -175,6 +175,7 @@ class FClientController extends DefaultLoginController
             return view('frontend.client.index')->with('categories', $categories);
         }
     }
+
     public function index(Request $request)
     {
 

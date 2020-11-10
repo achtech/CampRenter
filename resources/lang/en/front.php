@@ -207,7 +207,8 @@ return [
     'blog_comment' => 'comments',
     'menu_blog' => 'Blog',
     'register_google' => 'Register with Google',
-    'my_profile' => 'My Profil',
+    'my_profile' => 'My Profile',
     'my_bookings' => 'My Bookings',
     'my_campers' => 'My Campers',
+    'my_message' => 'Messages',
 ];

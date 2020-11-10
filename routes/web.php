@@ -47,11 +47,12 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('register/client', [FClientController::class, 'ShowRegister']);
     Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
     Route::get('/editPass', [FClientController::class, 'edit'])->name('frontend.client.editClient');
-    Route::put('/updateClient', [FClientController::class, 'updateF'])->name('frontend.client.updateF');
+    Route::put('/updateClient', [FClientController::class, 'updatePassword'])->name('frontend.client.updatePassword');
     Route::resource('/fclient', FClientController::class, ['except' => ['destroy', 'store', 'edit', 'update'], 'names' => [
         'index' => 'frontend.client.index',
         'show' => 'frontend.client.show',
     ]]);
+    //Route::get('/account', 'App\Http\Controllers\frontend\FClientController@checkProfile')->name('frontend.client.profil');
     Route::get('/rentout', [FCamperController::class, 'rent_out'])->name('rent_out');
     Route::get('/personnalData', [FCamperController::class, 'personnalData'])->name('personnalData');
     Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
