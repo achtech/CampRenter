@@ -5221,10 +5221,7 @@ a.button.add-review-btn i {
 /* Hosted by widget */
 
 .hosted-by-title {
-    padding: 0 70px 18px 0;
-    margin: -4px 0 25px 0;
     display: block;
-    border-bottom: 1px solid #e8e8e8;
     position: relative;
 }
 
@@ -5233,7 +5230,6 @@ a.button.add-review-btn i {
     transition: 0.2s;
     line-height: 22px;
     font-weight: 500;
-    margin: 4px 0 7px 0;
 }
 
 .hosted-by-title h4 a:hover {
@@ -5245,7 +5241,6 @@ a.button.add-review-btn i {
     font-size: 14px;
     font-weight: 400;
     color: #888;
-    margin-bottom: 2px;
 }
 
 .hosted-by-avatar {

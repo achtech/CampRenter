@@ -9,3 +9,8 @@
         </a>
     @endforeach
 </div>
+@if(count($galleries)==0)
+<div class="notification success">
+    {{__('front.No data found')}}
+</div>
+@endif
