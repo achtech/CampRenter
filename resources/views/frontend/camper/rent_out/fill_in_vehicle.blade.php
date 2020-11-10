@@ -122,9 +122,48 @@
 										<span class="checkmarkRadio"></span>
 									</label>
 								</div>
+
+								<div class="col-md-12">
+									<strong>Fuel</strong>
+								</div>
+								<div class="col-md-6">
+									<label class="containerRadio">Diesel
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+									<label class="containerRadio">Gas
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<label class="containerRadio">Petrol
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+									<label class="containerRadio">Petroleum gas
+										<input type="radio" checked="checked" name="radio">
+										<span class="checkmarkRadio"></span>
+									</label>
+								</div>
+								<div class="col-md-12">
+									<strong>Leasing vehicle</strong>
+									<div class="row" style="margin-top: 3%;">
+										<div class="col-md-6" style="padding-left: 0px;">
+											<div class="payment-tab-trigger">
+												<input name="cardType" type="radio" value="">
+												<label style="padding: 0px;" for="vehicle">Yes</label>
+											</div>
+										</div>
+										<div class="col-md-6" style="padding-left: 0px;">
+											<div class="payment-tab-trigger">
+												<input name="cardType" type="radio" value="">
+												<label style="padding: 0px;" for="vehicle">No</label>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-
-
 							<!-- Website -->
 							<div class="col-md-6">
 								<div class="row">
@@ -171,29 +210,7 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<div class="col-md-12">
-									<strong>Fuel</strong>
-								</div>
-								<div class="col-md-6">
-									<label class="containerRadio">Diesel
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmarkRadio"></span>
-									</label>
-									<label class="containerRadio">Gas
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmarkRadio"></span>
-									</label>
-								</div>
-								<div class="col-md-6">
-									<label class="containerRadio">Petrol
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmarkRadio"></span>
-									</label>
-									<label class="containerRadio">Petroleum gas
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmarkRadio"></span>
-									</label>
-								</div>
+								<input type="text" placeholder="Fuel capacity">
 							</div>
 
 							<!-- Website -->
@@ -205,40 +222,13 @@
 					<li>
 						<div class="row">
 							<!-- Phone -->
-							<div class="col-md-6">
-								<input type="text" placeholder="Fuel capacity">
-							</div>
 
-							<!-- Website -->
-							<div class="col-md-6">
-								<input type="text" placeholder="Length in metres">
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="row">
-							<!-- Phone -->
 							<div class="col-md-6">
 								<input type="text" placeholder="Allowed total weight in tons">
 							</div>
-
 							<!-- Website -->
 							<div class="col-md-6">
-								<strong>Leasing vehicle</strong>
-								<div class="row">
-									<div class="col-md-5">
-										<div class="payment-tab-trigger">
-											<input name="cardType" type="radio" value="">
-											<label style="padding: 0px;" for="vehicle">Yes</label>
-										</div>
-									</div>
-									<div class="col-md-7">
-										<div class="payment-tab-trigger">
-											<input name="cardType" type="radio" value="">
-											<label style="padding: 0px;" for="vehicle">No</label>
-										</div>
-									</div>
-								</div>
+								<input type="text" placeholder="Length in metres">
 							</div>
 						</div>
 					</li>
