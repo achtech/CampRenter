@@ -25,17 +25,19 @@
 
 	<div class="row">
 		<!-- sub_menu -->
-		@include('frontend.camper.rent_out.sub_menu')
+		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'slide_camper'])
 
 		<div class="col-lg-7 col-md-12">
 			<h3><strong>Photos</strong></h3>
-			<p>Add photos to each category (or more if necessary). With the help of the instructions and requirements, we'll help you to show your camper in its best perspective.</p>
-
+			<div class="input-group mb-3">
+			<a type="file" name="image" class="button border" id="inputGroupFile01">{{trans('front.cancel')}}</a>
+				<div class="custom-file">
+					<label class="button border" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
+				</div>
+			</div>
 			<div class="row">
-				<div class="col-md-12">
-				<div style="float: right;">
-				<a href="{{route('insurance_front')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-				<a href="{{route('description')}}" class="button border">{{trans('front.cancel')}}</a>
+				<div class="listing-slider-small mfp-gallery-container margin-bottom-0">
+
 				</div>
 			</div>
 		</div>

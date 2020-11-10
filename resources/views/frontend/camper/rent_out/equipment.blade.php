@@ -25,7 +25,7 @@
 
 	<div class="row">
 		<!-- sub_menu -->
-		@include('frontend.camper.rent_out.sub_menu')
+		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'equipment'])
 
 		<div class="col-lg-7 col-md-12">
 		<h2 style="padding: 10px;"><strong>Equipment</strong></h2>
@@ -38,14 +38,14 @@
 						<div class="row opening-day">
 							<div class="col-md-6">
 								<h3>Camping table</h3>
-								<div class="checkboxes in-row margin-bottom-20">
+								<div class="checkboxes in-row margin-bottom-18">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Camping table</label>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<h3>Camping chairs</h3>
-								<div class="checkboxes in-row margin-bottom-20">
+								<div class="checkboxes in-row margin-bottom-18">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Camping chairs</label>
 								</div>
@@ -55,49 +55,42 @@
 					</li>
 					<li>
 						<div class="row opening-day">
+							<div class="col-md-6">
 							<h3>Transport</h3>
-							<div class="col-md-6">
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Camping table</label>
 								</div>
-								<div class="checkboxes in-row margin-bottom-20">
+								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Camping table</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Cargo carrier</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Trailer hitch</label>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">test</label>
-								</div>
-								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">test</label>
-								</div>
 
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="row opening-day">
-							<h3>Water</h3>
 							<div class="col-md-6">
+								<h3>Water</h3>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Fresh water tank</label>
 								</div>
-								<div class="checkboxes in-row margin-bottom-20">
+								<div class="checkboxes in-row ">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Warm water</label>
 								</div>
-							</div>
-							<div class="col-md-6">
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Waste water tank</label>
 								</div>
 							</div>
+
 						</div>
 					</li>
 					<li>
@@ -112,7 +105,7 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Double bottom</label>
 								</div>
-								<div class="checkboxes in-row margin-bottom-20">
+								<div class="checkboxes in-row margin-bottom-18">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Heat-absorbing glass</label>
 								</div>
@@ -126,7 +119,7 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Snow chains</label>
 								</div>
-								<div class="checkboxes in-row margin-bottom-20">
+								<div class="checkboxes in-row margin-bottom-18">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Heatable water- and waste water tank</label>
 								</div>
@@ -161,7 +154,7 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Mosquito net</label>
 								</div>
-								<div class="checkboxes in-row margin-bottom-20">
+								<div class="checkboxes in-row margin-bottom-18">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Hammock</label>
 								</div>
@@ -191,7 +184,7 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Deck chair</label>
 								</div>
-								<div class="checkboxes in-row margin-bottom-20">
+								<div class="checkboxes in-row margin-bottom-18">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Carpet for tent</label>
 								</div>
@@ -252,8 +245,8 @@
 					</li>
 					<li>
 						<div class="row opening-day">
-							<h3>Power</h3>
 							<div class="col-md-6">
+							<h3>Power</h3>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Power supply</label>
@@ -266,8 +259,6 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Cable reel</label>
 								</div>
-							</div>
-							<div class="col-md-6">
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Heavy current connection</label>
@@ -276,14 +267,9 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Extra battery</label>
 								</div>
-
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="row opening-day">
-							<h3>Dimming</h3>
 							<div class="col-md-6">
+								<h3>Dimming</h3>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Tinted windows</label>
@@ -296,8 +282,6 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Cable reel</label>
 								</div>
-							</div>
-							<div class="col-md-6">
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Roller blinds</label>
@@ -333,12 +317,19 @@
 									<label for="check-a">Baby seat</label>
 								</div>
 							</div>
+							<div class="col-md-6">
+								<h3>Further equipment for inside</h3>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Baby seat latch</label>
+								</div>
+							</div>
 						</div>
 					</li>
 					<li>
 						<div class="row opening-day">
-							<h3>Electronics</h3>
 							<div class="col-md-6">
+								<h3>Electronics</h3>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">GPS</label>
@@ -359,8 +350,6 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">DVD Player</label>
 								</div>
-							</div>
-							<div class="col-md-6">
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Rdio</label>
@@ -377,14 +366,9 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">TV</label>
 								</div>
-
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="row opening-day">
-							<h3>Cooking possibility</h3>
 							<div class="col-md-6">
+								<h3>Cooking possibility</h3>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">1-burner stove</label>
@@ -401,8 +385,6 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Triple electric cooker</label>
 								</div>
-							</div>
-							<div class="col-md-6">
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">3-burner stove</label>
@@ -425,8 +407,13 @@
 					</li>
 					<li>
 						<div class="row opening-day">
-							<h3>Cooling possibility</h3>
+
+						</div>
+					</li>
+					<li>
+						<div class="row opening-day">
 							<div class="col-md-6">
+								<h3>Cooling possibility</h3>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Fridge</label>
@@ -435,13 +422,33 @@
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Freezer</label>
 								</div>
-							</div>
-							<div class="col-md-6">
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Cool box</label>
 								</div>
-
+							</div>
+							<div class="col-md-6">
+								<h3>Bathroom</h3>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Toilet</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Basin</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Mobile camping toilet</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Shower</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Outdoor shower</label>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -466,42 +473,7 @@
 					</li>
 					<li>
 						<div class="row opening-day">
-							<h3>Bathroom</h3>
-							<div class="col-md-6">
-								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Toilet</label>
-								</div>
-								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Basin</label>
-								</div>
-								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Mobile camping toilet</label>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Shower</label>
-								</div>
-								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Outdoor shower</label>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="row opening-day">
-							<div class="col-md-6">
-								<h3>Further equipment for inside</h3>
-								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Baby seat latch</label>
-								</div>
-							</div>
+
 						</div>
 					</li>
 					<li>

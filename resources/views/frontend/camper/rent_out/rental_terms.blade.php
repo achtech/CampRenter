@@ -25,7 +25,7 @@
 
 	<div class="row">
 		<!-- sub_menu -->
-		@include('frontend.camper.rent_out.sub_menu')
+		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'rental_terms'])
 
 		<div class="col-lg-7 col-md-12">
 			<h3><strong>Rental terms</strong></h3>
