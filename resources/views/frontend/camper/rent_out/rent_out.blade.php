@@ -54,6 +54,17 @@
 							<div class="add-listing-headline">
 								<h3>Build type</h3>
 							</div>
+							<div class="row">
+							@foreach($sub_categories as $sub_categories)
+								<!-- Box -->
+								<div class="col-md-3 alternative-imagebox" id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id)==2 ? 'showSub' : 'category'}}">
+									<a>
+									<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt="">
+										<h4 style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
+									</a>
+								</div>
+							@endforeach
+						</div>
 						</div>
 					</div>
 

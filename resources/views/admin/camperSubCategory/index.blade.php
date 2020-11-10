@@ -51,7 +51,7 @@
                             <tfoot>
                                 <tr>
                                     <th>{{ __('backend.Image') }}</th>
-                                    <th>{{ __('backend.Category') }}</th>
+                                    <th>{{ __('backend.category') }}</th>
                                     <th>{{ __('backend.label') }} DE</th>
                                     <th>{{ __('backend.label') }} EN</th>
                                     <th>{{ __('backend.label') }} FR</th>
@@ -73,7 +73,7 @@
         <h4 class="modal-title text-center" id="myModalLabel"> {{__('backend.delete_confirmation')}}</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
-      <form  action="{{route('camperSubCategory.delete','test')}}" method="post">
+      <form  action="{{route('camperSubCategory.delete',$item->id)}}" method="post">
             {{method_field('delete')}}
             {{csrf_field()}}
           <div class="modal-body">
