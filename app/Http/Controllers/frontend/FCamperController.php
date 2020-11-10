@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CamperSubCategory;
 use DB;
 
 class FCamperController extends Controller
@@ -19,8 +20,11 @@ class FCamperController extends Controller
     public function rent_out()
     {
         $categories = DB::table('camper_categories')->paginate(10);
+        $sub_categories = CamperSubCategory::paginate(10);
 
-        return view('frontend.camper.rent_out.rent_out')->with('categories', $categories);
+        return view('frontend.camper.rent_out.rent_out')
+            ->with('categories', $categories)
+            ->with('sub_categories', $sub_categories);
     }
 
     public function personnalData()
