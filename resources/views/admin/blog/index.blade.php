@@ -38,7 +38,7 @@
                                     </td>
                                     <td>{{$item->title}}</td>
                                     <td>{{App\Http\Controllers\Controller::getUser($item->created_by)}}</td>
-                                    <td>{{$item->created_at}}</td>
+                                    <td>{{date('j F Y', strtotime($item->created_at))}}</td>
                                     <td>{{ Illuminate\Support\Str::limit($item->article, 50)}}...</td>
                                     <td>
                                         <ul class="list-inline m-0">

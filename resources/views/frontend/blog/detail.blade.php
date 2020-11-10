@@ -51,7 +51,7 @@
 
 					<ul class="post-meta">
 						<li>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}</li>
-						<li>{{$blog->created_at}}</li>
+						<li>{{date('j F Y', strtotime($blog->created_at))}}</li>
 						<li>{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} Comments</li>
 					</ul>
 
@@ -182,7 +182,7 @@
 
 									<div class="widget-text">
 										<h5><a href="pages-blog-post.html">{{$blog->title}}</a></h5>
-										<span>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}, {{$blog->created_at}}</span>
+										<span>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}, {{date('j F Y', strtotime($blog->created_at))}}</span>
 									</div>
 									<div class="clearfix"></div>
 								</div>

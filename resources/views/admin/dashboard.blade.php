@@ -134,7 +134,7 @@
                                     <tr>
 
                                         <td>{{$item->client_name}} {{$item->client_last_name}}</td>
-                                        <td>{{$item->created_at}}</td>
+                                        <td>{{date('j F Y', strtotime($item->created_at))}}</td>
                                         <td>
                                         <a href="{{ route('booking.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"><i class="fa fa-list"></i></a>
                                         </td>

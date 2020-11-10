@@ -207,4 +207,6 @@ return [
     'blog_comment' => 'comments',
     'menu_blog' => 'Blog',
     
+    /** Camper detail */
+    'No data found' => 'No data found',
 ];

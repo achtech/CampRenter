@@ -46,7 +46,7 @@
                                         <td>{{$item->commission}} %</td>
                                         <td>{{$item->details}}</td>
                                         <td>{{App\Http\Controllers\Controller::getUser($item->created_by)}}</td>
-                                        <td>{{$item->created_at}}</td>
+                                        <td>{{date('j F Y', strtotime($item->created_at))}}</td>
                                         <td>
                                             @if($item->status == 1)
                                             <i class="btn waves-effect waves-light btn-outline-success">Current</i>
