@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -30,13 +31,19 @@ class LoginController extends Controller
 
     public function showAdminLoginForm()
     {
-        return view('auth.login');
+        $categories = DB::table('camper_categories')->get();
+        $campers = DB::table('campers')->where([
+            ['is_confirmed', 1],
+            ['availability', 2],
+        ])->get();
+        $blogs =  DB::table('blogs')->orderBy('created_at','desc')->get();
+        return view('frontend.auth.login')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
     }
 
     public function adminLogin(Request $request)
     {
-        $this->validate($request, [
-            'email'   => 'required|email',
+       $this->validate($request, [
+            'email'   => 'exists:clients|required|email',
             'password' => 'required|min:6'
         ]);
 

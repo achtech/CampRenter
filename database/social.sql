@@ -1,0 +1,1 @@
+ALTER TABLE `clients` ADD `google_id` VARCHAR(100) NOT NULL AFTER `id_avatars`, ADD `facebook_id` VARCHAR(100) NOT NULL AFTER `google_id`;

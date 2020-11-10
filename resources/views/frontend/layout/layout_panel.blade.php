@@ -76,9 +76,10 @@ $(document).ready(function(){
 				<li class="{{ $activePage == 'FC_profile' ? 'active' : '' }}"><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
 				<li><a href=""><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
 			</ul>
-
+      
 		</div>
-	</div>
+  </div>
+  
 	<!-- Navigation / End -->
 	<!-- Main Navigation -->
 		@yield('content')

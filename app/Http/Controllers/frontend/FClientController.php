@@ -111,7 +111,10 @@ class FClientController extends DefaultLoginController
         Mail::to($client['email'])->send(new RegistrationMail($client));
         return redirect(route('frontend.client.index'));
     }
-
+    public function completeRegistrationProfile(Request $request)
+    {
+        dd($request->all());
+    }
     public function show($id)
     {
         return view('frontend.client.show');
@@ -125,8 +128,34 @@ class FClientController extends DefaultLoginController
         return view('frontend.client.edit')->with('categories', $categories)
             ->with('client_id', $id);
     }
+    public function ShowRegister(Request $request)
+    {
+        $categories = DB::table('camper_categories')->get();
+        $campers = DB::table('campers')->where([
+            ['is_confirmed', 1],
+            ['availability', 2],
+        ])->get();
+        $blogs =  DB::table('blogs')->orderBy('created_at', 'desc')->get();
+        return view('frontend.auth.register')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
+    }
+
+    public function ShowResetPassword(Request $request)
+    {
+        $categories = DB::table('camper_categories')->get();
+        $campers = DB::table('campers')->where([
+            ['is_confirmed', 1],
+            ['availability', 2],
+        ])->get();
+        $blogs =  DB::table('blogs')->orderBy('created_at', 'desc')->get();
+        return view('frontend.auth.passwords.reset')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
+    }
+
     public function resetPassword(Request $request)
     {
+        $this->validate($request, [
+            'email'   => 'exists:clients|required|email',
+        ]);
+
         $input = request()->except(['_token', '_method', 'action']);
         $client = Client::where('email', $input['email'])->first();
         $input['client_name'] = $client['client_name'];
@@ -136,7 +165,7 @@ class FClientController extends DefaultLoginController
         return redirect()->route('frontend.client.index');
     }
 
-    public function updateF(Request $request)
+    public function updatePassword(Request $request)
     {
         $id = $request->get('client_id');
         $password = $request->get('password');
@@ -149,10 +178,44 @@ class FClientController extends DefaultLoginController
             return view('frontend.client.index')->with('categories', $categories);
         }
     }
+
     public function index(Request $request)
     {
 
         $categories = DB::table('camper_categories')->paginate(10);
         return view('frontend.client.index')->with('categories', $categories);
+    }
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function handleGoogleCallback()
+    {
+        dd(12);
+        try {
+
+            $user = Socialite::driver('google')->user();
+
+            $finduser = Client::where('google_id', $user->id)->first();
+
+            if ($finduser) {
+
+                Auth::login($finduser);
+
+                return  redirect('/home');
+            } else {
+                $newUser = Client::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'google_id' => $user->id
+                ]);
+
+                Auth::login($newUser);
+
+                return redirect()->back();
+            }
+        } catch (Exception $e) {
+            return redirect('auth/google');
+        }
     }
 }
