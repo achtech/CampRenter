@@ -34,7 +34,7 @@ Route::get('lang/{lang}', function ($lang) {
     return back();
 });
 Route::group(['middleware' => 'Lang'], function () {
-//    login
+    //    login
     Route::get('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
     Route::post('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
@@ -77,6 +77,10 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/login/client', 'App\Http\Controllers\Auth\LoginController@adminLogin');
     Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
+
+    Route::get('auth/google', [FClientController::class, 'redirectToGoogle']);
+    Route::get('auth/google/callback', [FClientController::class, 'handleGoogleCallback']);
+
     Route::post('/signUp', [FClientController::class, 'sign_up']);
     Route::get('/blog', [FBlogController::class, 'index'])->name('frontend.blog');
     Route::get('blog/{id}/detail', [FBlogController::class, 'show'])->name('frontend.blog.fdetail');

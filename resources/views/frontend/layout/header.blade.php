@@ -49,19 +49,25 @@
                         <li><a href="/login/client">New {{trans('front.menu_login')}}</a></li>
                         @else
                        <li>
-                           <a class="dropdown-item" href="{{ route('logout') }}"
-                              onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                               {{ __('Logout') }}
-                           </a>
+                          
 
                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                @csrf
                            </form>
-                       </li>
-                            <li>
-                                <span>Hi {{Auth::guard('client')->user()->client_name}} {{Auth::guard('client')->user()->client_last_name}}</span>
-                            </li>
+					   </li>
+					   <li>
+						<a style="margin-left: 130px;" href="#" class="user-name"><span style="white-space: nowrap;"><img src="images/clients/default.jpg" alt="">{{ __('hi') }} {{Auth::guard('client')->user()->client_name}} {{Auth::guard('client')->user()->client_last_name}}</span></a>	
+						  <ul>
+							  <li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> {{ __('my_profile') }}</a></li>
+							  <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> {{ __('my_bookings') }}</a></li>
+							  <li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> {{ __('my_campers') }}</a></li>
+							  <li><a class="dropdown-item" href="{{ route('logout') }}"
+								onclick="event.preventDefault();
+													   document.getElementById('logout-form').submit();"><i class="sl sl-icon-power"></i> {{ __('Logout') }}</a></li>
+							</ul>
+						
+				</li>
+                            
                         @endif
 
 

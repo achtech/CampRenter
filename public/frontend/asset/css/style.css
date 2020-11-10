@@ -2224,7 +2224,12 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out {
     height: 100%;
     width: 100%;
     display: block;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.7) 20%, rgba(255, 255, 255, 0) 95%);
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.99) 0%,
+        rgba(255, 255, 255, 0.7) 20%,
+        rgba(255, 255, 255, 0) 95%
+    );
 }
 
 .main-search-container h2 {
@@ -2396,7 +2401,6 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out {
 .transparent-header .main-search-container {
     height: auto;
 }
-
 
 /*.transparent-header .main-search-container:before {
     background: rgba(0, 0, 0, 0.5);
@@ -6973,8 +6977,8 @@ input#date-picker:hover {
     padding-right: 62px;
 }
 
-.booking_date #booking-date-range{
-    margin-bottom:15px;
+.booking_date #booking-date-range {
+    margin-bottom: 15px;
 }
 
 @media (max-width: 768px) {
@@ -13815,7 +13819,6 @@ span.like-icon {
     padding-top: 0px !important;
 }
 
-
 /* Flexbox Adjustments */
 
 .dashboard-content,
@@ -14215,20 +14218,31 @@ a.dashboard-responsive-nav-trigger {
 }
 
 .dashboard-stat.color-5 {
-    background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
+    background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0) 25%,
+        rgba(255, 255, 255, 0.1)
+    );
     background-color: #d21309;
 }
 
 .dashboard-stat.color-6 {
-    background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
+    background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0) 25%,
+        rgba(255, 255, 255, 0.1)
+    );
     background-color: #136dd5;
 }
 
 .dashboard-stat.color-7 {
-    background: linear-gradient(to left, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.1));
+    background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0) 25%,
+        rgba(255, 255, 255, 0.1)
+    );
     background-color: #9251a2;
 }
-
 
 /* ---------------------------------- */
 
@@ -22194,7 +22208,6 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
 /* The Modal (background) */
 
 .modal {
@@ -22220,7 +22233,6 @@ body {
     /* Black w/ opacity */
 }
 
-
 /* Modal Content */
 
 .modal-content {
@@ -22230,7 +22242,6 @@ body {
     border: 1px solid #888;
     width: 44%;
 }
-
 
 /* The Close Button */
 
@@ -22280,7 +22291,6 @@ body {
     border-color: #f15424;
     font-weight: 700;
 }
-
 
 /* The Close Button second model */
 
@@ -22332,7 +22342,8 @@ a::after {
 }
 .input-with-icon.date_range_search input {
     padding-left: 20px !important;
-}.reset-password {
+}
+.reset-password {
     color: #fff;
     background-color: #f15424;
     border-color: #f15424;
@@ -22357,7 +22368,6 @@ a::after {
     color: #4cbed2 !important;
 }
 
-
 /* The container */
 
 .containerRadio {
@@ -22373,7 +22383,6 @@ a::after {
     user-select: none;
 }
 
-
 /* Hide the browser's default radio button */
 
 .containerRadio input {
@@ -22381,7 +22390,6 @@ a::after {
     opacity: 0;
     cursor: pointer;
 }
-
 
 /* Create a custom radio button */
 
@@ -22395,20 +22403,17 @@ a::after {
     border-radius: 50%;
 }
 
-
 /* On mouse-over, add a grey background color */
 
-.containerRadio:hover input~.checkmarkRadio {
+.containerRadio:hover input ~ .checkmarkRadio {
     background-color: #ccc;
 }
 
-
 /* When the radio button is checked, add a blue background */
 
-.containerRadio input:checked~.checkmarkRadio {
-    background-color: #2196F3;
+.containerRadio input:checked ~ .checkmarkRadio {
+    background-color: #2196f3;
 }
-
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 
@@ -22418,13 +22423,11 @@ a::after {
     display: none;
 }
 
-
 /* Show the indicator (dot/circle) when checked */
 
-.containerRadio input:checked~.checkmarkRadio:after {
+.containerRadio input:checked ~ .checkmarkRadio:after {
     display: block;
 }
-
 
 /* Style the indicator (dot/circle) */
 
@@ -22435,4 +22438,9 @@ a::after {
     height: 8px;
     border-radius: 50%;
     background: white;
+}
+.user-menu.active ul {
+    visibility: visible;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
 }

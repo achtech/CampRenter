@@ -132,7 +132,7 @@ class FClientController extends DefaultLoginController
             ['is_confirmed', 1],
             ['availability', 2],
         ])->get();
-        $blogs =  DB::table('blogs')->orderBy('created_at','desc')->get();
+        $blogs =  DB::table('blogs')->orderBy('created_at', 'desc')->get();
         return view('frontend.auth.register')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
     }
 
@@ -143,7 +143,7 @@ class FClientController extends DefaultLoginController
             ['is_confirmed', 1],
             ['availability', 2],
         ])->get();
-        $blogs =  DB::table('blogs')->orderBy('created_at','desc')->get();
+        $blogs =  DB::table('blogs')->orderBy('created_at', 'desc')->get();
         return view('frontend.auth.passwords.reset')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
     }
 
@@ -180,5 +180,38 @@ class FClientController extends DefaultLoginController
 
         $categories = DB::table('camper_categories')->paginate(10);
         return view('frontend.client.index')->with('categories', $categories);
+    }
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function handleGoogleCallback()
+    {
+        dd(12);
+        try {
+
+            $user = Socialite::driver('google')->user();
+
+            $finduser = Client::where('google_id', $user->id)->first();
+
+            if ($finduser) {
+
+                Auth::login($finduser);
+
+                return  redirect('/home');
+            } else {
+                $newUser = Client::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'google_id' => $user->id
+                ]);
+
+                Auth::login($newUser);
+
+                return redirect()->back();
+            }
+        } catch (Exception $e) {
+            return redirect('auth/google');
+        }
     }
 }

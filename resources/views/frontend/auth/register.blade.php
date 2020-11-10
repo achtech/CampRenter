@@ -7,10 +7,10 @@
                 <h3 class="text-center">{{trans('front.welcome')}}</h3>
                 <h1 class="text-center">{{trans('front.create_an_account')}}</h1>
 
-                <a class="button border margin-top-5 connexion" style="background-color: #ea4435;border-color:#ea4435;  text-align: center;width: 99% !important;"  href="{{ url('auth/facebook') }}">
+                <a class="button border margin-top-5 connexion" style="background-color: #ea4435;border-color:#ea4435;  text-align: center;width: 99% !important;" target="popup" href="{{ url('auth/google') }}">
                     <small class="fb-design"> {{trans('front.register_google')}}</small>
                 </a>
-                <a class="button border margin-top-5 connexion" style="background-color: #36518a;text-align: center;width: 99% !important;" href="{{ url('auth/facebook') }}">
+                <a class="button border margin-top-5 connexion" style="background-color: #36518a;text-align: center;width: 99% !important;" target="popup" href="{{ url('auth/facebook') }}">
                     <small class="fb-design"> {{trans('front.register_facebook')}}</small>
                 </a>
                 <div class="hr-bar"><span  class="hr-bar-content" >

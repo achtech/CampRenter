@@ -26,7 +26,7 @@ return [
     'menu_panel_invoice' => 'Invoice',
     'menu_panel_dashboard_navigator' => 'Dashboard Navigation',
     'menu_panel_account' => 'My Account',
- 'menu_panel_rentout' => 'Rent out',
+    'menu_panel_rentout' => 'Rent out',
     /*
     -----------------------Slider ----------
     */
@@ -207,4 +207,7 @@ return [
     'blog_comment' => 'comments',
     'menu_blog' => 'Blog',
     'register_google' => 'Register with Google',
+    'my_profile' => 'My Profil',
+    'my_bookings' => 'My Bookings',
+    'my_campers' => 'My Campers',
 ];
