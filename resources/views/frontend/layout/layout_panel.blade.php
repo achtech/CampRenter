@@ -104,7 +104,7 @@ $(document).ready(function(){
 <!-- Maps -->
 {{--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqLmXYCaOVXUS-5vhE_lI9WdDscR2iuY0&callback=initAutocomplete&libraries=places&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnGjgvun3rAKZLKOb_8euCK68TjZBkZ2E&callback=initAutocomplete&libraries=places&v=weekly"
 ></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>
