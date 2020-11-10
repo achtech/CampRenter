@@ -113,7 +113,7 @@ class FClientController extends DefaultLoginController
     }
     public function completeRegistrationProfile(Request $request)
     {
-        dd($request);
+        dd($request->all());
     }
     public function show($id)
     {

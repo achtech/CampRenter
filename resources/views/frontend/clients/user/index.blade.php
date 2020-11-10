@@ -28,7 +28,7 @@
 				<div class="dashboard-list-box margin-top-0">
 					<h4 class="gray">{{ __('front.profile_details') }}</h4>
 					<div class="dashboard-list-box-static">
-						{{ Form::open(['route'=>'frontend.client.completeRegistration', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+						{{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@completeRegistrationProfile','method'=>'POST']) }}
 
 						<!-- Avatar -->
 						<div class="edit-profile-photo">
@@ -67,36 +67,12 @@
 							<label><i class="fa fa-google-plus"></i> {{ __('front.profil_google') }}</label>
 							<input placeholder="https://www.google.com/" type="text">
 						</div>
-	
-						<button type="submit" class="button margin-top-15"> {{ __('front.save_profile_changes') }}</button>
+						{{Form::submit(__('front.save_profile_changes'),['class'=>'button margin-top-15','name' => 'action'])}}
 						{{ Form::close() }}
 					</div>
 				</div>
 			</div>
 
-			<!-- Change Password -->
-			<div class="col-lg-6 col-md-12">
-				<div class="dashboard-list-box margin-top-0">
-					<h4 class="gray">{{ __('front.changes_password') }}</h4>
-					<div class="dashboard-list-box-static">
-
-						<!-- Change Password -->
-						<div class="my-profile">
-							<label class="margin-top-0">{{ __('front.current_password') }}</label>
-							<input type="password">
-
-							<label>{{ __('front.new_password') }}</label>
-							<input type="password">
-
-							<label>{{ __('front.confirm_new_password') }}</label>
-							<input type="password">
-
-							<button class="button margin-top-15">{{ __('front.change_password') }}</button>
-						</div>
-
-					</div>
-				</div>
-			</div>
 			<!-- Copyrights -->
 			@include('frontend.layout.footer_panel')
 
