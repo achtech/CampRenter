@@ -41,12 +41,9 @@
 						</li>
 						<li><a class="{{ $activePage == 'blog' ? ' current' : '' }}" href="{{route('frontend.blog')}}">{{trans('front.menu_blog')}}</a></li>
                         @if(!Auth::guard('client')->check())
-						<li>
-							<a  id="myBtn">{{trans('front.menu_login')}}</a>
-							@include('frontend.connexion.login');
-						</li>
+						
 						<li ><a href="/register/client">{{trans('front.menu_register')}}</a></li>
-                        <li><a href="/login/client">New {{trans('front.menu_login')}}</a></li>
+                        <li><a href="/login/client"> {{trans('front.menu_login')}}</a></li>
                         @else
                        <li>
                           
@@ -60,9 +57,9 @@
 						<a style="margin-left: 130px;" href="#" class="user-name"><span style="white-space: nowrap;"><img src="images/clients/default.jpg" alt="">{{ __('hi') }} {{Auth::guard('client')->user()->client_name}} {{Auth::guard('client')->user()->client_last_name}}</span></a>	
 						  <ul>
 							  <li><a href="{{ route('clients.user.profile') }}" ><i class="sl sl-icon-settings"></i>{{ __('front.my_profile') }} </a></li>
-							  <li><a ><i class="sl sl-icon-envelope-open"></i> {{ __('front.my_message') }}</a></li>
-							  <li><a ><i class="fa fa-calendar-check-o"></i>{{ __('front.my_bookings') }}</a></li> 
-							  <li><a ><i class="fa fa-calendar-check-o"></i>{{ __('front.my_campers') }}</a></li>
+							  <li><a href="{{ route('frontend.clients.message') }}"><i class="sl sl-icon-envelope-open"></i> {{ __('front.my_message') }}</a></li>
+							  <li><a href="{{ route('frontend.clients.booking') }}"><i class="fa fa-calendar-check-o"></i>{{ __('front.my_bookings') }}</a></li> 
+							  <li><a href="{{ route('frontend.clients.camper') }}"><i class="fa fa-calendar-check-o"></i>{{ __('front.my_campers') }}</a></li>
 							  <li><a class="dropdown-item" href="{{ route('logout') }}"
 								onclick="event.preventDefault();
 													   document.getElementById('logout-form').submit();"><i class="sl sl-icon-power"></i> {{ __('Logout') }}</a></li>

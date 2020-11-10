@@ -28,14 +28,15 @@
 				<div class="dashboard-list-box margin-top-0">
 					<h4 class="gray">{{ __('front.profile_details') }}</h4>
 					<div class="dashboard-list-box-static">
-						
+						{{ Form::open(['route'=>'frontend.client.completeRegistration', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+
 						<!-- Avatar -->
 						<div class="edit-profile-photo">
-							<img src="{{asset('frontend/asset/images/user-avatar.jpg')}}" alt="">
+							<img src="images/clients/default.jpg" alt="">
 							<div class="change-photo-btn">
 								<div class="photoUpload">
 								    <span><i class="fa fa-upload"></i> {{ __('front.upload_photos') }}</span>
-								    <input type="file" class="upload" />
+								    <input type="file" id="id_avatars" name="id_avatars" class="upload" />
 								</div>
 							</div>
 						</div>
@@ -44,29 +45,31 @@
 						<div class="my-profile">
 
 							<label>{{ __('front.profil_name') }}</label>
-							<input value="{{Auth::guard('client')->user()->client_name}} {{Auth::guard('client')->user()->client_last_name}}" type="text">
+							<input id="client_name" name="client_name" class="form-control" value="{{Auth::guard('client')->user()->client_name}}" type="text">
+							<label>{{ __('front.profil_last_name') }}</label>
+							<input  id="client_last_name" name="client_last_name" class="form-control" value="{{Auth::guard('client')->user()->client_last_name}}" type="text">
 
-							<label>{{ __('front.phone') }}</label>
-							<input value="(123) 123-456" type="text">
+							<label>{{ __('front.profil_phone') }}</label>
+							<input id="phone" name="phone" class="form-control" type="tel">
 
-							<label>{{ __('front.email') }}</label>
-							<input value="tom@example.com" type="text">
+							<label>{{ __('front.profil_email') }}</label>
+							<input  id="email" name="email" class="form-control" value="{{Auth::guard('client')->user()->email}}" type="text">
 
-							<label>Notes</label>
-							<textarea name="notes" id="notes" cols="30" rows="10">Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper</textarea>
+							<label>{{ __('front.profil_notes') }}</label>
+							<textarea name="review" id="review" cols="30" rows="10"></textarea>
 
-							<label><i class="fa fa-twitter"></i> Twitter</label>
+							<label><i class="fa fa-twitter"></i> {{ __('front.profil_twitter') }}</label>
 							<input placeholder="https://www.twitter.com/" type="text">
 
-							<label><i class="fa fa-facebook-square"></i> Facebook</label>
+							<label><i class="fa fa-facebook-square"></i> {{ __('front.profil_facebook') }}</label>
 							<input placeholder="https://www.facebook.com/" type="text">
 
-							<label><i class="fa fa-google-plus"></i> Google+</label>
+							<label><i class="fa fa-google-plus"></i> {{ __('front.profil_google') }}</label>
 							<input placeholder="https://www.google.com/" type="text">
 						</div>
 	
-						<button class="button margin-top-15">Save Changes</button>
-
+						<button type="submit" class="button margin-top-15"> {{ __('front.save_profile_changes') }}</button>
+						{{ Form::close() }}
 					</div>
 				</div>
 			</div>
@@ -74,21 +77,21 @@
 			<!-- Change Password -->
 			<div class="col-lg-6 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
-					<h4 class="gray">Change Password</h4>
+					<h4 class="gray">{{ __('front.changes_password') }}</h4>
 					<div class="dashboard-list-box-static">
 
 						<!-- Change Password -->
 						<div class="my-profile">
-							<label class="margin-top-0">Current Password</label>
+							<label class="margin-top-0">{{ __('front.current_password') }}</label>
 							<input type="password">
 
-							<label>New Password</label>
+							<label>{{ __('front.new_password') }}</label>
 							<input type="password">
 
-							<label>Confirm New Password</label>
+							<label>{{ __('front.confirm_new_password') }}</label>
 							<input type="password">
 
-							<button class="button margin-top-15">Change Password</button>
+							<button class="button margin-top-15">{{ __('front.change_password') }}</button>
 						</div>
 
 					</div>

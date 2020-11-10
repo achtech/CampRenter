@@ -111,7 +111,10 @@ class FClientController extends DefaultLoginController
         Mail::to($client['email'])->send(new RegistrationMail($client));
         return redirect(route('frontend.client.index'));
     }
-
+    public function completeRegistrationProfile(Request $request)
+    {
+        dd($request);
+    }
     public function show($id)
     {
         return view('frontend.client.show');
