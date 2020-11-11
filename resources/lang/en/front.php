@@ -26,7 +26,7 @@ return [
     'menu_panel_invoice' => 'Invoice',
     'menu_panel_dashboard_navigator' => 'Dashboard Navigation',
     'menu_panel_account' => 'My Account',
- 'menu_panel_rentout' => 'Rent out',
+    'menu_panel_rentout' => 'Rent out',
     /*
     -----------------------Slider ----------
     */
@@ -230,7 +230,48 @@ return [
     'confirm_new_password' => 'Confirm New Password',
     'change_password' => 'Change Password',
     'upload_photos' => 'Upload photos',
-    
+
     /** Camper detail */
     'No data found' => 'No data found',
+    //overview detail camper
+    'Description' => 'Description',
+    'Vehicle' => 'Vehicle',
+    'Equipment' => 'Equipment',
+    'Terms' => 'Terms',
+    'Rental Terms' => 'Rental Terms',
+    'Insurance' => 'Insurance',
+    'brand_type' => 'Brand, Type',
+    'drivers_licence' => 'Drivers licence',
+    'Gearbox' => 'Gearbox',
+    'Fuel' => 'Fuel',
+    'Fuel Consumption' => 'Fuel consumption per 100 km',
+    'per_100km' => '/100km',
+    'capacity_fuel_tank' => 'Capacity of fuel tank',
+    'Mileage' => 'Mileage',
+    'km' => 'km',
+    'Lenght in metres' => 'Lenght in metres',
+    'per_metres' => 'm',
+    'Width in metres' => 'Width in metres',
+    'Allowed total weight in tons' => 'Allowed total weight in tons',
+    'per_tons' => 't',
+    'Performance in horse power' => 'Performance in horse power',
+    'ps' => 'PS',
+    'Cylinder capacity in litres' => 'Cylinder capacity in litres',
+    'per_litres' => 'l',
+    'Additional attributes' => 'Additional attributes',
+    'Kilometres included' => 'Kilometres included',
+    'sleeping spots' => 'sleeping spots',
+    'Power supply' => 'Power supply',
+    'burner stove' => 'burner stove',
+    'Fridge' => 'Fridge',
+    'Sink' => 'Sink',
+    'Indoor table' => 'Indoor table',
+    'CD Player' => 'CD Player',
+    'Dishes' => 'Dishes',
+    'Camping table' => 'Camping table',
+    'Camping chairs' => 'Camping chairs',
+    'Trailer hitch' => 'Trailer hitch',
+    'Waste water tank, Fresh water tank' => 'Waste water tank, Fresh water tank',
+    'Gas cooker for outside, Awning, Fire extinguisher, Cable reel' => ' Gas cooker for outside, Awning, Fire extinguisher, Cable reel',
+
 ];

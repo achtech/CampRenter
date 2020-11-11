@@ -22439,3 +22439,7 @@ a::after {
     opacity: 1;
     transform: translate3d(0, 0, 0);
 }
+.head-design {
+    font-weight: 700;
+    font-size: 12px;
+}
