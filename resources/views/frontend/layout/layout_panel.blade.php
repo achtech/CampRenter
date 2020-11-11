@@ -12,6 +12,7 @@
 ================================================== -->
 <link rel="stylesheet" href="{{asset('frontend/asset/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/asset/css/main-color.css')}}" id="colors">
+    @yield('style')
 
     <style>
         #map {
@@ -31,7 +32,6 @@ $(document).ready(function(){
   });
 });
 </script>
-
 
 </head>
 
@@ -198,5 +198,7 @@ $(document).ready(function() {
   });
 })
 </script>
+@yield('script')
+
 </body>
 </html>
