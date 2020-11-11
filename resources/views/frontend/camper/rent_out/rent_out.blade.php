@@ -42,7 +42,7 @@
 						<div class="row">
 							@foreach($categories as $category)
 								<!-- Box -->
-								<div class="col-md-3 alternative-imagebox" id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id)==2 ? 'showSub' : 'category'}}">
+								<div class="col-md-3 alternative-imagebox" id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id)==1 ? 'showSub' : 'category'}}">
 									<a>
 									<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
 										<h4 style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
@@ -57,7 +57,7 @@
 							<div class="row">
 							@foreach($sub_categories as $sub_categories)
 								<!-- Box -->
-								<div class="col-md-3 alternative-imagebox" id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id)==2 ? 'showSub' : 'category'}}">
+								<div class="col-md-3 alternative-imagebox" id="{{$sub_categories->id}}">
 									<a>
 									<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt="">
 										<h4 style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
