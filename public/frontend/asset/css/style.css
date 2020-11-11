@@ -354,7 +354,7 @@ header.fullwidth .container {
 
 .right-side {
     float: right;
-    width: 35%;
+    width: 13%;
     display: inline-block;
 }
 
@@ -416,14 +416,6 @@ header.fullwidth .container {
 
 .sticky-logo {
     display: none;
-}
-
-#header.cloned.unsticky {
-    opacity: 1;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translate(0, -100%) scale(1);
-    transition: 0.3s;
 }
 
 #header.cloned.sticky {

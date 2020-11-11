@@ -24,7 +24,7 @@
 
 				<!-- Main Navigation -->
 				<nav id="navigation" class="style-1">
-					<ul id="responsive">
+					<ul id="responsive" style="width: 190%;">
 
 						<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="{{route('home.index')}}">{{trans('front.menu_home')}}</a></li>
 						<li><a  href="#">{{trans('front.menu_rent')}}</a>
@@ -53,8 +53,8 @@
                            </form>
 					   </li>
 					   
-					   <li style="margin-left: 159px;">
-						<a style="margin-left: 130px;" href="#" class="user-name"><span style="white-space: nowrap;"><img src="images/clients/default.jpg" alt="">{{ __('hi') }} {{Auth::guard('client')->user()->client_name}} {{Auth::guard('client')->user()->client_last_name}}</span></a>	
+					   <li style="float: right">
+						<a  href="#" style="margin-left: 128px;" class="user-name"><span style="white-space: nowrap;margin-top: 6px;"><img src="images/clients/default.jpg" alt="">{{ __('hi') }} {{Auth::guard('client')->user()->client_name}} {{Auth::guard('client')->user()->client_last_name}}</span></a>	
 						  <ul>
 							  <li><a href="{{ route('clients.user.profile') }}" ><i class="sl sl-icon-settings"></i>{{ __('front.my_profile') }} </a></li>
 							  <li><a href="{{ route('frontend.clients.message') }}"><i class="sl sl-icon-envelope-open"></i> {{ __('front.my_message') }}</a></li>

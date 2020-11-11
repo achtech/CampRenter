@@ -223,7 +223,7 @@ return [
     'profil_twitter' => 'Twitter',
     'profil_facebook' => 'Facebook',
     'profil_google' => 'Google',
-    'save_profile_changes' => 'Save Changes',
+    'save_profile_changes' => 'Save Profile Changes',
     'changes_password' => 'Change Password',
     'current_password' => 'Current Password',
     'new_password' => 'New Password',

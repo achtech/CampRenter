@@ -58,21 +58,54 @@
 							<label>{{ __('front.profil_notes') }}</label>
 							<textarea name="review" id="review" cols="30" rows="10"></textarea>
 
-							<label><i class="fa fa-twitter"></i> {{ __('front.profil_twitter') }}</label>
-							<input placeholder="https://www.twitter.com/" type="text">
-
 							<label><i class="fa fa-facebook-square"></i> {{ __('front.profil_facebook') }}</label>
 							<input placeholder="https://www.facebook.com/" type="text">
 
 							<label><i class="fa fa-google-plus"></i> {{ __('front.profil_google') }}</label>
 							<input placeholder="https://www.google.com/" type="text">
 						</div>
-						{{Form::submit(__('front.save_profile_changes'),['class'=>'button margin-top-15','name' => 'action'])}}
-						{{ Form::close() }}
+						
 					</div>
 				</div>
 			</div>
+<!-- Change Password -->
+<div class="col-lg-6 col-md-12">
+	<div class="dashboard-list-box margin-top-0">
+		<h4 class="gray">{{ __('front.changes_password') }}</h4>
+		<div class="dashboard-list-box-static">
 
+			<!-- Change Password -->
+			<div class="my-profile">
+				<label class="margin-top-0">{{ __('front.current_password') }}</label>
+				<input type="password" id="password" name="password" >
+
+				<label>{{ __('front.new_password') }}</label>
+				<input type="password" id="new_password" name="new_password">
+
+				<label>{{ __('front.confirm_new_password') }}</label>
+				<input type="password" id="confirmed_password" name="confirmed_password">
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<div style="visibility: hidden;">s</div>
+		@if(Session::has('success'))
+		<div class="alert alert-success">
+			{{ Session::get('success') }}
+</div>
+@endif
+<!-- Change Password -->
+<div class="col-lg-6 col-md-12">
+	<div class="dashboard-list-box margin-top-0">
+		<h4 class="gray">{{ __('front.save_profile_changes') }}</h4>
+		<div class="dashboard-list-box-static">
+			{{Form::submit(__('front.save_profile_changes'),['style'=>'width: 100%;','class'=>'button margin-top-15','name' => 'action'])}}
+			{{ Form::close() }}
+		</div>
+	</div>
+</div>
 			<!-- Copyrights -->
 			@include('frontend.layout.footer_panel')
 
