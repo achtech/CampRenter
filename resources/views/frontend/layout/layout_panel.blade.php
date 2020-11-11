@@ -10,6 +10,10 @@
 
 <!-- CSS
 ================================================== -->
+<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{asset('frontend/slider.min.css')}}" />
+<link rel="stylesheet" href="{{asset('frontend/style.min.css')}}" />
+
 <link rel="stylesheet" href="{{asset('frontend/asset/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/asset/css/main-color.css')}}" id="colors">
 <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
@@ -114,6 +118,8 @@ $(document).ready(function(){
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
 <script src="{{asset('frontend/asset/scripts/moment.min.js')}}"></script>
 <script src="{{asset('frontend/asset/scripts/daterangepicker.js')}}"></script>
+
+<script src="{{asset('frontend/app.min.js')}}"></script>
 
 <!-- DropZone | Documentation: http://dropzonejs.com -->
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/dropzone.js')}}"></script>

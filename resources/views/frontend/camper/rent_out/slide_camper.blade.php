@@ -36,8 +36,16 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="listing-slider-small mfp-gallery-container margin-bottom-0">
-
+				<div class="wrapper">
+					<div id="slider" class="slider">
+						<div id="slide1" class="slide"><img src="{{asset('images/img1-min.jpg')}}" alt="" /></div>
+						<div id="slide2" class="slide"><img src="{{asset('images/img2-min.jpg')}}" alt="" /></div>
+						<div id="slide3" class="slide"><img src="{{asset('images/img3-min.jpg')}}" alt="" /></div>
+					</div>
+				</div>
+				<div class="controls">
+					<button id="prev-btn" class="slider-btn">prev</button>
+					<button id="next-btn" class="slider-btn">next</button>
 				</div>
 			</div>
 		</div>
