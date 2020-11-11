@@ -38,7 +38,17 @@ class FCamperController extends Controller
     {
         $categories = DB::table('camper_categories')->paginate(10);
 
-        return view('frontend.camper.rent_out.slide_camper')->with('categories', $categories);
+        return view('frontend.camper.rent_out.slide_camper')
+            ->with('galleries', $galleries);
+    }
+
+    public function gallery_camper($id)
+    {
+        $galleries = CamperImage::where('id_campers', $id)->get();
+
+        return view('frontend.camper.rent_out.slide_camper')
+            ->with('galleries', $galleries)
+            ->with('categories', $categories);
     }
 
     public function camper_steps()
