@@ -107,4 +107,11 @@ class FCamperController extends Controller
         return view('frontend.camper.rent_out.conditions')->with('categories', $categories);
     }
 
+    public function calendar()
+    {
+        $categories = DB::table('camper_categories')->paginate(10);
+
+        return view('frontend.camper.rent_out.calendar')->with('categories', $categories);
+    }
+
 }

@@ -24,7 +24,7 @@
 
 	<div class="row">
 		<!-- sub_menu -->
-		@include('frontend.camper.rent_out.sub_menu')
+		@include('frontend.camper.rent_out.sub_menu', ['active_page'=>'rent_out_details'])
 
 		<div class="col-lg-7 col-md-12">
 		<h2 style="padding: 10px;"><strong>Complete your personnel data</strong></h2>

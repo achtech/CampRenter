@@ -12,11 +12,8 @@
 ================================================== -->
 <link rel="stylesheet" href="{{asset('frontend/asset/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/asset/css/main-color.css')}}" id="colors">
-<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
-    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
-    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
-    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
-    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    @yield('style')
+
     <style>
         #map {
             width: 95%;
@@ -35,7 +32,6 @@ $(document).ready(function(){
   });
 });
 </script>
-
 
 </head>
 
@@ -76,9 +72,10 @@ $(document).ready(function(){
 				<li class="{{ $activePage == 'FC_profile' ? 'active' : '' }}"><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
 				<li><a href=""><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
 			</ul>
-
+      
 		</div>
-	</div>
+  </div>
+  
 	<!-- Navigation / End -->
 	<!-- Main Navigation -->
 		@yield('content')
@@ -106,10 +103,13 @@ $(document).ready(function(){
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/custom.js')}}"></script>
 
 <!-- Maps -->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+{{--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnGjgvun3rAKZLKOb_8euCK68TjZBkZ2E&callback=initAutocomplete&libraries=places&v=weekly"
+></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/maps.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/asset/scripts/maps-mypostion.js')}}"></script>
 
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
 <script src="{{asset('frontend/asset/scripts/moment.min.js')}}"></script>
@@ -198,5 +198,7 @@ $(document).ready(function() {
   });
 })
 </script>
+@yield('script')
+
 </body>
 </html>

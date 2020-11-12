@@ -121,4 +121,5 @@ return [
     'camp_team' => 'Your CamperUnit team ',
     'address_verified' => 'Your email address has been successfully verified',
     'verified_login' => 'Your email address has been successfully verified. You can now log in. We are looking forward to our journey together!',
-];
+    'register_google' => 'Register with Google',
+    ];

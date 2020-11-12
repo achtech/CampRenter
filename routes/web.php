@@ -35,7 +35,7 @@ Route::get('lang/{lang}', function ($lang) {
     return back();
 });
 Route::group(['middleware' => 'Lang'], function () {
-//    login
+    //    login
     Route::get('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
     Route::post('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
@@ -44,13 +44,17 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
     //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
+    Route::post('/completeRegistrationProfile', [FClientController::class, 'completeRegistrationProfile'])->name('frontend.client.completeRegistration');
+    Route::get('login/ShowResetPassword', [FClientController::class, 'ShowResetPassword'])->name('frontend.client.showresetpassword');
+    Route::get('register/client', [FClientController::class, 'ShowRegister']);
     Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
     Route::get('/editPass', [FClientController::class, 'edit'])->name('frontend.client.editClient');
-    Route::put('/updateClient', [FClientController::class, 'updateF'])->name('frontend.client.updateF');
+    Route::put('/updateClient', [FClientController::class, 'updatePassword'])->name('frontend.client.updatePassword');
     Route::resource('/fclient', FClientController::class, ['except' => ['destroy', 'store', 'edit', 'update'], 'names' => [
         'index' => 'frontend.client.index',
         'show' => 'frontend.client.show',
     ]]);
+    //Route::get('/account', 'App\Http\Controllers\frontend\FClientController@checkProfile')->name('frontend.client.profil');
     Route::get('/rentout', [FCamperController::class, 'rent_out'])->name('rent_out');
     Route::get('/personnalData', [FCamperController::class, 'personnalData'])->name('personnalData');
     Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
@@ -62,6 +66,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/insurance_front', [FCamperController::class, 'insurance'])->name('insurance_front');
     Route::get('/rental_terms', [FCamperController::class, 'rental_terms'])->name('rental_terms');
     Route::get('/conditions', [FCamperController::class, 'conditions'])->name('conditions');
+    Route::get('/calendar', [FCamperController::class, 'calendar'])->name('calendar');
     Route::get('/contact', [FContactController::class, 'index'])->name('contact');
     Route::get('/terms', [FContactController::class, 'terms'])->name('terms');
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
@@ -76,6 +81,10 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/login/client', 'App\Http\Controllers\Auth\LoginController@adminLogin');
     Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);
     Route::get('auth/facebook/callback', 'App\Http\Controllers\frontend\FClientController@handleFacebookCallback');
+
+    Route::get('auth/google', [FClientController::class, 'redirectToGoogle']);
+    Route::get('auth/google/callback', [FClientController::class, 'handleGoogleCallback']);
+
     Route::post('/signUp', [FClientController::class, 'sign_up']);
     Route::get('/blog', [FBlogController::class, 'index'])->name('frontend.blog');
     Route::get('blog/{id}/detail', [FBlogController::class, 'show'])->name('frontend.blog.fdetail');
