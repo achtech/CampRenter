@@ -29,18 +29,29 @@
 
 		<div class="col-lg-7 col-md-12">
 			<h3><strong>Photos</strong></h3>
-			<div class="input-group mb-3">
-			<a type="file" name="image" class="button border" id="inputGroupFile01">{{trans('front.cancel')}}</a>
-				<div class="custom-file">
-					<label class="button border" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
-				</div>
-			</div>
 			<div class="row">
-				<div class="listing-slider-small mfp-gallery-container margin-bottom-0">
-
+				<div class="image-upload-one">
+					<div class="submit-section">
+						<form action="/file-upload" class="dropzone" ></form>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+  <script>
+
+    function showPreviewOne(event){
+      if(event.target.files.length > 0){
+        let src = URL.createObjectURL(event.target.files[0]);
+        let preview = document.getElementById("file-ip-1-preview");
+        preview.src = src;
+        preview.style.display = "block";
+      }
+    }
+    function myImgRemoveFunctionOne() {
+      document.getElementById("file-ip-1-preview").src = "https://i.ibb.co/ZVFsg37/default.png";
+    }
+
+  </script>
 @endsection
