@@ -164,7 +164,7 @@
 			<div class="row" >
 				<div class="col-md-12" style="padding-top: 20px;">
 				<div style="float: right;">
-				<a href="{{route('conditions')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
+				<a href="{{route('calendar')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
 				<a href="" class="button border">{{trans('front.cancel')}}</a>
 				</div>
 			</div>

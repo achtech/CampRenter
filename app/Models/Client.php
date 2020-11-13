@@ -14,6 +14,8 @@ class Client extends Authenticatable
         'client_name',
         'client_last_name',
         'email',
+        'phone',
+        'review',
         'password',
         'national_id',
         'image_national_id',

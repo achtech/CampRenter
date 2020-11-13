@@ -354,7 +354,7 @@ header.fullwidth .container {
 
 .right-side {
     float: right;
-    width: 35%;
+    width: 13%;
     display: inline-block;
 }
 
@@ -416,14 +416,6 @@ header.fullwidth .container {
 
 .sticky-logo {
     display: none;
-}
-
-#header.cloned.unsticky {
-    opacity: 1;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translate(0, -100%) scale(1);
-    transition: 0.3s;
 }
 
 #header.cloned.sticky {
@@ -22438,4 +22430,47 @@ a::after {
     visibility: visible;
     opacity: 1;
     transform: translate3d(0, 0, 0);
+}
+.head-design {
+    font-weight: 700;
+    font-size: 12px;
+}
+.danger {
+    padding: 0.01em 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    color: #692326 !important;
+    background-color: #ffdddd !important;
+    border: 1px solid #ccc !important;
+    border-radius: 7px;
+    height: 43px;
+    width: 62%;
+    padding-top: 5px;
+    font-size: 16px;
+}
+.warning {
+    padding: 0.01em 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    color: #806620 !important;
+    background-color: #fdf4d1 !important;
+    border: 1px solid #ccc !important;
+    border-radius: 7px;
+    height: 43px;
+    width: 62%;
+    padding-top: 5px;
+    font-size: 16px;
+}
+.success {
+    padding: 0.01em 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    color: #2a562a !important;
+    background-color: #d9ecdb !important;
+    border: 1px solid #ccc !important;
+    border-radius: 7px;
+    height: 43px;
+    width: 62%;
+    padding-top: 5px;
+    font-size: 16px;
 }
