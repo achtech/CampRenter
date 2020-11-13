@@ -10,7 +10,7 @@
 
         <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
         <div class="col-lg-12 booking_date">
-            <input type="text" id="booking-date-range" placeholder="Check-In - Check-Out" value=""/>
+            <input type="text" id="booking-date-range" name="searchedDate"  placeholder="Check-In - Check-Out" value=""/>
         </div>
 
         <!-- Panel Dropdown -->
