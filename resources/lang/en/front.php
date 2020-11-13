@@ -232,7 +232,7 @@ return [
     'upload_photos' => 'Upload photos',
     'unsimilar_password' => 'Password are not the same',
     'invalid_current_password' => 'Your current password is invalid',
-    'profile_updated' => 'Profile Updated succesfully'
+    'profile_updated' => 'Profile Updated succesfully',
     /** Camper detail */
     'No data found' => 'No data found',
     //overview detail camper
