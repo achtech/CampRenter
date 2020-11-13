@@ -35,6 +35,7 @@ class FClientController extends DefaultLoginController
      */
     public function redirectToFacebook()
     {
+
         return Socialite::driver('facebook')->redirect();
     }
     public function login(Request $request)
@@ -66,43 +67,20 @@ class FClientController extends DefaultLoginController
      *
      * @return void
      */
-    public function handleFacebookCallback()
-    {
-        dd(12);
-        try {
 
-            $client = Socialite::driver('facebook')->user();
-
-            $finduser = Client::where('facebook_id', $client->id)->first();
-
-            if ($finduser) {
-
-                Auth::login($finduser);
-
-                return redirect('layout');
-            } else {
-                $newClient = Client::create([
-                    'name' => $client->client_name,
-                    'email' => $client->email,
-                    'facebook_id' => $client->id,
-                    'password' => encrypt($client->password),
-                ]);
-
-                Auth::login($newClient);
-
-                return redirect(route('client.index'));
-            }
-        } catch (Exception $e) {
-            dd($e->getMessage());
-        }
-    }
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
         $input['password'] = password_hash($input['password'], PASSWORD_DEFAULT);
         $client = Client::create($input);
         Mail::to($client['email'])->send(new RegistrationMail($client));
-        return redirect(route('frontend.client.index'));
+        $categories = DB::table('camper_categories')->paginate(10);
+        $campers = DB::table('campers')->where([
+            ['is_confirmed', 1],
+            ['availability', 2],
+        ])->get();
+        $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
+        return view('frontend.home.index')->with('categories', $categories)->with('campers', $campers)->with('blogs', $blogs);
     }
     public function completeRegistrationProfile(Request $request)
     {
@@ -135,7 +113,7 @@ class FClientController extends DefaultLoginController
         $id = str_replace("=", "", $searched_id);
         return view('frontend.client.edit')->with('client_id', $id);
     }
-    public function ShowRegister()
+    public function showRegister()
     {
         $campers = DB::table('campers')->where([
             ['is_confirmed', 1],
@@ -190,11 +168,12 @@ class FClientController extends DefaultLoginController
     }
     public function redirectToGoogle()
     {
+        //dd(12);
         return Socialite::driver('google')->redirect();
     }
     public function handleGoogleCallback()
     {
-        dd(12);
+
         try {
 
             $user = Socialite::driver('google')->user();

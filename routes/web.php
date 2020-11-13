@@ -46,7 +46,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
     Route::post('/completeRegistrationProfile', [FClientController::class, 'completeRegistrationProfile'])->name('frontend.client.completeRegistration');
     Route::get('/login/ShowResetPassword', [FClientController::class, 'ShowResetPassword'])->name('frontend.client.showresetpassword');
-    Route::get('/showRegister', [FClientController::class, 'ShowRegister'])->name('frontend.client.show_register');
+    Route::get('/showRegister', [FClientController::class, 'showRegister'])->name('frontend.client.show_register');
     Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
     Route::get('/editPass', [FClientController::class, 'edit'])->name('frontend.client.editClient');
     Route::put('/updateClient', [FClientController::class, 'updatePassword'])->name('frontend.client.updatePassword');
