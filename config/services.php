@@ -32,11 +32,11 @@ return [
     'facebook' => [
         'client_id' => '360178218666227',
         'client_secret' => 'a3fa2ae2888a513a5085055a6e544316',
-        'redirect' => 'https://mycamper.ch/fr',
+        'redirect' => ' https://defoxed.ch/public/',
     ],
     'google' => [
         'client_id' => '620721606636-i3riupr3pq3jciso0sapna4lra9f6nnn.apps.googleusercontent.com',
         'client_secret' => 'eL-lGG0op9oTcKJeKvOeAI0Z',
-        'redirect' => 'http://localhost:8000/callback',
+        'redirect' => 'http://localhost:8000/google/callback',
     ],
 ];
