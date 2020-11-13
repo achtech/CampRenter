@@ -56,6 +56,10 @@ class Controller extends BaseController
         return $user ? $user->name : '';
     }
 
+    public static function getCamperCategories(){
+        return DB::table('camper_categories')->get();
+    }
+
     public static function getNotConfirmedcampers()
     {
         return Camper::join('clients', 'clients.id', '=', 'campers.id_clients')
