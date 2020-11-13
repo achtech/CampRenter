@@ -5,12 +5,13 @@ use App\Http\Controllers\frontend\FCamperController;
 use App\Http\Controllers\frontend\FClientController;
 use App\Http\Controllers\frontend\FContactController;
 use App\Http\Controllers\frontend\FC_bookingController;
+use App\Http\Controllers\frontend\FC_bookmarkController;
 use App\Http\Controllers\frontend\FC_CamperController;
 use App\Http\Controllers\frontend\FC_messageController;
 use App\Http\Controllers\frontend\FC_notificationController;
+use App\Http\Controllers\frontend\FC_rentOutController;
 use App\Http\Controllers\frontend\FC_reviewController;
 use App\Http\Controllers\frontend\FC_walletController;
-use App\Http\Controllers\frontend\FC_bookmarkController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -76,6 +77,7 @@ Route::group(['middleware' => 'Lang'], function () {
     //Route::prefix('/client')->namespace('frontend')->group(function () {
     // Route::post('login', 'App\Http\Controllers\frontend\FClientController@login');
     //});
+    Route::post('/store_camper_profile', [FC_rentOutController::class, 'storeCamperProfile'])->name('frontend.camper.storeCamperProfile');
 
     Route::get('/login/client', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm');
     Route::post('/login/client', 'App\Http\Controllers\Auth\LoginController@adminLogin');
