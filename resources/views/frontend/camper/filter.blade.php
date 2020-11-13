@@ -20,7 +20,7 @@
                     <div class="col-fs-6">
                         <div class="input-with-icon date_range_search">
                             <i class="fa fa-calendar calendar-position"></i>
-                            <input type="text" id="booking-date-range" name="searchedDate" placeholder="Check-In - Check-Out" value="{{$searchedDate ?? ''}}"/>
+                            <input type="text" id="booking-date-range" name="searchedDate" placeholder="Check-In - Check-Out" value="{{$searchedDate ?? ''}}"  onchange="document.forms['frm1'].submit()" />
                         </div>
                     </div>
 
