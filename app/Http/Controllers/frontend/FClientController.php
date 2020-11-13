@@ -117,16 +117,19 @@ class FClientController extends DefaultLoginController
         $client = Client::find($id_client);
         $input = request()->except(['_token', 'action']);
         $input['password'] = md5($input['password']);
+        if ($input['password'] != $client->password) {
+            return redirect()->back()->with('warning', __('front.invalid_current_password'));
+        }
         if ($input['password'] == $client->password && $input['new_password'] != null && $input['confirmed_password'] != null) {
             if ($input['new_password'] == $input['confirmed_password']) {
                 $input['new_password'] = md5($input['new_password']);
                 $input['password'] = $input['new_password'];
             } else {
-                redirect()->back()->with('success', 'dddddddSaved!');
+                return redirect()->back()->with('danger', __('front.unsimilar_password'));
             }
         }
         $client->update($input);
-        return redirect(route('clients.user.profile'))->with('success', 'Profile Updated succesfully');
+        return redirect(route('clients.user.profile'))->with('success', __('front.profile_updated'));
     }
     public function show($id)
     {

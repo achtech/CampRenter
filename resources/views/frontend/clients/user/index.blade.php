@@ -9,6 +9,23 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h2>{{ __('front.my_profile') }}</h2>
+					@if(Session::has('danger'))
+		<div class="danger">
+			{{ Session::get('danger') }}
+</div>
+@endif
+
+@if(Session::has('warning'))
+		<div class="warning">
+			{{ Session::get('warning') }}
+</div>
+@endif
+
+@if(Session::has('success'))
+		<div class="success">
+			{{ Session::get('success') }}
+</div>
+@endif
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
@@ -91,11 +108,7 @@
 	</div>
 </div>
 <div style="visibility: hidden;">s</div>
-		@if(Session::has('success'))
-		<div class="alert alert-success">
-			{{ Session::get('success') }}
-</div>
-@endif
+		
 <!-- Change Password -->
 <div class="col-lg-6 col-md-12">
 	<div class="dashboard-list-box margin-top-0">
@@ -113,4 +126,5 @@
 
 	</div>
 	<!-- Content / End -->
+	
 @endsection

@@ -230,5 +230,7 @@ return [
     'confirm_new_password' => 'Confirm New Password',
     'change_password' => 'Change Password',
     'upload_photos' => 'Upload photos',
-
+    'unsimilar_password' => 'Password are not the same',
+    'invalid_current_password' => 'Your current password is invalid',
+    'profile_updated' => 'Profile Updated succesfully'
 ];
