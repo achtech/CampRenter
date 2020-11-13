@@ -61,10 +61,10 @@
 				@foreach($categories as $category)
 					<!-- Box -->
 					<div class="col-md-3 alternative-imagebox">
-						<a href="{{route('frontend.camper.search')}}" >
-						<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
-							<h4 style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
-							<span style="left:20%;" class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} Listings</span>
+						<a href="{{route('frontend.camper.searchByCategory',$category->id)}}" >
+							<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
+								<h4 style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
+								<span style="left:20%;" class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} Listings</span>
 						</a>
 					</div>
 				@endforeach

@@ -31,4 +31,13 @@ class FC_reviewController extends Controller
         return redirect()->back();
     }
 
+    public static function reviewCamperCount($id){
+        return CamperReview::where('id_campers',$id)->count();
+    }
+
+    public static function rateCamper($id){
+        $rateData = DB::table('v_rate_camper')->where('id_campers',$id)->first();
+        return $rateData ? number_format($rateData->rate,1) : 0;
+    }
+
 }

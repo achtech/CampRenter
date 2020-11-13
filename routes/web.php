@@ -92,6 +92,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('blog/storeComment', [FBlogController::class, 'store'])->name('frontend.blog.storeComment');
 
     /************* Clients FrentEnd **********************/
+    Route::get('/camper/search', [FC_CamperController::class, 'search'])->name('frontend.camper.search');
+    Route::get('/camper/search/category/{id}', [FC_CamperController::class, 'searchByCategory'])->name('frontend.camper.searchByCategory');
     Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');
     Route::get('/message_client', [FC_messageController::class, 'index'])->name('frontend.clients.message');
     Route::get('/detail_message_client', [FC_messageController::class, 'show'])->name('frontend.clients.message.detail');
@@ -101,7 +103,6 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/review_client', [FC_reviewController::class, 'index'])->name('frontend.clients.review');
     Route::get('/review_helpfulReview/{id}', [FC_reviewController::class, 'helpfulReview'])->name('frontend.clients.review.helpfulReview');
     Route::post('/review_addReview', [FC_reviewController::class, 'addReview'])->name('frontend.clients.review.addReview');
-    Route::get('/search_camper_client', [FC_CamperController::class, 'show'])->name('frontend.camper.search');
     Route::get('/camper/detail/client/{id}', [FC_CamperController::class, 'detail'])->name('frontend.camper.detail');
     Route::get('/details_booking_paiement', [FC_CamperController::class, 'bookingPaiement'])->name('frontend.camper.booking_paiement');
     Route::get('/bookmark_client', [FC_bookmarkController::class, 'index'])->name('frontend.clients.bookmark');
