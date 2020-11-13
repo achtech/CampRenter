@@ -21,7 +21,7 @@ class FClientController extends DefaultLoginController
 
     public function __construct()
     {
-        $this->middleware('guest:client')->except('logout');
+        //$this->middleware('guest:client')->except('logout');
     }
 
     protected function guard()
@@ -106,7 +106,23 @@ class FClientController extends DefaultLoginController
     }
     public function completeRegistrationProfile(Request $request)
     {
-        dd($request->all());
+        $id_client = Auth::guard('client')->user()->id;
+        $client = Client::find($id_client);
+        $input = request()->except(['_token', 'action']);
+        $input['password'] = md5($input['password']);
+        if ($input['password'] != $client->password) {
+            return redirect()->back()->with('warning', __('front.invalid_current_password'));
+        }
+        if ($input['password'] == $client->password && $input['new_password'] != null && $input['confirmed_password'] != null) {
+            if ($input['new_password'] == $input['confirmed_password']) {
+                $input['new_password'] = md5($input['new_password']);
+                $input['password'] = $input['new_password'];
+            } else {
+                return redirect()->back()->with('danger', __('front.unsimilar_password'));
+            }
+        }
+        $client->update($input);
+        return redirect(route('clients.user.profile'))->with('success', __('front.profile_updated'));
     }
     public function show($id)
     {
