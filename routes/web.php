@@ -5,12 +5,12 @@ use App\Http\Controllers\frontend\FCamperController;
 use App\Http\Controllers\frontend\FClientController;
 use App\Http\Controllers\frontend\FContactController;
 use App\Http\Controllers\frontend\FC_bookingController;
+use App\Http\Controllers\frontend\FC_bookmarkController;
 use App\Http\Controllers\frontend\FC_CamperController;
 use App\Http\Controllers\frontend\FC_messageController;
 use App\Http\Controllers\frontend\FC_notificationController;
 use App\Http\Controllers\frontend\FC_reviewController;
 use App\Http\Controllers\frontend\FC_walletController;
-use App\Http\Controllers\frontend\FC_bookmarkController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -36,8 +36,8 @@ Route::get('lang/{lang}', function ($lang) {
 });
 Route::group(['middleware' => 'Lang'], function () {
     //    login
-    Route::get('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
-    Route::post('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
+    Route::get('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('frontend.client.show_login');;
+    Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
@@ -45,8 +45,8 @@ Route::group(['middleware' => 'Lang'], function () {
     //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
     Route::post('/completeRegistrationProfile', [FClientController::class, 'completeRegistrationProfile'])->name('frontend.client.completeRegistration');
-    Route::get('login/ShowResetPassword', [FClientController::class, 'ShowResetPassword'])->name('frontend.client.showresetpassword');
-    Route::get('register/client', [FClientController::class, 'ShowRegister']);
+    Route::get('/login/ShowResetPassword', [FClientController::class, 'ShowResetPassword'])->name('frontend.client.showresetpassword');
+    Route::get('/showRegister', [FClientController::class, 'ShowRegister'])->name('frontend.client.show_register');
     Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
     Route::get('/editPass', [FClientController::class, 'edit'])->name('frontend.client.editClient');
     Route::put('/updateClient', [FClientController::class, 'updatePassword'])->name('frontend.client.updatePassword');

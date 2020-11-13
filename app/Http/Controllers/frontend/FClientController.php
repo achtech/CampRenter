@@ -119,7 +119,7 @@ class FClientController extends DefaultLoginController
         $id = str_replace("=", "", $searched_id);
         return view('frontend.client.edit')->with('client_id', $id);
     }
-    public function ShowRegister(Request $request)
+    public function ShowRegister()
     {
         $campers = DB::table('campers')->where([
             ['is_confirmed', 1],
