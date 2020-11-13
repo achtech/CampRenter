@@ -35,15 +35,16 @@ class LoginController extends Controller
             ['is_confirmed', 1],
             ['availability', 2],
         ])->get();
-        $blogs =  DB::table('blogs')->orderBy('created_at', 'desc')->get();
+        $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
+        $categories = DB::table('camper_categories')->paginate(10);
         return view('frontend.auth.login')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
     }
 
     public function adminLogin(Request $request)
     {
         $this->validate($request, [
-            'email'   => 'exists:clients|required|email',
-            'password' => 'required|min:6'
+            'email' => 'exists:clients|required|email',
+            'password' => 'required|min:6',
         ]);
 
         if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
