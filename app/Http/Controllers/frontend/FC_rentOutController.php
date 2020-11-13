@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class FC_rentOutController extends Controller
 {
-    public function storeCamperProfile(Request $request)
+    public function storePersonnalData(Request $request)
     {
         $camper = new Camper();
         $camper->id_camper_categories = $request->id_camper_categories;
@@ -17,7 +17,7 @@ class FC_rentOutController extends Controller
         return view('frontend.camper.rent_out.personnal_data')->with('camper', $camper);
     }
 
-    public function storePersonnalData(Request $request)
+    public function storeCamperProfile(Request $request)
     {
         $camper = $request->camper ?? new Camper();
         $client = new Client();

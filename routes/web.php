@@ -77,6 +77,7 @@ Route::group(['middleware' => 'Lang'], function () {
     //Route::prefix('/client')->namespace('frontend')->group(function () {
     // Route::post('login', 'App\Http\Controllers\frontend\FClientController@login');
     //});
+    Route::post('/store_personnal_data', [FC_rentOutController::class, 'storePersonnalData'])->name('frontend.camper.storePersonnalData');
     Route::post('/store_camper_profile', [FC_rentOutController::class, 'storeCamperProfile'])->name('frontend.camper.storeCamperProfile');
 
     Route::get('/login/client', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm');
