@@ -80,16 +80,8 @@ class FC_CamperController extends Controller
             $tabDate = explode('-', $searchedDate);
             $startDate = date("Y-m-d",strtotime($tabDate[0]));
             $endDate = date("Y-m-d",strtotime($tabDate[1]));
-            $bookings = DB::table("bookings")
-            ->where(function($query , $endDate)
-            {
-                $query->where('start_date', '>', $endDate);
-            })->orWhere(function($query,$startDate)
-            {
-                $query->where('end_date', '<', $startDate);
-            })->select('id_campers')->get();
-            dd($bookings);
-            $data = $data->whereNotIn($includedCamperId);
+            $bookings = DB::table("bookings")->where('start_date', '>', $endDate)->orWhere('end_date', '<', $startDate)->select('id_campers')->get();
+            $data = $data->whereNotIn($bookings);
         }
         if(!empty($searchedCategories)){
             $data = $data->whereIn('id_camper_categories',$searchedCategories);
