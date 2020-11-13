@@ -4,6 +4,9 @@
         <div class="col-sm-offset-3 col-md-6">
             {{ Form::open(['url'=>'login/client', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
             <div class="row">
+                <h2 style="margin-bottom:4%;"><strong>Login</strong><h2>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
                     <label for="username2">{{trans('front.email_address')}}:
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
