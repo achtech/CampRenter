@@ -31,13 +31,12 @@ class LoginController extends Controller
 
     public function showAdminLoginForm()
     {
-        $categories = DB::table('camper_categories')->get();
         $campers = DB::table('campers')->where([
             ['is_confirmed', 1],
             ['availability', 2],
         ])->get();
         $blogs =  DB::table('blogs')->orderBy('created_at','desc')->get();
-        return view('frontend.auth.login')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
+        return view('frontend.auth.login')->with('blogs', $blogs)->->with('campers', $campers);
     }
 
     public function adminLogin(Request $request)

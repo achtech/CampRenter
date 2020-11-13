@@ -11,10 +11,7 @@ class FCamperController extends Controller
     //
     public function index()
     {
-        $categories = DB::table('camper_categories')->paginate(10);
-        //$campers = DB::table('campers')->paginate(10);
-        //$review = DB::table('campers')->get();
-        return view('frontend.camper.index')->with('categories', $categories);
+        return view('frontend.camper.index');
     }
 
     public function rent_out()
@@ -29,51 +26,37 @@ class FCamperController extends Controller
 
     public function personnalData()
     {
-        $categories = DB::table('camper_categories')->paginate(10);
-
-        return view('frontend.camper.rent_out.personnal_data')->with('categories', $categories);
+        return view('frontend.camper.rent_out.personnal_data');
     }
 
     public function slide_camper()
     {
-        $categories = DB::table('camper_categories')->paginate(10);
-
-        return view('frontend.camper.rent_out.slide_camper')->with('categories', $categories);
+        return view('frontend.camper.rent_out.slide_camper');
     }
 
     public function camper_steps()
     {
-        $categories = DB::table('camper_categories')->paginate(10);
-
-        return view('frontend.camper.rent_out.camper_steps')->with('categories', $categories);
+        return view('frontend.camper.rent_out.camper_steps');
     }
 
     public function fill_in_vehicle()
     {
-        $categories = DB::table('camper_categories')->paginate(10);
-
-        return view('frontend.camper.rent_out.fill_in_vehicle')->with('categories', $categories);
+        return view('frontend.camper.rent_out.fill_in_vehicle');
     }
 
     public function equipment()
     {
-        $categories = DB::table('camper_categories')->paginate(10);
-
-        return view('frontend.camper.rent_out.equipment')->with('categories', $categories);
+        return view('frontend.camper.rent_out.equipment');
     }
 
     public function accessories()
     {
-        $categories = DB::table('camper_categories')->paginate(10);
-
-        return view('frontend.camper.rent_out.accessories')->with('categories', $categories);
+        return view('frontend.camper.rent_out.accessories');
     }
 
     public function description()
     {
-        $categories = DB::table('camper_categories')->paginate(10);
-
-        return view('frontend.camper.rent_out.description')->with('categories', $categories);
+        return view('frontend.camper.rent_out.description');
     }
 
     public function insurance()
@@ -85,16 +68,17 @@ class FCamperController extends Controller
 
     public function rental_terms()
     {
-        $categories = DB::table('camper_categories')->paginate(10);
-
-        return view('frontend.camper.rent_out.rental_terms')->with('categories', $categories);
+        return view('frontend.camper.rent_out.rental_terms');
     }
 
     public function conditions()
     {
-        $categories = DB::table('camper_categories')->paginate(10);
+        return view('frontend.camper.rent_out.conditions');
+    }
 
-        return view('frontend.camper.rent_out.conditions')->with('categories', $categories);
+    public function calendar()
+    {
+        return view('frontend.camper.rent_out.calendar');
     }
 
 }
