@@ -80,7 +80,7 @@ class FClientController extends DefaultLoginController
             ['availability', 2],
         ])->get();
         $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
-        return view('frontend.home.index')->with('categories', $categories)->with('campers', $campers)->with('blogs', $blogs);
+        return view('frontend.auth.login');
     }
     public function completeRegistrationProfile(Request $request)
     {
