@@ -29,7 +29,7 @@ return [
     'menu_panel_rentout' => 'Rent out',
     /*
     -----------------------Slider ----------
-    */
+     */
     'slider_title' => 'Rent motorhomes, campervans and caravans from private owners',
     'slider_looking_for' => 'What are you looking for?',
     'slider_location' => 'Location',
@@ -195,7 +195,6 @@ return [
     'save_new_password' => 'Save',
     'password' => 'Password',
 
-
     /** Blog */
     'Blog' => 'Blog',
     'Latest News' => 'Latest News',
@@ -207,7 +206,7 @@ return [
     'blog_comment' => 'comments',
     'menu_blog' => 'Blog',
     'register_google' => 'Register with Google',
-    //Client Login 
+    //Client Login
     'my_profile' => 'My Profile',
     'my_bookings' => 'My Bookings',
     'my_campers' => 'My Campers',
@@ -297,4 +296,11 @@ return [
     'Deposit' => 'Deposit',
     'Deductible' => 'Deductible',
     'Interior insurance' => 'Interior insurance',
+
+    /*--------------personnal data*/
+    'complete_personnal_data' => 'Complete your personnel data',
+    'name' => 'Name',
+    'building_number' => 'Building number',
+    'postal_code' => 'Postal code',
+    'other' => 'Other',
 ];
