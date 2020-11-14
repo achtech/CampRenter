@@ -19,8 +19,8 @@
                     <!-- Main Search Input -->
                     <div class="col-fs-6">
                         <div class="input-with-icon date_range_search">
-                            <i class="fa fa-calendar calendar-position"></i>
                             <input type="text" id="booking-date-range" name="searchedDate" placeholder="Check-In - Check-Out" value="{{$searchedDate ?? ''}}"  onchange="document.forms['frm1'].submit()" />
+                            <i class="fa fa-calendar calendar-position"></i>
                         </div>
                     </div>
 
@@ -36,7 +36,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         @foreach($categories as $category)
-                                        <input id="check-{{$category->id}}" type="checkbox" value="{{$category->id}}" name="searchedCategories[]" @if(isset($searchedCategory) && $category->id==$searchedCategory) checked @endif>
+                                        <input id="check-{{$category->id}}" type="checkbox" value="{{$category->id}}" name="searchedCategories[]" 
+                                            @if((isset($searchedCategory) && $category->id==$searchedCategory) || (isset($searchedCategories) && in_array($category->id, $searchedCategories))) checked @endif>
                                         <label for="check-{{$category->id}}">{{App\Http\Controllers\Controller::getLabel("camper_categories", $category->id)}}</label>
                                         @endforeach
                                     </div>

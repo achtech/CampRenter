@@ -269,16 +269,16 @@ $(function() {
 		$('#booking-date-range').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 
 	}
-    cb(start, end);
+    //cb(start, end);
     $('#booking-date-range').daterangepicker({
     	"opens": "left",
 	    "autoUpdateInput": false,
 	    "alwaysShowCalendars": true,
-        startDate: start,
-        endDate: end,
+//        startDate: start,
+  //      endDate: end,
     }, cb);
 
-    cb(start, end);
+    //cb(start, end);
 
 });
 

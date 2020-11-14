@@ -3358,7 +3358,7 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
 .input-with-icon.location a i {
     position: absolute;
     right: 1px;
-    left: auto;
+    left: auto !important;
     top: 50%;
     transform: translateY(-50%);
     color: #999;
@@ -3371,6 +3371,16 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
     color: #66676b;
 }
 
+.input-with-icon.date_range_search i{
+    position: absolute;
+    right: 1px;
+    left: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    padding: 15px 20px 15px 15px;
+    background: #fff;
+}
 /* ---------------------------------- */
 
 /* Sort by custom select
@@ -22324,7 +22334,6 @@ a::after {
 }
 
 .input-with-icon i.calendar-position {
-    left: 254px;
     top: 24px;
 }
 .input-with-icon.date_range_search input {
