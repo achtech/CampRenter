@@ -80,12 +80,29 @@ class FC_CamperController extends Controller
             $tabDate = explode('-', $searchedDate);
             $startDate = date("Y-m-d",strtotime($tabDate[0]));
             $endDate = date("Y-m-d",strtotime($tabDate[1]));
-            $bookings = DB::table("bookings")->where('start_date', '>', $endDate)->orWhere('end_date', '<', $startDate)->select('id_campers')->get();
-            $data = $data->whereNotIn($bookings);
+            $bookings = DB::table('bookings')->where(function($query) use($endDate) {
+                $query->where('start_date','<' ,$endDate)
+                      ->where('end_date', '>', $endDate);
+            })
+            ->orWhere(function($query) use($startDate) {
+                $query->where('start_date','<' ,$startDate)
+                      ->where('end_date', '>', $startDate);
+            })
+            ->orWhere(function($query) use($startDate,$endDate) {
+                $query->where('start_date','>' ,$startDate)
+                      ->where('end_date', '<', $endDate);
+            })
+            ->select('id_campers')->get();
+            $ids = array();
+            foreach($bookings as $b){
+                $ids[] = $b->id_campers;
+            }
+            $data = $data->whereNotIn('id', $ids);
         }
         if(!empty($searchedCategories)){
             $data = $data->whereIn('id_camper_categories',$searchedCategories);
         }
+        
         $data = $data->get();
         $categories = DB::table('camper_categories')->paginate(10);
         return view('frontend.camper.search')
