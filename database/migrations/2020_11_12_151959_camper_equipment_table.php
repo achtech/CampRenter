@@ -28,6 +28,8 @@ class CamperEquipmentTable extends Migration
             $table->boolean('is_trailer_hitch_exist');
             $table->boolean('is_water_tank_exist');
             $table->boolean('is_gas_cooker_exist');
+            $table->unsignedBigInteger('id_campers')->nullable();
+
             $table->foreign('id_campers')->references('id')->on('campers');
             $table->timestamps();
         });

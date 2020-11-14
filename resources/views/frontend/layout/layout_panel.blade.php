@@ -72,10 +72,10 @@ $(document).ready(function(){
 				<li class="{{ $activePage == 'FC_profile' ? 'active' : '' }}"><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
 				<li><a href=""><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
 			</ul>
-      
+
 		</div>
   </div>
-  
+
 	<!-- Navigation / End -->
 	<!-- Main Navigation -->
 		@yield('content')
@@ -105,7 +105,7 @@ $(document).ready(function(){
 <!-- Maps -->
 {{--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnGjgvun3rAKZLKOb_8euCK68TjZBkZ2E&callback=initAutocomplete&libraries=places&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFf_iG_TJJl-Cv_MmnGXk9zQ4yL5AObbw&callback=initAutocomplete&libraries=places&v=weekly"
 ></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>

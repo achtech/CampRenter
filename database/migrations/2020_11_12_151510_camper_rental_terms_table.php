@@ -21,6 +21,8 @@ class CamperRentalTermsTable extends Migration
             $table->boolean('is_parking_available');
             $table->integer('minimum_age_renter')->nullable();
             $table->integer('minimum_length_driver_licence')->nullable();
+            $table->unsignedBigInteger('id_campers')->nullable();
+
             $table->foreign('id_campers')->references('id')->on('campers');
             $table->timestamps();
         });

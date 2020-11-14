@@ -18,6 +18,8 @@ class CreateCamperTermsTable extends Migration
             $table->string('season')->nullable();
             $table->double('price_per_night')->nullable();
             $table->integer('minimum_night')->nullable();
+            $table->unsignedBigInteger('id_campers')->nullable();
+
             $table->foreign('id_campers')->references('id')->on('campers');
             $table->timestamps();
         });

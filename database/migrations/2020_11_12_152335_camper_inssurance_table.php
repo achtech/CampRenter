@@ -20,6 +20,8 @@ class CamperInssuranceTable extends Migration
             $table->string('deposit')->nullable();
             $table->string('deductible')->nullable();
             $table->string('interior_insurance')->nullable();
+            $table->unsignedBigInteger('id_campers')->nullable();
+
             $table->foreign('id_campers')->references('id')->on('campers');
             $table->timestamps();
         });
