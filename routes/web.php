@@ -11,6 +11,7 @@ use App\Http\Controllers\frontend\FC_messageController;
 use App\Http\Controllers\frontend\FC_notificationController;
 use App\Http\Controllers\frontend\FC_reviewController;
 use App\Http\Controllers\frontend\FC_walletController;
+use App\Http\Controllers\frontend\SocialController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -373,3 +374,7 @@ Route::group(['middleware' => 'Lang'], function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//facebook call
+Route::get('/redirect/{service}', [App\Http\Controllers\SocialController::class, 'redirect']);
+Route::get('/callback/{service}', [App\Http\Controllers\SocialController::class, 'callback']);

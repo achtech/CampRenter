@@ -8,6 +8,7 @@ use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -42,12 +43,14 @@ class LoginController extends Controller
 
     public function adminLogin(Request $request)
     {
+
         $this->validate($request, [
             'email' => 'exists:clients|required|email',
             'password' => 'required|min:6',
         ]);
 
         if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+            Session::put('_client', $request['email']);
             return redirect()->intended('/');
         }
         return back()->withInput($request->only('email', 'remember'));

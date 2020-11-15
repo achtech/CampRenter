@@ -27,8 +27,6 @@ class Client extends Authenticatable
         'updated_by',
         'created_at',
         'updated_at',
-        'created_by',
-        'updated_by'
     ];
     protected $hidden = [
         'password', 'remember_token',

@@ -40,7 +40,8 @@
 							</a>
 						</li>
 						<li><a class="{{ $activePage == 'blog' ? ' current' : '' }}" href="{{route('frontend.blog')}}">{{trans('front.menu_blog')}}</a></li>
-                        @if(!Auth::guard('client')->check())
+
+						@if(!session('_client'))
 
 						<li ><a href="{{route('frontend.client.show_register')}}">{{trans('front.menu_register')}}</a></li>
                         <li><a href="{{ route('frontend.client.show_login') }}"> {{trans('front.menu_login')}}</a></li>
@@ -54,7 +55,7 @@
 					   </li>
 
 					   <li style="float: right">
-						<a  href="#" style="margin-left: 128px;" class="user-name"><span style="white-space: nowrap;margin-top: 6px;"><img src="images/clients/default.jpg" alt="">{{ __('hi') }} {{Auth::guard('client')->user()->client_name}} {{Auth::guard('client')->user()->client_last_name}}</span></a>
+						<a  href="#" style="margin-left: 128px;" class="user-name"><span style="white-space: nowrap;margin-top: 6px;"><img src="{{asset('images/clients/default.jpg')}}" alt="">{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClient()}}</span></a>
 						  <ul>
 							  <li><a href="{{ route('clients.user.profile') }}" ><i class="sl sl-icon-settings"></i>{{ __('front.my_profile') }} </a></li>
 							  <li><a href="{{ route('frontend.clients.message') }}"><i class="sl sl-icon-envelope-open"></i> {{ __('front.my_message') }}</a></li>

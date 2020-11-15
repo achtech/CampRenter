@@ -12,7 +12,7 @@ return [
     | location for this type of information, allowing packages to have
     | a conventional file to locate the various service credentials.
     |
-    */
+     */
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
@@ -30,13 +30,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'facebook' => [
-        'client_id' => '360178218666227',
-        'client_secret' => 'a3fa2ae2888a513a5085055a6e544316',
-        'redirect' => ' https://defoxed.ch/public/',
+        'client_id' => '414101039952819',
+        'client_secret' => 'fb19d5febfcbb14b03aef44b9c1be0fa',
+        'redirect' => 'http://localhost:8000/callback/facebook',
     ],
     'google' => [
-        'client_id' => '620721606636-i3riupr3pq3jciso0sapna4lra9f6nnn.apps.googleusercontent.com',
-        'client_secret' => 'eL-lGG0op9oTcKJeKvOeAI0Z',
-        'redirect' => 'http://localhost:8000/google/callback',
+        'client_id' => '366872804593-c4v1bv3ria1bie2lmci5u1m26ad3h3ql.apps.googleusercontent.com',
+        'client_secret' => 'OHYChb26h03Hn-odQ-btKPzo',
+        'redirect' => 'http://localhost:8000/callback/google',
     ],
 ];

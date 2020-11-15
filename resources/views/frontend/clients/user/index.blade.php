@@ -3,7 +3,11 @@
 	<!-- Content
 	================================================== -->
 	<div class="dashboard-content">
-
+	@if(session('_client'))
+         {{session('_client')}}
+         @else
+         nn session
+         @endif
 		<!-- Titlebar -->
 		<div id="titlebar">
 			<div class="row">
@@ -57,31 +61,9 @@
 								</div>
 							</div>
 						</div>
-	
-						<!-- Details -->
-						<div class="my-profile">
 
-							<label>{{ __('front.profil_name') }}</label>
-							<input id="client_name" name="client_name" class="form-control" value="{{Auth::guard('client')->user()->client_name}}" type="text">
-							<label>{{ __('front.profil_last_name') }}</label>
-							<input  id="client_last_name" name="client_last_name" class="form-control" value="{{Auth::guard('client')->user()->client_last_name}}" type="text">
 
-							<label>{{ __('front.profil_phone') }}</label>
-							<input id="phone" name="phone" class="form-control" type="tel">
 
-							<label>{{ __('front.profil_email') }}</label>
-							<input  id="email" name="email" class="form-control" value="{{Auth::guard('client')->user()->email}}" type="text">
-
-							<label>{{ __('front.profil_notes') }}</label>
-							<textarea name="review" id="review" cols="30" rows="10"></textarea>
-
-							<label><i class="fa fa-facebook-square"></i> {{ __('front.profil_facebook') }}</label>
-							<input placeholder="https://www.facebook.com/" type="text">
-
-							<label><i class="fa fa-google-plus"></i> {{ __('front.profil_google') }}</label>
-							<input placeholder="https://www.google.com/" type="text">
-						</div>
-						
 					</div>
 				</div>
 			</div>
@@ -108,7 +90,7 @@
 	</div>
 </div>
 <div style="visibility: hidden;">s</div>
-		
+
 <!-- Change Password -->
 <div class="col-lg-6 col-md-12">
 	<div class="dashboard-list-box margin-top-0">
@@ -126,5 +108,5 @@
 
 	</div>
 	<!-- Content / End -->
-	
+
 @endsection

@@ -38,12 +38,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Name of the vehicle">
+								<input type="text" name="camper_name" placeholder="Name of the vehicle">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Camper brand">
+								<input type="text" name="brand" placeholder="Camper brand">
 							</div>
 						</div>
 					</li>
@@ -51,12 +51,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Model">
+								<input type="text" name="model" placeholder="Model">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Licence category">
+								<input type="text" name="id_licence_categories" placeholder="Licence category">
 							</div>
 						</div>
 					</li>
@@ -69,7 +69,7 @@
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Licence number">
+								<input type="text" name="license_plate_number" placeholder="Licence number">
 							</div>
 						</div>
 					</li>
@@ -77,12 +77,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Vehicle registration certificate">
+								<input type="text" name="vehicle_licence" placeholder="Vehicle registration certificate">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Country of registration">
+								<input type="text" name="country" placeholder="Country of registration">
 							</div>
 						</div>
 					</li>
@@ -90,12 +90,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Number of seats">
+								<input type="text" name="seat_number" placeholder="Number of seats">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Number of gears">
+								<input type="text" name="gear_number" placeholder="Number of gears">
 							</div>
 						</div>
 					</li>
@@ -210,12 +210,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Fuel capacity">
+								<input type="text" name="fuel_capacity" placeholder="Fuel capacity">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Fuel consumation per 100 Km">
+								<input type="text" name="fuel_consumation" placeholder="Fuel consumation per 100 Km">
 							</div>
 						</div>
 					</li>
@@ -224,11 +224,11 @@
 							<!-- Phone -->
 
 							<div class="col-md-6">
-								<input type="text" placeholder="Allowed total weight in tons">
+								<input type="text" name="allowed_total_weight" placeholder="Allowed total weight in tons">
 							</div>
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Length in metres">
+								<input type="text" name="length" placeholder="Length in metres">
 							</div>
 						</div>
 					</li>
@@ -236,12 +236,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Horse power">
+								<input type="text" name="horse_power" placeholder="Horse power">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" placeholder="Cylinder capacity">
+								<input type="text" name="cylinder_capacity" placeholder="Cylinder capacity">
 							</div>
 						</div>
 					</li>
@@ -297,12 +297,13 @@
                                             id="pac-input"
                                             class="controls"
                                             type="text"
-                                            placeholder="Search Box"
+											placeholder="Search Box"
+											name="location"
                                         />
 									<div id="map"></div>
 								</div>
-                                    <input type="text" name="position_x" id="currentLatitude">
-                                    <input type="text" name="position_y" id="currentLongitude">
+                                    <input style="display: none" type="text" name="position_x" id="currentLatitude">
+                                    <input style="display: none" type="text" name="position_y" id="currentLongitude">
 							</div>
 						</div>
 					</li>

@@ -55,8 +55,13 @@
             </div>
             <a class="button margin-top-5 connexion with-facebook"
                style="width:99% !important; text-align: center;background-color: #36518a;" target="popup"
-               href="{{ url('auth/facebook') }}">
+               href="{{ url('redirect/facebook') }}">
                 <small class="fb-design"> {{trans('front.facebook_connexion')}}</small>
+            </a>
+            <a class="button margin-top-5 connexion with-facebook"
+               style="width:99% !important; text-align: center;background-color: #e90746;" target="popup"
+               href="{{ url('redirect/google') }}">
+                <small class="fb-design"> connexion with Google</small>
             </a>
         </div>
     </div>
