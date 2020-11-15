@@ -73,6 +73,11 @@ class FC_CamperController extends Controller
         $searchedDate = $request->searchedDate ?? '';
         $searchedCategories = $request->searchedCategories ?? '';
         $data  = $this->getData();
+        $camperEquipementIds = $this->searchByEquipment($request);
+        if($camperEquipementIds!=0) {
+            $data = $data->whereIn('id', $camperEquipementIds);
+        }
+
         if(!empty($searchedLocation)){
             //TODO
         }
@@ -113,6 +118,36 @@ class FC_CamperController extends Controller
             ->with('campers', $data);
     }
 
+    public function searchByEquipment(Request $request){
+        $ids = array();
+        $exist = false;
+        $data = DB::table('camper_equipment');
+        if($request->is_burner_stove_exist) { $exist = true; $data->where('is_burner_stove_exist',1);}
+        if($request->is_sink_exist) { $exist = true; $data->where('is_sink_exist',1);}
+        if($request->is_indoor_table_exist) { $exist = true; $data->where('is_indoor_table_exist',1);}
+        if($request->is_dishes_exist) { $exist = true; $data->where('is_dishes_exist',1);}
+        if($request->is_camping_chairs_exist) { $exist = true; $data->where('is_camping_chairs_exist',1);}
+        if($request->is_water_tank_exist) { $exist = true; $data->where('is_water_tank_exist',1);}
+        if($request->is_power_supply_exist) { $exist = true; $data->where('is_power_supply_exist',1);}
+        if($request->is_fridge_exist) { $exist = true; $data->where('is_fridge_exist',1);}
+        if($request->is_cd_player_exist) { $exist = true; $data->where('is_cd_player_exist',1);}
+        if($request->is_camping_table_exist) { $exist = true; $data->where('is_camping_table_exist',1);}
+        if($request->is_trailer_hitch_exist) { $exist = true; $data->where('is_trailer_hitch_exist',1);}
+        if($request->is_gas_cooker_exist) { $exist = true; $data->where('is_gas_cooker_exist',1);}
+
+        if($exist){
+            $data = $data->select('id_campers')->get();
+            foreach($data as $e){
+                $ids[] = $e->id_campers;
+            }
+            return $ids;
+        } else {
+            return 0;
+        }
+
+        
+        
+    }
     public function searchByCategory($id)
     {
         $searchedCategory = $id ?? '';

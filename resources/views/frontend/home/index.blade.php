@@ -111,7 +111,7 @@
 		</div>
 	</div>
 	<div class="col-md-12 centered-content">
-		<a href="pages-blog.html" class="button border margin-top-10">{{trans('front.find_camper_now')}}</a>
+		<a href="/camper/search" class="button border margin-top-10">{{trans('front.find_camper_now')}}</a>
 	</div>
 </div>
 </section>

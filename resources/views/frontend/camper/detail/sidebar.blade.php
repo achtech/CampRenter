@@ -55,9 +55,13 @@
 
 <!-- Share / Like -->
 <div class="listing-share margin-top-40 margin-bottom-40 no-border">
-    <button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
-    <span>159 people bookmarked this place</span>
 
+    <div id="bookmarkCount">
+        <button class="like-button " onclick="AddOrRemoveBookmark()">
+            <span  class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}"></span> 
+            Bookmark this listing</button> 
+            <span>{{App\Http\Controllers\frontend\FC_bookmarkController::getBookmarkCamperCount($camper->id)}} people bookmarked this place</span>
+        </div>
         <!-- Share Buttons -->
         <ul class="share-buttons margin-top-40 margin-bottom-0">
             <li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
