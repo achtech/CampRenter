@@ -121,7 +121,7 @@ Route::group(['middleware' => 'Lang'], function () {
         }
     });
 
-    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
+    // Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/confirm/{id}', 'App\Http\Controllers\admin\DashboardController@confirmCamper')->name('dashboard.confirm');
     //Route::get('/lastBookings', 'App\Http\Controllers\admin\DashboardController@getLastBookings')->name('dashboard');
 

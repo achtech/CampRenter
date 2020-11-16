@@ -26,14 +26,15 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('guest:client')->except('logout');
+        // $this->middleware('guest')->except('logout');
+        // $this->middleware('guest:client')->except('logout');
     }
 
     public function clientLogout()
     {
-        dd('teest');
-        return view('frontend.auth.login')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
+        session()->forget('_client');
+        Auth::logout();
+        return redirect('/');
     }
 
     public function showAdminLoginForm()
