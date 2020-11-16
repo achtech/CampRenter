@@ -112,7 +112,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/storeMessage', [FContactController::class, 'store'])->name('frontend.contact.store');
 
     /** Backend */
-    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
+    Route::get('/admin', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     Route::get('/dashboard', function () {
         if (auth()->user() == null) {
@@ -122,7 +122,6 @@ Route::group(['middleware' => 'Lang'], function () {
         }
     });
 
-    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/confirm/{id}', 'App\Http\Controllers\admin\DashboardController@confirmCamper')->name('dashboard.confirm');
     //Route::get('/lastBookings', 'App\Http\Controllers\admin\DashboardController@getLastBookings')->name('dashboard');
 
