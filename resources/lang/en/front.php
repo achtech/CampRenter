@@ -303,4 +303,15 @@ return [
     'building_number' => 'Building number',
     'postal_code' => 'Postal code',
     'other' => 'Other',
+    /*--------------Contact--------------*/
+    'street_view' => 'Street View',
+    'our_office' => 'Our Office',
+    'find_us' => 'Find Us There',
+    'platform_description' => 'Campunite is your platform for easy camping sharing. For questions use the form on this page, we are happy to improve the platform with you on an ongoing basis.',
+    'platform_phone' => 'Phone:',
+    'platform_fax' => 'Fax:',
+    'platform_web' => 'Web:',
+    'platform_email' => 'E-Mail:',
+    'contact_form' => 'Contact Form',
+    'submit_message' => 'Submit Message'
 ];

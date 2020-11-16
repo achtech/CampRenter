@@ -108,6 +108,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/details_booking_paiement', [FC_CamperController::class, 'bookingPaiement'])->name('frontend.camper.booking_paiement');
     Route::get('/bookmark_client', [FC_bookmarkController::class, 'index'])->name('frontend.clients.bookmark');
     Route::post('/ajax/addBookmarks', [FC_bookmarkController::class, 'addOrRemove'])->name('frontend.camper.add_bookmark');
+    Route::post('/storeMessage', [FContactController::class, 'store'])->name('frontend.contact.store');
 
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
@@ -356,8 +357,9 @@ Route::group(['middleware' => 'Lang'], function () {
 
     //ADMIN->MESSAGE
     Route::delete('message/{id}/delete', 'App\Http\Controllers\admin\MessageController@destroy')->name('message.delete');
-    Route::get('message/sendEmail', 'App\Http\Controllers\admin\MessageController@sendEmail')->name('message.sendEmail');
-    Route::resource('message', 'App\Http\Controllers\admin\MessageController', ['except' => 'destroy', 'names' => [
+    Route::post('message/sendEmail', 'App\Http\Controllers\admin\MessageController@sendEmail')->name('message.sendEmail');
+    Route::get('/answerClient/{id}', 'App\Http\Controllers\admin\MessageController@sendEmailToClient')->name('message.sendEmailToClient');
+    Route::resource('message', 'App\Http\Controllers\admin\MessageController', ['except' => ['destroy', 'sendEmailToClient'], 'names' => [
         'index' => 'message.index',
         'store' => 'message.store',
         'show' => 'message.show',

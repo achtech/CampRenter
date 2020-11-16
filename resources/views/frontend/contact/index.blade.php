@@ -17,7 +17,7 @@
 	<!-- Google Maps -->
 	<div id="singleListingMap-container">
 		<div id="singleListingMap" data-latitude="47.679293" data-longitude="8.625207" data-map-icon="im im-icon-Map2"></div>
-		<a href="#" id="streetView">Street View</a>
+		<a href="#" id="streetView"> {{trans('front.street_view')}} </a>
 	</div>
 	<!-- Google Maps / End -->
 
@@ -25,7 +25,7 @@
 	<div class="address-box-container">
 		<div class="address-container" data-background-image="images/our-office.jpg">
 			<div class="office-address">
-				<h3>Our Office</h3>
+				<h3>{{trans('front.our_office')}}</h3>
 				<ul>
 					<li>Victor Von Bruns-Strasse 20</li>
 					<li>8212 Neuhausen am Rheinfall</li>
@@ -49,16 +49,16 @@
 		<!-- Contact Details -->
 		<div class="col-md-4">
 
-			<h4 class="headline margin-bottom-30">Find Us There</h4>
+			<h4 class="headline margin-bottom-30">{{trans('front.find_us')}}</h4>
 
 			<!-- Contact Details -->
 			<div class="sidebar-textbox">
-			<p>Campunite is your platform for easy camping sharing. For questions use the form on this page, we are happy to improve the platform with you on an ongoing basis.</p>
+			<p>{{trans('front.platform_description')}}</p>
 				<ul class="contact-details">
-					<li><i class="im im-icon-Phone-2"></i> <strong>Phone:</strong> <span>(123) 123-456 </span></li>
-					<li><i class="im im-icon-Fax"></i> <strong>Fax:</strong> <span>(123) 123-456 </span></li>
-					<li><i class="im im-icon-Globe"></i> <strong>Web:</strong> <span><a href="">www.campunite.com</a></span></li>
-					<li><i class="im im-icon-Envelope"></i> <strong>E-Mail:</strong> <span><a href="mailto:support@campunite.com">support@campunite.com</a></span></li>
+					<li><i class="im im-icon-Phone-2"></i> <strong>{{trans('front.platform_phone')}}</strong> <span>(123) 123-456 </span></li>
+					<li><i class="im im-icon-Fax"></i> <strong>{{trans('front.platform_fax')}}</strong> <span>(123) 123-456 </span></li>
+					<li><i class="im im-icon-Globe"></i> <strong>{{trans('front.platform_web')}}</strong> <span><a href="">www.campunite.com</a></span></li>
+					<li><i class="im im-icon-Envelope"></i> <strong>{{trans('front.platform_email')}}</strong> <span><a href="mailto:support@campunite.com">support@campunite.com</a></span></li>
 				</ul>
 			</div>
 
@@ -68,16 +68,15 @@
 		<div class="col-md-8">
 
 			<section id="contact">
-				<h4 class="headline margin-bottom-35">Contact Form</h4>
+				<h4 class="headline margin-bottom-35">{{trans('front.contact_form')}}</h4>
 
 				<div id="contact-message"></div>
 
-					<form method="post" action="contact.php" name="contactform" id="contactform" autocomplete="on">
-
+				{{ Form::open(['action'=>'App\Http\Controllers\admin\MessageController@sendEmailToClient', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
 					<div class="row">
 						<div class="col-md-6">
 							<div>
-								<input name="name" type="text" id="name" placeholder="Your Name" required="required" />
+								<input name="full_name" type="text" id="full_name" placeholder="Your Name" required="required" />
 							</div>
 						</div>
 
@@ -88,17 +87,19 @@
 						</div>
 					</div>
 
-					<div>
-						<input name="subject" type="text" id="subject" placeholder="Subject" required="required" />
+					<div class="row">
+						<div class="col-md-12">
+							<input name="subject" type="text" id="subject" placeholder="Subject" required="required" />
+						</div>
 					</div>
-
-					<div>
-						<textarea name="comments" cols="40" rows="3" id="comments" placeholder="Message" spellcheck="true" required="required"></textarea>
+					<div class="row">
+						<div class="col-md-12">
+							<textarea name="message" cols="40" rows="3" placeholder="Message" spellcheck="true" required="required" ></textarea>
+						</div>
 					</div>
+					<input type="submit" class="submit button" id="submit" value="{{trans('front.submit_message')}}" />
 
-					<input type="submit" class="submit button" id="submit" value="Submit Message" />
-
-					</form>
+					{{ Form::close() }}
 			</section>
 		</div>
 		<!-- Contact Form / End -->
