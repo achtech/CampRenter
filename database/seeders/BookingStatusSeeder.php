@@ -17,9 +17,9 @@ class BookingStatusSeeder extends Seeder
         DB::table('booking_status')->insert(array(
             0 => array(
                 'id' => 1,
-                'label_en' => 'Open',
-                'label_de' => 'Booking Status 2 de',
-                'label_fr' => 'Booking Status 3 fr',
+                'label_en' => 'Requested',
+                'label_de' => 'Angefordert',
+                'label_fr' => 'Demandé',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -27,9 +27,9 @@ class BookingStatusSeeder extends Seeder
             ),
             1 => array(
                 'id' => 2,
-                'label_en' => 'In progress',
-                'label_de' => 'Booking Status 2 de',
-                'label_fr' => 'Booking Status 2 fr',
+                'label_en' => 'Confirmed',
+                'label_de' => 'Confirmed',
+                'label_fr' => 'Confirmed',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
@@ -37,15 +37,44 @@ class BookingStatusSeeder extends Seeder
             ),
             2 => array(
                 'id' => 3,
+                'label_en' => 'Denied',
+                'label_de' => 'Denied',
+                'label_fr' => 'Denied',
+                'created_by' => 1,
+                'created_at' => date("Y-m-d h:i:s"),
+                'updated_by' => 1,
+                'updated_at' => date("Y-m-d h:i:s"),
+            ),
+            3 => array(
+                'id' => 4,
+                'label_en' => 'Paid',
+                'label_de' => 'Paid',
+                'label_fr' => 'Paid',
+                'created_by' => 1,
+                'created_at' => date("Y-m-d h:i:s"),
+                'updated_by' => 1,
+                'updated_at' => date("Y-m-d h:i:s"),
+            ),
+            4 => array(
+                'id' => 5,
+                'label_en' => 'In progress',
+                'label_de' => 'In progress',
+                'label_fr' => 'In progress',
+                'created_by' => 1,
+                'created_at' => date("Y-m-d h:i:s"),
+                'updated_by' => 1,
+                'updated_at' => date("Y-m-d h:i:s"),
+            ),
+            5 => array(
+                'id' => 6,
                 'label_en' => 'Closed',
-                'label_de' => 'Booking Status 3 de',
-                'label_fr' => 'Booking Status 3 fr',
+                'label_de' => 'Closed',
+                'label_fr' => 'Closed',
                 'created_by' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
         ));
-        //
     }
 }

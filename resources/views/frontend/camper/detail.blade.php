@@ -77,7 +77,12 @@
 	</div>
 </div>
 <script type="text/javascript">
-    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    document.getElementById("booking-date-range").addEventListener("change", myFunction);
+	function myFunction() {
+		var x = document.getElementById("booking-date-range");
+		x.value = "it works";//x.value.toUpperCase();
+	}
+	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     
 	function AddOrRemoveBookmark() {
         var camper_id = {{ $camper->id }};
@@ -91,6 +96,7 @@
                 }
             });
 	};
+	
 	</script>
 @endsection
 
