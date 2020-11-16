@@ -77,7 +77,7 @@
 					<div class="payment-tab-trigger">
 						<input checked id="paypal" name="cardType" type="radio" value="paypal">
 						<label for="paypal">PayPal</label>
-						<img class="payment-logo paypal" src="{{asset('frontend/asset/images/paiement-methods/ApBxkXU.png')}}" alt="">
+						<img class="payment-logo paypal" src="{{asset('images/paiement-methods/ApBxkXU.png')}}" alt="">
 					</div>
 
 					<div class="payment-tab-content">
@@ -90,7 +90,7 @@
 					<div class="payment-tab-trigger">
 						<input type="radio" name="cardType" id="creditCart" value="creditCard">
 						<label for="creditCart">Credit / Debit Card</label>
-						<img class="payment-logo" src="{{asset('frontend/asset/images/paiement-methods/IHEKLgm.png')}}" alt="">
+						<img class="payment-logo" src="{{asset('images/paiement-methods/IHEKLgm.png')}}" alt="">
 					</div>
 
 					<div class="payment-tab-content">
@@ -137,7 +137,7 @@
 
 			</div>
 			<!-- Payment Methods Accordion / End -->
-		
+
 			<a href="pages-booking-confirmation.html" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Confirm and Pay</a>
 		</div>
 
@@ -149,7 +149,7 @@
 			<!-- Booking Summary -->
 			<div class="listing-item-container compact order-summary-widget">
 				<div class="listing-item">
-					<img src="{{asset('frontend/asset/images/listing-item-04.jpg')}}" alt="">
+					<img src="{{asset('images/listing-item-04.jpg')}}" alt="">
 
 					<div class="listing-item-content">
 						<div class="numerical-rating" data-rating="5.0"></div>

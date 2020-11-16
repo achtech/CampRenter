@@ -9,8 +9,8 @@
 
 				<!-- Logo -->
 				<div id="logo">
-					<a href="{{route('home.index')}}"><img src="{{asset('frontend/asset/images/logo-icon.png')}}"
-						data-sticky-logo="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
+					<a href="{{route('home.index')}}"><img src="{{asset('images/logo-icon.png')}}"
+						data-sticky-logo="{{asset('images/logo-icon.png')}}" alt=""></a>
 				</div>
 
 				<!-- Mobile Navigation -->

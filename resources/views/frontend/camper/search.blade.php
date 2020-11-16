@@ -28,7 +28,7 @@
 				<div class="col-lg-6 col-md-12">
 					<a href="{{route('frontend.camper.detail',$camper->id)}}" class="listing-item-container" data-marker-id="{{$camper->id}}">
 						<div class="listing-item">
-							<img src="{{asset('frontend/asset/images/listing-item-01.jpg')}}" alt="">
+							<img src="{{asset('images/listing-item-01.jpg')}}" alt="">
 							@if($camper->availability==0)
 								<div class="listing-badge now-close">Blocked</div>
 							@elseif($camper->availability==1)

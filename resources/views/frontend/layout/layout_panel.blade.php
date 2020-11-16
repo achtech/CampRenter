@@ -16,8 +16,8 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="{{asset('frontend/asset/css/style.css')}}">
-<link rel="stylesheet" href="{{asset('frontend/asset/css/main-color.css')}}" id="colors">
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
+<link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
     @yield('style')
 
     <style>
@@ -95,34 +95,34 @@ $(document).ready(function(){
 
 <!-- Scripts
 ================================================== -->
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-3.4.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-migrate-3.1.0.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/mmenu.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/chosen.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/slick.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/rangeslider.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/magnific-popup.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/waypoints.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/counterup.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-ui.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/tooltips.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/jquery-3.4.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/jquery-migrate-3.1.0.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/mmenu.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/chosen.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/slick.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/rangeslider.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/magnific-popup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/waypoints.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/counterup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/jquery-ui.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/tooltips.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/custom.js')}}"></script>
 
 <!-- Maps -->
 {{--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFf_iG_TJJl-Cv_MmnGXk9zQ4yL5AObbw&callback=initAutocomplete&libraries=places&v=weekly"
 ></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/maps-mypostion.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/infobox.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/markerclusterer.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/maps-mypostion.js')}}"></script>
 
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
-<script src="{{asset('frontend/asset/scripts/moment.min.js')}}"></script>
-<script src="{{asset('frontend/asset/scripts/daterangepicker.js')}}"></script>
+<script src="{{asset('scripts/moment.min.js')}}"></script>
+<script src="{{asset('scripts/daterangepicker.js')}}"></script>
 
 <!-- DropZone | Documentation: http://dropzonejs.com -->
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/dropzone.js')}}"></script>
+<script type="text/javascript" src="{{asset('scripts/dropzone.js')}}"></script>
 
 <script>
 $(function() {

@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="row">
-			
+
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
@@ -31,7 +31,7 @@
 
 						<li>
 							<div class="list-box-listing">
-								<div class="list-box-listing-img"><a href="#"><img src="{{asset('frontend/asset/images/listing-item-01.jpg')}}" alt=""></a></div>
+								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-01.jpg')}}" alt=""></a></div>
 								<div class="list-box-listing-content">
 									<div class="inner">
 										<h3><a href="#">Tom's Restaurant</a></h3>
@@ -51,7 +51,7 @@
 
 						<li>
 							<div class="list-box-listing">
-								<div class="list-box-listing-img"><a href="#"><img src="{{asset('frontend/asset/images/listing-item-02.jpg')}}" alt=""></a></div>
+								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-02.jpg')}}" alt=""></a></div>
 								<div class="list-box-listing-content">
 									<div class="inner">
 										<h3>Sticky Band</h3>
@@ -68,10 +68,10 @@
 								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
 							</div>
 						</li>
-						
+
 						<li>
 							<div class="list-box-listing">
-								<div class="list-box-listing-img"><a href="#"><img src="{{asset('frontend/asset/images/listing-item-03.jpg')}}" alt=""></a></div>
+								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-03.jpg')}}" alt=""></a></div>
 								<div class="list-box-listing-content">
 									<div class="inner">
 										<h3>Hotel Govendor</h3>
@@ -91,7 +91,7 @@
 
 						<li>
 							<div class="list-box-listing">
-								<div class="list-box-listing-img"><a href="#"><img src="{{asset('frontend/asset/images/listing-item-04.jpg')}}" alt=""></a></div>
+								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-04.jpg')}}" alt=""></a></div>
 								<div class="list-box-listing-content">
 									<div class="inner">
 										<h3>Burger House</h3>
@@ -111,7 +111,7 @@
 
 						<li>
 							<div class="list-box-listing">
-								<div class="list-box-listing-img"><a href="#"><img src="{{asset('frontend/asset/images/listing-item-05.jpg')}}" alt=""></a></div>
+								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-05.jpg')}}" alt=""></a></div>
 								<div class="list-box-listing-content">
 									<div class="inner">
 										<h3>Airport</h3>
@@ -131,7 +131,7 @@
 
 						<li>
 							<div class="list-box-listing">
-								<div class="list-box-listing-img"><a href="#"><img src="{{asset('frontend/asset/images/listing-item-06.jpg')}}" alt=""></a></div>
+								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-06.jpg')}}" alt=""></a></div>
 								<div class="list-box-listing-content">
 									<div class="inner">
 										<h3>Think Coffee</h3>

@@ -5,7 +5,7 @@
 </head>
 
 <body>
-    <img src="{{asset('frontend/asset/images/logo-icon.png')}}"  alt="">
+    <img src="{{asset('images/logo-icon.png')}}"  alt="">
     <br/>
 <h2>{{trans('front.welcome_camp_unit')}}</h2>
 <br/>
@@ -19,11 +19,11 @@
  </a>
  <br/>
  {{trans('front.question_case')}} <a href="mailto:confirmation@mycamper.ch">confirmation@mycamper.ch</a>
- {{trans('front.contact_us')}}  
+ {{trans('front.contact_us')}}
   <br/>
- {{trans('front.best_regards')}} 
+ {{trans('front.best_regards')}}
 <br/>
- {{trans('front.camp_team')}} 
+ {{trans('front.camp_team')}}
 </body>
 
 </html>
