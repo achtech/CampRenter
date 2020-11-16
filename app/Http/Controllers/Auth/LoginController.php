@@ -30,6 +30,12 @@ class LoginController extends Controller
         $this->middleware('guest:client')->except('logout');
     }
 
+    public function clientLogout()
+    {
+        dd('teest');
+        return view('frontend.auth.login')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
+    }
+
     public function showAdminLoginForm()
     {
         $campers = DB::table('campers')->where([

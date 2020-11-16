@@ -61,7 +61,7 @@
 							  <li><a href="{{ route('frontend.clients.message') }}"><i class="sl sl-icon-envelope-open"></i> {{ __('front.my_message') }}</a></li>
 							  <li><a href="{{ route('frontend.clients.booking') }}"><i class="fa fa-calendar-check-o"></i>{{ __('front.my_bookings') }}</a></li>
 							  <li><a href="{{ route('frontend.clients.camper') }}"><i class="fa fa-calendar-check-o"></i>{{ __('front.my_campers') }}</a></li>
-							  <li><a class="dropdown-item" href="{{ route('logout') }}"
+							  <li><a class="dropdown-item" href="{{ route('client.logout') }}"
 								onclick="event.preventDefault();
 													   document.getElementById('logout-form').submit();"><i class="sl sl-icon-power"></i> {{ __('Logout') }}</a></li>
 							</ul>
