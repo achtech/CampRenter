@@ -1,5 +1,5 @@
 
-@extends('frontend.layout.layout',['activePage' => 'camper', 'footerPage' => 'false'])
+@extends('frontend.layout.layout',['activePage' => 'camperSearch', 'footerPage' => 'false'])
 @section('content')
 <!-- Content ================================================== -->
 <div class="fs-container">

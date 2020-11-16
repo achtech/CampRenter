@@ -24,20 +24,26 @@
                         <div  class="col-md-12">
                             <label for="username2">
                                 {{trans('front.first_name')}}:
-                                <input type="text" placeholder="First Name" id="client_name" name="client_name" class="form-control" required>
                             </label>
+                        </div>
+                        <div  class="col-md-12">
+                            <input type="text" placeholder="First Name" id="client_name" name="client_name" class="form-control" required>
                         </div>
                         <div class="col-md-12">
                             <label  for="username2">
                                 {{trans('front.last_name')}}:
-                                <input   type="text" placeholder="Last Name" id="client_last_name" name="client_last_name" class="form-control" required>
                             </label>
+                        </div>
+                        <div  class="col-md-12">
+                            <input type="text" placeholder="Last Name" id="client_last_name" name="client_last_name" class="form-control" required>
                         </div>
                         <div class="col-md-12">
                             <label  for="username2">
                                 {{trans('front.email_add')}}:
-                                <input type="text" placeholder="Email Address" id="email" name="email" class="form-control" required>
                             </label>
+                        </div>
+                        <div  class="col-md-12">
+                            <input type="text" placeholder="Email Address" id="email" name="email" class="form-control" required>
                         </div>
                         <div class="col-md-12">
                             <label>

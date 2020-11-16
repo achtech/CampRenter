@@ -12,6 +12,7 @@ use App\Http\Controllers\frontend\FC_notificationController;
 use App\Http\Controllers\frontend\FC_rentOutController;
 use App\Http\Controllers\frontend\FC_reviewController;
 use App\Http\Controllers\frontend\FC_walletController;
+use App\Http\Controllers\frontend\SocialController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -37,8 +38,8 @@ Route::get('lang/{lang}', function ($lang) {
 });
 Route::group(['middleware' => 'Lang'], function () {
     //    login
-    Route::get('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
-    Route::post('/login/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
+    Route::get('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('frontend.client.show_login');;
+    Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
@@ -46,8 +47,8 @@ Route::group(['middleware' => 'Lang'], function () {
     //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
     Route::post('/completeRegistrationProfile', [FClientController::class, 'completeRegistrationProfile'])->name('frontend.client.completeRegistration');
-    Route::get('login/ShowResetPassword', [FClientController::class, 'ShowResetPassword'])->name('frontend.client.showresetpassword');
-    Route::get('register/client', [FClientController::class, 'ShowRegister']);
+    Route::get('/login/ShowResetPassword', [FClientController::class, 'ShowResetPassword'])->name('frontend.client.showresetpassword');
+    Route::get('/showRegister', [FClientController::class, 'showRegister'])->name('frontend.client.show_register');
     Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
     Route::get('/editPass', [FClientController::class, 'edit'])->name('frontend.client.editClient');
     Route::put('/updateClient', [FClientController::class, 'updatePassword'])->name('frontend.client.updatePassword');
@@ -109,6 +110,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/camper/detail/client/{id}', [FC_CamperController::class, 'detail'])->name('frontend.camper.detail');
     Route::get('/details_booking_paiement', [FC_CamperController::class, 'bookingPaiement'])->name('frontend.camper.booking_paiement');
     Route::get('/bookmark_client', [FC_bookmarkController::class, 'index'])->name('frontend.clients.bookmark');
+    Route::post('/ajax/addBookmarks', [FC_bookmarkController::class, 'addOrRemove'])->name('frontend.camper.add_bookmark');
 
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
@@ -376,3 +378,7 @@ Route::group(['middleware' => 'Lang'], function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//facebook call
+Route::get('/redirect/{service}', [App\Http\Controllers\SocialController::class, 'redirect']);
+Route::get('/callback/{service}', [App\Http\Controllers\SocialController::class, 'callback']);

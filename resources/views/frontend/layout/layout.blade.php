@@ -14,6 +14,9 @@
 <link rel="stylesheet" href="{{asset('frontend/asset/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/asset/css/main-color.css')}}" id="colors">
 <link rel="stylesheet" href="{{asset('frontend/asset/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
@@ -266,16 +269,16 @@ $(function() {
 		$('#booking-date-range').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 
 	}
-    cb(start, end);
+    //cb(start, end);
     $('#booking-date-range').daterangepicker({
     	"opens": "left",
 	    "autoUpdateInput": false,
 	    "alwaysShowCalendars": true,
-        startDate: start,
-        endDate: end,
+//        startDate: start,
+  //      endDate: end,
     }, cb);
 
-    cb(start, end);
+    //cb(start, end);
 
 });
 

@@ -39,14 +39,14 @@
 							<div class="col-md-6">
 								<h3>Camping table</h3>
 								<div class="checkboxes in-row margin-bottom-18">
-									<input id="check-a" type="checkbox" name="check">
+									<input id="is_camping_table_exist" name="is_camping_table_exist" type="checkbox" name="check">
 									<label for="check-a">Camping table</label>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<h3>Camping chairs</h3>
 								<div class="checkboxes in-row margin-bottom-18">
-									<input id="check-a" type="checkbox" name="check">
+									<input id="is_camping_chairs_exist" name ="is_camping_chairs_exist" type="checkbox" name="check">
 									<label for="check-a">Camping chairs</label>
 								</div>
 

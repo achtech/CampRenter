@@ -19,7 +19,7 @@
 							<ol>
 								<li style="padding: 8px 5px !important;{{ $active_page == 'fill_in_vehicle' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('fill_in_vehicle')}}">{{trans('front.vehicle_data')}}</a></li>
 								<li style="padding: 8px 5px !important;{{ $active_page == 'equipment' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('equipment')}}">{{trans('front.equipment')}}</a></li>
-								<li style="padding: 8px 5px !important;{{ $active_page == 'conditions' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('accessories')}}">{{trans('front.extras')}}</a></li>
+								<li style="padding: 8px 5px !important;{{ $active_page == 'accessories' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('accessories')}}">{{trans('front.extras')}}</a></li>
 								<li style="padding: 8px 5px !important;{{ $active_page == 'description' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('description')}}">{{trans('front.description')}}</a></li>
 							</ol>
 						</div>
@@ -40,7 +40,7 @@
 					<li style="padding: 8px 5px !important;{{ $active_page == 'insurance_front' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('insurance_front')}}">{{trans('front.insurance')}}</a></li>
 					<li style="padding: 8px 5px !important;{{ $active_page == 'rental_terms' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('rental_terms')}}">{{trans('front.rental_terms')}}</a></li>
 					<li style="padding: 8px 5px !important;{{ $active_page == 'conditions' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('conditions')}}">{{trans('front.terms')}}</a></li>
-					<li style="padding: 8px 5px !important;{{ $active_page == 'calendar' ? ' background-color: aliceblue;' : '' }}"><a href="">{{trans('front.calendar')}}</a></li>
+					<li style="padding: 8px 5px !important;{{ $active_page == 'calendar' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('calendar')}}">{{trans('front.calendar')}}</a></li>
 					</ol>
 				</div>
 			</li>

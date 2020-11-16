@@ -21,7 +21,7 @@ class FClientController extends DefaultLoginController
 
     public function __construct()
     {
-        $this->middleware('guest:client')->except('logout');
+        //$this->middleware('guest:client')->except('logout');
     }
 
     protected function guard()
@@ -35,6 +35,7 @@ class FClientController extends DefaultLoginController
      */
     public function redirectToFacebook()
     {
+
         return Socialite::driver('facebook')->redirect();
     }
     public function login(Request $request)
@@ -66,47 +67,40 @@ class FClientController extends DefaultLoginController
      *
      * @return void
      */
-    public function handleFacebookCallback()
-    {
-        dd(12);
-        try {
 
-            $client = Socialite::driver('facebook')->user();
-
-            $finduser = Client::where('facebook_id', $client->id)->first();
-
-            if ($finduser) {
-
-                Auth::login($finduser);
-
-                return redirect('layout');
-            } else {
-                $newClient = Client::create([
-                    'name' => $client->client_name,
-                    'email' => $client->email,
-                    'facebook_id' => $client->id,
-                    'password' => encrypt($client->password),
-                ]);
-
-                Auth::login($newClient);
-
-                return redirect(route('client.index'));
-            }
-        } catch (Exception $e) {
-            dd($e->getMessage());
-        }
-    }
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
         $input['password'] = password_hash($input['password'], PASSWORD_DEFAULT);
         $client = Client::create($input);
         Mail::to($client['email'])->send(new RegistrationMail($client));
-        return redirect(route('frontend.client.index'));
+        $categories = DB::table('camper_categories')->paginate(10);
+        $campers = DB::table('campers')->where([
+            ['is_confirmed', 1],
+            ['availability', 2],
+        ])->get();
+        $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
+        return view('frontend.auth.login');
     }
     public function completeRegistrationProfile(Request $request)
     {
-        dd($request->all());
+        $id_client = Auth::guard('client')->user()->id;
+        $client = Client::find($id_client);
+        $input = request()->except(['_token', 'action']);
+        $input['password'] = md5($input['password']);
+        if ($input['password'] != $client->password) {
+            return redirect()->back()->with('warning', __('front.invalid_current_password'));
+        }
+        if ($input['password'] == $client->password && $input['new_password'] != null && $input['confirmed_password'] != null) {
+            if ($input['new_password'] == $input['confirmed_password']) {
+                $input['new_password'] = md5($input['new_password']);
+                $input['password'] = $input['new_password'];
+            } else {
+                return redirect()->back()->with('danger', __('front.unsimilar_password'));
+            }
+        }
+        $client->update($input);
+        return redirect(route('clients.user.profile'))->with('success', __('front.profile_updated'));
     }
     public function show($id)
     {
@@ -119,7 +113,7 @@ class FClientController extends DefaultLoginController
         $id = str_replace("=", "", $searched_id);
         return view('frontend.client.edit')->with('client_id', $id);
     }
-    public function ShowRegister(Request $request)
+    public function showRegister()
     {
         $campers = DB::table('campers')->where([
             ['is_confirmed', 1],
@@ -174,11 +168,12 @@ class FClientController extends DefaultLoginController
     }
     public function redirectToGoogle()
     {
+        //dd(12);
         return Socialite::driver('google')->redirect();
     }
     public function handleGoogleCallback()
     {
-        dd(12);
+
         try {
 
             $user = Socialite::driver('google')->user();

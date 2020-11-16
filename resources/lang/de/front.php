@@ -133,4 +133,12 @@ return [
     'Submit Comment' => 'Kommentar senden',
     'blog_comment' => 'Bemerkungen',
     'register_google' => 'Register with Google',
+
+    /*--------------personnal data*/
+    'complete_personnal_data' => 'Complete your personnel data',
+    'name' => 'Name',
+    'building_number' => 'Building number',
+    'postal_code' => 'Postal code',
+    'other' => 'Other',
+
 ];

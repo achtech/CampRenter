@@ -17,6 +17,7 @@
 							</div>
 
 							<!-- Date Range -->
+							
 							<div class="main-search-input-item">
 									<input type="text" id="booking-date-range" name="searchedDate"  placeholder="Check-In - Check-Out" />
 							</div>

@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Camper;
+use App\Models\Client;
 use App\Models\Message;
 use App\Models\User;
+use DB;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use DB;
+use Illuminate\Support\Facades\Session;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -20,19 +23,21 @@ class Controller extends BaseController
     }
     public static function getLabelFromObject($data)
     {
-        $label= $data->label_en;
-        switch(app()->getLocale()){
-            case 'fr' : $label= $data->label_en;break;
-            case 'de' : $label= $data->label_en;break;
-            default : $label= $data->label_en; 
+        $label = $data->label_en;
+        switch (app()->getLocale()) {
+            case 'fr':$label = $data->label_en;
+                break;
+            case 'de':$label = $data->label_en;
+                break;
+            default:$label = $data->label_en;
         }
-        return  $label;
+        return $label;
     }
-    
+
     public static function getLabel($table, $id)
     {
-        $data =DB::table($table)->find($id);
-        return  $data ? self::getLabelFromObject($data) : '';
+        $data = DB::table($table)->find($id);
+        return $data ? self::getLabelFromObject($data) : '';
     }
 
     public static function getMessageCount()
@@ -56,7 +61,15 @@ class Controller extends BaseController
         return $user ? $user->name : '';
     }
 
-    public static function getCamperCategories(){
+    public static function getConnectedClient()
+    {
+        $email = Session::get('_client');
+        $client = Client::where('email', $email)->first();
+        return $client ? $client->client_last_name : '';
+    }
+
+    public static function getCamperCategories()
+    {
         return DB::table('camper_categories')->get();
     }
 

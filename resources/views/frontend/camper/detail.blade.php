@@ -13,9 +13,9 @@
 				<div class="listing-titlebar-title">
 					<h2>{{$camper->camper_name}}<span class="listing-tag">{{App\Http\Controllers\Controller::getLabel('camper_categories',$category->id)}}</span></h2>
 					<span>
-						<a href="#listing-location" class="listing-address">
+						<a href="#" class="listing-address">
 							<i class="fa fa-money"></i>
-							Price per day : {{$camper->price_per_day}}
+							Price per day : {{$camper->price_per_day}} CHF
 						</a>
 					</span>
 					<div class="star-rating" data-rating="{{$rateCamper}}">
@@ -76,6 +76,21 @@
 
 	</div>
 </div>
-
+<script type="text/javascript">
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    
+	function AddOrRemoveBookmark() {
+        var camper_id = {{ $camper->id }};
+		$.ajax({
+                url: '/ajax/addBookmarks',
+                type: 'post',
+                data: {_token: CSRF_TOKEN,camperid: camper_id},
+                success: function(response){
+	                document.getElementById('bookmarkCount').style.visibility = 'visible';
+					$('#bookmarkCount').load(location.href+(' #bookmarkCount'));
+                }
+            });
+	};
+	</script>
 @endsection
 

@@ -1,3 +1,9 @@
+@if(!session('_client'))
+  @php
+    header("location: " . URL::to('/login/client'), true);
+    exit();
+  @endphp
+@endif
 <!DOCTYPE html>
 <head>
 
@@ -109,7 +115,7 @@ $(document).ready(function(){
 <!-- Maps -->
 {{--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnGjgvun3rAKZLKOb_8euCK68TjZBkZ2E&callback=initAutocomplete&libraries=places&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFf_iG_TJJl-Cv_MmnGXk9zQ4yL5AObbw&callback=initAutocomplete&libraries=places&v=weekly"
 ></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>
