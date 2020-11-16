@@ -11,9 +11,9 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="{{asset('frontend/asset/css/style.css')}}">
-<link rel="stylesheet" href="{{asset('frontend/asset/css/main-color.css')}}" id="colors">
-<link rel="stylesheet" href="{{asset('frontend/asset/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
+<link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
+<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -54,37 +54,37 @@
 
 <!-- Scripts
 ================================================== -->
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-3.4.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-migrate-3.1.0.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/mmenu.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/chosen.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/slick.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/rangeslider.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/magnific-popup.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/waypoints.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/counterup.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-ui.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/tooltips.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-migrate-3.1.0.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/mmenu.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/chosen.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/slick.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/rangeslider.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/magnific-popup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/waypoints.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/counterup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/tooltips.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 
 
 <!-- Leaflet // Docs: https://leafletjs.com/ -->
-<script src="{{asset('frontend/asset/scripts/leaflet.min.js')}}"></script>
+<script src="{{asset('js/leaflet.min.js')}}"></script>
 
 <!-- Leaflet Maps Scripts -->
-<script src="{{asset('frontend/asset/scripts/leaflet-markercluster.min.js')}}"></script>
-<script src="{{asset('frontend/asset/scripts/leaflet-gesture-handling.min.js')}}"></script>
-<script src="{{asset('frontend/asset/scripts/leaflet-listeo.js')}}"></script>
+<script src="{{asset('js/leaflet-markercluster.min.js')}}"></script>
+<script src="{{asset('js/leaflet-gesture-handling.min.js')}}"></script>
+<script src="{{asset('js/leaflet-listeo.js')}}"></script>
 
 <!-- Maps -->
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/maps.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/maps.js')}}"></script>
 
 <!-- Leaflet Geocoder + Search Autocomplete // Docs: https://github.com/perliedman/leaflet-control-geocoder -->
-<script src="{{asset('frontend/asset/scripts/leaflet-autocomplete.js')}}"></script>
-<script src="{{asset('frontend/asset/scripts/leaflet-control-geocoder.js')}}"></script>
+<script src="{{asset('js/leaflet-autocomplete.js')}}"></script>
+<script src="{{asset('js/leaflet-control-geocoder.js')}}"></script>
 
 <!-- Google Autocomplete -->
 <script>
@@ -100,7 +100,7 @@
     });
 
 	if ($('.main-search-input-item')[0]) {
-	    setTimeout(function(){ 
+	    setTimeout(function(){
 	        $(".pac-container").prependTo("#autocomplete-container");
 	    }, 300);
 	}
@@ -210,7 +210,7 @@ function showDiv() {
 	}
 	</script>
 		<!-- Typed Script -->
-	<script type="text/javascript" src="{{asset('frontend/asset/scripts/typed.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/typed.js')}}"></script>
 	<script>
 	var typed = new Typed('.typed-words', {
 	strings: [""," "," "],
@@ -226,7 +226,7 @@ function showDiv() {
 
 <!-- Style Switcher
 ================================================== -->
-<script src="{{asset('frontend/asset/scripts/switcher.js')}}"></script>
+<script src="{{asset('js/switcher.js')}}"></script>
 
 <div id="style-switcher">
 	<h2>Color Switcher <a href="#"><i class="sl sl-icon-settings"></i></a></h2>
@@ -255,8 +255,8 @@ function showDiv() {
 </div>
 <!-- Style Switcher / End -->
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
-<script src="{{asset('frontend/asset/scripts/moment.min.js')}}"></script>
-<script src="{{asset('frontend/asset/scripts/daterangepicker.js')}}"></script>
+<script src="{{asset('js/moment.min.js')}}"></script>
+<script src="{{asset('js/daterangepicker.js')}}"></script>
 
 <script>
 $(function() {
