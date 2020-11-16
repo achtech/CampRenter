@@ -352,5 +352,5 @@ return [
     'menu_camper_sub_category' => 'Unterkategorie',
     'edit_camper_sub_category.breadcrumb' => 'Unterkategorie bearbeiten',
     'message_delete_camperSubCategory' => 'Möchten Sie diese Unterkategorie löschen?',
-
+    'send_message.breadcrumb' => 'Nachricht senden',
 ];

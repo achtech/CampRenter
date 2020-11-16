@@ -6,7 +6,6 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="mailto:{{$datas->email}}?subject={{$datas->subject}}">
                         <div class="form-body">
                             <div class="form-group row">
                                 <label class="col-md-2">{{ __('backend.Contact name') }} : </label>
@@ -15,7 +14,7 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2">{{ __('backend.From') }} </label>
-                            <label class="col-md-2">: {{$datas->email }} </label>
+                            <input class="col-md-2" id="email" name="email" value="{{$datas->email }}" style="border: none;color: #7c8798;"/> 
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2">{{ __('backend.Date sent') }} </label>
@@ -35,11 +34,11 @@
                         </div>
                         <div class="form-actions">
                             <div class="text-right">
-                                <button  type="submit" class="btn btn-info">{{ __('backend.Answer') }}</button>
+                                <a href="{{ route('message.sendEmailToClient',$datas->id) }}" class="btn btn-info">{{ __('backend.Answer') }}</a>
                                 <a href="{{ route('message.index') }}" class="btn btn-dark">{{ __('backend.Cancel') }}</a>
                             </div>
                         </div>
-                </form>
+
             </div>
         </div>
     </div>

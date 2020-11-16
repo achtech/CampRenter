@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
 use App\Http\Controllers\Controller;
 
 use App\Models\Message;
-use Mail;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -53,20 +55,18 @@ class MessageController extends Controller
         }
         return view('admin.message.show')->with('datas', $datas)->with('messageId', $id);
     }
-    public function sendEmail()
+    public function sendEmail(Request $request)
     {
-        $data = array('name' => "Our Code World");
-        // Path or name to the blade template to be rendered
-        $template_path = 'message.index';
-        $datas = Message::paginate(10);
-        Mail::send($template_path, $data, function ($message) {
-            // Set the receiver and subject of the mail.
-            $message->to('achraf.saloumi@exo-it.com', 'Receiver Name')->subject('Laravel HTML Mail');
-            // Set the sender
-            $message->from('noura.bouchbaat@exo-it.com', 'Our Code World');
+        $GLOBALS['from_email'] = $request->from_email;
+        $GLOBALS['to_email'] = $request->to_email;
+        $GLOBALS['subject'] = $request->subject;
+        $datas = Message::where('email', $GLOBALS['to_email'])->first();
+        Mail::raw($request->message, function ($message) {
+            $message->from($GLOBALS['from_email'], 'Camper Team');
+            $message->to($GLOBALS['to_email']);
+            $message->subject($GLOBALS['subject']);
         });
-        $datas = Message::paginate(10);
-        return view('admin.message.index')->with('datas', $datas);
+        return view('admin.message.show')->with('datas', $datas)->with('messageId', $datas->id);
     }
     /**
      * Store a newly created resource in storage.
@@ -109,13 +109,18 @@ class MessageController extends Controller
      */
     public function destroy(Request $request)
     {
-        $id = $request ? $request->id: 0;
+        $id = $request ? $request->id : 0;
         $data = Message::find($request->id);
         if (empty($data)) {
             return redirect(route('message.index'));
         }
         $data->delete();
         return redirect(route('message.index'));
-
+    }
+    public function sendEmailToClient($id)
+    {
+        $data = Message::find($id);
+        return view('admin.message.send')
+            ->with('data', $data);
     }
 }
