@@ -3,11 +3,6 @@
 	<!-- Content
 	================================================== -->
 	<div class="dashboard-content">
-	@if(session('_client'))
-         {{session('_client')}}
-         @else
-         nn session
-         @endif
 		<!-- Titlebar -->
 		<div id="titlebar">
 			<div class="row">
