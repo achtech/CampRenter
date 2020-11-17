@@ -56,7 +56,9 @@
 					   </li>
 
 					   <li style="float: right">
-						<a  href="#" style="margin-left: 128px;" class="user-name"><span style="white-space: nowrap;margin-top: 6px;"><img src="{{asset('images/clients/default.jpg')}}" alt="">{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClientLastName()}}</span></a>
+						<a  href="#" style="margin-left: 128px;" class="user-name">
+							<span style="white-space: nowrap;margin-top: 6px;"><img src="{{asset('images/clients/default.jpg')}}" alt="">{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClientLastName()}}</span>
+							<span style="width:20px;height:20px;background:red">{{App\Http\Controllers\Controller::getNotificationCount()}}</span></a>
 						  <ul>
 							  <li><a href="{{ route('clients.user.profile') }}" ><i class="sl sl-icon-settings"></i>{{ __('front.my_profile') }} </a></li>
 							  <li><a href="{{ route('frontend.clients.message') }}"><i class="sl sl-icon-envelope-open"></i> {{ __('front.my_message') }}</a></li>

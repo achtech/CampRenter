@@ -34,19 +34,20 @@
 					<div class="messages-inbox">
 
 						<ul>
-							<li class="unread">
-								<a href="{{route('frontend.clients.message.detail')}}">
-									<div class="message-avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
+							@foreach($datas as $data)
+							<li class="{{$data->status}}">
+								<a href="{{route('frontend.clients.notification.detail',$data->id)}}">									<div class="message-avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
 
 									<div class="message-by">
 										<div class="message-by-headline">
-											<h5>Kathy Brown <i>Unread</i></h5>
-											<span>2 hours ago</span>
+											<h5>{{$data->id_renter}} @if($data->status == "unread") <i>Unread</i> @endif</h5>
+											<span>{{date('j F Y h:m:s', strtotime($data->created_at))}}</span>
 										</div>
-										<p>Hello, I want to talk about your great listing! Morbi velit eros, sagittis in facilisis non, rhoncus posuere ultricies...</p>
+										<p>{{$data->message}}</p>
 									</div>
 								</a>
 							</li>
+							@endforeach
 
 							<li class="unread">
 								<a href="dashboard-messages-conversation.html">
