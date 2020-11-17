@@ -110,7 +110,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/ajax/addBookmarks', [FC_bookmarkController::class, 'addOrRemove'])->name('frontend.camper.add_bookmark');
 
     /** Backend */
-    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
+    //Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     Route::get('/logoutC', '\App\Http\Controllers\Auth\LoginController@clientLogout')->name('client.logout');
     Route::get('/dashboard', function () {
@@ -121,7 +121,7 @@ Route::group(['middleware' => 'Lang'], function () {
         }
     });
 
-    // Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
+    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/confirm/{id}', 'App\Http\Controllers\admin\DashboardController@confirmCamper')->name('dashboard.confirm');
     //Route::get('/lastBookings', 'App\Http\Controllers\admin\DashboardController@getLastBookings')->name('dashboard');
 

@@ -57,16 +57,16 @@
                                     <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
                                 </div>
                             </div>
-                                <img style="max-width:100%" src="/images/camper_categories/{{$data->image}}"  style="with:200px"/>
+                                <img style="max-width:100%" src="/public/images/camper_categories/{{$data->image}}"  style="with:200px"/>
                     </div>
                 </div>
-            </div>  
+            </div>
 
             <div class="col-sm-12">
-                
-               
+
+
                 {{Form::submit(__('backend.Update'),['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
-                
+
                 <a href="{{ route('camperCategory.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>

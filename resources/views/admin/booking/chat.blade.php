@@ -30,7 +30,7 @@
                                 <!--chat Row -->
                                 <li class="chat-item list-style-none mt-3">
                                     <div class="chat-img d-inline-block"><img
-                                            src="{{ asset('images/avatar') }}/{{$item->image_renter}}" alt="user"
+                                            src="{{ asset('public/images/avatar') }}/{{$item->image_renter}}" alt="user"
                                             class="rounded-circle" width="45">
                                     </div>
                                     <div class="chat-content d-inline-block pl-3">
