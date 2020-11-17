@@ -27,7 +27,8 @@
 					<ul id="responsive" style="width: 190%;">
 
 						<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="{{route('home.index')}}">{{trans('front.menu_home')}}</a></li>
-						<li><a  class="{{ $activePage == 'camperSearch' ? ' current' : '' }}" href="#">{{trans('front.menu_rent')}}</a>
+						<li><a  class="{{ $activePage == 'camperSearch' ? ' current' : '' }}" href="#">
+								{{trans('front.menu_rent')}}</a>
 							<ul>
 								@foreach(App\Http\Controllers\Controller::getCamperCategories() as $cat)
 									<li><a href="{{route('frontend.camper.searchByCategory',$cat->id)}}">{{App\Http\Controllers\Controller::getLabelFromObject($cat)}}</a></li>
@@ -48,7 +49,7 @@
                         @else
 
 					   <li style="float: right">
-						<a  href="#" style="margin-left: 128px;" class="user-name"><span style="white-space: nowrap;margin-top: 6px;"><img src="{{asset('images/clients/default.jpg')}}" alt="">{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClient()}}</span></a>
+						<a  href="#" style="margin-left: 128px;" class="user-name"><span style="white-space: nowrap;margin-top: 6px;"><img src="{{asset('images/clients/default.jpg')}}" alt="">{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClientLastName()}}</span></a>
 						  <ul>
 							  <li><a href="{{ route('clients.user.profile') }}" ><i class="sl sl-icon-settings"></i>{{ __('front.my_profile') }} </a></li>
 							  <li><a href="{{ route('frontend.clients.message') }}"><i class="sl sl-icon-envelope-open"></i> {{ __('front.my_message') }}</a></li>

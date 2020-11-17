@@ -64,10 +64,13 @@ class Controller extends BaseController
     public static function getConnectedClient()
     {
         $email = Session::get('_client');
-        $client = Client::where('email', $email)->first();
-        return $client ? $client->client_last_name : '';
+        return Client::where('email', $email)->first();
     }
 
+    public static function getConnectedClientLastName(){
+        $client = self::getConnectedClient();
+        return $client ? $client->client_last_name : '';
+    }
     public static function getCamperCategories()
     {
         return DB::table('camper_categories')->get();
@@ -81,4 +84,5 @@ class Controller extends BaseController
             ->orderby('campers.created_at')
             ->get();
     }
+
 }
