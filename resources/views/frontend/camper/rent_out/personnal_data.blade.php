@@ -47,6 +47,13 @@
 							<div class="col-md-6">
 								<input type="text" name="client_name" placeholder="{{trans('front.first_name')}}">
 							</div>
+						</li>
+						<li>
+							<div class="row">
+								<!-- Phone -->
+								<div class="col-md-8">
+									<input type="text" placeholder="{{trans('front.street')}}">
+								</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
@@ -65,10 +72,8 @@
 							<div class="col-md-4">
 								<input type="text" name="street_number" placeholder="{{trans('front.street_um')}}">
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="row">
+						</li>
+						<li>
 							<!-- Phone -->
 							<div class="col-md-8">
 								<input type="text" name="location" placeholder="{{trans('front.location')}}">
@@ -110,6 +115,14 @@
 							<div class="col-md-5">
 								<input type="text" name="day_of_birth" placeholder="{{trans('front.day')}}">
 							</div>
+						</li>
+					</ul>
+					<ul style="list-style-type:none; margin-top:30px; padding-left: 0px;">
+						<li>
+						{{trans('front.additional_info')}}
+						</li>
+						<li>
+							<div class="checkboxes in-row margin-bottom-20">
 
 							<!-- Website -->
 							<div class="col-md-3">
@@ -121,23 +134,20 @@
 						</div>
 					</li>
 
-					<li>
-						<!-- Phone -->
-						<h3>{{trans('front.profile_pic')}}</h3>
-						<div class="submit-section" style="margin-top:40px;">
-							<div>
-								<a href="" class="button medium border">{{trans('front.upload')}}</a>
+						</li>
+						<li>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" placeholder="Location">
+								</div>
 							</div>
-							<div class="user-profile-avatar"  style="float:right;"><img src="" alt=""></div>
-						</div>
-					</li>
-				</ul>
-				<ul style="list-style-type:none; margin-top:30px; padding-left: 0px;">
-					<li>
-					{{trans('front.additional_info')}}
-					</li>
-					<li>
-						<div class="checkboxes in-row margin-bottom-20">
+						</li>
+						<li>
+							<div class="row">
+								<!-- Phone -->
+								<div class="col-md-8">
+									<input type="text" placeholder="Location">
+								</div>
 
 							<input id="professional_rental_company" type="checkbox" name="professional_rental_company">
 							<label for="professional_rental_company">{{trans('front.pro_rental_campany')}}</label>
@@ -225,21 +235,87 @@
 					</li>
 					<li>
 
-							<div class="checkboxes in-row">
-								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">{{trans('front.german')}}</label>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">{{trans('front.german')}}</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">{{trans('front.english')}}</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">{{trans('front.italian')}}</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">{{trans('front.french')}}</label>
+								</div>
+						</li>
+						<li>
+							<h3>{{trans('front.where_see_us')}}</h3>
+						</li>
+						<li>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Facebook</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">{{trans('front.billboard')}}</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">{{trans('front.print_advertisement')}}</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">TV</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Newsletter</label>
+								</div>
+								<div class="checkboxes in-row">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Google</label>
+								</div>
+								<div class="checkboxes in-row ">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">YouTube</label>
+								</div>
+								<div class="checkboxes in-row ">
+									<input id="check-a" type="checkbox" name="check">
+									<label for="check-a">Flyer</label>
+									<h6>{{trans('front.where_you_came')}}</h6>
+								</div>
+						</li>
+						<li>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" placeholder="IBAN">
+								</div>
 							</div>
-							<div class="checkboxes in-row">
-								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">{{trans('front.english')}}</label>
+						</li>
+						<li>
+							<div class="row">
+								<h3 class="col-md-12">{{trans('front.who_are_you')}}</h3>
 							</div>
-							<div class="checkboxes in-row">
-								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">{{trans('front.italian')}}</label>
+						</li>
+						<li>
+							<div class="row">
+								<div class="col-md-12">
+									<textarea class="WYSIWYG" name="summary" cols="20" rows="1" id="summary" spellcheck="true"></textarea>
+								</div>
 							</div>
-							<div class="checkboxes in-row">
-								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">{{trans('front.french')}}</label>
+						</li>
+						<li>
+							<div class="row">
+								<div class="col-md-12">
+								<div style="float: right;">
+									<a href="{{route('camper_steps')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
+									<a href="{{route('rent_out')}}" class="button border">{{trans('front.cancel')}}</a>
+								</div>
 							</div>
 					</li>
 					<li>

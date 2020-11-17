@@ -39,6 +39,10 @@ $(document).ready(function(){
 });
 </script>
 
+<script>
+  const attributID = div.getAttribute("data-id");
+    alert(attributID);
+</script>
 </head>
 
 <body>

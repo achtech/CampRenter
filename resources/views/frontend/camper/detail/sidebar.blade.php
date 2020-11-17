@@ -5,41 +5,43 @@
 
 <!-- Book Now -->
 <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
-    <h3><i class="fa fa-calendar-check-o "></i> Booking</h3>
-    <div class="row with-forms  margin-top-0">
+    <form method="POST"  action="{{route('frontend.add_request_booking',$camper->id)}}" >
+    @csrf
+        <h3><i class="fa fa-calendar-check-o "></i> Booking</h3>
+        <div class="row with-forms  margin-top-0">
 
-        <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
-        <div class="col-lg-12 booking_date">
-            <input type="text" id="booking-date-range" name="searchedDate"  placeholder="Check-In - Check-Out" value=""/>
-        </div>
-
-        <!-- Panel Dropdown -->
-        <div class="col-lg-12">
-            <div class="panel-dropdown">
-                <a href="#">Guests <span class="qtyTotal" name="qtyTotal">1</span></a>
-                <div class="panel-dropdown-content">
-
-                    <!-- Quantity Buttons -->
-                    <div class="qtyButtons">
-                        <div class="qtyTitle">Adults</div>
-                        <input type="text" name="qtyInput" value="1">
-                    </div>
-
-                    <div class="qtyButtons">
-                        <div class="qtyTitle">Childrens</div>
-                        <input type="text" name="qtyInput" value="0">
-                    </div>
-
-                </div>
+            <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
+            <div class="col-lg-12 booking_date">
+                <input type="text" id="booking-date-range" 
+                        name="searchedDate"  placeholder="Check-In - Check-Out" 
+                        />
             </div>
+            <!--
+            <div class="col-lg-12 booking_date" id="booking_devis">
+                <div class="col-lg-8 booking_date">
+                    <label>Number of night</label>
+                </div>
+            
+                <div class="col-lg-4 booking_date">
+                    <span id="numberdays">10</span>
+                </div>
+                <div class="col-lg-8 booking_date">
+                    <label>Total</label>
+                </div>
+            
+                <div class="col-lg-4 booking_date">
+                    <span id="priceBooking">100 CHF</span>
+                </div>
+            </div>-->
         </div>
-        <!-- Panel Dropdown / End -->
-
-    </div>
-    
-    <!-- Book Now -->
-    <a href="{{route('frontend.camper.booking_paiement')}}" class="button book-now fullwidth margin-top-5">Request To Book</a>
-    
+        
+        <!-- Book Now -->
+        @if(!session('_client'))
+        <a href="/showlogin/client" class="button book-now fullwidth margin-top-5">Request To Book</a>
+        @else
+        <button type="submit" class="button book-now fullwidth margin-top-5">Request To Book</button>
+        @endif
+    </form>
     <!-- Estimated Cost -->
 </div>
 <!-- Book Now / End -->
