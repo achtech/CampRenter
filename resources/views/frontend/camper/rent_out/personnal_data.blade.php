@@ -32,7 +32,7 @@
 				<ul style="list-style-type:none; padding-left: 0px;">
 					<li>
 						<div class="row opening-day">
-							<div class="col-md-10">
+							<div class="col-md-12">
 								<select class="chosen-select" data-placeholder="Sex" name="sex">
 									<option label="Opening Time"></option>
 									<option value="female">{{trans('front.female')}}</option>
@@ -47,15 +47,6 @@
 							<div class="col-md-6">
 								<input type="text" name="client_name" placeholder="{{trans('front.first_name')}}">
 							</div>
-						</li>
-						<li>
-							<div class="row">
-								<!-- Phone -->
-								<div class="col-md-8">
-									<input type="text" placeholder="{{trans('front.street')}}">
-								</div>
-
-							<!-- Website -->
 							<div class="col-md-6">
 								<input type="text" name="client_last_name" placeholder="{{trans('front.last_name')}}">
 							</div>
@@ -72,8 +63,10 @@
 							<div class="col-md-4">
 								<input type="text" name="street_number" placeholder="{{trans('front.street_um')}}">
 							</div>
-						</li>
-						<li>
+						</div>
+					</li>
+					<li>
+						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-8">
 								<input type="text" name="location" placeholder="{{trans('front.location')}}">
@@ -112,20 +105,11 @@
 						<!-- Phone -->
 						<h3>{{trans('front.date_birth')}}</h3>
 						<div class="row opening-day">
-							<div class="col-md-5">
+							<div class="col-md-4">
 								<input type="text" name="day_of_birth" placeholder="{{trans('front.day')}}">
 							</div>
-						</li>
-					</ul>
-					<ul style="list-style-type:none; margin-top:30px; padding-left: 0px;">
-						<li>
-						{{trans('front.additional_info')}}
-						</li>
-						<li>
-							<div class="checkboxes in-row margin-bottom-20">
-
 							<!-- Website -->
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<input type="text" name="month_of_birth" placeholder="{{trans('front.month')}}">
 							</div>
 							<div class="col-md-4">
@@ -133,8 +117,18 @@
 							</div>
 						</div>
 					</li>
+				</ul>
+				<ul style="list-style-type:none; margin-top:30px; padding-left: 0px;">
+					<li>
+						{{trans('front.additional_info')}}
+					</li>
+					<li>
+						<div class="checkboxes in-row margin-bottom-20">
 
-						</li>
+							
+						</div>
+					</li>
+
 						<li>
 							<div class="row">
 								<div class="col-md-12">

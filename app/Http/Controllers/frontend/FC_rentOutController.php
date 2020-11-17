@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Camper;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class FC_rentOutController extends Controller
