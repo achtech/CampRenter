@@ -23,6 +23,7 @@ class Client extends Authenticatable
         'driving_licence_image',
         'status',
         'id_avatars',
+        'photo',
         'created_by',
         'updated_by',
         'created_at',

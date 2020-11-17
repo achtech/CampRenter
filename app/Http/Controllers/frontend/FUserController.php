@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Avatar;
 use App\Models\Client;
 
 class FUserController extends Controller
@@ -12,6 +13,9 @@ class FUserController extends Controller
     {
         $clientId = 1; //auth()->user()->id;
         $client = Client::find($clientId);
-        return view('frontend.clients.user.index')->with('client', $client);
+        $avatars = Avatar::get();
+        return view('frontend.clients.user.index')
+            ->with('avatars', $avatars)
+            ->with('client', $client);
     }
 }

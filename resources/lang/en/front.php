@@ -313,5 +313,8 @@ return [
     'platform_web' => 'Web:',
     'platform_email' => 'E-Mail:',
     'contact_form' => 'Contact Form',
-    'submit_message' => 'Submit Message'
+    'submit_message' => 'Submit Message',
+    'change_password' => 'Change Password',
+    'edit_profile' => 'Edit Profile',
+    'upload_image_national' => 'National Image'
 ];

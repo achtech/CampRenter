@@ -3371,7 +3371,7 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
     color: #66676b;
 }
 
-.input-with-icon.date_range_search i{
+.input-with-icon.date_range_search i {
     position: absolute;
     right: 1px;
     left: auto;
@@ -22482,4 +22482,24 @@ a::after {
     width: 62%;
     padding-top: 5px;
     font-size: 16px;
+}
+.avatar {
+    width: 90px !important;
+    height: 58px !important;
+}
+[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type="radio"] + img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type="radio"]:checked + img {
+    outline: 2px solid #38b6cd;
 }

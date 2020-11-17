@@ -47,55 +47,88 @@
 						{{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@completeRegistrationProfile','method'=>'POST']) }}
 
 						<!-- Avatar -->
-						<div class="edit-profile-photo">
-							<img src="images/clients/default.jpg" alt="">
-							<div class="change-photo-btn">
-								<div class="photoUpload">
-								    <span><i class="fa fa-upload"></i> {{ __('front.upload_photos') }}</span>
-								    <input type="file" id="id_avatars" name="id_avatars" class="upload" />
+					<div class="row">
+						<div class="col-md-6">
+							<div class="edit-profile-photo">
+								<img src="images/clients/default.jpg" alt="" id="client_image">
+								<div class="change-photo-btn">
+									<div class="photoUpload">
+								    	<span><i class="fa fa-upload"></i> {{ __('front.upload_photos') }}</span>
+								    	<input type="file" id="photo" name="photo" class="upload" onchange="readURL(this);" />
 								</div>
 							</div>
 						</div>
-
-
-
+					</div>
+					<div class="col-md-6">
+						<div class="edit-profile-photo">
+							<div class="row" style="height: 62px;">
+								@foreach($avatars as $elem)
+								<div class="col-md-4" >
+									<label>
+										<input type="radio" name="id_avatars" id="id_avatars" value="{{$elem->image}}" checked>
+										<img src="images/clients/{{$elem->image}}" alt="" class="avatar">
+									</label>
+								</div>
+								@endforeach
+							</div>
+							
+							</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="edit-profile-photo">
+							<img src="images/clients/default.jpg" alt="" id="client_image">
+							<div class="change-photo-btn">
+								<div class="photoUpload">
+									<span><i class="fa fa-upload"></i> {{ __('front.upload_image_national') }}</span>
+									<input type="file" id="photo" name="photo" class="upload" onchange="readURL(this);" />
+							</div>
+						</div>
+					</div>
+				</div></div>
+						<div class="my-profile dashboard-list-box-static" style="padding-left: 1px;">
+							<label>{{ __('front.profil_name') }}</label>
+							<input id="client_name" name="client_name" class="form-control" value="{{$client['client_name']}}" type="text">
+							<label>{{ __('front.profil_last_name') }}</label>
+							<input  id="client_last_name" name="client_last_name" class="form-control" value="{{$client['client_last_name']}}" type="text">
+							<label>{{ __('front.profil_phone') }}</label>
+							<input id="phone" name="phone" class="form-control" type="tel">
+							<label>{{ __('front.profil_email') }}</label>
+							<input  id="email" name="email" class="form-control" value="{{$client['email']}}" type="text" disabled>
+						</div>
+						{{Form::submit(__('front.save_profile_changes'),['style'=>'width: 100%;','class'=>'button margin-top-15','name' => 'action'])}}
+						{{ Form::close() }}
 					</div>
 				</div>
 			</div>
 <!-- Change Password -->
-<div class="col-lg-6 col-md-12">
+
+<!--<div style="visibility: hidden;">s</div> -->
+<div class="col-lg-6 col-md-12" >
 	<div class="dashboard-list-box margin-top-0">
-		<h4 class="gray">{{ __('front.changes_password') }}</h4>
+		<h4 class="gray">{{ __('front.profile_details') }}</h4>
 		<div class="dashboard-list-box-static">
+			{{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@completeRegistrationProfile','method'=>'POST']) }}
 
 			<!-- Change Password -->
 			<div class="my-profile">
-				<label class="margin-top-0">{{ __('front.current_password') }}</label>
-				<input type="password" id="password" name="password" >
-
-				<label>{{ __('front.new_password') }}</label>
-				<input type="password" id="new_password" name="new_password">
-
-				<label>{{ __('front.confirm_new_password') }}</label>
-				<input type="password" id="confirmed_password" name="confirmed_password">
-
+				<label>{{ __('front.profil_name') }}</label>
+							<input id="client_name" name="client_name" class="form-control" value="{{$client['client_name']}}" type="text">
+							<label>{{ __('front.profil_last_name') }}</label>
+							<input  id="client_last_name" name="client_last_name" class="form-control" value="{{$client['client_last_name']}}" type="text">
+							<label>{{ __('front.profil_phone') }}</label>
+							<input id="phone" name="phone" class="form-control" type="tel">
+							<label>{{ __('front.profil_email') }}</label>
+							<input  id="email" name="email" class="form-control" value="{{$client['email']}}" type="text" disabled>
+						
 			</div>
-
-		</div>
-	</div>
-</div>
-<div style="visibility: hidden;">s</div>
-
-<!-- Change Password -->
-<div class="col-lg-6 col-md-12">
-	<div class="dashboard-list-box margin-top-0">
-		<h4 class="gray">{{ __('front.save_profile_changes') }}</h4>
-		<div class="dashboard-list-box-static">
-			{{Form::submit(__('front.save_profile_changes'),['style'=>'width: 100%;','class'=>'button margin-top-15','name' => 'action'])}}
+			{{Form::submit(__('front.change_password'),['style'=>'width: 100%;','class'=>'button margin-top-15','name' => 'action'])}}
 			{{ Form::close() }}
 		</div>
 	</div>
 </div>
+
 			<!-- Copyrights -->
 			@include('frontend.layout.footer_panel')
 
@@ -103,5 +136,19 @@
 
 	</div>
 	<!-- Content / End -->
+<script>
+	 function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#client_image')
+                        .attr('src', e.target.result)
+                        .width(200)
+                        .height(200);
+                };
 
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
 @endsection
