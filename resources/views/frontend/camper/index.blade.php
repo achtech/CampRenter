@@ -14,11 +14,7 @@
 			<P>
 				{{trans('front.text_content_1_2')}}
 			</p>
-			@if(session('_client'))
 			<a class="button" href="{{route('rent_out')}}">{{trans('front.rent_out_camper')}}</a>
-			@else
-			<a class="button" href="{{url('login/client')}}">{{trans('front.rent_out_camper')}}</a>
-			@endif
 		</div>
 		<div class="col-md-6">
 			<div>
