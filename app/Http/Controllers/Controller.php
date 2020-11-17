@@ -25,11 +25,14 @@ class Controller extends BaseController
     {
         $label = $data->label_en;
         switch (app()->getLocale()) {
-            case 'fr':$label = $data->label_en;
+            case 'fr':
+                $label = $data->label_en;
                 break;
-            case 'de':$label = $data->label_en;
+            case 'de':
+                $label = $data->label_en;
                 break;
-            default:$label = $data->label_en;
+            default:
+                $label = $data->label_en;
         }
         return $label;
     }
@@ -67,7 +70,8 @@ class Controller extends BaseController
         return Client::where('email', $email)->first();
     }
 
-    public static function getConnectedClientLastName(){
+    public static function getConnectedClientLastName()
+    {
         $client = self::getConnectedClient();
         return $client ? $client->client_last_name : '';
     }
@@ -84,5 +88,4 @@ class Controller extends BaseController
             ->orderby('campers.created_at')
             ->get();
     }
-
 }

@@ -87,27 +87,14 @@ class FClientController extends DefaultLoginController
     public function completeRegistrationProfile(Request $request)
     {
         $client = Controller::getConnectedClient();
-
+        $profil_birth_date = $client->day_of_birth . '/' . $client->month_of_birth . '/' . $client->year_of_birth;
         $input = request()->except(['_token', 'action']);
-        //dd($input);
-        // $input['password'] = md5($input['password']);
-        // if ($input['password'] != $client->password) {
-        //     return redirect()->back()->with('warning', __('front.invalid_current_password'));
-        // }
-        // if ($input['password'] == $client->password && $input['new_password'] != null && $input['confirmed_password'] != null) {
-        //     if ($input['new_password'] == $input['confirmed_password']) {
-        //         $input['new_password'] = md5($input['new_password']);
-        //         $input['password'] = $input['new_password'];
-        //     } else {
-        //         return redirect()->back()->with('danger', __('front.unsimilar_password'));
-        //     }
-        // }
-        //Storage::disk('public')->put('filename', $input['photo']);
-        $file = request()->file('photo');
         dd($input);
-        $file->store('toPath', ['disk' => 'public']);
+        // $file = request()->file('photo');
+        // dd($input);
+        // $file->store('toPath', ['disk' => 'public']);
         $client->update($input);
-        return view('clients.user.profile')->with('client', $client)->with('avatars', $avatars);
+        return view('clients.user.profile')->with('client', $client)->with('client_status', $client_status);
         //return redirect(route('clients.user.profile'))->with('success', __('front.profile_updated'));
     }
     public function show($id)
