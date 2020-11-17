@@ -5,14 +5,14 @@
 
 <!-- Book Now -->
 <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
-    <form method="POST"  action="{{route('frontend.add_request_booking',$camper->id)}}" >
+    <form method="POST" id="idForm" action="{{route('frontend.add_request_booking',$camper->id)}}" >
     @csrf
         <h3><i class="fa fa-calendar-check-o "></i> Booking</h3>
         <div class="row with-forms  margin-top-0">
 
             <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
             <div class="col-lg-12 booking_date">
-                <input type="text" id="booking-date-range" 
+                <input type="text" id="booking-date-range" required
                         name="searchedDate"  placeholder="Check-In - Check-Out" 
                         />
             </div>
@@ -39,7 +39,7 @@
         @if(!session('_client'))
         <a href="/showlogin/client" class="button book-now fullwidth margin-top-5">Request To Book</a>
         @else
-        <button type="submit" class="button book-now fullwidth margin-top-5">Request To Book</button>
+        <button type="submit" id="btnRequest" class="button book-now fullwidth margin-top-5" >Request To Book</button>
         @endif
     </form>
     <!-- Estimated Cost -->
@@ -60,9 +60,10 @@
 
     <div id="bookmarkCount">
         <button class="like-button " onclick="AddOrRemoveBookmark()">
-            <span  class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}"></span> 
-            Bookmark this listing</button> 
-            <span>{{App\Http\Controllers\frontend\FC_bookmarkController::getBookmarkCamperCount($camper->id)}} people bookmarked this place</span>
+        <span  class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}"></span> 
+            Bookmark this listing
+        </button> 
+        <span>{{App\Http\Controllers\frontend\FC_bookmarkController::getBookmarkCamperCount($camper->id)}} people bookmarked this place</span>
         </div>
         <!-- Share Buttons -->
         <ul class="share-buttons margin-top-40 margin-bottom-0">
