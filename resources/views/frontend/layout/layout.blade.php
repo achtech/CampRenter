@@ -110,91 +110,9 @@
 <!-- Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
 <script>
-	/*var modal = document.getElementById("myModal");
-	var btn = document.getElementById("myBtn");
-	var span = document.getElementsByClassName("close")[0];
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	  if (event.target == modal) {
-		modal.style.display = "none";
-	  }
-	}*/
-	</script>
-	<script>
-	/*	var registerModel = document.getElementById("registerModel");
-		var registerBtn = document.getElementById("register");
-		var registerAfterForgotPassword = document.getElementById("registerAfterForgotPassword");
-		registerAfterForgotPassword.onclick = function() {
-		  registerModel.style.display = "block";
-		}
-		var spanClose = document.getElementsByClassName("close-second-model")[0];
-		registerBtn.onclick = function() {
-		  registerModel.style.display = "block";
-		}
-		spanClose.onclick = function() {
-		  registerModel.style.display = "none";
-		}
-		window.onclick = function(event) {
-		  if (event.target == registerModel) {
-			registerModel.style.display = "none";
-		  }
-		}*/
-	</script>
-	<script>
-	/*	var emailModel = document.getElementById("registerWithEmail");
-		var emailBtn = document.getElementById("registrationEmail");
-		var span = document.getElementsByClassName("close-third-model")[0];
-		var back=document.getElementsByClassName("go-back")[0];
-		emailBtn.onclick = function() {
-		  emailModel.style.display = "block";
-		}
-		span.onclick = function() {
-		  emailModel.style.display = "none";
-		}
-		back.onclick = function() {
-		  emailModel.style.display = "none";
-		}
-		window.onclick = function(event) {
-		  if (event.target == emailModel) {
-			emailModel.style.display = "none";
-		  }
-		} */
-	</script>
-	<script>
-	/*	var paswwordModel = document.getElementById("passwordModel");
-		var passwordBtn = document.getElementById("forget-password");
-		var span = document.getElementsByClassName("close-forget-password-model")[0];
-		var closePopup = document.getElementById("log_in");
-		passwordBtn.onclick = function() {
-		  paswwordModel.style.display = "block";
-		}
-		closePopup.onclick= function() {
-		  paswwordModel.style.display = "none";
-		}
-		span.onclick = function() {
-		  paswwordModel.style.display = "none";
-		}
-		window.onclick = function(event) {
-		  if (event.target == paswwordModel) {
-			paswwordModel.style.display = "none";
-		  }
-		}
-		var log = document.getElementById("log");
-		log.onclick= function() {
-		  paswwordModel.style.display = "none";
-		}*/
-</script>
-<script>
 	$.ajaxSetup({
   		headers: {
-    			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')	
+    			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		  }
 	});
 
