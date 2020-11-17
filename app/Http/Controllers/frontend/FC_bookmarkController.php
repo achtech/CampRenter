@@ -19,14 +19,15 @@ class FC_bookmarkController extends Controller
     }
 
     public static function isBookmarked($id){
-        $clientId = Auth::guard('client') && Auth::guard('client')->user() ? Auth::guard('client')->user()->id : 0;
+        $client = Controller::getConnectedClient();
+        $clientId = $client ? $client->id : 0;
         return DB::table('camper_bookmarks')->where('id_clients',$clientId)->where('id_campers',$id)->get()->count() >0; 
     }
 
     public function addOrRemove(Request $request){
-
         $cb  = new CamperBookmark();
-        $cb->id_clients = Auth::guard('client') && Auth::guard('client')->user() ? Auth::guard('client')->user()->id : 0;
+        $client = Controller::getConnectedClient();
+        $cb->id_clients = $client ? $client->id : 0;
         $cb->id_campers = $request ? $request->camperid : 0;
 
         $bookmark = DB::table('camper_bookmarks')->where('id_clients',$cb->id_clients)->where('id_campers',$cb->id_campers)->first();
@@ -36,6 +37,5 @@ class FC_bookmarkController extends Controller
         }
         else
             $cb->save(); 
-
     }
 }

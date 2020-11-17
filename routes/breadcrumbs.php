@@ -1,6 +1,9 @@
 <?php
 
 // Home
+
+use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+
 Breadcrumbs::for('dashboard', function ($trail) {
     $trail->push(__('backend.dashboard.breadcrumb'), route('dashboard'));
 });
@@ -108,9 +111,9 @@ Breadcrumbs::for('details_camper', function ($trail) {
 });
 
 // Dashboard > Camper > Review Camper
-Breadcrumbs::for('camper_reviews', function ($trail,$camper) {
+Breadcrumbs::for('camper_reviews', function ($trail, $camper) {
     $trail->parent('camper');
-    $trail->push(__('backend.reviews_camper.breadcrumb').": ".$camper->camper_name, route('camper.reviews',$camper->id));
+    $trail->push(__('backend.reviews_camper.breadcrumb') . ": " . $camper->camper_name, route('camper.reviews', $camper->id));
 });
 
 // settings
@@ -337,7 +340,11 @@ Breadcrumbs::for('detail_message', function ($trail, $id) {
     $trail->parent('message');
     $trail->push(__('backend.detail_message.breadcrumb'), route('message.show', $id));
 });
-
+// Message
+Breadcrumbs::for('send_message', function ($trail, $id) {
+    $trail->parent('detail_message', $id);
+    $trail->push(__('backend.send_message.breadcrumb'), route('message.sendEmailToClient', $id));
+});
 // Settings > backup
 Breadcrumbs::for('backup', function ($trail) {
     $trail->parent('settings');

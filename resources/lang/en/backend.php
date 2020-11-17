@@ -121,7 +121,7 @@ return [
     'edit_blog.breadcrumb' => 'Edit blog',
     'reviews_camper.breadcrumb' => 'Reviews',
     'show_blog.breadcrumb' => 'Show blog',
-
+    'send_message.breadcrumb' => 'Send Message',
     /** Menu */
     'Dashboard' => "Dashboard",
     'menu_avatars' => 'Avatars',
@@ -166,7 +166,8 @@ return [
     'no_camper_to_confirm' => 'No campers to confirm',
     'view_camper' => 'View campers',
     'No campers' => 'No campers',
-
+    'Send' => 'Send',
+    'To' => 'To',
     /** BOOKINGS */
     'Booking' => 'Booking',
     'No Bookings' => 'No bookings',

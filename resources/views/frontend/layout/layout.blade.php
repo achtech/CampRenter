@@ -88,7 +88,7 @@
 
 <!-- Google Autocomplete -->
 <script>
-  function initAutocomplete() {
+	function initAutocomplete() {
     var input = document.getElementById('autocomplete-input');
     var autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -110,7 +110,7 @@
 <!-- Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
 <script>
-	var modal = document.getElementById("myModal");
+	/*var modal = document.getElementById("myModal");
 	var btn = document.getElementById("myBtn");
 	var span = document.getElementsByClassName("close")[0];
 	btn.onclick = function() {
@@ -125,10 +125,10 @@
 	  if (event.target == modal) {
 		modal.style.display = "none";
 	  }
-	}
+	}*/
 	</script>
 	<script>
-		var registerModel = document.getElementById("registerModel");
+	/*	var registerModel = document.getElementById("registerModel");
 		var registerBtn = document.getElementById("register");
 		var registerAfterForgotPassword = document.getElementById("registerAfterForgotPassword");
 		registerAfterForgotPassword.onclick = function() {
@@ -145,10 +145,10 @@
 		  if (event.target == registerModel) {
 			registerModel.style.display = "none";
 		  }
-		}
+		}*/
 	</script>
 	<script>
-		var emailModel = document.getElementById("registerWithEmail");
+	/*	var emailModel = document.getElementById("registerWithEmail");
 		var emailBtn = document.getElementById("registrationEmail");
 		var span = document.getElementsByClassName("close-third-model")[0];
 		var back=document.getElementsByClassName("go-back")[0];
@@ -165,10 +165,10 @@
 		  if (event.target == emailModel) {
 			emailModel.style.display = "none";
 		  }
-		}
+		} */
 	</script>
 	<script>
-		var paswwordModel = document.getElementById("passwordModel");
+	/*	var paswwordModel = document.getElementById("passwordModel");
 		var passwordBtn = document.getElementById("forget-password");
 		var span = document.getElementsByClassName("close-forget-password-model")[0];
 		var closePopup = document.getElementById("log_in");
@@ -189,24 +189,19 @@
 		var log = document.getElementById("log");
 		log.onclick= function() {
 		  paswwordModel.style.display = "none";
-		}
+		}*/
 </script>
 <script>
 	$.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
-function showDiv() {
-	if(document.getElementById('client_name').value == "ouma"){
-		document.getElementById('signUpRequirments').style.display = "block";
-	}
+  		headers: {
+    			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')	
+		  }
 	});
+
 	function showDiv() {
-		if(document.getElementById('client_name').value == "ouma"){
+		if(document.getElementById('client_name').value != ""){
 			document.getElementById('signUpRequirments').style.display = "block";
 		}
-
 	}
 	</script>
 		<!-- Typed Script -->
