@@ -9,7 +9,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Campunit</title>
+<title>Campunite</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
@@ -20,13 +20,6 @@
 <link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
     @yield('style')
 
-    <style>
-        #map {
-            width: 95%;
-            height: 450px;
-            background: grey;
-        }
-    </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -39,10 +32,6 @@ $(document).ready(function(){
 });
 </script>
 
-<script>
-  const attributID = div.getAttribute("data-id");
-    alert(attributID);
-</script>
 </head>
 
 <body>
@@ -99,34 +88,34 @@ $(document).ready(function(){
 
 <!-- Scripts
 ================================================== -->
-<script type="text/javascript" src="{{asset('scripts/jquery-3.4.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/jquery-migrate-3.1.0.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/mmenu.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/chosen.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/slick.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/rangeslider.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/magnific-popup.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/waypoints.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/counterup.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/jquery-ui.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/tooltips.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-migrate-3.1.0.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/mmenu.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/chosen.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/slick.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/rangeslider.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/magnific-popup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/waypoints.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/counterup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/tooltips.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 
 <!-- Maps -->
 {{--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4&callback=initAutocomplete&libraries=places&v=weekly"
 ></script>
-<script type="text/javascript" src="{{asset('scripts/infobox.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/markerclusterer.js')}}"></script>
-<script type="text/javascript" src="{{asset('scripts/maps-mypostion.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/maps-mypostion.js')}}"></script>
 
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
-<script src="{{asset('scripts/moment.min.js')}}"></script>
-<script src="{{asset('scripts/daterangepicker.js')}}"></script>
+<script src="{{asset('js/moment.min.js')}}"></script>
+<script src="{{asset('js/daterangepicker.js')}}"></script>
 
 <!-- DropZone | Documentation: http://dropzonejs.com -->
-<script type="text/javascript" src="{{asset('scripts/dropzone.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/dropzone.js')}}"></script>
 
 <script>
 $(function() {
