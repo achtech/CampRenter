@@ -36,11 +36,14 @@
 						<ul>
 							@foreach($datas as $data)
 							<li class="{{$data->status}}">
-								<a href="{{route('frontend.clients.notification.detail',$data->id)}}">									<div class="message-avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
+								<a href="#">									
+									<div class="message-avatar">
+										<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" />
+									</div>
 
 									<div class="message-by">
 										<div class="message-by-headline">
-											<h5>{{$data->id_renter}} @if($data->status == "unread") <i>Unread</i> @endif</h5>
+											<h5>{{ App\Http\Controllers\Controller::getClientName($data->id_renter)}} @if($data->status == "unread") <i>Unread</i> @endif</h5>
 											<span>{{date('j F Y h:m:s', strtotime($data->created_at))}}</span>
 										</div>
 										<p>{{$data->message}}</p>
@@ -48,88 +51,11 @@
 								</a>
 							</li>
 							@endforeach
-
-							<li class="unread">
-								<a href="dashboard-messages-conversation.html">
-									<div class="message-avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-
-									<div class="message-by">
-										<div class="message-by-headline">
-											<h5>John Doe <i>Unread</i></h5>
-											<span>4 hours ago</span>
-										</div>
-										<p>Hello, I want to talk about your great listing! Morbi velit eros, sagittis in facilisis non, rhoncus posuere ultricies...</p>
-									</div>
-								</a>
-							</li>
-							
-							<li>
-								<a href="dashboard-messages-conversation.html">
-									<div class="message-avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-
-									<div class="message-by">
-										<div class="message-by-headline">
-											<h5>Thomas Smith</h5>
-											<span>Yesterday</span>
-										</div>
-										<p>Hello, I want to talk about your great listing! Morbi velit eros, sagittis in facilisis non, rhoncus posuere ultricies...</p>
-									</div>
-								</a>
-							</li>
-
-							<li>
-								<a href="dashboard-messages-conversation.html">
-									<div class="message-avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-
-									<div class="message-by">
-										<div class="message-by-headline">
-											<h5>Mike Behringer</h5>
-											<span>28.06.2017</span>
-										</div>
-										<p>Hello, I want to talk about your great listing! Morbi velit eros, sagittis in facilisis non, rhoncus posuere ultricies...</p>
-									</div>
-								</a>
-							</li>
-
-							<li>
-								<a href="dashboard-messages-conversation.html">
-									<div class="message-avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-
-									<div class="message-by">
-										<div class="message-by-headline">
-											<h5>Robert Baker</h5>
-											<span>22.06.2017</span>
-										</div>
-										<p>Hello, I want to talk about your great listing! Morbi velit eros, sagittis in facilisis non, rhoncus posuere ultricies...</p>
-									</div>
-								</a>
-							</li>
 						</ul>
-						
 					</div>
 				</div>
-
-				<!-- Pagination -->
-				<div class="clearfix"></div>
-				<div class="pagination-container margin-top-30 margin-bottom-0">
-					<nav class="pagination">
-						<ul>
-							<li><a href="#" class="current-page">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
-						</ul>
-					</nav>
-				</div>
-				<!-- Pagination / End -->
-
-			</div>
-
-			<!-- Copyrights -->
-			<div class="col-md-12">
-				<div class="copyrights">© 2017 Listeo. All Rights Reserved.</div>
 			</div>
 		</div>
-
 	</div>
 	<!-- Content / End -->
 @endsection

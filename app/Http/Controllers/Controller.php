@@ -71,6 +71,12 @@ class Controller extends BaseController
         $client = self::getConnectedClient();
         return $client ? $client->client_last_name : '';
     }
+
+    public static function getClientName($id){
+        $client = Client::find($id);
+        return $client ? $client->client_last_name.' '.$client->client_name : '';
+    }
+
     public static function getCamperCategories()
     {
         return DB::table('camper_categories')->get();
@@ -88,6 +94,11 @@ class Controller extends BaseController
     public static function  getNotificationCount(){
         $client = self::getConnectedClient();
         return DB::table('notifications')->where('id_owner',$client->id)->get()->count();
+    }
+
+    public static function  getNotificationCountByType($type){
+        $client = self::getConnectedClient();
+        return DB::table('notifications')->where('type',$type)->where('id_owner',$client->id)->get()->count();
     }
 
 }

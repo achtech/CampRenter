@@ -72,8 +72,15 @@ $(document).ready(function(){
 				<li class="{{ $activePage == 'FC_camper' ? 'active' : '' }}"><a href="{{route('frontend.clients.camper')}}"><i class="sl sl-icon-settings"></i> {{trans('front.menu_panel_camper')}}</a></li>
 				<li class="{{ $activePage == 'FC_bookmark' ? 'active' : '' }}"><a href="{{route('frontend.clients.bookmark')}}"><i class="sl sl-icon-star"></i> {{trans('front.favoris')}}</a></li>
 				<li class="{{ $activePage == 'FC_message' ? 'active' : '' }}"><a href="{{route('frontend.clients.message')}}"><i class="sl sl-icon-envelope-open"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">2</span></a></li>
-				<li class="{{ $activePage == 'FC_notification' ? 'active' : '' }}"><a href="{{route('frontend.clients.notification')}}"><i class="fa fa-calendar-check-o"></i> {{trans('front.menu_panel_notification')}}</a></li>
-				<li class="{{ $activePage == 'FC_booking' ? 'active' : '' }}"><a href="{{route('frontend.clients.booking')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_booking')}}</a></li>
+				<li class="{{ $activePage == 'FC_notification' ? 'active' : '' }}">
+          <a href="{{route('frontend.clients.notification')}}">
+            <i class="fa fa-calendar-check-o"></i> {{trans('front.menu_panel_notification')}}
+            <span class="nav-tag messages">{{ App\Http\Controllers\Controller::getNotificationCount()}}</span>
+          </a>
+        </li>
+				<li class="{{ $activePage == 'FC_booking' ? 'active' : '' }}"><a href="{{route('frontend.clients.booking')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_booking')}}
+        <span class="nav-tag messages">{{ App\Http\Controllers\Controller::getNotificationCountByType("Booking")}}</span>
+        </a></li>
 				<li class="{{ $activePage == 'FC_wallet' ? 'active' : '' }}"><a href="{{route('frontend.clients.wallet')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_wallet')}}</a></li>
 				<li class="{{ $activePage == 'FC_review' ? 'active' : '' }}"><a href="{{route('frontend.clients.review')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_review')}}</a></li>
 				<li class="{{ $activePage == 'rent_out' || $activePage == 'personnalData' ? 'active' : '' }}"><a href="{{route('rent_out')}}"><i class="sl sl-icon-plus"></i>{{trans('front.menu_panel_rentout')}}</a></li>
