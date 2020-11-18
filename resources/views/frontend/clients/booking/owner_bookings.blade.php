@@ -1,13 +1,12 @@
 <ul>
 @foreach($ownerBookings as $booking)
-    <li class="pending-booking">
+    <li class="booking-{{$booking->booking_status_id}}">
         <div class="list-box-listing bookings">
             <div class="list-box-listing-img"><img src="/images/avatar/{{$booking->image}}" alt=""></div>
             <div class="list-box-listing-content">
                 <div class="inner">
                     <h3>{{$booking->camper_name}} 
-                        <span class="booking-status {{$booking->camper_status}}">{{$booking->camper_status}}</span>
-                        <span class="booking-status {{$booking->status_billings}}">{{$booking->status_billings}}</span>
+                        <span class="booking-status s-{{$booking->booking_status_id}}">{{$booking->booking_status_en}}</span>
                     </h3>
                     <div class="inner-booking-list">
                         <h5>Booking Date:</h5>
@@ -17,16 +16,9 @@
                     </div>
 
                     <div class="inner-booking-list">
-                        <h5>Booking Details:</h5>
-                        <ul class="booking-list">
-                            <li class="highlighted">2 Adults</li>
-                        </ul>
-                    </div>
-
-                    <div class="inner-booking-list">
                         <h5>Price:</h5>
                         <ul class="booking-list">
-                            <li class="highlighted">{{$booking->price}}</li>
+                            <li class="highlighted">{{$booking->price}} CHF</li>
                         </ul>
                     </div>
 
@@ -38,15 +30,18 @@
                             <li>{{$booking->telephone ?? 'no phone number is specified'}}</li>
                         </ul>
                     </div>
-
-                    <a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> Send Message</a>
-
+                    @if($booking->booking_status_id==5 || $booking->booking_status_id==4)
+                        <a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> Send Message</a>
+                    @endif
                 </div>
             </div>
         </div>
         <div class="buttons-to-right">
+        @if($booking->booking_status_id==1)
             <a href="#" class="button gray reject"><i class="sl sl-icon-close"></i> Reject</a>
             <a href="#" class="button gray approve"><i class="sl sl-icon-check"></i> Approve</a>
+        @endif
+        <a href="{{ route('booking.owner_booking.detail',$booking->id)}}" class="button green approve"><i class="sl sl-icon-screen-tablet"></i> Details</a>
         </div>
     </li>
 @endforeach

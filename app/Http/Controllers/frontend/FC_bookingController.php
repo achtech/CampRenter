@@ -50,4 +50,13 @@ class FC_bookingController extends Controller
 
         }
     }
+    public function detailBookingOwner($id){
+        $notification = Notification::where('type','Booking')->where('id_table',$id)->first();
+        $notification->status="readed";
+        $notification->update();
+        
+        $booking = DB::table("v_bookings_owner")->where('id',$id)->get();
+        return view('frontend.clients.booking.detail1')
+            ->with('booking',$booking);
+    }
 }

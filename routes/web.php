@@ -114,6 +114,9 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/camper/request_booking/{id}', [FC_bookingController::class,'requestBooking'])->name('frontend.add_request_booking');
     Route::post('/storeMessage', [FContactController::class, 'store'])->name('frontend.contact.store');
     Route::get('/client/notification/detail/{id}', [FC_notificationController::class, 'show'])->name('frontend.clients.notification.detail');
+    Route::get('/booking/booking_owner/detail/{id}', [FC_bookingController::class,'detailBookingOwner'])->name('booking.owner_booking.detail');
+    
+    
     /** Backend */
     Route::get('/admin', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

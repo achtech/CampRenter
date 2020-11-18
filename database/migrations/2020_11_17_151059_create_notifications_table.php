@@ -17,6 +17,7 @@ class CreateNotificationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_renter')->nullable();
             $table->unsignedBigInteger('id_owner')->nullable();
+            $table->unsignedBigInteger('id_table')->nullable();
             $table->string('message')->nullable();
             $table->string('type')->nullable();
             $table->string('status')->nullable();
