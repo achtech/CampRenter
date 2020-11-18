@@ -19,10 +19,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
-        #map {
-            width: 100%;
-        }
-    </style>
+	#map {
+		width: 95%;
+		height: 450px;
+		background: grey;
+	}
+</style>
 </head>
 
 <body>
