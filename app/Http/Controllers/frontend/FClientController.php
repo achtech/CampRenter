@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController as DefaultLoginController;
 use App\Http\Controllers\Controller;
 use App\Mail\ForgotPasswordEmail;
 use App\Mail\RegistrationMail;
+use App\Models\Avatar;
 use App\Models\Client;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Socialite;
 
 class FClientController extends DefaultLoginController
@@ -84,23 +86,16 @@ class FClientController extends DefaultLoginController
     }
     public function completeRegistrationProfile(Request $request)
     {
-        $id_client = Auth::guard('client')->user()->id;
-        $client = Client::find($id_client);
+        $client = Controller::getConnectedClient();
+        $profil_birth_date = $client->day_of_birth . '/' . $client->month_of_birth . '/' . $client->year_of_birth;
         $input = request()->except(['_token', 'action']);
-        $input['password'] = md5($input['password']);
-        if ($input['password'] != $client->password) {
-            return redirect()->back()->with('warning', __('front.invalid_current_password'));
-        }
-        if ($input['password'] == $client->password && $input['new_password'] != null && $input['confirmed_password'] != null) {
-            if ($input['new_password'] == $input['confirmed_password']) {
-                $input['new_password'] = md5($input['new_password']);
-                $input['password'] = $input['new_password'];
-            } else {
-                return redirect()->back()->with('danger', __('front.unsimilar_password'));
-            }
-        }
+        dd($input);
+        // $file = request()->file('photo');
+        // dd($input);
+        // $file->store('toPath', ['disk' => 'public']);
         $client->update($input);
-        return redirect(route('clients.user.profile'))->with('success', __('front.profile_updated'));
+        return view('clients.user.profile')->with('client', $client)->with('client_status', $client_status);
+        //return redirect(route('clients.user.profile'))->with('success', __('front.profile_updated'));
     }
     public function show($id)
     {
