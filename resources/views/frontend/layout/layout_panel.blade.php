@@ -16,6 +16,7 @@
 
 <!-- CSS
 ================================================== -->
+<script src="https://kit.fontawesome.com/b90fcd0862.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
     @yield('style')
