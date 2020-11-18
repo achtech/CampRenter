@@ -25,7 +25,7 @@
 			</div>
 
 			<!-- Listing Nav -->
-			<div id="listing-nav" class="listing-nav-container">
+			<div id="listing-nav" class="listing-nav-container" style="padding-top:2%;">
 				<ul class="listing-nav">
 					<li><a href="#listing-overview" class="active">Overview</a></li>
 					<li><a href="#listing-gallery">Gallery</a></li>
