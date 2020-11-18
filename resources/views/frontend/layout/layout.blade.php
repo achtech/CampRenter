@@ -19,13 +19,6 @@
 <script src="https://kit.fontawesome.com/b90fcd0862.js" crossorigin="anonymous"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<style>
-	#map {
-		width: 100%;
-		height: 607px;
-		background: grey;
-	}
-</style>
 </head>
 
 <body>

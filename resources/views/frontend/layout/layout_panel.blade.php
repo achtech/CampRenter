@@ -9,7 +9,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Campunite</title>
+<title>Campunit</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
@@ -20,6 +20,13 @@
 <link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
     @yield('style')
 
+    <style>
+        #map {
+            width: 95%;
+            height: 450px;
+            background: grey;
+        }
+    </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
