@@ -51,11 +51,11 @@
 					   <li style="float: right">
 						<a  href="#" style="margin-left: 66px;" class="user-name"><span style="white-space: nowrap;margin-top: 6px;"><img src="{{asset('images/clients/default.jpg')}}" alt="">{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClientLastName()}}</span></a>
 						  <ul>
-							  <li><a href="{{ route('clients.user.profile') }}" ><i class="sl sl-icon-settings"></i>{{ __('front.my_profile') }} </a></li>
-							  <li><a href="{{ route('frontend.clients.message') }}"><i class="sl sl-icon-envelope-open"></i> {{ __('front.my_message') }}</a></li>
-							  <li><a href="{{ route('frontend.clients.booking') }}"><i class="fa fa-calendar-check-o"></i>{{ __('front.my_bookings') }}</a></li>
-							  <li><a href="{{ route('frontend.clients.camper') }}"><i class="fa fa-calendar-check-o"></i>{{ __('front.my_campers') }}</a></li>
-							  <li><a class="dropdown-item" href="{{ route('client.logout') }}"><i class="sl sl-icon-power"></i> {{ __('Logout') }}</a></li>
+							  <li><a href="{{ route('clients.user.profile') }}" ><i class="fas fa-cogs"></i>{{ __('front.my_profile') }} </a></li>
+							  <li><a href="{{ route('frontend.clients.message') }}"><i class="fa fa-envelope"></i> {{ __('front.my_message') }}</a></li>
+							  <li><a href="{{ route('frontend.clients.booking') }}"><i class="fa fa-folder-open"></i>{{ __('front.my_bookings') }}</a></li>
+							  <li><a href="{{ route('frontend.clients.camper') }}"><i class="fas fa-caravan"></i>{{ __('front.my_campers') }}</a></li>
+							  <li><a class="dropdown-item" href="{{ route('client.logout') }}"><i class="fas fa-power-off"></i> {{ __('Logout') }}</a></li>
 							</ul>
 
 				</li>
