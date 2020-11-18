@@ -43,7 +43,7 @@
 								</div>
 							</div>
 							<div class="buttons-to-right">
-								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
+								<a href="#" class="button gray"><i class="far fa-times-circle"></i> Delete</a>
 							</div>
 						</li>
 
@@ -61,7 +61,7 @@
 								</div>
 							</div>
 							<div class="buttons-to-right">
-								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
+								<a href="#" class="button gray"><i class="far fa-times-circle"></i> Delete</a>
 							</div>
 						</li>
 
@@ -79,7 +79,7 @@
 								</div>
 							</div>
 							<div class="buttons-to-right">
-								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
+								<a href="#" class="button gray"><i class="far fa-times-circle"></i> Delete</a>
 							</div>
 						</li>
 

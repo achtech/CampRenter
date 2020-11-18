@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="row">
-			
+
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
 
@@ -30,7 +30,7 @@
 					<div class="messages-headline">
 						<h4>Inbox</h4>
 					</div>
-					
+
 					<div class="messages-inbox">
 
 						<ul>
@@ -61,7 +61,7 @@
 									</div>
 								</a>
 							</li>
-							
+
 							<li>
 								<a href="dashboard-messages-conversation.html">
 									<div class="message-avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
@@ -104,7 +104,7 @@
 								</a>
 							</li>
 						</ul>
-						
+
 					</div>
 				</div>
 
@@ -115,7 +115,7 @@
 						<ul>
 							<li><a href="#" class="current-page">1</a></li>
 							<li><a href="#">2</a></li>
-							<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
 						</ul>
 					</nav>
 				</div>

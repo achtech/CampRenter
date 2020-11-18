@@ -84,14 +84,14 @@
 													</ul>
 												</div>
 
-												<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> Send Message</a>
+												<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="far fa-envelope-open"></i> Send Message</a>
 
 											</div>
 										</div>
 									</div>
 									<div class="buttons-to-right">
-										<a href="#" class="button gray reject"><i class="sl sl-icon-close"></i> Reject</a>
-										<a href="#" class="button gray approve"><i class="sl sl-icon-check"></i> Approve</a>
+										<a href="#" class="button gray reject"><i class="far fa-times-circle"></i> Reject</a>
+										<a href="#" class="button gray approve"><i class="far fa-check-circle"></i> Approve</a>
 									</div>
 								</li>
 
@@ -125,13 +125,13 @@
 													</ul>
 												</div>
 
-												<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> Send Message</a>
+												<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="far fa-envelope-open"></i> Send Message</a>
 
 											</div>
 										</div>
 									</div>
 									<div class="buttons-to-right">
-										<a href="#" class="button gray reject"><i class="sl sl-icon-close"></i> Cancel</a>
+										<a href="#" class="button gray reject"><i class="far fa-times-circle"></i> Cancel</a>
 									</div>
 								</li>
 
@@ -211,14 +211,14 @@
 												</ul>
 											</div>
 
-											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> Send Message</a>
+											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="far fa-envelope-open"></i> Send Message</a>
 
 										</div>
 									</div>
 								</div>
 								<div class="buttons-to-right">
-									<a href="#" class="button gray reject"><i class="sl sl-icon-close"></i> Reject</a>
-									<a href="#" class="button gray approve"><i class="sl sl-icon-check"></i> Approve</a>
+									<a href="#" class="button gray reject"><i class="far fa-times-circle"></i> Reject</a>
+									<a href="#" class="button gray approve"><i class="far fa-check-circle"></i> Approve</a>
 								</div>
 							</li>
 
@@ -252,13 +252,13 @@
 												</ul>
 											</div>
 
-											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> Send Message</a>
+											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="far fa-envelope-open"></i> Send Message</a>
 
 										</div>
 									</div>
 								</div>
 								<div class="buttons-to-right">
-									<a href="#" class="button gray reject"><i class="sl sl-icon-close"></i> Cancel</a>
+									<a href="#" class="button gray reject"><i class="far fa-times-circle"></i> Cancel</a>
 								</div>
 							</li>
 
@@ -277,4 +277,3 @@
 	</div>
 	<!-- Content / End -->
 @endsection
-

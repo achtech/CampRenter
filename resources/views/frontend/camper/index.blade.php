@@ -37,7 +37,11 @@
 			<P>
 				{{trans('front.text_content_2_2')}}
 			</p>
-			<a class="button" href="{{route('rent_out')}}"><i class="sl sl-icon-login"></i> {{trans('front.register')}}</a>
+			@if(!session('_client'))
+			<a class="button" href="{{route('frontend.client.show_login')}}"><i class="fas fa-sign-in-alt"></i> {{trans('front.register')}}</a>
+			@else
+			<a class="button" href="{{route('rent_out')}}"><i class="fas fa-sign-in-alt"></i> {{trans('front.register')}}</a>
+			@endif
 		</div>
 	</div>
 	<div class="row">

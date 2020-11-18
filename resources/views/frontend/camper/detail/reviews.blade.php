@@ -54,7 +54,7 @@
                         <div class="star-rating" data-rating="{{number_format(($review->rate_service+$review->rate_managing+$review->rate_cleanliness)/3),1}}"></div>
                     </div>
                     <p>{{$review->comment}}</p>
-                    <a href="{{route('frontend.clients.review.helpfulReview',$review->id)}}" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review <span>{{$review->helpfulReview}}</span></a>
+                    <a href="{{route('frontend.clients.review.helpfulReview',$review->id)}}" class="rate-review"><i class="far fa-thumbs-up"></i> Helpful Review <span>{{$review->helpfulReview}}</span></a>
                 </div>
             </li>
         @endforeach

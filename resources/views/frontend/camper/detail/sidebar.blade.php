@@ -1,6 +1,6 @@
 <!-- Verified Badge -->
-<div class="verified-badge with-tip" data-tip-content="Listing has been verified and belongs the business owner or manager.">
-    <i class="sl sl-icon-check"></i> Verified Listing
+<div class="verified-badge with-tip">
+<i class="far fa-check-circle"></i> Verified Listing
 </div>
 
 <!-- Book Now -->
@@ -12,8 +12,8 @@
 
             <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
             <div class="col-lg-12 booking_date">
-                <input type="text" id="booking-date-range" 
-                        name="searchedDate"  placeholder="Check-In - Check-Out" 
+                <input type="text" id="booking-date-range"
+                        name="searchedDate"  placeholder="Check-In - Check-Out"
                         />
             </div>
             <!--
@@ -21,20 +21,20 @@
                 <div class="col-lg-8 booking_date">
                     <label>Number of night</label>
                 </div>
-            
+
                 <div class="col-lg-4 booking_date">
                     <span id="numberdays">10</span>
                 </div>
                 <div class="col-lg-8 booking_date">
                     <label>Total</label>
                 </div>
-            
+
                 <div class="col-lg-4 booking_date">
                     <span id="priceBooking">100 CHF</span>
                 </div>
             </div>-->
         </div>
-        
+
         <!-- Book Now -->
         @if(!session('_client'))
         <a href="/showlogin/client" class="button book-now fullwidth margin-top-5">Request To Book</a>
@@ -60,8 +60,8 @@
 
     <div id="bookmarkCount">
         <button class="like-button " onclick="AddOrRemoveBookmark()">
-            <span  class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}"></span> 
-            Bookmark this listing</button> 
+            <span  class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}"></span>
+            Bookmark this listing</button>
             <span>{{App\Http\Controllers\frontend\FC_bookmarkController::getBookmarkCamperCount($camper->id)}} people bookmarked this place</span>
         </div>
         <!-- Share Buttons -->

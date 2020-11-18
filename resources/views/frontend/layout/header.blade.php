@@ -27,7 +27,7 @@
 					<ul id="responsive" style="width: 190%;">
 
 						<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="{{route('home.index')}}">{{trans('front.menu_home')}}</a></li>
-						<li><a  class="{{ $activePage == 'camperSearch' ? ' current' : '' }}" href="#">
+						<li><a  class="{{ $activePage == 'camperSearch' || $activePage == 'camper_details' ? ' current' : '' }}" href="#">
 								{{trans('front.menu_rent')}}</a>
 							<ul>
 								@foreach(App\Http\Controllers\Controller::getCamperCategories() as $cat)

@@ -71,7 +71,7 @@
 											<div class="review-images mfp-gallery-container">
 												<a href="images/review-image-01.jpg" class="mfp-gallery"><img src="images/review-image-01.jpg" alt=""></a>
 											</div>
-											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-action-undo"></i> Reply to this review</a>
+											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="fas fa-undo"></i> Reply to this review</a>
 										</div>
 									</li>
 								</ul>
@@ -88,7 +88,7 @@
 												<div class="star-rating" data-rating="4"></div>
 											</div>
 											<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-action-undo"></i> Reply to this review</a>
+											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="fas fa-undo"></i> Reply to this review</a>
 										</div>
 									</li>
 								</ul>
@@ -110,7 +110,7 @@
 												<a href="images/review-image-02.jpg" class="mfp-gallery"><img src="images/review-image-02.jpg" alt=""></a>
 												<a href="images/review-image-03.jpg" class="mfp-gallery"><img src="images/review-image-03.jpg" alt=""></a>
 											</div>
-											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-action-undo"></i> Reply to this review</a>
+											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="fas fa-undo"></i> Reply to this review</a>
 										</div>
 									</li>
 								</ul>
@@ -127,7 +127,7 @@
 												<div class="star-rating" data-rating="5"></div>
 											</div>
 											<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-action-undo"></i> Reply to this review</a>
+											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="fas fa-undo"></i> Reply to this review</a>
 										</div>
 
 									</li>
@@ -145,7 +145,7 @@
 						<ul>
 							<li><a href="#" class="current-page">1</a></li>
 							<li><a href="#">2</a></li>
-							<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
+							<li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
 						</ul>
 					</nav>
 				</div>
@@ -169,32 +169,13 @@
 												<div class="star-rating" data-rating="4.5"></div>
 											</div>
 											<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-											<a href="#" class="rate-review"><i class="sl sl-icon-note"></i> Edit</a>
+											<a href="#" class="rate-review"><i class="far fa-edit"></i> Edit</a>
 										</div>
 
 									</li>
 								</ul>
 							</div>
 						</li>
-
-						<li>
-							<div class="comments listing-reviews">
-								<ul>
-									<li>
-										<div class="avatar"><img src="images/reviews-avatar.jpg" alt="" /> </div>
-										<div class="comment-content"><div class="arrow-comment"></div>
-											<div class="comment-by">Your review <div class="comment-by-listing own-comment">on <a href="#">Think Coffee</a></div> <span class="date">May 2019</span>
-												<div class="star-rating" data-rating="5"></div>
-											</div>
-											<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-											<a href="#" class="rate-review"><i class="sl sl-icon-note"></i> Edit</a>
-										</div>
-
-									</li>
-								</ul>
-							</div>
-						</li>
-
 					</ul>
 				</div>
 			</div>
