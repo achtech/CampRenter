@@ -3,11 +3,11 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
 
-<title>Campunit</title>
+<title>Campunite</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
 
 <!-- CSS
 ================================================== -->
@@ -18,6 +18,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
+<style>
+	#map {
+		width: 100%;
+		height: 607px;
+		background: grey;
+	}
+</style>
 </head>
 
 <body>
@@ -71,16 +79,14 @@
 <!-- Leaflet // Docs: https://leafletjs.com/ -->
 <script src="{{asset('js/leaflet.min.js')}}"></script>
 
-<!-- Leaflet Maps Scripts -->
-<script src="{{asset('js/leaflet-markercluster.min.js')}}"></script>
-<script src="{{asset('js/leaflet-gesture-handling.min.js')}}"></script>
-<script src="{{asset('js/leaflet-listeo.js')}}"></script>
-
 <!-- Maps -->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+{{--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4&callback=initAutocomplete&libraries=places&v=weekly"
+></script>
 <script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/maps.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/maps-mypostion.js')}}"></script>
 
 <!-- Leaflet Geocoder + Search Autocomplete // Docs: https://github.com/perliedman/leaflet-control-geocoder -->
 <script src="{{asset('js/leaflet-autocomplete.js')}}"></script>
