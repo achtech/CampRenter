@@ -9,7 +9,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Campunit</title>
+<title>Campunite</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
@@ -66,18 +66,18 @@ $(document).ready(function(){
 	<div class="dashboard-nav">
 		<div class="dashboard-nav-inner">
 			<ul data-submenu-title="Main">
-				<li class="{{ $activePage == 'FC_camper' ? 'active' : '' }}"><a href="{{route('frontend.clients.camper')}}"><i class="sl sl-icon-settings"></i> {{trans('front.menu_panel_camper')}}</a></li>
-				<li class="{{ $activePage == 'FC_bookmark' ? 'active' : '' }}"><a href="{{route('frontend.clients.bookmark')}}"><i class="sl sl-icon-star"></i> {{trans('front.favoris')}}</a></li>
-				<li class="{{ $activePage == 'FC_message' ? 'active' : '' }}"><a href="{{route('frontend.clients.message')}}"><i class="sl sl-icon-envelope-open"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">2</span></a></li>
-				<li class="{{ $activePage == 'FC_notification' ? 'active' : '' }}"><a href="{{route('frontend.clients.notification')}}"><i class="fa fa-calendar-check-o"></i> {{trans('front.menu_panel_notification')}}</a></li>
-				<li class="{{ $activePage == 'FC_booking' ? 'active' : '' }}"><a href="{{route('frontend.clients.booking')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_booking')}}</a></li>
-				<li class="{{ $activePage == 'FC_wallet' ? 'active' : '' }}"><a href="{{route('frontend.clients.wallet')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_wallet')}}</a></li>
-				<li class="{{ $activePage == 'FC_review' ? 'active' : '' }}"><a href="{{route('frontend.clients.review')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_review')}}</a></li>
-				<li class="{{ $activePage == 'rent_out' || $activePage == 'personnalData' ? 'active' : '' }}"><a href="{{route('rent_out')}}"><i class="sl sl-icon-plus"></i>{{trans('front.menu_panel_rentout')}}</a></li>
+				<li class="{{ $activePage == 'FC_camper' ? 'active' : '' }}"><a href="{{route('frontend.clients.camper')}}"><i class="fas fa-caravan"></i> {{trans('front.menu_panel_camper')}}</a></li>
+				<li class="{{ $activePage == 'FC_bookmark' ? 'active' : '' }}"><a href="{{route('frontend.clients.bookmark')}}"><i class="fas fa-heart"></i> {{trans('front.favoris')}}</a></li>
+				<li class="{{ $activePage == 'FC_message' ? 'active' : '' }}"><a href="{{route('frontend.clients.message')}}"><i class="fa fa-envelope"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">2</span></a></li>
+				<li class="{{ $activePage == 'FC_notification' ? 'active' : '' }}"><a href="{{route('frontend.clients.notification')}}"><i class="fas fa-bell"></i> {{trans('front.menu_panel_notification')}}</a></li>
+				<li class="{{ $activePage == 'FC_booking' ? 'active' : '' }}"><a href="{{route('frontend.clients.booking')}}"><i class="fa fa-folder-open"></i> {{trans('front.menu_panel_booking')}}</a></li>
+				<li class="{{ $activePage == 'FC_wallet' ? 'active' : '' }}"><a href="{{route('frontend.clients.wallet')}}"><i class="fas fa-wallet"></i> {{trans('front.menu_panel_wallet')}}</a></li>
+				<li class="{{ $activePage == 'FC_review' ? 'active' : '' }}"><a href="{{route('frontend.clients.review')}}"><i class="fas fa-smile"></i> {{trans('front.menu_panel_review')}}</a></li>
+				<li class="{{ $activePage == 'rent_out' || $activePage == 'personnalData' ? 'active' : '' }}"><a href="{{route('rent_out')}}"><i class="fas fa-plus-circle"></i>{{trans('front.menu_panel_rentout')}}</a></li>
 			</ul>
 			<ul data-submenu-title="Account">
-				<li class="{{ $activePage == 'FC_profile' ? 'active' : '' }}"><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
-				<li><a href=""><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
+				<li class="{{ $activePage == 'FC_profile' ? 'active' : '' }}"><a href="{{route('clients.user.profile')}}"><i class="fas fa-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
+				<li><a href=""><i class="fas fa-power-off"></i> {{trans('front.menu_panel_logout')}}</a></li>
 			</ul>
 
 		</div>
