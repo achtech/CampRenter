@@ -48,7 +48,7 @@
 										<a href="#" >
 										<input type="checkbox" style="display: none" name="id_camper_categories" id="{{$category->id}}">
 										<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
-											<h4 id="title_cat" style="margin-left:0px;background-color: #f9c14185;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
+											<h4 id="title_cat" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
 										</a>
 									</div>
 								@endforeach
@@ -63,7 +63,7 @@
 									<div class="col-md-3 alternative-imagebox" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
 										<a>
 										<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt="">
-											<h4 id="title_sub" style="margin-left:0px;background-color: #33b9cf4d;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
+											<h4 id="title_sub" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
 										</a>
 									</div>
 								@endforeach

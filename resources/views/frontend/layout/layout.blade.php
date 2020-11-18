@@ -19,13 +19,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<style>
-	#map {
-		width: 100%;
-		height: 607px;
-		background: grey;
-	}
-</style>
 </head>
 
 <body>
