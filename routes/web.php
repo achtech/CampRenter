@@ -111,15 +111,15 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/details_booking_paiement', [FC_CamperController::class, 'bookingPaiement'])->name('frontend.camper.booking_paiement');
     Route::get('/bookmark_client', [FC_bookmarkController::class, 'index'])->name('frontend.clients.bookmark');
     Route::post('/ajax/addBookmarks', [FC_bookmarkController::class, 'addOrRemove'])->name('frontend.camper.add_bookmark');
-    Route::post('/camper/request_booking/{id}', [FC_bookingController::class,'requestBooking'])->name('frontend.add_request_booking');
+    Route::get('/bookmark/{id}/delete', [FC_bookmarkController::class, 'removeFromBookMark'])->name('frontend.bookmark.delete');
+    Route::post('/camper/request_booking/{id}', [FC_bookingController::class, 'requestBooking'])->name('frontend.add_request_booking');
     Route::post('/storeMessage', [FContactController::class, 'store'])->name('frontend.contact.store');
     Route::get('/client/notification/detail/{id}', [FC_notificationController::class, 'show'])->name('frontend.clients.notification.detail');
-    Route::get('/booking/booking_owner/detail/{id}', [FC_bookingController::class,'detailBookingOwner'])->name('booking.owner_booking.detail');
-    Route::get('/booking/booking_owner/confirm/{id}', [FC_bookingController::class,'confirmBookingOwner'])->name('booking.owner_booking.confirm');
-    Route::get('/booking/booking_owner/reject/{id}', [FC_bookingController::class,'rejectBookingOwner'])->name('booking.owner_booking.reject');
-    Route::get('/booking/booking_renter/process/{id}', [FC_bookingController::class,'processBookingRenter'])->name('booking.renter_booking.process');
-    
-    
+    Route::get('/booking/booking_owner/detail/{id}', [FC_bookingController::class, 'detailBookingOwner'])->name('booking.owner_booking.detail');
+    Route::get('/booking/booking_owner/confirm/{id}', [FC_bookingController::class, 'confirmBookingOwner'])->name('booking.owner_booking.confirm');
+    Route::get('/booking/booking_owner/reject/{id}', [FC_bookingController::class, 'rejectBookingOwner'])->name('booking.owner_booking.reject');
+    Route::get('/booking/booking_renter/process/{id}', [FC_bookingController::class, 'processBookingRenter'])->name('booking.renter_booking.process');
+
     /** Backend */
     //Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

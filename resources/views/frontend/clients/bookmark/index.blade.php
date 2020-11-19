@@ -8,7 +8,7 @@
 		<div id="titlebar">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>Bookmarks</h2>
+					<h2>{{trans('front.favoris')}}</h2>
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
@@ -26,63 +26,34 @@
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
-					<h4>Bookmarked Listings</h4>
+					<h4>{{trans('front.no_results')}}</h4>
 					<ul>
-
+					@if($datas != null)
+						@foreach($datas as $data)
 						<li>
 							<div class="list-box-listing">
-								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-02.jpg')}}" alt=""></a></div>
+								<div class="list-box-listing-img">
+									<img src="{{asset('images')}}/campers/{{$data->image}}" alt="">
+								</div>
 								<div class="list-box-listing-content">
 									<div class="inner">
-										<h3>Sticky Band</h3>
-										<span>Bishop Avenue, New York</span>
-										<div class="star-rating" data-rating="5.0">
-											<div class="rating-counter">(23 reviews)</div>
+										<h3>{{$data->name}}</h3>
+										<span>{{Illuminate\Support\Str::limit($data->description, 80)}}...</span>
+										<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($data->id)}}">
+											<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($data->id)}} reviews)</div>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="buttons-to-right">
-								<a href="#" class="button gray"><i class="far fa-times-circle"></i> Delete</a>
+								<a href="{{ route('frontend.camper.detail',$data->id_campers)}}" class="button gray"><i class="fas fa-list-ul"></i> Details</a>
+								<a href="{{ route('frontend.bookmark.delete', $data->id) }}" class="button gray"><i class="far fa-times-circle"></i> Delete</a>
 							</div>
 						</li>
-
-						<li>
-							<div class="list-box-listing">
-								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-04.jpg')}}" alt=""></a></div>
-								<div class="list-box-listing-content">
-									<div class="inner">
-										<h3>Burger House</h3>
-										<span>2726 Shinn Street, New York</span>
-										<div class="star-rating" data-rating="5.0">
-											<div class="rating-counter">(31 reviews)</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="buttons-to-right">
-								<a href="#" class="button gray"><i class="far fa-times-circle"></i> Delete</a>
-							</div>
-						</li>
-
-						<li>
-							<div class="list-box-listing">
-								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-06.jpg')}}" alt=""></a></div>
-								<div class="list-box-listing-content">
-									<div class="inner">
-										<h3>Think Coffee</h3>
-										<span>215 Terry Lane, New York</span>
-										<div class="star-rating" data-rating="5.0">
-											<div class="rating-counter">(31 reviews)</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="buttons-to-right">
-								<a href="#" class="button gray"><i class="far fa-times-circle"></i> Delete</a>
-							</div>
-						</li>
-
+						@endforeach
+					@else
+						<p>{{trans('front.no_results')}}</p>
+					@endif
 					</ul>
 				</div>
 			</div>

@@ -133,9 +133,9 @@ return [
     'where_you_came' => 'Please let us know where you came across us the last time.',
     'who_are_you' => 'Who are you?',
     'drop_photos' => 'Click here or drop Photos to upload',
-    'favoris' => 'Favoris',
-    '' => '',
-    '' => '',
+    'favoris' => 'Bookmarks',
+    'bookmarked.listings' => 'Bookmarked Listings',
+    'no_results' => 'No results',
     '' => '',
     '' => '',
     '' => '',
@@ -353,5 +353,5 @@ return [
     'profile_status' => 'Status',
     'who_are_you' => 'Who are you ?',
     'national_code' => 'National Code',
-    'login_credentials' => 'Login credentials'
+    'login_credentials' => 'Login credentials',
 ];

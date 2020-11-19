@@ -48,9 +48,9 @@
 							<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} reviews)</div>
 						</div>
 					</a>
-							<span id="fav_{{$camper->id}}" onclick="AddOrRemoveBookmarkSearch({{$camper->id}})"
-								class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
-							</span>
+					<span id="fav_{{$camper->id}}" onclick="AddOrRemoveBookmarkSearch({{$camper->id}})"
+						class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
+					</span>
 				</div>
 				<!-- Listing Item / End -->
 				@endforeach
