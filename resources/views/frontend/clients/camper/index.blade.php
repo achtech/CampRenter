@@ -26,18 +26,19 @@
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
-					<h4>Active Listings</h4>
+					<h4>My List of campers</h4>
 					<ul>
-
+					@if($campers != null)
+						@foreach($campers as $camper)
 						<li>
 							<div class="list-box-listing">
 								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-01.jpg')}}" alt=""></a></div>
 								<div class="list-box-listing-content">
 									<div class="inner">
-										<h3><a href="#">Tom's Restaurant</a></h3>
-										<span>964 School Street, New York</span>
-										<div class="star-rating" data-rating="3.5">
-											<div class="rating-counter">(12 reviews)</div>
+										<h3><a href="#">{{$camper->camper_name}}</a></h3>
+										<span>{{Illuminate\Support\Str::limit($camper->description_camper, 120)}}...</span>
+										<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($camper->id)}}">
+											<div class="rating-counter">(({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} reviews) reviews)</div>
 										</div>
 									</div>
 								</div>
@@ -48,6 +49,10 @@
 								<a href="#" class="button gray"><i class="far fa-times-circle"></i> {{trans('front.client_camper_delete')}}</a>
 							</div>
 						</li>
+						@endforeach
+					@else
+						<p>{{trans('front.no_results')}}</p>
+					@endif
 					</ul>
 				</div>
 			</div>

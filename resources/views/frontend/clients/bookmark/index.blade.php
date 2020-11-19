@@ -38,7 +38,7 @@
 								<div class="list-box-listing-content">
 									<div class="inner">
 										<h3>{{$data->name}}</h3>
-										<span>{{Illuminate\Support\Str::limit($data->description, 80)}}...</span>
+										<span>{{Illuminate\Support\Str::limit($data->description, 120)}}...</span>
 										<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($data->id)}}">
 											<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($data->id)}} reviews)</div>
 										</div>
