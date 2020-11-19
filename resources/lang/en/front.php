@@ -353,5 +353,8 @@ return [
     'profile_status' => 'Status',
     'who_are_you' => 'Who are you ?',
     'national_code' => 'National Code',
-    'login_credentials' => 'Login credentials'
+    'login_credentials' => 'Login credentials',
+    'day_of_birth' => 'Day Of Birth',
+    'month_of_birth' => 'Month Of Birth',
+    'year_of_birth' => 'Year Of Birth',
 ];

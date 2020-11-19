@@ -8,6 +8,7 @@ use App\Mail\ForgotPasswordEmail;
 use App\Mail\RegistrationMail;
 use App\Models\Avatar;
 use App\Models\Client;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,39 +31,6 @@ class FClientController extends DefaultLoginController
     {
         return Auth::guard('client');
     }
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function redirectToFacebook()
-    {
-
-        return Socialite::driver('facebook')->redirect();
-    }
-    public function login(Request $request)
-    {
-        $credentials = [
-            'email' => $request['email'],
-            'password' => md5($request['password']),
-        ];
-        dd(Auth::attempt(array([
-            'email' => 'inassekaram@gmail.com',
-            'password' => '123456',
-        ])));
-        //dd(Auth::guard('client')->attempt($credentials));
-        dd(Auth::attempt($credentials));
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard');
-        }
-        return 'Failure';
-    }
-
-    public function doLogout()
-    {
-        Auth::logout(); // logging out user
-        return Redirect::to('layout'); // redirection to login screen
-    }
 
     /**
      * Create a new controller instance.
@@ -73,7 +41,7 @@ class FClientController extends DefaultLoginController
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
-        $input['password'] = password_hash($input['password'], PASSWORD_DEFAULT);
+        $input['password'] = bcrypt($input['password']);
         $client = Client::create($input);
         Mail::to($client['email'])->send(new RegistrationMail($client));
         $categories = DB::table('camper_categories')->paginate(10);
@@ -87,15 +55,60 @@ class FClientController extends DefaultLoginController
     public function completeRegistrationProfile(Request $request)
     {
         $client = Controller::getConnectedClient();
-        $profil_birth_date = $client->day_of_birth . '/' . $client->month_of_birth . '/' . $client->year_of_birth;
+        if ($client->staus == 1) {
+            $client_status = 'Confirmed';
+        } else {
+            $client_status = 'Non Confirmed';
+        }
+        $avatars = Avatar::take(3)->get();
+        $avatars_second = Avatar::skip(3)->take(3)->get();
+        $avatars_third = Avatar::skip(6)->take(3)->get();
         $input = request()->except(['_token', 'action']);
-        dd($input);
-        // $file = request()->file('photo');
-        // dd($input);
-        // $file->store('toPath', ['disk' => 'public']);
+        $file = $request->file('photo');
+        $cin = $request->file('image_national_id');
+        $driving_licence_image = $request->file('driving_licence_image');
+        if ($request->file('driving_licence_image') && $request->file('driving_licence_image')->getClientOriginalName()) {
+            $input['driving_licence_image'] = $request->file('driving_licence_image')->getClientOriginalName();
+            $driving_licence_image->move(base_path('public\images\clients'), $driving_licence_image->getClientOriginalName());
+        }
+        if ($request->file('image_national_id') && $request->file('image_national_id')->getClientOriginalName()) {
+            $input['image_national_id'] = $request->file('image_national_id')->getClientOriginalName();
+            $cin->move(base_path('public\images\clients'), $cin->getClientOriginalName());
+        }
+        if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
+            $input['photo'] = $request->file('photo')->getClientOriginalName();
+            $file->move(base_path('public\images\clients'), $file->getClientOriginalName());
+        };
+        if ($input['id_avatars'] != null) {
+            $selected_avatars = Avatar::where('image', $input['id_avatars'])->first();
+            $input['id_avatars'] = $selected_avatars->id;
+        }
         $client->update($input);
-        return view('clients.user.profile')->with('client', $client)->with('client_status', $client_status);
-        //return redirect(route('clients.user.profile'))->with('success', __('front.profile_updated'));
+        return view('frontend.clients.user.index')
+            ->with('client', $client)
+            ->with('avatars', $avatars)
+            ->with('avatars_second', $avatars_second)
+            ->with('avatars_third', $avatars_third)
+            ->with('client_status', $client_status)
+            ->with('success', 'Profile Updated Successuflly');
+    }
+    public function changePassword(Request $request)
+    {
+        $client = Controller::getConnectedClient();
+        $passsword = $request->password ?? '';
+        $new_passsword = $request->new_password ?? '';
+        $confirmed_password = $request->confirmed_password ?? '';
+        if (bcrypt($passsword) == $client->password) {
+            if ($new_passsword == $confirmed_password) {
+                $client->password = bcrypt($new_passsword);
+                $client->save();
+            } else {
+                return redirect()->back()->with('danger', __('front.unsimilar_password'));
+            }
+        } else {
+            return redirect()->back()->with('warning', __('front.invalid_current_password'));
+        }
+        return redirect(route('clients.user.profile'))->with('success', __('front.profile_updated'));
     }
     public function show($id)
     {

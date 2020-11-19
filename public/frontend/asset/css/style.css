@@ -22529,14 +22529,14 @@ a::after {
     padding-top: 5px;
     font-size: 16px;
 }
-/*
+
 .avatar {
     width: 90px !important;
     height: 58px !important;
 }
-[type="radio"] {
+.avatar-design {
     position: absolute;
-    opacity: 0;
+    opacity: 0 !important;
     width: 0;
     height: 0;
 }
@@ -22545,10 +22545,10 @@ a::after {
     cursor: pointer;
 }
 
-[type="radio"]:checked + img {
+.avatar-design:checked + img {
     outline: 2px solid #38b6cd;
 }
-.container {
+.language-design {
     display: block;
     position: relative;
     padding-left: 35px;
@@ -22562,7 +22562,7 @@ a::after {
 }
 
 /* Hide the browser's default checkbox */
-/*.container input {
+.language-design input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -22578,11 +22578,11 @@ a::after {
     background-color: #eee;
 }
 
-.container:hover input ~ .checkmark {
+.language-design:hover input ~ .checkmark {
     background-color: #ccc;
 }
 
-.container input:checked ~ .checkmark {
+.language-design input:checked ~ .checkmark {
     background-color: #2196f3;
 }
 
@@ -22592,11 +22592,11 @@ a::after {
     display: none;
 }
 
-.container input:checked ~ .checkmark:after {
+.language-design input:checked ~ .checkmark:after {
     display: block;
 }
 
-.container .checkmark:after {
+.language-design .checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -22607,4 +22607,4 @@ a::after {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-*/
+

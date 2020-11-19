@@ -8,7 +8,6 @@ use App\Models\Client;
 
 class FUserController extends Controller
 {
-    //
     public function index()
     {
         $client = Controller::getConnectedClient();
@@ -18,13 +17,25 @@ class FUserController extends Controller
             $client_status = 'Non Confirmed';
         }
         $profil_birth_date = $client->day_of_birth . '/' . $client->month_of_birth . '.' . $client->year_of_birth;
-        $avatars = Avatar::get();
-        return view('frontend.clients.user.index')
-            ->with('avatars', $avatars)
-            ->with('client', $client)
-            ->with('profil_birth_date', $profil_birth_date)
-            ->with('client_status', $client_status);
-        //->with('client_status', $client_status)
-
+        $avatars = Avatar::take(3)->get();
+        $avatars_second = Avatar::skip(3)->take(3)->get();
+        $avatars_third = Avatar::skip(6)->take(3)->get();
+        if ($client->type_login == 'forms') {
+            return view('frontend.clients.user.index')
+                ->with('avatars', $avatars)
+                ->with('avatars_second', $avatars_second)
+                ->with('avatars_third', $avatars_third)
+                ->with('client', $client)
+                ->with('profil_birth_date', $profil_birth_date)
+                ->with('client_status', $client_status);
+        } else {
+            return view('frontend.clients.user.index2')
+                ->with('avatars', $avatars)
+                ->with('avatars_second', $avatars_second)
+                ->with('avatars_third', $avatars_third)
+                ->with('client', $client)
+                ->with('profil_birth_date', $profil_birth_date)
+                ->with('client_status', $client_status);
+        }
     }
 }
