@@ -41,18 +41,18 @@
 
 				<div class="col-md-6">
 					<label>First Name</label>
-					<input type="text" value="">
+					<input type="text" value="{{$booking->client_name}}" name="client_name">
 				</div>
 
 				<div class="col-md-6">
 					<label>Last Name</label>
-					<input type="text" value="">
+					<input type="text" value="{{$booking->client_last_name}}" name="client_last_name">
 				</div>
 
 				<div class="col-md-6">
 					<div class="input-with-icon medium-icons">
 						<label>E-Mail Address</label>
-						<input type="text" value="">
+						<input type="text" value="{{$booking->email}}" name="email">
 						<i class="im im-icon-Mail"></i>
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 				<div class="col-md-6">
 					<div class="input-with-icon medium-icons">
 						<label>Phone</label>
-						<input type="text" value="">
+						<input type="text" value="{{$booking->telephone}}" name="telephone">
 						<i class="im im-icon-Phone-2"></i>
 					</div>
 				</div>
@@ -145,26 +145,25 @@
 		<!-- Sidebar
 		================================================== -->
 		<div class="col-lg-4 col-md-4 margin-top-0 margin-bottom-60">
-
 			<!-- Booking Summary -->
 			<div class="listing-item-container compact order-summary-widget">
 				<div class="listing-item">
-					<img src="{{asset('frontend/asset/images/listing-item-04.jpg')}}" alt="">
+					<img src="{{asset('images')}}/campers/{{$booking->camper_image}}" alt="">
 
 					<div class="listing-item-content">
-						<div class="numerical-rating" data-rating="5.0"></div>
-						<h3>Burger House</h3>
-						<span>2726 Shinn Street, New York</span>
+						<div class="numerical-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($booking->id_campers)}}"></div>
+						<h3>{{App\Http\Controllers\Controller::getCamperCategorie($booking->id_campers)->label_en}}</h3>
+						<span>{{$booking->camper_name}}</span>
 					</div>
 				</div>
 			</div>
 			<div class="boxed-widget opening-hours summary margin-top-0">
 				<h3><i class="fa fa-calendar-check-o"></i> Booking Summary</h3>
 				<ul>
-					<li>Date <span>10/20/2019</span></li>
-					<li>Hour <span>5:30 PM</span></li>
-					<li>Guests <span>2 Adults</span></li>
-					<li class="total-costs">Total Cost <span>$9.00</span></li>
+					<li>Date <span>{{$booking->created_date}}</span></li>
+					<li>Hour <span>{{$booking->created_hour}}</span></li>
+					<li>N. nights <span>{{$booking->nbr_days}} days</span></li>
+					<li class="total-costs">Total Cost <span>${{$booking->nbr_days*$booking->price}}</span></li>
 				</ul>
 
 			</div>

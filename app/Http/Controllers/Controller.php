@@ -36,7 +36,6 @@ class Controller extends BaseController
         }
         return $label;
     }
-
     public static function getLabel($table, $id)
     {
         $data = DB::table($table)->find($id);
@@ -47,35 +46,29 @@ class Controller extends BaseController
     {
         return Message::where('status', 0)->orderby('send_date')->get()->count();
     }
-
     public static function getCampersCount()
     {
         return Camper::where('is_confirmed', 0)->get()->count();
     }
-
     public static function getNotReadedMessages()
     {
         return Message::where('status', 0)->orderby('send_date')->get();
     }
-
     public static function getUser($id)
     {
         $user = User::find($id);
         return $user ? $user->name : '';
     }
-
     public static function getConnectedClient()
     {
         $email = Session::get('_client');
         return Client::where('email', $email)->first();
     }
-
     public static function getConnectedClientLastName()
     {
         $client = self::getConnectedClient();
         return $client ? $client->client_last_name : '';
     }
-
     public static function getClientName($id){
         $client = Client::find($id);
         return $client ? $client->client_last_name.' '.$client->client_name : '';
@@ -86,6 +79,15 @@ class Controller extends BaseController
         return DB::table('camper_categories')->get();
     }
 
+    public static function getCamperCategorie($idCamper)
+    {
+        return DB::table('campers')
+            ->join('camper_categories', 'camper_categories.id', '=', 'campers.id_camper_categories')
+            ->where('campers.id',$idCamper)
+            ->select('camper_categories.*')
+            ->first();
+    }
+
     public static function getNotConfirmedcampers()
     {
         return Camper::join('clients', 'clients.id', '=', 'campers.id_clients')
@@ -94,14 +96,18 @@ class Controller extends BaseController
             ->orderby('campers.created_at')
             ->get();
     }
-    public static function  getNotificationCount(){
+    public static function  getNotificationCount()
+    {
         $client = self::getConnectedClient();
-        return DB::table('notifications')->where('id_owner',$client->id)->get()->count();
+        return DB::table('notifications')->where([
+                ['id_owner',$client->id],['status','unread']])->get()->count();
     }
-
-    public static function  getNotificationCountByType($type){
+    public static function  getNotificationCountByType($type)
+    {
         $client = self::getConnectedClient();
-        return DB::table('notifications')->where('type',$type)->where('id_owner',$client->id)->get()->count();
+        return DB::table('notifications')
+        ->where([
+            ['id_owner',$client->id],['status','unread'],['type',$type]])->get()->count();
     }
 
 }
