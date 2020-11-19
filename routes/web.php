@@ -115,6 +115,9 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/storeMessage', [FContactController::class, 'store'])->name('frontend.contact.store');
     Route::get('/client/notification/detail/{id}', [FC_notificationController::class, 'show'])->name('frontend.clients.notification.detail');
     Route::get('/booking/booking_owner/detail/{id}', [FC_bookingController::class,'detailBookingOwner'])->name('booking.owner_booking.detail');
+    Route::get('/booking/booking_owner/confirm/{id}', [FC_bookingController::class,'confirmBookingOwner'])->name('booking.owner_booking.confirm');
+    Route::get('/booking/booking_owner/reject/{id}', [FC_bookingController::class,'rejectBookingOwner'])->name('booking.owner_booking.reject');
+    Route::get('/booking/booking_renter/process/{id}', [FC_bookingController::class,'processBookingRenter'])->name('booking.renter_booking.process');
     
     
     /** Backend */
