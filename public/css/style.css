@@ -1246,8 +1246,8 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
 .user-name span:after {
     position: absolute;
     content: "";
-    height: 12px;
-    width: 12px;
+    height: 15px;
+    width: 15px;
     background-color: #38b653;
     bottom: 0;
     right: 0;

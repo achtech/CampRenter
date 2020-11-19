@@ -15078,6 +15078,7 @@ a.close-list-item {
     border-radius: 4px;
     max-width: 240px;
     width: 100%;
+    height: 208px;
 }
 
 .edit-profile-photo {
@@ -15349,6 +15350,60 @@ a.close-list-item {
     top: -2px;
 }
 
+/*Requested*/
+.booking-1 .bookings .inner h3 span.booking-status {
+    background-color: #2002ce;
+}
+
+/*Confirmed*/
+.booking-2 .bookings .inner h3 span.booking-status {
+    background-color: #64bc36;
+}
+
+/*Denied*/
+.booking-3 .bookings .inner h3 span.booking-status {
+    background-color: #e20d0d;
+}
+
+/*Paid*/
+.booking-4 .bookings .inner h3 span.booking-status {
+    background-color: #ffbb00;
+}
+
+/*InProgress*/
+.booking-5 .bookings .inner h3 span.booking-status {
+    background-color: #858a82;
+}
+
+/*Closed*/
+.booking-6 .bookings .inner h3 span.booking-status {
+    background-color: #020001;
+}
+
+.bookings .inner h3 span.booking-status.s-1 {
+    background-color: #2002ce;
+}
+
+.bookings .inner h3 span.booking-status.s-2 {
+    background-color: #64bc36;
+}
+
+.bookings .inner h3 span.booking-status.s-3 {
+    background-color: #e20d0d;
+}
+
+.bookings .inner h3 span.booking-status.s-4 {
+    background-color: #ffbb00;
+}
+
+.bookings .inner h3 span.booking-status.s-5 {
+    background-color: #858a82;
+}
+
+.bookings .inner h3 span.booking-status.s-6 {
+    background-color: #858a82;
+}
+
 .approved-booking .bookings .inner h3 span.booking-status {
     background-color: #64bc36;
 }
@@ -15358,10 +15413,6 @@ a.close-list-item {
 }
 
 .canceled-booking .bookings .inner h3 span.booking-status {
-    background-color: #ee3535;
-}
-
-.bookings .inner h3 span.booking-status.unpaid {
     background-color: #ee3535;
 }
 
@@ -22815,3 +22866,82 @@ a::after {
     padding-top: 5px;
     font-size: 16px;
 }
+/*
+.avatar {
+    width: 90px !important;
+    height: 58px !important;
+}
+[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+[type="radio"] + img {
+    cursor: pointer;
+}
+
+[type="radio"]:checked + img {
+    outline: 2px solid #38b6cd;
+}
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+/*.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+    background-color: #2196f3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+*/

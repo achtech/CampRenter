@@ -25,6 +25,11 @@
 		background: grey;
 	}
 </style>
+<style>
+	#map_search {
+		width: 100%;
+	}
+</style>
 </head>
 
 <body>

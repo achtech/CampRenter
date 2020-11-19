@@ -28,7 +28,7 @@
 				<div class="col-lg-6 col-md-12">
 					<a href="{{route('frontend.camper.detail',$camper->id)}}" class="listing-item-container" data-marker-id="{{$camper->id}}">
 						<div class="listing-item">
-							<img src="{{asset('images/listing-item-01.jpg')}}" alt="">
+						<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
 							@if($camper->availability==0)
 								<div class="listing-badge now-close">Blocked</div>
 							@elseif($camper->availability==1)
@@ -41,12 +41,16 @@
 								<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
 								<span>{{Illuminate\Support\Str::limit($camper->description_camper, 80)}}...</span>
 							</div>
-							<span class="like-icon"></span>
+
+
 						</div>
 						<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($camper->id)}}">
 							<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} reviews)</div>
 						</div>
 					</a>
+							<span id="fav_{{$camper->id}}" onclick="AddOrRemoveBookmarkSearch({{$camper->id}})"
+								class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
+							</span>
 				</div>
 				<!-- Listing Item / End -->
 				@endforeach
@@ -70,4 +74,20 @@
 	</div>
 
 </div>
+<script type="text/javascript">
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+	function AddOrRemoveBookmarkSearch(camper_id) {
+		$.ajax({
+                url: '/ajax/addBookmarks',
+                type: 'post',
+                data: {_token: CSRF_TOKEN,camperid: camper_id},
+                success: function(response){
+					$('#fav_'+camper_id).load(location.href+('  #fav_'+camper_id));
+                }
+            });
+	};
+
+</script>
+
 @endsection

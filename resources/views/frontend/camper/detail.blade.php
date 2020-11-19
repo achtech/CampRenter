@@ -77,12 +77,7 @@
 	</div>
 </div>
 <script type="text/javascript">
-    document.getElementById("booking-date-range").addEventListener("change", myFunction);
-	function myFunction() {
-		var x = document.getElementById("booking-date-range");
-		x.value = "it works";//x.value.toUpperCase();
-	}
-	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
 	function AddOrRemoveBookmark() {
         var camper_id = {{ $camper->id }};
@@ -96,6 +91,36 @@
                 }
             });
 	};
+	function sendRequestForBooking() {
+        var camper_id = {{ $camper->id }};
+		$.ajax({
+                url: '/ajax/addBookmarks',
+                type: 'post',
+                data: {_token: CSRF_TOKEN,camperid: camper_id},
+                success: function(response){
+	                document.getElementById('bookmarkCount').style.visibility = 'visible';
+					$('#bookmarkCount').load(location.href+(' #bookmarkCount'));
+                }
+            });
+	};
+	$("#idForm").submit(function(e) {
 
-	</script>
+		e.preventDefault(); // avoid to execute the actual submit of the form.
+
+		var form = $(this);
+		var url = form.attr('action');
+		
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: form.serialize(), // serializes the form's elements.
+			success: function(data)
+			{
+				$("#btnRequest").html("Your book is requested");
+				$("#btnRequest").prop("disabled",true);
+				document.getElementById('btnRequest').style.background="#19b453";
+			}
+		});
+	});	
+</script>
 @endsection

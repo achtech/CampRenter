@@ -49,7 +49,9 @@
                         @else
 
 					   <li style="float: right">
-						<a  href="#" style="margin-left: 66px;" class="user-name"><span style="white-space: nowrap;margin-top: 6px;"><img src="{{asset('images/clients/default.jpg')}}" alt="">{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClientLastName()}}</span></a>
+						<a  href="#" style="margin-left: 66px;" class="user-name">
+							<span style="white-space: nowrap;margin-top: 6px;"><img src="{{asset('images/clients/default.jpg')}}" alt="">{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClientLastName()}} ({{App\Http\Controllers\Controller::getNotificationCount()}})</span>
+						</a>
 						  <ul>
 							  <li><a href="{{ route('clients.user.profile') }}" ><i class="far fa-user"></i>{{ __('front.my_profile') }} </a></li>
 							  <li><a href="{{ route('frontend.clients.message') }}"><i class="far fa-envelope"></i> {{ __('front.my_message') }}</a></li>

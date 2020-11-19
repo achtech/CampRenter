@@ -25,11 +25,14 @@ class Controller extends BaseController
     {
         $label = $data->label_en;
         switch (app()->getLocale()) {
-            case 'fr':$label = $data->label_en;
+            case 'fr':
+                $label = $data->label_en;
                 break;
-            case 'de':$label = $data->label_en;
+            case 'de':
+                $label = $data->label_en;
                 break;
-            default:$label = $data->label_en;
+            default:
+                $label = $data->label_en;
         }
         return $label;
     }
@@ -67,10 +70,17 @@ class Controller extends BaseController
         return Client::where('email', $email)->first();
     }
 
-    public static function getConnectedClientLastName(){
+    public static function getConnectedClientLastName()
+    {
         $client = self::getConnectedClient();
         return $client ? $client->client_last_name : '';
     }
+
+    public static function getClientName($id){
+        $client = Client::find($id);
+        return $client ? $client->client_last_name.' '.$client->client_name : '';
+    }
+
     public static function getCamperCategories()
     {
         return DB::table('camper_categories')->get();
@@ -83,6 +93,15 @@ class Controller extends BaseController
             ->select('campers.*', 'clients.client_name', 'clients.client_last_name')
             ->orderby('campers.created_at')
             ->get();
+    }
+    public static function  getNotificationCount(){
+        $client = self::getConnectedClient();
+        return DB::table('notifications')->where('id_owner',$client->id)->get()->count();
+    }
+
+    public static function  getNotificationCountByType($type){
+        $client = self::getConnectedClient();
+        return DB::table('notifications')->where('type',$type)->where('id_owner',$client->id)->get()->count();
     }
 
 }
