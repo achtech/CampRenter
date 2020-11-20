@@ -68,7 +68,9 @@ $(document).ready(function(){
 			<ul data-submenu-title="Main">
 				<li class="{{ $activePage == 'FC_camper' ? 'active' : '' }}"><a href="{{route('frontend.clients.camper')}}"><i class="fas fa-caravan"></i> {{trans('front.menu_panel_camper')}}</a></li>
 				<li class="{{ $activePage == 'FC_bookmark' ? 'active' : '' }}"><a href="{{route('frontend.clients.bookmark')}}"><i class="fas fa-heart"></i> {{trans('front.favoris')}}</a></li>
-				<li class="{{ $activePage == 'FC_message' ? 'active' : '' }}"><a href="{{route('frontend.clients.message')}}"><i class="fa fa-envelope"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">2</span></a></li>
+				<li class="{{ $activePage == 'FC_message' ? 'active' : '' }}"><a href="{{route('frontend.clients.message')}}"><i class="fa fa-envelope"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">
+            {{App\Http\Controllers\frontend\FC_messageController::notReadedMessageCount()}}
+        </span></a></li>
 				<li class="{{ $activePage == 'FC_notification' ? 'active' : '' }}"><a href="{{route('frontend.clients.notification')}}"><i class="fas fa-bell"></i> {{trans('front.menu_panel_notification')}}</a></li>
 				<li class="{{ $activePage == 'FC_booking' ? 'active' : '' }}"><a href="{{route('frontend.clients.booking')}}"><i class="fa fa-folder-open"></i> {{trans('front.menu_panel_booking')}}</a></li>
 				<li class="{{ $activePage == 'FC_wallet' ? 'active' : '' }}"><a href="{{route('frontend.clients.wallet')}}"><i class="fas fa-wallet"></i> {{trans('front.menu_panel_wallet')}}</a></li>

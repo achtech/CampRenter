@@ -35,7 +35,7 @@
 
 						<ul>
 							<li class="unread">
-								<a href="{{route('frontend.clients.message.detail')}}">
+								<a href="{{route('frontend.clients.message.detail',1)}}">
 									<div class="message-avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
 
 									<div class="message-by">
