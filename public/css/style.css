@@ -22814,10 +22814,6 @@ a::after {
     padding-top: 5px;
     font-size: 16px;
 }
-
-
-
-
 .my-profile2 label {
     font-size: 15px;
     font-weight: 600;
@@ -22834,4 +22830,11 @@ a::after {
 
 .my-profile2 textarea {
     height: 200px;
+}
+
+.avatar-design {
+    position: absolute;
+    opacity: 0 !important;
+    width: 0;
+    height: 0;
 }
