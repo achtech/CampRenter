@@ -59,7 +59,7 @@
 						<a  href="#" style="margin-left: 66px;" class="user-name">
 							<span style="white-space: nowrap;margin-top: 6px;">
 								<img src="{{asset('images/clients/default.jpg')}}" alt="">
-								{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClientLastName()}} ({{App\Http\Controllers\Controller::getNotificationCount()}})
+								{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClientLastName()}}
 							</span>
 						</a>
 						  <ul>
