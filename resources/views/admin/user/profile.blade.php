@@ -64,7 +64,7 @@
                         <h4 class="card-title">{{ __('backend.Photo') }}</h4>
                         <div class="mt-5">
                             <div class="form-group">
-                                <img src="{{ asset('assets/admin/images/users') }}/{{$data->picture ?? '1.jpg'}}" style="width:254px" />
+                                <img src="{{ asset('public/assets/admin/images/users') }}/{{$data->picture ?? '1.jpg'}}" style="width:254px" />
                             </div>
                         </div>
                     </div>

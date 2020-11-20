@@ -5,7 +5,7 @@
                 <div class="list-box-listing-img"><img src="/images/avatar/{{$booking->image}}" alt=""></div>
                 <div class="list-box-listing-content">
                     <div class="inner">
-                        <h3>{{$booking->camper_name}} 
+                        <h3>{{$booking->camper_name}}
                             <span class="booking-status s-{{$booking->booking_status_id}}">{{$booking->booking_status_en}}</span>
                         </h3>
                         <div class="inner-booking-list">
@@ -41,7 +41,7 @@
                 <a href="{{ route('booking.owner_booking.reject',$booking->id)}}" class="button gray reject"><i class="sl sl-icon-close"></i> Reject</a>
                 <a href="{{ route('booking.owner_booking.confirm',$booking->id)}}" class="button gray approve"><i class="sl sl-icon-check"></i> Approve</a>
             @endif
-            <a href="{{ route('booking.owner_booking.detail',$booking->id)}}" class="button green approve"><i class="sl sl-icon-screen-tablet"></i> Details</a>
+            <a href="{{ route('booking.owner_booking.detail',$booking->id)}}" class="button green approve"><i class="fas fa-list-ul"></i> Details</a>
             </div>
         </li>
 

@@ -13,25 +13,25 @@
                                 <div class="card-body">
                                     <div class="mt-4">
                                         <div class="form-group">
-                                            <img style="height: 100px;" src="{{ asset('images/avatar') }}/{{$avatar}}"/>
+                                            <img style="height: 100px;" src="{{ asset('public/images/avatar') }}/{{$avatar}}"/>
                                         </div>
                                     </div>
                                     <h4 class="card-title">{{ __('backend.driving_licence_image') }}</h4>
                                     <div class="mt-4">
                                         <div class="form-group">
                                             <a data-fancybox="gallery" class="primary-btn"
-                                                href="{{ asset('images/clients') }}/{{$data->driving_licence_image}}"><img
+                                                href="{{ asset('public/images/clients') }}/{{$data->driving_licence_image}}"><img
                                                     style="height: 100px;"
-                                                    src="{{ asset('images/clients') }}/{{$data->driving_licence_image}}" /></a>
+                                                    src="{{ asset('public/images/clients') }}/{{$data->driving_licence_image}}" /></a>
                                         </div>
                                     </div>
                                     <h4 class="card-title">{{ __('backend.image_national') }}</h4>
                                     <div class="mt-4">
                                         <div class="form-group">
                                             <a data-fancybox="gallery" class="primary-btn"
-                                                href="{{ asset('images/clients') }}/{{$data->image_national_id}}"><img
+                                                href="{{ asset('public/images/clients') }}/{{$data->image_national_id}}"><img
                                                     style="height: 100px;"
-                                                    src="{{ asset('images/clients') }}/{{$data->image_national_id}}" /></a>
+                                                    src="{{ asset('public/images/clients') }}/{{$data->image_national_id}}" /></a>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">

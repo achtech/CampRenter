@@ -48,9 +48,9 @@
 							<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} reviews)</div>
 						</div>
 					</a>
-							<span id="fav_{{$camper->id}}" onclick="AddOrRemoveBookmarkSearch({{$camper->id}})"  
-								class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
-							</span> 
+					<span id="fav_{{$camper->id}}" onclick="AddOrRemoveBookmarkSearch({{$camper->id}})"
+						class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
+					</span>
 				</div>
 				<!-- Listing Item / End -->
 				@endforeach
@@ -63,12 +63,12 @@
 		</div>
 	</div>
 	<div class="fs-inner-container map-fixed">
-
 		<!-- Map -->
 		<div id="map-container">
-		    <div id="map" data-map-scroll="true">
-		        <!-- map goes here -->
-		    </div>
+			<div id="map" class="markers-on-the-map"></div>
+
+				<input style="display: none" type="text" name="position_x" id="currentLatitude">
+				<input style="display: none" type="text" name="position_y" id="currentLongitude">
 		</div>
 
 	</div>
@@ -76,7 +76,7 @@
 </div>
 <script type="text/javascript">
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    
+
 	function AddOrRemoveBookmarkSearch(camper_id) {
 		$.ajax({
                 url: '/ajax/addBookmarks',
@@ -87,7 +87,7 @@
                 }
             });
 	};
-	
+
 </script>
 
 @endsection

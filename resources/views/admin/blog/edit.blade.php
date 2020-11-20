@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div>
-                                <img src="/images/blog/{{$data->photo}}"  style="width:80%; height: 80%;"/>
+                                <img src="/public/images/blog/{{$data->photo}}"  style="width:80%; height: 80%;"/>
                             </div>
                     </div>
                 </div>

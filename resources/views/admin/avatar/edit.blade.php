@@ -31,14 +31,14 @@
                                     <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
                                 </div>
                             </div>
-                                    <img src="/images/avatar/{{$data->image}}"  style="with:200px"/>
+                                    <img src="public/images/avatar/{{$data->image}}"  style="with:200px"/>
                     </div>
                 </div>
-            </div>  
+            </div>
             <div class="col-sm-12">
-                
+
                 {{Form::submit(__('backend.Update'),['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
-                
+
                 <a href="{{ route('avatar.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>

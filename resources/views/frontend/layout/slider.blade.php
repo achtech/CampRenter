@@ -1,4 +1,4 @@
-<div class="main-search-container" data-background-image="{{asset('frontend/asset/images/Campunite-Bild-Start-desktop.png')}}">
+<div class="main-search-container" data-background-image="{{asset('images/Campunite-Bild-Start-desktop.png')}}">
 	<div class="main-search-inner">
 		{{ Form::open(['route'=>'frontend.camper.search','method'=>'GET']) }}
 			<div class="container">
@@ -17,7 +17,7 @@
 							</div>
 
 							<!-- Date Range -->
-							
+
 							<div class="main-search-input-item">
 									<input type="text" id="booking-date-range" name="searchedDate"  placeholder="Check-In - Check-Out" />
 							</div>

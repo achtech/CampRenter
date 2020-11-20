@@ -9,8 +9,8 @@
 
 				<!-- Logo -->
 				<div id="logo">
-					<a href="{{route('home.index')}}"><img src="{{asset('frontend/asset/images/logo-icon.png')}}"
-						data-sticky-logo="{{asset('frontend/asset/images/logo-icon.png')}}" alt=""></a>
+					<a href="{{route('home.index')}}"><img src="{{asset('images/logo-icon.png')}}"
+						data-sticky-logo="{{asset('images/logo-icon.png')}}" alt=""></a>
 				</div>
 
 				<!-- Mobile Navigation -->
@@ -27,7 +27,7 @@
 					<ul id="responsive" style="width: 190%;">
 
 						<li><a class="{{ $activePage == 'home' ? ' current' : '' }}" href="{{route('home.index')}}">{{trans('front.menu_home')}}</a></li>
-						<li><a  class="{{ $activePage == 'camperSearch' ? ' current' : '' }}" href="#">
+						<li><a  class="{{ $activePage == 'camperSearch' || $activePage == 'camper_details' ? ' current' : '' }}" href="#">
 								{{trans('front.menu_rent')}}</a>
 							<ul>
 								@foreach(App\Http\Controllers\Controller::getCamperCategories() as $cat)
@@ -47,13 +47,6 @@
 						<li ><a href="{{route('frontend.client.show_register')}}">{{trans('front.menu_register')}}</a></li>
                         <li><a href="{{ route('frontend.client.show_login') }}"> {{trans('front.menu_login')}}</a></li>
                         @else
-                       <li>
-
-
-                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                               @csrf
-                           </form>
-					   </li>
 
 					   <li style="float: right">
 						<a  href="#" style="margin-left: 66px;" class="user-name">
@@ -63,13 +56,11 @@
 							</span>
 						</a>
 						  <ul>
-							  <li><a href="{{ route('clients.user.profile') }}" ><i class="sl sl-icon-settings"></i>{{ __('front.my_profile') }} </a></li>
-							  <li><a href="{{ route('frontend.clients.message') }}"><i class="sl sl-icon-envelope-open"></i> {{ __('front.my_message') }}</a></li>
-							  <li><a href="{{ route('frontend.clients.booking') }}"><i class="fa fa-calendar-check-o"></i>{{ __('front.my_bookings') }}</a></li>
-							  <li><a href="{{ route('frontend.clients.camper') }}"><i class="fa fa-calendar-check-o"></i>{{ __('front.my_campers') }}</a></li>
-							  <li><a class="dropdown-item" href="{{ route('logout') }}"
-								onclick="event.preventDefault();
-													   document.getElementById('logout-form').submit();"><i class="sl sl-icon-power"></i> {{ __('Logout') }}</a></li>
+							  <li><a href="{{ route('clients.user.profile') }}" ><i class="far fa-user"></i>{{ __('front.my_profile') }} </a></li>
+							  <li><a href="{{ route('frontend.clients.message') }}"><i class="far fa-envelope"></i> {{ __('front.my_message') }}</a></li>
+							  <li><a href="{{ route('frontend.clients.booking') }}"><i class="far fa-folder-open"></i>{{ __('front.my_bookings') }}</a></li>
+							  <li><a href="{{ route('frontend.clients.camper') }}"><i class="fas fa-caravan"></i>{{ __('front.my_campers') }}</a></li>
+							  <li><a class="dropdown-item" href="{{ route('client.logout') }}"><i class="fas fa-power-off"></i> {{ __('Logout') }}</a></li>
 							</ul>
 
 				</li>

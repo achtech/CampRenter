@@ -1,5 +1,5 @@
 
-@extends('frontend.layout.layout',['activePage' => 'camper','footerPage' => 'true'])
+@extends('frontend.layout.layout',['activePage' => 'camper_details','footerPage' => 'true'])
 
 @section('content')
 <!-- Content
@@ -25,7 +25,7 @@
 			</div>
 
 			<!-- Listing Nav -->
-			<div id="listing-nav" class="listing-nav-container">
+			<div id="listing-nav" class="listing-nav-container" style="padding-top:2%;">
 				<ul class="listing-nav">
 					<li><a href="#listing-overview" class="active">Overview</a></li>
 					<li><a href="#listing-gallery">Gallery</a></li>
@@ -34,9 +34,9 @@
 					<li><a href="#add-review">Add Review</a></li>
 				</ul>
 			</div>
-			
+
 			<!-- Overview -->
-			<div id="listing-overview" class="listing-section">				
+			<div id="listing-overview" class="listing-section">
 			@include('frontend.camper.detail.overview')
 			</div>
 
@@ -50,7 +50,7 @@
 			<div id="listing-location" class="listing-section">
 			@include('frontend.camper.detail.location')
 			</div>
-				
+
 			<!-- Reviews -->
 			<div id="listing-reviews" class="listing-section">
 				@include('frontend.camper.detail.reviews')
@@ -59,7 +59,7 @@
 
 			<!-- Add Review Box -->
 			<div id="add-review" class="add-review-box">
-				@include('frontend.camper.detail.add_review')					
+				@include('frontend.camper.detail.add_review')
 			</div>
 			<!-- Add Review Box / End -->
 
@@ -70,7 +70,7 @@
 		<!-- Sidebar
 		================================================== -->
 		<div class="col-lg-4 col-md-4 margin-top-75 sticky">
-			@include('frontend.camper.detail.sidebar')	
+			@include('frontend.camper.detail.sidebar')
 		</div>
 		<!-- Sidebar / End -->
 
@@ -78,7 +78,7 @@
 </div>
 <script type="text/javascript">
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    
+
 	function AddOrRemoveBookmark() {
         var camper_id = {{ $camper->id }};
 		$.ajax({
@@ -124,4 +124,3 @@
 	});	
 </script>
 @endsection
-

@@ -24,7 +24,7 @@
                             <tbody>
                                 @foreach($datas as $item)
                                 <tr>
-                                    <td style="vertical-align: middle;text-align:center"><img style="width:100px" src="{{ asset('images/gallery') }}/{{$item->image}}"/></td>
+                                    <td style="vertical-align: middle;text-align:center"><img style="width:100px" src="{{ asset('public/images/gallery') }}/{{$item->image}}"/></td>
                                     <td style="vertical-align: middle;">{{$item->camper_name}}</td>
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\admin\CamperController::getName('clients',$item->id_clients)}}</td>
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\admin\CamperController::getLabel('camper_categories',$item->id_camper_categories)}}</td>
@@ -110,7 +110,7 @@
                                             <li class="list-inline-item">
                                                 <a href="{{ route('camper.reviews',$item->id)}}" class="btn btn-primary btn-sm rounded-0"  data-toggle="tooltip" title="Details"><i class="far fa-star"></i></a>
                                             </li>
-                                            
+
                                     </td>
                                 </tr>
                                 @endforeach

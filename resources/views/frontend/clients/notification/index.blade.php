@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="row">
-			
+
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
 
@@ -30,7 +30,7 @@
 					<div class="messages-headline">
 						<h4>Inbox</h4>
 					</div>
-					
+
 					<div class="messages-inbox">
 
 						<ul>

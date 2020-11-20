@@ -9,15 +9,16 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Campunit</title>
+<title>Campunite</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="{{asset('frontend/asset/css/style.css')}}">
-<link rel="stylesheet" href="{{asset('frontend/asset/css/main-color.css')}}" id="colors">
+<script src="https://kit.fontawesome.com/b90fcd0862.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
+<link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
     @yield('style')
 
     <style>
@@ -39,10 +40,6 @@ $(document).ready(function(){
 });
 </script>
 
-<script>
-  const attributID = div.getAttribute("data-id");
-    alert(attributID);
-</script>
 </head>
 
 <body>
@@ -69,25 +66,18 @@ $(document).ready(function(){
 	<div class="dashboard-nav">
 		<div class="dashboard-nav-inner">
 			<ul data-submenu-title="Main">
-				<li class="{{ $activePage == 'FC_camper' ? 'active' : '' }}"><a href="{{route('frontend.clients.camper')}}"><i class="sl sl-icon-settings"></i> {{trans('front.menu_panel_camper')}}</a></li>
-				<li class="{{ $activePage == 'FC_bookmark' ? 'active' : '' }}"><a href="{{route('frontend.clients.bookmark')}}"><i class="sl sl-icon-star"></i> {{trans('front.favoris')}}</a></li>
-				<li class="{{ $activePage == 'FC_message' ? 'active' : '' }}"><a href="{{route('frontend.clients.message')}}"><i class="sl sl-icon-envelope-open"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">2</span></a></li>
-				<li class="{{ $activePage == 'FC_notification' ? 'active' : '' }}">
-          <a href="{{route('frontend.clients.notification')}}">
-            <i class="fa fa-calendar-check-o"></i> {{trans('front.menu_panel_notification')}}
-            <span class="nav-tag messages">{{ App\Http\Controllers\Controller::getNotificationCount()}}</span>
-          </a>
-        </li>
-				<li class="{{ $activePage == 'FC_booking' ? 'active' : '' }}"><a href="{{route('frontend.clients.booking')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_booking')}}
-        <span class="nav-tag messages">{{ App\Http\Controllers\Controller::getNotificationCountByType("Booking")}}</span>
-        </a></li>
-				<li class="{{ $activePage == 'FC_wallet' ? 'active' : '' }}"><a href="{{route('frontend.clients.wallet')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_wallet')}}</a></li>
-				<li class="{{ $activePage == 'FC_review' ? 'active' : '' }}"><a href="{{route('frontend.clients.review')}}"><i class="sl sl-icon-wallet"></i> {{trans('front.menu_panel_review')}}</a></li>
-				<li class="{{ $activePage == 'rent_out' || $activePage == 'personnalData' ? 'active' : '' }}"><a href="{{route('rent_out')}}"><i class="sl sl-icon-plus"></i>{{trans('front.menu_panel_rentout')}}</a></li>
+				<li class="{{ $activePage == 'FC_camper' ? 'active' : '' }}"><a href="{{route('frontend.clients.camper')}}"><i class="fas fa-caravan"></i> {{trans('front.menu_panel_camper')}}</a></li>
+				<li class="{{ $activePage == 'FC_bookmark' ? 'active' : '' }}"><a href="{{route('frontend.clients.bookmark')}}"><i class="fas fa-heart"></i> {{trans('front.favoris')}}</a></li>
+				<li class="{{ $activePage == 'FC_message' ? 'active' : '' }}"><a href="{{route('frontend.clients.message')}}"><i class="fa fa-envelope"></i> {{trans('front.menu_panel_message')}} <span class="nav-tag messages">2</span></a></li>
+				<li class="{{ $activePage == 'FC_notification' ? 'active' : '' }}"><a href="{{route('frontend.clients.notification')}}"><i class="fas fa-bell"></i> {{trans('front.menu_panel_notification')}}</a></li>
+				<li class="{{ $activePage == 'FC_booking' ? 'active' : '' }}"><a href="{{route('frontend.clients.booking')}}"><i class="fa fa-folder-open"></i> {{trans('front.menu_panel_booking')}}</a></li>
+				<li class="{{ $activePage == 'FC_wallet' ? 'active' : '' }}"><a href="{{route('frontend.clients.wallet')}}"><i class="fas fa-wallet"></i> {{trans('front.menu_panel_wallet')}}</a></li>
+				<li class="{{ $activePage == 'FC_review' ? 'active' : '' }}"><a href="{{route('frontend.clients.review')}}"><i class="fas fa-smile"></i> {{trans('front.menu_panel_review')}}</a></li>
+				<li class="{{ $activePage == 'rent_out' || $activePage == 'personnalData' ? 'active' : '' }}"><a href="{{route('rent_out')}}"><i class="fas fa-plus-circle"></i>{{trans('front.menu_panel_rentout')}}</a></li>
 			</ul>
 			<ul data-submenu-title="Account">
-				<li class="{{ $activePage == 'FC_profile' ? 'active' : '' }}"><a href="{{route('clients.user.profile')}}"><i class="sl sl-icon-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
-				<li><a href=""><i class="sl sl-icon-power"></i> {{trans('front.menu_panel_logout')}}</a></li>
+				<li class="{{ $activePage == 'FC_profile' ? 'active' : '' }}"><a href="{{route('clients.user.profile')}}"><i class="fas fa-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
+				<li><a href=""><i class="fas fa-power-off"></i> {{trans('front.menu_panel_logout')}}</a></li>
 			</ul>
 
 		</div>
@@ -106,34 +96,34 @@ $(document).ready(function(){
 
 <!-- Scripts
 ================================================== -->
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-3.4.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-migrate-3.1.0.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/mmenu.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/chosen.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/slick.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/rangeslider.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/magnific-popup.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/waypoints.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/counterup.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-ui.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/tooltips.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-migrate-3.1.0.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/mmenu.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/chosen.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/slick.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/rangeslider.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/magnific-popup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/waypoints.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/counterup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/tooltips.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 
 <!-- Maps -->
-{{--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
+{{--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFf_iG_TJJl-Cv_MmnGXk9zQ4yL5AObbw&callback=initAutocomplete&libraries=places&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4&callback=initAutocomplete&libraries=places&v=weekly"
 ></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/maps-mypostion.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/maps-mypostion.js')}}"></script>
 
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
-<script src="{{asset('frontend/asset/scripts/moment.min.js')}}"></script>
-<script src="{{asset('frontend/asset/scripts/daterangepicker.js')}}"></script>
+<script src="{{asset('js/moment.min.js')}}"></script>
+<script src="{{asset('js/daterangepicker.js')}}"></script>
 
 <!-- DropZone | Documentation: http://dropzonejs.com -->
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/dropzone.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/dropzone.js')}}"></script>
 
 <script>
 $(function() {

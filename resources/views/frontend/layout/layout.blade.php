@@ -3,21 +3,33 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
 
-<title>Campunit</title>
+<title>Campunite</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="{{asset('frontend/asset/css/style.css')}}">
-<link rel="stylesheet" href="{{asset('frontend/asset/css/main-color.css')}}" id="colors">
-<link rel="stylesheet" href="{{asset('frontend/asset/css/font-awesome.min.css')}}">
+<script src="https://kit.fontawesome.com/b90fcd0862.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
+<link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<style>
+	#map {
+		width: 95%;
+		height: 450px;
+		background: grey;
+	}
+</style>
+<style>
+	#map_search {
+		width: 100%;
+	}
+</style>
 </head>
 
 <body>
@@ -54,147 +66,43 @@
 
 <!-- Scripts
 ================================================== -->
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-3.4.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-migrate-3.1.0.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/mmenu.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/chosen.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/slick.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/rangeslider.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/magnific-popup.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/waypoints.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/counterup.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/jquery-ui.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/tooltips.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-migrate-3.1.0.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/mmenu.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/chosen.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/slick.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/rangeslider.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/magnific-popup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/waypoints.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/counterup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/tooltips.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 
 
 <!-- Leaflet // Docs: https://leafletjs.com/ -->
-<script src="{{asset('frontend/asset/scripts/leaflet.min.js')}}"></script>
-
-<!-- Leaflet Maps Scripts -->
-<script src="{{asset('frontend/asset/scripts/leaflet-markercluster.min.js')}}"></script>
-<script src="{{asset('frontend/asset/scripts/leaflet-gesture-handling.min.js')}}"></script>
-<script src="{{asset('frontend/asset/scripts/leaflet-listeo.js')}}"></script>
+<script src="{{asset('js/leaflet.min.js')}}"></script>
 
 <!-- Maps -->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/infobox.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/markerclusterer.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/asset/scripts/maps.js')}}"></script>
+{{--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4&callback=initAutocomplete&libraries=places&v=weekly"
+></script>
+<script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/maps-mypostion.js')}}"></script>
 
 <!-- Leaflet Geocoder + Search Autocomplete // Docs: https://github.com/perliedman/leaflet-control-geocoder -->
-<script src="{{asset('frontend/asset/scripts/leaflet-autocomplete.js')}}"></script>
-<script src="{{asset('frontend/asset/scripts/leaflet-control-geocoder.js')}}"></script>
+<script src="{{asset('js/leaflet-autocomplete.js')}}"></script>
+<script src="{{asset('js/leaflet-control-geocoder.js')}}"></script>
 
 <!-- Google Autocomplete -->
-<script>
-	function initAutocomplete() {
-    var input = document.getElementById('autocomplete-input');
-    var autocomplete = new google.maps.places.Autocomplete(input);
-
-    autocomplete.addListener('place_changed', function() {
-      var place = autocomplete.getPlace();
-      if (!place.geometry) {
-        return;
-      }
-    });
-
-	if ($('.main-search-input-item')[0]) {
-	    setTimeout(function(){ 
-	        $(".pac-container").prependTo("#autocomplete-container");
-	    }, 300);
-	}
-}
-</script>
 
 <!-- Maps -->
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
-<script>
-	/*var modal = document.getElementById("myModal");
-	var btn = document.getElementById("myBtn");
-	var span = document.getElementsByClassName("close")[0];
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	  if (event.target == modal) {
-		modal.style.display = "none";
-	  }
-	}*/
-	</script>
-	<script>
-	/*	var registerModel = document.getElementById("registerModel");
-		var registerBtn = document.getElementById("register");
-		var registerAfterForgotPassword = document.getElementById("registerAfterForgotPassword");
-		registerAfterForgotPassword.onclick = function() {
-		  registerModel.style.display = "block";
-		}
-		var spanClose = document.getElementsByClassName("close-second-model")[0];
-		registerBtn.onclick = function() {
-		  registerModel.style.display = "block";
-		}
-		spanClose.onclick = function() {
-		  registerModel.style.display = "none";
-		}
-		window.onclick = function(event) {
-		  if (event.target == registerModel) {
-			registerModel.style.display = "none";
-		  }
-		}*/
-	</script>
-	<script>
-	/*	var emailModel = document.getElementById("registerWithEmail");
-		var emailBtn = document.getElementById("registrationEmail");
-		var span = document.getElementsByClassName("close-third-model")[0];
-		var back=document.getElementsByClassName("go-back")[0];
-		emailBtn.onclick = function() {
-		  emailModel.style.display = "block";
-		}
-		span.onclick = function() {
-		  emailModel.style.display = "none";
-		}
-		back.onclick = function() {
-		  emailModel.style.display = "none";
-		}
-		window.onclick = function(event) {
-		  if (event.target == emailModel) {
-			emailModel.style.display = "none";
-		  }
-		} */
-	</script>
-	<script>
-	/*	var paswwordModel = document.getElementById("passwordModel");
-		var passwordBtn = document.getElementById("forget-password");
-		var span = document.getElementsByClassName("close-forget-password-model")[0];
-		var closePopup = document.getElementById("log_in");
-		passwordBtn.onclick = function() {
-		  paswwordModel.style.display = "block";
-		}
-		closePopup.onclick= function() {
-		  paswwordModel.style.display = "none";
-		}
-		span.onclick = function() {
-		  paswwordModel.style.display = "none";
-		}
-		window.onclick = function(event) {
-		  if (event.target == paswwordModel) {
-			paswwordModel.style.display = "none";
-		  }
-		}
-		var log = document.getElementById("log");
-		log.onclick= function() {
-		  paswwordModel.style.display = "none";
-		}*/
-</script>
 <script>
 	$.ajaxSetup({
   		headers: {
-    			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')	
+    			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		  }
 	});
 
@@ -205,7 +113,7 @@
 	}
 	</script>
 		<!-- Typed Script -->
-	<script type="text/javascript" src="{{asset('frontend/asset/scripts/typed.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/typed.js')}}"></script>
 	<script>
 	var typed = new Typed('.typed-words', {
 	strings: [""," "," "],
@@ -221,37 +129,12 @@
 
 <!-- Style Switcher
 ================================================== -->
-<script src="{{asset('frontend/asset/scripts/switcher.js')}}"></script>
+<script src="{{asset('js/switcher.js')}}"></script>
 
-<div id="style-switcher">
-	<h2>Color Switcher <a href="#"><i class="sl sl-icon-settings"></i></a></h2>
-
-	<div>
-		<ul class="colors" id="color1">
-			<li><a href="#" class="main" title="Main"></a></li>
-			<li><a href="#" class="blue" title="Blue"></a></li>
-			<li><a href="#" class="green" title="Green"></a></li>
-			<li><a href="#" class="orange" title="Orange"></a></li>
-			<li><a href="#" class="navy" title="Navy"></a></li>
-			<li><a href="#" class="yellow" title="Yellow"></a></li>
-			<li><a href="#" class="peach" title="Peach"></a></li>
-			<li><a href="#" class="beige" title="Beige"></a></li>
-			<li><a href="#" class="purple" title="Purple"></a></li>
-			<li><a href="#" class="celadon" title="Celadon"></a></li>
-			<li><a href="#" class="red" title="Red"></a></li>
-			<li><a href="#" class="brown" title="Brown"></a></li>
-			<li><a href="#" class="cherry" title="Cherry"></a></li>
-			<li><a href="#" class="cyan" title="Cyan"></a></li>
-			<li><a href="#" class="gray" title="Gray"></a></li>
-			<li><a href="#" class="olive" title="Olive"></a></li>
-		</ul>
-	</div>
-
-</div>
 <!-- Style Switcher / End -->
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
-<script src="{{asset('frontend/asset/scripts/moment.min.js')}}"></script>
-<script src="{{asset('frontend/asset/scripts/daterangepicker.js')}}"></script>
+<script src="{{asset('js/moment.min.js')}}"></script>
+<script src="{{asset('js/daterangepicker.js')}}"></script>
 
 <script>
 $(function() {

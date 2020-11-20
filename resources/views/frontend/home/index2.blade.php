@@ -42,7 +42,7 @@
 
 				<div class="col-md-6">
 					<div class="fullwidth-filters">
-						
+
 						<!-- Panel Dropdown -->
 						<div class="panel-dropdown wide float-right">
 							<a href="#">More Filters</a>
@@ -62,7 +62,7 @@
 
 										<input id="check-d" type="checkbox" name="check">
 										<label for="check-d">Wireless Internet</label>
-									</div>	
+									</div>
 
 									<div class="col-md-6">
 										<input id="check-e" type="checkbox" name="check" >
@@ -72,13 +72,13 @@
 										<label for="check-f">Free parking on street</label>
 
 										<input id="check-g" type="checkbox" name="check">
-										<label for="check-g">Smoking allowed</label>	
+										<label for="check-g">Smoking allowed</label>
 
 										<input id="check-h" type="checkbox" name="check">
 										<label for="check-h">Events</label>
 									</div>
 								</div>
-								
+
 								<!-- Buttons -->
 								<div class="panel-buttons">
 									<button class="panel-cancel">Cancel</button>
@@ -106,7 +106,7 @@
 						<div class="sort-by">
 							<div class="sort-by-select">
 								<select data-placeholder="Default order" class="chosen-select-no-single">
-									<option>Default Order</option>	
+									<option>Default Order</option>
 									<option>Highest Rated</option>
 									<option>Most Reviewed</option>
 									<option>Newest Listings</option>
@@ -129,7 +129,7 @@
 				<div class="col-lg-4 col-md-6">
 					<a href="listings-single-page.html" class="listing-item-container compact">
 						<div class="listing-item">
-							<img src="{{asset('frontend/asset/images/listing-item-01.jpg')}}" alt="">
+							<img src="{{asset('images/listing-item-01.jpg')}}" alt="">
 
 							<div class="listing-badge now-open">Now Open</div>
 
@@ -148,7 +148,7 @@
 				<div class="col-lg-4 col-md-6">
 					<a href="listings-single-page.html" class="listing-item-container compact">
 						<div class="listing-item">
-							<img src="{{asset('frontend/asset/images/listing-item-02.jpg')}}" alt="">
+							<img src="{{asset('images/listing-item-02.jpg')}}" alt="">
 							<div class="listing-item-details">
 								<ul>
 									<li>Friday, August 10</li>
@@ -163,13 +163,13 @@
 						</div>
 					</a>
 				</div>
-				<!-- Listing Item / End -->		
+				<!-- Listing Item / End -->
 
 				<!-- Listing Item -->
 				<div class="col-lg-4 col-md-6">
 					<a href="listings-single-page.html" class="listing-item-container compact">
 						<div class="listing-item">
-							<img src="{{asset('frontend/asset/images/listing-item-03.jpg')}}" alt="">
+							<img src="{{asset('images/listing-item-03.jpg')}}" alt="">
 							<div class="listing-item-details">
 								<ul>
 									<li>Starting from $59 per night</li>
@@ -191,7 +191,7 @@
 				<div class="col-lg-4 col-md-6">
 					<a href="listings-single-page.html" class="listing-item-container compact">
 						<div class="listing-item">
-							<img src="imag{{asset('frontend/asset/images/listing-item-04.jpg')}}" alt="">
+							<img src="imag{{asset('images/listing-item-04.jpg')}}" alt="">
 
 							<div class="listing-badge now-open">Now Open</div>
 
@@ -210,7 +210,7 @@
 				<div class="col-lg-4 col-md-6">
 					<a href="listings-single-page.html" class="listing-item-container compact">
 						<div class="listing-item">
-							<img src="{{asset('frontend/asset/images/listing-item-05.jpg')}}" alt="">
+							<img src="{{asset('images/listing-item-05.jpg')}}" alt="">
 							<div class="listing-item-content">
 								<div class="numerical-rating" data-rating="3.5"></div>
 								<h3>Airport</h3>
@@ -226,7 +226,7 @@
 				<div class="col-lg-4 col-md-6">
 					<a href="listings-single-page.html" class="listing-item-container compact">
 						<div class="listing-item">
-							<img src="{{asset('frontend/asset/images/listing-item-06.jpg')}}" alt="">
+							<img src="{{asset('images/listing-item-06.jpg')}}" alt="">
 
 							<div class="listing-badge now-closed">Now Closed</div>
 
