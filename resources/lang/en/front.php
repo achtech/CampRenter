@@ -357,4 +357,8 @@ return [
     'day_of_birth' => 'Day Of Birth',
     'month_of_birth' => 'Month Of Birth',
     'year_of_birth' => 'Year Of Birth',
+
+    /*--------------panel--------------*/
+    'reply_review' => 'Reply to review',
+    'visitor_reviews' => 'Visitor Reviews',
 ];
