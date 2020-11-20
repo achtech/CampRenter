@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Socialite;
-
+use Illuminate\Support\Facades\Hash;
 class FClientController extends DefaultLoginController
 {
     protected $redirectTo = '/home';
@@ -98,7 +98,7 @@ class FClientController extends DefaultLoginController
         $passsword = $request->password ?? '';
         $new_passsword = $request->new_password ?? '';
         $confirmed_password = $request->confirmed_password ?? '';
-        if (bcrypt($passsword) == $client->password) {
+        if (Hash::check($request->password, $client->password)) { 
             if ($new_passsword == $confirmed_password) {
                 $client->password = bcrypt($new_passsword);
                 $client->save();

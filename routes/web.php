@@ -124,7 +124,8 @@ Route::group(['middleware' => 'Lang'], function () {
     /** Backend */
     //Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-    Route::get('/logoutC', '\App\Http\Controllers\Auth\LoginController@clientLogout')->name('client.logout');
+    //Route::get('/logoutC', '\App\Http\Controllers\Auth\LoginController@clientLogout')->name('client.logout');
+    Route::post('/logoutC', '\App\Http\Controllers\Auth\LoginController@logout')->name('client.logout');
     Route::get('/dashboard', function () {
         if (auth()->user() == null) {
             return view('/auth/login');
