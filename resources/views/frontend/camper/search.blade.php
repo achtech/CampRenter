@@ -43,8 +43,8 @@
 							</div>
 				<div id="book_fav">
 					@if(!session('_client'))
-					<span onclick="event.preventDefault(); route('frontend.client.show_login') }}}})"
-						class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
+					<span onclick="event.preventDefault();"
+						class="like-icon">
 					</span>
 					@else
 					<span onclick="event.preventDefault(); AddOrRemoveBookmarkSearch({{$camper->id}})"

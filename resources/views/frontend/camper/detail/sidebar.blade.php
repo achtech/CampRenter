@@ -58,13 +58,25 @@
 <!-- Share / Like -->
 <div class="listing-share margin-top-40 margin-bottom-40 no-border">
 
+    @if(!session('_client'))
+    <div id="bookmarkCount">
+        <form method="GET" action="{{route('frontend.client.show_login') }}">
+            <button class="like-button " type="submit">
+                <span  class="like-icon"></span>
+                {{trans('front.bookmark_listing')}}
+            </button>
+        </form>
+        <span>{{App\Http\Controllers\frontend\FC_bookmarkController::getBookmarkCamperCount($camper->id)}} {{trans('front.people_bookmarked_this_place')}}</span>
+    </div>
+    @else
     <div id="bookmarkCount">
         <button class="like-button " onclick="AddOrRemoveBookmark()">
-        <span  class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}"></span>
-        {{trans('front.bookmark_listing')}}
+            <span  class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}"></span>
+            {{trans('front.bookmark_listing')}}
         </button>
         <span>{{App\Http\Controllers\frontend\FC_bookmarkController::getBookmarkCamperCount($camper->id)}} {{trans('front.people_bookmarked_this_place')}}</span>
-        </div>
+    </div>
+    @endif
         <!-- Share Buttons -->
         <ul class="share-buttons margin-top-40 margin-bottom-0">
             <li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
