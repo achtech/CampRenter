@@ -41,16 +41,22 @@
 								<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
 								<span>{{Illuminate\Support\Str::limit($camper->description_camper, 80)}}...</span>
 							</div>
-
-
+				<div id="book_fav">
+					@if(!session('_client'))
+					<span onclick="event.preventDefault(); route('frontend.client.show_login') }}}})"
+						class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
+					</span>
+					@else
+					<span onclick="event.preventDefault(); AddOrRemoveBookmarkSearch({{$camper->id}})"
+						class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
+					</span>
+					@endif
+					</div>
 						</div>
 						<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($camper->id)}}">
 							<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} reviews)</div>
 						</div>
 					</a>
-					<span id="fav_{{$camper->id}}" onclick="AddOrRemoveBookmarkSearch({{$camper->id}})"
-						class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
-					</span>
 				</div>
 				<!-- Listing Item / End -->
 				@endforeach
@@ -83,7 +89,7 @@
                 type: 'post',
                 data: {_token: CSRF_TOKEN,camperid: camper_id},
                 success: function(response){
-					$('#fav_'+camper_id).load(location.href+('  #fav_'+camper_id));
+					$('#book_fav').load(location.href+(' #book_fav'));
                 }
             });
 	};

@@ -206,7 +206,7 @@ class CampersSeeder extends Seeder
             4 => array(
                 'id' => '5',
                 'camper_name' => 'Camp9',
-                'image' => 'camp5.jpg',
+                'image' => 'camp5.jpeg',
                 'brand' => 'brand 4',
                 'model' => 'model 4',
                 'value_of_vehicule' => '6000',
