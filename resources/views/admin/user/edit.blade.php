@@ -65,7 +65,7 @@
                             <div class="form-group">
                                 <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01" />
                                 <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
-                                <img src="{{ asset('public/assets/admin/images/users') }}/{{$data->picture ?? '1.jpg'}}" style="width:254px" />
+                                <img src="{{ asset('/assets/admin/images/users') }}/{{$data->picture ?? '1.jpg'}}" style="width:254px" />
 
                             </div>
                         </div>

@@ -6,7 +6,7 @@
         <div class="col-sm-12 col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <img style="max-width:100%" src="/public/images/blog/{{$data->photo}}"  style="with:200px"/>
+                    <img style="max-width:100%" src="{{asset('/images')}}/blog/{{$data->photo}}"  style="with:200px"/>
                 </div>
             </div>
         </div>
