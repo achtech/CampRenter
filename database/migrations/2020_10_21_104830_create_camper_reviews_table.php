@@ -27,9 +27,11 @@ class CreateCamperReviewsTable extends Migration
 
             $table->timestamps();
             $table->unsignedBigInteger('id_campers')->nullable();
+            $table->unsignedBigInteger('id_clients')->nullable();
             $table->foreign('created_by')->references('id')->on('clients');
             $table->foreign('updated_by')->references('id')->on('clients');
             $table->foreign('id_campers')->references('id')->on('campers');
+            $table->foreign('id_clients')->references('id')->on('clients');
         });
     }
 

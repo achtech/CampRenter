@@ -11,14 +11,24 @@ class FC_reviewController extends Controller
 {
     public function index()
     {
-        return view('frontend.clients.review.index');
+        $client = Controller::getConnectedClient();
+        if ($client != null) {
+            $datas = DB::table("v_review_camper_client")->where('id_clients', $client->id)->first();
+            $own_reviews = DB::table("v_review_camper_client")->where('created_by', $client->id)->first();
+            return view('frontend.clients.review.index')
+                ->with('datas', $datas)
+                ->with('own_reviews', $own_reviews);
+        } else {
+            return view('frontend.clients.review.index');
+        }
+
     }
 
     public function addReview(Request $request)
     {
+        $client = Controller::getConnectedClient();
         $input = request()->except(['_token', '_method']);
-        $input['created_by'] = 1;
-        $input['updated_by'] = 1;
+        $input['created_by'] = $client->id;
         $data = CamperReview::create($input);
         return redirect(route('frontend.camper.detail', $request->id_campers))->with('success', 'Item added succesfully');
     }

@@ -11,6 +11,7 @@ class CamperReview extends Base
         'email',
         'comment',
         'id_campers',
+        'id_clients',
         'rate_service',
         'rate_managing',
         'rate_cleanliness',

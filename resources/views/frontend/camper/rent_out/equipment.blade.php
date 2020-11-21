@@ -10,7 +10,7 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>Camper name</strong></h2>
+				<h2><strong>{{trans('front.camper_name')}}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
@@ -28,26 +28,26 @@
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'equipment'])
 
 		<div class="col-lg-7 col-md-12">
-		<h2 style="padding: 10px;"><strong>Equipment</strong></h2>
+		<h2 style="padding: 10px;"><strong>{{trans('front.equipment')}}</strong></h2>
 			<div class="margin-top-0">
 				<ul style="list-style-type:none; padding-left: 10px;">
 					<li>
 						<div class="row">
-							<h3>1. Outside</h3>
+							<h3>1. {{trans('front.outside')}}</h3>
 						</div>
 						<div class="row opening-day">
 							<div class="col-md-6">
-								<h3>Camping table</h3>
+								<h3>{{trans('front.camping_table')}}</h3>
 								<div class="checkboxes in-row margin-bottom-18">
 									<input id="is_camping_table_exist" name="is_camping_table_exist" type="checkbox" name="check">
-									<label for="check-a">Camping table</label>
+									<label for="check-a">{{trans('front.camping_table')}}</label>
 								</div>
 							</div>
 							<div class="col-md-6">
-								<h3>Camping chairs</h3>
+								<h3>{{trans('front.camping_chairs')}}</h3>
 								<div class="checkboxes in-row margin-bottom-18">
 									<input id="is_camping_chairs_exist" name ="is_camping_chairs_exist" type="checkbox" name="check">
-									<label for="check-a">Camping chairs</label>
+									<label for="check-a">{{trans('front.camping_chairs')}}</label>
 								</div>
 
 							</div>
@@ -56,7 +56,7 @@
 					<li>
 						<div class="row opening-day">
 							<div class="col-md-6">
-							<h3>Transport</h3>
+							<h3>{{trans('front.transport')}}</h3>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 									<label for="check-a">Camping table</label>
@@ -76,18 +76,18 @@
 							</div>
 
 							<div class="col-md-6">
-								<h3>Water</h3>
+								<h3>{{trans('front.water')}}</h3>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Fresh water tank</label>
+									<label for="check-a">{{trans('front.fresh_water_tan')}}</label>
 								</div>
 								<div class="checkboxes in-row ">
 									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Warm water</label>
+									<label for="check-a">{{trans('front.warm_water')}}</label>
 								</div>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Waste water tank</label>
+									<label for="check-a">{{trans('front.waste_water_tank')}}</label>
 								</div>
 							</div>
 
@@ -95,29 +95,29 @@
 					</li>
 					<li>
 						<div class="row opening-day">
-							<h3>Winter</h3>
+							<h3>{{trans('front.winter')}}</h3>
 							<div class="col-md-6">
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Winter ready</label>
+									<label for="check-a">{{trans('front.winter_ready')}}</label>
 								</div>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Double bottom</label>
+									<label for="check-a">{{trans('front.double_bottom')}}</label>
 								</div>
 								<div class="checkboxes in-row margin-bottom-18">
 									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Heat-absorbing glass</label>
+									<label for="check-a">{{trans('front.Heat_absorbing_glass')}}</label>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Winter tires</label>
+									<label for="check-a">{{trans('front.winter_tires')}}</label>
 								</div>
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Snow chains</label>
+									<label for="check-a">{{trans('front.snow_chains')}}</label>
 								</div>
 								<div class="checkboxes in-row margin-bottom-18">
 									<input id="check-a" type="checkbox" name="check">

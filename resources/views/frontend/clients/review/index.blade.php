@@ -7,7 +7,7 @@
 		<div id="titlebar">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>Reviews</h2>
+					<h2>{{trans('front.menu_panel_review')}}</h2>
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
@@ -27,27 +27,12 @@
 
 				<div class="dashboard-list-box margin-top-0">
 
-					<!-- Sort by -->
-					<div class="sort-by">
-						<div class="sort-by-select">
-							<select data-placeholder="Default order" class="chosen-select-no-single">
-								<option>All Listings</option>
-								<option>Tom's Restaurant</option>
-								<option>Sticky Band</option>
-								<option>Hotel Govendor</option>
-								<option>Burger House</option>
-								<option>Airport</option>
-								<option>Think Coffee</option>
-							</select>
-						</div>
-					</div>
-
-					<h4>Visitor Reviews</h4>
+					<h4>{{trans('front.visitor_reviews')}}</h4>
 
 					<!-- Reply to review popup -->
 					<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
 						<div class="small-dialog-header">
-							<h3>Reply to review</h3>
+							<h3>{{trans('front.reply_review')}}</h3>
 						</div>
 						<div class="message-reply margin-top-0">
 							<textarea cols="40" rows="3"></textarea>
@@ -56,17 +41,18 @@
 					</div>
 
 					<ul>
-
+					@if($datas != null)
+						@foreach($datas as $data)
 						<li>
 							<div class="comments listing-reviews">
 								<ul>
 									<li>
 										<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
 										<div class="comment-content"><div class="arrow-comment"></div>
-											<div class="comment-by">Kathy Brown <div class="comment-by-listing">on <a href="#">Burger House</a></div> <span class="date">June 2019</span>
+											<div class="comment-by">{{ $data->name}} {{ $data->last_name}}<div class="comment-by-listing">on <a href="#">{{$data->camper_name}}</a></div> <span class="date">{{$data->created_at}}</span>
 												<div class="star-rating" data-rating="5"></div>
 											</div>
-											<p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
+											<p>{{$data->comment}}</p>
 
 											<div class="review-images mfp-gallery-container">
 												<a href="images/review-image-01.jpg" class="mfp-gallery"><img src="images/review-image-01.jpg" alt=""></a>
@@ -77,64 +63,18 @@
 								</ul>
 							</div>
 						</li>
-
+						@endforeach
+						@else
 						<li>
 							<div class="comments listing-reviews">
 								<ul>
 									<li>
-										<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> </div>
-										<div class="comment-content"><div class="arrow-comment"></div>
-											<div class="comment-by">John Doe <div class="comment-by-listing">on <a href="#">Burger House</a></div> <span class="date">May 2019</span>
-												<div class="star-rating" data-rating="4"></div>
-											</div>
-											<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="fas fa-undo"></i> Reply to this review</a>
-										</div>
+										<p>{{trans('front.no_results')}}</p>
 									</li>
 								</ul>
 							</div>
 						</li>
-
-						<li>
-							<div class="comments listing-reviews">
-								<ul>
-									<li>
-										<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-										<div class="comment-content"><div class="arrow-comment"></div>
-											<div class="comment-by">Kathy Brown <div class="comment-by-listing">on <a href="#">Burger House</a></div> <span class="date">June 2019</span>
-												<div class="star-rating" data-rating="5"></div>
-											</div>
-											<p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
-
-											<div class="review-images mfp-gallery-container">
-												<a href="images/review-image-02.jpg" class="mfp-gallery"><img src="images/review-image-02.jpg" alt=""></a>
-												<a href="images/review-image-03.jpg" class="mfp-gallery"><img src="images/review-image-03.jpg" alt=""></a>
-											</div>
-											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="fas fa-undo"></i> Reply to this review</a>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</li>
-
-						<li>
-							<div class="comments listing-reviews">
-								<ul>
-									<li>
-										<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> </div>
-										<div class="comment-content"><div class="arrow-comment"></div>
-											<div class="comment-by">John Doe <div class="comment-by-listing">on <a href="#">Burger House</a></div> <span class="date">May 2019</span>
-												<div class="star-rating" data-rating="5"></div>
-											</div>
-											<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-											<a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="fas fa-undo"></i> Reply to this review</a>
-										</div>
-
-									</li>
-								</ul>
-							</div>
-						</li>
-
+					@endif
 					</ul>
 				</div>
 
@@ -158,17 +98,18 @@
 				<div class="dashboard-list-box margin-top-0">
 					<h4>Your Reviews</h4>
 					<ul>
-
+					@if($own_reviews != null)
+						@foreach($own_reviews as $own_review)
 						<li>
 							<div class="comments listing-reviews">
 								<ul>
 									<li>
 										<div class="avatar"><img src="images/reviews-avatar.jpg" alt="" /> </div>
 										<div class="comment-content"><div class="arrow-comment"></div>
-											<div class="comment-by">Your review <div class="comment-by-listing own-comment">on <a href="#">Tom's Restaurant</a></div> <span class="date">May 2019</span>
+											<div class="comment-by">Your review <div class="comment-by-listing own-comment">on <a href="#">{{ $own_review->last_name}}'s Camper</a></div> <span class="date">{{$own_review->created_at}}</span>
 												<div class="star-rating" data-rating="4.5"></div>
 											</div>
-											<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+											<p>{{$own_review->comment}}</p>
 											<a href="#" class="rate-review"><i class="far fa-edit"></i> Edit</a>
 										</div>
 
@@ -176,6 +117,18 @@
 								</ul>
 							</div>
 						</li>
+						@endforeach
+						@else
+						<li>
+							<div class="comments listing-reviews">
+								<ul>
+									<li>
+										<p>{{trans('front.no_results')}}</p>
+									</li>
+								</ul>
+							</div>
+						</li>
+					@endif
 					</ul>
 				</div>
 			</div>

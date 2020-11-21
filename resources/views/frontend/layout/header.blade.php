@@ -60,16 +60,16 @@
 							  <li><a href="{{ route('frontend.clients.message') }}"><i class="far fa-envelope"></i> {{ __('front.my_message') }}</a></li>
 							  <li><a href="{{ route('frontend.clients.booking') }}"><i class="far fa-folder-open"></i>{{ __('front.my_bookings') }}</a></li>
 							  <li><a href="{{ route('frontend.clients.camper') }}"><i class="fas fa-caravan"></i>{{ __('front.my_campers') }}</a></li>
-							  
-								  <li><a class="dropdown-item" href="{{ route('client.logout') }}" 
-								  		onclick="event.preventDefault(); 
+
+								  <li><a class="dropdown-item" href="{{ route('client.logout') }}"
+								  		onclick="event.preventDefault();
 										  document.getElementById('frm-logout').submit();"
 									>
-								  <i class="fas fa-power-off"></i> 
+								  <i class="fas fa-power-off"></i>
 								  {{ __('Logout') }}
 									</a>
 								</li>
-								
+
 							</ul>
 
 				</li>

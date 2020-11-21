@@ -10,7 +10,7 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>Camper name</strong></h2>
+				<h2><strong>{{trans('front.camper_name')}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
@@ -33,37 +33,37 @@
 				<div class="steps">
 					<div class="step">
 						<div class="step-header">
-							<div class="header"><h3>Step 1 - Fill in details about your vehicle</h3></div>
+							<div class="header"><h3>{{trans('front.step')} 1 - {{trans('front.step_1_title')}</h3></div>
 							<div class="subheader">Advice: Some of the required information can be found in the driver's licence or in the car's manual</div>
 						</div>
 						<div class="step-content one">
-							<a href="{{route('fill_in_vehicle')}}" class="next-btn">Fill in</a>
+							<a href="{{route('fill_in_vehicle')}}" class="next-btn">{{trans('front.fill_in')}</a>
 						</div>
 					</div>
 					<div class="step minimized">
 						<div class="step-header">
-							<div class="header"><h3>Step 2 - Present your vehicle in the best way</h3></div>
+							<div class="header"><h3>{{trans('front.step')} 2 - {{trans('front.step_2_title')}</h3></div>
 							<div class="subheader">Now you're photo skills are required
 								Advice: Upload many pictures of your vehicle. We recommend to upload at least 10 high quality pictures.
 							</div>
 						</div>
 						<div class="step-content two">
-							<a class="next-btn">Upload</a>
+							<a class="next-btn">{{trans('front.upload')}</a>
 						</div>
 					</div>
 					<div class="step minimized">
 						<div class="step-header">
-							<div class="header"><h3>Step 3 - Determine the price and the rental terms</h3></div>
+							<div class="header"><h3>{{trans('front.step')} 3 - {{trans('front.step_3_title')}</h3></div>
 							<div class="subheader">Advice: The price is the most important factor in determining how many booking requests you'll receive
 							</div>
 						</div>
 						<div class="step-content two">
-							<a class="next-btn">Fill in</a>
+							<a class="next-btn">{{trans('front.fill_in')}</a>
 						</div>
 					</div>
 					<div class="step minimized">
 						<div class="step-header">
-							<div class="header"><h3>Let's go - rent out your vehicle</h3></div>
+							<div class="header"><h3>{{trans('front.lets_go')} - {{trans('front.rent_out_vehicle')}</h3></div>
 							<div class="subheader">When the profile is completed you can publish it. We'll also quickly check it from our side to make sure everything is fine.</div>
 						</div>
 					</div>
