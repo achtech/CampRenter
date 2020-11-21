@@ -50,7 +50,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="edit-profile-photo">
-							<img src="images/clients/{{$client['photo']}}" alt="" id="client_image">
+							<img src="{{asset('images/clients')}}/{{$client['photo']}}" alt="" id="client_image">
 								<div class="change-photo-btn">
 									<div class="photoUpload custom-file">
 								    	<span><i class="fa fa-upload"></i> {{ __('front.upload_photos') }}</span>
@@ -61,7 +61,7 @@
 						</div>
 					<div class="col-md-6">
 						<div class="edit-profile-photo">
-							
+
 							<div class="row" style="height: 62px;">
 								<div class="row" style="height: 62px;">
 									@foreach($avatars as $elem)
@@ -74,7 +74,7 @@
 									<div class="col-md-2"></div>
 									@endforeach
 								</div>
-								
+
 								<div class="row" style="height: 62px;">
 									@foreach($avatars_second as $elem)
 									<div class="col-md-2">
@@ -98,7 +98,7 @@
 									@endforeach
 								</div>
 							</div>
-						
+
 							</div>
 					</div>
 				</div>
@@ -163,9 +163,9 @@
 							<input id="month_of_birth" name="month_of_birth" class="form-control"  value="{{$client['month_of_birth']}}" maxlength="2" type="text">
 							<label>{{ __('front.year_of_birth') }}</label>
 							<input id="year_of_birth" name="year_of_birth" class="form-control"   value="{{$client['year_of_birth']}}" maxlength="4" type="text">
-							
+
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -174,7 +174,7 @@
 	<div class="dashboard-list-box margin-top-0">
 		<h4 class="gray">{{ __('front.account_holder') }}</h4>
 		<div class="dashboard-list-box-static my-profile">
-			
+
 							<label>{{ __('front.account_holder_name') }}</label>
 							<input id="account_holder_name" name="account_holder_name" value="{{$client['account_holder_name']}}" class="form-control" type="tel">
 							<label>{{ __('front.street') }}</label>
@@ -187,7 +187,7 @@
 							<input  id="account_holder_location" name="account_holder_location" class="form-control" value="{{$client['account_holder_location']}}" type="text" >
 							<label>{{ __('front.country') }}</label>
 							<input  id="account_holder_country" name="account_holder_country" class="form-control" value="{{$client['account_holder_country']}}" type="text" >
-			
+
 		</div>
 	</div>
 </div>
@@ -195,14 +195,14 @@
 	<div class="dashboard-list-box margin-top-0">
 		<h4 class="gray">{{ __('front.bank_data') }}</h4>
 		<div class="dashboard-list-box-static my-profile">
-			
+
 							<label>{{ __('front.bank_data_adress') }}</label>
 							<input id="bank_data_adress" name="bank_data_adress" value="{{$client['bank_data_adress']}}" class="form-control" type="tel">
 							<label>{{ __('front.bank_data_iban') }}</label>
 							<input  id="bank_data_iban" name="bank_data_iban" class="form-control" value="{{$client['bank_data_iban']}}" type="text" >
 							<label>{{ __('front.bank_data_bic') }}</label>
 							<input  id="bank_data_bic" name="bank_data_bic" class="form-control" value="{{$client['bank_data_bic']}}" type="text" >
-							
+
 		</div>
 	</div>
 </div>
@@ -214,9 +214,9 @@
 			  <label class="language-design">{{ __('front.german_language') }}
 				<input type="checkbox" class="{{$client['language']=='German' ? 'checked-language':''}}">
 				<span class="checkmark"></span>
-			  </label>		
+			  </label>
 			  <label class="language-design">{{ __('front.english_language') }}
-				<input type="checkbox" class="{{$client['language']=='English' ? 'checked-language':''}}"> 
+				<input type="checkbox" class="{{$client['language']=='English' ? 'checked-language':''}}">
 				<span class="checkmark"></span>
 			  </label>
 			  <label class="language-design">{{ __('front.italian_language') }}
@@ -226,7 +226,7 @@
 			  <label class="language-design">{{ __('front.frensh_language') }}
 				<input type="checkbox" class="{{$client['language']=='French' ? 'checked-language':''}}">
 				<span class="checkmark"></span>
-			  </label>				
+			  </label>
 		</div>
 	</div>
 </div>
@@ -238,7 +238,7 @@
 			  <label class="language-design">{{ __('front.Facebook') }}
 				<input type="checkbox" class="{{$client['where_you_see_us']=='Facebook' ? 'checked-language':''}}">
 				<span class="checkmark"></span>
-			  </label>		
+			  </label>
 			  <label class="language-design">{{ __('front.Billboard') }}
 				<input type="checkbox" class="{{$client['where_you_see_us']=='Billboard' ? 'checked-language':''}}">
 				<span class="checkmark"></span>
@@ -258,7 +258,7 @@
 			  <label class="language-design">{{ __('front.Google') }}
 				<input type="checkbox" class="{{$client['where_you_see_us']=='Google' ? 'checked-language':''}}">
 				<span class="checkmark"></span>
-			  </label>				
+			  </label>
 			  <label class="language-design">{{ __('front.YouTube') }}
 				<input type="checkbox" class="{{$client['where_you_see_us']=='YouTube' ? 'checked-language':''}}">
 				<span class="checkmark"></span>
@@ -267,7 +267,7 @@
 				<input type="checkbox" class="{{$client['where_you_see_us']=='Flyer' ? 'checked-language':''}}">
 				<span class="checkmark"></span>
 			  </label>
-			   
+
 		</div>
 	</div>
 </div>
@@ -278,7 +278,7 @@
 		<div class="dashboard-list-box-static">
 			<label>{{ __('front.name') }}</label>
 			<input id="instagram_user_name" name="instagram_user_name" value="{{$client['instagram_user_name']}}" class="form-control" type="tel">
-						
+
 		</div>
 	</div>
 </div>
