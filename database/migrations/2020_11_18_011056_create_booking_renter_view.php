@@ -46,7 +46,7 @@ class CreateBookingRenterView extends Migration
         ."booking_status bs,"
         ."avatars a"
         ." WHERE "
-        ." c.id_clients = clt.id "
+        ." b.id_clients = clt.id "
         ." AND b.id_campers = c.id "
     ." AND b.id_booking_status = bs.id "
     ." AND a.id = clt.id_avatars"
