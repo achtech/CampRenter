@@ -101,7 +101,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/camper/search/category/{id}', [FC_CamperController::class, 'searchByCategory'])->name('frontend.camper.searchByCategory');
     Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');
     Route::get('/message_client', [FC_messageController::class, 'index'])->name('frontend.clients.message');
-    Route::get('/detail_message_client/{id}', [FC_messageController::class, 'show'])->name('frontend.clients.message.detail');
+    Route::get('/message_client/detail/{id}', [FC_messageController::class, 'show'])->name('frontend.clients.message.detail');
+    Route::post('/message_client/register', [FC_messageController::class, 'store'])->name('frontend.chat.register_chat');
     Route::get('/notification_client', [FC_notificationController::class, 'index'])->name('frontend.clients.notification');
     Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
     Route::get('/wallet_client', [FC_walletController::class, 'index'])->name('frontend.clients.wallet');
@@ -120,9 +121,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/booking/booking_owner/confirm/{id}', [FC_bookingController::class, 'confirmBookingOwner'])->name('booking.owner_booking.confirm');
     Route::get('/booking/booking_owner/reject/{id}', [FC_bookingController::class, 'rejectBookingOwner'])->name('booking.owner_booking.reject');
     Route::get('/booking/booking_renter/process/{id}', [FC_bookingController::class, 'processBookingRenter'])->name('booking.renter_booking.process');
-
     /** Backend */
-    //Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
+    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     //Route::get('/logoutC', '\App\Http\Controllers\Auth\LoginController@clientLogout')->name('client.logout');
     Route::post('/logoutC', '\App\Http\Controllers\Auth\LoginController@logout')->name('client.logout');
@@ -134,6 +134,7 @@ Route::group(['middleware' => 'Lang'], function () {
         }
     });
 
+    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/confirm/{id}', 'App\Http\Controllers\admin\DashboardController@confirmCamper')->name('dashboard.confirm');
     //Route::get('/lastBookings', 'App\Http\Controllers\admin\DashboardController@getLastBookings')->name('dashboard');
 
