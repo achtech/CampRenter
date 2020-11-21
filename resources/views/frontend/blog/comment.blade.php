@@ -12,15 +12,14 @@
             <input type="hidden" name="id_parent" value="{{ $comment->id }}" />
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Answer" />
+            <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="{{trans('front.answer')}}" />
         </div>
         </form>
     </div>
 
     <ul>
       @include('frontend.blog.comment', ['comments' => App\Http\Controllers\frontend\FBlogController::getChildComments($comment->id)])
-    
+
     </ul>
 </li>
-@endforeach 
-
+@endforeach

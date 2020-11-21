@@ -1,4 +1,4 @@
-<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
+<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">{{trans('front.location')}}</h3>
 
 <div id="singleListingMap-container">
     <div class="markers-on-the-map">

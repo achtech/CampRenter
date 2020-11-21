@@ -52,7 +52,7 @@
 					<ul class="post-meta">
 						<li>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}</li>
 						<li>{{date('j F Y', strtotime($blog->created_at))}}</li>
-						<li>{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} Comments</li>
+						<li>{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} {{trans('front.blog_comment')}}</li>
 					</ul>
 
 					<p>{{$blog->article}}</p>
@@ -61,9 +61,9 @@
 
 					<!-- Share Buttons -->
 					<ul class="share-buttons margin-top-40 margin-bottom-0">
-						<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
+						<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
 						<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
-						<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
+						<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Google</a></li>
 						<li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li>
 					</ul>
 					<div class="clearfix"></div>
@@ -77,12 +77,12 @@
 			<ul id="posts-nav" class="margin-top-0 margin-bottom-45">
 			@if($next)
 				<li class="next-post">
-					<a href="{{route('frontend.blog.fdetail',$next ?? 0)}}"><span>Next Post</span>{{$nextTitle ?? ''}}</a>
+					<a href="{{route('frontend.blog.fdetail',$next ?? 0)}}"><span>{{trans('front.next_post')}}</span>{{$nextTitle ?? ''}}</a>
 				</li>
 			@endif
 			@if($previous)
 				<li class="prev-post">
-					<a href="{{route('frontend.blog.fdetail',$previous ?? 0)}}"><span>Previous Post</span>{{$previousTitle ?? ''}}</a>
+					<a href="{{route('frontend.blog.fdetail',$previous ?? 0)}}"><span>{{trans('front.previous_post')}}</span>{{$previousTitle ?? ''}}</a>
 				</li>
 			@endif
 			</ul>
@@ -91,7 +91,7 @@
 
 			<!-- Reviews -->
 			<section class="comments">
-				<h4 class="headline margin-bottom-35">Comments <span class="comments-amount">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}})</span></h4>
+				<h4 class="headline margin-bottom-35">{{trans('front.blog_comment')}} <span class="comments-amount">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}})</span></h4>
 				<ul>
 				@include('frontend.blog.comment', ['comments' => $comments, 'id_blogs' => $blog->id])
 				</ul>

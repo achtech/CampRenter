@@ -10,7 +10,7 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>Camper name</strong></h2>
+				<h2><strong>{{trans('front.camper_name')}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
@@ -28,8 +28,8 @@
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'description'])
 
 		<div class="col-lg-7 col-md-12">
-			<h3><strong>Description</strong></h3>
-			<p>Describe the vehicle, the equipment, what you experienced with and who it's most suitable for.</p>
+			<h3><strong>{{trans('front.description')}</strong></h3>
+			<p>{{trans('front.description_camper')}</p>
 			<div class="col-md-12">
 				<textarea cols="40" rows="5" name=""></textarea>
 			</div>
