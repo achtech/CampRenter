@@ -502,9 +502,9 @@ return [
     'subject' => 'Subject',
     'message' => 'Message',
     'listings' => 'Listings',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
+    'tips' => 'Tips',
+    'in_switzerland' => 'in Switzerland.',
+    'made_with' => 'Made with',
+    'all_rights_reserved' => 'All Rights Reserved',
 
 ];
