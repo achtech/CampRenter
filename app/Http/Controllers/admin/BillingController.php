@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
 use App\Http\Controllers\Controller;
 
 use App\Models\Billing;
@@ -77,31 +78,33 @@ class BillingController extends Controller
         $first_element->setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
         $first_element->setAttribute("xmlns:schemaLocation", "http://www.six-interbank-clearing.com/de/pain.001.001.03.ch.02.xsd");
         $dom->appendChild($first_element);
+
+        $root = $dom->createElement('CstmrCdtTrfInitn');
+        $first_element->appendChild($root);
+        $node = $dom->createElement('GrpHdr');
+        $child_node_title = $dom->createElement('MsgId', '7aeb9c4d264990e6fefc96affed9cd1b');
+        $node->appendChild($child_node_title);
+        $child_node_year = $dom->createElement('CreDtTm', 'tets');
+        $node->appendChild($child_node_year);
+        $child_node_genre = $dom->createElement('NbOfTxs', 1);
+        $node->appendChild($child_node_genre);
+        $child_node_ratings = $dom->createElement('CtrlSum', 14.9);
+        $node->appendChild($child_node_ratings);
+        $child_node_ratings = $dom->createElement('InitgPty');
+        $child_node_title = $dom->createElement('Nm', 'Webgorilla GmbH');
+        $child_node_ratings->appendChild($child_node_title);
+        $child_node_title = $dom->createElement('CtctDtls');
+        $child_node_titl = $dom->createElement('Nm', 'bexio');
+        $child_node_title->appendChild($child_node_titl);
+        $child_node_titl = $dom->createElement('Othr', '1.0.0');
+        $child_node_title->appendChild($child_node_titl);
+        $child_node_ratings->appendChild($child_node_title);
+        $node->appendChild($child_node_ratings);
+        $root->appendChild($node);
+        //Second Element
+
         if ($datas->count() > 0) {
             foreach ($datas as $elem) {
-                $root = $dom->createElement('CstmrCdtTrfInitn');
-                $first_element->appendChild($root);
-                $node = $dom->createElement('GrpHdr');
-                $child_node_title = $dom->createElement('MsgId', '7aeb9c4d264990e6fefc96affed9cd1b');
-                $node->appendChild($child_node_title);
-                $child_node_year = $dom->createElement('CreDtTm', 'tets');
-                $node->appendChild($child_node_year);
-                $child_node_genre = $dom->createElement('NbOfTxs', 1);
-                $node->appendChild($child_node_genre);
-                $child_node_ratings = $dom->createElement('CtrlSum', 14.9);
-                $node->appendChild($child_node_ratings);
-                $child_node_ratings = $dom->createElement('InitgPty');
-                $child_node_title = $dom->createElement('Nm', $elem->client_name . ' ' . $elem->client_last_name);
-                $child_node_ratings->appendChild($child_node_title);
-                $child_node_title = $dom->createElement('CtctDtls');
-                $child_node_titl = $dom->createElement('Nm', 'bexio');
-                $child_node_title->appendChild($child_node_titl);
-                $child_node_titl = $dom->createElement('Othr', '1.0.0');
-                $child_node_title->appendChild($child_node_titl);
-                $child_node_ratings->appendChild($child_node_title);
-                $node->appendChild($child_node_ratings);
-                $root->appendChild($node);
-                //Second Element
                 $second_element = $dom->createElement('PmtInf');
                 $second_element_node = $dom->createElement('PmtInfId', 'Webgorilla GmbH');
                 $second_element->appendChild($second_element_node);
@@ -139,20 +142,22 @@ class BillingController extends Controller
                 $third_element_end = $dom->createElement('EndToEndId', '5f6df097c5fc95.97866708');
                 $third_element_node_id->appendChild($third_element_end);
                 $third_element->appendChild($third_element_node_id);
-                $third_element_node_pmt = $dom->createElement('PmtTpInf');
-                $third_element->appendChild($third_element_node_pmt);
-                $third_element_lcl = $dom->createElement('LclInstrm');
-                $third_element_node_pmt->appendChild($third_element_lcl);
-                $third_element_prtry = $dom->createElement('Prtry', 'CH01');
-                $third_element_lcl->appendChild($third_element_prtry);
                 $third_element_node_amount = $dom->createElement('Amt');
                 $third_element->appendChild($third_element_node_amount);
                 $third_element_instd_amnt = $dom->createElement('InstdAmt', $elem->total);
                 $third_element_node_amount->appendChild($third_element_instd_amnt);
                 $third_element_instd_amnt->setAttribute("Ccy", "CHF");
+
+                $third_element_cdtrAgt = $dom->createElement('CdtrAgt');
+                $third_element->appendChild($third_element_cdtrAgt);
+                $third_element_finInstnId = $dom->createElement('FinInstnId');
+                $third_element_cdtrAgt->appendChild($third_element_finInstnId);
+                $third_element__finInstnId_bic = $dom->createElement('BIC', 'SHKBCH2S');
+                $third_element_finInstnId->appendChild($third_element__finInstnId_bic);
+
                 $third_element_cdtr = $dom->createElement('Cdtr');
                 $third_element->appendChild($third_element_cdtr);
-                $third_element_name = $dom->createElement('Nm', 'Cyon GmbH');
+                $third_element_name = $dom->createElement('Nm', $elem->client_name . ' ' . $elem->client_last_name);
                 $third_element_cdtr->appendChild($third_element_name);
                 $third_element_adr = $dom->createElement('PstlAdr');
                 $third_element_cdtr->appendChild($third_element_adr);
@@ -166,38 +171,34 @@ class BillingController extends Controller
                 $third_element->appendChild($third_element_cdtr_acct);
                 $third_element_id = $dom->createElement('Id');
                 $third_element_cdtr_acct->appendChild($third_element_id);
-                $third_element_other = $dom->createElement('Othr');
-                $third_element_id->appendChild($third_element_other);
-                $third_element_other_id = $dom->createElement('Id', '010575181');
-                $third_element_other->appendChild($third_element_other_id);
+
+                $third_element_other_id = $dom->createElement('IBAN', $elem->iban);
+                $third_element_id->appendChild($third_element_other_id);
                 $third_element_rmtinf = $dom->createElement('RmtInf');
                 $third_element->appendChild($third_element_rmtinf);
-                $third_element_strd = $dom->createElement('Strd');
+                $third_element_strd = $dom->createElement('Ustrd', 'Payout test');
                 $third_element_rmtinf->appendChild($third_element_strd);
-                $third_element_cdtr_ref = $dom->createElement('CdtrRefInf');
-                $third_element_strd->appendChild($third_element_cdtr_ref);
-                $third_element_ref = $dom->createElement('Ref', '000001987972000000017179312');
-                $third_element_cdtr_ref->appendChild($third_element_ref);
                 $root->appendChild($second_element);
-                $dom->save($xml_file_name);
-                $file = "billing.xml";
-                $xml_file = fopen($file, "w") or die("Unable to open file!");
-                $billingData = $dom->saveXML();
-                fwrite($xml_file, $billingData);
-                fclose($xml_file);
-                header('Content-Description: File Transfer');
-                header('Content-Disposition: attachment; filename=' . basename($file));
-                header('Expires: 0');
-                header('Cache-Control: must-revalidate');
-                header('Pragma: public');
-                header('Content-Length: ' . filesize($file));
-                header("Content-Type: text/xml");
-                readfile($file);
             }
         }
+        $dom->save($xml_file_name);
+        $file = "billing.xml";
+        $xml_file = fopen($file, "w") or die("Unable to open file!");
+        $billingData = $dom->saveXML();
+        fwrite($xml_file, $billingData);
+        fclose($xml_file);
+        header('Content-Description: File Transfer');
+        header('Content-Disposition: attachment; filename=' . basename($file));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        header("Content-Type: text/xml");
+        readfile($file);
     }
 
-    public function getBillingData(Request $request){
+    public function getBillingData(Request $request)
+    {
         $startDate = $request->start_date ?? '';
         $end_date = $request->end_date ?? '';
         $payed = $request->payed ?? '';
@@ -220,7 +221,7 @@ class BillingController extends Controller
         }
         return $datas;
     }
-    
+
     public function filter(Request $request)
     {
         $todayDate = date("Y-m-d");
