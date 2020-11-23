@@ -1,4 +1,4 @@
 <!-- Copyrights -->
 <div class="col-md-12">
-	<div class="copyrights">© 2020 campunit. All Rights Reserved.</div>
+	<div class="copyrights">© 2020 campunit. {{trans('front.all_rights_reserved')}}.</div>
 </div>

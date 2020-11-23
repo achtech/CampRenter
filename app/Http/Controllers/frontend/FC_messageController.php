@@ -12,10 +12,10 @@ class FC_messageController extends Controller
 
     public function index()
     {
-        if (Controller::getConnectedClient() == null) {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $client = Controller::getConnectedClient();
         $renters = DB::select('
         select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id
         from    chats
