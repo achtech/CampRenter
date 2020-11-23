@@ -9,15 +9,12 @@ use Illuminate\Http\Request;
 
 class FC_messageController extends Controller
 {
-    public function __construct()
-    {
-        if (Controller::getConnectedClient() == null) {
-            return view('frontend.login.client');
-        }
-    }
 
     public function index()
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         $renters = DB::select('
         select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id
@@ -36,6 +33,9 @@ class FC_messageController extends Controller
     public function show($idRenter)
     {
 
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         $idClient = $client->id;
         $renters = DB::select('
@@ -79,6 +79,9 @@ class FC_messageController extends Controller
 
     public function store(Request $request)
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         $input = request()->except(['_token', '_method', 'action']);
         $input['created_by'] = $client->id;
@@ -93,12 +96,18 @@ class FC_messageController extends Controller
 
     public static function notReadedMessageCount()
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         return DB::table("chats")->where('status', "unread")->where('id_owners', $client->id)->get()->count();
     }
 
     public function getIdBooking($idRenter)
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         $idClient = $client->id;
         $data = DB::table("v_booking_camper")

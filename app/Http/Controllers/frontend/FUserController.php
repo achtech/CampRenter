@@ -7,15 +7,11 @@ use App\Models\Avatar;
 
 class FUserController extends Controller
 {
-    public function __construct()
-    {
-        if (Controller::getConnectedClient() == null) {
-            return view('frontend.login.client');
-        }
-    }
-
     public function index()
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         if ($client->staus == 1) {
             $client_status = 'Confirmed';

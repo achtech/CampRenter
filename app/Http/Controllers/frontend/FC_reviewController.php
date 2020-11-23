@@ -9,15 +9,12 @@ use Illuminate\Http\Request;
 
 class FC_reviewController extends Controller
 {
-    public function __construct()
-    {
-        if (Controller::getConnectedClient() == null) {
-            return view('frontend.login.client');
-        }
-    }
 
     public function index()
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         if ($client != null) {
             $datas = DB::table("v_review_camper_client")->where('id_clients', $client->id)->first();
@@ -33,6 +30,9 @@ class FC_reviewController extends Controller
 
     public function addReview(Request $request)
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         $input = request()->except(['_token', '_method']);
         $input['created_by'] = $client->id;
