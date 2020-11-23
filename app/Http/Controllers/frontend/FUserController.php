@@ -4,10 +4,16 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Avatar;
-use App\Models\Client;
 
 class FUserController extends Controller
 {
+    public function __construct()
+    {
+        if (Controller::getConnectedClient() == null) {
+            return view('frontend.login.client');
+        }
+    }
+
     public function index()
     {
         $client = Controller::getConnectedClient();

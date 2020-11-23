@@ -8,7 +8,13 @@ use DB;
 
 class FCamperController extends Controller
 {
-    //
+    public function __construct()
+    {
+        if (Controller::getConnectedClient() == null) {
+            return view('frontend.login.client');
+        }
+    }
+
     public function index()
     {
         return view('frontend.camper.index');

@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class FC_reviewController extends Controller
 {
+    public function __construct()
+    {
+        if (Controller::getConnectedClient() == null) {
+            return view('frontend.login.client');
+        }
+    }
+
     public function index()
     {
         $client = Controller::getConnectedClient();

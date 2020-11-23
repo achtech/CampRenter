@@ -11,6 +11,13 @@ use Illuminate\Http\Request;
 
 class FC_bookingController extends Controller
 {
+    public function __construct()
+    {
+        if (Controller::getConnectedClient() == null) {
+            return view('frontend.login.client');
+        }
+    }
+
     //frontend.clients.booking
     public function index()
     {
