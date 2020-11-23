@@ -75,11 +75,14 @@ class FC_messageController extends Controller
         $input['status'] = "unread";
         $input['date_sent'] = now();
         $input['id_bookings'] = $this->getIdBooking($request->id_renters);
-        dd($input);
         $data = Chat::create($input);
         return redirect(route('frontend.clients.message.detail',$request->id_renters));
     }
     
+    public function addMessage($id){
+        return redirect('/message_client/detail/'.$id);
+    }
+
     public  static function notReadedMessageCount(){
         $client = Controller::getConnectedClient();
         return DB::table("chats")->where('status', "unread")->where('id_owners', $client->id)->get()->count();
