@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\chat;
 use DB;
+use Illuminate\Http\Request;
+
 class FC_messageController extends Controller
 {
 
     public function index()
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         $renters = DB::select('select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id from chats where   (id_owners = ? OR id_renters = ?)' , [$client->id,$client->id,$client->id]);
         
@@ -25,6 +29,9 @@ class FC_messageController extends Controller
     public function show($idRenter)
     {
 
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         $idClient = $client->id;
         $renters = DB::select('
@@ -66,7 +73,11 @@ class FC_messageController extends Controller
 
     }
  
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         $input = request()->except(['_token', '_method', 'action']);
         $input['created_by'] = $client->id;
@@ -79,16 +90,23 @@ class FC_messageController extends Controller
         return redirect(route('frontend.clients.message.detail',$request->id_renters));
     }
     
-    public function addMessage($id){
+public function addMessage($id){
         return redirect('/message_client/detail/'.$id);
-    }
-
-    public  static function notReadedMessageCount(){
+    }    
+public static function notReadedMessageCount()
+    {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         return DB::table("chats")->where('status', "unread")->where('id_owners', $client->id)->get()->count();
     }
 
-    public function getIdBooking($idRenter){
+    public function getIdBooking($idRenter)
+    {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         $idClient = $client->id;
         $data =  DB::table("v_booking_camper")

@@ -4,12 +4,14 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Avatar;
-use App\Models\Client;
 
 class FUserController extends Controller
 {
     public function index()
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         if ($client->staus == 1) {
             $client_status = 'Confirmed';

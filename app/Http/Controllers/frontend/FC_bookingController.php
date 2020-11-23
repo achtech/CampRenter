@@ -11,9 +11,13 @@ use Illuminate\Http\Request;
 
 class FC_bookingController extends Controller
 {
+
     //frontend.clients.booking
     public function index()
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
         $ownerBookings = DB::table("v_bookings_owner")->where('id_owners', $client->id)->orderBy('id', 'desc')->get();
         $renterBookings = DB::table("v_bookings_owner")->where('id_renters', $client->id)->orderBy('id', 'desc')->get();
@@ -24,6 +28,9 @@ class FC_bookingController extends Controller
 
     public function requestBooking(Request $request, $idCamper)
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $searchedDate = $request->searchedDate ?? '';
         if ($searchedDate != '') {
             $client = Controller::getConnectedClient();

@@ -8,28 +8,22 @@ use App\Mail\ForgotPasswordEmail;
 use App\Mail\RegistrationMail;
 use App\Models\Avatar;
 use App\Models\Client;
-use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Socialite;
-use Illuminate\Support\Facades\Hash;
+
 class FClientController extends DefaultLoginController
 {
-    protected $redirectTo = '/home';
-
     public function __construct()
     {
-        //$this->middleware('guest:client')->except('logout');
-    }
-
-    protected function guard()
-    {
-        return Auth::guard('client');
+        if (Controller::getConnectedClient() == null) {
+            return view('frontend.login.client');
+        }
     }
 
     /**
@@ -98,7 +92,7 @@ class FClientController extends DefaultLoginController
         $passsword = $request->password ?? '';
         $new_passsword = $request->new_password ?? '';
         $confirmed_password = $request->confirmed_password ?? '';
-        if (Hash::check($request->password, $client->password)) { 
+        if (Hash::check($request->password, $client->password)) {
             if ($new_passsword == $confirmed_password) {
                 $client->password = bcrypt($new_passsword);
                 $client->save();
