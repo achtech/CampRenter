@@ -16,19 +16,15 @@ class FC_messageController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $renters = DB::select('
-        select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id
-        from    chats
-        where   (id_owners = ? OR id_renters = ?)'
-            , [$client->id, $client->id, $client->id]);
-
+        $renters = DB::select('select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id from chats where   (id_owners = ? OR id_renters = ?)' , [$client->id,$client->id,$client->id]);
+        
         $ids = [];
-        foreach ($renters as $r) {
+        foreach($renters as $r){
             $ids[] = $r->id;
         }
-        $messages = DB::select("select * from v_client_messages where id in (select max(id) from v_client_messages where renter_id IN (" . implode(',', $ids) . ") group by `renter_id`)");
-        return view('frontend.clients.message.index')->with('messages', $messages);
-    }
+        $messages = DB::select("select * from v_client_messages where id in (select max(id) from v_client_messages where renter_id IN (".implode(',', $ids).") group by `renter_id`)");
+        return view('frontend.clients.message.index')->with('messages',$messages);
+      }
 
     public function show($idRenter)
     {
@@ -40,43 +36,43 @@ class FC_messageController extends Controller
         $idClient = $client->id;
         $renters = DB::select('
         select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id
-        from    chats
+        from    chats 
         where   (id_owners = ? OR id_renters = ?)'
-            , [$client->id, $client->id, $client->id]);
-
+        , [$client->id,$client->id,$client->id]);
+        
         $ids = [];
-        foreach ($renters as $r) {
+        foreach($renters as $r){
             $ids[] = $r->id;
         }
-        $messages = DB::select("select * from v_client_messages where id in (select max(id) from v_client_messages where renter_id IN (" . implode(',', $ids) . ") group by `renter_id`)");
+        $messages = DB::select("select * from v_client_messages where id in (select max(id) from v_client_messages where renter_id IN (".implode(',', $ids).") group by `renter_id`)");
         $ids = Chat::where(function ($query) use ($idRenter) {
             $query->where('id_renters', $idRenter)
-                ->orWhere('id_owners', $idRenter);
+                  ->orWhere('id_owners', $idRenter);
         })
-            ->where(function ($query) use ($idClient) {
-                $query->where('id_renters', $idClient)
-                    ->orWhere('id_owners', $idClient);
-            })->chunkById(200, function ($ch) {
+        ->where(function ($query) use ($idClient) {
+            $query->where('id_renters', $idClient)
+                  ->orWhere('id_owners', $idClient);
+        })->chunkById(200, function ($ch) {
             $ch->each->update(['status' => 'read']);
         });
         $conversations = DB::table("v_client_messages")
             ->where(function ($query) use ($idRenter) {
                 $query->where('renter_id', $idRenter)
-                    ->orWhere('owner_id', $idRenter);
+                      ->orWhere('owner_id', $idRenter);
             })
             ->where(function ($query) use ($idClient) {
                 $query->where('renter_id', $idClient)
-                    ->orWhere('owner_id', $idClient);
+                      ->orWhere('owner_id', $idClient);
             })->orderBy('id')->get();
         $id_bookings = $this->getIdBooking($idRenter);
         return view('frontend.clients.message.detail')
-            ->with('messages', $messages)
-            ->with('conversations', $conversations)
-            ->with('activeRenter', $idRenter)
-            ->with('id_bookings', $id_bookings);
+            ->with('messages',$messages)
+            ->with('conversations',$conversations)
+            ->with('activeRenter',$idRenter)
+            ->with('id_bookings',$id_bookings);
 
     }
-
+ 
     public function store(Request $request)
     {
         if (Controller::getConnectedClient() == null) {
@@ -91,10 +87,13 @@ class FC_messageController extends Controller
         $input['date_sent'] = now();
         $input['id_bookings'] = $this->getIdBooking($request->id_renters);
         $data = Chat::create($input);
-        return redirect(route('frontend.clients.message.detail', $request->id_renters));
+        return redirect(route('frontend.clients.message.detail',$request->id_renters));
     }
-
-    public static function notReadedMessageCount()
+    
+public function addMessage($id){
+        return redirect('/message_client/detail/'.$id);
+    }    
+public static function notReadedMessageCount()
     {
         if (Controller::getConnectedClient() == null) {
             return redirect(route('frontend.login.client'));
@@ -110,10 +109,10 @@ class FC_messageController extends Controller
         }
         $client = Controller::getConnectedClient();
         $idClient = $client->id;
-        $data = DB::table("v_booking_camper")
-            ->whereIn('id_renters', [$idRenter, $idClient])
-            ->whereIn('id_owners', [$idRenter, $idClient])
-            ->whereIn('status', [3, 4])->first();
-        return $data ? $data->id_bookings : 0;
+        $data =  DB::table("v_booking_camper")
+                        ->whereIn('id_renters', [$idRenter,$idClient])
+                        ->whereIn('id_owners', [$idRenter,$idClient])
+                        ->whereIn('status',[3,4])->first();
+        return $data ? $data->id_bookings  : 0;
     }
 }

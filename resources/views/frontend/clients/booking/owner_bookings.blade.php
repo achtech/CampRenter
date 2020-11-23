@@ -31,7 +31,10 @@
                             </ul>
                         </div>
                         @if($booking->booking_status_id==5 || $booking->booking_status_id==4)
-                            <a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> {{trans('front.send_message')}}</a>
+                            <a href="/message_client/detail/{{$booking->id_renters}}" 
+                                class="rate-review ">
+                                <i class="sl sl-icon-envelope-open"></i> {{trans('front.send_message')}}
+                            </a>
                         @endif
                     </div>
                 </div>

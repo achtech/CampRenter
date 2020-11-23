@@ -19,8 +19,8 @@ class FC_bookingController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $ownerBookings = DB::table("v_bookings_owner")->where('id_clients', $client->id)->orderBy('id', 'desc')->get();
-        $renterBookings = DB::table("v_bookings_renter")->where('id_clients', $client->id)->orderBy('id', 'desc')->get();
+        $ownerBookings = DB::table("v_bookings_owner")->where('id_owners', $client->id)->orderBy('id', 'desc')->get();
+        $renterBookings = DB::table("v_bookings_owner")->where('id_renters', $client->id)->orderBy('id', 'desc')->get();
         return view('frontend.clients.booking.index')
             ->with('ownerBookings', $ownerBookings)
             ->with('renterBookings', $renterBookings);
