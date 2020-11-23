@@ -12,11 +12,7 @@ class FC_messageController extends Controller
     public function index()
     {
         $client = Controller::getConnectedClient();
-        $renters = DB::select('
-        select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id
-        from    chats 
-        where   (id_owners = ? OR id_renters = ?)'
-        , [$client->id,$client->id,$client->id]);
+        $renters = DB::select('select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id from chats where   (id_owners = ? OR id_renters = ?)' , [$client->id,$client->id,$client->id]);
         
         $ids = [];
         foreach($renters as $r){
@@ -79,6 +75,7 @@ class FC_messageController extends Controller
         $input['status'] = "unread";
         $input['date_sent'] = now();
         $input['id_bookings'] = $this->getIdBooking($request->id_renters);
+        dd($input);
         $data = Chat::create($input);
         return redirect(route('frontend.clients.message.detail',$request->id_renters));
     }

@@ -27,15 +27,6 @@
 			<div class="col-lg-12 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
 					<!-- Reply to review popup -->
-					<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-						<div class="small-dialog-header">
-							<h3>Send Message</h3>
-						</div>
-						<div class="message-reply margin-top-0">
-							<textarea cols="40" rows="3" placeholder="Your Message to Kathy"></textarea>
-							<button class="button">Send</button>
-						</div>
-					</div>
 					<h4>Booking Requests</h4>
 					<!-- Tabs Navigation -->
 					<ul class="tabs-nav">
