@@ -1,5 +1,6 @@
 @extends('frontend.layout.layout_panel',['activePage'=>'FC_bookmark'])
 @section('content')
+
 	<!-- Content
 	================================================== -->
 	<div class="dashboard-content">
@@ -12,9 +13,7 @@
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Dashboard</a></li>
-							<li>Bookmarks</li>
+{{ Breadcrumbs::render('myCampers') }}
 						</ul>
 					</nav>
 				</div>

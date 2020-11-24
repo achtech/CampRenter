@@ -12,9 +12,7 @@
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Dashboard</a></li>
-							<li>Notification</li>
+							{{ Breadcrumbs::render('notifications') }}
 						</ul>
 					</nav>
 				</div>

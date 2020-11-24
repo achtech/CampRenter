@@ -28,9 +28,7 @@
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							<li><a href="#">{{ __('front.home') }}</a></li>
-							<li><a href="#">{{ __('front.dashboard') }}</a></li>
-							<li>{{ __('front.my_profile') }}</li>
+						{{ Breadcrumbs::render('profil') }}
 						</ul>
 					</nav>
 				</div>

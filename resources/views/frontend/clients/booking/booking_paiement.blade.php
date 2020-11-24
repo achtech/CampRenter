@@ -13,8 +13,7 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li>Booking</li>
+						{{ Breadcrumbs::render('bookings_process', $booking->id) }}
 					</ul>
 				</nav>
 
@@ -160,7 +159,7 @@
 			<div class="boxed-widget opening-hours summary margin-top-0">
 				<h3><i class="fa fa-calendar-check-o"></i> Booking Summary</h3>
 				<ul>
-					<li>Date <span>{{$booking->created_date}}</span></li>
+					<li>Date <span>{{date('j F Y', strtotime($booking->created_date))}}</span></li>
 					<li>Hour <span>{{$booking->created_hour}}</span></li>
 					<li>N. nights <span>{{$booking->nbr_days}} days</span></li>
 					<li class="total-costs">Total Cost <span>${{$booking->nbr_days*$booking->price}}</span></li>

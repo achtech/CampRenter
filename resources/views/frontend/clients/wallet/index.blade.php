@@ -13,9 +13,7 @@
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li>Dashboard</li>
-							<li>Wallet</li>
+							{{ Breadcrumbs::render('wallets') }}
 						</ul>
 					</nav>
 				</div>

@@ -55,9 +55,9 @@ class FC_bookingController extends Controller
             $notification->type = "Booking";
             $notification->status = "unread";
             $notification->save();
-
         }
     }
+
     public function detailBookingOwner($id)
     {
         $notification = Notification::where('type', 'Booking')->where('id_table', $id)->first();
@@ -66,7 +66,7 @@ class FC_bookingController extends Controller
             $notification->save();
         }
 
-        $booking = DB::table("v_bookings_owner")->where('id', $id)->get();
+        $booking = DB::table("v_bookings_owner")->where('id', $id)->first();
         return view('frontend.clients.booking.detail1')
             ->with('booking', $booking);
     }

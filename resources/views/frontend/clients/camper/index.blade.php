@@ -1,9 +1,9 @@
 @extends('frontend.layout.layout_panel',['activePage'=>'FC_camper'])
 @section('content')
+
 <!-- Content
 	================================================== -->
 	<div class="dashboard-content">
-
 		<!-- Titlebar -->
 		<div id="titlebar">
 			<div class="row">
@@ -12,9 +12,7 @@
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Dashboard</a></li>
-							<li>My Campers</li>
+							{{ Breadcrumbs::render('myCampers') }}
 						</ul>
 					</nav>
 				</div>

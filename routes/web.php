@@ -41,6 +41,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('frontend.client.show_login');;
     Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
+    
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
@@ -122,6 +123,9 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/booking/booking_owner/reject/{id}', [FC_bookingController::class, 'rejectBookingOwner'])->name('booking.owner_booking.reject');
     Route::get('/booking/booking_renter/process/{id}', [FC_bookingController::class, 'processBookingRenter'])->name('booking.renter_booking.process');
     Route::get('/message_client/add/{id}', [FC_messageController::class, 'addMessage'])->name('frontend.booking.add_message');
+    Route::get('/review/owner/feedback/{id}', [FC_reviewController::class, 'feedback'])->name('frontend.review.add_feedback');
+    Route::get('/review/owner/edit/{id}', [FC_reviewController::class, 'editReview'])->name('frontend.review.edit_review');
+
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

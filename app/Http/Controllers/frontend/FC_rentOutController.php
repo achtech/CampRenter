@@ -11,10 +11,10 @@ class FC_rentOutController extends Controller
 {
     public function __construct()
     {
-        if (Controller::getConnectedClient() == null) {
+/*        if (Controller::getConnectedClient() == null) {
             return view('frontend.login.client');
         }
-    }
+    */  }
 
     public function storePersonnalData(Request $request)
     {

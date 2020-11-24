@@ -11,7 +11,7 @@ class FCamperController extends Controller
     public function __construct()
     {
         if (Controller::getConnectedClient() == null) {
-            return view('frontend.login.client');
+     //       return view('frontend.login.client');
         }
     }
 

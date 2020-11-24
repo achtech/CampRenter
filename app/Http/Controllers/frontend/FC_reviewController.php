@@ -16,16 +16,11 @@ class FC_reviewController extends Controller
             return redirect(route('frontend.login.client'));
         }
         $client = Controller::getConnectedClient();
-        if ($client != null) {
-            $datas = DB::table("v_review_camper_client")->where('id_clients', $client->id)->first();
-            $own_reviews = DB::table("v_review_camper_client")->where('created_by', $client->id)->first();
-            return view('frontend.clients.review.index')
-                ->with('datas', $datas)
-                ->with('own_reviews', $own_reviews);
-        } else {
-            return view('frontend.clients.review.index');
-        }
-
+        $visitors = DB::table("v_review_camper_client")->where('id_renters', $client->id)->get();
+        $owners = DB::table("v_review_camper_client")->where('id_owners', $client->id)->get();
+        return view('frontend.clients.review.index')
+            ->with('visitors', $visitors)
+            ->with('owners', $owners);
     }
 
     public function addReview(Request $request)
@@ -38,6 +33,22 @@ class FC_reviewController extends Controller
         $input['created_by'] = $client->id;
         $data = CamperReview::create($input);
         return redirect(route('frontend.camper.detail', $request->id_campers))->with('success', 'Item added succesfully');
+    }
+
+    public function feedback($id)
+    {
+        $review = DB::table("v_review_camper_client")->where('id_review', $id)->first();
+        return view('frontend.clients.review.feedback')
+            ->with('review', $review);
+
+    }
+
+    public function editReview($id)
+    {
+        $review = DB::table("v_review_camper_client")->where('id_review', $id)->first();
+        return view('frontend.clients.review.edit')
+            ->with('review', $review);
+
     }
 
     public function helpfulReview($id)
