@@ -10,7 +10,7 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>Camper name</strong></h2>
+				<h2><strong>{{trans('front.camper_name')}}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
@@ -26,12 +26,12 @@
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'rental_terms'])
 
 		<div class="col-lg-7 col-md-12">
-			<h3><strong>Rental terms</strong></h3>
+			<h3><strong>{{trans('front.rental_terms')}}</strong></h3>
 			<div class="col-md-12">
 				<div class="col-md-6">
-					<h5>Minimum of hirer</h5>
+					<h5>{{trans('front.minimum_hirer')}}</h5>
 					<select class="chosen-select-no-single" >
-						<option label="blank">Select Category</option>
+						<option label="blank">{{trans('front.select_category')}}</option>
 						<option>Eat & Drink</option>
 						<option>Shops</option>
 						<option>Hotels</option>
@@ -41,9 +41,9 @@
 					</select>
 				</div>
 				<div class="col-md-6">
-					<h5>Minimum length of driver's licence</h5>
+					<h5>{{trans('front.minimum_length_licence')}}</h5>
 					<select class="chosen-select-no-single" >
-						<option label="blank">Select Category</option>
+						<option label="blank">{{trans('front.select_category')}}</option>
 						<option>Eat & Drink</option>
 						<option>Shops</option>
 						<option>Hotels</option>
@@ -56,20 +56,20 @@
 			<div class="col-md-12" style="padding-top: 20px;">
 				<div class="col-md-6">
 					<div class="col-md-12">
-						<strong>Animals allowed</strong>
+						<strong>{{trans('front.Animals allowed')}}</strong>
 					</div>
 					<div class="col-md-5" style="padding-top: 12px;">
-						<label class="containerRadio">Yes
+						<label class="containerRadio">{{trans('front.yes')}}
 							<input type="radio" checked="checked" name="radio">
 							<span class="checkmarkRadio"></span>
 						</label>
-						<label class="containerRadio">No
+						<label class="containerRadio">{{trans('front.no')}}
 							<input type="radio" checked="checked" name="radio">
 							<span class="checkmarkRadio"></span>
 						</label>
 					</div>
 					<div class="col-md-7" style="padding-top: 12px;">
-						<label class="containerRadio">By-Agreement
+						<label class="containerRadio">{{trans('front.by_agreement')}}
 							<input type="radio" checked="checked" name="radio">
 							<span class="checkmarkRadio"></span>
 						</label>
@@ -77,16 +77,16 @@
 				</div>
 				<div class="col-md-6">
 					<div class="col-md-12">
-						<strong>Animals allowed</strong>
+						<strong>{{trans('front.Animals allowed')}}</strong>
 					</div>
 					<div class="col-md-4" style="padding-top: 12px;">
-						<label class="containerRadio">Yes
+						<label class="containerRadio">{{trans('front.yes')}}
 							<input type="radio" checked="checked" name="radio">
 							<span class="checkmarkRadio"></span>
 						</label>
 					</div>
 					<div class="col-md-8" style="padding-top: 12px;">
-						<label class="containerRadio">No
+						<label class="containerRadio">{{trans('front.no')}}
 							<input type="radio" checked="checked" name="radio">
 							<span class="checkmarkRadio"></span>
 						</label>
@@ -95,11 +95,11 @@
 				</div>
 			</div>
 			<div class="col-md-12" >
-				<strong>Kilometres included per night</strong>
+				<strong>{{trans('front.kilometres_per_night')}}</strong>
 			</div>
 			<div class="col-md-12" style="padding-top: 12px;">
 				<select class="chosen-select-no-single" >
-					<option label="blank">Select Category</option>
+					<option label="blank">{{trans('front.select_category')}}</option>
 					<option>Eat & Drink</option>
 					<option>Shops</option>
 					<option>Hotels</option>
@@ -107,44 +107,44 @@
 					<option>Fitness</option>
 					<option>Events</option>
 				</select>
-				<h5>The higher the number of kilometres included, the more attractive your vehicle will be to renters.</h5>
+				<h5>{{trans('front.kilometres_per_night_info')}}</h5>
 			</div>
 			<div class="col-md-6" style="padding-top: 12px;">
 				<div class="col-md-12" >
-					<strong>Instant booking</strong>
+					<strong>{{trans('front.instant_booking')}}</strong>
 				</div>
 				<div class="col-md-4" style="padding-top: 12px;">
-					<label class="containerRadio">Yes
+					<label class="containerRadio">{{trans('front.yes')}}
 						<input type="radio" checked="checked" name="radio">
 						<span class="checkmarkRadio"></span>
 					</label>
 				</div>
 				<div class="col-md-8" style="padding-top: 12px;">
-					<label class="containerRadio">No
+					<label class="containerRadio">{{trans('front.no')}}
 						<input type="radio" checked="checked" name="radio">
 						<span class="checkmarkRadio"></span>
 					</label>
 				</div>
 			</div>
 			<div class="col-md-12">
-				<h5>With activated instant booking, renters can book your vehicle directly and bindingly. Your calendar and delivery times must be kept up to date at all times.</h5>
+				<h5>{{trans('front.instant_booking_info')}}</h5>
 			</div>
 			<div class="col-md-12" style="padding-top: 12px;">
 
-					<strong>Parking space</strong>
+					<strong>{{trans('front.parking_space')}}</strong>
 				<div class="col-md-12" style="padding-top: 12px;">
 					<div class="checkboxes in-row margin-bottom-20">
 						<input id="check-a" type="checkbox" name="check">
-						<label for="check-a">Parking space for hirer available for duration of rental</label>
+						<label for="check-a">{{trans('front.parking_space_duration')}}</label>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-12">
-					<h3>Additional equipment for outside</h3>
+					<h3>{{trans('front.additional_equipment')}}</h3>
 					<div class="switcher-content">
 						<div class="row">
 							<div class="col-md-10">
-								<a href="#" class="button add-pricing-submenu">Add additional equipment</a>
+								<a href="#" class="button add-pricing-submenu">{{trans('front.add_additional_equipment')}}</a>
 								<table id="pricing-list-container">
 									<tr class="pricing-list-item pattern">
 										<td>
@@ -156,7 +156,7 @@
 							</div>
 						</div>
 					</div>
-					<h5>Please note that the additional rental conditions must not conflict with MyCamper's terms and conditions.</h5>
+					<h5>{{trans('front.note_additional_rental')}}</h5>
 				</div>
 
 			<div class="row" >

@@ -1,9 +1,3 @@
-@if(!session('_client'))
-  @php
-    header("location: " . URL::to('/login/client'), true);
-    exit();
-  @endphp
-@endif
 <!DOCTYPE html>
 <head>
 

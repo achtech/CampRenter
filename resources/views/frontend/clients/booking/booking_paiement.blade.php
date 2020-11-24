@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-md-12">
 
-				<h2>Booking</h2>
+				<h2>{{trans('front.booking')}}</h2>
 
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
@@ -34,23 +34,23 @@
 		================================================== -->
 		<div class="col-lg-8 col-md-8 padding-right-30">
 
-			<h3 class="margin-top-0 margin-bottom-30">Personal Details</h3>
+			<h3 class="margin-top-0 margin-bottom-30">{{trans('front.booking')}}</h3>
 
 			<div class="row">
 
 				<div class="col-md-6">
-					<label>First Name</label>
+					<label>{{trans('front.first_name')}}</label>
 					<input type="text" value="{{$booking->client_name}}" name="client_name">
 				</div>
 
 				<div class="col-md-6">
-					<label>Last Name</label>
+					<label>{{trans('front.last_name')}}</label>
 					<input type="text" value="{{$booking->client_last_name}}" name="client_last_name">
 				</div>
 
 				<div class="col-md-6">
 					<div class="input-with-icon medium-icons">
-						<label>E-Mail Address</label>
+						<label>{{trans('front.email_add')}}</label>
 						<input type="text" value="{{$booking->email}}" name="email">
 						<i class="im im-icon-Mail"></i>
 					</div>
@@ -58,7 +58,7 @@
 
 				<div class="col-md-6">
 					<div class="input-with-icon medium-icons">
-						<label>Phone</label>
+						<label>{{trans('front.profil_phone')}}</label>
 						<input type="text" value="{{$booking->telephone}}" name="telephone">
 						<i class="im im-icon-Phone-2"></i>
 					</div>
@@ -67,7 +67,7 @@
 			</div>
 
 
-			<h3 class="margin-top-55 margin-bottom-30">Payment Method</h3>
+			<h3 class="margin-top-55 margin-bottom-30">{{trans('front.footer_paiement_methods')}}</h3>
 
 			<!-- Payment Methods Accordion -->
 			<div class="payment">
@@ -80,7 +80,7 @@
 					</div>
 
 					<div class="payment-tab-content">
-						<p>You will be redirected to PayPal to complete payment.</p>
+						<p>{{trans('front.redirected_to_paypal')}}</p>
 					</div>
 				</div>
 
@@ -88,7 +88,7 @@
 				<div class="payment-tab">
 					<div class="payment-tab-trigger">
 						<input type="radio" name="cardType" id="creditCart" value="creditCard">
-						<label for="creditCart">Credit / Debit Card</label>
+						<label for="creditCart">{{trans('front.credit_card')}}</label>
 						<img class="payment-logo" src="{{asset('images/paiement-methods/IHEKLgm.png')}}" alt="">
 					</div>
 
@@ -97,28 +97,28 @@
 
 							<div class="col-md-6">
 								<div class="card-label">
-									<label for="nameOnCard">Name on Card</label>
+									<label for="nameOnCard">{{trans('front.name_on_card')}}</label>
 									<input id="nameOnCard" name="nameOnCard" required type="text">
 								</div>
 							</div>
 
 							<div class="col-md-6">
 								<div class="card-label">
-									<label for="cardNumber">Card Number</label>
+									<label for="cardNumber">{{trans('front.card_number')}}</label>
 									<input id="cardNumber" name="cardNumber" placeholder="1234  5678  9876  5432" required type="text">
 								</div>
 							</div>
 
 							<div class="col-md-4">
 								<div class="card-label">
-									<label for="expirynDate">Expiry Month</label>
+									<label for="expirynDate">{{trans('front.expiry_month')}}</label>
 									<input id="expiryDate" placeholder="MM" required type="text">
 								</div>
 							</div>
 
 							<div class="col-md-4">
 								<div class="card-label">
-									<label for="expiryDate">Expiry Year</label>
+									<label for="expiryDate">{{trans('front.expiry_year')}}</label>
 									<input id="expirynDate" placeholder="YY" required type="text">
 								</div>
 							</div>
@@ -137,7 +137,7 @@
 			</div>
 			<!-- Payment Methods Accordion / End -->
 
-			<a href="pages-booking-confirmation.html" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Confirm and Pay</a>
+			<a href="pages-booking-confirmation.html" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">{{trans('front.confirm_and_pay')}}</a>
 		</div>
 
 
@@ -157,11 +157,11 @@
 				</div>
 			</div>
 			<div class="boxed-widget opening-hours summary margin-top-0">
-				<h3><i class="fa fa-calendar-check-o"></i> Booking Summary</h3>
+				<h3><i class="fa fa-calendar-check-o"></i> {{trans('front.booking_summary')}}</h3>
 				<ul>
-					<li>Date <span>{{date('j F Y', strtotime($booking->created_date))}}</span></li>
-					<li>Hour <span>{{$booking->created_hour}}</span></li>
-					<li>N. nights <span>{{$booking->nbr_days}} days</span></li>
+					<li>{{trans('front.date')}} <span>{{date('j F Y', strtotime($booking->created_date))}}</span></li>
+					<li>{{trans('front.hour')}} <span>{{$booking->created_hour}}</span></li>
+					<li>{{trans('front.n_nights')}} <span>{{$booking->nbr_days}} days</span></li>
 					<li class="total-costs">Total Cost <span>${{$booking->nbr_days*$booking->price}}</span></li>
 				</ul>
 

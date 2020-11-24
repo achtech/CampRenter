@@ -8,7 +8,7 @@
 		<div id="titlebar">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>Bookings</h2>
+					<h2>{{trans('front.menu_panel_booking')}}</h2>
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
@@ -25,7 +25,16 @@
 			<div class="col-lg-12 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
 					<!-- Reply to review popup -->
-					<h4>Booking Requests</h4>
+					<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+						<div class="small-dialog-header">
+							<h3>{{trans('front.send_message')}}</h3>
+						</div>
+						<div class="message-reply margin-top-0">
+							<textarea cols="40" rows="3" placeholder="Your Message to Kathy"></textarea>
+							<button class="button">{{trans('front.send')}}</button>
+						</div>
+					</div>
+					<h4>{{trans('front.booking_requests')}}</h4>
 					<!-- Tabs Navigation -->
 					<ul class="tabs-nav">
 						<li class="active"><a href="#tab1b">{{trans('front.tab_owner')}}</a></li>
@@ -40,7 +49,6 @@
 							@include('frontend.clients.booking.renter_bookings')
 						</div>
 					</div>
-
 				</div>
 			</div>
 
@@ -52,4 +60,3 @@
 	</div>
 	<!-- Content / End -->
 @endsection
-

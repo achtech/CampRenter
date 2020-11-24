@@ -9,7 +9,7 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>Camper name</strong></h2>
+				<h2><strong>{{trans('front.camper_name')}}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
@@ -25,7 +25,7 @@
 		@include('frontend.camper.rent_out.sub_menu', ['active_page'=>'rent_out_details'])
 
 		<div class="col-lg-7 col-md-12">
-			<h2 style="padding: 10px;"><strong>Complete your personnel data</strong></h2>
+			<h2 style="padding: 10px;"><strong>{{trans('front.complete_personnal_data')}}</strong></h2>
 			<form  action="{{route('frontend.camper.storePersonnalData')}}" method="POST">
 				<div class="margin-top-0">
 					<ul style="list-style-type:none; padding-left: 0px;">
@@ -45,7 +45,7 @@
 						<li>
 							<div class="row opening-day">
 								<div class="col-md-12">
-									<select name="sex" class="chosen-select" data-placeholder="Sex">
+									<select name="sex" class="chosen-select" data-placeholder="{{trans('front.sex')}}">
 										<option label="Opening Time"></option>
 										<option>{{trans('front.female')}}</option>
 										<option>{{trans('front.male')}}</option>
@@ -153,7 +153,7 @@
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" placeholder="Location">
+									<input type="text" placeholder="{{trans('front.Name')}}">
 								</div>
 							</div>
 						</li>
@@ -161,12 +161,12 @@
 							<div class="row">
 								<!-- Phone -->
 								<div class="col-md-8">
-									<input type="text" placeholder="Location">
+									<input type="text" placeholder="{{trans('front.street')}}">
 								</div>
 
 								<!-- Website -->
 								<div class="col-md-4">
-									<input type="text" placeholder="Postal Code">
+									<input type="text" placeholder="{{trans('front.building_number')}}">
 								</div>
 							</div>
 						</li>
@@ -174,11 +174,11 @@
 							<div class="row">
 								<!-- Website -->
 								<div class="col-md-4">
-									<input type="text" placeholder="Postal Code">
+									<input type="text" placeholder="{{trans('front.postal_code')}}">
 								</div>
 								<!-- Phone -->
 								<div class="col-md-8">
-									<input type="text" placeholder="Location">
+									<input type="text" placeholder="{{trans('front.ountry')}}">
 								</div>
 							</div>
 
@@ -186,7 +186,7 @@
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-								<select class="chosen-select" data-placeholder="Country">
+								<select class="chosen-select" data-placeholder="{{trans('front.country')}}">
 										<option label="Opening Time"></option>
 										<option>Switezland</option>
 										<option>Germany</option>

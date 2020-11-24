@@ -19,12 +19,6 @@ use Socialite;
 
 class FClientController extends DefaultLoginController
 {
-    public function __construct()
-    {
-        if (Controller::getConnectedClient() == null) {
-            return view('frontend.login.client');
-        }
-    }
 
     /**
      * Create a new controller instance.
@@ -48,7 +42,11 @@ class FClientController extends DefaultLoginController
     }
     public function completeRegistrationProfile(Request $request)
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $client = Controller::getConnectedClient();
+
         if ($client->staus == 1) {
             $client_status = 'Confirmed';
         } else {
@@ -89,6 +87,9 @@ class FClientController extends DefaultLoginController
     public function changePassword(Request $request)
     {
         $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $passsword = $request->password ?? '';
         $new_passsword = $request->new_password ?? '';
         $confirmed_password = $request->confirmed_password ?? '';

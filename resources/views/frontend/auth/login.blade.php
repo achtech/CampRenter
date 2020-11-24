@@ -4,7 +4,7 @@
         <div class="col-sm-offset-3 col-md-6">
             {{ Form::open(['url'=>'login/client', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
             <div class="row" style="padding-left:5%;">
-                <h2 style="margin-bottom:4%;"><strong>{{trans('front.menu_login')}}</strong><h2>
+                <h2 style="margin-bottom:4%; text-align: center;"><strong>{{trans('front.menu_login')}}</strong><h2>
 
                 <div class="col-md-12">
                     <label style="display: inline;" for="username2">{{trans('front.email_address')}}:

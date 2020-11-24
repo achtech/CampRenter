@@ -69,9 +69,10 @@ class Controller extends BaseController
         $client = self::getConnectedClient();
         return $client ? $client->client_last_name : '';
     }
-    public static function getClientName($id){
+    public static function getClientName($id)
+    {
         $client = Client::find($id);
-        return $client ? $client->client_last_name.' '.$client->client_name : '';
+        return $client ? $client->client_last_name . ' ' . $client->client_name : '';
     }
 
     public static function getCamperCategories()
@@ -83,7 +84,7 @@ class Controller extends BaseController
     {
         return DB::table('campers')
             ->join('camper_categories', 'camper_categories.id', '=', 'campers.id_camper_categories')
-            ->where('campers.id',$idCamper)
+            ->where('campers.id', $idCamper)
             ->select('camper_categories.*')
             ->first();
     }
@@ -96,18 +97,18 @@ class Controller extends BaseController
             ->orderby('campers.created_at')
             ->get();
     }
-    public static function  getNotificationCount()
+    public static function getNotificationCount()
     {
         $client = self::getConnectedClient();
         return DB::table('notifications')->where([
-                ['id_owner',$client->id],['status','unread']])->get()->count();
+            ['id_owner', $client->id], ['status', 'unread']])->get()->count();
     }
-    public static function  getNotificationCountByType($type)
+    public static function getNotificationCountByType($type)
     {
         $client = self::getConnectedClient();
         return DB::table('notifications')
-        ->where([
-            ['id_owner',$client->id],['status','unread'],['type',$type]])->get()->count();
+            ->where([
+                ['id_owner', $client->id], ['status', 'unread'], ['type', $type]])->get()->count();
     }
 
 }
