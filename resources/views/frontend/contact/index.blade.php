@@ -76,25 +76,25 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div>
-								<input name="full_name" type="text" id="full_name" placeholder="Your Name" required="required" />
+								<input name="full_name" type="text" id="full_name" placeholder="{{trans('front.your_name')}}" required="required" />
 							</div>
 						</div>
 
 						<div class="col-md-6">
 							<div>
-								<input name="email" type="email" id="email" placeholder="Email Address" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" required="required" />
+								<input name="email" type="email" id="email" placeholder="{{trans('front.email_address')}}" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" required="required" />
 							</div>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12">
-							<input name="subject" type="text" id="subject" placeholder="Subject" required="required" />
+							<input name="subject" type="text" id="subject" placeholder="{{trans('front.subject')}}" required="required" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<textarea name="message" cols="40" rows="3" placeholder="Message" spellcheck="true" required="required" ></textarea>
+							<textarea name="message" cols="40" rows="3" placeholder="{{trans('front.message')}}" spellcheck="true" required="required" ></textarea>
 						</div>
 					</div>
 					<input type="submit" class="submit button" id="submit" value="{{trans('front.submit_message')}}" />

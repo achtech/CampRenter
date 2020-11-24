@@ -1,9 +1,3 @@
-@if(!session('_client'))
-  @php
-    header("location: " . URL::to('/login/client'), true);
-    exit();
-  @endphp
-@endif
 <!DOCTYPE html>
 <head>
 
@@ -79,7 +73,7 @@ $(document).ready(function(){
 			</ul>
 			<ul data-submenu-title="Account">
 				<li class="{{ $activePage == 'FC_profile' ? 'active' : '' }}"><a href="{{route('clients.user.profile')}}"><i class="fas fa-user"></i> {{trans('front.menu_panel_profil')}}</a></li>
-				<li><a href=""><i class="fas fa-power-off"></i> {{trans('front.menu_panel_logout')}}</a></li>
+				<li><a href="{{ route('client.logout') }}"><i class="fas fa-power-off"></i> {{trans('front.menu_panel_logout')}}</a></li>
 			</ul>
 
 		</div>

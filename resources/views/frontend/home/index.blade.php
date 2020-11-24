@@ -64,7 +64,7 @@
 						<a href="{{route('frontend.camper.searchByCategory',$category->id)}}" >
 							<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
 								<h4 style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
-								<span style="left:20%;" class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} Listings</span>
+								<span style="left:20%;" class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} {{trans('front.listings')}}</span>
 						</a>
 					</div>
 				@endforeach
@@ -137,7 +137,7 @@
 				<a href="{{route('frontend.blog.fdetail',$blog->id)}}" class="blog-compact-item-container">
 					<div class="blog-compact-item">
 						<img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="">
-						<span class="blog-item-tag">Tips</span>
+						<span class="blog-item-tag">{{trans('front.tips')}}</span>
 						<div class="blog-compact-item-content">
 							<ul class="blog-post-tags">
 								<li>{{date('j F Y', strtotime($blog->created_at))}}</li>

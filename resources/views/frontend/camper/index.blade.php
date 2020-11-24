@@ -3,6 +3,7 @@
 @section('content')
 <!-- Content
 ================================================== -->
+
 <div class="container padding-bottom-75" style="width=100%;">
 	<div class="row">
 		<div class="col-md-6">

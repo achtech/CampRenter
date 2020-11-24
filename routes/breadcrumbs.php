@@ -175,7 +175,6 @@ Breadcrumbs::for('create_camperSubCategory', function ($trail) {
     $trail->push(__('backend.create_camper_sub_category.breadcrumb'), route('camperCategory.index'));
 });
 
-
 // Settings > CamperCategory > Edit CamperCategory
 Breadcrumbs::for('edit_camperStatus', function ($trail, $data) {
     $trail->parent('camperStatus');
@@ -238,7 +237,6 @@ Breadcrumbs::for('change_password', function ($trail) {
     $trail->push(__('backend.change_password.breadcrumb'), route('user.changePassword'));
 });
 
-
 // Promotion
 Breadcrumbs::for('promotion', function ($trail) {
     $trail->parent('settings');
@@ -273,7 +271,6 @@ Breadcrumbs::for('chat_booking', function ($trail, $id) {
     $trail->parent('booking');
     $trail->push(__('backend.chat_detail.breadcrumb'), route('booking.chat', $id));
 });
-
 
 //  Home >Avatar
 Breadcrumbs::for('avatar', function ($trail) {
@@ -349,4 +346,87 @@ Breadcrumbs::for('send_message', function ($trail, $id) {
 Breadcrumbs::for('backup', function ($trail) {
     $trail->parent('settings');
     $trail->push(__('backend.backup.breadcrumb'), route('backup.index'));
+});
+/************************************************************************************* FRONTEND *************************************************************/
+// Home
+Breadcrumbs::for('home', function ($trail) {
+    $trail->push(__('front.home.breadcrumb'), route('home.index'));
+});
+
+// Home > my campers
+Breadcrumbs::for('myCampers', function ($trail) {
+    $trail->parent('home');
+    $trail->push(trans('front.myCampers.breadcrumb'), route('frontend.clients.camper'));
+});
+
+// Home > my campers
+Breadcrumbs::for('bookmarks', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('front.bookmarks.breadcrumb'), route('frontend.clients.bookmark'));
+});
+
+// Home > bookmarks
+Breadcrumbs::for('messages', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('front.messages.breadcrumb'), route('frontend.clients.message'));
+});
+
+// Home > notification
+Breadcrumbs::for('notifications', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('front.notifications.breadcrumb'), route('frontend.clients.notification'));
+});
+
+// Home > Bookings
+Breadcrumbs::for('bookings', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('front.bookings.breadcrumb'), route('frontend.clients.booking'));
+});
+
+// Home > Bookings > Details
+Breadcrumbs::for('bookings_detail', function ($trail, $id) {
+    $trail->parent('bookings');
+    $trail->push(__('front.bookings_detail.breadcrumb'), route('booking.owner_booking.detail', $id));
+});
+
+// Home > Bookings > Process
+Breadcrumbs::for('bookings_process', function ($trail, $id) {
+    $trail->parent('bookings');
+    $trail->push(__('front.bookings_process.breadcrumb'), route('booking.renter_booking.process', $id));
+});
+
+// Home > Wallets
+Breadcrumbs::for('wallets', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('front.wallets.breadcrumb'), route('frontend.clients.wallet'));
+});
+
+// Home > Reviews
+Breadcrumbs::for('reviews', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('front.reviews.breadcrumb'), route('frontend.clients.review'));
+});
+
+// Home > Reviews > feedback
+Breadcrumbs::for('reviews_feedback', function ($trail, $id) {
+    $trail->parent('reviews');
+    $trail->push(__('front.reviews_feedback.breadcrumb'), route('frontend.review.add_feedback', $id));
+});
+
+// Home > Reviews > edit
+Breadcrumbs::for('reviews_edit', function ($trail, $id) {
+    $trail->parent('reviews');
+    $trail->push(__('front.reviews_edit.breadcrumb'), route('frontend.review.edit_review', $id));
+});
+
+// Home > Rent out
+Breadcrumbs::for('rentOut', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('front.rentOut.breadcrumb'), route('rent_out'));
+});
+
+// Home > Profil
+Breadcrumbs::for('profil', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('front.profil.breadcrumb'), route('clients.user.profile'));
 });

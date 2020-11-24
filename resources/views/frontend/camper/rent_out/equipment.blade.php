@@ -14,9 +14,7 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Dashboard</a></li>
-						<li>Add Listing</li>
+{{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>
@@ -128,7 +126,7 @@
 					</li>
 					<li>
 						<div class="row opening-day">
-							<h3>Further equipment for outside</h3>
+							<h3>{{trans('front.further_equipment')}}</h3>
 							<div class="col-md-6">
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
@@ -192,12 +190,12 @@
 						</div>
 					</li>
 					<li>
-						<h3>Additional equipment for outside</h3>
+						<h3>{{trans('front.add_additional_equipment')}}</h3>
 						<div class="switcher-content">
 
 							<div class="row">
 								<div class="col-md-10">
-									<a href="#" class="button add-pricing-submenu">Add additional equipment</a>
+									<a href="#" class="button add-pricing-submenu">{{trans('front.add_additional_equipment')}}</a>
 									<table id="pricing-list-container">
 										<tr class="pricing-list-item pattern">
 											<td>

@@ -11,7 +11,7 @@
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							{{ Breadcrumbs::render('reviews') }}
+							{{ Breadcrumbs::render('reviews_edit',$review->id_review) }}
 						</ul>
 					</nav>
 				</div>
@@ -20,15 +20,17 @@
 
 		<div class="row">
 
-			<!-- Listings -->
-			<div class="col-lg-6 col-md-12">
-				@include('frontend.clients.review.visitor_reviews')
-			</div>
 
-			<!-- Listings -->
-			<div class="col-lg-6 col-md-12">
-				@include('frontend.clients.review.my_reviews')
-			</div>
+
+
+
+
+
+
+
+
+
+
 			<!-- Copyrights -->
 			@include('frontend.layout.footer_panel')
 		</div>

@@ -8,13 +8,11 @@
 		<div id="titlebar">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>Messages</h2>
+					<h2>{{trans('front.my_message')}}</h2>
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Dashboard</a></li>
-							<li>Messages</li>
+							{{ Breadcrumbs::render('messages') }}
 						</ul>
 					</nav>
 				</div>
@@ -28,7 +26,7 @@
 
 				<div class="messages-container margin-top-0">
 					<div class="messages-headline">
-						<h4>Inbox</h4>
+						<h4>{{trans('front.inbox')}}</h4>
 					</div>
 
 					<div class="messages-inbox">
@@ -42,7 +40,7 @@
 
 									<div class="message-by">
 										<div class="message-by-headline">
-											<h5>{{$msg->renter_name}} @if($msg->status=="unread") <i>Unread</i> @endif</h5>
+											<h5>{{$msg->renter_name}} @if($msg->status=="unread") <i>{{trans('front.unread')}}</i> @endif</h5>
 											<span>{{$msg->date_message}}</span>
 										</div>
 										<p>{{ Illuminate\Support\Str::limit($msg->message, 100)}}</p>

@@ -8,7 +8,7 @@
 		<div id="titlebar">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>Messages</h2>
+					<h2>{{trans('front.my_message')}}</h2>
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
@@ -44,7 +44,7 @@
 
 											<div class="message-by">
 												<div class="message-by-headline">
-													<h5>{{$msg->renter_name}} @if($msg->status=="unread") <i>Unread</i> @endif</h5>
+													<h5>{{$msg->renter_name}} @if($msg->status=="unread") <i>{{trans('front.unread')}}</i> @endif</h5>
 													<span>{{$msg->date_message}}</span>
 												</div>
 												<p>{{ Illuminate\Support\Str::limit($msg->message, 30)}} ...</p>
@@ -76,12 +76,12 @@
 								<!-- Reply Area -->
 								<div class="clearfix"></div>
 									<form method="POST" action="{{ route('frontend.chat.register_chat') }}">
-										@csrf	
+										@csrf
 										<input type="hidden" name="id_renters" value="{{$activeRenter}}" />
 
 										<div class="message-reply">
-											<textarea cols="40" rows="3" name="message" placeholder="Your Message"></textarea>
-											<button class="button" type="submit" >Send Message</button>
+											<textarea cols="40" rows="3" name="message" placeholder="{{trans('front.your_message')}}"></textarea>
+											<button class="button" type="submit" >{{trans('front.send_message')}}</button>
 										</div>
 									</form>
 								</div>

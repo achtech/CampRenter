@@ -14,9 +14,7 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Dashboard</a></li>
-						<li>Add Listing</li>
+{{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>

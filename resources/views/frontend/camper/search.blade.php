@@ -30,11 +30,11 @@
 						<div class="listing-item">
 						<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
 							@if($camper->availability==0)
-								<div class="listing-badge now-close">Blocked</div>
+								<div class="listing-badge now-close">{{trans('front.blocked')}}</div>
 							@elseif($camper->availability==1)
-								<div class="listing-badge now-closed">Reserved</div>
+								<div class="listing-badge now-closed">{{trans('front.reserved')}}</div>
 							@else
-								<div class="listing-badge now-open">Available</div>
+								<div class="listing-badge now-open">{{trans('front.available')}}</div>
 							@endif
 							<div class="listing-item-content">
 								<span class="tag">{{App\Http\Controllers\Controller::getLabel("camper_categories", $camper->id_camper_categories)}}</span>
