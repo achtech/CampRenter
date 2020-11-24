@@ -15,6 +15,9 @@ class FCamperController extends Controller
 
     public function rent_out()
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $categories = DB::table('camper_categories')->paginate(10);
         $sub_categories = CamperSubCategory::paginate(10);
 
