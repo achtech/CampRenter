@@ -17,6 +17,7 @@ class CampersSeeder extends Seeder
         DB::table('campers')->insert(array(
             0 => array(
                 'id' => '1',
+                'is_completed' => '1',
                 'camper_name' => 'Camp5',
                 'image' => 'camp1.jpg',
                 'brand' => 'brand 1',
@@ -64,6 +65,7 @@ class CampersSeeder extends Seeder
             ),
             1 => array(
                 'id' => '2',
+                'is_completed' => '1',
                 'camper_name' => 'Camp6',
                 'image' => 'camp2.jpg',
                 'brand' => 'brand 2',
@@ -111,6 +113,7 @@ class CampersSeeder extends Seeder
             ),
             2 => array(
                 'id' => '3',
+                'is_completed' => '1',
                 'camper_name' => 'Camp7',
                 'image' => 'camp3.jpg',
                 'brand' => 'brand 3',
@@ -158,6 +161,7 @@ class CampersSeeder extends Seeder
             ),
             3 => array(
                 'id' => '4',
+                'is_completed' => '1',
                 'camper_name' => 'Camp8',
                 'image' => 'camp4.jpg',
                 'brand' => 'brand 4',
@@ -205,6 +209,7 @@ class CampersSeeder extends Seeder
             ),
             4 => array(
                 'id' => '5',
+                'is_completed' => '1',
                 'camper_name' => 'Camp9',
                 'image' => 'camp5.jpeg',
                 'brand' => 'brand 4',

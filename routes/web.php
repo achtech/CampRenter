@@ -59,7 +59,7 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'frontend.client.show',
     ]]);
     //Route::get('/account', 'App\Http\Controllers\frontend\FClientController@checkProfile')->name('frontend.client.profil');
-    Route::get('/rentout', [FCamperController::class, 'rent_out'])->name('rent_out');
+    Route::get('/rentout', [FC_rentOutController::class, 'index'])->name('rent_out');
     Route::get('/personnalData', [FCamperController::class, 'personnalData'])->name('personnalData');
     Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
     Route::get('/campersteps', [FCamperController::class, 'camper_steps'])->name('camper_steps');
