@@ -93,51 +93,61 @@
 					</div>
 
 					<div class="payment-tab-content">
-						<div class="row">
+						<form role="form" action="{{ route('stripe.payment') }}" method="post"
+								class="validation"
+								data-cc-on-file="false"
+								data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+								id="payment-form">
+							@csrf
+							<div class="row">
 
-							<div class="col-md-6">
-								<div class="card-label">
-									<label for="nameOnCard">{{trans('front.name_on_card')}}</label>
-									<input id="nameOnCard" name="nameOnCard" required type="text">
+								<div class="col-md-6">
+									<div class="card-label">
+										<label for="nameOnCard">{{trans('front.name_on_card')}}</label>
+										<input id="nameOnCard" name="nameOnCard" required type="text" autocomplete='off'>
+									</div>
 								</div>
-							</div>
 
-							<div class="col-md-6">
-								<div class="card-label">
-									<label for="cardNumber">{{trans('front.card_number')}}</label>
-									<input id="cardNumber" name="cardNumber" placeholder="1234  5678  9876  5432" required type="text">
+								<div class="col-md-6">
+									<div class="card-label">
+										<label for="cardNumber">{{trans('front.card_number')}}</label>
+										<input id="card-num" name="cardNumber"
+												placeholder="1234  5678  9876  5432"
+												required type="text"
+												autocomplete='off'>
+									</div>
 								</div>
-							</div>
 
-							<div class="col-md-4">
-								<div class="card-label">
-									<label for="expirynDate">{{trans('front.expiry_month')}}</label>
-									<input id="expiryDate" placeholder="MM" required type="text">
+								<div class="col-md-4">
+									<div class="card-label">
+										<label for="card-expiry-month">{{trans('front.expiry_month')}}</label>
+										<input id="card-expiry-month" placeholder="MM" required type="text">
+									</div>
 								</div>
-							</div>
 
-							<div class="col-md-4">
-								<div class="card-label">
-									<label for="expiryDate">{{trans('front.expiry_year')}}</label>
-									<input id="expirynDate" placeholder="YY" required type="text">
+								<div class="col-md-4">
+									<div class="card-label">
+										<label for="card-expiry-year">{{trans('front.expiry_year')}}</label>
+										<input id="card-expiry-year" placeholder="YY" required type="text">
+									</div>
 								</div>
-							</div>
 
-							<div class="col-md-4">
-								<div class="card-label">
-									<label for="cvv">CVV</label>
-									<input id="cvv" required type="text">
+								<div class="col-md-4">
+									<div class="card-label">
+										<label for="card-cvc">CVC</label>
+										<input id="card-cvc" autocomplete='off' required type="text">
+									</div>
 								</div>
-							</div>
 
-						</div>
+							</div>
+							<button type="submit" class="button booking-confirmation-btn margin-top-40">{{trans('front.confirm_and_pay')}}</button >
+						</form>
 					</div>
 				</div>
 
 			</div>
 			<!-- Payment Methods Accordion / End -->
 
-			<a href="pages-booking-confirmation.html" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">{{trans('front.confirm_and_pay')}}</a>
 		</div>
 
 
@@ -172,5 +182,59 @@
 
 	</div>
 </div>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+<script type="text/javascript">
+$(function() {
+    var $form         = $(".validation");
+  $('form.validation').bind('submit', function(e) {
+    var $form         = $(".validation"),
+        inputVal = ['input[type=email]', 'input[type=password]',
+                         'input[type=text]', 'input[type=file]',
+                         'textarea'].join(', '),
+        $inputs       = $form.find('.required').find(inputVal),
+        $errorStatus = $form.find('div.error'),
+        valid         = true;
+        $errorStatus.addClass('hide');
+
+        $('.has-error').removeClass('has-error');
+    $inputs.each(function(i, el) {
+      var $input = $(el);
+      if ($input.val() === '') {
+        $input.parent().addClass('has-error');
+        $errorStatus.removeClass('hide');
+        e.preventDefault();
+      }
+    });
+
+    if (!$form.data('cc-on-file')) {
+      e.preventDefault();
+      Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+      Stripe.createToken({
+        number: $('#card-num').val(),
+        cvc: $('#card-cvc').val(),
+        exp_month: $('#card-expiry-month').val(),
+        exp_year: $('#card-expiry-year').val()
+      }, stripeHandleResponse);
+    }
+
+  });
+
+  function stripeHandleResponse(status, response) {
+        if (response.error) {
+            $('.error')
+                .removeClass('hide')
+                .find('.alert')
+                .text(response.error.message);
+        } else {
+            var token = response['id'];
+            $form.find('input[type=text]').empty();
+            $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+            $form.get(0).submit();
+        }
+    }
+
+});
+</script>
 <!-- Container / End -->
 @endsection

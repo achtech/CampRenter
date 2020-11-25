@@ -12,7 +12,8 @@ use App\Http\Controllers\frontend\FC_notificationController;
 use App\Http\Controllers\frontend\FC_rentOutController;
 use App\Http\Controllers\frontend\FC_reviewController;
 use App\Http\Controllers\frontend\FC_walletController;
-use App\Http\Controllers\frontend\SocialController;
+use App\Http\Controllers\SocialController;
+use App\Http\Controllers\StripeController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+/** Stripe payment */
+
+Route::get('stripe-payment', [StripeController::class, 'handleGet']);
+Route::post('stripe-payment', [StripeController::class, 'handlePost'])->name('stripe.payment');
 
 Route::get('lang/{lang}', function ($lang) {
     \Session::put('locale', $lang);
@@ -41,7 +47,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('frontend.client.show_login');;
     Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
-    
+
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
