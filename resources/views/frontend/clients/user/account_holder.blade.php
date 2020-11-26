@@ -30,19 +30,19 @@
 <div class="dashboard-list-box margin-top-10">
     <h4 class="gray">{{ __('front.languages') }}</h4>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input id="check-a" type="checkbox" name="language[]"  value="DE" @if(in_array("DE",$languages)) checked @endif>
+        <input id="check-a" type="checkbox" name="language[]"  value="DE" @if(isset($languages) && is_array($languages) && in_array("DE",$languages)) checked @endif>
         <label for="check-a">{{trans('front.german')}}</label>
     </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input id="check-b" type="checkbox" name="language[]" value="EN" @if(in_array("EN",$languages)) checked @endif>
+        <input id="check-b" type="checkbox" name="language[]" value="EN" @if(isset($languages) && is_array($languages) && in_array("EN",$languages)) checked @endif>
         <label for="check-b">{{trans('front.english')}}</label>
     </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input id="check-c" type="checkbox" name="language[]" value="IT" @if(in_array("IT",$languages)) checked @endif>
+        <input id="check-c" type="checkbox" name="language[]" value="IT" @if(isset($languages) && is_array($languages) && in_array("IT",$languages)) checked @endif>
         <label for="check-c">{{trans('front.italian')}}</label>
     </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input id="check-d" type="checkbox" name="language[]" value="FR" @if(in_array("FR",$languages)) checked @endif>
+        <input id="check-d" type="checkbox" name="language[]" value="FR" @if(isset($languages) && is_array($languages) && in_array("FR",$languages)) checked @endif>
         <label for="check-d">{{trans('front.french')}}</label>
     </div>
 </div>
@@ -50,35 +50,35 @@
 <div class="dashboard-list-box margin-top-10">
     <h4 class="gray">{{ __('front.where_did_you_see_us') }}</h4>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input type="checkbox" name="where_you_see_us[]" id="check-e" value="Facebook" @if(in_array("Facebook",$useUs)) checked @endif>
+        <input type="checkbox" name="where_you_see_us[]" id="check-e" value="Facebook" @if(isset($useUs) && is_array($useUs) && in_array("Facebook",$useUs ?? '')) checked @endif>
         <label class="check-e">{{ __('front.Facebook') }}</label>
     </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input type="checkbox" name="where_you_see_us[]" id="check-f" value="Billboard" @if(in_array("Billboard",$useUs)) checked @endif>
+        <input type="checkbox" name="where_you_see_us[]" id="check-f" value="Billboard" @if(isset($useUs) && is_array($useUs) && in_array("Billboard",$useUs ?? '')) checked @endif>
         <label class="check-f">{{ __('front.Billboard') }}</label>
         </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input type="checkbox" name="where_you_see_us[]" id="check-g" value="Print" @if(in_array("Print",$useUs)) checked @endif>
+        <input type="checkbox" name="where_you_see_us[]" id="check-g" value="Print" @if(isset($useUs) && is_array($useUs) && in_array("Print",$useUs ?? '')) checked @endif>
         <label class="check-g">{{ __('front.Print advertisement') }}</label>
         </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input type="checkbox" name="where_you_see_us[]" id="check-h" value="TV" @if(in_array("TV",$useUs)) checked @endif>
+        <input type="checkbox" name="where_you_see_us[]" id="check-h" value="TV" @if(isset($useUs) && is_array($useUs) && in_array("TV",$useUs ?? '')) checked @endif>
         <label class="check-h">{{ __('front.TV') }}</label>
         </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input type="checkbox" name="where_you_see_us[]" id="check-i" value="Newsletter" @if(in_array("Newsletter",$useUs)) checked @endif>
+        <input type="checkbox" name="where_you_see_us[]" id="check-i" value="Newsletter" @if(isset($useUs) && is_array($useUs) && in_array("Newsletter",$useUs ?? '')) checked @endif>
         <label class="check-i">{{ __('front.Newsletter') }}</label>
         </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input type="checkbox" name="where_you_see_us[]" id="check-j" value="Google" @if(in_array("Google",$useUs)) checked @endif>
+        <input type="checkbox" name="where_you_see_us[]" id="check-j" value="Google" @if(isset($useUs) && is_array($useUs) && in_array("Google",$useUs ?? '')) checked @endif>
         <label class="check-j">{{ __('front.Google') }}</label>
         </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input type="checkbox" name="where_you_see_us[]" id="check-k" value="YouTube" @if(in_array("YouTube",$useUs)) checked @endif>
+        <input type="checkbox" name="where_you_see_us[]" id="check-k" value="YouTube" @if(isset($useUs) && is_array($useUs) && in_array("YouTube",$useUs ?? '')) checked @endif>
         <label class="check-k">{{ __('front.YouTube') }}</label>
         </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input type="checkbox" name="where_you_see_us[]" id="check-l" value="Flyer" @if(in_array("Flyer",$useUs)) checked @endif>
+        <input type="checkbox" name="where_you_see_us[]" id="check-l" value="Flyer" @if(isset($useUs) && is_array($useUs) && in_array("Flyer",$useUs ?? '')) checked @endif>
         <label class="check-l">{{ __('front.Flyer') }}</label>
     </div>
 </div>
@@ -92,8 +92,8 @@
 
 <div class="dashboard-list-box margin-top-10">
     <h4 class="gray">{{ __('front.who_are_you') }}</h4>
-    <div class="dashboard-list-box-static" style="padding-top: 20px">
-        <textarea id="who_are_you" name="who_are_you"  class="form-control"  rows="9" cols="33" >{{$client['who_are_you']}}</textarea>
+    <div class="dashboard-list-box-static" style="padding-top: 25px">
+        <textarea id="who_are_you" name="who_are_you"  class="form-control"  rows="8" cols="33" >{{$client['who_are_you']}}</textarea>
     </div>
 </div>
 

@@ -20,6 +20,10 @@ use Socialite;
 class FClientController extends DefaultLoginController
 {
 
+    public function __construct()
+    {
+        // this my con
+    }
     /**
      * Create a new controller instance.
      *
@@ -40,7 +44,8 @@ class FClientController extends DefaultLoginController
         $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
         return view('frontend.auth.login');
     }
-    public function completeRegistrationProfile(Request $request)
+
+    public function userUpdateClient(Request $request)
     {
         if (Controller::getConnectedClient() == null) {
             return redirect(route('frontend.login.client'));
@@ -52,9 +57,8 @@ class FClientController extends DefaultLoginController
         } else {
             $client_status = 'Non Confirmed';
         }
-        $avatars = Avatar::take(3)->get();
-        $avatars_second = Avatar::skip(3)->take(3)->get();
-        $avatars_third = Avatar::skip(6)->take(3)->get();
+        $avatars = Avatar::get();
+        $avatarsIds = Avatar::pluck('id')->toArray();
         $input = request()->except(['_token', 'action']);
         $file = $request->file('photo');
         $cin = $request->file('image_national_id');
@@ -79,11 +83,11 @@ class FClientController extends DefaultLoginController
         return view('frontend.clients.user.index')
             ->with('client', $client)
             ->with('avatars', $avatars)
-            ->with('avatars_second', $avatars_second)
-            ->with('avatars_third', $avatars_third)
+            ->with('avatarsIds', $avatarsIds)
             ->with('client_status', $client_status)
             ->with('success', 'Profile Updated Successuflly');
     }
+    
     public function changePassword(Request $request)
     {
         $client = Controller::getConnectedClient();
@@ -171,7 +175,6 @@ class FClientController extends DefaultLoginController
     }
     public function redirectToGoogle()
     {
-        //dd(12);
         return Socialite::driver('google')->redirect();
     }
     public function handleGoogleCallback()

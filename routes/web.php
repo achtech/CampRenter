@@ -46,23 +46,21 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('frontend.client.show_login');;
     Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
-
+    
+    
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
-    //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
-    Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
-    Route::post('/completeRegistrationProfile', [FClientController::class, 'completeRegistrationProfile'])->name('frontend.client.completeRegistration');
+
+
+    Route::post('/client/profil/update', [FClientController::class, 'userUpdateClient'])->name('frontend.client.updateData');
     Route::post('/client/changePassword', [FClientController::class, 'changePassword'])->name('frontend.client.change_password');
+    Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
     Route::get('/login/ShowResetPassword', [FClientController::class, 'ShowResetPassword'])->name('frontend.client.showresetpassword');
     Route::get('/showRegister', [FClientController::class, 'showRegister'])->name('frontend.client.show_register');
     Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
     Route::get('/editPass', [FClientController::class, 'edit'])->name('frontend.client.editClient');
     Route::put('/updateClient', [FClientController::class, 'updatePassword'])->name('frontend.client.updatePassword');
-    Route::resource('/fclient', FClientController::class, ['except' => ['destroy', 'store', 'edit', 'update'], 'names' => [
-        'index' => 'frontend.client.index',
-        'show' => 'frontend.client.show',
-    ]]);
     //Route::get('/account', 'App\Http\Controllers\frontend\FClientController@checkProfile')->name('frontend.client.profil');
     Route::get('/rentout', [FC_rentOutController::class, 'index'])->name('rent_out');
     Route::get('/personnalData', [FCamperController::class, 'personnalData'])->name('personnalData');

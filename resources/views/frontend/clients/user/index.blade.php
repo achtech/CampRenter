@@ -33,7 +33,9 @@
 				</div>
 			</div>
 		</div>
-		{{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@completeRegistrationProfile','enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+		{{ Form::open(['route'=>'frontend.client.updateData','enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+			@csrf
+
 			<div class="row">
 				<div class="col-lg-6 col-md-12" >
 					@include('frontend.clients.user.profil_detail')
@@ -42,8 +44,10 @@
 					@include('frontend.clients.user.account_holder')
 				</div>
 			</div>
-		{{Form::submit(__('front.save_profile_changes'),['style'=>'width: 100%;','class'=>'button margin-top-15','name' => 'action'])}}
+			
+			{{Form::submit(__('front.save_profile_changes'),['style'=>'width: 100%;','class'=>'button margin-top-15','name' => 'action'])}}
 		{{ Form::close() }}
+
 
 		<div class="row" >
 			@include('frontend.clients.user.change_password')
@@ -53,19 +57,6 @@
 	</div>
 	<!-- Content / End -->
 <script>
-	function avatarSelected(id){
-		
-		var obj = <?php echo json_encode($avatars); ?>
-		obj.forEach(element => console.log(element));
-		/*obj->foreach(ob =>{
-				if(id=ob.id)
-				document.getElementById('avatar_'+id).style.outline="2px solid #38b6cd";
-				else
-				document.getElementById('avatar_'+id).style.outline="none";
-			}
-		}*/
-	}
-
 	 function readProfileImage(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
