@@ -37,7 +37,8 @@ class UserController extends Controller
         } else {
             $datas = User::paginate(10);
         }
-        return view('admin.user.index')->with('datas', $datas)->with('search', $search);
+        $avatarsIds = Avatar::pluck('id')->toArray();
+        return view('admin.user.index')->with('datas', $datas)->with('search', $search)->with('avatarsIds',$avatarsIds);
     }
     /**
      * Show the form for creating a new resource.

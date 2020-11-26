@@ -54,7 +54,7 @@
     <div class="dashboard-list-box-static my-profile">
         <div class="row">
             <div class="col-md-6">
-                <div class="edit-profile-photo">
+                <div class="edit-profile-photo" style="height: 259px;">
                     <label>{{ __('front.photo') }}</label><br>
                     <img style="margin-top-10" src="{{asset('images/clients')}}/{{$client['photo']}}" alt="" id="client_image">
                     <div class="change-photo-btn"  style="margin-top-10" >
