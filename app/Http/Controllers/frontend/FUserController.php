@@ -5,6 +5,8 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Avatar;
 
+use Illuminate\Http\Request;
+
 class FUserController extends Controller
 {
     public function index()
@@ -19,25 +21,36 @@ class FUserController extends Controller
             $client_status = 'Non Confirmed';
         }
         $profil_birth_date = $client->day_of_birth . '/' . $client->month_of_birth . '.' . $client->year_of_birth;
-        $avatars = Avatar::take(3)->get();
-        $avatars_second = Avatar::skip(3)->take(3)->get();
-        $avatars_third = Avatar::skip(6)->take(3)->get();
+        $avatars = Avatar::get();
+        $avatarsIds = Avatar::pluck('id')->toArray();
+        $languages = explode(',', $client->language);
+        $useUs = explode(',', $client->where_you_see_us);
+
         if ($client->type_login == 'forms') {
             return view('frontend.clients.user.index')
                 ->with('avatars', $avatars)
-                ->with('avatars_second', $avatars_second)
-                ->with('avatars_third', $avatars_third)
+                ->with('languages', $languages)
+                ->with('useUs', $useUs)
+                ->with('avatarsIds', $avatarsIds)
                 ->with('client', $client)
                 ->with('profil_birth_date', $profil_birth_date)
                 ->with('client_status', $client_status);
         } else {
             return view('frontend.clients.user.index2')
                 ->with('avatars', $avatars)
-                ->with('avatars_second', $avatars_second)
-                ->with('avatars_third', $avatars_third)
+                ->with('languages', $languages)
+                ->with('useUs', $useUs)
                 ->with('client', $client)
+                ->with('avatarsIds', $avatarsIds)
                 ->with('profil_birth_date', $profil_birth_date)
                 ->with('client_status', $client_status);
         }
+    }
+
+    public function selectedAvatar(Request $request){
+        $client = Controller::getConnectedClient();
+        $clt = Client::find($client->id);
+        $clt->id_avatars = $request->id;
+        $clt->update();
     }
 }

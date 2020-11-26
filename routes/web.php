@@ -13,6 +13,7 @@ use App\Http\Controllers\frontend\FC_rentOutController;
 use App\Http\Controllers\frontend\FC_reviewController;
 use App\Http\Controllers\frontend\FC_walletController;
 use App\Http\Controllers\frontend\SocialController;
+use App\Http\Controllers\frontend\FUserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -76,6 +77,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
     Route::get('/imprint', [FContactController::class, 'imprint'])->name('imprint');
     Route::get('/help', [FContactController::class, 'help'])->name('help');
+    Route::post('/ajax/selectedAvatar', [FUserController::class, 'selectedAvatar'])->name('frontend.avatar.select');
     //Route::group(['prefix' => 'client', 'middleware' => 'client'], function () {
     //Route::prefix('/client')->namespace('frontend')->group(function () {
     // Route::post('login', 'App\Http\Controllers\frontend\FClientController@login');
