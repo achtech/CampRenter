@@ -520,5 +520,12 @@ return [
     'reviews_edit.breadcrumb' => 'Edit review',
     'rentOut.breadcrumb' => 'Rent out',
     'profil.breadcrumb' => 'Profile',
+    'total_earning' => 'Total Earnings',
+    'total_current_month' => 'Current Month',
+    'total_canceled' => 'Total Canceled',
+    'total_orders' => 'Total Orders',
+    'confirmed_bookings' => 'Confirmed Bookings',
+    'total_rejected' => 'Total Rejected',
+    'my_wallet' => 'My Wallet',
 
 ];
