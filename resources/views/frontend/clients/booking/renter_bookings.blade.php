@@ -2,7 +2,7 @@
     @foreach($renterBookings as $booking)
         <li class="booking-{{$booking->booking_status_id}}">
             <div class="list-box-listing bookings">
-                <div class="list-box-listing-img"><img src="/images/avatar/{{$booking->image}}" alt=""></div>
+                <div class="list-box-listing-img"><img src="{{asset('images')}}/avatar/{{$booking->image}}" alt=""></div>
                 <div class="list-box-listing-content">
                     <div class="inner">
                         <h3>{{$booking->camper_name}}
