@@ -11,12 +11,16 @@ use Illuminate\Http\Request;
 
 class FC_bookingController extends Controller
 {
+
     //frontend.clients.booking
     public function index()
     {
         $client = Controller::getConnectedClient();
-        $ownerBookings = DB::table("v_bookings_owner")->where('id_clients', $client->id)->orderBy('id', 'desc')->get();
-        $renterBookings = DB::table("v_bookings_renter")->where('id_clients', $client->id)->orderBy('id', 'desc')->get();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $ownerBookings = DB::table("v_bookings_owner")->where('id_owners', $client->id)->orderBy('id', 'desc')->get();
+        $renterBookings = DB::table("v_bookings_owner")->where('id_renters', $client->id)->orderBy('id', 'desc')->get();
         return view('frontend.clients.booking.index')
             ->with('ownerBookings', $ownerBookings)
             ->with('renterBookings', $renterBookings);
@@ -27,6 +31,9 @@ class FC_bookingController extends Controller
         $searchedDate = $request->searchedDate ?? '';
         if ($searchedDate != '') {
             $client = Controller::getConnectedClient();
+            if ($client == null) {
+                return redirect(route('frontend.login.client'));
+            }
             $tabDate = explode('-', $searchedDate);
             $startDate = date("Y-m-d", strtotime($tabDate[0]));
             $endDate = date("Y-m-d", strtotime($tabDate[1]));
@@ -48,9 +55,9 @@ class FC_bookingController extends Controller
             $notification->type = "Booking";
             $notification->status = "unread";
             $notification->save();
-
         }
     }
+
     public function detailBookingOwner($id)
     {
         $notification = Notification::where('type', 'Booking')->where('id_table', $id)->first();
@@ -59,7 +66,7 @@ class FC_bookingController extends Controller
             $notification->save();
         }
 
-        $booking = DB::table("v_bookings_owner")->where('id', $id)->get();
+        $booking = DB::table("v_bookings_owner")->where('id', $id)->first();
         return view('frontend.clients.booking.detail1')
             ->with('booking', $booking);
     }

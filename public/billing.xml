@@ -7,7 +7,7 @@
       <NbOfTxs>1</NbOfTxs>
       <CtrlSum>14.9</CtrlSum>
       <InitgPty>
-        <Nm>achraf saloumi</Nm>
+        <Nm>Webgorilla GmbH</Nm>
         <CtctDtls>
           <Nm>bexio</Nm>
           <Othr>1.0.0</Othr>
@@ -37,16 +37,16 @@
           <InstrId>5f6df097c5fc95.97866708</InstrId>
           <EndToEndId>5f6df097c5fc95.97866708</EndToEndId>
         </PmtId>
-        <PmtTpInf>
-          <LclInstrm>
-            <Prtry>CH01</Prtry>
-          </LclInstrm>
-        </PmtTpInf>
         <Amt>
           <InstdAmt Ccy="CHF">1201</InstdAmt>
         </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>SHKBCH2S</BIC>
+          </FinInstnId>
+        </CdtrAgt>
         <Cdtr>
-          <Nm>Cyon GmbH</Nm>
+          <Nm>brahim barjali</Nm>
           <PstlAdr>
             <Ctry>CH</Ctry>
             <AdrLine>Brunngässlein 12</AdrLine>
@@ -55,35 +55,14 @@
         </Cdtr>
         <CdtrAcct>
           <Id>
-            <Othr>
-              <Id>010575181</Id>
-            </Othr>
+            <IBAN>12421 12412 412411 121515</IBAN>
           </Id>
         </CdtrAcct>
         <RmtInf>
-          <Strd>
-            <CdtrRefInf>
-              <Ref>000001987972000000017179312</Ref>
-            </CdtrRefInf>
-          </Strd>
+          <Ustrd>Payout test</Ustrd>
         </RmtInf>
       </CdtTrfTxInf>
     </PmtInf>
-  </CstmrCdtTrfInitn>
-  <CstmrCdtTrfInitn>
-    <GrpHdr>
-      <MsgId>7aeb9c4d264990e6fefc96affed9cd1b</MsgId>
-      <CreDtTm>tets</CreDtTm>
-      <NbOfTxs>1</NbOfTxs>
-      <CtrlSum>14.9</CtrlSum>
-      <InitgPty>
-        <Nm>achraf saloumi</Nm>
-        <CtctDtls>
-          <Nm>bexio</Nm>
-          <Othr>1.0.0</Othr>
-        </CtctDtls>
-      </InitgPty>
-    </GrpHdr>
     <PmtInf>
       <PmtInfId>Webgorilla GmbH</PmtInfId>
       <PmtMtd>TRF</PmtMtd>
@@ -107,16 +86,16 @@
           <InstrId>5f6df097c5fc95.97866708</InstrId>
           <EndToEndId>5f6df097c5fc95.97866708</EndToEndId>
         </PmtId>
-        <PmtTpInf>
-          <LclInstrm>
-            <Prtry>CH01</Prtry>
-          </LclInstrm>
-        </PmtTpInf>
         <Amt>
-          <InstdAmt Ccy="CHF">400</InstdAmt>
+          <InstdAmt Ccy="CHF">1201</InstdAmt>
         </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>SHKBCH2S</BIC>
+          </FinInstnId>
+        </CdtrAgt>
         <Cdtr>
-          <Nm>Cyon GmbH</Nm>
+          <Nm>achraf saloumi</Nm>
           <PstlAdr>
             <Ctry>CH</Ctry>
             <AdrLine>Brunngässlein 12</AdrLine>
@@ -125,17 +104,60 @@
         </Cdtr>
         <CdtrAcct>
           <Id>
-            <Othr>
-              <Id>010575181</Id>
-            </Othr>
+            <IBAN>12421 12412 412411 121515</IBAN>
           </Id>
         </CdtrAcct>
         <RmtInf>
-          <Strd>
-            <CdtrRefInf>
-              <Ref>000001987972000000017179312</Ref>
-            </CdtrRefInf>
-          </Strd>
+          <Ustrd>Payout test</Ustrd>
+        </RmtInf>
+      </CdtTrfTxInf>
+    </PmtInf>
+    <PmtInf>
+      <PmtInfId>Webgorilla GmbH</PmtInfId>
+      <PmtMtd>TRF</PmtMtd>
+      <BtchBookg>false</BtchBookg>
+      <ReqdExctnDt>2020-10-12</ReqdExctnDt>
+      <Dbtr>
+        <Nm>Webgorilla GmbH</Nm>
+      </Dbtr>
+      <DbtrAcct>
+        <Id>
+          <IBAN>12421 12412 412411 121515</IBAN>
+        </Id>
+      </DbtrAcct>
+      <DbtrAgt>
+        <FinInstnId>
+          <BIC>POFICHBEXXX</BIC>
+        </FinInstnId>
+      </DbtrAgt>
+      <CdtTrfTxInf>
+        <PmtId>
+          <InstrId>5f6df097c5fc95.97866708</InstrId>
+          <EndToEndId>5f6df097c5fc95.97866708</EndToEndId>
+        </PmtId>
+        <Amt>
+          <InstdAmt Ccy="CHF">400</InstdAmt>
+        </Amt>
+        <CdtrAgt>
+          <FinInstnId>
+            <BIC>SHKBCH2S</BIC>
+          </FinInstnId>
+        </CdtrAgt>
+        <Cdtr>
+          <Nm>Oumaima oumaima</Nm>
+          <PstlAdr>
+            <Ctry>CH</Ctry>
+            <AdrLine>Brunngässlein 12</AdrLine>
+            <AdrLine>4052, Basel</AdrLine>
+          </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+          <Id>
+            <IBAN>12421 12412 412411 121515</IBAN>
+          </Id>
+        </CdtrAcct>
+        <RmtInf>
+          <Ustrd>Payout test</Ustrd>
         </RmtInf>
       </CdtTrfTxInf>
     </PmtInf>

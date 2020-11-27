@@ -16,7 +16,11 @@ class CreateBookingOwnerView extends Migration
         DB::statement("create or replace view v_bookings_owner as "
         ." SELECT "
         ."b.id AS id,"
+        ."clt.id AS id_renters,"
+        ."c.id_clients AS id_owners,"
+        ."clt.id_avatars,"
         ."b.id_campers,"
+        ."bs.id AS booking_status_id,"
         ."b.start_date,"
         ."b.end_date,"
         ."b.status_billings,"
@@ -26,7 +30,6 @@ class CreateBookingOwnerView extends Migration
         ."bs.label_en AS booking_status_en,"
         ."bs.label_de AS booking_status_de,"
         ."bs.label_fr AS booking_status_fr,"
-        ."bs.id AS booking_status_id,"
         ."c.camper_name,"
         ."c.image AS camper_image,"
         ."c.price_per_day AS price,"
@@ -36,8 +39,6 @@ class CreateBookingOwnerView extends Migration
         ."clt.telephone,"
         ."clt.telephone_code,"
         ."clt.email,"
-        ."clt.id AS id_clients,"
-        ."clt.id_avatars,"
         ."a.image "
         ." FROM "
         ." bookings b,"
@@ -50,7 +51,6 @@ class CreateBookingOwnerView extends Migration
         ." AND b.id_campers = c.id "
     ." AND b.id_booking_status = bs.id "
     ." AND a.id = clt.id_avatars"
-        
         );  
     }
     /**

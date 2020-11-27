@@ -12,6 +12,7 @@ use App\Http\Controllers\frontend\FC_notificationController;
 use App\Http\Controllers\frontend\FC_rentOutController;
 use App\Http\Controllers\frontend\FC_reviewController;
 use App\Http\Controllers\frontend\FC_walletController;
+use App\Http\Controllers\frontend\FUserController;
 use App\Http\Controllers\frontend\SocialController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,10 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+//** Stripe */
+Route::get('stripe-payment', [\App\Http\Controllers\StripeController::class, 'handleGet']);
+Route::post('stripe-payment', [\App\Http\Controllers\StripeController::class, 'handlePost'])->name('stripe.payment');
+
 Route::get('lang/{lang}', function ($lang) {
     \Session::put('locale', $lang);
     $user = User::find(auth()->user() ? auth()->user()->id : 0);
@@ -41,23 +46,23 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('frontend.client.show_login');;
     Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
+    
+    
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
-    //Route::get('/signUp', [ClientController::class, 'sign_up'])->name('client.index');
+
+
+    Route::post('/client/profil/update', [FClientController::class, 'userUpdateClient'])->name('frontend.client.updateData');
+    Route::post('/client/changePassword', [FClientController::class, 'changePassword'])->name('frontend.client.change_password');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
-    Route::post('/completeRegistrationProfile', [FClientController::class, 'completeRegistrationProfile'])->name('frontend.client.completeRegistration');
     Route::get('/login/ShowResetPassword', [FClientController::class, 'ShowResetPassword'])->name('frontend.client.showresetpassword');
     Route::get('/showRegister', [FClientController::class, 'showRegister'])->name('frontend.client.show_register');
     Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
     Route::get('/editPass', [FClientController::class, 'edit'])->name('frontend.client.editClient');
     Route::put('/updateClient', [FClientController::class, 'updatePassword'])->name('frontend.client.updatePassword');
-    Route::resource('/fclient', FClientController::class, ['except' => ['destroy', 'store', 'edit', 'update'], 'names' => [
-        'index' => 'frontend.client.index',
-        'show' => 'frontend.client.show',
-    ]]);
     //Route::get('/account', 'App\Http\Controllers\frontend\FClientController@checkProfile')->name('frontend.client.profil');
-    Route::get('/rentout', [FCamperController::class, 'rent_out'])->name('rent_out');
+    Route::get('/rentout', [FC_rentOutController::class, 'index'])->name('rent_out');
     Route::get('/personnalData', [FCamperController::class, 'personnalData'])->name('personnalData');
     Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
     Route::get('/campersteps', [FCamperController::class, 'camper_steps'])->name('camper_steps');
@@ -74,6 +79,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/disclaimer', [FContactController::class, 'disclaimer'])->name('disclaimer');
     Route::get('/imprint', [FContactController::class, 'imprint'])->name('imprint');
     Route::get('/help', [FContactController::class, 'help'])->name('help');
+    Route::post('/ajax/selectedAvatar', [FUserController::class, 'selectedAvatar'])->name('frontend.avatar.select');
     //Route::group(['prefix' => 'client', 'middleware' => 'client'], function () {
     //Route::prefix('/client')->namespace('frontend')->group(function () {
     // Route::post('login', 'App\Http\Controllers\frontend\FClientController@login');
@@ -100,7 +106,8 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/camper/search/category/{id}', [FC_CamperController::class, 'searchByCategory'])->name('frontend.camper.searchByCategory');
     Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');
     Route::get('/message_client', [FC_messageController::class, 'index'])->name('frontend.clients.message');
-    Route::get('/detail_message_client', [FC_messageController::class, 'show'])->name('frontend.clients.message.detail');
+    Route::get('/message_client/detail/{id}', [FC_messageController::class, 'show'])->name('frontend.clients.message.detail');
+    Route::post('/message_client/register', [FC_messageController::class, 'store'])->name('frontend.chat.register_chat');
     Route::get('/notification_client', [FC_notificationController::class, 'index'])->name('frontend.clients.notification');
     Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
     Route::get('/wallet_client', [FC_walletController::class, 'index'])->name('frontend.clients.wallet');
@@ -119,10 +126,15 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/booking/booking_owner/confirm/{id}', [FC_bookingController::class, 'confirmBookingOwner'])->name('booking.owner_booking.confirm');
     Route::get('/booking/booking_owner/reject/{id}', [FC_bookingController::class, 'rejectBookingOwner'])->name('booking.owner_booking.reject');
     Route::get('/booking/booking_renter/process/{id}', [FC_bookingController::class, 'processBookingRenter'])->name('booking.renter_booking.process');
+    Route::get('/message_client/add/{id}', [FC_messageController::class, 'addMessage'])->name('frontend.booking.add_message');
+    Route::get('/review/owner/feedback/{id}', [FC_reviewController::class, 'feedback'])->name('frontend.review.add_feedback');
+    Route::get('/review/owner/edit/{id}', [FC_reviewController::class, 'editReview'])->name('frontend.review.edit_review');
 
     /** Backend */
+    Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-    Route::get('/logoutC', '\App\Http\Controllers\Auth\LoginController@clientLogout')->name('client.logout');
+    //Route::get('/logoutC', '\App\Http\Controllers\Auth\LoginController@clientLogout')->name('client.logout');
+    Route::post('/logoutC', '\App\Http\Controllers\Auth\LoginController@logout')->name('client.logout');
     Route::get('/dashboard', function () {
         if (auth()->user() == null) {
             return view('/auth/login');

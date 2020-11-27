@@ -14,9 +14,7 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Dashboard</a></li>
-						<li>Add Listing</li>
+{{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>
@@ -45,9 +43,14 @@
 								@foreach($categories as $category)
 									<!-- Box -->
 									<div class="col-md-3 alternative-imagebox" id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id)==1 ? 'showSub' : 'category'}}">
-										<a href="#" >
-										<input type="checkbox" style="display: none" name="id_camper_categories" id="{{$category->id}}">
-										<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
+										<a href="#" id="camper-categories">
+										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}">
+										<input type="hidden" name="id_camper_categories" value="" />
+										<img style="max-width:70%;" 
+												src="{{asset('images')}}/camper_categories/{{$category->image}}" 
+												data-picture_id="{{$category->id}}" alt=""
+												id="cat_{{$category->id}}"
+												onclick="changeCatStyle({{$category->id}})">
 											<h4 id="title_cat" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
 										</a>
 									</div>
@@ -62,7 +65,12 @@
 									<!-- Box -->
 									<div class="col-md-3 alternative-imagebox" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
 										<a>
-										<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt="">
+										<input type="radio" style="display: none" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
+										<input type="hidden" name="id_camper_sub_categories" value="" />
+										<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
+										data-picture_sub_id="{{$sub_categories->id}}" alt=""
+												id="subcat_{{$sub_categories->id}}"
+												onclick="changeSubCatStyle({{$sub_categories->id}})">
 											<h4 id="title_sub" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
 										</a>
 									</div>
@@ -84,7 +92,7 @@
 					<div class="col-md-12">
 						<div class="row">
 								<div class="col-md-12">
-									<input type="text" name="camper_name" placeholder="My sweet Camper">
+									<input type="text" name="camper_name" placeholder="My sweet Camper" value="{{$camper->camper_name}}">
 									<h6>{{trans('front.still_can_change')}}</h6>
 								</div>
 						</div>
@@ -93,7 +101,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="col-md-12">
-								<input type="text" name="description" placeholder="">
+								<input type="text" name="description" placeholder="" value="{{$camper->description_camper}}">
 								<h6>{{trans('front.recommandation')}}</h6>
 							</div>
 						</div>
@@ -113,5 +121,24 @@
 		</div>
 	</div>
 </div>
+<script>
+function changeCatStyle(id){
+	document.getElementById('cat_'+id).style.outline="2px solid #38b6cd";
+}
 
+function changeSubCatStyle(id){
+	document.getElementById('subcat_'+id).style.outline="2px solid #38b6cd";
+}
+
+$("img[data-picture_id]").click(function(e){
+	//Set the value of the hidden input field
+	$("input[name='id_camper_categories']").val($(this).data('picture_id'));
+});
+
+$("img[data-picture_sub_id]").click(function(e){
+	//Set the value of the hidden input field
+	$("input[name='id_camper_sub_categories']").val($(this).data('picture_sub_id'));
+});
+
+</script>
 @endsection

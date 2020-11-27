@@ -30,27 +30,33 @@
 						<div class="listing-item">
 						<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
 							@if($camper->availability==0)
-								<div class="listing-badge now-close">Blocked</div>
+								<div class="listing-badge now-close">{{trans('front.blocked')}}</div>
 							@elseif($camper->availability==1)
-								<div class="listing-badge now-closed">Reserved</div>
+								<div class="listing-badge now-closed">{{trans('front.reserved')}}</div>
 							@else
-								<div class="listing-badge now-open">Available</div>
+								<div class="listing-badge now-open">{{trans('front.available')}}</div>
 							@endif
 							<div class="listing-item-content">
 								<span class="tag">{{App\Http\Controllers\Controller::getLabel("camper_categories", $camper->id_camper_categories)}}</span>
 								<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
 								<span>{{Illuminate\Support\Str::limit($camper->description_camper, 80)}}...</span>
 							</div>
-
-
+				<div id="book_fav">
+					@if(!session('_client'))
+					<span onclick="event.preventDefault();"
+						class="like-icon">
+					</span>
+					@else
+					<span onclick="event.preventDefault(); AddOrRemoveBookmarkSearch({{$camper->id}})"
+						class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
+					</span>
+					@endif
+					</div>
 						</div>
 						<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($camper->id)}}">
 							<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} reviews)</div>
 						</div>
 					</a>
-					<span id="fav_{{$camper->id}}" onclick="AddOrRemoveBookmarkSearch({{$camper->id}})"
-						class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
-					</span>
 				</div>
 				<!-- Listing Item / End -->
 				@endforeach
@@ -65,7 +71,7 @@
 	<div class="fs-inner-container map-fixed">
 		<!-- Map -->
 		<div id="map-container">
-			<div id="map" class="markers-on-the-map"></div>
+			<div id="map_search" class="markers-on-the-map"></div>
 
 				<input style="display: none" type="text" name="position_x" id="currentLatitude">
 				<input style="display: none" type="text" name="position_y" id="currentLongitude">
@@ -83,7 +89,7 @@
                 type: 'post',
                 data: {_token: CSRF_TOKEN,camperid: camper_id},
                 success: function(response){
-					$('#fav_'+camper_id).load(location.href+('  #fav_'+camper_id));
+					$('#book_fav').load(location.href+(' #book_fav'));
                 }
             });
 	};

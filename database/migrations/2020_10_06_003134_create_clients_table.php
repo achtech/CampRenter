@@ -17,6 +17,7 @@ class CreateClientsTable extends Migration
             $table->id();
             $table->string('client_name')->nullable();
             $table->string('client_last_name')->nullable();
+            $table->string('photo')->nullable();
             $table->string('sex')->nullable();
             $table->string('street')->nullable();
             $table->string('street_number')->nullable();
@@ -43,7 +44,7 @@ class CreateClientsTable extends Migration
             $table->string('who_are_you')->nullable();
             $table->string('email')->nullable();
             $table->string('review')->nullable();
-            $table->enum('type_login', array('facebook', 'google'))->nullable();
+            $table->enum('type_login', array('forms', 'facebook', 'google'))->nullable();
             $table->string('language')->nullable();
             $table->string('password')->nullable();
             $table->string('national_id')->nullable();

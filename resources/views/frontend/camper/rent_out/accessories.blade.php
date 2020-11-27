@@ -10,13 +10,11 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>Camper name</strong></h2>
+				<h2><strong>{{trans('front.camper_name')}}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Dashboard</a></li>
-						<li>Add Listing</li>
+{{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>
@@ -30,7 +28,7 @@
 		<div class="col-lg-7 col-md-12">
 			<h3><strong>Accessories</strong></h3>
 			<div class="row">
-				<p>Here you can add bookable extras. If you want to offer interior cleaning, activate the field by checking the box in front of the field. CHF 150 is a recommended price and can be adjusted individually. Please don't add any extra service fees or handover fees but include them in your rental price.</p>
+				<p>{{trans('front.accessories_header_text')}}</p>
 				<div class="col-md-12">
 					<table id="pricing-list-container">
 						<tr class="pricing-list-item pattern">
@@ -38,14 +36,14 @@
 								<div class="checkboxes in-row">
 									<input id="check-a" type="checkbox" name="check">
 								</div>
-								<div class="fm-input pricing-name"><input type="text" placeholder="Paid accessories" /></div>
-								<div class="fm-input pricing-ingredients"><input type="text" placeholder="Booking per" /></div>
-								<div class="fm-input pricing-price"><input type="text" placeholder="Price" data-unit="CHF" /></div>
+								<div class="fm-input pricing-name"><input type="text" placeholder="{{trans('front.paid_accessories')}}" /></div>
+								<div class="fm-input pricing-ingredients"><input type="text" placeholder="{{trans('front.booking_per')}}" /></div>
+								<div class="fm-input pricing-price"><input type="text" placeholder="{{trans('front.price')}}" data-unit="CHF" /></div>
 								<div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
 							</td>
 						</tr>
 					</table>
-					<a href="#" class="button add-pricing-list-item">Add Item</a>
+					<a href="#" class="button add-pricing-list-item">{{trans('front.add_item')}}</a>
 				</div>
 			</div>
 			<div class="row">

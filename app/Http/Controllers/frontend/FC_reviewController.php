@@ -9,18 +9,46 @@ use Illuminate\Http\Request;
 
 class FC_reviewController extends Controller
 {
+
     public function index()
     {
-        return view('frontend.clients.review.index');
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $visitors = DB::table("v_review_camper_client")->where('id_renters', $client->id)->get();
+        $owners = DB::table("v_review_camper_client")->where('id_owners', $client->id)->get();
+        return view('frontend.clients.review.index')
+            ->with('visitors', $visitors)
+            ->with('owners', $owners);
     }
 
     public function addReview(Request $request)
     {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $input = request()->except(['_token', '_method']);
-        $input['created_by'] = 1;
-        $input['updated_by'] = 1;
+        $input['created_by'] = $client->id;
         $data = CamperReview::create($input);
         return redirect(route('frontend.camper.detail', $request->id_campers))->with('success', 'Item added succesfully');
+    }
+
+    public function feedback($id)
+    {
+        $review = DB::table("v_review_camper_client")->where('id_review', $id)->first();
+        return view('frontend.clients.review.feedback')
+            ->with('review', $review);
+
+    }
+
+    public function editReview($id)
+    {
+        $review = DB::table("v_review_camper_client")->where('id_review', $id)->first();
+        return view('frontend.clients.review.edit')
+            ->with('review', $review);
+
     }
 
     public function helpfulReview($id)

@@ -15,7 +15,7 @@
 					<span>
 						<a href="#" class="listing-address">
 							<i class="fa fa-money"></i>
-							Price per day : {{$camper->price_per_day}} CHF
+							{{trans('front.price_per_day')}} {{$camper->price_per_day}} CHF
 						</a>
 					</span>
 					<div class="star-rating" data-rating="{{$rateCamper}}">
@@ -27,11 +27,11 @@
 			<!-- Listing Nav -->
 			<div id="listing-nav" class="listing-nav-container" style="padding-top:2%;">
 				<ul class="listing-nav">
-					<li><a href="#listing-overview" class="active">Overview</a></li>
-					<li><a href="#listing-gallery">Gallery</a></li>
-					<li><a href="#listing-location">Location</a></li>
-					<li><a href="#listing-reviews">Reviews</a></li>
-					<li><a href="#add-review">Add Review</a></li>
+					<li><a href="#listing-overview" class="active">{{trans('front.overview')}}</a></li>
+					<li><a href="#listing-gallery">{{trans('front.gallery')}}</a></li>
+					<li><a href="#listing-location">{{trans('front.location')}}</a></li>
+					<li><a href="#listing-reviews">{{trans('front.menu_panel_review')}}</a></li>
+					<li><a href="#add-review">{{trans('front.add_review')}}</a></li>
 				</ul>
 			</div>
 
@@ -109,7 +109,7 @@
 
 		var form = $(this);
 		var url = form.attr('action');
-		
+
 		$.ajax({
 			type: "POST",
 			url: url,
@@ -121,6 +121,6 @@
 				document.getElementById('btnRequest').style.background="#19b453";
 			}
 		});
-	});	
+	});
 </script>
 @endsection

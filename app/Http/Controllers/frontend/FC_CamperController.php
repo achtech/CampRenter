@@ -17,6 +17,9 @@ class FC_CamperController extends Controller
     public function index()
     {
         $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $campers = DB::table("campers")->where('id_clients', $client->id)->get();
         return view('frontend.clients.camper.index')
             ->with('campers', $campers);

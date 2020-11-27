@@ -9,9 +9,13 @@ use Illuminate\Http\Request;
 
 class FC_bookmarkController extends Controller
 {
+
     public function index()
     {
         $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $datas = DB::table("v_bookmark_camper")->where('id_clients', $client->id)->get();
         return view('frontend.clients.bookmark.index')
             ->with('datas', $datas);
@@ -25,6 +29,9 @@ class FC_bookmarkController extends Controller
     public static function isBookmarked($id)
     {
         $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $clientId = $client ? $client->id : 0;
         return DB::table('camper_bookmarks')->where('id_clients', $clientId)->where('id_campers', $id)->get()->count() > 0;
     }
@@ -33,6 +40,9 @@ class FC_bookmarkController extends Controller
     {
         $cb = new CamperBookmark();
         $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $cb->id_clients = $client ? $client->id : 0;
         $cb->id_campers = $request ? $request->camperid : 0;
 

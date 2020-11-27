@@ -7,17 +7,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-
 				<h2>{{__('front.Blog')}}</h2><span>{{__('front.Latest News')}}</span>
-
-				<!-- Breadcrumbs -->
-				<nav id="breadcrumbs">
-					<ul>
-						<li><a href="/">{{__('front.menu_home')}}</a></li>
-						<li>{{__('front.Blog')}}</li>
-					</ul>
-				</nav>
-
 			</div>
 		</div>
 	</div>
@@ -53,11 +43,11 @@
 										<div class="col-lg-4"><div class="blog-title " >{{date('j F Y', strtotime($blog->created_at))}}</div></div>
 										<div class="col-lg-4"><div class="blog-title " >{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} {{trans('front.blog_comment')}}</div></div>
 									</div>
-										
+
 									<div class="rating-counter">{{ Illuminate\Support\Str::limit($blog->article, 100)}}
-									
+
 									</div>
-									
+
 									</div>
 								</div>
 							</a>
@@ -89,21 +79,21 @@
 				{{ Form::open(['action'=>'App\Http\Controllers\frontend\FBlogController@search','method'=>'GET']) }}
 					<!-- Widget -->
 					<div class="widget">
-						<h3 class="margin-top-0 margin-bottom-25">Search Blog</h3>
+						<h3 class="margin-top-0 margin-bottom-25">{{trans('front.search_blog')}}</h3>
 						<div class="search-blog-input">
-							<div class="input"><input class="search-field" type="text" placeholder="Type and hit enter" name="searchBlog" value="{{$searchBlog ?? ''}}" /></div>
+							<div class="input"><input class="search-field" type="text" placeholder="{{trans('front.type_and_hit_enter')}}" name="searchBlog" value="{{$searchBlog ?? ''}}" /></div>
 						</div>
 						<div class="clearfix"></div>
 					</div>
 					<!-- Widget / End -->
-					{{ Form::close() }} 
+					{{ Form::close() }}
 
 					<!-- Widget -->
 					<div class="widget margin-top-40">
-						<h3>Got any questions?</h3>
+						<h3>{{trans('front.any_question')}}</h3>
 						<div class="info-box margin-bottom-10">
-							<p>Having any questions? Feel free to ask!</p>
-							<a href="/contact" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> Drop Us a Line</a>
+							<p>{{trans('front.feel_free_to_ask')}}</p>
+							<a href="{{route('contact')}}" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> {{trans('front.drop_line')}}</a>
 						</div>
 					</div>
 					<!-- Widget / End -->
@@ -112,7 +102,7 @@
 					<!-- Widget -->
 					<div class="widget margin-top-40">
 
-						<h3>Popular Posts</h3>
+						<h3>{{trans('front.popular_posts')}}</h3>
 						<ul class="widget-tabs">
 							@foreach($populairePost as $blog)
 							<li>
@@ -137,7 +127,7 @@
 
 					<!-- Widget -->
 					<div class="widget margin-top-40">
-						<h3 class="margin-bottom-25">Social</h3>
+						<h3 class="margin-bottom-25">{{trans('front.footer_social')}}</h3>
 						<ul class="social-icons rounded">
 							<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
 							<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>

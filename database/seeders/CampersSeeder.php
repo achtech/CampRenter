@@ -17,6 +17,7 @@ class CampersSeeder extends Seeder
         DB::table('campers')->insert(array(
             0 => array(
                 'id' => '1',
+                'is_completed' => '1',
                 'camper_name' => 'Camp5',
                 'image' => 'camp1.jpg',
                 'brand' => 'brand 1',
@@ -64,6 +65,7 @@ class CampersSeeder extends Seeder
             ),
             1 => array(
                 'id' => '2',
+                'is_completed' => '1',
                 'camper_name' => 'Camp6',
                 'image' => 'camp2.jpg',
                 'brand' => 'brand 2',
@@ -111,6 +113,7 @@ class CampersSeeder extends Seeder
             ),
             2 => array(
                 'id' => '3',
+                'is_completed' => '1',
                 'camper_name' => 'Camp7',
                 'image' => 'camp3.jpg',
                 'brand' => 'brand 3',
@@ -145,7 +148,7 @@ class CampersSeeder extends Seeder
                 'country' => 'Morocco',
                 'position_x' => '34.023138',
                 'position_y' => '-6.835734',
-                'id_clients' => '2',
+                'id_clients' => '3',
                 'id_licence_categories' => '2',
                 'id_camper_categories' => '3',
                 'id_camper_sub_categories' => '4',
@@ -158,6 +161,7 @@ class CampersSeeder extends Seeder
             ),
             3 => array(
                 'id' => '4',
+                'is_completed' => '1',
                 'camper_name' => 'Camp8',
                 'image' => 'camp4.jpg',
                 'brand' => 'brand 4',
@@ -192,7 +196,7 @@ class CampersSeeder extends Seeder
                 'country' => 'Morocco',
                 'position_x' => '34.023138',
                 'position_y' => '-6.835734',
-                'id_clients' => '1',
+                'id_clients' => '4',
                 'id_licence_categories' => '2',
                 'id_camper_categories' => '4',
                 'id_camper_sub_categories' => '4',
@@ -205,8 +209,9 @@ class CampersSeeder extends Seeder
             ),
             4 => array(
                 'id' => '5',
+                'is_completed' => '1',
                 'camper_name' => 'Camp9',
-                'image' => 'camp5.jpg',
+                'image' => 'camp5.jpeg',
                 'brand' => 'brand 4',
                 'model' => 'model 4',
                 'value_of_vehicule' => '6000',

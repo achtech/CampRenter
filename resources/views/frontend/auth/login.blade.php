@@ -4,7 +4,7 @@
         <div class="col-sm-offset-3 col-md-6">
             {{ Form::open(['url'=>'login/client', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
             <div class="row" style="padding-left:5%;">
-                <h2 style="margin-bottom:4%;"><strong>Login</strong><h2>
+                <h2 style="margin-bottom:4%; text-align: center;"><strong>{{trans('front.menu_login')}}</strong><h2>
 
                 <div class="col-md-12">
                     <label style="display: inline;" for="username2">{{trans('front.email_address')}}:
@@ -59,7 +59,7 @@
                 <a class="button margin-top-5 connexion with-facebook"
                 style="width:99% !important; text-align: center;background-color: #e90746;" target="popup"
                 href="{{ url('redirect/google') }}">
-                    <small class="fb-design"> connexion with Google</small>
+                    <small class="fb-design"> {{trans('front.google_connexion')}}</small>
                 </a>
             </div>
         </div>

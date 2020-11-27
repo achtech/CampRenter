@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 <!-- Subratings Container / End -->
 <!-- Review Comment -->
@@ -78,25 +78,24 @@
 
         <div class="row">
             <div class="col-md-6">
-                <label>Name:</label>
-                <input type="text" name="name" value="Achraf saloumi"/>
+                <label>{{trans('front.Name')}}:</label>
+                <input type="text" name="name" value=""/>
             </div>
-                
+
             <div class="col-md-6">
-                <label>Email:</label>
-                <input type="text" name="email" value="a.mareshal@gmail.com"/>
+                <label>{{trans('front.Email')}}:</label>
+                <input type="text" name="email" value=""/>
             </div>
         </div>
 
         <div>
-            <label>Review:</label>
-            <textarea cols="40" rows="3" name="comment" >my comment from textarea</textarea>
+            <label>{{trans('front.profil_review')}}:</label>
+            <textarea cols="40" rows="3" name="comment" ></textarea>
         </div>
 
     </fieldset>
 
-    <button class="button">Submit Review</button>
+    <button class="button">{{trans('front.submit_review')}}</button>
     <div class="clearfix"></div>
 </div>
 </form>
-

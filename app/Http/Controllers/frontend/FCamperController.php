@@ -8,20 +8,9 @@ use DB;
 
 class FCamperController extends Controller
 {
-    //
     public function index()
     {
         return view('frontend.camper.index');
-    }
-
-    public function rent_out()
-    {
-        $categories = DB::table('camper_categories')->paginate(10);
-        $sub_categories = CamperSubCategory::paginate(10);
-
-        return view('frontend.camper.rent_out.rent_out')
-            ->with('categories', $categories)
-            ->with('sub_categories', $sub_categories);
     }
 
     public function personnalData()

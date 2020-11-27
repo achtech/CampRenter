@@ -20,13 +20,11 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>Camper name</strong></h2>
+				<h2><strong>{{trans('front.camper_name')}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Dashboard</a></li>
-						<li>Add Listing</li>
+{{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>
@@ -38,22 +36,22 @@
 		@include('frontend.camper.rent_out.sub_menu',['active_page'=>'calendar'])
 
 		<div class="col-lg-7 col-md-12">
-			<h3><strong>Calendar</strong></h3>
+			<h3><strong>{{trans('front.calendar')}</strong></h3>
                 <div id='calendar'></div>
                 <div class="row margin-top-20">
                     <div class="col-md-4">
-                        <input type="date" id="fc-date-start" placeholder="date Start">
+                        <input type="date" id="fc-date-start" placeholder="{{trans('front.date_start')}">
                     </div>
                     <div class="col-md-4">
-                        <input type="date" id="fc-date-end" placeholder="date End">
+                        <input type="date" id="fc-date-end" placeholder="{{trans('front.date_end')}">
                     </div>
                     <div class="col-md-4">
                         <input type="text" id="fc-title" placeholder="title">
-                        <button class="button" id="fc-event-save" style="width: 100%"> Save <i class="fa fa-save"></i></button>
+                        <button class="button" id="fc-event-save" style="width: 100%"> {{trans('front.save_new_password')} <i class="fa fa-save"></i></button>
                     </div>
                 </div>
                 <hr>
-                <button class="button" id="save-to-database" style="width: 100%"> save to database <i class="fa fa-database"></i></button>
+                <button class="button" id="save-to-database" style="width: 100%"> {{trans('front.apply')}} <i class="fa fa-database"></i></button>
 
 		</div>
 	</div>

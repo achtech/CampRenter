@@ -13,21 +13,17 @@
 ================================================== -->
 <script src="https://kit.fontawesome.com/b90fcd0862.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{asset('public/css/font-awesome.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<style>
-	#map {
-		width: 95%;
-		height: 450px;
-		background: grey;
-	}
-</style>
+
 <style>
 	#map_search {
 		width: 100%;
+		height: 100%;
 	}
 </style>
 </head>
@@ -90,7 +86,7 @@
 ></script>
 <script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/maps-mypostion.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/maps-search.js')}}"></script>
 
 <!-- Leaflet Geocoder + Search Autocomplete // Docs: https://github.com/perliedman/leaflet-control-geocoder -->
 <script src="{{asset('js/leaflet-autocomplete.js')}}"></script>

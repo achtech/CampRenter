@@ -10,13 +10,11 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>Camper name</strong></h2>
+				<h2><strong>{{trans('front.camper_name')}}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Dashboard</a></li>
-						<li>Add Listing</li>
+						{{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>
@@ -28,7 +26,7 @@
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'slide_camper'])
 
 		<div class="col-lg-7 col-md-12">
-			<h3><strong>Photos</strong></h3>
+			<h3><strong>{{trans('front.photos')}}</strong></h3>
 			<div class="row">
 				<div class="image-upload-one">
 					<div class="submit-section">

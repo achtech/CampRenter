@@ -12,58 +12,18 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Socialite;
 
 class FClientController extends DefaultLoginController
 {
-    protected $redirectTo = '/home';
 
     public function __construct()
     {
-        //$this->middleware('guest:client')->except('logout');
+        // this my con
     }
-
-    protected function guard()
-    {
-        return Auth::guard('client');
-    }
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function redirectToFacebook()
-    {
-
-        return Socialite::driver('facebook')->redirect();
-    }
-    public function login(Request $request)
-    {
-        $credentials = [
-            'email' => $request['email'],
-            'password' => md5($request['password']),
-        ];
-        dd(Auth::attempt(array([
-            'email' => 'inassekaram@gmail.com',
-            'password' => '123456',
-        ])));
-        //dd(Auth::guard('client')->attempt($credentials));
-        dd(Auth::attempt($credentials));
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard');
-        }
-        return 'Failure';
-    }
-
-    public function doLogout()
-    {
-        Auth::logout(); // logging out user
-        return Redirect::to('layout'); // redirection to login screen
-    }
-
     /**
      * Create a new controller instance.
      *
@@ -73,7 +33,7 @@ class FClientController extends DefaultLoginController
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
-        $input['password'] = password_hash($input['password'], PASSWORD_DEFAULT);
+        $input['password'] = bcrypt($input['password']);
         $client = Client::create($input);
         Mail::to($client['email'])->send(new RegistrationMail($client));
         $categories = DB::table('camper_categories')->paginate(10);
@@ -84,18 +44,71 @@ class FClientController extends DefaultLoginController
         $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
         return view('frontend.auth.login');
     }
-    public function completeRegistrationProfile(Request $request)
+
+    public function userUpdateClient(Request $request)
+    {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $client = Controller::getConnectedClient();
+
+        if ($client->staus == 1) {
+            $client_status = 'Confirmed';
+        } else {
+            $client_status = 'Non Confirmed';
+        }
+        $avatars = Avatar::get();
+        $avatarsIds = Avatar::pluck('id')->toArray();
+        $input = request()->except(['_token', 'action']);
+        if($request->language){
+            $input['language'] = join(',', $request->language);
+        }
+        if($request->where_you_see_us){
+            $input['where_you_see_us'] = join(',', $request->where_you_see_us);
+        }
+        $file = $request->file('photo');
+        $cin = $request->file('image_national_id');
+        $driving_licence_image = $request->file('driving_licence_image');
+        if ($request->file('driving_licence_image') && $request->file('driving_licence_image')->getClientOriginalName()) {
+            $input['driving_licence_image'] = $request->file('driving_licence_image')->getClientOriginalName();
+            $driving_licence_image->move(base_path('public\images\clients'), $driving_licence_image->getClientOriginalName());
+        }
+        if ($request->file('image_national_id') && $request->file('image_national_id')->getClientOriginalName()) {
+            $input['image_national_id'] = $request->file('image_national_id')->getClientOriginalName();
+            $cin->move(base_path('public\images\clients'), $cin->getClientOriginalName());
+        }
+        if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
+            $input['photo'] = $request->file('photo')->getClientOriginalName();
+            $file->move(base_path('public\images\clients'), $file->getClientOriginalName());
+        };
+        if ($request->id_avatars != null) {
+            $selected_avatars = Avatar::where('image', $input['id_avatars'])->first();
+            $input['id_avatars'] = $selected_avatars->id;
+        }
+        $client->update($input);
+        return redirect(route('clients.user.profile'));
+    }
+    
+    public function changePassword(Request $request)
     {
         $client = Controller::getConnectedClient();
-        $profil_birth_date = $client->day_of_birth . '/' . $client->month_of_birth . '/' . $client->year_of_birth;
-        $input = request()->except(['_token', 'action']);
-        dd($input);
-        // $file = request()->file('photo');
-        // dd($input);
-        // $file->store('toPath', ['disk' => 'public']);
-        $client->update($input);
-        return view('clients.user.profile')->with('client', $client)->with('client_status', $client_status);
-        //return redirect(route('clients.user.profile'))->with('success', __('front.profile_updated'));
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $passsword = $request->password ?? '';
+        $new_passsword = $request->new_password ?? '';
+        $confirmed_password = $request->confirmed_password ?? '';
+        if (Hash::check($request->password, $client->password)) {
+            if ($new_passsword == $confirmed_password) {
+                $client->password = bcrypt($new_passsword);
+                $client->save();
+            } else {
+                return redirect()->back()->with('danger', __('front.unsimilar_password'));
+            }
+        } else {
+            return redirect()->back()->with('warning', __('front.invalid_current_password'));
+        }
+        return redirect(route('clients.user.profile'))->with('success', __('front.profile_updated'));
     }
     public function show($id)
     {
@@ -163,7 +176,6 @@ class FClientController extends DefaultLoginController
     }
     public function redirectToGoogle()
     {
-        //dd(12);
         return Socialite::driver('google')->redirect();
     }
     public function handleGoogleCallback()

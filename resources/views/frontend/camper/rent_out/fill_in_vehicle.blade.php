@@ -10,13 +10,11 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>Camper name</strong></h2>
+				<h2><strong>{{trans('front.camper_name')}}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Dashboard</a></li>
-						<li>Add Listing</li>
+{{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>
@@ -29,8 +27,8 @@
 
 		<div class="col-lg-7 col-md-12">
 			<div class="row">
-				<h6>The vehicle</h6>
-				<h3><strong>Vehicle Data</strong></h3>
+				<h6>{{trans('front.vehicle_data')}}</h6>
+				<h3><strong>{{trans('front.vehicle_data')}}</strong></h3>
 			</div>
 			<div class="margin-top-0">
 				<ul style="list-style-type:none; padding-left: 0px;">
@@ -38,12 +36,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="camper_name" placeholder="Name of the vehicle">
+								<input type="text" name="camper_name" placeholder="{{trans('front.name_vehicle')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="brand" placeholder="Camper brand">
+								<input type="text" name="brand" placeholder="{{trans('front.camper_brand')}}">
 							</div>
 						</div>
 					</li>
@@ -51,12 +49,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="model" placeholder="Model">
+								<input type="text" name="model" placeholder="{{trans('front.model')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="id_licence_categories" placeholder="Licence category">
+								<input type="text" name="id_licence_categories" placeholder="{{trans('front.licence_category')}}">
 							</div>
 						</div>
 					</li>
@@ -64,12 +62,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<Label> Converted vehicle </label>
+								<Label> {{trans('front.converted_vehicle')}} </label>
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="license_plate_number" placeholder="Licence number">
+								<input type="text" name="license_plate_number" placeholder="{{trans('front.licence_number')}}">
 							</div>
 						</div>
 					</li>
@@ -77,12 +75,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="vehicle_licence" placeholder="Vehicle registration certificate">
+								<input type="text" name="vehicle_licence" placeholder="{{trans('front.vehicle_registration')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="country" placeholder="Country of registration">
+								<input type="text" name="country" placeholder="{{trans('front.country_registration')}}">
 							</div>
 						</div>
 					</li>
@@ -90,12 +88,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="seat_number" placeholder="Number of seats">
+								<input type="text" name="seat_number" placeholder="{{trans('front.number_seats')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="gear_number" placeholder="Number of gears">
+								<input type="text" name="gear_number" placeholder="{{trans('front.number_gears')}}">
 							</div>
 						</div>
 					</li>
@@ -104,27 +102,27 @@
 							<!-- Phone -->
 							<div class="col-md-6">
 								<div class="col-md-12">
-									<strong>Gearbox</strong>
+									<strong>{{trans('front.Gearbox')}}</strong>
 								</div>
 								<div class="col-md-6">
-									<label class="containerRadio">Automatic
+									<label class="containerRadio">{{trans('front.automatic')}}
 										<input type="radio" checked="checked" name="radio">
 										<span class="checkmarkRadio"></span>
 									</label>
-									<label class="containerRadio">Manual
+									<label class="containerRadio">{{trans('front.manual')}}
 										<input type="radio" checked="checked" name="radio">
 										<span class="checkmarkRadio"></span>
 									</label>
 								</div>
 								<div class="col-md-6">
-									<label class="containerRadio">Semi-automatic
+									<label class="containerRadio">{{trans('front.semi_automatic')}}
 										<input type="radio" checked="checked" name="radio">
 										<span class="checkmarkRadio"></span>
 									</label>
 								</div>
 
 								<div class="col-md-12">
-									<strong>Fuel</strong>
+									<strong>{{trans('front.Fuel')}}</strong>
 								</div>
 								<div class="col-md-6">
 									<label class="containerRadio">Diesel
@@ -147,18 +145,18 @@
 									</label>
 								</div>
 								<div class="col-md-12">
-									<strong>Leasing vehicle</strong>
+									<strong>{{trans('front.leasing_vehicle')}}</strong>
 									<div class="row" style="margin-top: 3%;">
 										<div class="col-md-6" style="padding-left: 0px;">
 											<div class="payment-tab-trigger">
 												<input name="cardType" type="radio" value="">
-												<label style="padding: 0px;" for="vehicle">Yes</label>
+												<label style="padding: 0px;" for="vehicle">{{trans('front.yes')}}</label>
 											</div>
 										</div>
 										<div class="col-md-6" style="padding-left: 0px;">
 											<div class="payment-tab-trigger">
 												<input name="cardType" type="radio" value="">
-												<label style="padding: 0px;" for="vehicle">No</label>
+												<label style="padding: 0px;" for="vehicle">{{trans('front.no')}}</label>
 											</div>
 										</div>
 									</div>
@@ -168,7 +166,7 @@
 							<div class="col-md-6">
 								<div class="row">
 									<div class="col-md-12">
-										<strong>Mileage</strong>
+										<strong>{{trans('front.Mileage')}}</strong>
 									</div>
 								</div>
 								<div class="row">
@@ -197,7 +195,7 @@
 											<input type="radio" checked="checked" name="radio">
 											<span class="checkmarkRadio"></span>
 										</label>
-										<label class="containerRadio">More than 300'000 km
+										<label class="containerRadio">{{trans('front.more_than')}} 300'000 km
 											<input type="radio" checked="checked" name="radio">
 											<span class="checkmarkRadio"></span>
 										</label>
@@ -210,12 +208,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="fuel_capacity" placeholder="Fuel capacity">
+								<input type="text" name="fuel_capacity" placeholder="{{trans('front.fuel_capacity')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="fuel_consumation" placeholder="Fuel consumation per 100 Km">
+								<input type="text" name="fuel_consumation" placeholder="{{trans('front.fuel_consumation')}}">
 							</div>
 						</div>
 					</li>
@@ -224,11 +222,11 @@
 							<!-- Phone -->
 
 							<div class="col-md-6">
-								<input type="text" name="allowed_total_weight" placeholder="Allowed total weight in tons">
+								<input type="text" name="allowed_total_weight" placeholder="{{trans('front.allowed_tons')}}">
 							</div>
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="length" placeholder="Length in metres">
+								<input type="text" name="length" placeholder="{{trans('front.length_in_metres')}}">
 							</div>
 						</div>
 					</li>
@@ -236,19 +234,19 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="horse_power" placeholder="Horse power">
+								<input type="text" name="horse_power" placeholder="{{trans('front.horse_power')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="cylinder_capacity" placeholder="Cylinder capacity">
+								<input type="text" name="cylinder_capacity" placeholder="{{trans('front.cylinder_capacity')}}">
 							</div>
 						</div>
 					</li>
 					<li>
 						<div class="row">
 							<div class="col-md-12">
-								<strong>Additional attributes</strong>
+								<strong>{{trans('front.Additional attributes')}}</strong>
 							</div>
 							<div class="col-md-6">
 								<div class="checkboxes in-row margin-bottom-20">
@@ -290,7 +288,7 @@
 					<li>
 						<div class="row" style="margin-bottom:20px;">
 							<div class="col-md-12">
-								<strong>Location</strong>
+								<strong>{{trans('front.location')}}</strong>
 								<div class="markers-on-the-map" style="margin-top: 16px;">
 									<!-- Map -->
                                         <input

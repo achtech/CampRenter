@@ -10,7 +10,7 @@
 
     <div class="rating-bars">
             <div class="rating-bars-item">
-                <span class="rating-bars-name">Service </span>
+                <span class="rating-bars-name">{{trans('front.service')}} </span>
                 <span class="rating-bars-inner">
                     <span class="rating-bars-rating" data-rating="{{$rateDetail->ratingService ?? 0}}">
                         <span class="rating-bars-rating-inner"></span>
@@ -19,7 +19,7 @@
                 </span>
             </div>
             <div class="rating-bars-item">
-                <span class="rating-bars-name">Managing </span>
+                <span class="rating-bars-name">{{trans('front.managing')}} </span>
                 <span class="rating-bars-inner">
                     <span class="rating-bars-rating" data-rating="{{$rateDetail->ratingManaging ?? 0}}">
                         <span class="rating-bars-rating-inner"></span>
@@ -28,7 +28,7 @@
                 </span>
             </div>
             <div class="rating-bars-item">
-                <span class="rating-bars-name">Cleanliness</span>
+                <span class="rating-bars-name">{{trans('front.cleanliness')}}</span>
                 <span class="rating-bars-inner">
                     <span class="rating-bars-rating" data-rating="{{$rateDetail->ratingCleanliness ?? 0}}">
                         <span class="rating-bars-rating-inner"></span>
@@ -54,7 +54,7 @@
                         <div class="star-rating" data-rating="{{number_format(($review->rate_service+$review->rate_managing+$review->rate_cleanliness)/3),1}}"></div>
                     </div>
                     <p>{{$review->comment}}</p>
-                    <a href="{{route('frontend.clients.review.helpfulReview',$review->id)}}" class="rate-review"><i class="far fa-thumbs-up"></i> Helpful Review <span>{{$review->helpfulReview}}</span></a>
+                    <a href="{{route('frontend.clients.review.helpfulReview',$review->id)}}" class="rate-review"><i class="far fa-thumbs-up"></i> {{trans('front.helpful_review')}} <span>{{$review->helpfulReview}}</span></a>
                 </div>
             </li>
         @endforeach

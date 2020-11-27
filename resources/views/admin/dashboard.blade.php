@@ -23,7 +23,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{{ __('backend.dashboard_owners_part') }}</td>
+                                   <td>{{ __('backend.dashboard_owners_part') }}</td>
                                     <td>{{$today_owner ?? '0'}}</td>
                                     <td>{{$week_owner ?? '0'}}</td>
                                     <td>{{$month_owner ?? '0'}}</td>
@@ -56,8 +56,8 @@
                     </div>
                     <div class="col-md-4">
                         <div style="margin:10px">
-                            <a href="#" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
-                            style="position: absolute;bottom:10px;width: 90%;">{{ __('backend.dashboard_to_do') }}</a>
+                            <a href="{{ route('admin.blog.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
+                            style="position: absolute;bottom:10px;width: 90%;">{{ __('backend.New Blog') }}</a>
                         </div>
                     </div>
                     <div class="col-md-4">

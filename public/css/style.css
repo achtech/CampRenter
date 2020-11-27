@@ -8083,10 +8083,6 @@ body .comment-content p {
 }
 
 .avatar {
-    display: inline-block;
-    float: left;
-    padding: 0 20px 0 0;
-    position: absolute;
     left: 0px;
 }
 
@@ -14908,7 +14904,7 @@ a.dashboard-responsive-nav-trigger {
 /* Static Content */
 
 .dashboard-list-box-static {
-    padding: 30px;
+    padding: 1px 30px;
     background-color: #fff;
 }
 
@@ -15347,6 +15343,70 @@ a.close-list-item {
     position: relative;
     top: -2px;
 }
+
+
+.bookings .inner h3 span.booking-status {
+    border-radius: 50px;
+    line-height: 20px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #fff;
+    font-style: normal;
+    padding: 2px 8px;
+    margin-left: 3px;
+    position: relative;
+    top: -2px;
+}
+
+/*Requested*/
+.booking-1 .bookings .inner h3 span.booking-status {
+    background-color: #2002ce;
+}
+.bookings .inner h3 span.booking-status.s-1 {
+    background-color: #2002ce;
+}
+
+/*Confirmed*/
+.booking-2 .bookings .inner h3 span.booking-status {
+    background-color: #64bc36;
+}
+.bookings .inner h3 span.booking-status.s-2 {
+    background-color: #64bc36;
+}
+
+/*Denied*/
+.booking-3 .bookings .inner h3 span.booking-status {
+    background-color: #e20d0d;
+}
+
+.bookings .inner h3 span.booking-status.s-3 {
+    background-color: #e20d0d;
+}
+
+/*Paid*/
+.booking-4 .bookings .inner h3 span.booking-status {
+    background-color: #ffbb00;
+}
+.bookings .inner h3 span.booking-status.s-4 {
+    background-color: #ffbb00;
+}
+
+/*InProgress*/
+.booking-5 .bookings .inner h3 span.booking-status {
+    background-color: #858a82;
+}
+.bookings .inner h3 span.booking-status.s-5 {
+    background-color: #858a82;
+}
+
+/*Closed*/
+.booking-6 .bookings .inner h3 span.booking-status {
+    background-color: #020001;
+}
+.bookings .inner h3 span.booking-status.s-6 {
+    background-color: #858a82;
+}
+
 
 .approved-booking .bookings .inner h3 span.booking-status {
     background-color: #64bc36;
@@ -22133,9 +22193,6 @@ h4 span.headline-detail {
         float: none;
         height: 30px;
     }
-    .avatar {
-        display: none;
-    }
     .comment-content {
         padding: 0;
     }
@@ -22813,4 +22870,28 @@ a::after {
     width: 62%;
     padding-top: 5px;
     font-size: 16px;
+}
+.my-profile2 label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.my-profile2 {
+    display: block;
+}
+
+.my-profile2 label i {
+    margin-right: 3px;
+}
+
+.my-profile2 textarea {
+    height: 200px;
+}
+
+.avatar-design {
+    position: absolute;
+    opacity: 0 !important;
+    width: 0;
+    height: 0;
 }

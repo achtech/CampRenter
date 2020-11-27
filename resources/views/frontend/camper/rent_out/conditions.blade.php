@@ -10,13 +10,11 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>Camper name</strong></h2>
+				<h2><strong>{{trans('front.camper_name')}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Dashboard</a></li>
-						<li>Add Listing</li>
+{{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>
@@ -28,16 +26,16 @@
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'conditions'])
 
 		<div class="col-lg-7 col-md-12">
-			<h3><strong>Terms</strong></h3>
+			<h3><strong>{{trans('front.terms')}</strong></h3>
 			<div class="col-md-12">
-				<h4><strong>1. Minimal rental duration and prices</strong></h4>
+				<h4><strong>1. {{trans('front.minimal_rental_duration_prices')}</strong></h4>
 			</div>
 			<div class="col-md-12" style="margin-top:20px;">
-				<p><strong>Main season:</strong>Jul. - Aug.</p>
+				<p><strong>{{trans('front.main_season')}:</strong>Jul. - Aug.</p>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-7">
-					<h5>Minimal rental duration</h5>
+					<h5>{{trans('front.minimal_rental_duration')}</h5>
 					<select class="chosen-select-no-single" >
 						<option label="blank">Select Category</option>
 						<option>Eat & Drink</option>
@@ -51,16 +49,16 @@
 			</div>
 			<div class="col-md-12" style="margin-top:10px;">
 				<div class="col-md-7" >
-					<input type="text" placeholder="Price per night">
+					<input type="text" placeholder="{{trans('front.price_per_night')}">
 				</div>
 			</div>
 
 			<div class="col-md-12" style="margin-top:20px;">
-				<p><strong>Off season:</strong>May - Jun. / Sep. - Oct.</p>
+				<p><strong>{{trans('front.off_season')}:</strong>May - Jun. / Sep. - Oct.</p>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-7">
-					<h5>Minimal rental duration</h5>
+					<h5>{{trans('front.minimal_rental_duration')}</h5>
 					<select class="chosen-select-no-single" >
 						<option label="blank">Select Category</option>
 						<option>Eat & Drink</option>
@@ -74,16 +72,16 @@
 			</div>
 			<div class="col-md-12" style="margin-top:10px;">
 				<div class="col-md-7">
-					<input type="text" placeholder="Price per night">
+					<input type="text" placeholder="{{trans('front.price_per_night')}">
 				</div>
 			</div>
 
 			<div class="col-md-12" style="margin-top:20px;">
-				<p><strong>Winter season:</strong>Nov. - Apr.</p>
+				<p><strong>{{trans('front.winter_season')}:</strong>Nov. - Apr.</p>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-7">
-					<h5>Minimal rental duration</h5>
+					<h5>{{trans('front.minimal_rental_duration')}</h5>
 					<select class="chosen-select-no-single" >
 						<option label="blank">Select Category</option>
 						<option>Eat & Drink</option>
@@ -97,11 +95,11 @@
 			</div>
 			<div class="col-md-12" style="margin-top:10px;">
 				<div class="col-md-7">
-					<input type="text" placeholder="Price per night">
+					<input type="text" placeholder="{{trans('front.price_per_night')}">
 				</div>
 			</div>
 			<div class="col-md-12" style="margin-top:20px;">
-				<h4><strong>1. Set discounts</strong></h4>
+				<h4><strong>1. {{trans('front.set_discounts')}</strong></h4>
 			</div>
 			<div class="col-md-12" style="margin-top:20px;">
 				<div class="col-md-3">

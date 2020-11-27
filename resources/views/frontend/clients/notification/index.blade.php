@@ -8,13 +8,11 @@
 		<div id="titlebar">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>Notification</h2>
+					<h2>{{trans('front.menu_panel_notification')}}</h2>
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Dashboard</a></li>
-							<li>Notification</li>
+							{{ Breadcrumbs::render('notifications') }}
 						</ul>
 					</nav>
 				</div>
@@ -28,7 +26,7 @@
 
 				<div class="messages-container margin-top-0">
 					<div class="messages-headline">
-						<h4>Inbox</h4>
+						<h4>{{trans('front.inbox')}}</h4>
 					</div>
 
 					<div class="messages-inbox">
@@ -36,14 +34,14 @@
 						<ul>
 							@foreach($datas as $data)
 							<li class="{{$data->status}}">
-								<a href="#">									
+								<a href="#">
 									<div class="message-avatar">
 										<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" />
 									</div>
 
 									<div class="message-by">
 										<div class="message-by-headline">
-											<h5>{{ App\Http\Controllers\Controller::getClientName($data->id_renter)}} @if($data->status == "unread") <i>Unread</i> @endif</h5>
+											<h5>{{ App\Http\Controllers\Controller::getClientName($data->id_renter)}} @if($data->status == "unread") <i>{{trans('front.unread')}}</i> @endif</h5>
 											<span>{{date('j F Y h:m:s', strtotime($data->created_at))}}</span>
 										</div>
 										<p>{{$data->message}}</p>
