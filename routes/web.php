@@ -402,10 +402,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/redirect/{service}', [App\Http\Controllers\SocialController::class, 'redirect']);
 Route::get('/callback/{service}', [App\Http\Controllers\SocialController::class, 'callback']);
 
-###############Paypal#######
+###############Paypal########
 
 Route::get('load', [App\Http\Controllers\PaypalController::class, 'LoadProduits']);
 Route::get('payment-successful', [App\Http\Controllers\PaypalController::class, 'successful']);
 Route::get('ipn', [App\Http\Controllers\PaypalController::class, 'ipn']);
 Route::get('payment-cancelled', [App\Http\Controllers\PaypalController::class, 'cancelled']);
 Route::post('payments', [App\Http\Controllers\PaypalController::class, 'payments'])->name('redirectToPayp');
+Route::post('receivepost', 'App\Http\Controllers\PaypalController@pp');

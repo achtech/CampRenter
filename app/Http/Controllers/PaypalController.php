@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PaymentsPay;
 use Illuminate\Http\Request;
 
 class PaypalController extends Controller
@@ -12,6 +13,34 @@ class PaypalController extends Controller
 
     }
 
+    public function pp(Request $request)
+    {
+
+        $item_name = $_REQUEST['item_name'];
+        $payment_status = $_REQUEST['payment_status'];
+        $txn_id = $_REQUEST['txn_id'];
+        $payment_amount = $_REQUEST['payment_amount'];
+        PaymentsPay::create([
+            'txnid' => $txn_id,
+            'payment_amount' => $payment_amount,
+            'payment_status' => $payment_status,
+            'itemid' => $item_name,
+        ]);
+
+        // $myfile = fopen("rece.txt", "w") or die("Unable to open file!");
+
+        // $txt = "$item_name\n";
+
+        // $txt .= "$payment_status\n";
+
+        // $txt .= "$txn_id\n";
+        // $txt .= "$payment_amount\n";
+
+        // fwrite($myfile, $txt);
+
+        // fclose($myfile);
+
+    }
     public function LoadProduits()
     {
 
@@ -47,7 +76,7 @@ class PaypalController extends Controller
         }
 
         $item_name = 'Camera V10';
-        $item_amount = 12.00;
+        $item_amount = 8.00;
 
         $paypal_email = env('Paypal_email');
         $return_url = env('Return_url');
