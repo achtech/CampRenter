@@ -3,37 +3,37 @@
 	<!-- Content
 	================================================== -->
 	<div class="dashboard-content">
-		<!-- Titlebar -->
 		<div id="titlebar">
 			<div class="row">
 				<div class="col-md-12">
 					<h2>{{ __('front.my_profile') }}</h2>
 					@if(Session::has('danger'))
-		<div class="danger">
-			{{ Session::get('danger') }}
-</div>
-@endif
+						<div class="danger">
+							{{ Session::get('danger') }}
+						</div>
+					@endif
 
-@if(Session::has('warning'))
-		<div class="warning">
-			{{ Session::get('warning') }}
-</div>
-@endif
+					@if(Session::has('warning'))
+						<div class="warning">
+							{{ Session::get('warning') }}
+						</div>
+					@endif
 
-@if(Session::has('success'))
-		<div class="success">
-			{{ Session::get('success') }}
-</div>
-@endif
+					@if(Session::has('success'))
+						<div class="success">
+							{{ Session::get('success') }}
+						</div>
+					@endif
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-						{{ Breadcrumbs::render('profil') }}
+							{{ Breadcrumbs::render('profil') }}
 						</ul>
 					</nav>
 				</div>
 			</div>
 		</div>
+		{{ Form::open(['route'=>'frontend.client.updateData','enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
 
 		<div class="row">
 
@@ -42,7 +42,6 @@
 				<div class="dashboard-list-box margin-top-0">
 					<h4 class="gray">{{ __('front.profile_details') }}</h4>
 					<div class="dashboard-list-box-static">
-						{{ Form::open(['action'=>'App\Http\Controllers\frontend\FClientController@completeRegistrationProfile','method'=>'POST']) }}
 
 						<!-- Avatar -->
 					<div class="row">

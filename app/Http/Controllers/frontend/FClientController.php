@@ -60,6 +60,12 @@ class FClientController extends DefaultLoginController
         $avatars = Avatar::get();
         $avatarsIds = Avatar::pluck('id')->toArray();
         $input = request()->except(['_token', 'action']);
+        if($request->language){
+            $input['language'] = join(',', $request->language);
+        }
+        if($request->where_you_see_us){
+            $input['where_you_see_us'] = join(',', $request->where_you_see_us);
+        }
         $file = $request->file('photo');
         $cin = $request->file('image_national_id');
         $driving_licence_image = $request->file('driving_licence_image');
@@ -75,17 +81,12 @@ class FClientController extends DefaultLoginController
             $input['photo'] = $request->file('photo')->getClientOriginalName();
             $file->move(base_path('public\images\clients'), $file->getClientOriginalName());
         };
-        if ($input['id_avatars'] != null) {
+        if ($request->id_avatars != null) {
             $selected_avatars = Avatar::where('image', $input['id_avatars'])->first();
             $input['id_avatars'] = $selected_avatars->id;
         }
         $client->update($input);
-        return view('frontend.clients.user.index')
-            ->with('client', $client)
-            ->with('avatars', $avatars)
-            ->with('avatarsIds', $avatarsIds)
-            ->with('client_status', $client_status)
-            ->with('success', 'Profile Updated Successuflly');
+        return redirect(route('clients.user.profile'));
     }
     
     public function changePassword(Request $request)

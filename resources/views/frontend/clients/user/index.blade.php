@@ -48,10 +48,12 @@
 			{{Form::submit(__('front.save_profile_changes'),['style'=>'width: 100%;','class'=>'button margin-top-15','name' => 'action'])}}
 		{{ Form::close() }}
 
+		@if($client->type_login == "forms")
+			<div class="row" >
+				@include('frontend.clients.user.change_password')
+			</div>
+		@endif
 
-		<div class="row" >
-			@include('frontend.clients.user.change_password')
-		</div>
 		@include('frontend.layout.footer_panel')
 
 	</div>
@@ -98,5 +100,6 @@
         }
 		$(".checked-avatars" ).prop("checked", true );
 		$(".checked-language" ).prop("checked", true );
+		$(".checked-where_you_see_us" ).prop("checked", true );
 </script>
 @endsection

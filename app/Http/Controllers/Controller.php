@@ -67,7 +67,7 @@ class Controller extends BaseController
     public static function getConnectedClientLastName()
     {
         $client = self::getConnectedClient();
-        return $client ? $client->client_last_name : '';
+        return $client ? self::getClientName($client->id) : '';
     }
     public static function getClientName($id)
     {
