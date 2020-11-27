@@ -101,7 +101,9 @@
                             <div class="col-md-4" > 
                                     <span style="cursor: pointer;"> 
                                     <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
+                                    <input type="hidden" name="id_avatars" value="" />
                                     <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
+                                    data-picture_avatar_id="{{$elem->id}}"
                                          src="images/clients/{{$elem->image}}" alt="" class="avatar"
                                          style="width:64px;height:64px;border-radius: 50%;@if($elem->id==$client['id_avatars']) outline:2px solid #38b6cd; @endif ">
                                     </span>
@@ -125,6 +127,11 @@
     </div>
 </div>
 <script type="text/javascript">
+$("img[data-picture_avatar_id]").click(function(e){
+	//Set the value of the hidden input field
+	$("input[name='id_avatars']").val($(this).data('picture_avatar_id'));
+});
+
 	function avatarSelected(id){
 		var obj = <?php echo json_encode($avatarsIds); ?>;
 		for( i =0;i<obj.length;i++){
