@@ -12,8 +12,8 @@ use App\Http\Controllers\frontend\FC_notificationController;
 use App\Http\Controllers\frontend\FC_rentOutController;
 use App\Http\Controllers\frontend\FC_reviewController;
 use App\Http\Controllers\frontend\FC_walletController;
-use App\Http\Controllers\frontend\SocialController;
 use App\Http\Controllers\frontend\FUserController;
+use App\Http\Controllers\frontend\SocialController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +42,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('frontend.client.show_login');;
     Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
-    
+
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
@@ -401,3 +401,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //facebook call
 Route::get('/redirect/{service}', [App\Http\Controllers\SocialController::class, 'redirect']);
 Route::get('/callback/{service}', [App\Http\Controllers\SocialController::class, 'callback']);
+
+###############Paypal#######
+
+Route::get('load', [App\Http\Controllers\PaypalController::class, 'LoadProduits']);
+Route::get('payment-successful', [App\Http\Controllers\PaypalController::class, 'successful']);
+Route::get('ipn', [App\Http\Controllers\PaypalController::class, 'ipn']);
+Route::get('payment-cancelled', [App\Http\Controllers\PaypalController::class, 'cancelled']);
+Route::post('payments', [App\Http\Controllers\PaypalController::class, 'payments'])->name('redirectToPayp');

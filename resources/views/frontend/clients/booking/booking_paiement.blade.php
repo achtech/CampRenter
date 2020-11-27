@@ -78,10 +78,15 @@
 						<label for="paypal">PayPal</label>
 						<img class="payment-logo paypal" src="{{asset('images/paiement-methods/ApBxkXU.png')}}" alt="">
 					</div>
-
-					<div class="payment-tab-content">
-						<p>{{trans('front.redirected_to_paypal')}}</p>
-					</div>
+					<form class="paypal" action="{{route('redirectToPayp')}}"
+							method="post"
+							id="paypal_form"
+							target="_blank">
+        				@csrf
+						<div class="payment-tab-content">
+							<a type="submit" name="submit">{{trans('front.redirected_to_paypal')}}</a>
+						</div>
+					</form>
 				</div>
 
 
