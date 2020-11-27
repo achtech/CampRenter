@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Socialite;
+use Illuminate\Support\Facades\Session;
 
 class FClientController extends DefaultLoginController
 {
@@ -81,11 +82,10 @@ class FClientController extends DefaultLoginController
             $input['photo'] = $request->file('photo')->getClientOriginalName();
             $file->move(base_path('public\images\clients'), $file->getClientOriginalName());
         };
-        if ($request->id_avatars != null) {
-            $selected_avatars = Avatar::where('image', $input['id_avatars'])->first();
-            $input['id_avatars'] = $selected_avatars->id;
-        }
         $client->update($input);
+
+        Session::put('_clients', $client);
+
         return redirect(route('clients.user.profile'));
     }
     
