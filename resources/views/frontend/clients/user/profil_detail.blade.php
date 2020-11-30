@@ -8,7 +8,11 @@
             <label>{{ __('front.profil_last_name') }}</label>
             <input  id="client_last_name" name="client_last_name" class="form-control" value="{{$client['client_last_name']}}" type="text">
             <label>{{ __('front.profil_sex') }}</label>
-            <input  id="sex" name="sex" class="form-control" value="{{$client['sex']}}" type="text" >
+            <select name="sex" class="chosen-select" data-placeholder="{{trans('front.sex')}}">
+                <option label="Opening Time"></option>
+                <option value="female" @if($client->sex=='female') selected @endif>{{trans('front.female')}}</option>
+                <option value="male" @if($client->sex=='male') selected @endif>{{trans('front.male')}}</option>
+            </select>
             <label>{{ __('front.profil_email') }}</label>
             <input  id="email" name="email" class="form-control" value="{{$client['email']}}" type="text" disabled>
             <label>{{ __('front.street') }}</label>
@@ -34,15 +38,27 @@
             <label>{{ __('front.national_code') }}</label>
             <input id="national_id" name="national_id" class="form-control" value="{{$client['national_id']}}" type="text" >
             <label>{{ __('front.date_of_birth') }}</label>
-            <div class="row">
+            <div class="row" style="margin-bottom:20px">
                 <div class="col-md-4">
-                    <input id="day_of_birth" name="day_of_birth" class="form-control" placeholder="day" value="{{$client['day_of_birth']}}" maxlength="2" type="text">
+                    <select name="day_of_birth" id="day_of_birth" class="chosen-select" data-placeholder="Day">
+                        @for($i=1;$i<=31;$i++)
+                            <option value="{{$i}}" @if($client->day_of_birth==$i) selected @endif>{{$i}}</option>
+                        @endfor
+                    </select>
                 </div>
                 <div class="col-md-4">
-                    <input id="month_of_birth" name="month_of_birth" class="form-control" placeholder="month"  value="{{$client['month_of_birth']}}" maxlength="2" type="text">
+                    <select name="month_of_birth" id="month_of_birth" class="chosen-select" data-placeholder="Month">
+                        @for($i=1;$i<=12;$i++)
+                            <option value="{{$i}}" @if($client->month_of_birth==$i) selected @endif>{{$i}}</option>
+                        @endfor
+                    </select>
                 </div>
                 <div class="col-md-4">
-                    <input id="year_of_birth" name="year_of_birth" class="form-control" placeholder="year"   value="{{$client['year_of_birth']}}" maxlength="4" type="text">
+                    <select name="year_of_birth" id="year_of_birth" class="chosen-select" data-placeholder="Year">
+                        @for($i=2020;$i<=2100;$i++)
+                            <option value="{{$i}}" @if($client->year_of_birth==$i) selected @endif>{{$i}}</option>
+                        @endfor
+                    </select>
                 </div>
             </div>
         </div>
@@ -84,9 +100,12 @@
 
                             <div class="col-md-4" > 
                                     <span style="cursor: pointer;"> 
-                                    <input type="radio" class="avatar-design {{$elem->id==$client['id_avatars'] ? 'checked-avatars':''}}" 
-                                            name="id_avatars" id="id_avatars" value="{{$elem->image}}">
-                                    <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}" src="images/clients/{{$elem->image}}" alt="" class="avatar" style="width:64px;height:64px;border-radius: 50%;">
+                                    <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
+                                    <input type="hidden" name="id_avatars" value="" />
+                                    <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
+                                    data-picture_avatar_id="{{$elem->id}}"
+                                         src="images/clients/{{$elem->image}}" alt="" class="avatar"
+                                         style="width:64px;height:64px;border-radius: 50%;@if($elem->id==$client['id_avatars']) outline:2px solid #38b6cd; @endif ">
                                     </span>
                             </div>
 
@@ -108,6 +127,11 @@
     </div>
 </div>
 <script type="text/javascript">
+$("img[data-picture_avatar_id]").click(function(e){
+	//Set the value of the hidden input field
+	$("input[name='id_avatars']").val($(this).data('picture_avatar_id'));
+});
+
 	function avatarSelected(id){
 		var obj = <?php echo json_encode($avatarsIds); ?>;
 		for( i =0;i<obj.length;i++){

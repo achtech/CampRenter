@@ -6,6 +6,7 @@ use App\Models\Camper;
 use App\Models\Client;
 use App\Models\Message;
 use App\Models\User;
+use App\Models\Avatar;
 use DB;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -67,12 +68,22 @@ class Controller extends BaseController
     public static function getConnectedClientLastName()
     {
         $client = self::getConnectedClient();
-        return $client ? $client->client_last_name : '';
+        return $client ? self::getClientName($client->id) : '';
     }
     public static function getClientName($id)
     {
         $client = Client::find($id);
         return $client ? $client->client_last_name . ' ' . $client->client_name : '';
+    }
+
+    public static function getConnectedClientAvatarOrPicture(){
+        $client = self::getConnectedClient();
+        if($client->photo!=null){
+            return $client->photo;
+        } else {
+            $avatar = Avatar::find($client->id_avatars);
+            return $avatar ? $avatar->image : 'default.jpg';
+        }
     }
 
     public static function getCamperCategories()

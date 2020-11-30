@@ -19,13 +19,18 @@ class FC_rentOutController extends Controller
         }
         $categories = DB::table('camper_categories')->paginate(10);
         $sub_categories = CamperSubCategory::paginate(10);
+        $categorieIds = DB::table('camper_categories')->pluck('id')->toArray();
+        $subCategorieIds = DB::table('sub_camper_categories')->pluck('id')->toArray();
+
         $camper = $this->getNotCompletedCamper($client->id);
         $camper = $camper ?? new Camper();
 
         return view('frontend.camper.rent_out.rent_out')
             ->with('categories', $categories)
             ->with('camper', $camper)
-            ->with('sub_categories', $sub_categories);
+            ->with('categorieIds',$categorieIds)
+            ->with('avatarsIds',$avatarsIds)
+            ->with('subCategorieIds', $subCategorieIds);
     }
 
     public function storePersonnalData(Request $request)

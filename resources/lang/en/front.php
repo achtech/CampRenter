@@ -528,4 +528,12 @@ return [
     'total_rejected' => 'Total Rejected',
     'my_wallet' => 'My Wallet',
 
+    'date_of_birth' => 'Birthday date',
+    'attachements' => 'Attachment files',
+    'photo' => 'Upload your personal photo',
+    'avatar' => 'Choose your avatar',
+    'image_national' => 'Upload your national Id',
+    'driving_licence_image' => 'Upload your driver licence',
+    
+
 ];

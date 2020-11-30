@@ -25,26 +25,14 @@ class FUserController extends Controller
         $avatarsIds = Avatar::pluck('id')->toArray();
         $languages = explode(',', $client->language);
         $useUs = explode(',', $client->where_you_see_us);
-
-        if ($client->type_login == 'forms') {
-            return view('frontend.clients.user.index')
-                ->with('avatars', $avatars)
-                ->with('languages', $languages)
-                ->with('useUs', $useUs)
-                ->with('avatarsIds', $avatarsIds)
-                ->with('client', $client)
-                ->with('profil_birth_date', $profil_birth_date)
-                ->with('client_status', $client_status);
-        } else {
-            return view('frontend.clients.user.index2')
-                ->with('avatars', $avatars)
-                ->with('languages', $languages)
-                ->with('useUs', $useUs)
-                ->with('client', $client)
-                ->with('avatarsIds', $avatarsIds)
-                ->with('profil_birth_date', $profil_birth_date)
-                ->with('client_status', $client_status);
-        }
+        return view('frontend.clients.user.index')
+            ->with('avatars', $avatars)
+            ->with('languages', $languages)
+            ->with('useUs', $useUs)
+            ->with('avatarsIds', $avatarsIds)
+            ->with('client', $client)
+            ->with('profil_birth_date', $profil_birth_date)
+            ->with('client_status', $client_status);
     }
 
     public function selectedAvatar(Request $request){

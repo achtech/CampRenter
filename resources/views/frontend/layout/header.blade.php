@@ -49,9 +49,9 @@
                         @else
 
 					   <li style="float: right">
-						<a  href="#" style="margin-left: 66px;" class="user-name">
+						<a  href="#" style="margin-left: 120px;" class="user-name">
 							<span style="white-space: nowrap;margin-top: 6px;">
-								<img src="{{asset('images/clients/default.jpg')}}" alt="">
+								<img src="{{asset('/images')}}/clients/{{App\Http\Controllers\Controller::getConnectedClientAvatarOrPicture()}}" alt="">
 								{{ __('hi') }} {{App\Http\Controllers\Controller::getConnectedClientLastName()}}
 							</span>
 						</a>
