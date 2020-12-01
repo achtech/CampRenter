@@ -26,45 +26,50 @@
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-1">
-					<div class="dashboard-stat-content wallet-totals"><h4>84.50</h4> <span>Withdrawable Balance <strong class="wallet-currency">USD</strong></span></div>
+					<div class="dashboard-stat-content wallet-totals">
+						<h4>{{App\Http\Controllers\admin\ClientController::getTotalsSolde($client->id)}}</h4>
+						<span>{{ __('front.total_earning') }}
+							<strong class="wallet-currency">EUR</strong></span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-3">
-					<div class="dashboard-stat-content wallet-totals"><h4>245.15</h4> <span>Total Earnings <strong class="wallet-currency">USD</strong></span></div>
-					<div class="dashboard-stat-icon"><i class="im im-icon-Money-Bag"></i></div>
+					<div class="dashboard-stat-content wallet-totals">
+						<h4>{{App\Http\Controllers\admin\ClientController::getCurrentSolde($client->id)}}</h4>
+						<span>{{ __('front.total_current_month') }}
+							<strong class="wallet-currency">EUR</strong></span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
-
-			<!-- Item -->
-			<div class="col-lg-2 col-md-6">
-				<div class="dashboard-stat color-5">
-					<div class="dashboard-stat-content"><h4>3</h4> <span>Total Orders</span></div>
-					<div class="dashboard-stat-icon"><i class="im im-icon-Shopping-Cart"></i></div>
-				</div>
-			</div>
-
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-6">
-					<div class="dashboard-stat-content"><h4>3</h4> <span>Total Orders</span></div>
-					<div class="dashboard-stat-icon"><i class="im im-icon-Shopping-Cart"></i></div>
+					<div class="dashboard-stat-content"><h4>{{ $total_orders ?? 0 }}</h4>
+					 <span>{{ __('front.total_orders') }} </span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-7">
-					<div class="dashboard-stat-content"><h4>3</h4> <span>Total Orders</span></div>
-					<div class="dashboard-stat-icon"><i class="im im-icon-Shopping-Cart"></i></div>
+					<div class="dashboard-stat-content"><h4>{{ $total_confirmed ? $total_confirmed->total : 0 }}</h4> <span>{{ __('front.confirmed_bookings') }} </span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
+				</div>
+			</div>
+			<!-- Item -->
+			<div class="col-lg-2 col-md-6">
+				<div class="dashboard-stat color-5">
+					<div class="dashboard-stat-content"><h4>{{ $total_canceled ? $total_canceled->total : 0 }}</h4> <span>{{ __('front.total_canceled') }} </span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-2">
-					<div class="dashboard-stat-content"><h4>3</h4> <span>Total Orders</span></div>
-					<div class="dashboard-stat-icon"><i class="im im-icon-Shopping-Cart"></i></div>
+					<div class="dashboard-stat-content"><h4>{{ $total_rejected ? $total_rejected->total : 0 }}</h4> <span>{{ __('front.total_rejected') }} </span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
 
