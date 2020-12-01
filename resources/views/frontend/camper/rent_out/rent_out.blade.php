@@ -42,11 +42,12 @@
 							<div class="row">
 								@foreach($categories as $category)
 									<!-- Box -->
-									<div class="col-md-3 alternative-imagebox" id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id)==1 ? 'showSub' : 'category'}}">
-										<a href="#" id="camper-categories">
+									<div class="col-md-3 alternative-imagebox" 
+										id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id) ? 'showSub' : 'category'}}">
+										<a href="/ajax/rentByCategory/{{$category->id}}" id="camper-categories">
 										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}">
-										<input type="hidden" name="id_camper_categories" value="" />
-										<img style="max-width:70%;" 
+										<input type="hidden" name="id_camper_categories" value="{{$selectedCategoryId}}" />
+										<img style="max-width:70%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif" 
 												src="{{asset('images')}}/camper_categories/{{$category->image}}" 
 												data-picture_id="{{$category->id}}" alt=""
 												id="cat_{{$category->id}}"
@@ -56,27 +57,29 @@
 									</div>
 								@endforeach
 							</div>
-							<div class="row" id="sub_cat" style="display: none">
-								<div class="add-listing-headline">
-									<h3>{{trans('backend.menu_camper_sub_category')}}</h3>
-								</div>
-								<div class="row">
-								@foreach($sub_categories as $sub_categories)
-									<!-- Box -->
-									<div class="col-md-3 alternative-imagebox" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
-										<a>
-										<input type="radio" style="display: none" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
-										<input type="hidden" name="id_camper_sub_categories" value="" />
-										<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
-										data-picture_sub_id="{{$sub_categories->id}}" alt=""
-												id="subcat_{{$sub_categories->id}}"
-												onclick="changeSubCatStyle({{$sub_categories->id}})">
-											<h4 id="title_sub" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
-										</a>
+							@if(count($sub_categories) >0)
+								<div class="row" id="sub_cat">
+									<div class="add-listing-headline">
+										<h3>{{trans('backend.menu_camper_sub_category')}}</h3>
 									</div>
-								@endforeach
+									<div class="row">
+									@foreach($sub_categories as $sub_categories)
+										<!-- Box -->
+										<div class="col-md-3 alternative-imagebox" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
+											<a>
+											<input type="radio" style="display: none" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
+											<input type="hidden" name="id_camper_sub_categories" value="" />
+											<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
+											data-picture_sub_id="{{$sub_categories->id}}" alt=""
+													id="subcat_{{$sub_categories->id}}"
+													onclick="changeSubCatStyle({{$sub_categories->id}})">
+												<h4 id="title_sub" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
+											</a>
+										</div>
+									@endforeach
+									</div>
 								</div>
-							</div>
+							@endif
 						</div>
 
 					<!-- Headline -->
@@ -123,11 +126,38 @@
 </div>
 <script>
 function changeCatStyle(id){
-	document.getElementById('cat_'+id).style.outline="2px solid #38b6cd";
+	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+	var obj = <?php echo json_encode($categorieIds); ?>;
+	var obj2 = <?php echo json_encode($subCategorieIds); ?>;
+	
+	$.ajax({
+		url: '/ajax/rentByCategory/'+id,
+		type: 'get',
+		data: {_token: CSRF_TOKEN},
+		success: function(response){
+			for( i =0;i<obj2.length;i++){
+				document.getElementById('subcat_'+obj[i]).style.outline="none";
+			}    
+			for( i =0;i<obj.length;i++){
+				if(obj[i]==id){
+					document.getElementById('cat_'+obj[i]).style.outline="2px solid #38b6cd";
+				}else{
+					document.getElementById('cat_'+obj[i]).style.outline="none";
+				}
+			}    	            
+		}
+    });
 }
 
 function changeSubCatStyle(id){
-	document.getElementById('subcat_'+id).style.outline="2px solid #38b6cd";
+	var obj = <?php echo json_encode($subCategorieIds); ?>;
+	for( i =0;i<obj.length;i++){
+		if(obj[i]==id){
+			document.getElementById('subcat_'+obj[i]).style.outline="2px solid #38b6cd";
+		}else{
+			document.getElementById('subcat_'+obj[i]).style.outline="none";
+		}
+	}    
 }
 
 $("img[data-picture_id]").click(function(e){

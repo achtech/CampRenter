@@ -140,8 +140,7 @@ $("img[data-picture_avatar_id]").click(function(e){
             }else{
 				document.getElementById('avatar_'+obj[i]).style.outline="none";
             }
-        }    
-        
+        }            
 	}
 
 </script>
