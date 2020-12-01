@@ -69,13 +69,7 @@
 		</div>
 	</div>
 	<div class="fs-inner-container map-fixed">
-		<!-- Map -->
-		<div id="map-container">
-			<div id="map_search" class="markers-on-the-map"></div>
-
-				<input style="display: none" type="text" name="position_x" id="currentLatitude">
-				<input style="display: none" type="text" name="position_y" id="currentLongitude">
-		</div>
+	@include('frontend.camper.search_map')
 
 	</div>
 
