@@ -13,7 +13,7 @@
 ================================================== -->
 <script src="https://kit.fontawesome.com/b90fcd0862.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{asset('public/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -86,7 +86,6 @@
 ></script>
 <script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/maps-search.js')}}"></script>
 
 <!-- Leaflet Geocoder + Search Autocomplete // Docs: https://github.com/perliedman/leaflet-control-geocoder -->
 <script src="{{asset('js/leaflet-autocomplete.js')}}"></script>

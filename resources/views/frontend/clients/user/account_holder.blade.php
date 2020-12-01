@@ -59,7 +59,7 @@
         <label for="check-f">{{trans('front.Billboard')}}</label>
     </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
-        <input type="checkbox" name="where_you_see_us[]" id="check-g" value="Print" checked >
+        <input type="checkbox" name="where_you_see_us[]" id="check-g" value="Print"  @if(isset($useUs) && is_array($useUs) && in_array("Print",$useUs)) checked @endif> >
         <label for="check-g">{{ __('front.Print advertisement') }}</label>
     </div>
     <div class="checkboxes in-row margin-bottom-18" style="background:white;padding:10px">						
