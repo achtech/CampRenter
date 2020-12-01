@@ -26,14 +26,20 @@
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-1">
-					<div class="dashboard-stat-content wallet-totals"><h4>84.50</h4> <span>{{ __('front.total_earning') }} <strong class="wallet-currency">EUR</strong></span></div>
+					<div class="dashboard-stat-content wallet-totals"><h4>
+						{{App\Http\Controllers\frontend\FC_walletController::walletTotals($wallet_owner[0]->clt)}}</h4>
+						<span>{{ __('front.total_earning') }}
+							<strong class="wallet-currency">EUR</strong></span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-3">
-					<div class="dashboard-stat-content wallet-totals"><h4>245.15</h4> <span>{{ __('front.total_current_month') }} <strong class="wallet-currency">EUR</strong></span></div>
+					<div class="dashboard-stat-content wallet-totals">
+						<h4>{{App\Http\Controllers\frontend\FC_walletController::walletCurrentMonth($wallet_owner[0]->clt)}}</h4>
+						<span>{{ __('front.total_current_month') }}
+							<strong class="wallet-currency">EUR</strong></span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
@@ -41,7 +47,7 @@
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-5">
-					<div class="dashboard-stat-content"><h4>3</h4> <span>{{ __('front.total_canceled') }} <strong class="wallet-currency">EUR</strong></span></div>
+					<div class="dashboard-stat-content"><h4>3</h4> <span>{{ __('front.total_canceled') }} </span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
@@ -49,21 +55,22 @@
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-6">
-					<div class="dashboard-stat-content"><h4>3</h4> <span>{{ __('front.total_orders') }} <strong class="wallet-currency">EUR</strong></span></div>
+					<div class="dashboard-stat-content"><h4>{{ $wallet_owner[0]->total}}</h4>
+					 <span>{{ __('front.total_orders') }} </span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-7">
-					<div class="dashboard-stat-content"><h4>3</h4> <span>{{ __('front.confirmed_bookings') }} <strong class="wallet-currency">EUR</strong></span></div>
+					<div class="dashboard-stat-content"><h4>3</h4> <span>{{ __('front.confirmed_bookings') }} </span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-2">
-					<div class="dashboard-stat-content"><h4>3</h4> <span>{{ __('front.total_rejected') }} <strong class="wallet-currency">EUR</strong></span></div>
+					<div class="dashboard-stat-content"><h4>3</h4> <span>{{ __('front.total_rejected') }} </span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Money-2"></i></div>
 				</div>
 			</div>

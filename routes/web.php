@@ -110,7 +110,10 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/message_client/register', [FC_messageController::class, 'store'])->name('frontend.chat.register_chat');
     Route::get('/notification_client', [FC_notificationController::class, 'index'])->name('frontend.clients.notification');
     Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
+
     Route::get('/wallet_client', [FC_walletController::class, 'index'])->name('frontend.clients.wallet');
+
+
     Route::get('/review_client', [FC_reviewController::class, 'index'])->name('frontend.clients.review');
     Route::get('/review_helpfulReview/{id}', [FC_reviewController::class, 'helpfulReview'])->name('frontend.clients.review.helpfulReview');
     Route::post('/review_addReview', [FC_reviewController::class, 'addReview'])->name('frontend.clients.review.addReview');
