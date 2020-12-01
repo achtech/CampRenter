@@ -12,16 +12,20 @@ class FC_walletController extends Controller
     {
         $client = Controller::getConnectedClient();
         if ($client != null) {
-            $wallet_owner = DB::table("v_wallet_owner")->where('clt', $client->id)->get()->toArray();
-            dd($wallet_owner);
-            $booking_status = DB::table("booking_status")->where('id', $wallet_owner[0]->bstatus)->get();
+            $wallet_owner = DB::table("v_wallet_owner")->where('clt', $client->id);
 
-            /*$total_canceled
-            $total_orders
-            $total_confirmed
-            $total_rejected*/
+            $total_canceled = DB::table("v_wallet_owner")->where('clt', $client->id)->where('bstatus', 6)->first();
+            $total_confirmed = DB::table("v_wallet_owner")->where('clt', $client->id)->where('bstatus', 2)->first();
+            $total_rejected = DB::table("v_wallet_owner")->where('clt', $client->id)->where('bstatus', 3)->first();
+
+            $total_orders = DB::table("v_wallet_owner")->where('clt', $client->id)->sum('total');
+
             return view('frontend.clients.wallet.index')
-                ->with('wallet_owner', $wallet_owner);
+                ->with('total_canceled', $total_canceled)
+                ->with('total_confirmed', $total_confirmed)
+                ->with('total_rejected', $total_rejected)
+                ->with('total_orders', $total_orders)
+                ->with('client', $client);
         } else {
             return redirect(route('frontend.login.client'));
         }
@@ -29,7 +33,10 @@ class FC_walletController extends Controller
 
     public static function walletTotals($id)
     {
-        return DB::table("v_bookings_details")->where('owner_id', $id)->sum("total");
+        $client = Controller::getConnectedClient();
+        if ($client != null) {
+            return DB::table("v_bookings_details")->where('owner_id', $id)->sum("total");
+        }
     }
 
     public static function walletCurrentMonth($id)
