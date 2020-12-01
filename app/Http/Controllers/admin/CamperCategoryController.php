@@ -132,8 +132,7 @@ class CamperCategoryController extends Controller
     }
 
     public static function hasSubCategories($id){
-        $data=  DB::table('camper_sub_categories')->where('id_camper_categories', $id)->count()>0;
-        return $data?2:1;
+        return  DB::table('camper_sub_categories')->where('id_camper_categories', $id)->count()>0;
 
     }
 }
