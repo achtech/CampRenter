@@ -14,7 +14,7 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-{{ Breadcrumbs::render('rentOut') }}
+            {{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>

@@ -66,7 +66,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/personnalData', [FCamperController::class, 'personnalData'])->name('personnalData');
     Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
     Route::get('/campersteps', [FCamperController::class, 'camper_steps'])->name('camper_steps');
-    Route::get('/fillinvehicle', [FCamperController::class, 'fill_in_vehicle'])->name('fill_in_vehicle');
+    Route::get('/fillinvehicle', [FC_rentOutController::class, 'fill_in_vehicle'])->name('fill_in_vehicle');
     Route::get('/equipment', [FCamperController::class, 'equipment'])->name('equipment');
     Route::get('/accessories', [FCamperController::class, 'accessories'])->name('accessories');
     Route::get('/description', [FCamperController::class, 'description'])->name('description');
@@ -84,7 +84,7 @@ Route::group(['middleware' => 'Lang'], function () {
     //Route::prefix('/client')->namespace('frontend')->group(function () {
     // Route::post('login', 'App\Http\Controllers\frontend\FClientController@login');
     //});
-    Route::post('/store_personnal_data', [FC_rentOutController::class, 'storePersonnalData'])->name('frontend.camper.storePersonnalData');
+    Route::post('/store_personnal_data', [FC_rentOutController::class, 'store2'])->name('frontend.camper.storePersonnalData');
     Route::post('/store_camper_profile', [FC_rentOutController::class, 'storeCamperProfile'])->name('frontend.camper.storeCamperProfile');
 
     Route::get('/login/client', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('frontend.login.client');;
@@ -110,7 +110,10 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/message_client/register', [FC_messageController::class, 'store'])->name('frontend.chat.register_chat');
     Route::get('/notification_client', [FC_notificationController::class, 'index'])->name('frontend.clients.notification');
     Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
+
     Route::get('/wallet_client', [FC_walletController::class, 'index'])->name('frontend.clients.wallet');
+
+
     Route::get('/review_client', [FC_reviewController::class, 'index'])->name('frontend.clients.review');
     Route::get('/review_helpfulReview/{id}', [FC_reviewController::class, 'helpfulReview'])->name('frontend.clients.review.helpfulReview');
     Route::post('/review_addReview', [FC_reviewController::class, 'addReview'])->name('frontend.clients.review.addReview');
@@ -118,6 +121,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/details_booking_paiement', [FC_CamperController::class, 'bookingPaiement'])->name('frontend.camper.booking_paiement');
     Route::get('/bookmark_client', [FC_bookmarkController::class, 'index'])->name('frontend.clients.bookmark');
     Route::post('/ajax/addBookmarks', [FC_bookmarkController::class, 'addOrRemove'])->name('frontend.camper.add_bookmark');
+    Route::get('/ajax/rentByCategory/{id}', [FC_rentOutController::class, 'rentByCategory'])->name('rent_out_by_category');
     Route::get('/bookmark/{id}/delete', [FC_bookmarkController::class, 'removeFromBookMark'])->name('frontend.bookmark.delete');
     Route::post('/camper/request_booking/{id}', [FC_bookingController::class, 'requestBooking'])->name('frontend.add_request_booking');
     Route::post('/storeMessage', [FContactController::class, 'store'])->name('frontend.contact.store');
