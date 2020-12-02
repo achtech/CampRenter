@@ -82,17 +82,22 @@
 				<div class="dashboard-list-box invoices with-icons margin-top-20">
 					<h4>Earnings <div class="comission-taken">Fee: <strong>15%</strong></div></h4>
 					<ul>
-
+					@if($owner_bookings != null)
+						@foreach($owner_bookings as $owner_booking)
 						<li><i class="fas fa-shopping-cart"></i>
-							<strong>Sunway Apartment</strong>
+							<strong>{{$owner_booking->camper_name}}</strong>
 							<ul>
-								<li class="paid">$99.00</li>
+								<li class="paid">Price/Day: ${{$owner_booking->price}}</li>
 								<li class="unpaid">Fee: $14.50</li>
 								<li class="paid">Net Earning: <span>$84.50</span></li>
-								<li>Order: #00124</li>
-								<li>Date: 01/02/2019</li>
+								<li>Number of Days: {{$owner_booking->nbr_days}}</li>
+								<li>Booking date: {{$owner_booking->created_date}}</li>
 							</ul>
 						</li>
+						@endforeach
+					@else
+						<p>{{trans('front.no_results')}}</p>
+					@endif
 					</ul>
 				</div>
 			</div>
