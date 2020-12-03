@@ -534,6 +534,14 @@ return [
     'avatar' => 'Choose your avatar',
     'image_national' => 'Upload your national Id',
     'driving_licence_image' => 'Upload your driver licence',
-    
+    'earnings' => 'Earnings',
+    'price_day' => 'Price/Day',
+    'net_earning' => 'Net Earning',
+    'number_days' => 'Number of Days',
+    'booking_date' => 'Booking date',
+    'billing_history' => 'Billing History',
+    'unpaid' => 'Unpaid',
+    'paid' => 'Paid',
+    'payment_date' => 'Payment date',
 
 ];
