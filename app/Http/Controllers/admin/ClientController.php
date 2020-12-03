@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Models\Avatar;
 use App\Models\Booking;
 use App\Models\Camper;
@@ -121,12 +121,14 @@ class ClientController extends Controller
         return redirect(route('admin.client.index'))->with('success', 'Item Updated succesfully');
     }
 
-    public static function containCamper($clientId){
-        return Camper::where('id_clients',$clientId)->count() > 0;
+    public static function containCamper($clientId)
+    {
+        return Camper::where('id_clients', $clientId)->count() > 0;
     }
 
-    public static function containBooking($clientId){
-        return Booking::where('id_clients',$clientId)->count() > 0;
+    public static function containBooking($clientId)
+    {
+        return Booking::where('id_clients', $clientId)->count() > 0;
     }
     /**
      * Update the specified resource in storage.
