@@ -13,7 +13,7 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-{{ Breadcrumbs::render('rentOut') }}
+						{{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>
@@ -26,19 +26,21 @@
 
 		<div class="col-lg-7 col-md-12">
 			<h2 style="padding: 10px;"><strong>{{trans('front.complete_personnal_data')}}</strong></h2>
-			<form  action="{{route('frontend.camper.storePersonnalData')}}" method="POST">
-				<div class="margin-top-0">
+			{{ Form::open(['action'=>'App\Http\Controllers\frontend\FC_rentOutController@store2', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+				<meta name="csrf-token" content="{{ csrf_token() }}">
+				<input type="hidden" name="id_campers" value="{{$camper->id}}" />
+ 				<div class="margin-top-0">
 					<ul style="list-style-type:none; padding-left: 0px;">
 						<li>
 							<div class="row">
 								<!-- Phone -->
 								<div class="col-md-6">
-									<input type="text" placeholder="{{trans('front.first_name')}}">
+									<input type="text" placeholder="{{trans('front.first_name')}}" name="client_name" value="{{$client->client_name ?? ''}}">
 								</div>
 
 								<!-- Website -->
 								<div class="col-md-6">
-									<input type="text" placeholder="{{trans('front.last_name')}}">
+									<input type="text" placeholder="{{trans('front.last_name')}}" name="client_last_name" value="{{$client->client_last_name ?? ''}}">
 								</div>
 							</div>
 						</li>
@@ -47,8 +49,8 @@
 								<div class="col-md-12">
 									<select name="sex" class="chosen-select" data-placeholder="{{trans('front.sex')}}">
 										<option label="Opening Time"></option>
-										<option>{{trans('front.female')}}</option>
-										<option>{{trans('front.male')}}</option>
+										<option value="female" @if($client->sex=="female") selected @endif>{{trans('front.female')}}</option>
+										<option value="male" @if($client->sex=="male") selected @endif>{{trans('front.male')}}</option>
 									</select>
 								</div>
 							</div>
@@ -57,12 +59,12 @@
 							<div class="row">
 								<!-- Phone -->
 								<div class="col-md-8">
-									<input type="text" placeholder="{{trans('front.street')}}">
+									<input type="text" placeholder="{{trans('front.street')}}" name="street" value="{{$client->street ?? ''}}"> 
 								</div>
 
 								<!-- Website -->
 								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.street_um')}}">
+									<input type="text" placeholder="{{trans('front.street_um')}}"  name="street_number" value="{{$client->street_number ?? ''}}">
 								</div>
 							</div>
 						</li>
@@ -70,12 +72,12 @@
 							<div class="row">
 								<!-- Phone -->
 								<div class="col-md-8">
-									<input type="text" placeholder="{{trans('front.location')}}">
+									<input type="text" placeholder="{{trans('front.location')}}" name="location" value="{{$client->location ?? ''}}">
 								</div>
 
 								<!-- Website -->
 								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.postal_code')}}">
+									<input type="text" placeholder="{{trans('front.postal_code')}}" name="postal_code" value="{{$client->postal_code ?? ''}}">
 								</div>
 							</div>
 						</li>
@@ -83,20 +85,21 @@
 							<!-- Phone -->
 							<div class="row opening-day">
 								<div class="col-md-4">
-									<select class="chosen-select" data-placeholder="{{trans('front.country')}}">
+									<select class="chosen-select" data-placeholder="{{trans('front.country')}}" name="country" >
 										<option label="Opening Time"></option>
-										<option>Switezland</option>
-										<option>Germany</option>
-										<option>Italy</option>
+										<option value="suisse" @if($client->country=="suisse") selected @endif >Switezland</option>
+										<option value="germany" @if($client->country=="germany") selected @endif >Germany</option>
+										<option value="italy" @if($client->country=="italy") selected @endif >Italy</option>
+										<option value="spain" @if($client->country=="spain") selected @endif >Spain</option>
 									</select>
 								</div>
 
 								<!-- Website -->
 								<div class="col-md-4">
-									<input type="text" placeholder="+41">
+									<input type="text" placeholder="+41"  name="telephone_code" value="{{$client->telephone_code ?? ''}}">
 								</div>
 								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.mobile_number')}}">
+									<input type="text" placeholder="{{trans('front.mobile_number')}}" name="telephone" value="{{$client->telephone ?? ''}}">
 									<h6><i class="im im-icon-Danger"></i> {{trans('front.format_num')}}</h6>
 								</div>
 							</div>
@@ -107,15 +110,15 @@
 							<h3>{{trans('front.date_birth')}}</h3>
 							<div class="row opening-day">
 								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.day')}}">
+									<input type="text" placeholder="{{trans('front.day')}}" name="day_of_birth" value="{{$client->day_of_birth ?? ''}}">
 								</div>
 
 								<!-- Website -->
 								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.month')}}">
+									<input type="text" placeholder="{{trans('front.month')}}"  name="month_of_birth" value="{{$client->month_of_birth ?? ''}}">
 								</div>
 								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.year')}}">
+									<input type="text" placeholder="{{trans('front.year')}}" name="year_of_birth" value="{{$client->year_of_birth ?? ''}}">
 								</div>
 							</div>
 						</li>
@@ -123,9 +126,10 @@
 						<li>
 							<!-- Phone -->
 							<h3>{{trans('front.profile_pic')}}</h3>
+							
 							<div class="submit-section" style="margin-top:40px;">
 								<div>
-									<a href="" class="button medium border">{{trans('front.upload')}}</a>
+									<input type="file" id="photo" name="photo" class="button medium border upload custom-file-input" />
 								</div>
 								<div class="user-profile-avatar"  style="float:right;"><img src="" alt=""></div>
 							</div>
@@ -138,8 +142,8 @@
 						<li>
 							<div class="checkboxes in-row margin-bottom-20">
 
-								<input id="check-a" type="checkbox" name="check">
-								<label for="check-a">{{trans('front.pro_rental_campany')}}</label>
+								<input id="check-x" type="checkbox" name="professional_rental_company"  @if($client->professional_rental_company) checked @endif >
+								<label for="check-x">{{trans('front.pro_rental_campany')}}</label>
 								<h6>{{trans('front.renting_income')}}</h6>
 							</div>
 						</li>
@@ -153,7 +157,7 @@
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" placeholder="{{trans('front.Name')}}">
+									<input type="text" placeholder="{{trans('front.Name')}}" name="account_holder_name" value="{{$client->account_holder_name ?? ''}}">
 								</div>
 							</div>
 						</li>
@@ -161,12 +165,12 @@
 							<div class="row">
 								<!-- Phone -->
 								<div class="col-md-8">
-									<input type="text" placeholder="{{trans('front.street')}}">
+									<input type="text" placeholder="{{trans('front.street')}}" name="account_holder_location" value="{{$client->account_holder_location ?? ''}}">
 								</div>
 
 								<!-- Website -->
 								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.building_number')}}">
+									<input type="text" placeholder="{{trans('front.building_number')}}" name="account_holder_street" value="{{$client->account_holder_street ?? ''}}">
 								</div>
 							</div>
 						</li>
@@ -174,11 +178,11 @@
 							<div class="row">
 								<!-- Website -->
 								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.postal_code')}}">
+									<input type="text" placeholder="{{trans('front.postal_code')}}" name="account_holder_building_number" value="{{$client->account_holder_building_number ?? ''}}">
 								</div>
 								<!-- Phone -->
 								<div class="col-md-8">
-									<input type="text" placeholder="{{trans('front.ountry')}}">
+									<input type="text" placeholder="{{trans('front.ountry')}}" name="account_holder_postal_code" value="{{$client->account_holder_postal_code ?? ''}}">
 								</div>
 							</div>
 
@@ -186,11 +190,11 @@
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-								<select class="chosen-select" data-placeholder="{{trans('front.country')}}">
-										<option label="Opening Time"></option>
-										<option>Switezland</option>
-										<option>Germany</option>
-										<option>Italy</option>
+								<select class="chosen-select" data-placeholder="{{trans('front.country')}}" value="account_holder_country">
+										<option value="suisse" @if($client->account_holder_country=="suisse") selected @endif >Switezland</option>
+										<option value="germany" @if($client->account_holder_country=="germany") selected @endif >Germany</option>
+										<option value="italy" @if($client->account_holder_country=="italy") selected @endif >Italy</option>
+										<option value="spain" @if($client->account_holder_country=="spain") selected @endif >Spain</option>
 									</select>
 								</div>
 							</div>
@@ -201,20 +205,20 @@
 						<li>
 							<div class="form">
 								<h5>{{trans('front.adress')}}</h5>
-								<textarea class="WYSIWYG" name="summary" cols="20" rows="1" id="summary" spellcheck="true"></textarea>
+								<textarea class="WYSIWYG" name="summary" cols="20" rows="1" id="summary" spellcheck="true" name="bank_data_adress">{{$client->bank_data_adress ?? ''}}</textarea>
 							</div>
 						</li>
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" placeholder="IBAN">
+									<input type="text" placeholder="IBAN"  name="bank_data_iban" value="{{$client->bank_data_iban ?? ''}}">
 								</div>
 							</div>
 						</li>
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" placeholder="BIC">
+									<input type="text" placeholder="BIC" name="bank_data_bic" value="{{$client->bank_data_bic ?? ''}}">
 									<h6>{{trans('front.bic_require')}}</h6>
 								</div>
 							</div>
@@ -225,20 +229,20 @@
 						<li>
 
 								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
+									<input id="check-a" type="checkbox" name="language[]"  value="DE" @if(isset($languages) && is_array($languages) && in_array("DE",$languages)) checked @endif>
 									<label for="check-a">{{trans('front.german')}}</label>
 								</div>
 								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">{{trans('front.english')}}</label>
+									<input id="check-b" type="checkbox" name="language[]"  value="EN" @if(isset($languages) && is_array($languages) && in_array("EN",$languages)) checked @endif>
+									<label for="check-b">{{trans('front.english')}}</label>
 								</div>
 								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">{{trans('front.italian')}}</label>
+									<input id="check-c" type="checkbox" name="language[]"  value="IT" @if(isset($languages) && is_array($languages) && in_array("IT",$languages)) checked @endif>
+									<label for="check-c">{{trans('front.italian')}}</label>
 								</div>
 								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">{{trans('front.french')}}</label>
+									<input id="check-d" type="checkbox" name="language[]"  value="FR" @if(isset($languages) && is_array($languages) && in_array("FR",$languages)) checked @endif>
+									<label for="check-d">{{trans('front.french')}}</label>
 								</div>
 						</li>
 						<li>
@@ -246,43 +250,43 @@
 						</li>
 						<li>
 								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Facebook</label>
+								<input id="check-e" type="checkbox" name="where_you_see_us[]" value="Facebook" @if(isset($useUs) && is_array($useUs) && in_array("Facebook",$useUs)) checked @endif>
+									<label for="check-e">Facebook</label>
 								</div>
 								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">{{trans('front.billboard')}}</label>
+								<input id="check-f" type="checkbox" name="where_you_see_us[]" value="Billboard" @if(isset($useUs) && is_array($useUs) && in_array("Billboard",$useUs)) checked @endif>
+									<label for="check-f">{{trans('front.billboard')}}</label>
 								</div>
 								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">{{trans('front.print_advertisement')}}</label>
+								<input type="checkbox" name="where_you_see_us[]" id="check-g" value="Print"  @if(isset($useUs) && is_array($useUs) && in_array("Print",$useUs)) checked @endif> 
+									<label for="check-g">{{trans('front.print_advertisement')}}</label>
 								</div>
 								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">TV</label>
+								<input type="checkbox" name="where_you_see_us[]" id="check-h" value="TV" @if(isset($useUs) && is_array($useUs) && in_array("TV",$useUs)) checked @endif>
+									<label for="check-h">TV</label>
 								</div>
 								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Newsletter</label>
+								<input type="checkbox" name="where_you_see_us[]" id="check-i" value="Newsletter" @if(isset($useUs) && is_array($useUs) && in_array("Newsletter",$useUs)) checked @endif>
+									<label for="check-i">Newsletter</label>
 								</div>
 								<div class="checkboxes in-row">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Google</label>
+								<input type="checkbox" name="where_you_see_us[]" id="check-j" value="Google" @if(isset($useUs) && is_array($useUs) && in_array("Google",$useUs)) checked @endif>
+									<label for="check-j">Google</label>
 								</div>
 								<div class="checkboxes in-row ">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">YouTube</label>
+								<input type="checkbox" name="where_you_see_us[]" id="check-k" value="YouTube" @if(isset($useUs) && is_array($useUs) && in_array("YouTube",$useUs)) checked @endif>
+									<label for="check-k">YouTube</label>
 								</div>
 								<div class="checkboxes in-row ">
-									<input id="check-a" type="checkbox" name="check">
-									<label for="check-a">Flyer</label>
+								<input type="checkbox" name="where_you_see_us[]" id="check-l" value="Flyer" @if(isset($useUs) && is_array($useUs) && in_array("Flyer",$useUs)) checked @endif>
+									<label for="check-l">Flyer</label>
 									<h6>{{trans('front.where_you_came')}}</h6>
 								</div>
 						</li>
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" placeholder="IBAN">
+									<input type="text" placeholder="Instagram user name"  name="instagram_user_name" value="{{$client->instagram_user_name ?? ''}}">	
 								</div>
 							</div>
 						</li>
@@ -294,22 +298,25 @@
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-									<textarea class="WYSIWYG" name="summary" cols="20" rows="1" id="summary" spellcheck="true"></textarea>
+									<textarea class="WYSIWYG" name="summary" cols="20" rows="1" id="summary" spellcheck="true" name="who_are_you">
+									{{$client->who_are_you}}
+									</textarea>
 								</div>
 							</div>
 						</li>
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-								<div style="float: right;">
-									<a href="{{route('camper_steps')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-									<a href="{{route('rent_out')}}" class="button border">{{trans('front.cancel')}}</a>
+									<div style="float: right;">
+									{{Form::submit(trans('front.apply'),['style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+									{{Form::submit(trans('front.cancel'),['onclick'=>'window.history.go(-1); return false;', 'style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+									</div>
 								</div>
 							</div>
 						</li>
 					</ul>
 				</div>
-			</form>
+			{{ Form::close() }}
 		</div>
 	</div>
 </div>

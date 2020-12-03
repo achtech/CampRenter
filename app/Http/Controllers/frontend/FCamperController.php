@@ -28,10 +28,6 @@ class FCamperController extends Controller
         return view('frontend.camper.rent_out.camper_steps');
     }
 
-    public function fill_in_vehicle()
-    {
-        return view('frontend.camper.rent_out.fill_in_vehicle');
-    }
 
     public function equipment()
     {
