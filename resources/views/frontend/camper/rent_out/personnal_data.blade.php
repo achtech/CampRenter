@@ -110,16 +110,27 @@
 							<h3>{{trans('front.date_birth')}}</h3>
 							<div class="row opening-day">
 								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.day')}}" name="day_of_birth" value="{{$client->day_of_birth ?? ''}}">
+									<select name="day_of_birth" id="day_of_birth" class="chosen-select" data-placeholder="Day">
+										@for($i=1;$i<=31;$i++)
+											<option value="{{$i}}" @if($client->day_of_birth==$i) selected @endif>{{$i}}</option>
+										@endfor
+									</select>
+								</div>
+								<div class="col-md-4">
+									<select name="month_of_birth" id="month_of_birth" class="chosen-select" data-placeholder="Month">
+										@for($i=1;$i<=12;$i++)
+											<option value="{{$i}}" @if($client->month_of_birth==$i) selected @endif>{{$i}}</option>
+										@endfor
+									</select>
+								</div>
+								<div class="col-md-4">
+									<select name="year_of_birth" id="year_of_birth" class="chosen-select" data-placeholder="Year">
+										@for($i=1920;$i<=2100;$i++)
+											<option value="{{$i}}" @if($client->year_of_birth==$i) selected @endif>{{$i}}</option>
+										@endfor
+									</select>
 								</div>
 
-								<!-- Website -->
-								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.month')}}"  name="month_of_birth" value="{{$client->month_of_birth ?? ''}}">
-								</div>
-								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.year')}}" name="year_of_birth" value="{{$client->year_of_birth ?? ''}}">
-								</div>
 							</div>
 						</li>
 

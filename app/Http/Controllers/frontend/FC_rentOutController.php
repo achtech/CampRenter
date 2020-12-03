@@ -7,6 +7,10 @@ use App\Models\Camper;
 use App\Models\CamperSubCategory;
 use App\Models\CamperCategory;
 use App\Models\Client;
+use App\Models\Countries;
+use App\Models\LicenceCategory;
+use App\Models\Transmission;
+use App\Models\Fuel;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Session;
@@ -84,11 +88,24 @@ class FC_rentOutController extends Controller
         $data = DB::table('camper_categories')->find($camper->id);
         $camperCategory =$data->label_en ?? 'No Category';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
 
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $savedCamper = $this->getNotCompletedCamper($client->id);
 
+        $licenceCategories = LicenceCategory::get();
+        $countries = Countries::get();
+        $transmissions = Transmission::get();
+        $fuels = Fuel::get();
         return view('frontend.camper.rent_out.fill_in_vehicle')
-                ->with('camper', $camper)
-                ->with('client', $client)
-                ->with('camperCategory', $camperCategory);
+            ->with('licenceCategories',$licenceCategories)
+            ->with('camper', $camper)
+            ->with('client', $client)
+            ->with('countries', $countries)
+            ->with('transmissions', $transmissions)
+            ->with('fuels', $fuels)
+            ->with('camperCategory', $camperCategory);
     }
 
     public function storeCamperProfile(Request $request)
@@ -114,7 +131,7 @@ class FC_rentOutController extends Controller
             $camper->save();
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
-        $camperCategory =$data->label_en;//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
+        $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
         $languages = [];
         $useUs = [];
         if($client->language){
@@ -140,7 +157,17 @@ class FC_rentOutController extends Controller
 
     public function fill_in_vehicle()
     {
-        return view('frontend.camper.rent_out.fill_in_vehicle');
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        $licenceCategories = LicenceCategory::get();
+        dd($licenceCategories);
+        return view('frontend.camper.rent_out.fill_in_vehicle')
+            ->with('client',$client)
+            ->with('camper',$savedCamper)
+            ->with('licenceCategories',$licenceCategories);
     }
 
 }

@@ -36,12 +36,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="camper_name" placeholder="{{trans('front.name_vehicle')}}">
+								<input type="text" name="camper_name" placeholder="{{trans('front.name_vehicle')}}" value="{{$camper->camper_name}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="brand" placeholder="{{trans('front.camper_brand')}}">
+								<input type="text" name="brand" placeholder="{{trans('front.camper_brand')}}" value="{{$camper->brand}}">
 							</div>
 						</div>
 					</li>
@@ -49,12 +49,17 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="model" placeholder="{{trans('front.model')}}">
+								<input type="text" name="model" placeholder="{{trans('front.model')}}" value="{{$camper->model}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="id_licence_categories" placeholder="{{trans('front.licence_category')}}">
+								<select name="id_licence_categories" id="id_licence_categories" class="chosen-select" data-placeholder="Licence">
+									<option> </option>
+									@foreach($licenceCategories as $cat)
+										<option value="{{$cat->id}}" @if($camper->id_licence_categories==$cat->id) selected @endif>{{$cat->label_en}}</option>
+									@endforeach
+								</select>
 							</div>
 						</div>
 					</li>
@@ -67,7 +72,7 @@
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="license_plate_number" placeholder="{{trans('front.licence_number')}}">
+								<input type="text" name="license_plate_number" placeholder="{{trans('front.licence_number')}}" value="{{$camper->license_plate_number}}">
 							</div>
 						</div>
 					</li>
@@ -75,12 +80,17 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="vehicle_licence" placeholder="{{trans('front.vehicle_registration')}}">
+								<input type="text" name="vehicle_licence" placeholder="{{trans('front.vehicle_registration')}}" value="{{$camper->vehicle_licence}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="country" placeholder="{{trans('front.country_registration')}}">
+								<select name="country" id="country" class="chosen-select" data-placeholder="country">
+									<option> </option>
+									@foreach($countries as $cat)
+										<option value="{{$cat->label}}" @if($camper->country==$cat->label) selected @endif>{{$cat->label}}</option>
+									@endforeach
+								</select>
 							</div>
 						</div>
 					</li>
@@ -88,12 +98,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="seat_number" placeholder="{{trans('front.number_seats')}}">
+								<input type="text" name="seat_number" placeholder="{{trans('front.number_seats')}}" value="{{$camper->seat_number}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="gear_number" placeholder="{{trans('front.number_gears')}}">
+								<input type="text" name="gear_number" placeholder="{{trans('front.number_gears')}}" value="{{$camper->gear_number}}">
 							</div>
 						</div>
 					</li>
@@ -104,58 +114,38 @@
 								<div class="col-md-12">
 									<strong>{{trans('front.Gearbox')}}</strong>
 								</div>
-								<div class="col-md-6">
-									<label class="containerRadio">{{trans('front.automatic')}}
-										<input type="radio" checked="checked" name="radio">
+								<div class="col-md-12">
+									@foreach($transmissions as $t)
+									<label class="containerRadio">{{$t->label_en}}
+										<input type="radio" checked="checked" name="id_transmissions" value="{{$t->id}}" @if($t->id==$camper->id_transmissions) selected @endif>
 										<span class="checkmarkRadio"></span>
 									</label>
-									<label class="containerRadio">{{trans('front.manual')}}
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmarkRadio"></span>
-									</label>
+									@endforeach
 								</div>
-								<div class="col-md-6">
-									<label class="containerRadio">{{trans('front.semi_automatic')}}
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmarkRadio"></span>
-									</label>
-								</div>
-
+								
 								<div class="col-md-12">
 									<strong>{{trans('front.Fuel')}}</strong>
 								</div>
-								<div class="col-md-6">
-									<label class="containerRadio">Diesel
-										<input type="radio" checked="checked" name="radio">
+								<div class="col-md-12">
+									@foreach($fuels as $f)
+									<label class="containerRadio">{{$f->label_en}}
+										<input type="radio" checked="checked" name="id_fuels" value="{{$f->id}}" @if($t->id==$camper->id_fuels) selected @endif>
 										<span class="checkmarkRadio"></span>
 									</label>
-									<label class="containerRadio">Gas
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmarkRadio"></span>
-									</label>
-								</div>
-								<div class="col-md-6">
-									<label class="containerRadio">Petrol
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmarkRadio"></span>
-									</label>
-									<label class="containerRadio">Petroleum gas
-										<input type="radio" checked="checked" name="radio">
-										<span class="checkmarkRadio"></span>
-									</label>
+									@endforeach
 								</div>
 								<div class="col-md-12">
 									<strong>{{trans('front.leasing_vehicle')}}</strong>
 									<div class="row" style="margin-top: 3%;">
 										<div class="col-md-6" style="padding-left: 0px;">
 											<div class="payment-tab-trigger">
-												<input name="cardType" type="radio" value="">
+												<input name="cardType" type="radio" value="1" name="leasing_vehicle">
 												<label style="padding: 0px;" for="vehicle">{{trans('front.yes')}}</label>
 											</div>
 										</div>
 										<div class="col-md-6" style="padding-left: 0px;">
 											<div class="payment-tab-trigger">
-												<input name="cardType" type="radio" value="">
+												<input name="cardType" type="radio" value="0" name="leasing_vehicle">
 												<label style="padding: 0px;" for="vehicle">{{trans('front.no')}}</label>
 											</div>
 										</div>
@@ -172,31 +162,31 @@
 								<div class="row">
 									<div class="col-md-12">
 										<label class="containerRadio">0 - 50'000 km
-											<input type="radio" checked="checked" name="radio">
+											<input type="radio" checked="checked" name="included_kilometres"  value="0 - 50'000 km" @if($camper->included_kilometre=="0 - 50'000 km") selected @endif  >
 											<span class="checkmarkRadio"></span>
 										</label>
 										<label class="containerRadio">50'000 - 100'000 km
-											<input type="radio" checked="checked" name="radio">
+											<input type="radio" checked="checked" name="included_kilometres"  value="50'000 - 100'000 km" @if($camper->included_kilometres=="50'000 - 100'000 km") selected @endif> 
 											<span class="checkmarkRadio"></span>
 										</label>
 										<label class="containerRadio">100'000 - 150'000 km
-											<input type="radio" checked="checked" name="radio">
+											<input type="radio" checked="checked" name="included_kilometres"  value="100'000 - 150'000 km" @if($camper->included_kilometres=="100'000 - 150'000 km") selected @endif> 
 											<span class="checkmarkRadio"></span>
 										</label>
 										<label class="containerRadio">150'000 - 200'000 km
-											<input type="radio" checked="checked" name="radio">
+											<input type="radio" checked="checked" name="included_kilometres"  value="150'000 - 200'000 km" @if($camper->included_kilometres=="150'000 - 200'000 km") selected @endif> 
 											<span class="checkmarkRadio"></span>
 										</label>
 										<label class="containerRadio">200'000 - 250'000 km
-											<input type="radio" checked="checked" name="radio">
+											<input type="radio" checked="checked" name="included_kilometres"  value="200'000 - 250'000 km" @if($camper->included_kilometres=="200'000 - 250'000 km") selected @endif> 
 											<span class="checkmarkRadio"></span>
 										</label>
 										<label class="containerRadio">250'000 - 300'000 km
-											<input type="radio" checked="checked" name="radio">
+											<input type="radio" checked="checked" name="included_kilometres"  value="250'000 - 300'000 km" @if($camper->included_kilometres=="250'000 - 300'000 km") selected @endif> 
 											<span class="checkmarkRadio"></span>
 										</label>
 										<label class="containerRadio">{{trans('front.more_than')}} 300'000 km
-											<input type="radio" checked="checked" name="radio">
+											<input type="radio" checked="checked" name="included_kilometres"  value="300'000 km" @if($camper->included_kilometres=="300'000 km") selected @endif> 
 											<span class="checkmarkRadio"></span>
 										</label>
 									</div>
@@ -208,12 +198,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="fuel_capacity" placeholder="{{trans('front.fuel_capacity')}}">
+								<input type="text" name="fuel_capacity" value="{{$camper->fuel_capacity}}"  placeholder="{{trans('front.fuel_capacity')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="fuel_consumation" placeholder="{{trans('front.fuel_consumation')}}">
+								<input type="text" name="fuel_consumation" value="{{$camper->fuel_consumation}}" placeholder="{{trans('front.fuel_consumation')}}">
 							</div>
 						</div>
 					</li>
@@ -222,11 +212,11 @@
 							<!-- Phone -->
 
 							<div class="col-md-6">
-								<input type="text" name="allowed_total_weight" placeholder="{{trans('front.allowed_tons')}}">
+								<input type="text" name="allowed_total_weight" value="{{$camper->allowed_total_weight}}" placeholder="{{trans('front.allowed_tons')}}">
 							</div>
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="length" placeholder="{{trans('front.length_in_metres')}}">
+								<input type="text" name="length" value="{{$camper->length}}" placeholder="{{trans('front.length_in_metres')}}">
 							</div>
 						</div>
 					</li>
@@ -234,12 +224,12 @@
 						<div class="row">
 							<!-- Phone -->
 							<div class="col-md-6">
-								<input type="text" name="horse_power" placeholder="{{trans('front.horse_power')}}">
+								<input type="text" name="horse_power" value="{{$camper->horse_power}}" placeholder="{{trans('front.horse_power')}}">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-6">
-								<input type="text" name="cylinder_capacity" placeholder="{{trans('front.cylinder_capacity')}}">
+								<input type="text" name="cylinder_capacity" value="{{$camper->cylinder_capacity}}" placeholder="{{trans('front.cylinder_capacity')}}">
 							</div>
 						</div>
 					</li>

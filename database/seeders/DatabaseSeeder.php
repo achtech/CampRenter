@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             AvatarsSeeder::class,
+            CountriesSeeder::class,
 
             BookingStatusSeeder::class,
             CamperCategoriesSeeder::class,
