@@ -42,7 +42,7 @@
         function LoadMap() {
             var mapOptions = {
                 center: new google.maps.LatLng('46.8095941', '7.1030541'),
-                zoom: 20,
+                zoom: 7,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var infoWindow = new google.maps.InfoWindow();
@@ -51,13 +51,14 @@
             console.log(markers.length)
 
             for (var i = 0; i < markers.length; i++) {
+                var iconLocation =  '{{asset('images/camper_icon.png')}}'
                 var data = markers[i]
                 var myLatlng = new google.maps.LatLng(data.position_x, data.position_y);
                 var marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
-                    zoom: 20,
-                    title: data.camper_name
+                    title: data.camper_name,
+                    icon: iconLocation
                 });
                 (function (marker, data) {
                     google.maps.event.addListener(marker, "click", function (e) {
