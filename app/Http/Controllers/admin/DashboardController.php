@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+
 use App;
+use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\Message;
 use App\Models\user;
 use DB;
-use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -83,10 +84,10 @@ class DashboardController extends Controller
         $startDate = $period == 'today' ? $today : ($period == 'week' ? $start_week : ($period == 'month' ? $start_month : $start_last_month));
         $end_date = $period == 'today' ? $today : ($period == 'week' ? $end_week : ($period == 'month' ? $end_month : $end_last_month));
         $owner = $user == 'owner';
-        return $this->getIncome($startDate, $end_date, $owner);
+        return self::getIncome($startDate, $end_date, $owner);
     }
 
-    public function getIncome($startDate, $end_date, $owner)
+    public static function getIncome($startDate, $end_date, $owner)
     {
         /* $data = Booking::where('start_date','<=',$owner?$end_date:$startDate)
         ->where('end_date','>=',$owner?$end_date:$startDate);
