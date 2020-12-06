@@ -80,19 +80,24 @@
 			<!-- Invoices -->
 			<div class="col-lg-6 col-md-12">
 				<div class="dashboard-list-box invoices with-icons margin-top-20">
-					<h4>Earnings <div class="comission-taken">Fee: <strong>15%</strong></div></h4>
+					<h4>{{trans('front.earnings')}} <div class="comission-taken">Fee: <strong>{{$activePromotion->commission}}%</strong></div></h4>
 					<ul>
-
-						<li><i class="fas fa-shopping-cart"></i>
-							<strong>Sunway Apartment</strong>
+					@if($owner_bookings != null)
+						@foreach($owner_bookings as $owner_booking)
+						<li><i class="fas fa-caravan"></i>
+							<strong>{{$owner_booking->camper_name}}</strong>
 							<ul>
-								<li class="paid">$99.00</li>
-								<li class="unpaid">Fee: $14.50</li>
-								<li class="paid">Net Earning: <span>$84.50</span></li>
-								<li>Order: #00124</li>
-								<li>Date: 01/02/2019</li>
+								<li class="paid">{{trans('front.price_day')}}: ${{$owner_booking->price}}</li>
+								<li class="unpaid">Fee: {{$owner_booking->commission}}%</li>
+								<li class="paid">{{trans('front.net_earning')}}: <span>$ {{App\Http\Controllers\frontend\FC_walletController::getIncomBooking($owner_booking->id)}}</span></li>
+								<li>{{trans('front.number_days')}}: {{$owner_booking->nbr_days}}</li>
+								<li>{{trans('front.booking_date')}}: {{$owner_booking->created_date}}</li>
 							</ul>
 						</li>
+						@endforeach
+					@else
+						<p>{{trans('front.no_results')}}</p>
+					@endif
 					</ul>
 				</div>
 			</div>
@@ -100,16 +105,25 @@
 			<!-- Invoices -->
 			<div class="col-lg-6 col-md-12">
 				<div class="dashboard-list-box invoices with-icons margin-top-20">
-					<h4>Payout History</h4>
+					<h4>{{trans('front.billing_history')}}</h4>
 					<ul>
-
+					@if($billings != null)
+						@foreach($billings as $billing)
 						<li><i class="list-box-icon fas fa-wallet"></i>
-							<strong>$84.50</strong>
+							<strong>${{ $billing->total}}</strong>
 							<ul>
-								<li class="unpaid">Unpaid</li>
-								<li>Period: 02/2019</li>
+								@if($billing->status == 0)
+								<li class="unpaid">{{trans('front.unpaid')}}</li>
+								@else
+								<li class="paid">{{trans('front.paid')}}</li>
+								@endif
+								<li>{{trans('front.payment_date')}}: {{ $billing->payment_date}}</li>
 							</ul>
 						</li>
+						@endforeach
+					@else
+						<p>{{trans('front.no_results')}}</p>
+					@endif
 					</ul>
 				</div>
 			</div>

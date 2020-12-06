@@ -46,12 +46,10 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('frontend.client.show_login');;
     Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
-    
-    
+
     Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
-
 
     Route::post('/client/profil/update', [FClientController::class, 'userUpdateClient'])->name('frontend.client.updateData');
     Route::post('/client/changePassword', [FClientController::class, 'changePassword'])->name('frontend.client.change_password');
@@ -114,7 +112,6 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
 
     Route::get('/wallet_client', [FC_walletController::class, 'index'])->name('frontend.clients.wallet');
-
 
     Route::get('/review_client', [FC_reviewController::class, 'index'])->name('frontend.clients.review');
     Route::get('/review_helpfulReview/{id}', [FC_reviewController::class, 'helpfulReview'])->name('frontend.clients.review.helpfulReview');
