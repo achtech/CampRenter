@@ -94,10 +94,19 @@ class FC_rentOutController extends Controller
         }
         $savedCamper = $this->getNotCompletedCamper($client->id);
 
+        
         $licenceCategories = LicenceCategory::get();
         $countries = Countries::get();
         $transmissions = Transmission::get();
         $fuels = Fuel::get();
+        if($request->additional_attribute){
+            $camper->additional_attribute = join(',', $request->additional_attribute);;
+        }
+       
+        if($camper->additional_attribute){
+            $additionals = explode(',', $camper->additional_attribute);
+        }
+
         return view('frontend.camper.rent_out.fill_in_vehicle')
             ->with('licenceCategories',$licenceCategories)
             ->with('camper', $camper)
@@ -105,7 +114,99 @@ class FC_rentOutController extends Controller
             ->with('countries', $countries)
             ->with('transmissions', $transmissions)
             ->with('fuels', $fuels)
+            ->with('additionals', $additionals)
             ->with('camperCategory', $camperCategory);
+    }
+
+    public function storeCamperVehicle(Request $request)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        $camper = new Camper();
+        if($savedCamper){
+            $camper = $savedCamper;
+            $camper = Camper::find($savedCamper->id);
+        }
+        $camper->camper_name = $request->camper_name ?? '';
+        $camper->brand = $request->brand ?? '';
+        $camper->model = $request->model ?? '';
+        $camper->id_licence_categories = $request->id_licence_categories ?? '';
+        $camper->license_plate_number = $request->license_plate_number ?? '';
+        $camper->vehicle_licence = $request->vehicle_licence ?? '';
+        $camper->country = $request->country ?? '';
+        $camper->seat_number = $request->seat_number ?? '';
+        $camper->gear_number = $request->gear_number ?? '';
+        $camper->id_transmissions = $request->id_transmissions ?? '';
+        $camper->id_fuels = $request->id_fuels ?? '';
+        $camper->leasing_vehicle = $request->leasing_vehicle ?? '';
+        $camper->included_kilometres = $request->included_kilometres ?? '';
+        $camper->fuel_capacity = $request->fuel_capacity ?? '';
+        $camper->fuel_consumation = $request->fuel_consumation ?? '';
+        $camper->allowed_total_weight = $request->allowed_total_weight ?? '';
+        $camper->length = $request->length ?? '';
+        $camper->horse_power = $request->horse_power ?? '';
+        $camper->cylinder_capacity = $request->cylinder_capacity ?? '';
+        $camper->position_x = $request->position_x ?? '';
+        $camper->position_y = $request->position_y ?? '';
+        if($request->additional_attribute){
+            $camper->additional_attribute = join(',', $request->additional_attribute);;
+        }
+        if($camper->id)
+        $camper->update();
+        else
+        $camper->save();
+        $idCamper = $camper->id;
+        $data = DB::table('camper_categories')->find($camper->id_camper_categories);
+        $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
+        $languages = [];
+        $useUs = [];
+        if($client->language){
+            $languages = explode(',', $client->language);
+        }
+        if($client->where_you_see_us){
+            $useUs = explode(',', $client->where_you_see_us);
+        }
+   
+        return view('frontend.camper.rent_out.equipment')
+            ->with('camper', $camper)
+            ->with('client', $client)
+            ->with('idCamper', $idCamper)
+            ->with('useUs', $useUs)
+            ->with('languages', $languages)
+            ->with('camperCategory', $camperCategory)
+            ;
+    }
+
+    
+    public function equipment()
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        $camper = new Camper();
+        if($savedCamper){
+            $camper = $savedCamper;
+            $camper = Camper::find($savedCamper->id);
+        }
+        $idCamper = $camper->id;
+        $data = DB::table('camper_categories')->find($camper->id_camper_categories);
+        $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
+        $additionals = [];
+        if($camper->additionals){
+            $additionals = explode(',', $camper->additionals);
+        }
+
+        return view('frontend.camper.rent_out.equipment')
+        ->with('camper', $camper)
+        ->with('client', $client)
+        ->with('idCamper', $idCamper)
+        ->with('additionals', $additionals)
+        ->with('camperCategory', $camperCategory);
     }
 
     public function storeCamperProfile(Request $request)

@@ -67,7 +67,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/slidecamper', [FCamperController::class, 'slide_camper'])->name('slide_camper');
     Route::get('/campersteps', [FCamperController::class, 'camper_steps'])->name('camper_steps');
     Route::get('/fillinvehicle', [FC_rentOutController::class, 'fill_in_vehicle'])->name('fill_in_vehicle');
-    Route::get('/equipment', [FCamperController::class, 'equipment'])->name('equipment');
+    Route::get('/equipment', [FC_rentOutController::class, 'equipment'])->name('equipment');
     Route::get('/accessories', [FCamperController::class, 'accessories'])->name('accessories');
     Route::get('/description', [FCamperController::class, 'description'])->name('description');
     Route::get('/insurance_front', [FCamperController::class, 'insurance'])->name('insurance_front');
@@ -86,6 +86,8 @@ Route::group(['middleware' => 'Lang'], function () {
     //});
     Route::post('/store_personnal_data', [FC_rentOutController::class, 'store2'])->name('frontend.camper.storePersonnalData');
     Route::post('/store_camper_profile', [FC_rentOutController::class, 'storeCamperProfile'])->name('frontend.camper.storeCamperProfile');
+    Route::post('/store_vehicle', [FC_rentOutController::class, 'storeCamperVehicle'])->name('frontend.camper.storeVehicle');
+
 
     Route::get('/login/client', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('frontend.login.client');;
     Route::post('/login/client', 'App\Http\Controllers\Auth\LoginController@adminLogin');

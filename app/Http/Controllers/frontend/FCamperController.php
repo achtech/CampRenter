@@ -28,12 +28,6 @@ class FCamperController extends Controller
         return view('frontend.camper.rent_out.camper_steps');
     }
 
-
-    public function equipment()
-    {
-        return view('frontend.camper.rent_out.equipment');
-    }
-
     public function accessories()
     {
         return view('frontend.camper.rent_out.accessories');

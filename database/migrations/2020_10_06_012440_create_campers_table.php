@@ -55,6 +55,8 @@ class CreateCampersTable extends Migration
             $table->string("country")->nullable();
             $table->string("position_x")->nullable();
             $table->string("position_y")->nullable();
+            $table->string("leasing_vehicle")->nullable();
+            $table->string("additional_attribute")->nullable();
 
             $table->unsignedBigInteger('id_clients')->nullable();
             $table->unsignedBigInteger('id_licence_categories')->nullable();

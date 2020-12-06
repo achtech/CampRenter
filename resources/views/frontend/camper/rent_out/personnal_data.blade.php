@@ -152,8 +152,7 @@
 						</li>
 						<li>
 							<div class="checkboxes in-row margin-bottom-20">
-
-								<input id="check-x" type="checkbox" name="professional_rental_company"  @if($client->professional_rental_company) checked @endif >
+								<input id="check-x" type="checkbox" name="professional_rental_company"  value="1" @if($client->professional_rental_company) checked @endif >
 								<label for="check-x">{{trans('front.pro_rental_campany')}}</label>
 								<h6>{{trans('front.renting_income')}}</h6>
 							</div>
@@ -191,17 +190,9 @@
 								<div class="col-md-4">
 									<input type="text" placeholder="{{trans('front.postal_code')}}" name="account_holder_building_number" value="{{$client->account_holder_building_number ?? ''}}">
 								</div>
-								<!-- Phone -->
 								<div class="col-md-8">
-									<input type="text" placeholder="{{trans('front.ountry')}}" name="account_holder_postal_code" value="{{$client->account_holder_postal_code ?? ''}}">
-								</div>
-							</div>
-
-						</li>
-						<li>
-							<div class="row">
-								<div class="col-md-12">
-								<select class="chosen-select" data-placeholder="{{trans('front.country')}}" value="account_holder_country">
+									<select class="chosen-select" data-placeholder="{{trans('front.country')}}" value="account_holder_country">
+										<option ></option>
 										<option value="suisse" @if($client->account_holder_country=="suisse") selected @endif >Switezland</option>
 										<option value="germany" @if($client->account_holder_country=="germany") selected @endif >Germany</option>
 										<option value="italy" @if($client->account_holder_country=="italy") selected @endif >Italy</option>
@@ -209,6 +200,7 @@
 									</select>
 								</div>
 							</div>
+
 						</li>
 						<li>
 							<h3>{{trans('front.bank_data')}}</h3>
@@ -216,7 +208,7 @@
 						<li>
 							<div class="form">
 								<h5>{{trans('front.adress')}}</h5>
-								<textarea class="WYSIWYG" name="summary" cols="20" rows="1" id="summary" spellcheck="true" name="bank_data_adress">{{$client->bank_data_adress ?? ''}}</textarea>
+								<textarea class="WYSIWYG"  cols="20" rows="4"  name="bank_data_adress">{{$client->bank_data_adress ?? ''}}</textarea>
 							</div>
 						</li>
 						<li>
@@ -309,9 +301,7 @@
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-									<textarea class="WYSIWYG" name="summary" cols="20" rows="1" id="summary" spellcheck="true" name="who_are_you">
-									{{$client->who_are_you}}
-									</textarea>
+									<textarea class="WYSIWYG" cols="20" rows="4"  name="who_are_you">{{$client->who_are_you}}</textarea>
 								</div>
 							</div>
 						</li>

@@ -20,6 +20,7 @@ class Client extends Authenticatable
         'location',
         'postal_code',
         'country',
+        'professional_rental_company',
         'telephone',
         'telephone_code',
         'day_of_birth',
