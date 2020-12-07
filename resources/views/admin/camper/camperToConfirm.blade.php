@@ -23,7 +23,7 @@
                             <tbody>
                                 @foreach($datas as $item)
                                 <tr>
-                                <td style="vertical-align: middle;text-align:center"><img style="width:100px" src="{{ asset('public/images/gallery') }}/{{$item->image}}"/></td>
+                                <td style="vertical-align: middle;text-align:center"><img style="width:100px" src="{{ asset('/images/gallery') }}/{{$item->image}}"/></td>
                                     <td>{{$item->camper_name}}</td>
                                     <td>{{App\Http\Controllers\admin\CamperController::getName('clients',$item->id_clients)}}</td>
                                     <td>{{App\Http\Controllers\admin\CamperController::getLabel('licence_categories',$item->id_licence_categories)}}</td>

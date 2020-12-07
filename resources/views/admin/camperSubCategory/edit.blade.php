@@ -20,7 +20,7 @@
                                 <label class="custom-file-label" for="inputGroupFile01">{{ __('backend.Choose file') }} </label>
                             </div>
                         </div>
-                        <img style="max-width:100%" src="/public/images/camper_categories/{{$data->image}}"  style="with:200px"/>
+                        <img style="max-width:100%" src="{{asset('/images')}}/camper_categories/{{$data->image}}"  style="with:200px"/>
                     </div>
                 </div>
             </div>

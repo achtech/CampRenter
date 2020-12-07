@@ -12,15 +12,15 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}"  type='image/x-icon'>
     <title>Campunit</title>
     <!-- Custom CSS -->
+    <link href="{{ asset('assets/admin/libs/bootstrap/dist/css/bootstrap.min.css') }}"></link>
     <link href="{{ asset('assets/admin/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/admin/extra-libs/c3/c3.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/admin/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/admin/extra-libs/jvector/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <!-- Custom CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.css" rel="stylesheet" />
     <link href="{{ asset('dist/css/style.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dist/css/style.css') }}" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.css" rel="stylesheet" />
-    <link href="{{ asset('assets/admin/libs/bootstrap/dist/css/bootstrap.min.css') }}"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.js"></script>
 

@@ -42,7 +42,7 @@
                                                         class="btn btn-danger btn-sm rounded-0"
                                                         id="deletePrgButton"
                                                         data-id="{{$item->id}}" data-toggle="modal" data-target="#delete"data-placement="top" title="Delete"><i class="far fa-trash-alt"></i>
-                                                    </button>  
+                                                    </button>
                                                 </div>
                                             </li>
                                     </td>
@@ -87,7 +87,7 @@
       </form>
     </div>
   </div>
-</div>                                            
+</div>
 <script>
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $(document).on("click", "#deletePrgButton", function () {
