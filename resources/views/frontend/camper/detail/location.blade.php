@@ -1,7 +1,7 @@
 <h3 class="listing-desc-headline margin-top-60 margin-bottom-30">{{trans('front.location')}}</h3>
 
 
-<div id="map_canvas" style="width: 400px; height: 400px;"></div>
+<div id="map_canvas" style="width: 100%; height: 400px;"></div>
 
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4"
