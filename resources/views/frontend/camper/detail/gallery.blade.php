@@ -1,4 +1,4 @@
-<h3 class="listing-desc-headline margin-top-70">{{trans('front.gallery')}}</h3>
+<h3 class="listing-desc-headline">{{trans('front.gallery')}}</h3>
 <div class="listing-slider-small mfp-gallery-container margin-bottom-0">
     @foreach($galleries as $gal)
         <a
