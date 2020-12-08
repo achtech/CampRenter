@@ -80,9 +80,7 @@
 <script src="{{asset('js/leaflet.min.js')}}"></script>
 
 <!-- Maps -->
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4"
-></script>
+
 <script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
 

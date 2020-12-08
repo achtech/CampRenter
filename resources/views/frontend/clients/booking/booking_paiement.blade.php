@@ -34,47 +34,62 @@
 		================================================== -->
 		<div class="col-lg-8 col-md-8 padding-right-30">
 
-			<h3 class="margin-top-0 margin-bottom-30">{{trans('front.booking')}}</h3>
-
+			<h3 class="margin-top-20 margin-bottom-50" >Complete Invoice</h3>
 			<div class="row">
+				{{ Form::open(['action'=>'App\Http\Controllers\admin\MessageController@sendEmailToClient', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
 
-				<div class="col-md-6">
-					<label>{{trans('front.first_name')}}</label>
-					<input type="text" value="{{$booking->client_name}}" name="client_name">
-				</div>
-
-				<div class="col-md-6">
-					<label>{{trans('front.last_name')}}</label>
-					<input type="text" value="{{$booking->client_last_name}}" name="client_last_name">
-				</div>
-
-				<div class="col-md-6">
-					<div class="input-with-icon medium-icons">
-						<label>{{trans('front.email_add')}}</label>
-						<input type="text" value="{{$booking->email}}" name="email">
-						<i class="im im-icon-Mail"></i>
+					@csrf
+					<div class="col-md-6">
+						<label>{{trans('front.first_name')}}</label>
+						<input type="text" value="{{$booking->client_name}}" name="client_name">
 					</div>
-				</div>
 
-				<div class="col-md-6">
-					<div class="input-with-icon medium-icons">
-						<label>{{trans('front.profil_phone')}}</label>
-						<input type="text" value="{{$booking->telephone}}" name="telephone">
-						<i class="im im-icon-Phone-2"></i>
+					<div class="col-md-6">
+						<label>{{trans('front.last_name')}}</label>
+						<input type="text" value="{{$booking->client_last_name}}" name="client_last_name">
 					</div>
-				</div>
 
+					<div class="col-md-6">
+						<div class="input-with-icon medium-icons">
+							<label>{{trans('front.email_add')}}</label>
+							<input type="text" value="{{$booking->email}}" name="email">
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="input-with-icon medium-icons">
+							<label>{{trans('front.camper_name')}}</label>
+							<input type="text" value="{{$booking->camper_name}}" name="email">
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="input-with-icon medium-icons">
+							<label>{{trans('front.total_cost')}}</label>
+							<input type="text" value="{{$booking->nbr_days*$booking->price}}" name="">
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="input-with-icon medium-icons">
+							<label>Date</label>
+							<input type="text" value="{{$booking->created_date}}" name="">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<button type="submit" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Send Invoice</button>
+					</div>
+				{{ Form::close() }}
 			</div>
 
 
-			<h3 class="margin-top-55 margin-bottom-30">{{trans('front.footer_paiement_methods')}}</h3>
+			<h3 class="margin-bottom-50">{{trans('front.footer_paiement_methods')}}</h3>
 
 			<!-- Payment Methods Accordion -->
 			<div class="payment">
-
-				<div class="payment-tab payment-tab-active">
+				<div class="payment-tab">
 					<div class="payment-tab-trigger">
-						<input checked id="paypal" name="cardType" type="radio" value="paypal">
+						<input  id="paypal" name="paypal" type="radio" value="paypal">
 						<label for="paypal">PayPal</label>
 						<img class="payment-logo paypal" src="{{asset('images/paiement-methods/ApBxkXU.png')}}" alt="">
 					</div>
@@ -83,8 +98,6 @@
 						<p>{{trans('front.redirected_to_paypal')}}</p>
 					</div>
 				</div>
-
-
 				<div class="payment-tab">
 					<div class="payment-tab-trigger">
 						<input type="radio" name="cardType" id="creditCart" value="creditCard">
@@ -165,8 +178,8 @@
 				<ul>
 					<li>{{trans('front.date')}} <span>{{date('j F Y', strtotime($booking->created_date))}}</span></li>
 					<li>{{trans('front.hour')}} <span>{{$booking->created_hour}}</span></li>
-					<li>{{trans('front.n_nights')}} <span>{{$booking->nbr_days}} days</span></li>
-					<li class="total-costs">Total Cost <span>${{$booking->nbr_days*$booking->price}}</span></li>
+					<li>{{trans('front.n_nights')}} <span>{{$booking->nbr_days}} {{trans('front.days')}}</span></li>
+					<li class="total-costs">{{trans('front.total_cost')}} <span>${{$booking->nbr_days*$booking->price}}</span></li>
 				</ul>
 
 			</div>

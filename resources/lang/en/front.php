@@ -543,5 +543,7 @@ return [
     'unpaid' => 'Unpaid',
     'paid' => 'Paid',
     'payment_date' => 'Payment date',
+    'total_cost' => 'Total Cost',
+    'days' => 'Days',
 
 ];

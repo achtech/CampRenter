@@ -35,6 +35,7 @@ class FC_CamperController extends Controller
 
     public function detail($id)
     {
+
         $camper_terms = DB::table('camper_terms')->where('id_campers', $id)->get();
         $camper_rental_terms = DB::table('camper_rental_terms')->where('id_campers', $id)->first();
         $camper_equipment = DB::table('camper_equipment')->where('id_campers', $id)->first();
