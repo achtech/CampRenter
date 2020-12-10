@@ -99,7 +99,7 @@
 					</div>
 					<input type="submit" class="submit button" id="submit" value="{{trans('front.submit_message')}}" />
 
-					{{ Form::close() }}
+				{{ Form::close() }}
 			</section>
 		</div>
 		<!-- Contact Form / End -->

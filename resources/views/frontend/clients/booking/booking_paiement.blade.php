@@ -33,63 +33,12 @@
 		<!-- Content
 		================================================== -->
 		<div class="col-lg-8 col-md-8 padding-right-30">
-
-			<h3 class="margin-top-20 margin-bottom-50" >Complete Invoice</h3>
-			<div class="row">
-				{{ Form::open(['action'=>'App\Http\Controllers\admin\MessageController@sendEmailToClient', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
-
-					@csrf
-					<div class="col-md-6">
-						<label>{{trans('front.first_name')}}</label>
-						<input type="text" value="{{$booking->client_name}}" name="client_name">
-					</div>
-
-					<div class="col-md-6">
-						<label>{{trans('front.last_name')}}</label>
-						<input type="text" value="{{$booking->client_last_name}}" name="client_last_name">
-					</div>
-
-					<div class="col-md-6">
-						<div class="input-with-icon medium-icons">
-							<label>{{trans('front.email_add')}}</label>
-							<input type="text" value="{{$booking->email}}" name="email">
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="input-with-icon medium-icons">
-							<label>{{trans('front.camper_name')}}</label>
-							<input type="text" value="{{$booking->camper_name}}" name="email">
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="input-with-icon medium-icons">
-							<label>{{trans('front.total_cost')}}</label>
-							<input type="text" value="{{$booking->nbr_days*$booking->price}}" name="">
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="input-with-icon medium-icons">
-							<label>Date</label>
-							<input type="text" value="{{$booking->created_date}}" name="">
-						</div>
-					</div>
-					<div class="col-md-12">
-						<button type="submit" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Send Invoice</button>
-					</div>
-				{{ Form::close() }}
-			</div>
-
-
 			<h3 class="margin-bottom-50">{{trans('front.footer_paiement_methods')}}</h3>
-
 			<!-- Payment Methods Accordion -->
 			<div class="payment">
-				<div class="payment-tab">
+				<div class="payment-tab payment-tab-active">
 					<div class="payment-tab-trigger">
-						<input  id="paypal" name="paypal" type="radio" value="paypal">
+						<input checked id="paypal" name="cardType" type="radio" value="paypal">
 						<label for="paypal">PayPal</label>
 						<img class="payment-logo paypal" src="{{asset('images/paiement-methods/ApBxkXU.png')}}" alt="">
 					</div>
@@ -154,6 +103,54 @@
 
 			</div>
 			<!-- Payment Methods Accordion / End -->
+			<h3 class="margin-top-50 margin-bottom-30" >Or send Invoice</h3>
+			<div class="row">
+				<form action="{{route('frontend.clients.send.invoice')}}" method="POST">
+					@csrf
+					<input style="display:none;" type="text" value="{{$booking->id}}" name="id">
+					<input style="display:none;" type="text" value="{{$booking->created_date}}-{{$booking->id}}" name="reservation_num">
+					<div class="col-md-6">
+						<label>{{trans('front.first_name')}}</label>
+						<input type="text" value="{{$booking->client_name}}" name="client_name">
+					</div>
+
+					<div class="col-md-6">
+						<label>{{trans('front.last_name')}}</label>
+						<input type="text" value="{{$booking->client_last_name}}" name="client_last_name">
+					</div>
+
+					<div class="col-md-6">
+						<label>{{trans('front.email_add')}}</label>
+						<input type="text" value="{{$booking->email}}" name="email">
+					</div>
+
+					<div class="col-md-6">
+						<label>{{trans('front.camper_name')}}</label>
+						<input type="text" value="{{$booking->camper_name}}" name="camper_name">
+					</div>
+					<div class="col-md-6">
+						<label>{{trans('front.date_start')}}</label>
+						<input type="text" value="{{date('j F Y', strtotime($booking->start_date))}}" name="start_date">
+					</div>
+					<div class="col-md-6">
+						<label>{{trans('front.date_end')}}</label>
+						<input type="text" value="{{date('j F Y', strtotime($booking->end_date))}}" name="end_date">
+					</div>
+
+					<div class="col-md-6">
+						<label>{{trans('front.total_cost')}}</label>
+						<input type="text" value="{{$booking->nbr_days*$booking->price}}" name="total">
+					</div>
+
+					<div class="col-md-6">
+						<label>Date</label>
+						<input type="text" value="{{$booking->created_date}}" name="created_date">
+					</div>
+					<div class="col-md-12">
+						<button type="submit" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Send Invoice</button>
+					</div>
+				</form>
+			</div>
 
 		</div>
 

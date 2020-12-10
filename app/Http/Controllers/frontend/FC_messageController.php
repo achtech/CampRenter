@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\models\Booking;
 use App\Models\chat;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FC_messageController extends Controller
 {
@@ -16,15 +18,15 @@ class FC_messageController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $renters = DB::select('select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id from chats where   (id_owners = ? OR id_renters = ?)' , [$client->id,$client->id,$client->id]);
-        
+        $renters = DB::select('select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id from chats where   (id_owners = ? OR id_renters = ?)', [$client->id, $client->id, $client->id]);
+
         $ids = [];
-        foreach($renters as $r){
+        foreach ($renters as $r) {
             $ids[] = $r->id;
         }
-        $messages = DB::select("select * from v_client_messages where id in (select max(id) from v_client_messages where renter_id IN (".implode(',', $ids).") group by `renter_id`)");
-        return view('frontend.clients.message.index')->with('messages',$messages);
-      }
+        $messages = DB::select("select * from v_client_messages where id in (select max(id) from v_client_messages where renter_id IN (" . implode(',', $ids) . ") group by `renter_id`)");
+        return view('frontend.clients.message.index')->with('messages', $messages);
+    }
 
     public function show($idRenter)
     {
@@ -36,43 +38,43 @@ class FC_messageController extends Controller
         $idClient = $client->id;
         $renters = DB::select('
         select  DISTINCT if(id_owners=?,id_renters,id_owners) AS id
-        from    chats 
+        from    chats
         where   (id_owners = ? OR id_renters = ?)'
-        , [$client->id,$client->id,$client->id]);
-        
+            , [$client->id, $client->id, $client->id]);
+
         $ids = [];
-        foreach($renters as $r){
+        foreach ($renters as $r) {
             $ids[] = $r->id;
         }
-        $messages = DB::select("select * from v_client_messages where id in (select max(id) from v_client_messages where renter_id IN (".implode(',', $ids).") group by `renter_id`)");
+        $messages = DB::select("select * from v_client_messages where id in (select max(id) from v_client_messages where renter_id IN (" . implode(',', $ids) . ") group by `renter_id`)");
         $ids = Chat::where(function ($query) use ($idRenter) {
             $query->where('id_renters', $idRenter)
-                  ->orWhere('id_owners', $idRenter);
+                ->orWhere('id_owners', $idRenter);
         })
-        ->where(function ($query) use ($idClient) {
-            $query->where('id_renters', $idClient)
-                  ->orWhere('id_owners', $idClient);
-        })->chunkById(200, function ($ch) {
+            ->where(function ($query) use ($idClient) {
+                $query->where('id_renters', $idClient)
+                    ->orWhere('id_owners', $idClient);
+            })->chunkById(200, function ($ch) {
             $ch->each->update(['status' => 'read']);
         });
         $conversations = DB::table("v_client_messages")
             ->where(function ($query) use ($idRenter) {
                 $query->where('renter_id', $idRenter)
-                      ->orWhere('owner_id', $idRenter);
+                    ->orWhere('owner_id', $idRenter);
             })
             ->where(function ($query) use ($idClient) {
                 $query->where('renter_id', $idClient)
-                      ->orWhere('owner_id', $idClient);
+                    ->orWhere('owner_id', $idClient);
             })->orderBy('id')->get();
         $id_bookings = $this->getIdBooking($idRenter);
         return view('frontend.clients.message.detail')
-            ->with('messages',$messages)
-            ->with('conversations',$conversations)
-            ->with('activeRenter',$idRenter)
-            ->with('id_bookings',$id_bookings);
+            ->with('messages', $messages)
+            ->with('conversations', $conversations)
+            ->with('activeRenter', $idRenter)
+            ->with('id_bookings', $id_bookings);
 
     }
- 
+
     public function store(Request $request)
     {
         if (Controller::getConnectedClient() == null) {
@@ -87,13 +89,14 @@ class FC_messageController extends Controller
         $input['date_sent'] = now();
         $input['id_bookings'] = $this->getIdBooking($request->id_renters);
         $data = Chat::create($input);
-        return redirect(route('frontend.clients.message.detail',$request->id_renters));
+        return redirect(route('frontend.clients.message.detail', $request->id_renters));
     }
-    
-public function addMessage($id){
-        return redirect('/message_client/detail/'.$id);
-    }    
-public static function notReadedMessageCount()
+
+    public function addMessage($id)
+    {
+        return redirect('/message_client/detail/' . $id);
+    }
+    public static function notReadedMessageCount()
     {
         if (Controller::getConnectedClient() == null) {
             return redirect(route('frontend.login.client'));
@@ -109,10 +112,35 @@ public static function notReadedMessageCount()
         }
         $client = Controller::getConnectedClient();
         $idClient = $client->id;
-        $data =  DB::table("v_booking_camper")
-                        ->whereIn('id_renters', [$idRenter,$idClient])
-                        ->whereIn('id_owners', [$idRenter,$idClient])
-                        ->whereIn('status',[3,4])->first();
-        return $data ? $data->id_bookings  : 0;
+        $data = DB::table("v_booking_camper")
+            ->whereIn('id_renters', [$idRenter, $idClient])
+            ->whereIn('id_owners', [$idRenter, $idClient])
+            ->whereIn('status', [3, 4])->first();
+        return $data ? $data->id_bookings : 0;
+    }
+
+    public function sendInvoice(Request $request)
+    {
+        $GLOBALS['email'] = $request->email;
+        $GLOBALS['to_email'] = 'brahim.barjali@gmail.com';
+        $subject = "Client : " . $request->client_name . " " . $request->client_last_name . "</br>";
+        $subject .= "Reservation N°: " . $request->reservation_num . "</br>";
+        $subject .= "Camper name: " . $request->camper_name . ".</br>";
+        $subject .= "Reservation date: " . $request->created_date . ".</br>";
+        $subject .= "Reservation starts and ends on: " . $request->start_date . ", " . $request->end_date . ".</br>";
+
+        $GLOBALS['subject'] = $subject;
+
+        $booking = Booking::find($request->id);
+        $booking->id_booking_status = 4;
+        $booking->save();
+
+        Mail::raw($request->message, function ($message) {
+            $message->from($GLOBALS['email']);
+            $message->to($GLOBALS['to_email']);
+            $message->subject($GLOBALS['subject']);
+        });
+
+        return redirect(route('frontend.clients.booking'));
     }
 }
