@@ -110,6 +110,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/message_client/register', [FC_messageController::class, 'store'])->name('frontend.chat.register_chat');
     Route::get('/notification_client', [FC_notificationController::class, 'index'])->name('frontend.clients.notification');
     Route::get('/booking_client', [FC_bookingController::class, 'index'])->name('frontend.clients.booking');
+    Route::post('/send_invoice_client', [FC_messageController::class, 'sendInvoice'])->name('frontend.clients.send.invoice');
 
     Route::get('/wallet_client', [FC_walletController::class, 'index'])->name('frontend.clients.wallet');
 
