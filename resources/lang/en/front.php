@@ -48,7 +48,7 @@ return [
     'footer_Conditions' => 'Conditions',
     'footer_Disclaimer' => 'Disclaimer',
     'footer_imprint' => 'imprint',
-    'footer_campunit_title' => 'Campunit',
+    'footer_campunit_title' => 'Campunite',
     'footer_reserved_right' => 'All Rights Reserved',
 
     /** Home */
@@ -179,7 +179,7 @@ return [
     'question_case' => ' In case of questions please write us an email at',
     'contact_us' => 'or call us under 061 551 00 20. The Campunite team gets back to you as quickly as possible.',
     'best_regards' => 'Kind regards ',
-    'camp_team' => 'Your CamperUnit team ',
+    'camp_team' => 'Your CampeUnite team ',
     'address_verified' => 'Your email address has been successfully verified',
     'verified_login' => 'Your email address has been successfully verified. You can now log in. We are looking forward to our journey together!',
     'button_reset_pass' => 'Click the button to reset your password.',
