@@ -121,13 +121,16 @@ class FC_messageController extends Controller
 
     public function sendInvoice(Request $request)
     {
+        if (Controller::getConnectedClient() == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $GLOBALS['email'] = $request->email;
         $GLOBALS['to_email'] = 'brahim.barjali@gmail.com';
-        $subject = "Client : " . $request->client_name . " " . $request->client_last_name . "</br>";
-        $subject .= "Reservation N°: " . $request->reservation_num . "</br>";
-        $subject .= "Camper name: " . $request->camper_name . ".</br>";
-        $subject .= "Reservation date: " . $request->created_date . ".</br>";
-        $subject .= "Reservation starts and ends on: " . $request->start_date . ", " . $request->end_date . ".</br>";
+        $subject = "Client : " . $request->client_name . " " . $request->client_last_name . " ; ";
+        $subject .= "Reservation N°: " . $request->reservation_num . " ; ";
+        $subject .= "Camper name: " . $request->camper_name . ".";
+        //$subject .= "Reservation date: " . $request->created_date . ".</br>";
+        //$subject .= "Reservation starts and ends on: " . $request->start_date . ", " . $request->end_date . ".</br>";
 
         $GLOBALS['subject'] = $subject;
 
