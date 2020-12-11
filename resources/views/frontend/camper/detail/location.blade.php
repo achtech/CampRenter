@@ -12,7 +12,7 @@ var latlng = new google.maps.LatLng('{{$camper->position_x}}','{{$camper->positi
 function initialize() {
     var mapOptions = {
         center: latlng,
-        zoom: 9,
+        zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var el=document.getElementById("map_canvas");
@@ -31,7 +31,7 @@ function initialize() {
         fillOpacity: 0.35,
         map: map,
         center: latlng,
-        radius: 15000 // in meters
+        radius: 400 // in meters
     };
     cityCircle = new google.maps.Circle(sunCircle);
     cityCircle.bindTo('center', marker, 'position');
