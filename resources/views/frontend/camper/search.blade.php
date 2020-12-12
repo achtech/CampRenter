@@ -42,15 +42,7 @@
 									onmouseout="PrepareMarkers('{{$camper->position_x}}','{{$camper->position_y}}',1, event)">
 									See in Map</span>
 								</div>
-								<div id="book_fav">
-									@if(!session('_client'))
-										<span onclick="event.preventDefault();" class="like-icon"></span>
-									@else
-										<span onclick="event.preventDefault(); AddOrRemoveBookmarkSearch({{$camper->id}})"
-											class="like-icon {{App\Http\Controllers\frontend\FC_bookmarkController::isBookmarked($camper->id)>0 ? 'liked' : ''}}">
-										</span>
-									@endif
-								</div>
+								
 							</div>
 							<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($camper->id)}}">
 								<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} reviews)</div>
