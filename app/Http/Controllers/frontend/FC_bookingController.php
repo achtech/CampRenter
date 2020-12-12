@@ -7,7 +7,6 @@ use App\models\Booking;
 use App\models\Camper;
 use App\models\Notification;
 use DB;
-use Illuminate\Http\Request;
 
 class FC_bookingController extends Controller
 {
@@ -26,8 +25,9 @@ class FC_bookingController extends Controller
             ->with('renterBookings', $renterBookings);
     }
 
-    public function requestBooking(Request $request, $idCamper)
+    public function requestBooking($idCamper)
     {
+        dd('teeest');
         $searchedDate = $request->searchedDate ?? '';
         if ($searchedDate != '') {
             $client = Controller::getConnectedClient();

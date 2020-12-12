@@ -5,7 +5,7 @@
             <h3>Send Message</h3>
         </div>
         <div class="message-reply margin-top-0">
-            <textarea cols="40" rows="3" name="message" placeholder="Your Message to Kathy"></textarea>
+            <textarea cols="40" rows="3" name="message" placeholder="Write your message"></textarea>
             {{Form::submit('Send',['class'=>'button','name' => 'action'])}}
         </div>
     </div>

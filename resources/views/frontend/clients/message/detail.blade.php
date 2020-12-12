@@ -45,9 +45,10 @@
 											<div class="message-by">
 												<div class="message-by-headline">
 													<h5>{{$msg->renter_name}} @if($msg->status=="unread") <i>{{trans('front.unread')}}</i> @endif</h5>
-													<span>{{$msg->date_message}}</span>
 												</div>
 												<p>{{ Illuminate\Support\Str::limit($msg->message, 30)}} ...</p>
+												<span style="color: #888;">{{date('j F Y', strtotime($msg->date_message))}}</span>
+												<span style="float:right; color: #888;">{{date('h:m', strtotime($msg->date_message))}}</span>
 											</div>
 										</a>
 									</li>

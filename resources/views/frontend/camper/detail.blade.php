@@ -1,5 +1,5 @@
 
-@extends('frontend.layout.layout',['activePage' => 'camper_details','footerPage' => 'true'])
+@extends('frontend.layout.layout_detail_camper',['activePage' => 'camper_details','footerPage' => 'true'])
 
 @section('content')
 <!-- Content
@@ -27,23 +27,23 @@
 			<!-- Listing Nav -->
 			<div id="listing-nav" class="listing-nav-container" style="padding-top:2%;">
 				<ul class="listing-nav">
-					<li><a href="#listing-overview" class="active">{{trans('front.overview')}}</a></li>
-					<li><a href="#listing-gallery">{{trans('front.gallery')}}</a></li>
+					<li><a href="#listing-gallery" class="active">{{trans('front.gallery')}}</a></li>
+					<li><a href="#listing-overview">{{trans('front.overview')}}</a></li>
 					<li><a href="#listing-location">{{trans('front.location')}}</a></li>
 					<li><a href="#listing-reviews">{{trans('front.menu_panel_review')}}</a></li>
 					<li><a href="#add-review">{{trans('front.add_review')}}</a></li>
 				</ul>
 			</div>
 
-			<!-- Overview -->
-			<div id="listing-overview" class="listing-section">
-			@include('frontend.camper.detail.overview')
-			</div>
-
-
 			<!-- Slider -->
 			<div id="listing-gallery" class="listing-section">
 			@include('frontend.camper.detail.gallery')
+			</div>
+
+
+			<!-- Overview -->
+			<div id="listing-overview" class="listing-section">
+			@include('frontend.camper.detail.overview')
 			</div>
 
 			<!-- Location -->
