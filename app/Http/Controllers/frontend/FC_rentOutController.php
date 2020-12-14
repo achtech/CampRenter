@@ -5,15 +5,14 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Camper;
 use App\Models\CamperSubCategory;
-use App\Models\CamperCategory;
-use App\Models\Client;
 use App\Models\Countries;
+use App\Models\Fuel;
 use App\Models\LicenceCategory;
 use App\Models\Transmission;
-use App\Models\Fuel;
-use Illuminate\Http\Request;
 use DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+
 class FC_rentOutController extends Controller
 {
     public function index()
@@ -41,7 +40,8 @@ class FC_rentOutController extends Controller
             ;
     }
 
-    public function rentByCategory($id){
+    public function rentByCategory($id)
+    {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -98,13 +98,12 @@ class FC_rentOutController extends Controller
         }
         $savedCamper = $this->getNotCompletedCamper($client->id);
 
-        
         $licenceCategories = LicenceCategory::get();
         $countries = Countries::get();
         $transmissions = Transmission::get();
         $fuels = Fuel::get();
         if($request->additional_attribute){
-            $camper->additional_attribute = join(',', $request->additional_attribute);;
+            $camper->additional_attribute = join(',', $request->additional_attribute);
         }
        
         $additionals = [];
@@ -157,12 +156,14 @@ class FC_rentOutController extends Controller
         $camper->position_x = $request->position_x ?? '';
         $camper->position_y = $request->position_y ?? '';
         if($request->additional_attribute){
-            $camper->additional_attribute = join(',', $request->additional_attribute);;
+            $camper->additional_attribute = join(',', $request->additional_attribute);
         }
-        if($camper->id)
+        if ($camper->id) {
         $camper->update();
-        else
+        } else {
         $camper->save();
+        }
+
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
@@ -185,7 +186,6 @@ class FC_rentOutController extends Controller
             ;
     }
 
-    
     public function equipment()
     {
         $client = Controller::getConnectedClient();
@@ -231,10 +231,12 @@ class FC_rentOutController extends Controller
         $camper->id_camper_categories = $request->id_camper_categories ?? 0;
         $camper->id_camper_sub_categories = $request->id_camper_sub_categories ?? 0;
         $camper->id_clients = $client->id;
-        if($camper->id)
+        if ($camper->id) {
             $camper->update();
-        else
+        } else {
             $camper->save();
+        }
+
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
@@ -301,6 +303,40 @@ class FC_rentOutController extends Controller
             ->with('client',$client)
             ->with('camper',$savedCamper)
             ->with('licenceCategories',$licenceCategories);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function myCamperActions(Request $request, $id)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+}
+        $camper = DB::table('campers')->find($id);
+        switch ($request->input('action')) {
+            case 'edit':
+                $categories = DB::table('camper_categories')->paginate(10);
+                $sub_categories = CamperSubCategory::paginate(10);
+                $categorieIds = DB::table('camper_categories')->pluck('id')->toArray();
+                $subCategorieIds = DB::table('camper_sub_categories')->pluck('id')->toArray();
+                return view('frontend.camper.rent_out.rent_out')
+                    ->with('categories', $categories)
+                    ->with('camper', $camper)
+                    ->with('categorieIds', $categorieIds)
+                    ->with('subCategorieIds', $subCategorieIds)
+                    ->with('sub_categories', $sub_categories)
+                    ->with('selectedCategoryId', $id);
+            case 'detail':
+                return redirect(route('frontend.camper.detail', $camper->id));
+            case 'delete':
+                $camper->delete();
+        }
+
     }
 
 }

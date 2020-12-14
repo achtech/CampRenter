@@ -42,13 +42,13 @@
 							<div class="row">
 								@foreach($categories as $category)
 									<!-- Box -->
-									<div class="col-md-3 alternative-imagebox" 
+									<div class="col-md-3 alternative-imagebox"
 										id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id) ? 'showSub' : 'category'}}">
 										<a href="/ajax/rentByCategory/{{$category->id}}" id="camper-categories">
 										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}"  >
 										<input type="hidden" name="id_camper_categories" value="{{$selectedCategoryId}}" />
-										<img style="max-width:70%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif" 
-												src="{{asset('images')}}/camper_categories/{{$category->image}}" 
+										<img style="max-width:60%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif"
+												src="{{asset('images')}}/camper_categories/{{$category->image}}"
 												data-picture_id="{{$category->id}}" alt=""
 												id="cat_{{$category->id}}"
 												onclick="changeCatStyle({{$category->id}})">
@@ -69,7 +69,7 @@
 											<a>
 											<input type="radio" style="display: none" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
 											<input type="hidden" name="id_camper_sub_categories" value="" />
-											<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
+											<img style="max-width:60%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
 											data-picture_sub_id="{{$sub_categories->id}}" alt=""
 													id="subcat_{{$sub_categories->id}}"
 													onclick="changeSubCatStyle({{$sub_categories->id}})">
@@ -130,7 +130,7 @@ function changeCatStyle(id){
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	var obj = <?php echo json_encode($categorieIds); ?>;
 	var obj2 = <?php echo json_encode($subCategorieIds); ?>;
-	
+
 	$.ajax({
 		url: '/ajax/rentByCategory/'+id,
 		type: 'get',
@@ -138,14 +138,14 @@ function changeCatStyle(id){
 		success: function(response){
 			for( i =0;i<obj2.length;i++){
 				document.getElementById('subcat_'+obj[i]).style.outline="none";
-			}    
+			}
 			for( i =0;i<obj.length;i++){
 				if(obj[i]==id){
 					document.getElementById('cat_'+obj[i]).style.outline="2px solid #38b6cd";
 				}else{
 					document.getElementById('cat_'+obj[i]).style.outline="none";
 				}
-			}    	            
+			}
 		}
     });
 }
@@ -158,7 +158,7 @@ function changeSubCatStyle(id){
 		}else{
 			document.getElementById('subcat_'+obj[i]).style.outline="none";
 		}
-	}    
+	}
 }
 
 $("img[data-picture_id]").click(function(e){

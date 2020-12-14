@@ -85,7 +85,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/rentOut/vehicle_data', [FC_rentOutController::class, 'storeVehicleData'])->name('frontend.camper.storePersonnalData');
     Route::post('/rentOut/data', [FC_rentOutController::class, 'storePersonalData'])->name('frontend.camper.storePersonalData');
     Route::post('/rentOut/Equipment', [FC_rentOutController::class, 'storeEquipementData'])->name('frontend.camper.storeVehicle');
-
+    Route::post('/edit_camper/{id}', [FC_rentOutController::class, 'myCamperActions'])->name('frontend.camper.edit.camper');
 
     Route::get('/login/client', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('frontend.login.client');;
     Route::post('/login/client', 'App\Http\Controllers\Auth\LoginController@adminLogin');
