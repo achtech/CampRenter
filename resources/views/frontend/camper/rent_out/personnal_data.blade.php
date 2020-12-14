@@ -26,7 +26,7 @@
 
 		<div class="col-lg-7 col-md-12">
 			<h2 style="padding: 10px;"><strong>{{trans('front.complete_personnal_data')}}</strong></h2>
-			{{ Form::open(['action'=>'App\Http\Controllers\frontend\FC_rentOutController@store2', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+			{{ Form::open(['action'=>'App\Http\Controllers\frontend\FC_rentOutController@storeVehicleData', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
 				<meta name="csrf-token" content="{{ csrf_token() }}">
 				<input type="hidden" name="id_campers" value="{{$camper->id}}" />
  				<div class="margin-top-0">

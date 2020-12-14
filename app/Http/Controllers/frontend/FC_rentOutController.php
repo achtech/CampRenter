@@ -36,7 +36,9 @@ class FC_rentOutController extends Controller
             ->with('categorieIds',$categorieIds)
             ->with('subCategorieIds', [])
             ->with('sub_categories', [])
-            ->with('selectedCategoryId','');
+            ->with('selectedCategoryId','')
+            ->with('isValid',true)
+            ;
     }
 
     public function rentByCategory($id){
@@ -58,10 +60,12 @@ class FC_rentOutController extends Controller
             ->with('categorieIds',$categorieIds)
             ->with('subCategorieIds', $subCategorieIds)
             ->with('sub_categories', $sub_categories)
-            ->with('selectedCategoryId',$id);
+            ->with('selectedCategoryId',$id)
+            ->with('isValid',false)
+            ;
     }
 
-    public function store2(Request $request)
+    public function storeVehicleData(Request $request)
     {
         $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
@@ -103,6 +107,7 @@ class FC_rentOutController extends Controller
             $camper->additional_attribute = join(',', $request->additional_attribute);;
         }
        
+        $additionals = [];
         if($camper->additional_attribute){
             $additionals = explode(',', $camper->additional_attribute);
         }
@@ -118,7 +123,7 @@ class FC_rentOutController extends Controller
             ->with('camperCategory', $camperCategory);
     }
 
-    public function storeCamperVehicle(Request $request)
+    public function storeEquipementData(Request $request)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -209,7 +214,7 @@ class FC_rentOutController extends Controller
         ->with('camperCategory', $camperCategory);
     }
 
-    public function storeCamperProfile(Request $request)
+    public function storePersonalData(Request $request)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -233,23 +238,51 @@ class FC_rentOutController extends Controller
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
-        $languages = [];
-        $useUs = [];
-        if($client->language){
-            $languages = explode(',', $client->language);
+
+        $ownerCampers = Camper::where('id_clients',$client->id)->get();
+        if(count($ownerCampers)==0){
+
+            $languages = [];
+            $useUs = [];
+            if($client->language){
+                $languages = explode(',', $client->language);
+            }
+            if($client->where_you_see_us){
+                $useUs = explode(',', $client->where_you_see_us);
+            }
+    
+            return view('frontend.camper.rent_out.personnal_data')
+                ->with('camper', $camper)
+                ->with('client', $client)
+                ->with('idCamper', $idCamper)
+                ->with('useUs', $useUs)
+                ->with('languages', $languages)
+                ->with('camperCategory', $camperCategory)
+                ;
+        }else{
+            $licenceCategories = LicenceCategory::get();
+            $countries = Countries::get();
+            $transmissions = Transmission::get();
+            $fuels = Fuel::get();
+            if($request->additional_attribute){
+                $camper->additional_attribute = join(',', $request->additional_attribute);;
+            }
+           
+            $additionals = [];
+            if($camper->additional_attribute){
+                $additionals = explode(',', $camper->additional_attribute);
+            }
+    
+            return view('frontend.camper.rent_out.fill_in_vehicle')
+                ->with('licenceCategories',$licenceCategories)
+                ->with('camper', $camper)
+                ->with('client', $client)
+                ->with('countries', $countries)
+                ->with('transmissions', $transmissions)
+                ->with('fuels', $fuels)
+                ->with('additionals', $additionals)
+                ->with('camperCategory', $camperCategory);
         }
-        if($client->where_you_see_us){
-            $useUs = explode(',', $client->where_you_see_us);
-        }
-   
-        return view('frontend.camper.rent_out.personnal_data')
-            ->with('camper', $camper)
-            ->with('client', $client)
-            ->with('idCamper', $idCamper)
-            ->with('useUs', $useUs)
-            ->with('languages', $languages)
-            ->with('camperCategory', $camperCategory)
-            ;
     }
 
     public function getNotCompletedCamper($idClient){
@@ -264,7 +297,6 @@ class FC_rentOutController extends Controller
         }
         $savedCamper = $this->getNotCompletedCamper($client->id);
         $licenceCategories = LicenceCategory::get();
-        dd($licenceCategories);
         return view('frontend.camper.rent_out.fill_in_vehicle')
             ->with('client',$client)
             ->with('camper',$savedCamper)

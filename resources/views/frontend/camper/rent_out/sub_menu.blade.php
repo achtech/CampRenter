@@ -6,8 +6,8 @@
 				<img class="headline right" src="{{ asset('images/rent-out-camper/camper_rent.png') }}"/>
 			</li>
 			<li style="padding-bottom:0px;">
-					<h6>{{$camperCategory}}</h6>
-					<h3><strong>{{$camper->camper_name}}</strong></h3>
+					<h6>{{$camperCategory?? ''}}</h6>
+					<h3><strong>{{isset($camper) ? $camper->camper_name : ''}}</strong></h3>
 					<h6>{{trans('front.state')}}:</h6>
 					<p>Draft</p>
 			</li>

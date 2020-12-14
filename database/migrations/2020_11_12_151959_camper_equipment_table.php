@@ -28,8 +28,31 @@ class CamperEquipmentTable extends Migration
             $table->boolean('is_trailer_hitch_exist');
             $table->boolean('is_water_tank_exist');
             $table->boolean('is_gas_cooker_exist');
-            $table->unsignedBigInteger('id_campers')->nullable();
 
+            $table->string('transport');
+            $table->string('water');
+            $table->string('winter');
+            $table->string('outside');
+            $table->string('additional_equipment');
+            $table->integer('single_beds');
+            $table->integer('double_beds');
+            $table->string('air_conditioner');
+            $table->string('heating');
+            $table->string('power');
+            $table->string('dimming');
+            $table->string('indoor_table');
+            $table->string('rotatable_seats');
+            $table->string('baby_seat');
+            $table->string('further_equipement');
+            $table->string('electronics');
+            $table->string('cooking_possibility');
+            $table->string('cooling_possibility');
+            $table->string('bathroom');
+            $table->string('sink');
+            $table->string('dishes');
+            $table->string('additional_equipment_inside');
+
+            $table->unsignedBigInteger('id_campers')->nullable();
             $table->foreign('id_campers')->references('id')->on('campers');
             $table->timestamps();
         });
