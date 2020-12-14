@@ -36,7 +36,7 @@
 							</div>
 						</div>
 					</div>
-					<form  action="{{route('frontend.camper.storeCamperProfile')}}" method="POST">
+					<form  action="{{route('frontend.camper.storePersonalData')}}" method="POST"  name="frm1">
 					@csrf
 						<div class="col-md-12">
 							<div class="row">
@@ -45,7 +45,7 @@
 									<div class="col-md-3 alternative-imagebox"
 										id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id) ? 'showSub' : 'category'}}">
 										<a href="/ajax/rentByCategory/{{$category->id}}" id="camper-categories">
-										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}">
+										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}"  >
 										<input type="hidden" name="id_camper_categories" value="{{$selectedCategoryId}}" />
 										<img style="max-width:60%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif"
 												src="{{asset('images')}}/camper_categories/{{$category->image}}"
@@ -95,7 +95,7 @@
 					<div class="col-md-12">
 						<div class="row">
 								<div class="col-md-12">
-									<input type="text" name="camper_name" placeholder="My sweet Camper" value="{{$camper->camper_name}}">
+									<input type="text" id="camper_name" name="camper_name" required placeholder="My sweet Camper" value="{{$camper->camper_name}}">
 									<h6>{{trans('front.still_can_change')}}</h6>
 								</div>
 						</div>
@@ -112,7 +112,8 @@
 					<div class="row">
 						<div class="col-md-12">
 						<div style="float: right;">
-						<button type="submit" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
+						@if($isValid)<div style="color:red"> please choose a category @endif
+						<button type="submit" class="button" @if($isValid) disabled @endif>{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
 
 						</div>
 					</div>
