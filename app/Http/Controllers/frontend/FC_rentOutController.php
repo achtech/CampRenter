@@ -303,6 +303,7 @@ class FC_rentOutController extends Controller
             case 'detail':
                 return redirect(route('frontend.camper.detail', $camper->id));
             case 'delete':
+                dd('test');
                 $camper->delete();
         }
 

@@ -46,7 +46,7 @@
 										<div class="buttons-to-right">
 											<button type="submit" name="action" value="detail" class="button gray"><i class="fas fa-list-ul"></i>{{trans('front.client_camper_detail')}}</button>
 											<button type="submit" name="action" value="edit" class="button gray"><i class="far fa-edit"></i>{{trans('front.client_camper_edit')}}</button>
-											<button type="submit" name="action" value="delete" class="button gray"><i class="far fa-times-circle"></i>{{trans('front.client_camper_delete')}}</button>
+											<button type="button" id="deleteButton" data-toggle="modal" data-target="#remove_camper" class="button gray"><i class="far fa-times-circle"></i>{{trans('front.client_camper_delete')}}</a>
 										</div>
 									</li>
 								</form>
@@ -56,6 +56,18 @@
 						@endif
 					</ul>
 				</div>
+				<!-- Reply to review popup -->
+				<div id="remove_camper" class="zoom-anim-dialog mfp-hide">
+					<div class="small-dialog-header">
+						<h3>{{trans('front.send_message')}}</h3>
+					</div>
+					<div class="message-reply margin-top-0">
+						<div>
+							<p>{{ __('backend.confirm_camper_message') }}</p>
+						</div>
+						<button type="submit" name="action" value="delete" class="button">{{trans('front.send')}}</button>
+					</div>
+				</div>
 			</div>
 			<!-- Copyrights -->
 			@include('frontend.layout.footer_panel')
@@ -63,4 +75,9 @@
 
 	</div>
 	<!-- Content / End -->
+	<script>
+		document.getElementById("#deleteButton").click(function() {
+			$("#remove_camper").dialog("open");
+		});
+	</script>
 @endsection
