@@ -26,31 +26,34 @@
 				<div class="dashboard-list-box margin-top-0">
 					<h4>{{trans('front.list_campers')}}</h4>
 					<ul>
-					@if($campers != null)
-						@foreach($campers as $camper)
-						<li>
-							<div class="list-box-listing">
-								<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-01.jpg')}}" alt=""></a></div>
-								<div class="list-box-listing-content">
-									<div class="inner">
-										<h3><a href="#">{{$camper->camper_name}}</a></h3>
-										<span>{{Illuminate\Support\Str::limit($camper->description_camper, 120)}}...</span>
-										<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($camper->id)}}">
-											<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} {{trans('front.menu_panel_review')}})</div>
+						@if($campers != null)
+							@foreach($campers as $camper)
+								<form method="POST" action="{{route('frontend.camper.edit.camper', $camper->id)}}">
+								@csrf
+									<li>
+										<div class="list-box-listing">
+											<div class="list-box-listing-img"><a href="#"><img src="{{asset('images/listing-item-01.jpg')}}" alt=""></a></div>
+											<div class="list-box-listing-content">
+												<div class="inner">
+													<h3><a href="#">{{$camper->camper_name}}</a></h3>
+													<span>{{Illuminate\Support\Str::limit($camper->description_camper, 120)}}...</span>
+													<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($camper->id)}}">
+														<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} {{trans('front.menu_panel_review')}})</div>
+													</div>
+												</div>
+											</div>
 										</div>
-									</div>
-								</div>
-							</div>
-							<div class="buttons-to-right">
-								<a href="#" class="button gray"><i class="fas fa-list-ul"></i> {{trans('front.client_camper_detail')}}</a>
-								<a href="#" class="button gray"><i class="far fa-edit"></i> {{trans('front.client_camper_edit')}}</a>
-								<a href="#" class="button gray"><i class="far fa-times-circle"></i> {{trans('front.client_camper_delete')}}</a>
-							</div>
-						</li>
-						@endforeach
-					@else
-						<p>{{trans('front.no_results')}}</p>
-					@endif
+										<div class="buttons-to-right">
+											<button type="submit" name="action" value="detail" class="button gray"><i class="fas fa-list-ul"></i>{{trans('front.client_camper_detail')}}</button>
+											<button type="submit" name="action" value="edit" class="button gray"><i class="far fa-edit"></i>{{trans('front.client_camper_edit')}}</button>
+											<button type="submit" name="action" value="delete" class="button gray"><i class="far fa-times-circle"></i>{{trans('front.client_camper_delete')}}</button>
+										</div>
+									</li>
+								</form>
+							@endforeach
+						@else
+							<p>{{trans('front.no_results')}}</p>
+						@endif
 					</ul>
 				</div>
 			</div>
