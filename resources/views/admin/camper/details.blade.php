@@ -567,7 +567,7 @@
 
             <div class="tab-pane" id="location">
                     <div class="table-responsive">
-                        <div id="map_backend" style="width: 100%; height: 400px;"></div>
+                        <div id="map_backend" style="width: 100%; height: 500px;"></div>
 
                         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4"></script>
                         <script type="text/javascript">
