@@ -13768,6 +13768,17 @@ span.like-icon {
     width: 56%;
 }
 
+.alternative-imagebox h3 {
+    font-weight: bold;
+    color: #39b7cd;
+    line-height: 36px;
+    margin: 0 auto;
+    font-size: 20px;
+    text-align: center;
+    padding: 0;
+    width: 56%;
+}
+
 
 /* Media Queries For Small Category Boxes */
 
