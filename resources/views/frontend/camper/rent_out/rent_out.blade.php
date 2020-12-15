@@ -47,7 +47,7 @@
 										<a href="/ajax/rentByCategory/{{$category->id}}" id="camper-categories">
 										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}"  >
 										<input type="hidden" name="id_camper_categories" value="{{$selectedCategoryId}}" />
-										<img style="max-width:60%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif"
+										<img style="max-width:52%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif"
 												src="{{asset('images')}}/camper_categories/{{$category->image}}"
 												data-picture_id="{{$category->id}}" alt=""
 												id="cat_{{$category->id}}"
@@ -69,7 +69,7 @@
 											<a>
 											<input type="radio" style="display: none" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
 											<input type="hidden" name="id_camper_sub_categories" value="" />
-											<img style="max-width:60%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
+											<img style="max-width:52%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
 											data-picture_sub_id="{{$sub_categories->id}}" alt=""
 													id="subcat_{{$sub_categories->id}}"
 													onclick="changeSubCatStyle({{$sub_categories->id}})">
