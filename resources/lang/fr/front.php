@@ -90,7 +90,6 @@ return [
     'complete_details' => 'Complétez les détails de votre véhicule maintenant.',
     'the_vehicle' => 'Le véhicule',
     'vehicle_data' => 'Données du véhicule',
-    'equipment' => 'Equipment',
     'extras' => 'Suppléments',
     'description' => 'Déscription',
     'photos' => 'Photos',

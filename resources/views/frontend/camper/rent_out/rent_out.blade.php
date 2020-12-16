@@ -44,7 +44,7 @@
 									<!-- Box -->
 									<div class="col-md-3 alternative-imagebox"
 										id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id) ? 'showSub' : 'category'}}">
-										<a href="/ajax/rentByCategory/{{$category->id}}" id="camper-categories">
+										<a href="/rentOut/rentByCategory/{{$category->id}}" id="camper-categories">
 										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}"  >
 										<input type="hidden" name="id_camper_categories" value="{{$selectedCategoryId}}" />
 										<img style="max-width:60%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif"
@@ -132,7 +132,7 @@ function changeCatStyle(id){
 	var obj2 = <?php echo json_encode($subCategorieIds); ?>;
 
 	$.ajax({
-		url: '/ajax/rentByCategory/'+id,
+		url: '/rentOut/rentByCategory/'+id,
 		type: 'get',
 		data: {_token: CSRF_TOKEN},
 		success: function(response){

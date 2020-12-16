@@ -49,8 +49,8 @@
 			<div class="row">
 				<div class="col-md-12">
 				<div style="float: right;">
-					<a href="{{route('description')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-					<a href="{{route('equipment')}}" class="button border">{{trans('front.cancel')}}</a>
+					<a href="{{route('frontend.camper.storeDescription')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
+					<a href="{{route('frontend.camper.storeEquipment')}}" class="button border">{{trans('front.cancel')}}</a>
 				</div>
 			</div>
 

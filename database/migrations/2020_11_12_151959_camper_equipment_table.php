@@ -15,25 +15,13 @@ class CamperEquipmentTable extends Migration
     {
         Schema::create('camper_equipment', function (Blueprint $table) {
             $table->id();
-            $table->integer('sleeping_spots')->nullable();
-            $table->boolean('is_power_supply_exist');
-            $table->boolean('is_burner_stove_exist');
-            $table->boolean('is_fridge_exist');
-            $table->boolean('is_sink_exist');
-            $table->boolean('is_indoor_table_exist');
-            $table->boolean('is_cd_player_exist');
-            $table->boolean('is_dishes_exist');
-            $table->boolean('is_camping_table_exist');
-            $table->boolean('is_camping_chairs_exist');
-            $table->boolean('is_trailer_hitch_exist');
-            $table->boolean('is_water_tank_exist');
-            $table->boolean('is_gas_cooker_exist');
-
-            $table->string('transport');
-            $table->string('water');
+            $table->unsignedBigInteger('id_campers')->nullable();
+            $table->boolean('camping_table');
+            $table->boolean('camping_chairs');
+            $table->boolean('transport');
+            $table->boolean('water');
             $table->string('winter');
-            $table->string('outside');
-            $table->string('additional_equipment');
+            $table->boolean('additional_equipment_outside');
             $table->integer('single_beds');
             $table->integer('double_beds');
             $table->string('air_conditioner');
@@ -43,16 +31,14 @@ class CamperEquipmentTable extends Migration
             $table->string('indoor_table');
             $table->string('rotatable_seats');
             $table->string('baby_seat');
-            $table->string('further_equipement');
             $table->string('electronics');
-            $table->string('cooking_possibility');
-            $table->string('cooling_possibility');
+            $table->boolean('cooking_possibility');
+            $table->boolean('cooling_possibility');
             $table->string('bathroom');
             $table->string('sink');
             $table->string('dishes');
             $table->string('additional_equipment_inside');
-
-            $table->unsignedBigInteger('id_campers')->nullable();
+            $table->integer('sleeping_spots')->nullable();
             $table->foreign('id_campers')->references('id')->on('campers');
             $table->timestamps();
         });

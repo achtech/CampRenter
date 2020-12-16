@@ -30,8 +30,9 @@
 				<h6>{{trans('front.vehicle_data')}}</h6>
 				<h3><strong>{{trans('front.vehicle_data')}}</strong></h3>
 			</div>
-			<form  action="{{route('frontend.camper.storeVehicle')}}" method="POST">
+			<form  action="{{route('frontend.camper.storeEquipment')}}" method="POST">
 				@csrf
+				<input type="hidden" name="id_campers" value="{{$camper->id}}" />
 
 				<div class="margin-top-0">
 					<ul style="list-style-type:none; padding-left: 0px;">

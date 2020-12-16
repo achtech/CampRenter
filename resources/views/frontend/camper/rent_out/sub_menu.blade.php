@@ -17,10 +17,10 @@
 						<h3 style="margin-top: 0px;"><strong>{{trans('front.the_vehicle')}}</strong></h3>
 						<div class="numbered color filled">
 							<ol>
-								<li style="padding: 8px 5px !important;{{ $active_page == 'fill_in_vehicle' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('fill_in_vehicle')}}">{{trans('front.vehicle_data')}}</a></li>
-								<li style="padding: 8px 5px !important;{{ $active_page == 'equipment' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('equipment')}}">{{trans('front.equipment')}}</a></li>
-								<li style="padding: 8px 5px !important;{{ $active_page == 'accessories' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('accessories')}}">{{trans('front.extras')}}</a></li>
-								<li style="padding: 8px 5px !important;{{ $active_page == 'description' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('description')}}">{{trans('front.description')}}</a></li>
+								<li style="padding: 8px 5px !important;{{ $active_page == 'fill_in_vehicle' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('frontend.camper.fillInVehicle')}}">{{trans('front.vehicle_data')}}</a></li>
+								<li style="padding: 8px 5px !important;{{ $active_page == 'equipment' ? ' background-color: aliceblue;' : '' }}"><a href="#">{{trans('front.Equipment')}}</a></li>
+								<li style="padding: 8px 5px !important;{{ $active_page == 'accessories' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('frontend.camper.storeExtraData')}}">{{trans('front.extras')}}</a></li>
+								<li style="padding: 8px 5px !important;{{ $active_page == 'description' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('frontend.camper.storeDescription')}}">{{trans('front.description')}}</a></li>
 							</ol>
 						</div>
 					</div>

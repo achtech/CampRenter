@@ -61,42 +61,42 @@
                                 <!-- Checkboxes -->
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input id="check-a" type="checkbox" name="is_burner_stove_exist">
+                                        <input id="check-a" type="checkbox" name="cooking_possibility">
                                         <label for="check-a">{{trans('front.burner stove')}}</label>
 
-                                        <input id="check-b" type="checkbox" name="is_sink_exist">
+                                        <input id="check-b" type="checkbox" name="sink">
                                         <label for="check-b">{{trans('front.Sink')}}</label>
 
-                                        <input id="check-c" type="checkbox" name="is_indoor_table_exist">
+                                        <input id="check-c" type="checkbox" name="indoor_table">
                                         <label for="check-c">{{trans('front.Indoor table')}}</label>
 
-                                        <input id="check-d" type="checkbox" name="is_dishes_exist">
+                                        <input id="check-d" type="checkbox" name="dishes">
                                         <label for="check-d">{{trans('front.Dishes')}}</label>
 
-                                        <input id="check-i" type="checkbox" name="is_camping_chairs_exist">
+                                        <input id="check-i" type="checkbox" name="camping_chairs">
                                         <label for="check-i">{{trans('front.Camping chairs')}}</label>
 
-                                        <input id="check-j" type="checkbox" name="is_water_tank_exist">
+                                        <input id="check-j" type="checkbox" name="water">
                                         <label for="check-j">{{trans('front.water_tank')}}</label>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <input id="check-e" type="checkbox" name="is_power_supply_exist" >
+                                        <input id="check-e" type="checkbox" name="power" >
                                         <label for="check-e">{{trans('front.Power supply')}}</label>
 
-                                        <input id="check-f" type="checkbox" name="is_fridge_exist" >
+                                        <input id="check-f" type="checkbox" name="cooling_possibility" >
                                         <label for="check-f">{{trans('front.Fridge')}}</label>
 
-                                        <input id="check-g" type="checkbox" name="is_cd_player_exist">
+                                        <input id="check-g" type="checkbox" name="electronics">
                                         <label for="check-g">{{trans('front.CD Player')}}</label>
 
-                                        <input id="check-h" type="checkbox" name="is_camping_table_exist">
+                                        <input id="check-h" type="checkbox" name="camping_table">
                                         <label for="check-h">{{trans('front.Camping table')}}</label>
 
-                                        <input id="check-k" type="checkbox" name="is_trailer_hitch_exist">
+                                        <input id="check-k" type="checkbox" name="transport">
                                         <label for="check-k">{{trans('front.Trailer hitch')}}</label>
 
-                                        <input id="check-l" type="checkbox" name="is_gas_cooker_exist">
+                                        <input id="check-l" type="checkbox" name="additional_equipment_outside">
                                         <label for="check-l">{{trans('front.cooker_fire')}}</label>
                                     </div>
                                 </div>
