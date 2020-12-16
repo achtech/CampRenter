@@ -567,7 +567,45 @@
 
             <div class="tab-pane" id="location">
                     <div class="table-responsive">
+                        <div id="map_backend" style="width: 100%; height: 500px;"></div>
 
+                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4"></script>
+                        <script type="text/javascript">
+                            var map;
+                        var latlng = new google.maps.LatLng('{{$data->position_x}}','{{$data->position_y}}');
+                        function initialize() {
+                            var mapOptions = {
+                                center: latlng,
+                                zoom: 15,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            };
+                            var el=document.getElementById("map_backend");
+                            map = new google.maps.Map(el, mapOptions);
+
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: latlng
+                            });
+
+                            var sunCircle = {
+                                strokeColor: "#c3fc49",
+                                strokeOpacity: 0.8,
+                                strokeWeight: 2,
+                                fillColor: "#c3fc49",
+                                fillOpacity: 0.35,
+                                map: map,
+                                center: latlng
+                            };
+                            cityCircle = new google.maps.Circle(sunCircle);
+                            cityCircle.bindTo('center', marker, 'position');
+                        }
+
+                        $ = jQuery.noConflict();
+                        $(function( $ ) {
+                        initialize();
+
+                        });
+                        </script>
                     </div>
             </div>
         </div>

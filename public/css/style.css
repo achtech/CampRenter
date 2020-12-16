@@ -13765,7 +13765,18 @@ span.like-icon {
     font-size: 22px;
     text-align: center;
     padding: 0;
-    width: 70%;
+    width: 56%;
+}
+
+.alternative-imagebox h3 {
+    font-weight: bold;
+    color: #39b7cd;
+    line-height: 36px;
+    margin: 0 auto;
+    font-size: 20px;
+    text-align: center;
+    padding: 0;
+    width: 56%;
 }
 
 
@@ -15344,7 +15355,6 @@ a.close-list-item {
     top: -2px;
 }
 
-
 .bookings .inner h3 span.booking-status {
     border-radius: 50px;
     line-height: 20px;
@@ -15358,23 +15368,31 @@ a.close-list-item {
     top: -2px;
 }
 
+
 /*Requested*/
+
 .booking-1 .bookings .inner h3 span.booking-status {
     background-color: #2002ce;
 }
+
 .bookings .inner h3 span.booking-status.s-1 {
     background-color: #2002ce;
 }
 
+
 /*Confirmed*/
+
 .booking-2 .bookings .inner h3 span.booking-status {
     background-color: #64bc36;
 }
+
 .bookings .inner h3 span.booking-status.s-2 {
     background-color: #64bc36;
 }
 
+
 /*Denied*/
+
 .booking-3 .bookings .inner h3 span.booking-status {
     background-color: #e20d0d;
 }
@@ -15383,30 +15401,38 @@ a.close-list-item {
     background-color: #e20d0d;
 }
 
+
 /*Paid*/
+
 .booking-4 .bookings .inner h3 span.booking-status {
     background-color: #ffbb00;
 }
+
 .bookings .inner h3 span.booking-status.s-4 {
     background-color: #ffbb00;
 }
 
+
 /*InProgress*/
+
 .booking-5 .bookings .inner h3 span.booking-status {
     background-color: #858a82;
 }
+
 .bookings .inner h3 span.booking-status.s-5 {
     background-color: #858a82;
 }
 
+
 /*Closed*/
+
 .booking-6 .bookings .inner h3 span.booking-status {
     background-color: #020001;
 }
+
 .bookings .inner h3 span.booking-status.s-6 {
     background-color: #858a82;
 }
-
 
 .approved-booking .bookings .inner h3 span.booking-status {
     background-color: #64bc36;
@@ -22871,6 +22897,7 @@ a::after {
     padding-top: 5px;
     font-size: 16px;
 }
+
 .my-profile2 label {
     font-size: 15px;
     font-weight: 600;

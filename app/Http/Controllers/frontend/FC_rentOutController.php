@@ -417,7 +417,7 @@ class FC_rentOutController extends Controller
             $transmissions = Transmission::get();
             $fuels = Fuel::get();
             if($request->additional_attribute){
-                $camper->additional_attribute = join(',', $request->additional_attribute);;
+                $camper->additional_attribute = join(',', $request->additional_attribute);
             }
            
             $additionals = [];
@@ -437,7 +437,8 @@ class FC_rentOutController extends Controller
         }
     }
 
-    public function getNotCompletedCamper($idClient){
+    public function getNotCompletedCamper($idClient)
+    {
         return DB::table('campers')->where('id_clients',$idClient)->where('is_completed',0)->first();
     }
 
@@ -450,9 +451,9 @@ class FC_rentOutController extends Controller
         $savedCamper = $this->getNotCompletedCamper($client->id);
         $licenceCategories = LicenceCategory::get();
         return view('frontend.camper.rent_out.fill_in_vehicle')
-                ->with('client',$client)
-                ->with('camper',$savedCamper)
-                ->with('licenceCategories',$licenceCategories);
+            ->with('client', $client)
+            ->with('camper', $savedCamper)
+            ->with('licenceCategories', $licenceCategories);
     }
 
     /**
@@ -480,10 +481,12 @@ class FC_rentOutController extends Controller
                     ->with('categorieIds', $categorieIds)
                     ->with('subCategorieIds', $subCategorieIds)
                     ->with('sub_categories', $sub_categories)
-                    ->with('selectedCategoryId', $id);
+                    ->with('selectedCategoryId', $id)
+                    ->with('isValid', true);
             case 'detail':
                 return redirect(route('frontend.camper.detail', $camper->id));
             case 'delete':
+                dd('Delete test');
                 $camper->delete();
         }
 

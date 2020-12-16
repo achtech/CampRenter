@@ -70,7 +70,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card" style="min-height: 423px;">
+                        <div class="card" style="min-height: 539px;">
                             <div class="card-body" style="min-height: 376px !important;">
                                 <h4 style="text-align:center;" class="card-title">{{ __('backend.dashboard_confirm_camper') }}</h4>
                                 <table class="table table-striped table-bordered">

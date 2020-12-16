@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Models\Insurance;
 use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
@@ -82,7 +82,8 @@ class InsuranceController extends Controller
     public function edit($id)
     {
         $data = Insurance::find($id);
-        $insuranceCompanies = InsuranceCompany::all()->pluck(app()->getLocale() == 'de' ? 'label_de' : (app()->getLocale() == 'en' ? 'label_en' : 'label_fr'), 'id');
+        $insuranceCompanies = InsuranceCompany::all();
+        //dd($insuranceCompanies);
         return view('admin.insurance.edit', ['id' => 1])
             ->with('data', $data)
             ->with('insuranceCompanies', $insuranceCompanies);

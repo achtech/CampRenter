@@ -39,20 +39,20 @@
 					<form  action="{{route('frontend.camper.storePersonalData')}}" method="POST"  name="frm1">
 					@csrf
 						<div class="col-md-12">
-							<div class="row">
+							<div class="row" style="padding-left: 100px;">
 								@foreach($categories as $category)
 									<!-- Box -->
-									<div class="col-md-3 alternative-imagebox"
+									<div class="col-md-2 alternative-imagebox"
 										id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id) ? 'showSub' : 'category'}}">
 										<a href="/rentOut/rentByCategory/{{$category->id}}" id="camper-categories">
 										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}"  >
 										<input type="hidden" name="id_camper_categories" value="{{$selectedCategoryId}}" />
-										<img style="max-width:60%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif"
+										<img style="max-width:52%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif"
 												src="{{asset('images')}}/camper_categories/{{$category->image}}"
 												data-picture_id="{{$category->id}}" alt=""
 												id="cat_{{$category->id}}"
 												onclick="changeCatStyle({{$category->id}})">
-											<h4 id="title_cat" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
+											<h3 id="title_cat" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
 										</a>
 									</div>
 								@endforeach
@@ -62,18 +62,18 @@
 									<div class="add-listing-headline">
 										<h3>{{trans('backend.menu_camper_sub_category')}}</h3>
 									</div>
-									<div class="row">
+									<div class="row" style="padding-left: 100px;">
 									@foreach($sub_categories as $sub_categories)
 										<!-- Box -->
-										<div class="col-md-3 alternative-imagebox" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
+										<div class="col-md-2 alternative-imagebox" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
 											<a>
 											<input type="radio" style="display: none" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
 											<input type="hidden" name="id_camper_sub_categories" value="" />
-											<img style="max-width:60%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
+											<img style="max-width:52%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
 											data-picture_sub_id="{{$sub_categories->id}}" alt=""
 													id="subcat_{{$sub_categories->id}}"
 													onclick="changeSubCatStyle({{$sub_categories->id}})">
-												<h4 id="title_sub" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
+												<h3 id="title_sub" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
 											</a>
 										</div>
 									@endforeach

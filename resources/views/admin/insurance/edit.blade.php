@@ -60,9 +60,12 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ __('backend.insurance_company') }} </h4>
                         <div class="mt-5">
-                            <div class="form-group">
-                                {{ Form::select('id_inssurance_company', $insuranceCompanies, $data->id_inssurance_company, ['class' => 'form-control','required']) }}
-                            </div>
+                            <select name="id_insurance_companies" id="id_insurance_companies" class="form-control" data-placeholder="Insurance Company">
+                                <option> </option>
+                                @foreach($insuranceCompanies as $insuranceCompany)
+                                    <option value="{{$insuranceCompany->id}}" @if($data->id_insurance_companies==$insuranceCompany->id) selected @endif>{{$insuranceCompany->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -70,9 +73,9 @@
 
 
             <div class="col-sm-12">
-                
+
                 {{Form::submit(__('backend.Update'),['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
-                
+
                 <a href="{{ route('insurance.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
             </div>
     </div>
