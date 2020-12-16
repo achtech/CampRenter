@@ -1,4 +1,4 @@
-<div class="col-lg-5 col-md-12" style="margin-bottom:20px;">
+<div class="col-lg-4 col-md-12" style="margin-bottom:20px;">
 
 	<div class="dashboard-list-box margin-top-0">
 		<ul>
