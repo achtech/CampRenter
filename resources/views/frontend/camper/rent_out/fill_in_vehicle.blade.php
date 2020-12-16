@@ -328,7 +328,8 @@
 							<div class="row" style="margin-bottom:20px; margin-top:30px;">
 								<div class="col-md-12">
 									<strong>{{trans('front.location')}}</strong>
-									<div class="markers-on-the-map" style="margin-top: 30px;">
+									<div class="markers-on-the-map" style="margin-top: 23px;">
+									<p>{{trans('front.move')}} <img style="margin-bottom: 3px;" src="{{ asset('images/general/position.png')}}"> {{trans('front.text_map_1')}} <img style="margin-bottom: 3px;" src="{{ asset('images/general/cursor.png')}}"> {{trans('front.text_map_2')}}</p>
 										<!-- Map
 											<input
 												id="pac-input"
