@@ -178,7 +178,7 @@
 					</div>
 
 					<div class="col-md-6">
-						<label>{{trans('front.camper_name')}}</label>
+						<label>{{isset($camper) ? $camper->camper_name : ''}}</label>
 						<input type="text" value="{{$booking->camper_name}}" name="camper_name">
 					</div>
 					<div class="col-md-6">

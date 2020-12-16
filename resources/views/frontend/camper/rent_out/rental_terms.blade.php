@@ -10,7 +10,7 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>{{trans('front.camper_name')}}</strong></h2>
+				<h2><strong>{{isset($camper) ? $camper->camper_name : ''}}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
