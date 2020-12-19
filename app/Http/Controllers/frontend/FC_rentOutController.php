@@ -443,6 +443,20 @@ class FC_rentOutController extends Controller
         return DB::table('campers')->where('id_clients', $idClient)->where('is_completed', 0)->first();
     }
 
+    public function goToInsurance()
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = $this->getNotCompletedCamper($client->id);
+        $price_per_day = null;
+        return view('frontend.camper.rent_out.insurance')
+            ->with('client', $client)
+            ->with('camper', $camper)
+            ->with('price_per_day', $price_per_day);
+    }
+
     public function fillInVehicle()
     {
         $client = Controller::getConnectedClient();
@@ -491,6 +505,155 @@ class FC_rentOutController extends Controller
                 $camper->delete();
         }
 
+    }
+
+    public function storeInsurance(Request $request)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = $this->getNotCompletedCamper($client->id);
+        $camper->allowed_total_weight = $request->allowed_total_weight ?? null;
+        $insurance = DB::table('insurances')->get();
+        $price_per_day = 0.0;
+        foreach ($insurance as $item) {
+            if ($item->allowed_total_weight >= $camper->allowed_total_weight) {
+                $price_per_day = $item->price_per_day;
+            }
+        }
+        return view('frontend.camper.rent_out.insurance')
+            ->with('camper', $camper)
+            ->with('client', $client)
+            ->with('price_per_day', $price_per_day);
+    }
+
+    public function storeRental_terms()
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = $this->getNotCompletedCamper($client->id);
+        //$camper->minimum_age = $request->minimum_age ?? null;
+        return view('frontend.camper.rent_out.rental_terms')
+            ->with('camper', $camper)
+            ->with('client', $client);
+    }
+
+    public function storeterms(Request $request)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = $this->getNotCompletedCamper($client->id);
+        return view('frontend.camper.rent_out.conditions')
+            ->with('client', $client)
+            ->with('camper', $camper);
+    }
+
+    public function storecalendar(Request $request)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = $this->getNotCompletedCamper($client->id);
+        return view('frontend.camper.rent_out.calendar')
+            ->with('client', $client)
+            ->with('camper', $camper);
+    }
+
+    public function calc_nights_main_ajax(Request $request)
+    {
+        $price_per_day = $request->price_per_day;
+        $minimal_rent_days_main = $request->minimal_rent_days_main;
+        $total = $minimal_rent_days_main * $price_per_day;
+        $promotion = $total * 0.15;
+        $owner_part = $total - $promotion;
+
+        $html = "";
+        $html .= "<div class='col-md-12' style='margin-top:10px;'>
+            <div class='col-md-9' >
+                <div class='col-md-12' >
+                    <p><strong>Sample booking high season (average booking on CampUnite of 10 nights)</strong></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>Owner earnings</h5></p>
+                    <p><h5>Service fee</h5></p>
+                    <p><h5><strong>rental nights</strong></h5></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>CHF $owner_part</h5></p>
+                    <p><h5>CHF $promotion</h5></p>
+                    <p><h5><strong>CHF $total<strong></h5></p>
+                </div>
+            </div>
+        </div>";
+
+        echo $html;
+
+    }
+
+    public function calc_nights_off_ajax(Request $request)
+    {
+        $price_per_day = $request->price_per_day;
+        $minimal_rent_days_off = $request->minimal_rent_days_off;
+        $total = $minimal_rent_days_off * $price_per_day;
+        $promotion = $total * 0.15;
+        $owner_part = $total - $promotion;
+
+        $html = "";
+        $html .= "<div class='col-md-12' style='margin-top:10px;'>
+            <div class='col-md-9' >
+                <div class='col-md-12' >
+                    <p><strong>Sample booking for your minimum period:</strong></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>Owner earnings</h5></p>
+                    <p><h5>Service fee</h5></p>
+                    <p><h5><strong>rental nights</strong></h5></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>CHF $owner_part</h5></p>
+                    <p><h5>CHF $promotion</h5></p>
+                    <p><h5><strong>CHF $total<strong></h5></p>
+                </div>
+            </div>
+        </div>";
+
+        echo $html;
+    }
+
+    public function calc_nights_winter_ajax(Request $request)
+    {
+        $price_per_day = $request->price_per_day;
+        $minimal_rent_days_winter = $request->minimal_rent_days_winter;
+        $total = $minimal_rent_days_winter * $price_per_day;
+        $promotion = $total * 0.15;
+        $owner_part = $total - $promotion;
+
+        $html = "";
+        $html .= "<div class='col-md-12' style='margin-top:10px;'>
+            <div class='col-md-9' >
+                <div class='col-md-12' >
+                    <p><strong>Sample booking for your minimum period:</strong></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>Owner earnings</h5></p>
+                    <p><h5>Service fee</h5></p>
+                    <p><h5><strong>rental nights</strong></h5></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>CHF $owner_part</h5></p>
+                    <p><h5>CHF $promotion</h5></p>
+                    <p><h5><strong>CHF $total<strong></h5></p>
+                </div>
+            </div>
+        </div>";
+
+        echo $html;
     }
 
 }

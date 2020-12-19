@@ -67,7 +67,6 @@
 	</div>
 	<!-- Content / End -->
 	<script>
-	jQuery.noConflict();
 	$(function(){
 		$('#opener').click(function() {
 		$('.dialog').modal('show')

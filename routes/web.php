@@ -76,28 +76,50 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/help', [FContactController::class, 'help'])->name('help');
     Route::post('/ajax/selectedAvatar', [FUserController::class, 'selectedAvatar'])->name('frontend.avatar.select');
     //Route::group(['prefix' => 'client', 'middleware' => 'client'], function () {
-        //Route::prefix('/client')->namespace('frontend')->group(function () {
-            // Route::post('login', 'App\Http\Controllers\frontend\FClientController@login');
-            //});
-            
-    Route::get('/rentOut', 
-                    [FC_rentOutController::class, 'index'])->name('rent_out');
-    Route::get('/rentOut/rentByCategory/{id}', 
-                    [FC_rentOutController::class, 'rentByCategory'])->name('frontend.camper.rent_out_by_category');
-    Route::post('/rentOut/fill_in_vehicle', 
-                    [FC_rentOutController::class, 'fillInVehicle'])->name('frontend.camper.fillInVehicle');
-    Route::post('/rentOut/data', 
-                    [FC_rentOutController::class, 'storePersonalData'])->name('frontend.camper.storePersonalData');
-    Route::post('/rentOut/vehicle_data', 
-                    [FC_rentOutController::class, 'storeVehicleData'])->name('frontend.camper.storeVehicleData');
-    Route::post('/rentOut/equipment', 
-                    [FC_rentOutController::class, 'storeEquipmentData'])->name('frontend.camper.storeEquipment');
-    Route::post('/rentOut/extra', 
-                    [FC_rentOutController::class, 'storeExtraData'])->name('frontend.camper.storeExtraData');
-    Route::post('/rentOut/description', 
-                    [FC_rentOutController::class, 'storeDescriptionData'])->name('frontend.camper.storeDescription');
-    Route::post('/edit_camper/{id}', 
-                    [FC_rentOutController::class, 'myCamperActions'])->name('frontend.camper.edit.camper');
+    //Route::prefix('/client')->namespace('frontend')->group(function () {
+    // Route::post('login', 'App\Http\Controllers\frontend\FClientController@login');
+    //});
+
+    Route::get('/rentOut',
+        [FC_rentOutController::class, 'index'])->name('rent_out');
+    Route::get('/rentOut/rentByCategory/{id}',
+        [FC_rentOutController::class, 'rentByCategory'])->name('frontend.camper.rent_out_by_category');
+    Route::post('/rentOut/fill_in_vehicle',
+        [FC_rentOutController::class, 'fillInVehicle'])->name('frontend.camper.fillInVehicle');
+    Route::post('/rentOut/data',
+        [FC_rentOutController::class, 'storePersonalData'])->name('frontend.camper.storePersonalData');
+    Route::post('/rentOut/vehicle_data',
+        [FC_rentOutController::class, 'storeVehicleData'])->name('frontend.camper.storeVehicleData');
+    Route::post('/rentOut/equipment',
+        [FC_rentOutController::class, 'storeEquipmentData'])->name('frontend.camper.storeEquipment');
+    Route::post('/rentOut/extra',
+        [FC_rentOutController::class, 'storeExtraData'])->name('frontend.camper.storeExtraData');
+    Route::post('/rentOut/description',
+        [FC_rentOutController::class, 'storeDescriptionData'])->name('frontend.camper.storeDescription');
+    Route::post('/edit_camper/{id}',
+        [FC_rentOutController::class, 'myCamperActions'])->name('frontend.camper.edit.camper');
+
+    Route::post('/rentOut/insurance',
+        [FC_rentOutController::class, 'storeInsurance'])->name('frontend.camper.storeInsurance');
+
+    Route::post('/rentOut/rental_terms',
+        [FC_rentOutController::class, 'storeRental_terms'])->name('frontend.camper.storeRental_terms');
+
+    Route::post('/rentOut/storeterms',
+        [FC_rentOutController::class, 'storeterms'])->name('frontend.camper.storeterms');
+
+    Route::post('/rentOut/storecalendar',
+        [FC_rentOutController::class, 'storecalendar'])->name('frontend.camper.storecalendar');
+
+    Route::get('/step-insurance',
+        [FC_rentOutController::class, 'goToInsurance'])->name('goToInsurance');
+
+    Route::post('/rentOut/calcule_main',
+        [FC_rentOutController::class, 'calc_nights_main_ajax']);
+    Route::post('/rentOut/calcule_off',
+        [FC_rentOutController::class, 'calc_nights_off_ajax']);
+    Route::post('/rentOut/calcule_winter',
+        [FC_rentOutController::class, 'calc_nights_winter_ajax']);
 
     Route::get('/login/client', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('frontend.login.client');;
     Route::post('/login/client', 'App\Http\Controllers\Auth\LoginController@adminLogin');
