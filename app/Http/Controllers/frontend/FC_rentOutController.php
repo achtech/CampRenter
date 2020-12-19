@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Camper;
 use App\Models\CamperSubCategory;
 use App\Models\Countries;
+use App\Models\Equipment;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
 use App\Models\Transmission;
-use App\Models\Equipment;
 use App\Models\Accessorie;
 use DB;
 use Illuminate\Http\Request;
@@ -140,24 +140,24 @@ class FC_rentOutController extends Controller
         $camper->camper_name = $request->camper_name ?? '';
         $camper->brand = $request->brand ?? '';
         $camper->model = $request->model ?? '';
-        $camper->id_licence_categories = $request->id_licence_categories ?? '';
-        $camper->license_plate_number = $request->license_plate_number ?? '';
-        $camper->vehicle_licence = $request->vehicle_licence ?? '';
+        $camper->id_licence_categories = $request->id_licence_categories ?? null;
+        $camper->license_plate_number = $request->license_plate_number ?? null;
+        $camper->vehicle_licence = $request->vehicle_licence ?? null;
         $camper->country = $request->country ?? '';
-        $camper->seat_number = $request->seat_number ?? '';
-        $camper->gear_number = $request->gear_number ?? '';
-        $camper->id_transmissions = $request->id_transmissions ?? '';
-        $camper->id_fuels = $request->id_fuels ?? '';
-        $camper->leasing_vehicle = $request->leasing_vehicle ?? '';
-        $camper->included_kilometres = $request->included_kilometres ?? '';
-        $camper->fuel_capacity = $request->fuel_capacity ?? '';
-        $camper->fuel_consumation = $request->fuel_consumation ?? '';
-        $camper->allowed_total_weight = $request->allowed_total_weight ?? '';
-        $camper->length = $request->length ?? '';
-        $camper->horse_power = $request->horse_power ?? '';
-        $camper->cylinder_capacity = $request->cylinder_capacity ?? '';
-        $camper->position_x = $request->position_x ?? '';
-        $camper->position_y = $request->position_y ?? '';
+        $camper->seat_number = $request->seat_number ?? null;
+        $camper->gear_number = $request->gear_number ?? null;
+        $camper->id_transmissions = $request->id_transmissions ?? null;
+        $camper->id_fuels = $request->id_fuels ?? null;
+        $camper->leasing_vehicle = $request->leasing_vehicle ?? null;
+        $camper->included_kilometres = $request->included_kilometres ?? null;
+        $camper->fuel_capacity = $request->fuel_capacity ?? null;
+        $camper->fuel_consumation = $request->fuel_consumation ?? null;
+        $camper->allowed_total_weight = $request->allowed_total_weight ?? null;
+        $camper->length = $request->length ?? null;
+        $camper->horse_power = $request->horse_power ?? null;
+        $camper->cylinder_capacity = $request->cylinder_capacity ?? null;
+        $camper->position_x = $request->position_x ?? null;
+        $camper->position_y = $request->position_y ?? null;
         if($request->additional_attribute){
             $camper->additional_attribute = join(',', $request->additional_attribute);
         }
@@ -430,14 +430,14 @@ class FC_rentOutController extends Controller
     }
     $savedCamper = $this->getNotCompletedCamper($client->id);
     $camper = new Camper();
-    if($savedCamper){
+        if ($savedCamper) {
         $camper = $savedCamper;
         $camper = Camper::find($savedCamper->id);
     }
     $camper->camper_name = $request->camper_name ?? '';
     $camper->recommandation = $request->recommandation ?? '';
-    $camper->id_camper_categories = $request->id_camper_categories ?? 0;
-    $camper->id_camper_sub_categories = $request->id_camper_sub_categories ?? 0;
+        $camper->id_camper_categories = $request->id_camper_categories ?? null;
+        $camper->id_camper_sub_categories = $request->id_camper_sub_categories ?? null;
     $camper->id_clients = $client->id;
     $camper->save();
     
@@ -496,6 +496,20 @@ class FC_rentOutController extends Controller
         return DB::table('campers')->where('id_clients',$idClient)->where('is_completed',0)->first();
     }
 
+    public function goToInsurance()
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = $this->getNotCompletedCamper($client->id);
+        $price_per_day = null;
+        return view('frontend.camper.rent_out.insurance')
+            ->with('client', $client)
+            ->with('camper', $camper)
+            ->with('price_per_day', $price_per_day);
+    }
+
     public function fillInVehicle()
     {
         $client = Controller::getConnectedClient();
@@ -543,6 +557,155 @@ class FC_rentOutController extends Controller
                 $camper->delete();
         }
 
+    }
+
+    public function storeInsurance(Request $request)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+}
+        $camper = $this->getNotCompletedCamper($client->id);
+        $camper->allowed_total_weight = $request->allowed_total_weight ?? null;
+        $insurance = DB::table('insurances')->get();
+        $price_per_day = 0.0;
+        foreach ($insurance as $item) {
+            if ($item->allowed_total_weight >= $camper->allowed_total_weight) {
+                $price_per_day = $item->price_per_day;
+            }
+        }
+        return view('frontend.camper.rent_out.insurance')
+            ->with('camper', $camper)
+            ->with('client', $client)
+            ->with('price_per_day', $price_per_day);
+    }
+
+    public function storeRental_terms()
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = $this->getNotCompletedCamper($client->id);
+        //$camper->minimum_age = $request->minimum_age ?? null;
+        return view('frontend.camper.rent_out.rental_terms')
+            ->with('camper', $camper)
+            ->with('client', $client);
+    }
+
+    public function storeterms(Request $request)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = $this->getNotCompletedCamper($client->id);
+        return view('frontend.camper.rent_out.conditions')
+            ->with('client', $client)
+            ->with('camper', $camper);
+    }
+
+    public function storecalendar(Request $request)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = $this->getNotCompletedCamper($client->id);
+        return view('frontend.camper.rent_out.calendar')
+            ->with('client', $client)
+            ->with('camper', $camper);
+    }
+
+    public function calc_nights_main_ajax(Request $request)
+    {
+        $price_per_day = $request->price_per_day;
+        $minimal_rent_days_main = $request->minimal_rent_days_main;
+        $total = $minimal_rent_days_main * $price_per_day;
+        $promotion = $total * 0.15;
+        $owner_part = $total - $promotion;
+
+        $html = "";
+        $html .= "<div class='col-md-12' style='margin-top:10px;'>
+            <div class='col-md-9' >
+                <div class='col-md-12' >
+                    <p><strong>Sample booking high season (average booking on CampUnite of 10 nights)</strong></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>Owner earnings</h5></p>
+                    <p><h5>Service fee</h5></p>
+                    <p><h5><strong>rental nights</strong></h5></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>CHF $owner_part</h5></p>
+                    <p><h5>CHF $promotion</h5></p>
+                    <p><h5><strong>CHF $total<strong></h5></p>
+                </div>
+            </div>
+        </div>";
+
+        echo $html;
+
+    }
+
+    public function calc_nights_off_ajax(Request $request)
+    {
+        $price_per_day = $request->price_per_day;
+        $minimal_rent_days_off = $request->minimal_rent_days_off;
+        $total = $minimal_rent_days_off * $price_per_day;
+        $promotion = $total * 0.15;
+        $owner_part = $total - $promotion;
+
+        $html = "";
+        $html .= "<div class='col-md-12' style='margin-top:10px;'>
+            <div class='col-md-9' >
+                <div class='col-md-12' >
+                    <p><strong>Sample booking for your minimum period:</strong></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>Owner earnings</h5></p>
+                    <p><h5>Service fee</h5></p>
+                    <p><h5><strong>rental nights</strong></h5></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>CHF $owner_part</h5></p>
+                    <p><h5>CHF $promotion</h5></p>
+                    <p><h5><strong>CHF $total<strong></h5></p>
+                </div>
+            </div>
+        </div>";
+
+        echo $html;
+    }
+
+    public function calc_nights_winter_ajax(Request $request)
+    {
+        $price_per_day = $request->price_per_day;
+        $minimal_rent_days_winter = $request->minimal_rent_days_winter;
+        $total = $minimal_rent_days_winter * $price_per_day;
+        $promotion = $total * 0.15;
+        $owner_part = $total - $promotion;
+
+        $html = "";
+        $html .= "<div class='col-md-12' style='margin-top:10px;'>
+            <div class='col-md-9' >
+                <div class='col-md-12' >
+                    <p><strong>Sample booking for your minimum period:</strong></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>Owner earnings</h5></p>
+                    <p><h5>Service fee</h5></p>
+                    <p><h5><strong>rental nights</strong></h5></p>
+                </div>
+                <div class='col-md-6' >
+                    <p><h5>CHF $owner_part</h5></p>
+                    <p><h5>CHF $promotion</h5></p>
+                    <p><h5><strong>CHF $total<strong></h5></p>
+                </div>
+            </div>
+        </div>";
+
+        echo $html;
     }
 
 }

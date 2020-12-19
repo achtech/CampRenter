@@ -99,6 +99,28 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/edit_camper/{id}', 
                     [FC_rentOutController::class, 'myCamperActions'])->name('frontend.camper.edit.camper');
 
+    Route::post('/rentOut/insurance',
+        [FC_rentOutController::class, 'storeInsurance'])->name('frontend.camper.storeInsurance');
+
+    Route::post('/rentOut/rental_terms',
+        [FC_rentOutController::class, 'storeRental_terms'])->name('frontend.camper.storeRental_terms');
+
+    Route::post('/rentOut/storeterms',
+        [FC_rentOutController::class, 'storeterms'])->name('frontend.camper.storeterms');
+
+    Route::post('/rentOut/storecalendar',
+        [FC_rentOutController::class, 'storecalendar'])->name('frontend.camper.storecalendar');
+
+    Route::get('/step-insurance',
+        [FC_rentOutController::class, 'goToInsurance'])->name('goToInsurance');
+
+    Route::post('/rentOut/calcule_main',
+        [FC_rentOutController::class, 'calc_nights_main_ajax']);
+    Route::post('/rentOut/calcule_off',
+        [FC_rentOutController::class, 'calc_nights_off_ajax']);
+    Route::post('/rentOut/calcule_winter',
+        [FC_rentOutController::class, 'calc_nights_winter_ajax']);
+
     Route::get('/login/client', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('frontend.login.client');;
     Route::post('/login/client', 'App\Http\Controllers\Auth\LoginController@adminLogin');
     Route::get('auth/facebook', [FClientController::class, 'redirectToFacebook']);

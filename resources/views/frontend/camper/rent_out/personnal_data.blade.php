@@ -9,7 +9,7 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>{{trans('front.camper_name')}}</strong></h2>
+				<h2><strong>{{isset($camper) ? $camper->camper_name : ''}}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
@@ -59,7 +59,7 @@
 							<div class="row">
 								<!-- Phone -->
 								<div class="col-md-8">
-									<input type="text" placeholder="{{trans('front.street')}}" name="street" value="{{$client->street ?? ''}}"> 
+									<input type="text" placeholder="{{trans('front.street')}}" name="street" value="{{$client->street ?? ''}}">
 								</div>
 
 								<!-- Website -->
@@ -137,7 +137,7 @@
 						<li>
 							<!-- Phone -->
 							<h3>{{trans('front.profile_pic')}}</h3>
-							
+
 							<div class="submit-section" style="margin-top:40px;">
 								<div>
 									<input type="file" id="photo" name="photo" class="button medium border upload custom-file-input" />
@@ -261,7 +261,7 @@
 									<label for="check-f">{{trans('front.billboard')}}</label>
 								</div>
 								<div class="checkboxes in-row">
-								<input type="checkbox" name="where_you_see_us[]" id="check-g" value="Print"  @if(isset($useUs) && is_array($useUs) && in_array("Print",$useUs)) checked @endif> 
+								<input type="checkbox" name="where_you_see_us[]" id="check-g" value="Print"  @if(isset($useUs) && is_array($useUs) && in_array("Print",$useUs)) checked @endif>
 									<label for="check-g">{{trans('front.print_advertisement')}}</label>
 								</div>
 								<div class="checkboxes in-row">
@@ -289,7 +289,7 @@
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" placeholder="Instagram user name"  name="instagram_user_name" value="{{$client->instagram_user_name ?? ''}}">	
+									<input type="text" placeholder="Instagram user name"  name="instagram_user_name" value="{{$client->instagram_user_name ?? ''}}">
 								</div>
 							</div>
 						</li>

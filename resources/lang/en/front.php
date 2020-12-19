@@ -543,5 +543,11 @@ return [
     'payment_date' => 'Payment date',
     'total_cost' => 'Total Cost',
     'days' => 'Days',
+    'move' => 'Move',
+    'text_map_1' => 'in map with the cursor',
+    'text_map_2' => "to your camper's position",
+    'unlimited' => 'Unlimited',
+    'year' => 'year',
+    'choose' => 'Choose',
 
 ];
