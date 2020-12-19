@@ -10,6 +10,7 @@ use App\Models\Fuel;
 use App\Models\LicenceCategory;
 use App\Models\Transmission;
 use App\Models\Equipment;
+use App\Models\Accessorie;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -68,6 +69,7 @@ class FC_rentOutController extends Controller
 
     public function storeVehicleData(Request $request)
     {
+        dd($request->all());
         $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -253,8 +255,69 @@ class FC_rentOutController extends Controller
             ;
     }
 
+    public function storeDescriptionData (Request $request){
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = new Camper();
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        if($savedCamper){
+            $camper = Camper::find($savedCamper->id);
+            DB::statement( 'DELETE FROM camper_accessories WHERE id_campers ='.$savedCamper->id );
+        }
+        
+        //delete from accessoire where id_camper
+        //insert into access
+        for($i=0;$i<count($request->paid_accessories);$i++){
+            $ele = new  Accessorie();
+
+            $ele->id_campers = $camper->id;
+            $ele->paid_accessories = $request->paid_accessories[$i];
+            $ele->booking_per = $request->booking_per[$i];
+            $ele->price = $request->price[$i];
+            $ele->save();
+        }
+        $idCamper = $camper->id;
+        $data = DB::table('camper_categories')->find($camper->id_camper_categories);
+        $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
+        
+        return view('frontend.camper.rent_out.description')
+            ->with('camper', $camper)
+            ->with('client', $client)
+            ->with('idCamper', $idCamper)
+            ->with('camperCategory', $camperCategory)
+            ;
+    }
+
+    public function storeDescriptionAndGoToPhoto (Request $request){
+        
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = new Camper();
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        if($savedCamper){
+            $camper = Camper::find($savedCamper->id);
+        }        
+
+        $camper->description_camper = $request->description_camper;
+        $camper->update();
+        $idCamper = $camper->id;
+        $data = DB::table('camper_categories')->find($camper->id_camper_categories);
+        $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
+        
+
+        return view('frontend.camper.rent_out.slide_camper')
+            ->with('camper', $camper)
+            ->with('client', $client)
+            ->with('idCamper', $idCamper)
+            ->with('camperCategory', $camperCategory)
+            ;
+    }
+
     public function storeExtraData (Request $request){
-        dd($request->all());
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -284,46 +347,41 @@ class FC_rentOutController extends Controller
         $equipement->dishes = $request->dishes;
         $equipement->additional_equipment_inside = $request->additional_equipment_inside;
 
-        if($request->bathroom){
+        if($request->bathroom && !empty($request->bathroom)){
             $equipement->bathroom = join(',', $request->bathroom);
         }
-        if($request->cooling_possibility){
+        if($request->cooling_possibility && !empty($request->cooling_possibility)){
             $equipement->cooling_possibility = join(',', $request->cooling_possibility);
         }
-        if($request->cooking_possibility){
+        if($request->cooking_possibility && !empty($request->cooking_possibility)){
             $equipement->cooking_possibility = join(',', $request->cooking_possibility);
         }
-        if($request->electronics){
+        if($request->electronics && !empty($request->electronics)){
             $equipement->electronics = join(',', $request->electronics);
         }
-        if($request->rotatable_seats){
-            $equipement->rotatable_seats = join(',', $request->rotatable_seats);
+        if($request->baby_seat && !empty($request->baby_seat)){
+            $equipement->baby_seat = join(',', $request->baby_seat);
         }
-        if($request->dimming){
+        if($request->dimming && !empty($request->dimming)){
             $equipement->dimming = join(',', $request->dimming);
         }
-        if($request->power){
+        if($request->power && !empty($request->power)){
             $equipement->power = join(',', $request->power);
         }
-        if($request->additional_equipment_outside){
+        if($request->additional_equipment_outside && !empty($request->additional_equipment_outside)){
             $equipement->additional_equipment_outside = join(',', $request->additional_equipment_outside);
         }
-        if($request->winter){
+        if($request->winter && !empty($request->winter)){
             $equipement->winter = join(',', $request->winter);
         }
-        if($request->transport){
+        if($request->transport && !empty($request->transport)){
             $equipement->transport = join(',', $request->transport);
         }
-        if($request->water){
+        if($request->water && !empty($request->water)){
             $equipement->water = join(',', $request->water);
         }
-
-        if ($equipement->id) {
-            $equipement->update();
-        } else {
-            $equipement->save();
-        }
-
+        $equipement->save();
+        
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
@@ -367,27 +425,23 @@ class FC_rentOutController extends Controller
     public function storePersonalData(Request $request)
     {
         $client = Controller::getConnectedClient();
-        if ($client == null) {
-            return redirect(route('frontend.login.client'));
-        }
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        $camper = new Camper();
-        if($savedCamper){
-            $camper = $savedCamper;
-            $camper = Camper::find($savedCamper->id);
-        }
-        $camper->camper_name = $request->camper_name ?? '';
-        $camper->description_camper = $request->description ?? '';
-        $camper->id_camper_categories = $request->id_camper_categories ?? 0;
-        $camper->id_camper_sub_categories = $request->id_camper_sub_categories ?? 0;
-        $camper->id_clients = $client->id;
-        if ($camper->id) {
-            $camper->update();
-        } else {
-            $camper->save();
-        }
-
-        $idCamper = $camper->id;
+    if ($client == null) {
+        return redirect(route('frontend.login.client'));
+    }
+    $savedCamper = $this->getNotCompletedCamper($client->id);
+    $camper = new Camper();
+    if($savedCamper){
+        $camper = $savedCamper;
+        $camper = Camper::find($savedCamper->id);
+    }
+    $camper->camper_name = $request->camper_name ?? '';
+    $camper->recommandation = $request->recommandation ?? '';
+    $camper->id_camper_categories = $request->id_camper_categories ?? 0;
+    $camper->id_camper_sub_categories = $request->id_camper_sub_categories ?? 0;
+    $camper->id_clients = $client->id;
+    $camper->save();
+    
+    $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
 
@@ -486,7 +540,6 @@ class FC_rentOutController extends Controller
             case 'detail':
                 return redirect(route('frontend.camper.detail', $camper->id));
             case 'delete':
-                dd('Delete test');
                 $camper->delete();
         }
 
