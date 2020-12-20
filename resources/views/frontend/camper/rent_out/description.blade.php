@@ -36,8 +36,8 @@
 				<div class="row">
 					<div class="col-md-12">
 					<div style="float: right;">
-					<a href="{{route('slide_camper')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-					<a href="{{route('accessories')}}" class="button border">{{trans('front.cancel')}}</a>
+						{{Form::submit(trans('front.apply'),['style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+						{{Form::submit(trans('front.cancel'),['onclick'=>'window.history.go(-1); return false;', 'style' => 'width:200px','class'=>'button border','name' => 'action'])}}
 					</div>
 				</div>
 			</div>

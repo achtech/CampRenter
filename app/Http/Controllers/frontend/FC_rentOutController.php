@@ -317,6 +317,32 @@ class FC_rentOutController extends Controller
             ;
     }
 
+    public function storePhotosAndGoToInsurance (Request $request){
+        dd($request->all());
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = new Camper();
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        if($savedCamper){
+            $camper = Camper::find($savedCamper->id);
+            DB::statement( 'DELETE FROM camper_images WHERE id_campers ='.$savedCamper->id );
+        }        
+        
+        
+        
+        $idCamper = $camper->id;
+        $data = DB::table('camper_categories')->find($camper->id_camper_categories);
+        $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
+        return view('frontend.camper.rent_out.slide_camper')
+            ->with('camper', $camper)
+            ->with('client', $client)
+            ->with('idCamper', $idCamper)
+            ->with('camperCategory', $camperCategory)
+            ;
+    }
+
     public function storeExtraData (Request $request){
         $client = Controller::getConnectedClient();
         if ($client == null) {

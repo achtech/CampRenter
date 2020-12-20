@@ -96,6 +96,8 @@ Route::group(['middleware' => 'Lang'], function () {
                     [FC_rentOutController::class, 'storeExtraData'])->name('frontend.camper.storeExtraData');
     Route::post('/rentOut/description', 
                     [FC_rentOutController::class, 'storeDescriptionAndGoToPhoto'])->name('frontend.camper.storeDescription');
+    Route::post('/rentOut/fileUpload', 
+                    [FC_rentOutController::class, 'storePhotosAndGoToInsurance'])->name('frontend.camper.fileupload');
     Route::post('/edit_camper/{id}', 
                     [FC_rentOutController::class, 'myCamperActions'])->name('frontend.camper.edit.camper');
 

@@ -24,19 +24,44 @@
 	<div class="row">
 		<!-- sub_menu -->
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'slide_camper'])
-
+		
+ 			
 		<div class="col-lg-7 col-md-12">
 			<h3><strong>{{trans('front.photos')}}</strong></h3>
 			<div class="row">
 				<div class="image-upload-one">
 					<div class="submit-section">
-						<form action="/file-upload" class="dropzone" ></form>
+						<form action="{{route('frontend.camper.fileupload')}}" class='dropzone' method="POST" >
+							<meta name="csrf-token" content="{{ csrf_token() }}">
+							<input type="hidden" name="id_campers" value="{{$camper->id}}" />
+							<div class="row">
+								<div class="col-md-12">
+								<div style="float: right;position:absolute;top:200px">
+									{{Form::submit(trans('front.apply'),['style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+									{{Form::submit(trans('front.cancel'),['onclick'=>'window.history.go(-1); return false;', 'style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+								</div>
+							</div>
+
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+ <!-- Script -->
+ <script>
+    var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+
+    Dropzone.autoDiscover = false;
+    var myDropzone = new Dropzone(".dropzone",{ 
+        maxFilesize: 20,  // 3 mb
+        acceptedFiles: ".jpeg,.jpg,.png,.pdf",
+    });
+    myDropzone.on("sending", function(file, xhr, formData) {
+       formData.append("_token", CSRF_TOKEN);
+    }); 
+</script>
   <script>
 
     function showPreviewOne(event){
