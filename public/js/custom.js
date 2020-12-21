@@ -1114,6 +1114,7 @@
                 e.preventDefault();
 
                 var newElem = $('' +
+                
                     '<tr class="pricing-list-item pricing-submenu">' +
                     '<td>' +
                     '<div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>' +

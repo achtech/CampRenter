@@ -104,7 +104,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="col-md-12">
-								<input type="text" name="description" placeholder="" value="{{$camper->description_camper}}">
+								<input type="text" name="recommandation" placeholder="" value="{{$camper->recommandation ?? '' }}" />
 								<h6>{{trans('front.recommandation')}}</h6>
 							</div>
 						</div>

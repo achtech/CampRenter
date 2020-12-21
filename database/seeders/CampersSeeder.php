@@ -33,6 +33,9 @@ class CampersSeeder extends Seeder
                 'description_camper' => 'description camper 1',
                 'location' => 'location 1',
                 'price_per_day' => '120',
+                
+                
+                
                 'included_kilometres' => '10000',
                 'minimum_age' => '5',
                 'animals_allowed' => 'No',
