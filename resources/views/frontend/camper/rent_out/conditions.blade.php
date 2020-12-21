@@ -39,7 +39,7 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id='minimal_rent_days_main' name="price_per_night_main" type="text" value="{{$season_main ? $season_main->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id='price_main' name="price_per_night_main" type="text" value="{{$season_main ? $season_main->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -66,7 +66,7 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id="price_off" name='price_per_night_off' type="text" value="{{$season_off1 ? $season_off1->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id="price_off" name='price_per_night_off' type="text" value="{{$season_off ? $season_off->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -75,7 +75,7 @@
 								<select id="off_season" name="minimum_night_off" >
 									<option value="0">Choose</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
-										<option @if( ($season_off1 && $season_off1->minimum_night == $i) || ($season_off2 && $season_off2->minimum_night == $i)) selected='selected'
+										<option @if($season_off && $season_off->minimum_night == $i) selected='selected'
 												 @endif "selected='selected'" value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
 									<?php }?>
 								</select>
@@ -170,7 +170,7 @@
 				url: base_url,
 				cache: false,
 				dataType: 'html',
-				data: {price_per_day:price_main, minimal_rent_days_main: current_night},
+				data: {price_per_night_main:price_main, minimum_night_main: current_night},
 
 				success: function(res){
 				r=res.trim();
@@ -191,7 +191,7 @@
 				url: base_url2,
 				cache: false,
 				dataType: 'html',
-				data: {price_per_day:price_off, minimal_rent_days_off: off_night},
+				data: {price_per_night_off:price_off, minimum_night_off: off_night},
 
 				success: function(res2){
 				r2=res2.trim();
@@ -212,7 +212,7 @@
 				url: base_url3,
 				cache: false,
 				dataType: 'html',
-				data: {price_per_day:price_winter, minimal_rent_days_winter: winter_night},
+				data: {price_per_night_winter:price_winter, minimum_night_winter: winter_night},
 
 				success: function(res3){
 				r3=res3.trim();
