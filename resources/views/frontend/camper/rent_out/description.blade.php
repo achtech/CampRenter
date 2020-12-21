@@ -24,7 +24,7 @@
 	<div class="row">
 		<!-- sub_menu -->
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'description'])
-		<form  action="{{route('frontend.camper.storeDescription')}}" method="POST">
+		<form  action="{{route('frontend.camper.storePhotos')}}" method="POST">
 			@csrf
 			<input type="hidden" name="id_campers" value="{{$camper->id}}" />
 			<div class="col-lg-7 col-md-12">

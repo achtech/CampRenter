@@ -11,6 +11,7 @@ use App\Models\Fuel;
 use App\Models\LicenceCategory;
 use App\Models\Transmission;
 use App\Models\Accessorie;
+use App\Models\CamperImage;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -125,7 +126,7 @@ class FC_rentOutController extends Controller
             ->with('camperCategory', $camperCategory);
     }
 
-    public function storeEquipmentData(Request $request)
+    public function storeVehicleAndGoToEquipment(Request $request)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -255,7 +256,7 @@ class FC_rentOutController extends Controller
             ;
     }
 
-    public function storeDescriptionData (Request $request){
+    public function storeExtraAndGoToDescription (Request $request){
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -343,7 +344,7 @@ class FC_rentOutController extends Controller
             ;
     }
 
-    public function storeExtraData (Request $request){
+    public function storeEquipmentAndGoToExtra (Request $request){
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -520,6 +521,146 @@ class FC_rentOutController extends Controller
     public function getNotCompletedCamper($idClient)
     {
         return DB::table('campers')->where('id_clients',$idClient)->where('is_completed',0)->first();
+    }
+
+    public function showVehicleData($id){
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $categories = DB::table('camper_categories')->paginate(10);
+        $camper = Camper::find($id);
+        $licenceCategories = LicenceCategory::get();
+        $countries = Countries::get();
+        $transmissions = Transmission::get();
+        $fuels = Fuel::get();
+        $additionals = $camper->additional_attribute;
+
+        return view('frontend.camper.rent_out.fill_in_vehicle')
+            ->with('client', $client)
+            ->with('countries', $countries)
+            ->with('transmissions', $transmissions)
+            ->with('fuels', $fuels)
+            ->with('additionals', $additionals)
+            ->with('categories', $categories)
+            ->with('licenceCategories', $licenceCategories)
+            ->with('camper', $camper);
+    }
+
+    public function showDescription($id){
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = Camper::find($id);
+        return view('frontend.camper.rent_out.description')
+            ->with('client', $client)
+            ->with('camper', $camper);
+    }
+
+    public function showExtra($id){
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = Camper::find($id);
+        $extra = Accessorie::where('id_campers',$id)->get();
+        
+        return view('frontend.camper.rent_out.accessories')
+            ->with('client', $client)
+            ->with('extra',$extra)
+            ->with('camper', $camper);
+    }
+
+    public function showPhoto($id){
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = Camper::find($id);
+        $photos = CamperImage::where('id_campers',$id)->get();
+        return view('frontend.camper.rent_out.slide_camper')
+            ->with('client', $client)
+            ->with('photos',$photos)
+            ->with('camper', $camper);
+    }
+    public function showEquipement($id){
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = Camper::find($id);
+        $equipement = Equipment::where('id_campers',$camper->id)->first();
+        
+        $transport=[];
+        $water=[];
+        $winter=[];
+        $power=[];
+        $dimming=[];
+        $baby_seat=[];
+        $electronics=[];
+        $cooking_possibility=[];
+        $cooling_possibility=[];
+        $bathroom=[];
+        $baby_seat=[];
+        $additional_equipment_outside=[];
+        
+        if($equipement){
+            if($equipement->transport){
+                $transport = explode(',', $equipement->transport);
+            }
+            if($equipement->water){
+                $water = explode(',', $equipement->water);
+            }
+            if($equipement->winter){
+                $winter = explode(',', $equipement->winter);
+            }
+            if($equipement->additional_equipment_outside){
+                $additional_equipment_outside = explode(',', $equipement->additional_equipment_outside);
+            }
+            if($equipement->power){
+                $power = explode(',', $equipement->power);
+            }
+            if($equipement->dimming){
+                $dimming = explode(',', $equipement->dimming);
+            }
+            if($equipement->baby_seat){
+                $baby_seat = explode(',', $equipement->baby_seat);
+            }
+            if($equipement->electronics){
+                $electronics = explode(',', $equipement->electronics);
+            }
+            if($equipement->cooking_possibility){
+                $cooking_possibility = explode(',', $equipement->cooking_possibility);
+            }
+            if($equipement->cooling_possibility){
+                $cooling_possibility = explode(',', $equipement->cooling_possibility);
+            }
+            if($equipement->bathroom){
+                $bathroom = explode(',', $equipement->bathroom);
+            }
+            if($equipement->baby_seat){
+                $baby_seat = explode(',', $equipement->baby_seat);
+            }
+        }
+        return view('frontend.camper.rent_out.equipment')
+            ->with('camper', $camper)
+            ->with('equipement', $equipement)
+            ->with('client', $client)
+            ->with('idCamper', $camper->id)
+            ->with('transport', $transport)
+            ->with('water', $water)
+            ->with('winter', $winter)
+            ->with('additional_equipment_outside', $additional_equipment_outside)
+            ->with('power', $power)
+            ->with('dimming', $dimming)
+            ->with('baby_seat', $baby_seat)
+            ->with('electronics', $electronics)
+            ->with('cooking_possibility', $cooking_possibility)
+            ->with('cooling_possibility', $cooling_possibility)
+            ->with('bathroom', $bathroom)
+            ->with('baby_seat', $baby_seat)
+            ;
     }
 
     public function goToInsurance()

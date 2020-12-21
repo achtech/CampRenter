@@ -33,9 +33,9 @@ class CampersSeeder extends Seeder
                 'description_camper' => 'description camper 1',
                 'location' => 'location 1',
                 'price_per_day' => '120',
-                'minimal_rent_days_main' => '4',
-                'minimal_rent_days_off' => '6',
-                'minimal_rent_days_winter' => '1',
+                
+                
+                
                 'included_kilometres' => '10000',
                 'minimum_age' => '5',
                 'animals_allowed' => 'No',
@@ -83,9 +83,9 @@ class CampersSeeder extends Seeder
                 'description_camper' => 'description camper 2',
                 'location' => 'location 2',
                 'price_per_day' => '220',
-                'minimal_rent_days_main' => '4',
-                'minimal_rent_days_off' => '6',
-                'minimal_rent_days_winter' => '1',
+                
+                
+                
                 'included_kilometres' => '20000',
                 'minimum_age' => '5',
                 'animals_allowed' => 'yES',
@@ -133,9 +133,9 @@ class CampersSeeder extends Seeder
                 'description_camper' => 'description camper 3',
                 'location' => 'location 3',
                 'price_per_day' => '200',
-                'minimal_rent_days_main' => '4',
-                'minimal_rent_days_off' => '6',
-                'minimal_rent_days_winter' => '1',
+                
+                
+                
                 'included_kilometres' => '120000',
                 'minimum_age' => '5',
                 'animals_allowed' => 'Yes',
@@ -183,9 +183,9 @@ class CampersSeeder extends Seeder
                 'description_camper' => 'description camper 3',
                 'location' => 'location 3',
                 'price_per_day' => '100',
-                'minimal_rent_days_main' => '4',
-                'minimal_rent_days_off' => '6',
-                'minimal_rent_days_winter' => '1',
+                
+                
+                
                 'included_kilometres' => '120000',
                 'minimum_age' => '5',
                 'animals_allowed' => 'Yes',
@@ -233,9 +233,9 @@ class CampersSeeder extends Seeder
                 'description_camper' => 'description camper 3',
                 'location' => 'location 3',
                 'price_per_day' => '100',
-                'minimal_rent_days_main' => '4',
-                'minimal_rent_days_off' => '6',
-                'minimal_rent_days_winter' => '1',
+                
+                
+                
                 'included_kilometres' => '120000',
                 'minimum_age' => '5',
                 'animals_allowed' => 'Yes',
