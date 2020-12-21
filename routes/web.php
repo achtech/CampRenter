@@ -109,7 +109,7 @@ Route::group(['middleware' => 'Lang'], function () {
         [FC_rentOutController::class, 'storeterms'])->name('frontend.camper.storeterms');
 
     Route::post('/rentOut/storecalendar',
-        [FC_rentOutController::class, 'storecalendar'])->name('frontend.camper.storecalendar');
+        [FC_rentOutController::class, 'savecalendar'])->name('frontend.camper.storecalendar');
 
     Route::get('/step-insurance',
         [FC_rentOutController::class, 'goToInsurance'])->name('goToInsurance');

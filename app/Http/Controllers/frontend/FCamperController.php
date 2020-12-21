@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\CamperSubCategory;
 use DB;
 
 class FCamperController extends Controller
@@ -57,6 +56,7 @@ class FCamperController extends Controller
 
     public function calendar()
     {
+        dd('mook');
         return view('frontend.camper.rent_out.calendar');
     }
 

@@ -26,6 +26,7 @@
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'conditions'])
 		<form  action="{{route('frontend.camper.storecalendar')}}" method="POST">
 		@csrf
+			<input type="hidden" name="id_campers" value="{{$camper->id}}" />
 			<div class="col-lg-7 col-md-12">
 				<h3><strong>{{trans('front.terms')}}</strong></h3>
 				<div class="col-md-12">
@@ -38,16 +39,16 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id='price_main' type="text" name="{{$camper->price_per_day}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id='minimal_rent_days_main' name="price_per_night_main" type="text" value="{{$season_main ? $season_main->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
-								<select id="main_season" class="" >
+								<select id="main_season" name="minimum_night_main" class="" >
 									<option value="0">Choose</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
-										<option <?php echo $camper->minimal_rent_days_main == $i ? "selected='selected'" : null; ?> value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
+										<option @if( $season_main && $season_main->minimum_night == $i) selected='selected' @endif value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
 									<?php }?>
 								</select>
 							</div>
@@ -65,16 +66,17 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id='price_off' type="text" name="{{$camper->price_per_day}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id="price_off" name='price_per_night_off' type="text" value="{{$season_off1 ? $season_off1->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
-								<select id="off_season" >
+								<select id="off_season" name="minimum_night_off" >
 									<option value="0">Choose</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
-										<option <?php echo $camper->minimal_rent_days_off == $i ? "selected='selected'" : null; ?> value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
+										<option @if( ($season_off1 && $season_off1->minimum_night == $i) || ($season_off2 && $season_off2->minimum_night == $i)) selected='selected'
+												 @endif "selected='selected'" value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
 									<?php }?>
 								</select>
 							</div>
@@ -91,16 +93,16 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id='price_winter' type="text" name="{{$camper->price_per_day}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id="price_winter" name='price_per_night_winter' type="text" value="{{$season_winter ? $season_winter->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
-								<select id="winter_season" >
+								<select id="winter_season" name="minimum_night_winter" >
 								<option value="0">Choose</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
-										<option <?php echo $camper->minimal_rent_days_winter == $i ? "selected='selected'" : null; ?> value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
+										<option @if( $season_winter && $season_winter->minimum_night == $i) selected='selected' @endif value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
 									<?php }?>
 								</select>
 							</div>
@@ -142,8 +144,8 @@
 				<div class="row">
 					<div class="col-md-12">
 					<div style="float: right;">
-					<a href="{{route('calendar')}}" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></a>
-					<a href="{{route('accessories')}}" class="button border">{{trans('front.cancel')}}</a>
+					<button type="submit" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
+					<button type="submit" class="button">{{trans('front.cancel')}} <i class="fa fa-check-circle"></i></button>
 					</div>
 				</div>
 			</div>

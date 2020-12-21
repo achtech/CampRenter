@@ -18,7 +18,7 @@ class CreateInsurancesTable extends Migration
             $table->string('description_en')->nullable();
             $table->string('description_de')->nullable();
             $table->string('description_fr')->nullable();
-            $table->double('price_per_day')->nullable();
+            $table->integer('price_per_day')->nullable();
             $table->double('allowed_total_weight')->nullable();
             $table->unsignedBigInteger('id_insurance_companies');
             $table->timestamps();

@@ -55,17 +55,17 @@
 						</div>
 						<div class="col-md-5" style="padding-top: 12px;">
 							<label class="containerRadio">{{trans('front.yes')}}
-								<input type="radio" name="animals_allowed" value="1" @if($camper->animals_allowed==1) checked="checked" @endif>
+								<input type="radio" name="animals_allowed" value="yes" @if($camper->animals_allowed=="yes") checked="checked" @endif>
 								<span class="checkmarkRadio"></span>
 							</label>
 							<label class="containerRadio">{{trans('front.no')}}
-								<input type="radio" name="animals_allowed" value="0" @if($camper->animals_allowed==0) checked="checked" @endif>
+								<input type="radio" name="animals_allowed" value="no" @if($camper->animals_allowed=="no") checked="checked" @endif>
 								<span class="checkmarkRadio"></span>
 							</label>
 						</div>
 						<div class="col-md-7" style="padding-top: 12px;">
 							<label class="containerRadio">{{trans('front.by_agreement')}}
-								<input type="radio" name="animals_allowed" value="2" @if($camper->animals_allowed==2) checked="checked" @endif>
+								<input type="radio" name="animals_allowed" value="agreement" @if($camper->animals_allowed=="agreement") checked="checked" @endif>
 								<span class="checkmarkRadio"></span>
 							</label>
 						</div>
@@ -93,11 +93,11 @@
 					<strong>{{trans('front.kilometres_per_night')}}</strong>
 				</div>
 				<div class="col-md-12" style="padding-top: 12px;">
-					<select class="chosen-select-no-single" >
+					<select name="kilometres_per_night" class="chosen-select-no-single" >
 						<?php for ($j = 100; $j <= 300; $j = $j + 50) {?>
-							<option <?php echo $camper->license_age == $j ? "selected='selected'" : null; ?> value="<?php echo $j; ?>"> <?php echo $j; ?> {{trans('front.years')}}</option>
+							<option <?php echo $camper->kilometres_per_night == $j ? "selected='selected'" : null; ?> value="<?php echo $j; ?>"> <?php echo $j; ?> {{trans('front.years')}}</option>
 						<?php }?>
-						<option value="unlimited" <?php echo $camper->license_age == "unlimited" ? "selected='selected'" : null; ?>>{{trans('front.unlimited')}}</option>
+						<option value="400" <?php echo $camper->kilometres_per_night == 400 ? "selected='selected'" : null; ?>>{{trans('front.unlimited')}}</option>
 					</select>
 					<h5>{{trans('front.kilometres_per_night_info')}}</h5>
 				</div>
@@ -136,7 +136,7 @@
 							<div class="switcher-content">
 								<div class="row">
 									<div class="col-md-12">
-										<textarea name="additional_equipment_out"></textarea>
+										<textarea name="additional_equipment_out" value="{{$camper->additional_equipment_out}}"></textarea>
 									</div>
 								</div>
 							</div>

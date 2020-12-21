@@ -16,8 +16,10 @@ class CreateCamperTermsTable extends Migration
         Schema::create('camper_terms', function (Blueprint $table) {
             $table->id();
             $table->string('season')->nullable();
-            $table->double('price_per_night')->nullable();
+            $table->integer('price_per_night')->nullable();
             $table->integer('minimum_night')->nullable();
+            $table->integer('start_month')->nullable();
+            $table->integer('end_month')->nullable();
             $table->unsignedBigInteger('id_campers')->nullable();
 
             $table->foreign('id_campers')->references('id')->on('campers');

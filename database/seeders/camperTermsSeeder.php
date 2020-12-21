@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class camperTermsSeeder extends Seeder
@@ -17,24 +18,39 @@ class camperTermsSeeder extends Seeder
         DB::table('camper_terms')->insert(array(
             0 => array(
                 'id' => 1,
-                'season' => 'Main season (Jul - Aug)',
+                'season' => 'Main_season (Jul - Aug)',
                 'price_per_night' => 129,
-                'minimum_night' => 6,
+                'minimum_night' => 120,
+                'start_month' => 7,
+                'end_month' => 8,
                 'id_campers' => 1,
             ),
             1 => array(
-                'id' => 1,
-                'season' => 'Off season (May - Jun & Sep - Oct)',
+                'id' => 2,
+                'season' => 'Off season (May - Jun',
                 'price_per_night' => 124,
-                'minimum_night' => 4,
-                'id_campers' => 1,
+                'minimum_night' => 300,
+                'start_month' => 5,
+                'end_month' => 6,
+                'id_campers' => 2,
             ),
             2 => array(
-                'id' => 1,
+                'id' => 3,
+                'season' => 'Off season (Sep - Oct)',
+                'price_per_night' => 129,
+                'minimum_night' => 200,
+                'start_month' => 9,
+                'end_month' => 10,
+                'id_campers' => 1,
+            ),
+            3 => array(
+                'id' => 4,
                 'season' => 'Winter-season (Nov - Apr)',
                 'price_per_night' => 129,
-                'minimum_night' => 4,
-                'id_campers' => 1,
+                'minimum_night' => 100,
+                'start_month' => 11,
+                'end_month' => 4,
+                'id_campers' => 2,
             ),
         ));
     }
