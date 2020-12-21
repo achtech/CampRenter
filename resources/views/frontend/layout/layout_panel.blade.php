@@ -97,7 +97,10 @@ $(document).ready(function(){
 
 <!-- Scripts
 ================================================== -->
+
 <script type="text/javascript" src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+
 <script type="text/javascript" src="{{asset('js/jquery-migrate-3.1.0.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/mmenu.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/chosen.min.js')}}"></script>
@@ -121,10 +124,6 @@ $(document).ready(function(){
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
 <script src="{{asset('js/moment.min.js')}}"></script>
 <script src="{{asset('js/daterangepicker.js')}}"></script>
-
-<!-- DropZone | Documentation: http://dropzonejs.com -->
-<script type="text/javascript" src="{{asset('js/dropzone.js')}}"></script>
-
 <script>
 $(function() {
 
@@ -205,8 +204,6 @@ $(document).ready(function() {
   });
 })
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
-
 @yield('script')
 
 </body>
