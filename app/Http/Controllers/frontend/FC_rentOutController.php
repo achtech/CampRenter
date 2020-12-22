@@ -314,17 +314,21 @@ class FC_rentOutController extends Controller
         $pictures = CamperImage::where('id_campers',$savedCamper->id)->select('image')->get();
         $files = [];
         for($i=0;$i<count($pictures);$i++){
-            $files[] = new File();
-            $files[]->name=$pictures->image;
+            $files[] = (object) ['file_name' => $pictures[$i]->image,'id' => $pictures[$i]->id];
         }
-
+        $countFiles = $countFiles * 4 == count($files) ? $countFiles : $countFiles + 1;
         return view('frontend.camper.rent_out.slide_camper')
             ->with('camper', $camper)
             ->with('client', $client)
             ->with('files', $files)
+            ->with('countFiles', $countFiles)
             ->with('idCamper', $idCamper)
             ->with('camperCategory', $camperCategory)
             ;
+    }
+    public function removePhoto($camperId,$id) {
+        DB::statement( 'DELETE FROM camper_images WHERE id_campers ='.$camperId.' and id='. $id);
+        return redirect(route('frontend.camper.showPhoto',$camperId));
     }
     public function storeMedia(Request $request)
     {
@@ -355,13 +359,12 @@ class FC_rentOutController extends Controller
         $savedCamper = $this->getNotCompletedCamper($client->id);
         if($savedCamper){
             $camper = Camper::find($savedCamper->id);
-            DB::statement( 'DELETE FROM camper_images WHERE id_campers ='.$savedCamper->id );
         }        
         
         foreach ($request->document as $doc) {
             $camperImage = new CamperImage();
             $camperImage->id_campers = $savedCamper->id;
-            $camperImage->image = public_path('images/campers').$doc;
+            $camperImage->image = $doc;
             $camperImage->save();
         }
 
@@ -616,16 +619,18 @@ class FC_rentOutController extends Controller
         }
         $camper = Camper::find($id);
         $photos = CamperImage::where('id_campers',$id)->get();
-        $pictures = CamperImage::where('id_campers',$id)->select('image')->get();
+        $pictures = CamperImage::where('id_campers',$id)->select(['image','id'])->get();
         $files = [];
         for($i=0;$i<count($pictures);$i++){
-            $files[] = (object) ['file_name' => $pictures[$i]->image];
+            $files[] = (object) ['file_name' => $pictures[$i]->image,'id' => $pictures[$i]->id];
         }
-
+        $countFiles = intVal(count($files)/4);
+        $countFiles = $countFiles * 4 == count($files) ? $countFiles : $countFiles + 1;
         return view('frontend.camper.rent_out.slide_camper')
             ->with('client', $client)
             ->with('photos',$photos)
             ->with('files',$files)
+            ->with('countFiles',$countFiles)
             ->with('camper', $camper);
     }
     public function showEquipement($id)

@@ -29,15 +29,24 @@
 			<h3><strong>{{trans('front.photos')}}</strong></h3>
       <form action="{{ route('frontend.camper.storeFiles') }}" method="POST" enctype="multipart/form-data">
           @csrf
+          @if(count($files)>0)
           <div class="form-group">
-                <label for="document">Old photos</label>
-                <div >
+                <label for="document">All photos{{intval(count($files)/4)}}</label>
+                <div  class="old-photos" >
+                <div style="display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat({{$countFiles}}, 5vw);
+    grid-gap: 30px;">
                   @foreach($files as $f)
-                    <img src="{{ asset('images/campers')}}/{{$f->file_name}}" style="width:150px;width:150px;border: solid black 1px;border-radius: 20px;background: #999; background: linear-gradient(to bottom, #eee, #ddd);">
+                    <div style="text-align: center;padding-bottom:10px;color:grey">
+                      <img src="{{ asset('images/campers')}}/{{$f->file_name}}" style=" width: 100%;height: 100%;object-fit: cover;border-radius: 20px;" >
+                      <a href="/rentOut/photos/delete/{{$camper->id}}/{{$f->id}}" style="text-align:center">Remove file</a>
+                    </div>
                   @endforeach
                 </div>
+                </div>
           </div>
-
+          @endif
           <div class="form-group">
                 <label for="document">New photos</label>
                 <div class="needsclick dropzone" id="document-dropzone">
@@ -45,7 +54,9 @@
                 </div>
           </div>
           <div>
-            <input class="btn btn-danger" type="submit">
+              {{Form::submit(trans('front.apply'),['style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+              {{Form::submit(trans('front.cancel'),['onclick'=>'window.history.go(-1); return false;', 'style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+
           </div>
       </form>
 
@@ -79,17 +90,6 @@
       $('form').find('input[name="document[]"][value="' + name + '"]').remove()
     },
     init: function () {
-      @if(isset($files))
-        var files =
-          {!! json_encode($files) !!}
-        for (var i in files) {
-          var file = files[i];
-          uploadedDocumentMap[file.name] = file.file_name;
-          this.options.addedfile.call(this, file)
-          file.previewElement.classList.add('dz-complete')
-          $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">')
-        }
-      @endif
     }
   }
 </script>
