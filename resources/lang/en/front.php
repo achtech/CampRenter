@@ -549,5 +549,6 @@ return [
     'unlimited' => 'Unlimited',
     'year' => 'year',
     'choose' => 'Choose',
+    'our_proposition' => 'Our insurance proposition',
 
 ];

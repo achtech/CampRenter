@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\CamperSubCategory;
 use DB;
 
 class FCamperController extends Controller

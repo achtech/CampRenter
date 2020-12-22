@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Accessorie;
 use App\Models\Camper;
+use App\Models\CamperImage;
 use App\Models\CamperSubCategory;
+use App\Models\CamperTerms;
 use App\Models\Countries;
 use App\Models\Equipment;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
 use App\Models\Transmission;
-use App\Models\Accessorie;
-use App\Models\CamperImage;
 use DB;
 use Log;
 use Illuminate\Http\Request;
@@ -256,7 +257,8 @@ class FC_rentOutController extends Controller
             ;
     }
 
-    public function storeExtraAndGoToDescription (Request $request){
+    public function storeExtraAndGoToDescription(Request $request)
+    {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -291,7 +293,8 @@ class FC_rentOutController extends Controller
             ;
     }
 
-    public function storeDescriptionAndGoToPhoto (Request $request){
+    public function storeDescriptionAndGoToPhoto(Request $request)
+    {
         
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -373,7 +376,8 @@ class FC_rentOutController extends Controller
             ;
     }
 
-    public function storeEquipmentAndGoToExtra (Request $request){
+    public function storeEquipmentAndGoToExtra(Request $request)
+    {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -552,7 +556,8 @@ class FC_rentOutController extends Controller
         return DB::table('campers')->where('id_clients',$idClient)->where('is_completed',0)->first();
     }
 
-    public function showVehicleData($id){
+    public function showVehicleData($id)
+    {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -576,7 +581,8 @@ class FC_rentOutController extends Controller
             ->with('camper', $camper);
     }
 
-    public function showDescription($id){
+    public function showDescription($id)
+    {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -587,7 +593,8 @@ class FC_rentOutController extends Controller
             ->with('camper', $camper);
     }
 
-    public function showExtra($id){
+    public function showExtra($id)
+    {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -601,7 +608,8 @@ class FC_rentOutController extends Controller
             ->with('camper', $camper);
     }
 
-    public function showPhoto($id){
+    public function showPhoto($id)
+    {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -620,7 +628,8 @@ class FC_rentOutController extends Controller
             ->with('files',$files)
             ->with('camper', $camper);
     }
-    public function showEquipement($id){
+    public function showEquipement($id)
+    {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -768,29 +777,52 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
 }
-        $camper = $this->getNotCompletedCamper($client->id);
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        $camper = new Camper();
+        if ($savedCamper) {
+            $camper = $savedCamper;
+            $camper = Camper::find($savedCamper->id);
+        }
         $camper->allowed_total_weight = $request->allowed_total_weight ?? null;
         $insurance = DB::table('insurances')->get();
-        $price_per_day = 0.0;
         foreach ($insurance as $item) {
-            if ($item->allowed_total_weight >= $camper->allowed_total_weight) {
-                $price_per_day = $item->price_per_day;
+            if ($item->allowed_total_weight <= $camper->allowed_total_weight) {
+                $camper->insurance_price = $item->price_per_day;
+                $camper->id_insurances = $item->id;
             }
+        }
+        if ($camper->id) {
+            $camper->update();
+        } else {
+            $camper->save();
         }
         return view('frontend.camper.rent_out.insurance')
             ->with('camper', $camper)
-            ->with('client', $client)
-            ->with('price_per_day', $price_per_day);
+            ->with('client', $client);
     }
 
-    public function storeRental_terms()
+    public function storeRental_terms(Request $request)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $camper = $this->getNotCompletedCamper($client->id);
-        //$camper->minimum_age = $request->minimum_age ?? null;
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        $camper = new Camper();
+        if ($savedCamper) {
+            $camper = $savedCamper;
+            $camper = Camper::find($savedCamper->id);
+        }
+        if ($request->has_insurance == 0) {
+            $camper->insurance_price = 0;
+            $camper->has_insurance = $request->has_insurance;
+            $camper->id_insurances = null;
+            $camper->update();
+        } else {
+            $camper->insurance_price = $request->insurance_price;
+            $camper->has_insurance = $request->has_insurance;
+            $camper->update();
+        }
         return view('frontend.camper.rent_out.rental_terms')
             ->with('camper', $camper)
             ->with('client', $client);
@@ -802,19 +834,89 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $camper = $this->getNotCompletedCamper($client->id);
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        $camper = new Camper();
+        if ($savedCamper) {
+            $camper = $savedCamper;
+            $camper = Camper::find($savedCamper->id);
+        }
+        $camper->minimum_age = $request->minimum_age ?? null;
+        $camper->license_age = $request->license_age ?? null;
+        $camper->animals_allowed = $request->animals_allowed ?? null;
+        $camper->smoking_allowed = $request->smoking_allowed ?? null;
+        $camper->kilometres_per_night = $request->kilometres_per_night ?? null;
+        $camper->additional_equipment_out = $request->additional_equipment_out ?? null;
+        if ($camper->id) {
+            $camper->update();
+        } else {
+            $camper->save();
+        }
+
+        $season_main = DB::table('camper_terms')->where('id_campers', $camper->id)->where('season', 'main')->first();
+        $season_off = DB::table('camper_terms')
+            ->where('id_campers', $camper->id)
+            ->where('season', 'Off_may')
+            ->first();
+        $season_winter = DB::table('camper_terms')->where('id_campers', $camper->id)->where('season', 'winter')->first();
+
         return view('frontend.camper.rent_out.conditions')
             ->with('client', $client)
-            ->with('camper', $camper);
+            ->with('camper', $camper)
+            ->with('season_main', $season_main)
+            ->with('season_winter', $season_winter)
+            ->with('season_off', $season_off);
     }
 
-    public function storecalendar(Request $request)
+    public function saveterms(Request $request)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $camper = $this->getNotCompletedCamper($client->id);
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        $camper = new Camper();
+        if ($savedCamper) {
+            $camper = $savedCamper;
+            $camper = Camper::find($savedCamper->id);
+        }
+        $camper_terms = DB::table('camper_terms')->where('id_campers', $camper->id)->first();
+        if ($camper_terms == null) {
+            $camper_terms = new CamperTerms();
+            //delete old data for this camper
+        }
+
+        if ($request->price_per_night_main != null && $request->price_per_night_main != null) {
+            $camper_terms_main = new CamperTerms();
+            $camper_terms_main->season = 'main';
+            $camper_terms_main->minimum_night = $request->minimum_night_main ?? null;
+            $camper_terms_main->price_per_night = $request->price_per_night_main ?? null;
+            $camper_terms_main->start_month = 7;
+            $camper_terms_main->end_month = 8;
+            $camper_terms_main->id_campers = $camper->id;
+            $camper_terms_main->save();
+
+        }
+        if ($request->price_per_night_off != null && $request->minimum_night_off != null) {
+            $camper_terms_off = new CamperTerms();
+            $camper_terms_off->season = 'Off_may';
+            $camper_terms_off->minimum_night = $request->minimum_night_off ?? null;
+            $camper_terms_off->price_per_night = $request->price_per_night_off ?? null;
+            $camper_terms_off->start_month = 5;
+            $camper_terms_off->end_month = 6;
+            $camper_terms_off->id_campers = $camper->id;
+            $camper_terms_off->save();
+
+        }
+        if ($request->price_per_night_winter != null && $request->minimum_night_winter != null) {
+            $camper_terms_winter = new CamperTerms();
+            $camper_terms_winter->season = 'winter';
+            $camper_terms_winter->minimum_night = $request->minimum_night_winter ?? null;
+            $camper_terms_winter->price_per_night = $request->price_per_night_winter ?? null;
+            $camper_terms_winter->start_month = 11;
+            $camper_terms_winter->end_month = 4;
+            $camper_terms_winter->id_campers = $camper->id;
+            $camper_terms_winter->save();
+        }
         return view('frontend.camper.rent_out.calendar')
             ->with('client', $client)
             ->with('camper', $camper);
@@ -822,8 +924,8 @@ class FC_rentOutController extends Controller
 
     public function calc_nights_main_ajax(Request $request)
     {
-        $price_per_day = $request->price_per_day;
-        $minimal_rent_days_main = $request->minimal_rent_days_main;
+        $price_per_day = $request->price_per_night_main;
+        $minimal_rent_days_main = $request->minimum_night_main;
         $total = $minimal_rent_days_main * $price_per_day;
         $promotion = $total * 0.15;
         $owner_part = $total - $promotion;

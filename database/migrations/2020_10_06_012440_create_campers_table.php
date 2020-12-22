@@ -41,6 +41,7 @@ class CreateCampersTable extends Migration
             $table->double('price_per_day')->nullable();
             $table->integer('minimal_rent_days')->nullable();
             $table->string('included_kilometres', 100)->nullable();
+            $table->integer('kilometres_per_night')->nullable();
             $table->integer('minimum_age')->nullable();
             $table->string('animals_allowed')->nullable();
             $table->string('animal_description', 300)->nullable();
@@ -59,6 +60,8 @@ class CreateCampersTable extends Migration
             $table->string("leasing_vehicle")->nullable();
             $table->string("additional_attribute")->nullable();
             $table->text("additional_equipment_out")->nullable();
+            $table->integer("insurance_price")->nullable();
+            $table->integer("has_insurance")->nullable();
 
             $table->unsignedBigInteger('id_clients')->nullable();
             $table->unsignedBigInteger('id_licence_categories')->nullable();

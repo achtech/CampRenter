@@ -29,28 +29,21 @@
 			<div class="col-lg-7 col-md-12">
 				<h3><strong>{{trans('front.insurance')}}</strong></h3>
 				<div class="payment-tab-trigger">
-					<input id="vehicleowner" name="cardType" type="radio" value="" onclick="show1();">
+					<input id="vehicleowner" name="has_insurance" type="radio" value="0" onclick="show1();">
 					<label for="vehicleowner"><strong>{{trans('front.comprehensive_cover')}}</strong></label>
 					<p>{{trans('front.comprehensive_cover_info')}}</p>
 				</div>
 				<div class="payment-tab-trigger">
-					<input id="noinsurance" name="cardType" type="radio" value="" onclick="show2();">
-					<label for="noinsurance"><strong>{{trans('front.no_insurance')}}</strong></label>
+					<input id="noinsurance" name="has_insurance" type="radio" value="1" onclick="show2();">
+					<label for="noinsurance"><strong>{{trans('front.our_proposition')}}</strong></label>
 					<p>{{trans('front.no_insurance_info')}}</p>
 				</div>
-				<div id="div1" class="payment-tab-trigger" style="display: none;">
+				<div id="div1" class="payment-tab-trigger" style="display: none; margin-top: 5%;">
 					<div class="row">
 						<div class="col-md-6">
-							<div class="card-label">
-								<label for="allowed_total_weight">{{trans('front.allowed_tons')}}</label>
-								<input disabled type="text" name="allowed_total_weight" value="{{$camper->allowed_total_weight}}">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="card-label">
-								<label for="price_per_day">Price/day</label>
-								<input disabled type="text" name="price_per_day" value="{{$price_per_day}}€">
-							</div>
+							<p style="margin-bottom: 0px;"><strong>{{trans('front.allowed_tons')}} : </strong>{{$camper->allowed_total_weight}}</p>
+							<p><strong>Price Insurance/day : </strong>{{$camper->insurance_price}}€</p>
+							<input type="hidden" name="insurance_price" value="{{$camper->insurance_price}}" />
 						</div>
 					</div>
 				</div>
