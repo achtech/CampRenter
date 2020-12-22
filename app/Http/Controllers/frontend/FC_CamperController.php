@@ -75,7 +75,8 @@ class FC_CamperController extends Controller
 
     public function search(Request $request)
     {
-        $searchedLocation = $request->searchedLocation ?? '';
+        $searchedLocation = $request->searchedLocation;
+
         $searchedDate = $request->searchedDate ?? '';
         $searchedCategories = $request->searchedCategories ?? '';
         $data = $this->getData();
@@ -83,9 +84,8 @@ class FC_CamperController extends Controller
         if ($camperEquipementIds != 0) {
             $data = $data->whereIn('id', $camperEquipementIds);
         }
-
         if (!empty($searchedLocation)) {
-            //TODO
+            $data = $this->searchingsnippet($searchedLocation);
         }
         if (!empty($searchedDate)) {
             $tabDate = explode('-', $searchedDate);
@@ -183,5 +183,36 @@ class FC_CamperController extends Controller
     {
         return DB::table('campers')
             ->where('is_confirmed', '1');
+    }
+
+    public function searchingsnippet($_param)
+    {
+
+        $mots = str_replace("+", " ", $_param);
+        $mots = str_replace("\"", " ", $mots);
+
+        $mots = str_replace(' ', ' ', $mots);
+        $mots = str_replace(",", " ", $mots);
+        $mots = str_replace("-", " ", $mots);
+
+        $mots = mb_convert_case($mots, MB_CASE_LOWER, "UTF-8");
+        $mots = preg_replace('/[^A-Za-z0-9\-]/', ' ', $mots);
+        $tab = explode(" ", $mots);
+
+        // Rabat Ville, Avenue Mohammed
+        for ($i = 0; $i < count($tab); $i++) {
+            if ($tab[$i] != '') {
+
+                $result = Camper::where('location', 'LIKE', '%' . $tab[$i] . '%')
+                    ->where('is_confirmed', '1')
+                    ->orWhere('city', 'LIKE', '%' . $tab[$i] . '%')
+                    ->orWhere('country', 'LIKE', '%' . $tab[$i] . '%');
+
+            }
+
+        }
+
+        return $result;
+
     }
 }

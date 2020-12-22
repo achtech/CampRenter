@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css"
           integrity="sha512-CN6oL2X5VC0thwTbojxZ02e8CVs7rii0yhTLsgsdId8JDlcLENaqISvkSLFUuZk6NcPeB+FbaTfZorhbSqcRYg=="
           crossorigin="anonymous"/>
+
+    <link rel='stylesheet' href='https://unpkg.com/@fullcalendar/list@4.4.2/main.min.css'>
 @endsection
 
 @section('content')
@@ -35,7 +37,7 @@
 		<!-- sub_menu -->
 		@include('frontend.camper.rent_out.sub_menu',['active_page'=>'calendar'])
 
-		<div class="col-lg-6 col-md-12" style="left: 10%;">
+		<div class="col-lg-6 col-md-12">
 			<h3><strong>{{trans('front.calendar')}}</strong></h3>
                 <div id='calendar'></div>
                 <div class="row margin-top-20">
@@ -47,14 +49,31 @@
                     </div>
                     <div class="col-md-4">
                         <input type="text" id="fc-title" placeholder="title">
-                        <button class="button" id="fc-event-save" style="width: 100%"> {{trans('front.save_new_password')}} <i class="fa fa-save"></i></button>
+                        <button style="float: right;" class="button" id="fc-event-save"> {{trans('front.save_new_password')}} <i class="fa fa-save"></i></button>
                     </div>
                 </div>
                 <hr>
-                <button class="button" id="save-to-database" style="width: 100%"> {{trans('front.apply')}} <i class="fa fa-database"></i></button>
+        </div>
+        <div class="col-md-6 col-md-12 margin-bottom-60">
 
-		</div>
-	</div>
+			<h4 class="headline margin-bottom-30">Previous entries</h4>
+			<table id="tableBody" class="basic-table">
+
+				<tr>
+					<th>Blocked period</th>
+					<th>Note</th>
+				</tr>
+
+			</table>
+            <div class="row">
+                <div class="col-md-12 margin-top-10">
+                <div style="float: right;">
+                <button id="save-to-database" type="submit" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
+                <button onclick="window.history.go(-1);" class="button">{{trans('front.cancel')}} <i class="fa fa-check-circle"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 @endsection
@@ -72,22 +91,23 @@
             integrity="sha512-kebSy5Iu+ouq4/swjgEKwa217P2jf/hNYtFEHw7dT+8iLhOKB5PG5xaAMaVyxRK7OT/ddoGCFrg8tslo8SIMmg=="
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src='https://unpkg.com/@fullcalendar/list@4.4.2/main.min.js'></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             let calendarEl = document.getElementById('calendar');
 
             let calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: ['dayGrid'],
+                plugins: [ 'list','dayGrid'],
                 defaultView: 'dayGridMonth',
                 timeZone: 'UTC',
                 displayEventTime: false,
-                events: [
-                    {
-                        title: 'Exemple 1',
-                        start: '2020-11-11'+'T12:00:00Z',
-                        end: '2020-11-14'+'T12:00:00Z',
-                    }
-                ],
+                events: [],
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'listMonth'
+                },
+
                 eventClick: function (info){
                     Swal.fire({
                         title: info.event.title,
@@ -141,6 +161,21 @@
                     start: date_star+'T12:00:00Z',
                     end: date_end+'T12:00:00Z',
                 });
+                var table = document.getElementById("tableBody");
+                var list_calendar = calendar.getEvents();
+                console.log(list_calendar)
+
+                var html = "";
+                $.each(list_calendar, function(rowNumber,rowData){
+                    html += "<tr>";
+                    $.each(rowData, function(columnNumber,columnData){
+                        html += "<td>"+columnData+"</td>";
+                        html += "<td>"+columnData+"</td>";
+                    });
+                    html += "</tr>";
+                });
+                $("#tableBody").html(html);
+
                 $("#fc-date-start").val('');
                 $("#fc-date-end").val('');
                 $("#fc-title").val('');

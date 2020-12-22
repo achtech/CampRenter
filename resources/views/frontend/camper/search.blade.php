@@ -17,6 +17,7 @@
 				</div>
 				<!-- Listings -->
 				<div class="row fs-listings">
+					@if (!empty($campers))
 					@foreach($campers as $camper)
 					<!-- Listing Item -->
 
@@ -58,7 +59,9 @@
 						</a>
 					</div>
 					<!-- Listing Item / End -->
+
 					@endforeach
+					@endif
 				</div>
 				<!-- Listings Container / End -->
 			</section>

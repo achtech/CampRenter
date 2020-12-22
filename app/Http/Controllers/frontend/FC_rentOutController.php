@@ -30,8 +30,7 @@ class FC_rentOutController extends Controller
         $categorieIds = DB::table('camper_categories')->pluck('id')->toArray();
         $subCategorieIds = DB::table('camper_sub_categories')->pluck('id')->toArray();
 
-        $camper = $this->getNotCompletedCamper($client->id);
-        $camper = $camper ?? new Camper();
+        $camper = new Camper();
 
         return view('frontend.camper.rent_out.rent_out')
             ->with('categories', $categories)
@@ -55,8 +54,7 @@ class FC_rentOutController extends Controller
         $categorieIds = DB::table('camper_categories')->pluck('id')->toArray();
         $subCategorieIds = DB::table('camper_sub_categories')->where('id_camper_categories', $id)->pluck('id')->toArray();
 
-        $camper = $this->getNotCompletedCamper($client->id);
-        $camper = $camper ?? new Camper();
+        $camper = new Camper();
 
         return view('frontend.camper.rent_out.rent_out')
             ->with('categories', $categories)
@@ -71,7 +69,6 @@ class FC_rentOutController extends Controller
 
     public function storeVehicleData(Request $request)
     {
-        dd($request->all());
         $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -96,12 +93,6 @@ class FC_rentOutController extends Controller
 
         $data = DB::table('camper_categories')->find($request->id_campers);
         $camperCategory = $data->label_en ?? 'No Category'; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
-
-        $client = Controller::getConnectedClient();
-        if ($client == null) {
-            return redirect(route('frontend.login.client'));
-        }
-        $savedCamper = $this->getNotCompletedCamper($client->id);
 
         $licenceCategories = LicenceCategory::get();
         $countries = Countries::get();
@@ -130,14 +121,9 @@ class FC_rentOutController extends Controller
     public function storeVehicleAndGoToEquipment(Request $request)
     {
         $client = Controller::getConnectedClient();
+        $camper = Camper::find($request->id_campers);
         if ($client == null) {
             return redirect(route('frontend.login.client'));
-        }
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        $camper = new Camper();
-        if ($savedCamper) {
-            $camper = $savedCamper;
-            $camper = Camper::find($savedCamper->id);
         }
         $camper->camper_name = $request->camper_name ?? '';
         $camper->brand = $request->brand ?? '';
@@ -259,16 +245,13 @@ class FC_rentOutController extends Controller
 
     public function storeExtraAndGoToDescription(Request $request)
     {
+        $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
         $camper = new Camper();
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        if ($savedCamper) {
-            $camper = Camper::find($savedCamper->id);
-            DB::statement('DELETE FROM camper_accessories WHERE id_campers =' . $savedCamper->id);
-        }
+        DB::statement('DELETE FROM camper_accessories WHERE id_campers =' . $camper->id);
 
         //delete from accessoire where id_camper
         //insert into access
@@ -295,15 +278,10 @@ class FC_rentOutController extends Controller
 
     public function storeDescriptionAndGoToPhoto(Request $request)
     {
-
+        $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
-        }
-        $camper = new Camper();
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        if ($savedCamper) {
-            $camper = Camper::find($savedCamper->id);
         }
 
         $camper->description_camper = $request->description_camper;
@@ -322,16 +300,10 @@ class FC_rentOutController extends Controller
 
     public function storePhotosAndGoToInsurance(Request $request)
     {
-        dd($request->all());
+        $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
-        }
-        $camper = new Camper();
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        if ($savedCamper) {
-            $camper = Camper::find($savedCamper->id);
-            DB::statement('DELETE FROM camper_images WHERE id_campers =' . $savedCamper->id);
         }
 
         $idCamper = $camper->id;

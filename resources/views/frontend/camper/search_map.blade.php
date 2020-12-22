@@ -65,5 +65,33 @@ let sqh=7 ;
             map.fitBounds(latlngbounds);
         }
     </script>
+
+
+
+<script type="text/javascript">
+
+ google.maps.event.addDomListener(window, 'load', initialize1212);
+
+
+function initialize1212() {
+
+var cityBounds = new google.maps.LatLngBounds(
+  new google.maps.LatLng(-7.959286300000031,31.5628076),
+  new google.maps.LatLng(7.9951, 31.8728076));
+
+var options = {
+  bounds: cityBounds,
+  types: ['geocode'],
+  componentRestrictions: {country: 'MA'}
+};
+
+ var input = document.getElementById('searchTextField');
+
+ var autocomplete = new google.maps.places.Autocomplete(input, options);
+}
+</script>
+
+
+
     <div id="map_search" class="markers-on-the-map"></div>
 </div>

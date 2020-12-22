@@ -9,8 +9,8 @@
                     <!-- Main Search Input -->
                     <div class="col-fs-6">
                         <div class="input-with-icon location">
-                            <div id="autocomplete-container" data-autocomplete-tip="{{trans('front.type_and_hit_enter')}}">
-                                <input id="autocomplete-input" autocomplete="off" type="text" placeholder="{{trans('front.location')}}" name="searchedLocation" value="{{$searchedLocation ?? ''}}" onchange="document.forms['frm1'].submit()" >
+                            <div id="autocomplete-containeroff" data-autocomplete-tip="{{trans('front.type_and_hit_enter')}}">
+                                <input id="searchTextField" autocomplete="off" type="text" placeholder="{{trans('front.location')}}" name="searchedLocation" value="{{$searchedLocation ?? ''}}" onchange="document.forms['frm1'].submit()" >
                             </div>
                             <a href="#"><i class="fa fa-map-marker"></i></a>
                         </div>

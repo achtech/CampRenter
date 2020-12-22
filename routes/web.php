@@ -150,7 +150,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('blog/storeComment', [FBlogController::class, 'store'])->name('frontend.blog.storeComment');
 
     /************* Clients FrentEnd **********************/
-    Route::get('/camper/search', [FC_CamperController::class, 'search'])->name('frontend.camper.search');
+    Route::get('/camper/search/{param?}', [FC_CamperController::class, 'search'])->name('frontend.camper.search');
     Route::get('/camper/search/category/{id}', [FC_CamperController::class, 'searchByCategory'])->name('frontend.camper.searchByCategory');
     Route::get('/camper_client', [FC_CamperController::class, 'index'])->name('frontend.clients.camper');
     Route::get('/message_client', [FC_messageController::class, 'index'])->name('frontend.clients.message');
