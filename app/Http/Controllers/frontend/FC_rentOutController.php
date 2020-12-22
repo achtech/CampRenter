@@ -769,7 +769,22 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $camper = $this->getNotCompletedCamper($client->id);
+        $savedCamper = $this->getNotCompletedCamper($client->id);
+        $camper = new Camper();
+        if ($savedCamper) {
+            $camper = $savedCamper;
+            $camper = Camper::find($savedCamper->id);
+        }
+        if ($request->has_insurance == 0) {
+            $camper->insurance_price = 0;
+            $camper->has_insurance = $request->has_insurance;
+            $camper->id_insurances = null;
+            $camper->update();
+        } else {
+            $camper->insurance_price = $request->insurance_price;
+            $camper->has_insurance = $request->has_insurance;
+            $camper->update();
+        }
         return view('frontend.camper.rent_out.rental_terms')
             ->with('camper', $camper)
             ->with('client', $client);
@@ -814,7 +829,7 @@ class FC_rentOutController extends Controller
             ->with('season_off', $season_off);
     }
 
-    public function savecalendar(Request $request)
+    public function saveterms(Request $request)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {

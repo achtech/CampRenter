@@ -29,12 +29,12 @@
 			<div class="col-lg-7 col-md-12">
 				<h3><strong>{{trans('front.insurance')}}</strong></h3>
 				<div class="payment-tab-trigger">
-					<input id="vehicleowner" name="cardType" type="radio" value="" onclick="show1();">
+					<input id="vehicleowner" name="has_insurance" type="radio" value="0" onclick="show1();">
 					<label for="vehicleowner"><strong>{{trans('front.comprehensive_cover')}}</strong></label>
 					<p>{{trans('front.comprehensive_cover_info')}}</p>
 				</div>
 				<div class="payment-tab-trigger">
-					<input id="noinsurance" name="cardType" type="radio" value="" onclick="show2();">
+					<input id="noinsurance" name="has_insurance" type="radio" value="1" onclick="show2();">
 					<label for="noinsurance"><strong>{{trans('front.our_proposition')}}</strong></label>
 					<p>{{trans('front.no_insurance_info')}}</p>
 				</div>
@@ -43,6 +43,7 @@
 						<div class="col-md-6">
 							<p style="margin-bottom: 0px;"><strong>{{trans('front.allowed_tons')}} : </strong>{{$camper->allowed_total_weight}}</p>
 							<p><strong>Price Insurance/day : </strong>{{$camper->insurance_price}}€</p>
+							<input type="hidden" name="insurance_price" value="{{$camper->insurance_price}}" />
 						</div>
 					</div>
 				</div>

@@ -61,6 +61,7 @@ class CreateCampersTable extends Migration
             $table->string("additional_attribute")->nullable();
             $table->text("additional_equipment_out")->nullable();
             $table->integer("insurance_price")->nullable();
+            $table->integer("has_insurance")->nullable();
 
             $table->unsignedBigInteger('id_clients')->nullable();
             $table->unsignedBigInteger('id_licence_categories')->nullable();

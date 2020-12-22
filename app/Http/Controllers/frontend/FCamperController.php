@@ -56,7 +56,6 @@ class FCamperController extends Controller
 
     public function calendar()
     {
-        dd('mook');
         return view('frontend.camper.rent_out.calendar');
     }
 
