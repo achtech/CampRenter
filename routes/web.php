@@ -98,8 +98,10 @@ Route::group(['middleware' => 'Lang'], function () {
                     [FC_rentOutController::class, 'storeExtraAndGoToDescription'])->name('frontend.camper.storeDescription');
     Route::post('/rentOut/photos', 
                     [FC_rentOutController::class, 'storeDescriptionAndGoToPhoto'])->name('frontend.camper.storePhotos');
-    Route::post('/rentOut/fileUpload', 
-                    [FC_rentOutController::class, 'storePhotosAndGoToInsurance'])->name('frontend.camper.fileupload');
+    Route::post('/rentOut/storeMedia', 
+                    [FC_rentOutController::class, 'storeMedia'])->name('frontend.camper.storeMedia');
+    Route::post('/rentOut/storeFiles', 
+                    [FC_rentOutController::class, 'storePhotosAndGoToInsurance'])->name('frontend.camper.storeFiles');
     Route::post('/edit_camper/{id}', 
                     [FC_rentOutController::class, 'myCamperActions'])->name('frontend.camper.edit.camper');
     Route::get('/rentOut/vehicleData/{id}',

@@ -13,6 +13,7 @@ use App\Models\Transmission;
 use App\Models\Accessorie;
 use App\Models\CamperImage;
 use DB;
+use Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -70,7 +71,6 @@ class FC_rentOutController extends Controller
 
     public function storeVehicleData(Request $request)
     {
-        dd($request->all());
         $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -308,18 +308,42 @@ class FC_rentOutController extends Controller
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
-        
+        $pictures = CamperImage::where('id_campers',$savedCamper->id)->select('image')->get();
+        $files = [];
+        for($i=0;$i<count($pictures);$i++){
+            $files[] = new File();
+            $files[]->name=$pictures->image;
+        }
 
         return view('frontend.camper.rent_out.slide_camper')
             ->with('camper', $camper)
             ->with('client', $client)
+            ->with('files', $files)
             ->with('idCamper', $idCamper)
             ->with('camperCategory', $camperCategory)
             ;
     }
+    public function storeMedia(Request $request)
+    {
+        $path = public_path('images/campers');
+        
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        
+        $file = $request->file('file');
+        
+        $name = uniqid() . '_' . trim($file->getClientOriginalName());
+    
+        $file->move($path, $name);
+    
+        return response()->json([
+            'name'          => $name,
+            'original_name' => $file->getClientOriginalName(),
+        ]);
+    }
 
     public function storePhotosAndGoToInsurance (Request $request){
-        dd($request->all());
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -331,12 +355,17 @@ class FC_rentOutController extends Controller
             DB::statement( 'DELETE FROM camper_images WHERE id_campers ='.$savedCamper->id );
         }        
         
-        
-        
+        foreach ($request->document as $doc) {
+            $camperImage = new CamperImage();
+            $camperImage->id_campers = $savedCamper->id;
+            $camperImage->image = public_path('images/campers').$doc;
+            $camperImage->save();
+        }
+
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory =$data ? $data->label_en : '';//auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
-        return view('frontend.camper.rent_out.slide_camper')
+        return view('frontend.camper.rent_out.insurance')
             ->with('camper', $camper)
             ->with('client', $client)
             ->with('idCamper', $idCamper)
@@ -579,9 +608,16 @@ class FC_rentOutController extends Controller
         }
         $camper = Camper::find($id);
         $photos = CamperImage::where('id_campers',$id)->get();
+        $pictures = CamperImage::where('id_campers',$id)->select('image')->get();
+        $files = [];
+        for($i=0;$i<count($pictures);$i++){
+            $files[] = (object) ['file_name' => $pictures[$i]->image];
+        }
+
         return view('frontend.camper.rent_out.slide_camper')
             ->with('client', $client)
             ->with('photos',$photos)
+            ->with('files',$files)
             ->with('camper', $camper);
     }
     public function showEquipement($id){
