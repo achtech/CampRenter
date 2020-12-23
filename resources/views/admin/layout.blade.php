@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="shortcut icon" href="{{ asset('images')/favicon.png }}"  type='image/x-icon'>
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"  type='image/x-icon'>
     <title>Campunit</title>
     <!-- Custom CSS -->
     <link href="{{ asset('assets/admin/libs/bootstrap/dist/css/bootstrap.min.css') }}"></link>
