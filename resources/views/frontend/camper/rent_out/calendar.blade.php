@@ -130,7 +130,6 @@
                         } else if (result.isDenied) {
                             Swal.fire({
                                 title: 'Are you sure?',
-                                text: "You won't be able to revert this!",
                                 icon: 'warning',
                                 showCancelButton: true,
                                 confirmButtonColor: '#3085d6',
@@ -167,7 +166,7 @@
                 var html = "<tr><th>Blocked period</th><th>Note</th><th></th></tr>";
                 if(list_calendar != undefined){
                     for(var i =0;i<list_calendar.length;i++){
-                        html += "<tr><td>"+moment(list_calendar[i].start).format('DD-MM-YYYY')+" To "+moment(list_calendar[i].end).format('DD-MM-YYYY')+"</td>";
+                        html += "<tr><td> From <strong>"+moment(list_calendar[i].start).format('DD-MM-YYYY')+"</strong> To <strong>"+moment(list_calendar[i].end).format('DD-MM-YYYY')+" </strong></td>";
                         html += "<td>"+list_calendar[i].title+"</td>";
                         html += "<td><a >Delete</a></td>";
                         html += "</tr>";
@@ -182,7 +181,6 @@
 
             $( "#save-to-database" ).click(function() {
                 var list_calendar = calendar.getEvents();
-                alert(list_calendar);
                 var camperId = {{$camper->id}};
                 $.ajax({
                     url: '/rentOut/saveCalendar',

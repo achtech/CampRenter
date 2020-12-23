@@ -6,7 +6,7 @@
 <title>Campunite</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{asset('images')}}/favicon.png">
 
 <!-- CSS
 ================================================== -->
@@ -152,7 +152,7 @@ $('#booking-date-range').on('hide.daterangepicker', function(ev, picker) {
 	$('.daterangepicker').addClass('calendar-hidden');
 });
 </script>
-<script>
+<!--<script>
 	let curOpen;
 
 $(document).ready(function() {
@@ -199,7 +199,7 @@ $(document).ready(function() {
     }
   });
 })
-</script>
+</script>-->
 @yield('script')
 
 </body>
