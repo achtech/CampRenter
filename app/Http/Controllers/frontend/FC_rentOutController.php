@@ -250,7 +250,6 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $camper = new Camper();
         DB::statement('DELETE FROM camper_accessories WHERE id_campers =' . $camper->id);
 
         //delete from accessoire where id_camper
@@ -289,13 +288,45 @@ class FC_rentOutController extends Controller
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory = $data ? $data->label_en : ''; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
-
+        $pictures = CamperImage::where('id_campers', $camper->id)->select('image')->get();
+        $files = [];
+        for ($i = 0; $i < count($pictures); $i++) {
+            $files[] = (object) ['file_name' => $pictures[$i]->image, 'id' => $pictures[$i]->id];
+        }
+        $countFiles = intVal(count($files) / 4);
+        $countFiles = $countFiles * 4 == count($files) ? $countFiles : $countFiles + 1;
         return view('frontend.camper.rent_out.slide_camper')
             ->with('camper', $camper)
             ->with('client', $client)
+            ->with('files', $files)
+            ->with('countFiles', $countFiles)
             ->with('idCamper', $idCamper)
             ->with('camperCategory', $camperCategory)
         ;
+    }
+    public function removePhoto($camperId, $id)
+    {
+        DB::statement('DELETE FROM camper_images WHERE id_campers =' . $camperId . ' and id=' . $id);
+        return redirect(route('frontend.camper.showPhoto', $camperId));
+    }
+    public function storeMedia(Request $request)
+    {
+        $path = public_path('images/campers');
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        $file = $request->file('file');
+
+        $name = uniqid() . '_' . trim($file->getClientOriginalName());
+
+        $file->move($path, $name);
+
+        return response()->json([
+            'name' => $name,
+            'original_name' => $file->getClientOriginalName(),
+        ]);
     }
 
     public function storePhotosAndGoToInsurance(Request $request)
@@ -305,11 +336,17 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        foreach ($request->document as $doc) {
+            $camperImage = new CamperImage();
+            $camperImage->id_campers = $camper->id;
+            $camperImage->image = $doc;
+            $camperImage->save();
+        }
 
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory = $data ? $data->label_en : ''; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
-        return view('frontend.camper.rent_out.slide_camper')
+        return view('frontend.camper.rent_out.insurance')
             ->with('camper', $camper)
             ->with('client', $client)
             ->with('idCamper', $idCamper)
@@ -319,16 +356,11 @@ class FC_rentOutController extends Controller
 
     public function storeEquipmentAndGoToExtra(Request $request)
     {
+        $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $camper = new Camper();
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        if ($savedCamper) {
-            $camper = Camper::find($savedCamper->id);
-        }
-
         $equipement = Equipment::where('id_campers', $camper->id)->first();
         if ($equipement == null) {
             $equipement = new Equipment();
@@ -386,26 +418,23 @@ class FC_rentOutController extends Controller
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory = $data ? $data->label_en : ''; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
+        $extra = Accessorie::where('id_campers', $id)->get();
 
         return view('frontend.camper.rent_out.accessories')
             ->with('camper', $camper)
             ->with('client', $client)
             ->with('idCamper', $idCamper)
+            ->with('extra', $extra)
             ->with('camperCategory', $camperCategory)
         ;
     }
 
     public function equipment()
     {
+        $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
-        }
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        $camper = new Camper();
-        if ($savedCamper) {
-            $camper = $savedCamper;
-            $camper = Camper::find($savedCamper->id);
         }
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
@@ -425,15 +454,10 @@ class FC_rentOutController extends Controller
 
     public function storePersonalData(Request $request)
     {
+        $camper = new Camper();
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
-        }
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        $camper = new Camper();
-        if ($savedCamper) {
-            $camper = $savedCamper;
-            $camper = Camper::find($savedCamper->id);
         }
         $camper->camper_name = $request->camper_name ?? '';
         $camper->recommandation = $request->recommandation ?? '';
@@ -490,11 +514,6 @@ class FC_rentOutController extends Controller
                 ->with('additionals', $additionals)
                 ->with('camperCategory', $camperCategory);
         }
-    }
-
-    public function getNotCompletedCamper($idClient)
-    {
-        return DB::table('campers')->where('id_clients', $idClient)->where('is_completed', 0)->first();
     }
 
     public function showVehicleData($id)
@@ -557,9 +576,18 @@ class FC_rentOutController extends Controller
         }
         $camper = Camper::find($id);
         $photos = CamperImage::where('id_campers', $id)->get();
+        $pictures = CamperImage::where('id_campers', $id)->select(['image', 'id'])->get();
+        $files = [];
+        for ($i = 0; $i < count($pictures); $i++) {
+            $files[] = (object) ['file_name' => $pictures[$i]->image, 'id' => $pictures[$i]->id];
+        }
+        $countFiles = intVal(count($files) / 4);
+        $countFiles = $countFiles * 4 == count($files) ? $countFiles : $countFiles + 1;
         return view('frontend.camper.rent_out.slide_camper')
             ->with('client', $client)
             ->with('photos', $photos)
+            ->with('files', $files)
+            ->with('countFiles', $countFiles)
             ->with('camper', $camper);
     }
     public function showEquipement($id)
@@ -642,18 +670,17 @@ class FC_rentOutController extends Controller
         ;
     }
 
-    public function goToInsurance()
+    public function showInsurance($id)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $camper = $this->getNotCompletedCamper($client->id);
-        $price_per_day = null;
+        $camper = Camper::find($id);
+
         return view('frontend.camper.rent_out.insurance')
             ->with('client', $client)
-            ->with('camper', $camper)
-            ->with('price_per_day', $price_per_day);
+            ->with('camper', $camper);
     }
 
     public function fillInVehicle()
@@ -662,11 +689,11 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $savedCamper = $this->getNotCompletedCamper($client->id);
+        $camper = new Camper();
         $licenceCategories = LicenceCategory::get();
         return view('frontend.camper.rent_out.fill_in_vehicle')
             ->with('client', $client)
-            ->with('camper', $savedCamper)
+            ->with('camper', $camper)
             ->with('licenceCategories', $licenceCategories);
     }
 
@@ -711,12 +738,7 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        $camper = new Camper();
-        if ($savedCamper) {
-            $camper = $savedCamper;
-            $camper = Camper::find($savedCamper->id);
-        }
+        $camper = Camper::find($request->id_campers);
         $camper->allowed_total_weight = $request->allowed_total_weight ?? null;
         $insurance = DB::table('insurances')->get();
         foreach ($insurance as $item) {
@@ -737,15 +759,11 @@ class FC_rentOutController extends Controller
 
     public function storeRental_terms(Request $request)
     {
+        $camper = Camper::find($request->id_campers);
+
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
-        }
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        $camper = new Camper();
-        if ($savedCamper) {
-            $camper = $savedCamper;
-            $camper = Camper::find($savedCamper->id);
         }
         if ($request->has_insurance == 0) {
             $camper->insurance_price = 0;
@@ -764,15 +782,10 @@ class FC_rentOutController extends Controller
 
     public function storeterms(Request $request)
     {
+        $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
-        }
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        $camper = new Camper();
-        if ($savedCamper) {
-            $camper = $savedCamper;
-            $camper = Camper::find($savedCamper->id);
         }
         $camper->minimum_age = $request->minimum_age ?? null;
         $camper->license_age = $request->license_age ?? null;
@@ -803,15 +816,10 @@ class FC_rentOutController extends Controller
 
     public function saveterms(Request $request)
     {
+        $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
-        }
-        $savedCamper = $this->getNotCompletedCamper($client->id);
-        $camper = new Camper();
-        if ($savedCamper) {
-            $camper = $savedCamper;
-            $camper = Camper::find($savedCamper->id);
         }
         $camper_terms = DB::table('camper_terms')->where('id_campers', $camper->id)->first();
         if ($camper_terms == null) {
@@ -945,6 +953,28 @@ class FC_rentOutController extends Controller
         </div>";
 
         echo $html;
+    }
+
+    public function storeCalendar(Request $request)
+    {
+        dd($request->all());
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        if ($request->periods && count($request->periods) > 0) {
+            foreach ($request->periods as $item) {
+                $booking = new Booking();
+                $booking->id_campers = $request->id_campers;
+                $booking->id_clients = $client->id;
+                $booking->id_booking_status = 7;
+                //other fields from database to be added
+                $booking->start_date = $item->start;
+                $booking->end_date = $item->end;
+                $booking->note = $item->title;
+                $booking->save();
+            }
+        }
     }
 
 }

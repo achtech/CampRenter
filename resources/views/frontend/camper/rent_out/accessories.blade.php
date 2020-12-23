@@ -34,6 +34,27 @@
 					<p>{{trans('front.accessories_header_text')}}</p>
 					<div class="col-md-12">
 						<table id="pricing-list-container">
+							@foreach($extra as $ext)
+								<tr class="pricing-list-item pattern">
+									<td>
+										<div class="checkboxes in-row">
+											<input id="check-a" type="checkbox" name="accessories">
+										</div>
+										<div class="fm-input pricing-name">
+											<input type="text" name="paid_accessories[]" placeholder="{{trans('front.paid_accessories')}}" value="{{$ext->paid_accessories}}"/>
+										</div>
+										<div class="fm-input pricing-ingredients">
+											<input type="text" name="booking_per[]"  placeholder="{{trans('front.booking_per')}}" value="{{$ext->booking_per}}"/>
+										</div>
+										<div class="fm-input pricing-price">
+											<input type="text"  name="price[]" placeholder="{{trans('front.price')}}" data-unit="CHF" value="{{$ext->price}}"/>
+										</div>
+										<div class="fm-close">
+											<a class="delete" href="#"><i class="fa fa-remove"></i></a>
+										</div>
+									</td>
+								</tr>
+							@endforeach
 							<tr class="pricing-list-item pattern">
 								<td>
 									<div class="checkboxes in-row">

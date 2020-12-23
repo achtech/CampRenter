@@ -26,6 +26,7 @@
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'rental_terms'])
 		<form  action="{{route('frontend.camper.storeterms')}}" method="POST">
 		@csrf
+			<input type="hidden" name="id_campers" value="{{$camper->id}}" />
 			<div class="col-lg-7 col-md-12">
 				<h3><strong>{{trans('front.rental_terms')}}</strong></h3>
 				<div class="col-md-12">

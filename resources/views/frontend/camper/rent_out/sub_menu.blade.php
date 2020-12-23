@@ -67,7 +67,7 @@
 				<h3 style="margin-top: 0px;"><strong>{{trans('front.menu_panel_rentout')}}</strong></h3>
 				<div class="numbered color filled">
 					<ol>
-					<li style="padding: 8px 5px !important;{{ $active_page == 'insurance_front' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('goToInsurance')}}">{{trans('front.insurance')}}</a></li>
+					<li style="padding: 8px 5px !important;{{ $active_page == 'insurance_front' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('goToInsurance', $camper->id)}}">{{trans('front.insurance')}}</a></li>
 					<li style="padding: 8px 5px !important;{{ $active_page == 'rental_terms' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('rental_terms')}}">{{trans('front.rental_terms')}}</a></li>
 					<li style="padding: 8px 5px !important;{{ $active_page == 'conditions' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('conditions')}}">{{trans('front.terms')}}</a></li>
 					<li style="padding: 8px 5px !important;{{ $active_page == 'calendar' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('calendar')}}">{{trans('front.calendar')}}</a></li>

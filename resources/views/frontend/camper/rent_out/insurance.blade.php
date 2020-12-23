@@ -26,6 +26,7 @@
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'insurance_front'])
 		<form  action="{{route('frontend.camper.storeRental_terms')}}" method="POST">
 			@csrf
+			<input type="hidden" name="id_campers" value="{{$camper->id}}" />
 			<div class="col-lg-7 col-md-12">
 				<h3><strong>{{trans('front.insurance')}}</strong></h3>
 				<div class="payment-tab-trigger">

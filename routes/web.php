@@ -98,8 +98,12 @@ Route::group(['middleware' => 'Lang'], function () {
         [FC_rentOutController::class, 'storeExtraAndGoToDescription'])->name('frontend.camper.storeDescription');
     Route::post('/rentOut/photos',
         [FC_rentOutController::class, 'storeDescriptionAndGoToPhoto'])->name('frontend.camper.storePhotos');
-    Route::post('/rentOut/fileUpload',
-        [FC_rentOutController::class, 'storePhotosAndGoToInsurance'])->name('frontend.camper.fileupload');
+    Route::get('/rentOut/photos/delete/{camperId}/{id}',
+        [FC_rentOutController::class, 'removePhoto'])->name('frontend.camper.deletePhoto');
+    Route::post('/rentOut/storeMedia',
+        [FC_rentOutController::class, 'storeMedia'])->name('frontend.camper.storeMedia');
+    Route::post('/rentOut/storeFiles',
+        [FC_rentOutController::class, 'storePhotosAndGoToInsurance'])->name('frontend.camper.storeFiles');
     Route::post('/edit_camper/{id}',
         [FC_rentOutController::class, 'myCamperActions'])->name('frontend.camper.edit.camper');
     Route::get('/rentOut/vehicleData/{id}',
@@ -125,8 +129,11 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/rentOut/storecalendar',
         [FC_rentOutController::class, 'saveterms'])->name('frontend.camper.storecalendar');
 
-    Route::get('/step-insurance',
-        [FC_rentOutController::class, 'goToInsurance'])->name('goToInsurance');
+    Route::post('/rentOut/saveCalendar',
+        [FC_rentOutController::class, 'storeCalendar'])->name('frontend.camper.saveCalendar');
+
+    Route::get('/step-insurance/{id}',
+        [FC_rentOutController::class, 'showInsurance'])->name('goToInsurance');
 
     Route::post('/rentOut/calcule_main',
         [FC_rentOutController::class, 'calc_nights_main_ajax']);

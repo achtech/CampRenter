@@ -36,43 +36,45 @@
 	<div class="row">
 		<!-- sub_menu -->
 		@include('frontend.camper.rent_out.sub_menu',['active_page'=>'calendar'])
-
-		<div class="col-lg-6 col-md-12">
-			<h3><strong>{{trans('front.calendar')}}</strong></h3>
-                <div id='calendar'></div>
-                <div class="row margin-top-20">
-                    <div class="col-md-4">
-                        <input type="date" id="fc-date-start" placeholder="{{trans('front.date_start')}}">
+            <div class="col-lg-6 col-md-12">
+                <h3><strong>{{trans('front.calendar')}}</strong></h3>
+                    <div id='calendar'></div>
+                    <div class="row margin-top-20">
+                        <div class="col-md-4">
+                            <input type="date" id="fc-date-start" placeholder="{{trans('front.date_start')}}">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="date" id="fc-date-end" placeholder="{{trans('front.date_end')}}">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="fc-title" placeholder="title">
+                            <button style="float: right;" class="button" id="fc-event-save"> {{trans('front.save_new_password')}} <i class="fa fa-save"></i></button>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <input type="date" id="fc-date-end" placeholder="{{trans('front.date_end')}}">
+                    <hr>
+            </div>
+            <div class="col-md-6 col-md-12 margin-bottom-60">
+
+                <h4 class="headline margin-bottom-30">Previous entries</h4>
+                <table id="tableBody" class="basic-table">
+
+                    <tr>
+                        <th>Blocked period</th>
+                        <th>Note</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">No data Found</td>
+                    </tr>
+
+                </table>
+                <div class="row">
+                    <div class="col-md-12 margin-top-10">
+                    <div style="float: right;">
+                    <button id="save-to-database" type="submit" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
+                    <button onclick="window.history.go(-1);" class="button">{{trans('front.cancel')}} <i class="fa fa-check-circle"></i></button>
                     </div>
-                    <div class="col-md-4">
-                        <input type="text" id="fc-title" placeholder="title">
-                        <button style="float: right;" class="button" id="fc-event-save"> {{trans('front.save_new_password')}} <i class="fa fa-save"></i></button>
-                    </div>
-                </div>
-                <hr>
-        </div>
-        <div class="col-md-6 col-md-12 margin-bottom-60">
-
-			<h4 class="headline margin-bottom-30">Previous entries</h4>
-			<table id="tableBody" class="basic-table">
-
-				<tr>
-					<th>Blocked period</th>
-					<th>Note</th>
-				</tr>
-
-			</table>
-            <div class="row">
-                <div class="col-md-12 margin-top-10">
-                <div style="float: right;">
-                <button id="save-to-database" type="submit" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
-                <button onclick="window.history.go(-1);" class="button">{{trans('front.cancel')}} <i class="fa fa-check-circle"></i></button>
                 </div>
             </div>
-        </div>
     </div>
 
 </div>
@@ -158,22 +160,18 @@
                 const title = $("#fc-title").val();
                 calendar.addEvent({
                     title: title,
-                    start: date_star+'T12:00:00Z',
-                    end: date_end+'T12:00:00Z',
+                    start: date_star,
+                    end: date_end,
                 });
                 var table = document.getElementById("tableBody");
                 var list_calendar = calendar.getEvents();
-                console.log(list_calendar)
-
-                var html = "";
-                $.each(list_calendar, function(rowNumber,rowData){
-                    html += "<tr>";
-                    $.each(rowData, function(columnNumber,columnData){
-                        html += "<td>"+columnData+"</td>";
-                        html += "<td>"+columnData+"</td>";
-                    });
+                var html = "<tr><th>Blocked period</th><th>Note</th><th></th></tr>";
+                for(var i =0;i<list_calendar.length;i++){
+                    html += "<tr><td>"+list_calendar[i].start+" To "+list_calendar[i].end+"</td>";
+                    html += "<td>"+list_calendar[i].title+"</td>";
+                    html += "<td>Delete</td>";
                     html += "</tr>";
-                });
+                }
                 $("#tableBody").html(html);
 
                 $("#fc-date-start").val('');
@@ -182,7 +180,17 @@
             });
 
             $( "#save-to-database" ).click(function() {
-               console.log(calendar.getEvents())
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                var list_calendar = calendar.getEvents();
+                var camperId = {{$camper->id}};
+                $.ajax({
+                    url: '/rentOut/saveCalendar',
+                    type: 'post',
+                    data: {_token: CSRF_TOKEN, periods:list_calendar,id_campers : camperId},
+                    success: function(response){
+                        console.log(response);
+                    }
+                });
             });
         });
     </script>

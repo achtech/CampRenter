@@ -11,10 +11,10 @@
 <!-- CSS
 ================================================== -->
 <script src="https://kit.fontawesome.com/b90fcd0862.js" crossorigin="anonymous"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     @yield('style')
 
     <style>
@@ -25,9 +25,7 @@
         }
     </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 <script>
 $(document).ready(function(){
   $("#showSub").click(function(){
@@ -98,9 +96,6 @@ $(document).ready(function(){
 <!-- Scripts
 ================================================== -->
 
-<script type="text/javascript" src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
-
 <script type="text/javascript" src="{{asset('js/jquery-migrate-3.1.0.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/mmenu.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/chosen.min.js')}}"></script>
@@ -112,6 +107,7 @@ $(document).ready(function(){
 <script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/tooltips.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js"></script>
 
 <!-- Maps -->
 <script
