@@ -135,6 +135,12 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/step-insurance/{id}',
         [FC_rentOutController::class, 'showInsurance'])->name('goToInsurance');
 
+    Route::get('/step-rental_terms/{id}',
+        [FC_rentOutController::class, 'showRental_terms'])->name('goTorental_terms');
+    Route::get('/step-terms/{id}',
+        [FC_rentOutController::class, 'showTerms'])->name('goToTerms');
+    Route::get('/step-calendar/{id}',
+        [FC_rentOutController::class, 'showCalendar'])->name('goToCalendar');
     Route::post('/rentOut/calcule_main',
         [FC_rentOutController::class, 'calc_nights_main_ajax']);
     Route::post('/rentOut/calcule_off',

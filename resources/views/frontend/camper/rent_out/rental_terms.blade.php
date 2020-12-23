@@ -146,8 +146,8 @@
 				<div class="row" >
 					<div class="col-md-12" style="padding-top: 20px;">
 						<div style="float: right;">
-							<button type="submit" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
-							<button class="button border">{{trans('front.cancel')}}</button>
+							{{Form::submit(trans('front.apply'),['style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+							{{Form::submit(trans('front.cancel'),['onclick'=>'window.history.go(-1); return false;', 'style' => 'width:200px','class'=>'button border','name' => 'action'])}}
 						</div>
 					</div>
 				</div>

@@ -58,12 +58,12 @@
 								<div class="col-md-6">
 								<h3>{{trans('front.transport')}}</h3>
 									<div class="checkboxes in-row">
-										<input id="check-a" type="checkbox" value="cargo"  name="transport[]"  
+										<input id="check-a" type="checkbox" value="cargo"  name="transport[]"
 											@if(isset($transport) && is_array($transport) && in_array("cargo",$transport)) checked @endif >
 										<label for="check-a">Cargo carrier</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-b" type="checkbox" value="trailer"  name="transport[]" 
+										<input id="check-b" type="checkbox" value="trailer"  name="transport[]"
 											@if(isset($transport) && is_array($transport) && in_array("trailer",$transport)) checked @endif>
 										<label for="check-b">Trailer hitch</label>
 									</div>
@@ -72,7 +72,7 @@
 								<div class="col-md-6">
 									<h3>{{trans('front.water')}}</h3>
 									<div class="checkboxes in-row">
-										<input id="check-c" type="checkbox" value="fresh"  name="water[]" 
+										<input id="check-c" type="checkbox" value="fresh"  name="water[]"
 											@if(isset($water) && is_array($water) && in_array("fresh",$water)) checked @endif>
 										<label for="check-c">{{trans('front.fresh_water_tan')}}</label>
 									</div>
@@ -226,10 +226,16 @@
 							</div>
 							<div class="row opening-day">
 								<div class="col-md-6">
-									<input type="number" placeholder="Number of single beds" name="single_beds" value="{{$equipement->single_beds ??0}}" />
+									<div class="card-label">
+										<label for="single_beds">Number of single beds</label>
+										<input type="number" name="single_beds" value="{{$equipement->single_beds ??0}}">
+									</div>
 								</div>
 								<div class="col-md-6">
-									<input type="number" placeholder="Number of double beds" name="double_beds" value="{{$equipement->double_beds ??0}}"/>
+									<div class="card-label">
+										<label for="double_beds">Number of double beds</label>
+										<input type="number" name="double_beds" value="{{$equipement->double_beds ??0}}">
+									</div>
 								</div>
 							</div>
 						</li>
@@ -350,42 +356,42 @@
 										<label for="check-14">GPS</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-15" type="checkbox" value="usb"  name="electronics[]" 
+										<input id="check-15" type="checkbox" value="usb"  name="electronics[]"
 										@if(isset($electronics) && is_array($electronics) && in_array("usb",$electronics)) checked @endif>
 										<label for="check-15">USB</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-16" type="checkbox" value="aux"  name="electronics[]" 
+										<input id="check-16" type="checkbox" value="aux"  name="electronics[]"
 										@if(isset($electronics) && is_array($electronics) && in_array("aux",$electronics)) checked @endif>
 										<label for="check-16">AUX</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-17" type="checkbox" value="iphone"  name="electronics[]" 
+										<input id="check-17" type="checkbox" value="iphone"  name="electronics[]"
 										@if(isset($electronics) && is_array($electronics) && in_array("iphone",$electronics)) checked @endif>
 										<label for="check-17">iPhone Connection</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-18" type="checkbox" value="dvd"  name="electronics[]" 
+										<input id="check-18" type="checkbox" value="dvd"  name="electronics[]"
 										@if(isset($electronics) && is_array($electronics) && in_array("dvd",$electronics)) checked @endif>
 										<label for="check-18">DVD Player</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-19" type="checkbox" value="radio"  name="electronics[]" 
+										<input id="check-19" type="checkbox" value="radio"  name="electronics[]"
 										@if(isset($electronics) && is_array($electronics) && in_array("radio",$electronics)) checked @endif>
 										<label for="check-19">Radio</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-20" type="checkbox" value="cd"  name="electronics[]" 
+										<input id="check-20" type="checkbox" value="cd"  name="electronics[]"
 										@if(isset($electronics) && is_array($electronics) && in_array("cd",$electronics)) checked @endif>
 										<label for="check-20">CD Player</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-21" type="checkbox" value="mp3"  name="electronics[]" 
+										<input id="check-21" type="checkbox" value="mp3"  name="electronics[]"
 										@if(isset($electronics) && is_array($electronics) && in_array("mp3",$electronics)) checked @endif>
 										<label for="check-21">MP3</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-22" type="checkbox" value="tv"  name="electronics[]" 
+										<input id="check-22" type="checkbox" value="tv"  name="electronics[]"
 										@if(isset($electronics) && is_array($electronics) && in_array("tv",$electronics)) checked @endif>
 										<label for="check-22">TV</label>
 									</div>
@@ -393,27 +399,27 @@
 								<div class="col-md-6">
 									<h3>Cooking possibility</h3>
 									<div class="checkboxes in-row">
-										<input id="check-23" type="checkbox" value="burner"  name="cooking_possibility[]" 
+										<input id="check-23" type="checkbox" value="burner"  name="cooking_possibility[]"
 										@if(isset($cooking_possibility) && is_array($cooking_possibility) && in_array("burner",$cooking_possibility)) checked @endif>
 										<label for="check-23">Burner stove</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-24" type="checkbox" value="single"  name="cooking_possibility[]"  
+										<input id="check-24" type="checkbox" value="single"  name="cooking_possibility[]"
 										@if(isset($cooking_possibility) && is_array($cooking_possibility) && in_array("single",$cooking_possibility)) checked @endif>
 										<label for="check-24">Single electric cooker</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-25" type="checkbox" value="triple"  name="cooking_possibility[]"  
+										<input id="check-25" type="checkbox" value="triple"  name="cooking_possibility[]"
 										@if(isset($cooking_possibility) && is_array($cooking_possibility) && in_array("triple",$cooking_possibility)) checked @endif>
 										<label for="check-25">Triple electric cooker</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-26" type="checkbox" value="double"   name="cooking_possibility[]" 
+										<input id="check-26" type="checkbox" value="double"   name="cooking_possibility[]"
 										@if(isset($cooking_possibility) && is_array($cooking_possibility) && in_array("double",$cooking_possibility)) checked @endif>
 										<label for="check-26">Double electric cooker</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-27" type="checkbox" value="oven"  name="cooking_possibility[]" 
+										<input id="check-27" type="checkbox" value="oven"  name="cooking_possibility[]"
 										@if(isset($cooking_possibility) && is_array($cooking_possibility) && in_array("oven",$cooking_possibility)) checked @endif>
 										<label for="check-27">Oven</label>
 									</div>
@@ -430,7 +436,7 @@
 								<div class="col-md-6">
 									<h3>Cooling possibility</h3>
 									<div class="checkboxes in-row">
-										<input id="check-28" type="checkbox" value="fridge"  name="cooling_possibility[]" 
+										<input id="check-28" type="checkbox" value="fridge"  name="cooling_possibility[]"
 										@if(isset($cooling_possibility) && is_array($cooling_possibility) && in_array("fridge",$cooling_possibility)) checked @endif>
 										<label for="check-28">Fridge</label>
 									</div>
@@ -453,22 +459,22 @@
 										<label for="check-31">Toilet</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-32" type="checkbox" value="basin"  name="bathroom[]" 
+										<input id="check-32" type="checkbox" value="basin"  name="bathroom[]"
 										@if(isset($bathroom) && is_array($bathroom) && in_array("basin",$bathroom)) checked @endif>
 										<label for="check-32">Basin</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-33" type="checkbox" value="mobile"  name="bathroom[]" 
+										<input id="check-33" type="checkbox" value="mobile"  name="bathroom[]"
 										@if(isset($bathroom) && is_array($bathroom) && in_array("mobile",$bathroom)) checked @endif>
 										<label for="check-33">Mobile camping toilet</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-34" type="checkbox" value="shower"  name="bathroom[]" 
+										<input id="check-34" type="checkbox" value="shower"  name="bathroom[]"
 										@if(isset($bathroom) && is_array($bathroom) && in_array("shower",$bathroom)) checked @endif>
 										<label for="check-34">Shower</label>
 									</div>
 									<div class="checkboxes in-row">
-										<input id="check-35" type="checkbox" value="outdoor"  name="bathroom[]" 
+										<input id="check-35" type="checkbox" value="outdoor"  name="bathroom[]"
 										@if(isset($bathroom) && is_array($bathroom) && in_array("outdoor",$bathroom)) checked @endif>
 										<label for="check-35">Outdoor shower</label>
 									</div>

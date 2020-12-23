@@ -68,9 +68,9 @@
 				<div class="numbered color filled">
 					<ol>
 					<li style="padding: 8px 5px !important;{{ $active_page == 'insurance_front' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('goToInsurance', $camper->id)}}">{{trans('front.insurance')}}</a></li>
-					<li style="padding: 8px 5px !important;{{ $active_page == 'rental_terms' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('rental_terms')}}">{{trans('front.rental_terms')}}</a></li>
-					<li style="padding: 8px 5px !important;{{ $active_page == 'conditions' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('conditions')}}">{{trans('front.terms')}}</a></li>
-					<li style="padding: 8px 5px !important;{{ $active_page == 'calendar' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('calendar')}}">{{trans('front.calendar')}}</a></li>
+					<li style="padding: 8px 5px !important;{{ $active_page == 'rental_terms' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('goTorental_terms', $camper->id)}}">{{trans('front.rental_terms')}}</a></li>
+					<li style="padding: 8px 5px !important;{{ $active_page == 'conditions' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('goToTerms', $camper->id)}}">{{trans('front.terms')}}</a></li>
+					<li style="padding: 8px 5px !important;{{ $active_page == 'calendar' ? ' background-color: aliceblue;' : '' }}"><a href="{{route('goToCalendar', $camper->id)}}">{{trans('front.calendar')}}</a></li>
 					</ol>
 				</div>
 			</li>

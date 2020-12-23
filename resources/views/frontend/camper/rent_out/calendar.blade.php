@@ -101,20 +101,19 @@
             let calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: [ 'list','dayGrid'],
                 defaultView: 'dayGridMonth',
-                timeZone: 'UTC',
                 displayEventTime: false,
                 events: [],
                 header: {
-                    left: 'prev,next today',
+                    left: '',
                     center: 'title',
-                    right: 'listMonth'
+                    right: 'today prev,next'
                 },
 
                 eventClick: function (info){
                     Swal.fire({
                         title: info.event.title,
                         icon: 'info',
-                        html:' <div> <input type="date" id="swal-start" value="'+moment(info.event.start).utc().format('YYYY-MM-DD')+'" placeholder="date Start"> <input type="date" id="swal-end" value="'+moment(info.event.end).utc().format('YYYY-MM-DD')+'" placeholder="date End"> <input type="text" id="swal-title" placeholder="title" value="'+info.event.title+'"> </div>',
+                        html:' <div> <input type="date" id="swal-start" value="'+moment(info.event.start).format('YYYY-MM-DD')+'" placeholder="date Start"> <input type="date" id="swal-end" value="'+moment(info.event.end).format('YYYY-MM-DD')+'" placeholder="date End"> <input type="text" id="swal-title" placeholder="title" value="'+info.event.title+'"> </div>',
                         showDenyButton: true,
                         showCancelButton: true,
                         confirmButtonText: `Update`,
@@ -125,8 +124,8 @@
                             const date_end = $("#swal-end").val();
                             const title = $("#swal-title").val();
                             info.event.setProp('title', title);
-                            info.event.setStart(date_star+'T12:00:00Z');
-                            info.event.setEnd(date_end+'T12:00:00Z');
+                            info.event.setStart(date_star);
+                            info.event.setEnd(date_end);
                             Swal.fire('Saved!', '', 'success')
                         } else if (result.isDenied) {
                             Swal.fire({
@@ -155,8 +154,8 @@
             calendar.render();
 
             $( "#fc-event-save" ).click(function() {
-                const date_star = $("#fc-date-start").val();
-                const date_end = $("#fc-date-end").val();
+                const date_star = moment($("#fc-date-start").val()).format('YYYY-MM-DD');
+                const date_end = moment($("#fc-date-end").val()).format('YYYY-MM-DD');
                 const title = $("#fc-title").val();
                 calendar.addEvent({
                     title: title,
@@ -166,11 +165,13 @@
                 var table = document.getElementById("tableBody");
                 var list_calendar = calendar.getEvents();
                 var html = "<tr><th>Blocked period</th><th>Note</th><th></th></tr>";
-                for(var i =0;i<list_calendar.length;i++){
-                    html += "<tr><td>"+list_calendar[i].start+" To "+list_calendar[i].end+"</td>";
-                    html += "<td>"+list_calendar[i].title+"</td>";
-                    html += "<td>Delete</td>";
-                    html += "</tr>";
+                if(list_calendar != undefined){
+                    for(var i =0;i<list_calendar.length;i++){
+                        html += "<tr><td>"+moment(list_calendar[i].start).format('DD-MM-YYYY')+" To "+moment(list_calendar[i].end).format('DD-MM-YYYY')+"</td>";
+                        html += "<td>"+list_calendar[i].title+"</td>";
+                        html += "<td><a >Delete</a></td>";
+                        html += "</tr>";
+                    }
                 }
                 $("#tableBody").html(html);
 
@@ -180,13 +181,13 @@
             });
 
             $( "#save-to-database" ).click(function() {
-                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 var list_calendar = calendar.getEvents();
+                alert(list_calendar);
                 var camperId = {{$camper->id}};
                 $.ajax({
                     url: '/rentOut/saveCalendar',
                     type: 'post',
-                    data: {_token: CSRF_TOKEN, periods:list_calendar,id_campers : camperId},
+                    data: {periods:list_calendar,id_campers : camperId},
                     success: function(response){
                         console.log(response);
                     }

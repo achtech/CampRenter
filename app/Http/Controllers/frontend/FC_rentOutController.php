@@ -683,6 +683,55 @@ class FC_rentOutController extends Controller
             ->with('camper', $camper);
     }
 
+    public function showRental_terms($id)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = Camper::find($id);
+
+        return view('frontend.camper.rent_out.rental_terms')
+            ->with('client', $client)
+            ->with('camper', $camper);
+    }
+
+    public function showTerms($id)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = Camper::find($id);
+
+        $season_main = DB::table('camper_terms')->where('id_campers', $camper->id)->where('season', 'main')->first();
+        $season_off = DB::table('camper_terms')
+            ->where('id_campers', $camper->id)
+            ->where('season', 'Off_may')
+            ->first();
+        $season_winter = DB::table('camper_terms')->where('id_campers', $camper->id)->where('season', 'winter')->first();
+
+        return view('frontend.camper.rent_out.conditions')
+            ->with('client', $client)
+            ->with('camper', $camper)
+            ->with('season_main', $season_main)
+            ->with('season_winter', $season_winter)
+            ->with('season_off', $season_off);
+    }
+
+    public function showCalendar($id)
+    {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
+        $camper = Camper::find($id);
+
+        return view('frontend.camper.rent_out.calendar')
+            ->with('client', $client)
+            ->with('camper', $camper);
+    }
+
     public function fillInVehicle()
     {
         $client = Controller::getConnectedClient();
