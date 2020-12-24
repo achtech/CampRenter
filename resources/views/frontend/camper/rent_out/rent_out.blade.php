@@ -44,7 +44,7 @@
 									<!-- Box -->
 									<div class="col-md-2 alternative-imagebox"
 										id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id) ? 'showSub' : 'category'}}">
-										<a href="/rentOut/rentByCategory/{{$category->id}}" id="camper-categories">
+										<a href="/rentOut/rentByCategory/{{$category->id}}{{$camper->id}}" id="camper-categories">
 										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}"  >
 										<input type="hidden" name="id_camper_categories" value="{{$selectedCategoryId}}" />
 										<img style="max-width:52%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif"

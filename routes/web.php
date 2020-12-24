@@ -82,7 +82,7 @@ Route::group(['middleware' => 'Lang'], function () {
 
     Route::get('/rentOut',
         [FC_rentOutController::class, 'index'])->name('rent_out');
-    Route::get('/rentOut/rentByCategory/{id}',
+    Route::get('/rentOut/rentByCategory/{id}{id_camper}',
         [FC_rentOutController::class, 'rentByCategory'])->name('frontend.camper.rent_out_by_category');
     Route::post('/rentOut/fill_in_vehicle',
         [FC_rentOutController::class, 'fillInVehicle'])->name('frontend.camper.fillInVehicle');
