@@ -16,6 +16,5 @@ class VerifyCsrfToken extends Middleware
         "/rentOut/calcule_main",
         "/rentOut/calcule_off",
         "/rentOut/calcule_winter",
-        "/rentOut/saveCalendar",
     ];
 }

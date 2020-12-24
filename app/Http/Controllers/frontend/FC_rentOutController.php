@@ -13,6 +13,8 @@ use App\Models\Equipment;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
 use App\Models\Transmission;
+use App\Models\Booking;
+
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -726,10 +728,12 @@ class FC_rentOutController extends Controller
             return redirect(route('frontend.login.client'));
         }
         $camper = Camper::find($id);
+        $calendar = Booking::where('id_clients',$client->id)->where('id_booking_status',7)->select(['start_date','end_date','comment'])->get();
 
         return view('frontend.camper.rent_out.calendar')
             ->with('client', $client)
-            ->with('camper', $camper);
+            ->with('camper', $camper)
+            ->with('blokedPeriods',$calendar);
     }
 
     public function fillInVehicle()
@@ -908,9 +912,11 @@ class FC_rentOutController extends Controller
             $camper_terms_winter->id_campers = $camper->id;
             $camper_terms_winter->save();
         }
+        $calendar = Booking::where('id_clients',$client->id)->where('id_booking_status',7)->select(['start_date','end_date','comment'])->get();
         return view('frontend.camper.rent_out.calendar')
             ->with('client', $client)
-            ->with('camper', $camper);
+            ->with('camper', $camper)
+            ->with('blokedPeriods',$calendar);
     }
 
     public function calc_nights_main_ajax(Request $request)
@@ -1006,24 +1012,29 @@ class FC_rentOutController extends Controller
 
     public function storeCalendar(Request $request)
     {
-        dd($request->all());
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        if ($request->periods && count($request->periods) > 0) {
-            foreach ($request->periods as $item) {
-                $booking = new Booking();
-                $booking->id_campers = $request->id_campers;
-                $booking->id_clients = $client->id;
-                $booking->id_booking_status = 7;
-                //other fields from database to be added
-                $booking->start_date = $item->start;
-                $booking->end_date = $item->end;
-                $booking->note = $item->title;
-                $booking->save();
+        DB::statement('DELETE FROM bookings WHERE id_campers =' . $request->id_campers. ' and id_booking_status=7');
+
+        if ($request->period && count($request->period) > 0) {
+            foreach ($request->period as $item) {
+                if(isset($item['start']) && isset($item['end']) && isset($item['title'])){
+                    $booking = new Booking();
+                    $booking->id_campers = $request->id_campers;
+                    $booking->id_clients = $client->id;
+                    $booking->id_booking_status = 7;
+                    //other fields from database to be added
+                    
+                    $booking->start_date =date('Y-m-d H:i:s',strtotime($item['start']));
+                    $booking->end_date = date('Y-m-d H:i:s',strtotime($item['end']));
+                    $booking->comment = $item['title'];
+                    $booking->save();
+                }
             }
         }
+        return redirect(route('frontend.clients.camper'));
     }
 
 }

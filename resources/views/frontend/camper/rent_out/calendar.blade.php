@@ -36,44 +36,64 @@
 	<div class="row">
 		<!-- sub_menu -->
 		@include('frontend.camper.rent_out.sub_menu',['active_page'=>'calendar'])
-            <div class="col-lg-6 col-md-12">
-                <h3><strong>{{trans('front.calendar')}}</strong></h3>
-                    <div id='calendar'></div>
-                    <div class="row margin-top-20">
-                        <div class="col-md-4">
-                            <input type="date" id="fc-date-start" placeholder="{{trans('front.date_start')}}">
+                <div class="col-lg-6 col-md-12">
+                    <h3><strong>{{trans('front.calendar')}}</strong></h3>
+                        <div id='calendar'></div>
+                        <div class="row margin-top-20">
+                            <div class="col-md-4">
+                                <input type="date" id="fc-date-start" placeholder="{{trans('front.date_start')}}">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="date" id="fc-date-end" placeholder="{{trans('front.date_end')}}">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" id="fc-title" placeholder="title">
+                                <button style="float: right;" class="button" id="fc-event-save"> {{trans('front.save_new_password')}} <i class="fa fa-save"></i></button>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <input type="date" id="fc-date-end" placeholder="{{trans('front.date_end')}}">
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" id="fc-title" placeholder="title">
-                            <button style="float: right;" class="button" id="fc-event-save"> {{trans('front.save_new_password')}} <i class="fa fa-save"></i></button>
-                        </div>
-                    </div>
-                    <hr>
-            </div>
-            <div class="col-md-6 col-md-12 margin-bottom-60">
-
-                <h4 class="headline margin-bottom-30">Previous entries</h4>
-                <table id="tableBody" class="basic-table">
-
-                    <tr>
-                        <th>Blocked period</th>
-                        <th>Note</th>
-                    </tr>
-                    <tr>
-                        <td colspan="2">No data Found</td>
-                    </tr>
-
-                </table>
-                <div class="row">
-                    <div class="col-md-12 margin-top-10">
-                    <div style="float: right;">
-                    <button id="save-to-database" type="submit" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
-                    <button onclick="window.history.go(-1);" class="button">{{trans('front.cancel')}} <i class="fa fa-check-circle"></i></button>
-                    </div>
+                        <hr>
                 </div>
+                <div class="col-md-6 col-md-12 margin-bottom-60">
+                <form  action="{{route('frontend.camper.saveCalendar')}}" method="POST" id="calendarForm">
+                    @csrf
+                    <input type="hidden" name="id_campers" value="{{$camper->id}}" />
+
+                    <h4 class="headline margin-bottom-30">Previous entries</h4>
+                    <table id="tableBody" class="basic-table">
+
+                        <tr>
+                            <th>Blocked period</th>
+                            <th>Note</th>
+                            <th></th>
+                        </tr>
+                        @if(count($blokedPeriods)==0)
+                        <tr>
+                            <td colspan="2">No data Found</td>
+                        </tr>
+                        @else
+                            @foreach($blokedPeriods as $item)        
+                                <tr>
+                                    <td>
+                                    <input type='hidden' name="period[{{$loop->index}}][start]" value="{{date('d-m-Y',strtotime($item->start_date))}}"/>
+                                    <input type='hidden' name="period[{{$loop->index}}][end]" value="{{date('d-m-Y',strtotime($item->end_date))}}" />
+                                    <input type='hidden' name="period[{{$loop->index}}][title]" value="{{$item->comment}}" />
+                                    
+                                    From <strong>{{date('d-m-Y',strtotime($item->start_date))}}</strong> To <strong>{{date('d-m-Y',strtotime($item->end_date))}}</strong> </td>
+                                    <td>{{$item->comment}}</td>
+                                    <td><a class="delete" href="#"><i class="fa fa-remove"></i></a></td>
+                                </tr>
+                            @endforeach
+                        @endif
+
+                    </table>
+                    <div class="row">
+                        <div class="col-md-12 margin-top-10">
+                        <div style="float: right;">
+                            {{Form::submit(trans('front.apply'),['style' => 'width:200px','id'=>'save-to-database','class'=>'button border','name' => 'action'])}}
+							{{Form::submit(trans('front.cancel'),['onclick'=>'window.history.go(-1); return false;', 'style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+                        </div>
+                    </div>
+                </form>
             </div>
     </div>
 
@@ -96,8 +116,14 @@
     <script src='https://unpkg.com/@fullcalendar/list@4.4.2/main.min.js'></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            var oldEvent =<?php echo json_encode($blokedPeriods); ?>;
             let calendarEl = document.getElementById('calendar');
-
+            /*var tabEvent = ([{
+                    title: oldEvent[0].comment,
+                    start: oldEvent[0].start_date,
+                    end: oldEvent[0].end_date,
+                }]);
+*/
             let calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: [ 'list','dayGrid'],
                 defaultView: 'dayGridMonth',
@@ -164,12 +190,33 @@
                 var table = document.getElementById("tableBody");
                 var list_calendar = calendar.getEvents();
                 var html = "<tr><th>Blocked period</th><th>Note</th><th></th></tr>";
+                var oldEvent =<?php echo json_encode($blokedPeriods); ?>;
+                var count = 0;
+                if(oldEvent != undefined && oldEvent.length>0){
+                    for(count =0;count<oldEvent.length;count++){
+                        html += "<tr><td>";
+                        html += "<input type='hidden' name='period["+count+"][start]' value='"+moment(oldEvent[count].start_date).format('YYYY-MM-DD')+"'/>";
+                        html += "<input type='hidden' name='period["+count+"][end]' value='"+moment(oldEvent[count].end_date).format('YYYY-MM-DD')+"'/>";
+                        html += "<input type='hidden' name='period["+count+"][title]' value='"+oldEvent[count].comment+"'/>";
+                        html += "From <strong>"+moment(oldEvent[count].start_date).format('DD-MM-YYYY')+"</strong> To <strong>"+moment(oldEvent[count].end_date).format('DD-MM-YYYY')+" </strong></td>";
+                        html += "<td>"+oldEvent[count].comment+"</td>";
+                        html += "<td><a class='delete' href='#'><i class='fa fa-remove'></i></a></td>";
+                        html += "</tr>";
+                    }
+                }       
+                         
                 if(list_calendar != undefined){
                     for(var i =0;i<list_calendar.length;i++){
-                        html += "<tr><td> From <strong>"+moment(list_calendar[i].start).format('DD-MM-YYYY')+"</strong> To <strong>"+moment(list_calendar[i].end).format('DD-MM-YYYY')+" </strong></td>";
+                        
+                        html += "<tr><td>";
+                        html += "<input type='hidden' name='period["+count+"][start]' value='"+moment(list_calendar[i].start).format('YYYY-MM-DD')+"'/>";
+                        html += "<input type='hidden' name='period["+count+"][end]' value='"+moment(list_calendar[i].end).format('YYYY-MM-DD')+"'/>";
+                        html += "<input type='hidden' name='period["+count+"][title]' value='"+list_calendar[i].title+"'/>";
+                        html += "From <strong>"+moment(list_calendar[i].start).format('DD-MM-YYYY')+"</strong> To <strong>"+moment(list_calendar[i].end).format('DD-MM-YYYY')+" </strong></td>";
                         html += "<td>"+list_calendar[i].title+"</td>";
-                        html += "<td><a >Delete</a></td>";
+                        html += "<td><a class='delete' href='#''><i class='fa fa-remove'></i></a></td>";
                         html += "</tr>";
+                        count+=1;
                     }
                 }
                 $("#tableBody").html(html);
@@ -178,19 +225,11 @@
                 $("#fc-date-end").val('');
                 $("#fc-title").val('');
             });
-
-            $( "#save-to-database" ).click(function() {
-                var list_calendar = calendar.getEvents();
-                var camperId = {{$camper->id}};
-                $.ajax({
-                    url: '/rentOut/saveCalendar',
-                    type: 'post',
-                    data: {periods:list_calendar,id_campers : camperId},
-                    success: function(response){
-                        console.log(response);
-                    }
-                });
-            });
         });
+        $(document).on("click", ".delete", function(e) {
+                e.preventDefault();
+                $(this).parent().parent().remove();
+            });
+
     </script>
 @endsection
