@@ -38,13 +38,14 @@
 					</div>
 					<form  action="{{route('frontend.camper.storePersonalData')}}" method="POST"  name="frm1">
 					@csrf
+					<input type="hidden" name="id_campers" value="{{isset($camper) ? $camper->id : ''}}" />
 						<div class="col-md-12">
 							<div class="row" style="padding-left: 100px;">
 								@foreach($categories as $category)
 									<!-- Box -->
 									<div class="col-md-2 alternative-imagebox"
 										id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id) ? 'showSub' : 'category'}}">
-										<a href="/rentOut/rentByCategory/{{$category->id}}{{$camper->id}}" id="camper-categories">
+										<a href="/rentOut/rentByCategory/{{$category->id}}/{{$camper->id}}" id="camper-categories">
 										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}"  >
 										<input type="hidden" name="id_camper_categories" value="{{$selectedCategoryId}}" />
 										<img style="max-width:52%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif"
@@ -68,9 +69,11 @@
 										<div class="col-md-2 alternative-imagebox" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
 											<a>
 											<input type="radio" style="display: none" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
-											<input type="hidden" name="id_camper_sub_categories" value="" />
-											<img style="max-width:52%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
-											data-picture_sub_id="{{$sub_categories->id}}" alt=""
+											<input type="hidden" name="id_camper_sub_categories" value="{{$selectedSubCategoryId??''}}" />
+											<img style="max-width:52%;
+												@if($sub_categories->id==$selectedSubCategoryId) outline:2px solid #38b6cd; @endif"
+												src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
+												data-picture_sub_id="{{$sub_categories->id}}" alt=""
 													id="subcat_{{$sub_categories->id}}"
 													onclick="changeSubCatStyle({{$sub_categories->id}})">
 												<h3 id="title_sub" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
@@ -112,8 +115,8 @@
 					<div class="row">
 						<div class="col-md-12">
 						<div style="float: right;">
-						@if($isValid)<div style="color:red"> please choose a category @endif
-						<button type="submit" class="button" @if($isValid) disabled @endif>{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
+						@if($isValid && empty($selectedCategoryId) )<div style="color:red"> please choose a category @endif
+						<button type="submit" class="button" @if($isValid && empty($selectedCategoryId)) disabled @endif>{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
 
 						</div>
 					</div>

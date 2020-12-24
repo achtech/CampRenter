@@ -40,11 +40,12 @@ class FC_rentOutController extends Controller
             ->with('subCategorieIds', [])
             ->with('sub_categories', [])
             ->with('selectedCategoryId', '')
+            ->with('selectedSubCategoryId', '')
             ->with('isValid', true)
         ;
     }
 
-    public function rentByCategory($id, $id_camper)
+    public function rentByCategory($id, $id_camper='')
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -68,6 +69,7 @@ class FC_rentOutController extends Controller
             ->with('subCategorieIds', $subCategorieIds)
             ->with('sub_categories', $sub_categories)
             ->with('selectedCategoryId', $id)
+            ->with('selectedSubCategoryId', '')
             ->with('isValid', false)
         ;
     }
@@ -460,6 +462,9 @@ class FC_rentOutController extends Controller
     public function storePersonalData(Request $request)
     {
         $camper = new Camper();
+        if(isset($request->id_campers) && !empty($request->id_campers) ){
+            $camper = Camper::find($request->id_campers);
+        }
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
@@ -778,7 +783,8 @@ class FC_rentOutController extends Controller
                     ->with('categorieIds', $categorieIds)
                     ->with('subCategorieIds', $subCategorieIds)
                     ->with('sub_categories', $sub_categories)
-                    ->with('selectedCategoryId', $id)
+                    ->with('selectedCategoryId', $camper->id_camper_categories)
+                    ->with('selectedSubCategoryId', $camper->id_camper_sub_categories)
                     ->with('isValid', true);
             case 'detail':
                 return redirect(route('frontend.camper.detail', $camper->id));
