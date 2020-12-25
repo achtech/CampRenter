@@ -89,7 +89,7 @@
 		<!-- Stage -->
 		<div class="col-md-4">
 			<div class="icon-box-2 with-line">
-				<i class="fas fa-map-marked-alt"></i>
+				<i class="im im-icon-Map2"></i>
 				<p>{{trans('front.content_text_find_place')}}</p>
 			</div>
 		</div>
@@ -97,7 +97,7 @@
 		<!-- Stage -->
 		<div class="col-md-4">
 			<div class="icon-box-2 with-line">
-				<i class="far fa-envelope"></i>
+				<i class="im im-icon-Mail-withAtSign"></i>
 				<p>{{trans('front.choose_data_request')}}</p>
 			</div>
 		</div>
@@ -105,13 +105,13 @@
 		<!-- Stage -->
 		<div class="col-md-4">
 			<div class="icon-box-2">
-			<i class="fas fa-user-check"></i>
+			<i class="im im-icon-Checked-User"></i>
 				<p>{{trans('front.receive_request')}}</p>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-12 centered-content">
-		<a href="/camper/search" class="button border margin-top-10">{{trans('front.find_camper_now')}}</a>
+		<a href="{{route('frontend.camper.search')}}" class="button border margin-top-10">{{trans('front.find_camper_now')}}</a>
 	</div>
 </div>
 </section>
