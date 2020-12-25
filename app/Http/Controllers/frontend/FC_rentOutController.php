@@ -45,7 +45,7 @@ class FC_rentOutController extends Controller
         ;
     }
 
-    public function rentByCategory($id, $id_camper='')
+    public function rentByCategory($id, $id_camper = '')
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -462,7 +462,7 @@ class FC_rentOutController extends Controller
     public function storePersonalData(Request $request)
     {
         $camper = new Camper();
-        if(isset($request->id_campers) && !empty($request->id_campers) ){
+        if (isset($request->id_campers) && !empty($request->id_campers)) {
             $camper = Camper::find($request->id_campers);
         }
         $client = Controller::getConnectedClient();
@@ -687,6 +687,13 @@ class FC_rentOutController extends Controller
             return redirect(route('frontend.login.client'));
         }
         $camper = Camper::find($id);
+        $insurance = DB::table('insurances')->get();
+        foreach ($insurance as $item) {
+            if ($item->allowed_total_weight <= $camper->allowed_total_weight) {
+                $camper->insurance_price = $item->price_per_day;
+                $camper->id_insurances = $item->id;
+            }
+        }
 
         return view('frontend.camper.rent_out.insurance')
             ->with('client', $client)
