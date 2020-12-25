@@ -89,7 +89,7 @@
 		<!-- Stage -->
 		<div class="col-md-4">
 			<div class="icon-box-2 with-line">
-				<i class="im im-icon-Map2"></i>
+				<i class="fas fa-map-marked-alt"></i>
 				<p>{{trans('front.content_text_find_place')}}</p>
 			</div>
 		</div>
@@ -97,7 +97,7 @@
 		<!-- Stage -->
 		<div class="col-md-4">
 			<div class="icon-box-2 with-line">
-				<i class="im im-icon-Mail-withAtSign"></i>
+				<i class="far fa-envelope"></i>
 				<p>{{trans('front.choose_data_request')}}</p>
 			</div>
 		</div>
@@ -105,7 +105,7 @@
 		<!-- Stage -->
 		<div class="col-md-4">
 			<div class="icon-box-2">
-			<i class="im im-icon-Checked-User"></i>
+			<i class="fas fa-user-check"></i>
 				<p>{{trans('front.receive_request')}}</p>
 			</div>
 		</div>
