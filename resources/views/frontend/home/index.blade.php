@@ -88,7 +88,7 @@
 	<div class="row icons-container">
 		<!-- Stage -->
 		<div class="col-md-4">
-			<div class="icon-box-2 with-line">
+			<div class="icon-box-2 with-line" style="display: block !important;">
 				<i class="fas fa-map-marked-alt"></i>
 				<p>{{trans('front.content_text_find_place')}}</p>
 			</div>
@@ -96,7 +96,7 @@
 
 		<!-- Stage -->
 		<div class="col-md-4">
-			<div class="icon-box-2 with-line">
+			<div class="icon-box-2 with-line" style="display: block !important;">
 				<i class="far fa-envelope"></i>
 				<p>{{trans('front.choose_data_request')}}</p>
 			</div>
@@ -104,14 +104,14 @@
 
 		<!-- Stage -->
 		<div class="col-md-4">
-			<div class="icon-box-2">
+			<div class="icon-box-2" style="display: block !important;">
 			<i class="fas fa-user-check"></i>
 				<p>{{trans('front.receive_request')}}</p>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-12 centered-content">
-		<a href="/camper/search" class="button border margin-top-10">{{trans('front.find_camper_now')}}</a>
+		<a href="{{route('frontend.camper.search')}}" class="button border margin-top-10">{{trans('front.find_camper_now')}}</a>
 	</div>
 </div>
 </section>

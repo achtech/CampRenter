@@ -361,6 +361,13 @@ class FC_rentOutController extends Controller
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory = $data ? $data->label_en : ''; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
+        $insurance = DB::table('insurances')->get();
+        foreach ($insurance as $item) {
+            if ($item->allowed_total_weight <= $camper->allowed_total_weight) {
+                $camper->insurance_price = $item->price_per_day;
+                $camper->id_insurances = $item->id;
+            }
+        }
         return view('frontend.camper.rent_out.insurance')
             ->with('camper', $camper)
             ->with('client', $client)
@@ -433,7 +440,7 @@ class FC_rentOutController extends Controller
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory = $data ? $data->label_en : ''; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
-        $extra = Accessorie::where('id_campers', $id)->get();
+        $extra = Accessorie::where('id_campers', $idCamper)->get();
 
         return view('frontend.camper.rent_out.accessories')
             ->with('camper', $camper)
@@ -695,6 +702,13 @@ class FC_rentOutController extends Controller
             return redirect(route('frontend.login.client'));
         }
         $camper = Camper::find($id);
+        $insurance = DB::table('insurances')->get();
+        foreach ($insurance as $item) {
+            if ($item->allowed_total_weight <= $camper->allowed_total_weight) {
+                $camper->insurance_price = $item->price_per_day;
+                $camper->id_insurances = $item->id;
+            }
+        }
 
         return view('frontend.camper.rent_out.insurance')
             ->with('client', $client)
