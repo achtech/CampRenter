@@ -343,13 +343,21 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        foreach ($request->document as $doc) {
-            $camperImage = new CamperImage();
-            $camperImage->id_campers = $camper->id;
-            $camperImage->image = $doc;
-            $camperImage->save();
-        }
+        
+        $file = $request->file('image');
+        if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
+            $camper->image = $request->file('image')->getClientOriginalName();
+            $file->move(base_path('public\images\camper'), $file->getClientOriginalName());
+        } 
 
+        if($request->document && is_array($request->document)){
+            foreach ($request->document as $doc) {
+                $camperImage = new CamperImage();
+                $camperImage->id_campers = $camper->id;
+                $camperImage->image = $doc;
+                $camperImage->save();
+            }
+        }      
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory = $data ? $data->label_en : ''; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
