@@ -24,7 +24,7 @@
 	<div class="row">
 		<!-- sub_menu -->
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'slide_camper'])
-		
+
 		<div class="col-lg-7 col-md-12">
 			<h3><strong>{{trans('front.photos')}}</strong></h3>
       <form action="{{ route('frontend.camper.storeFiles') }}" method="POST" enctype="multipart/form-data">
@@ -39,7 +39,7 @@
                     </div>
               </div>
               <div class="form-group col-6">
-                <img   src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
+                <img   src="{{asset('images')}}/campers/{{$camper['image']}}" alt="">
               </div>
             </div>
           </div>
