@@ -524,6 +524,10 @@ class FC_rentOutController extends Controller
             if ($request->additional_attribute) {
                 $camper->additional_attribute = join(',', $request->additional_attribute);
             }
+            if ($camper->image == null) {
+                $camper->image = "camper_rent.png";
+                $camper->update();
+            }
 
             $additionals = [];
             if ($camper->additional_attribute) {
@@ -793,9 +797,9 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $camper = DB::table('campers')->find($id);
         switch ($request->input('action')) {
             case 'edit':
+                $camper = DB::table('campers')->find($id);
                 $categories = DB::table('camper_categories')->paginate(10);
                 $sub_categories = CamperSubCategory::paginate(10);
                 $categorieIds = DB::table('camper_categories')->pluck('id')->toArray();
@@ -810,9 +814,11 @@ class FC_rentOutController extends Controller
                     ->with('selectedSubCategoryId', $camper->id_camper_sub_categories)
                     ->with('isValid', true);
             case 'detail':
+                $camper = DB::table('campers')->find($id);
                 return redirect(route('frontend.camper.detail', $camper->id));
             case 'delete':
-                $camper->delete();
+                $camper = DB::table('campers')->where('id', $id)->delete();
+                return redirect(route('frontend.clients.camper'));
         }
 
     }
