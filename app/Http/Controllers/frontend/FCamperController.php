@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\CamperSubCategory;
 use DB;
 
 class FCamperController extends Controller
@@ -26,12 +25,6 @@ class FCamperController extends Controller
     public function camper_steps()
     {
         return view('frontend.camper.rent_out.camper_steps');
-    }
-
-
-    public function equipment()
-    {
-        return view('frontend.camper.rent_out.equipment');
     }
 
     public function accessories()

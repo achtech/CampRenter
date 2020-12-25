@@ -75,6 +75,16 @@ class BookingStatusSeeder extends Seeder
                 'updated_by' => 1,
                 'updated_at' => date("Y-m-d h:i:s"),
             ),
+            6 => array(
+                'id' => 7,
+                'label_en' => 'Blocked',
+                'label_de' => 'Bloqué',
+                'label_fr' => 'Verstopft',
+                'created_by' => 1,
+                'created_at' => date("Y-m-d h:i:s"),
+                'updated_by' => 1,
+                'updated_at' => date("Y-m-d h:i:s"),
+            ),
         ));
     }
 }

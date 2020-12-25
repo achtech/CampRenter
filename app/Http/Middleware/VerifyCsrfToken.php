@@ -12,6 +12,9 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        //Requred for PayPal
+        "/rentOut/calcule_main",
+        "/rentOut/calcule_off",
+        "/rentOut/calcule_winter",
     ];
 }

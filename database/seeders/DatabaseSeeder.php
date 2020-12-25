@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             AvatarsSeeder::class,
+            CountriesSeeder::class,
 
             BookingStatusSeeder::class,
             CamperCategoriesSeeder::class,
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             CamperReviewsSeeder::class,
             BlogCommentSeeder::class,
+            camperTermsSeeder::class,
         ]);
 
     }

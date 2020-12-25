@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-md-4">
                     <select name="year_of_birth" id="year_of_birth" class="chosen-select" data-placeholder="Year">
-                        @for($i=2020;$i<=2100;$i++)
+                        @for($i=1920;$i<=2100;$i++)
                             <option value="{{$i}}" @if($client->year_of_birth==$i) selected @endif>{{$i}}</option>
                         @endfor
                     </select>

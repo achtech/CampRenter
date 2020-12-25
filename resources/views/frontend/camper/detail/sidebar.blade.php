@@ -49,7 +49,7 @@
 <!-- Contact -->
 <div class="boxed-widget margin-top-35">
     <div class="hosted-by-title">
-        <h4><span>{{trans('front.hosted_by')}}</span> <a href="pages-user-profile.html">{{$owner->client_name}} {{$owner->client_last_name}}</a></h4>
+        <h4><span>{{trans('front.hosted_by')}}</span> <a href="#">{{$owner->client_name}} {{$owner->client_last_name}}</a></h4>
     </div>
 </div>
 <!-- Contact / End-->

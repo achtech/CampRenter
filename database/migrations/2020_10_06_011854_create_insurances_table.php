@@ -15,10 +15,11 @@ class CreateInsurancesTable extends Migration
     {
         Schema::create('insurances', function (Blueprint $table) {
             $table->id();
-            $table->string('description_en');
+            $table->string('description_en')->nullable();
             $table->string('description_de')->nullable();
             $table->string('description_fr')->nullable();
-            $table->double('price_per_day');
+            $table->integer('price_per_day')->nullable();
+            $table->double('allowed_total_weight')->nullable();
             $table->unsignedBigInteger('id_insurance_companies');
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();

@@ -6,13 +6,15 @@
 <title>Campunite</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
 
 <!-- CSS
 ================================================== -->
 <script src="https://kit.fontawesome.com/b90fcd0862.js" crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     @yield('style')
 
     <style>
@@ -23,6 +25,7 @@
         }
     </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
   $("#showSub").click(function(){
@@ -92,7 +95,7 @@ $(document).ready(function(){
 
 <!-- Scripts
 ================================================== -->
-<script type="text/javascript" src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('js/jquery-migrate-3.1.0.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/mmenu.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/chosen.min.js')}}"></script>
@@ -104,11 +107,11 @@ $(document).ready(function(){
 <script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/tooltips.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js"></script>
 
 <!-- Maps -->
-{{--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>--}}
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4&callback=initAutocomplete&libraries=places&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4"
 ></script>
 <script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
@@ -117,10 +120,6 @@ $(document).ready(function(){
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
 <script src="{{asset('js/moment.min.js')}}"></script>
 <script src="{{asset('js/daterangepicker.js')}}"></script>
-
-<!-- DropZone | Documentation: http://dropzonejs.com -->
-<script type="text/javascript" src="{{asset('js/dropzone.js')}}"></script>
-
 <script>
 $(function() {
 
@@ -153,7 +152,7 @@ $('#booking-date-range').on('hide.daterangepicker', function(ev, picker) {
 	$('.daterangepicker').addClass('calendar-hidden');
 });
 </script>
-<script>
+<!--<script>
 	let curOpen;
 
 $(document).ready(function() {
@@ -200,7 +199,7 @@ $(document).ready(function() {
     }
   });
 })
-</script>
+</script>-->
 @yield('script')
 
 </body>

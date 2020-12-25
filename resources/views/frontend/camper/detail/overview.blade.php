@@ -99,7 +99,7 @@
                     {{$camper_equipment ? $camper_equipment->sleeping_spots : 0}} {{__('front.sleeping spots')}}
                 </div>
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_power_supply_exist==1)
+                    @if($camper_equipment && $camper_equipment->power==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -109,7 +109,7 @@
             </div>
             <div class="row" >
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_burner_stove_exist==1)
+                    @if($camper_equipment && $camper_equipment->cooking_possibility==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -117,7 +117,7 @@
                     {{__('front.burner stove')}}
                 </div>
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_fridge_exist==1)
+                    @if($camper_equipment && $camper_equipment->cooling_possibility==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -127,7 +127,7 @@
             </div>
             <div class="row" >
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_sink_exist==1)
+                    @if($camper_equipment && $camper_equipment->sink==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -138,7 +138,7 @@
             </div>
             <div class="row" >
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_indoor_table_exist==1)
+                    @if($camper_equipment && $camper_equipment->indoor_table==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -146,7 +146,7 @@
                     {{__('front.Indoor table')}}
                 </div>
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_cd_player_exist==1)
+                    @if($camper_equipment && $camper_equipment->electronics==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -156,7 +156,7 @@
             </div>
             <div class="row" >
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_dishes_exist==1)
+                    @if($camper_equipment && $camper_equipment->dishes==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -164,7 +164,7 @@
                     {{__('front.Dishes')}}
                 </div>
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_camping_table_exist==1)
+                    @if($camper_equipment && $camper_equipment->camping_table==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -174,7 +174,7 @@
             </div>
             <div class="row" >
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_camping_chairs_exist==1)
+                    @if($camper_equipment && $camper_equipment->camping_chairs==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -182,7 +182,7 @@
                     {{__('front.Camping chairs')}}
                 </div>
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_trailer_hitch_exist==1)
+                    @if($camper_equipment && $camper_equipment->transport==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -192,7 +192,7 @@
             </div>
             <div class="row" >
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_water_tank_exist==1)
+                    @if($camper_equipment && $camper_equipment->water==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
@@ -200,7 +200,7 @@
                     {{__('front.water_tank')}}
                 </div>
                 <div class="col-md-5">
-                    @if($camper_equipment && $camper_equipment->is_gas_cooker_exist==1)
+                    @if($camper_equipment && $camper_equipment->additional_equipment_outside==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
                     @else
                     <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>

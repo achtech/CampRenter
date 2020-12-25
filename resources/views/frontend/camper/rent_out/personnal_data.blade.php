@@ -9,7 +9,7 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>{{trans('front.camper_name')}}</strong></h2>
+				<h2><strong>{{isset($camper) ? $camper->camper_name : ''}}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
@@ -26,7 +26,7 @@
 
 		<div class="col-lg-7 col-md-12">
 			<h2 style="padding: 10px;"><strong>{{trans('front.complete_personnal_data')}}</strong></h2>
-			{{ Form::open(['action'=>'App\Http\Controllers\frontend\FC_rentOutController@store2', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+			{{ Form::open(['action'=>'App\Http\Controllers\frontend\FC_rentOutController@storeVehicleData', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
 				<meta name="csrf-token" content="{{ csrf_token() }}">
 				<input type="hidden" name="id_campers" value="{{$camper->id}}" />
  				<div class="margin-top-0">
@@ -59,7 +59,7 @@
 							<div class="row">
 								<!-- Phone -->
 								<div class="col-md-8">
-									<input type="text" placeholder="{{trans('front.street')}}" name="street" value="{{$client->street ?? ''}}"> 
+									<input type="text" placeholder="{{trans('front.street')}}" name="street" value="{{$client->street ?? ''}}">
 								</div>
 
 								<!-- Website -->
@@ -110,23 +110,34 @@
 							<h3>{{trans('front.date_birth')}}</h3>
 							<div class="row opening-day">
 								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.day')}}" name="day_of_birth" value="{{$client->day_of_birth ?? ''}}">
+									<select name="day_of_birth" id="day_of_birth" class="chosen-select" data-placeholder="Day">
+										@for($i=1;$i<=31;$i++)
+											<option value="{{$i}}" @if($client->day_of_birth==$i) selected @endif>{{$i}}</option>
+										@endfor
+									</select>
+								</div>
+								<div class="col-md-4">
+									<select name="month_of_birth" id="month_of_birth" class="chosen-select" data-placeholder="Month">
+										@for($i=1;$i<=12;$i++)
+											<option value="{{$i}}" @if($client->month_of_birth==$i) selected @endif>{{$i}}</option>
+										@endfor
+									</select>
+								</div>
+								<div class="col-md-4">
+									<select name="year_of_birth" id="year_of_birth" class="chosen-select" data-placeholder="Year">
+										@for($i=1920;$i<=2100;$i++)
+											<option value="{{$i}}" @if($client->year_of_birth==$i) selected @endif>{{$i}}</option>
+										@endfor
+									</select>
 								</div>
 
-								<!-- Website -->
-								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.month')}}"  name="month_of_birth" value="{{$client->month_of_birth ?? ''}}">
-								</div>
-								<div class="col-md-4">
-									<input type="text" placeholder="{{trans('front.year')}}" name="year_of_birth" value="{{$client->year_of_birth ?? ''}}">
-								</div>
 							</div>
 						</li>
 
 						<li>
 							<!-- Phone -->
 							<h3>{{trans('front.profile_pic')}}</h3>
-							
+
 							<div class="submit-section" style="margin-top:40px;">
 								<div>
 									<input type="file" id="photo" name="photo" class="button medium border upload custom-file-input" />
@@ -141,8 +152,7 @@
 						</li>
 						<li>
 							<div class="checkboxes in-row margin-bottom-20">
-
-								<input id="check-x" type="checkbox" name="professional_rental_company"  @if($client->professional_rental_company) checked @endif >
+								<input id="check-x" type="checkbox" name="professional_rental_company"  value="1" @if($client->professional_rental_company) checked @endif >
 								<label for="check-x">{{trans('front.pro_rental_campany')}}</label>
 								<h6>{{trans('front.renting_income')}}</h6>
 							</div>
@@ -180,17 +190,9 @@
 								<div class="col-md-4">
 									<input type="text" placeholder="{{trans('front.postal_code')}}" name="account_holder_building_number" value="{{$client->account_holder_building_number ?? ''}}">
 								</div>
-								<!-- Phone -->
 								<div class="col-md-8">
-									<input type="text" placeholder="{{trans('front.ountry')}}" name="account_holder_postal_code" value="{{$client->account_holder_postal_code ?? ''}}">
-								</div>
-							</div>
-
-						</li>
-						<li>
-							<div class="row">
-								<div class="col-md-12">
-								<select class="chosen-select" data-placeholder="{{trans('front.country')}}" value="account_holder_country">
+									<select class="chosen-select" data-placeholder="{{trans('front.country')}}" value="account_holder_country">
+										<option ></option>
 										<option value="suisse" @if($client->account_holder_country=="suisse") selected @endif >Switezland</option>
 										<option value="germany" @if($client->account_holder_country=="germany") selected @endif >Germany</option>
 										<option value="italy" @if($client->account_holder_country=="italy") selected @endif >Italy</option>
@@ -198,6 +200,7 @@
 									</select>
 								</div>
 							</div>
+
 						</li>
 						<li>
 							<h3>{{trans('front.bank_data')}}</h3>
@@ -205,7 +208,7 @@
 						<li>
 							<div class="form">
 								<h5>{{trans('front.adress')}}</h5>
-								<textarea class="WYSIWYG" name="summary" cols="20" rows="1" id="summary" spellcheck="true" name="bank_data_adress">{{$client->bank_data_adress ?? ''}}</textarea>
+								<textarea class="WYSIWYG"  cols="20" rows="4"  name="bank_data_adress">{{$client->bank_data_adress ?? ''}}</textarea>
 							</div>
 						</li>
 						<li>
@@ -258,7 +261,7 @@
 									<label for="check-f">{{trans('front.billboard')}}</label>
 								</div>
 								<div class="checkboxes in-row">
-								<input type="checkbox" name="where_you_see_us[]" id="check-g" value="Print"  @if(isset($useUs) && is_array($useUs) && in_array("Print",$useUs)) checked @endif> 
+								<input type="checkbox" name="where_you_see_us[]" id="check-g" value="Print"  @if(isset($useUs) && is_array($useUs) && in_array("Print",$useUs)) checked @endif>
 									<label for="check-g">{{trans('front.print_advertisement')}}</label>
 								</div>
 								<div class="checkboxes in-row">
@@ -286,7 +289,7 @@
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" placeholder="Instagram user name"  name="instagram_user_name" value="{{$client->instagram_user_name ?? ''}}">	
+									<input type="text" placeholder="Instagram user name"  name="instagram_user_name" value="{{$client->instagram_user_name ?? ''}}">
 								</div>
 							</div>
 						</li>
@@ -298,9 +301,7 @@
 						<li>
 							<div class="row">
 								<div class="col-md-12">
-									<textarea class="WYSIWYG" name="summary" cols="20" rows="1" id="summary" spellcheck="true" name="who_are_you">
-									{{$client->who_are_you}}
-									</textarea>
+									<textarea class="WYSIWYG" cols="20" rows="4"  name="who_are_you">{{$client->who_are_you}}</textarea>
 								</div>
 							</div>
 						</li>

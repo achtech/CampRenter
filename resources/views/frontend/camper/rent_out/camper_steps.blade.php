@@ -35,7 +35,7 @@
 							<div class="subheader">Advice: Some of the required information can be found in the driver's licence or in the car's manual</div>
 						</div>
 						<div class="step-content one">
-							<a href="{{route('fill_in_vehicle')}}" class="next-btn">{{trans('front.fill_in')}</a>
+							<a href="{{route('frontend.camper.fillInVehicle')}}" class="next-btn">{{trans('front.fill_in')}</a>
 						</div>
 					</div>
 					<div class="step minimized">

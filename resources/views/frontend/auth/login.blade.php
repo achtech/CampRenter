@@ -9,11 +9,12 @@
                 <div class="col-md-12">
                     <label style="display: inline;" for="username2">{{trans('front.email_address')}}:
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                        style="@error('email') border-color: #ff4f70; margin-bottom:0%; @enderror"
                                name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     </label>
 
                     @error('email')
-                    <span class="invalid-feedback" role="alert">
+                    <span class="invalid-feedback" role="alert" style="width: 100%;font-size: 50%;color: #ff4f70;">
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror
@@ -21,10 +22,11 @@
                 <div class="col-md-12">
                     <label for="password1">{{trans('front.password')}}</label>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                    style="@error('password') border-color: #ff4f70; margin-bottom:0%; @enderror"
                            name="password" required autocomplete="current-password">
 
                     @error('password')
-                    <span class="invalid-feedback" role="alert">
+                    <span class="invalid-feedback" role="alert" style="width: 100%;margin-top: 0.25rem;font-size: 50%;color: #ff4f70;">
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror

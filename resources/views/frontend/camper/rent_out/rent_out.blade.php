@@ -36,23 +36,24 @@
 							</div>
 						</div>
 					</div>
-					<form  action="{{route('frontend.camper.storeCamperProfile')}}" method="POST">
+					<form  action="{{route('frontend.camper.storePersonalData')}}" method="POST"  name="frm1">
 					@csrf
+					<input type="hidden" name="id_campers" value="{{isset($camper) ? $camper->id : ''}}" />
 						<div class="col-md-12">
-							<div class="row">
+							<div class="row" style="padding-left: 100px;">
 								@foreach($categories as $category)
 									<!-- Box -->
-									<div class="col-md-3 alternative-imagebox" 
+									<div class="col-md-2 alternative-imagebox"
 										id="{{App\Http\Controllers\admin\CamperCategoryController::hasSubCategories($category->id) ? 'showSub' : 'category'}}">
-										<a href="/ajax/rentByCategory/{{$category->id}}" id="camper-categories">
-										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}">
+										<a href="/rentOut/rentByCategory/{{$category->id}}/{{$camper->id}}" id="camper-categories">
+										<input type="radio" style="display: none" name="camper_categories" id="{{$category->id}}"  >
 										<input type="hidden" name="id_camper_categories" value="{{$selectedCategoryId}}" />
-										<img style="max-width:70%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif" 
-												src="{{asset('images')}}/camper_categories/{{$category->image}}" 
+										<img style="max-width:52%; @if($category->id==$selectedCategoryId) outline:2px solid #38b6cd; @endif"
+												src="{{asset('images')}}/camper_categories/{{$category->image}}"
 												data-picture_id="{{$category->id}}" alt=""
 												id="cat_{{$category->id}}"
 												onclick="changeCatStyle({{$category->id}})">
-											<h4 id="title_cat" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
+											<h3 id="title_cat" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
 										</a>
 									</div>
 								@endforeach
@@ -62,18 +63,20 @@
 									<div class="add-listing-headline">
 										<h3>{{trans('backend.menu_camper_sub_category')}}</h3>
 									</div>
-									<div class="row">
+									<div class="row" style="padding-left: 100px;">
 									@foreach($sub_categories as $sub_categories)
 										<!-- Box -->
-										<div class="col-md-3 alternative-imagebox" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
+										<div class="col-md-2 alternative-imagebox" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
 											<a>
 											<input type="radio" style="display: none" name="id_camper_sub_categories" id="{{$sub_categories->id}}">
-											<input type="hidden" name="id_camper_sub_categories" value="" />
-											<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
-											data-picture_sub_id="{{$sub_categories->id}}" alt=""
+											<input type="hidden" name="id_camper_sub_categories" value="{{$selectedSubCategoryId??''}}" />
+											<img style="max-width:52%;
+												@if($sub_categories->id==$selectedSubCategoryId) outline:2px solid #38b6cd; @endif"
+												src="{{asset('images')}}/camper_categories/{{$sub_categories->image}}" alt=""
+												data-picture_sub_id="{{$sub_categories->id}}" alt=""
 													id="subcat_{{$sub_categories->id}}"
 													onclick="changeSubCatStyle({{$sub_categories->id}})">
-												<h4 id="title_sub" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
+												<h3 id="title_sub" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
 											</a>
 										</div>
 									@endforeach
@@ -95,7 +98,7 @@
 					<div class="col-md-12">
 						<div class="row">
 								<div class="col-md-12">
-									<input type="text" name="camper_name" placeholder="My sweet Camper" value="{{$camper->camper_name}}">
+									<input type="text" id="camper_name" name="camper_name" required placeholder="My sweet Camper" value="{{$camper->camper_name}}">
 									<h6>{{trans('front.still_can_change')}}</h6>
 								</div>
 						</div>
@@ -104,7 +107,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="col-md-12">
-								<input type="text" name="description" placeholder="" value="{{$camper->description_camper}}">
+								<input type="text" name="recommandation" placeholder="" value="{{$camper->recommandation ?? '' }}" />
 								<h6>{{trans('front.recommandation')}}</h6>
 							</div>
 						</div>
@@ -112,7 +115,8 @@
 					<div class="row">
 						<div class="col-md-12">
 						<div style="float: right;">
-						<button type="submit" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
+						@if($isValid && empty($selectedCategoryId) )<div style="color:red"> please choose a category @endif
+						<button type="submit" class="button" @if($isValid && empty($selectedCategoryId)) disabled @endif>{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
 
 						</div>
 					</div>
@@ -129,22 +133,22 @@ function changeCatStyle(id){
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	var obj = <?php echo json_encode($categorieIds); ?>;
 	var obj2 = <?php echo json_encode($subCategorieIds); ?>;
-	
+
 	$.ajax({
-		url: '/ajax/rentByCategory/'+id,
+		url: '/rentOut/rentByCategory/'+id,
 		type: 'get',
 		data: {_token: CSRF_TOKEN},
 		success: function(response){
 			for( i =0;i<obj2.length;i++){
 				document.getElementById('subcat_'+obj[i]).style.outline="none";
-			}    
+			}
 			for( i =0;i<obj.length;i++){
 				if(obj[i]==id){
 					document.getElementById('cat_'+obj[i]).style.outline="2px solid #38b6cd";
 				}else{
 					document.getElementById('cat_'+obj[i]).style.outline="none";
 				}
-			}    	            
+			}
 		}
     });
 }
@@ -157,7 +161,7 @@ function changeSubCatStyle(id){
 		}else{
 			document.getElementById('subcat_'+obj[i]).style.outline="none";
 		}
-	}    
+	}
 }
 
 $("img[data-picture_id]").click(function(e){

@@ -10,7 +10,7 @@
 	<div id="titlebar">
 		<div class="row">
 			<div class="col-md-12">
-				<h2><strong>{{trans('front.camper_name')}}</strong></h2>
+				<h2><strong>{{isset($camper) ? $camper->camper_name : ''}}</strong></h2>
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
@@ -27,29 +27,71 @@
 
 		<div class="col-lg-7 col-md-12">
 			<h3><strong>{{trans('front.photos')}}</strong></h3>
-			<div class="row">
-				<div class="image-upload-one">
-					<div class="submit-section">
-						<form action="/file-upload" class="dropzone" ></form>
-					</div>
-				</div>
-			</div>
+      <form action="{{ route('frontend.camper.storeFiles') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+			    <input type="hidden" name="id_campers" value="{{$camper->id}}" />
+          <div class="form-group">
+                <label for="document">New photos</label>
+                <div class="needsclick dropzone" id="document-dropzone" required>
+
+                </div>
+          </div>
+          @if(count($files)>0)
+          <div class="form-group">
+                <label for="document">All photos</label>
+                <div  class="old-photos" >
+                  <div style="display: grid;
+                      grid-template-columns: repeat(4, 1fr);
+                      grid-template-rows: repeat({{$countFiles}}, 5vw);
+                    grid-gap: 30px;">
+                    @foreach($files as $f)
+                      <div style="text-align: center;padding-bottom:10px;color:grey">
+                        <img src="{{ asset('images/campers')}}/{{$f->file_name}}" style=" width: 100%;height: 100%;object-fit: cover;border-radius: 20px;" >
+                        <a href="/rentOut/photos/delete/{{$camper->id}}/{{$f->id}}" style="text-align:center">Remove file</a>
+                      </div>
+                    @endforeach
+                  </div>
+                </div>
+          </div>
+          @endif
+          <div>
+              {{Form::submit(trans('front.apply'),['style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+              {{Form::submit(trans('front.cancel'),['onclick'=>'window.history.go(-1); return false;', 'style' => 'width:200px','class'=>'button border','name' => 'action'])}}
+
+          </div>
+      </form>
+
 		</div>
 	</div>
 </div>
-  <script>
-
-    function showPreviewOne(event){
-      if(event.target.files.length > 0){
-        let src = URL.createObjectURL(event.target.files[0]);
-        let preview = document.getElementById("file-ip-1-preview");
-        preview.src = src;
-        preview.style.display = "block";
+ <!-- Script -->
+ @endsection
+ @section('script')
+<script>
+  var uploadedDocumentMap = {}
+  Dropzone.options.documentDropzone = {
+    url: '{{ route('frontend.camper.storeMedia') }}',
+    maxFilesize: 5, // MB
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    success: function (file, response) {
+      $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
+      uploadedDocumentMap[file.name] = response.name;
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      var name = ''
+      if (typeof file.file_name !== 'undefined') {
+        name = file.file_name
+      } else {
+        name = uploadedDocumentMap[file.name]
       }
+      $('form').find('input[name="document[]"][value="' + name + '"]').remove()
+    },
+    init: function () {
     }
-    function myImgRemoveFunctionOne() {
-      document.getElementById("file-ip-1-preview").src = "https://i.ibb.co/ZVFsg37/default.png";
-    }
-
-  </script>
-@endsection
+  }
+</script>
+@stop

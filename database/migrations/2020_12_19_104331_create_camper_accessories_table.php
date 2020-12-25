@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCamperTermsTable extends Migration
+class CreateCamperAccessoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateCamperTermsTable extends Migration
      */
     public function up()
     {
-        Schema::create('camper_terms', function (Blueprint $table) {
+        Schema::create('camper_accessories', function (Blueprint $table) {
             $table->id();
-            $table->string('season')->nullable();
-            $table->integer('price_per_night')->nullable();
-            $table->integer('minimum_night')->nullable();
-            $table->integer('start_month')->nullable();
-            $table->integer('end_month')->nullable();
+            $table->string('paid_accessories')->nullable();
+            $table->string('booking_per')->nullable();
+            $table->integer('price')->nullable();
             $table->unsignedBigInteger('id_campers')->nullable();
-
             $table->foreign('id_campers')->references('id')->on('campers');
             $table->timestamps();
         });
@@ -34,6 +31,6 @@ class CreateCamperTermsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('camper_terms');
+        Schema::dropIfExists('camper_accessories');
     }
 }
