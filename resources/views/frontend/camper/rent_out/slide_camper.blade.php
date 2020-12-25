@@ -24,35 +24,36 @@
 	<div class="row">
 		<!-- sub_menu -->
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'slide_camper'])
-		
+
 		<div class="col-lg-7 col-md-12">
 			<h3><strong>{{trans('front.photos')}}</strong></h3>
       <form action="{{ route('frontend.camper.storeFiles') }}" method="POST" enctype="multipart/form-data">
           @csrf
-          @if(count($files)>0)
-          <div class="form-group">
-                <label for="document">All photos{{intval(count($files)/4)}}</label>
-                <div  class="old-photos" >
-                <div style="display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat({{$countFiles}}, 5vw);
-    grid-gap: 30px;">
-                  @foreach($files as $f)
-                    <div style="text-align: center;padding-bottom:10px;color:grey">
-                      <img src="{{ asset('images/campers')}}/{{$f->file_name}}" style=" width: 100%;height: 100%;object-fit: cover;border-radius: 20px;" >
-                      <a href="/rentOut/photos/delete/{{$camper->id}}/{{$f->id}}" style="text-align:center">Remove file</a>
-                    </div>
-                  @endforeach
-                </div>
-                </div>
-          </div>
-          @endif
+			    <input type="hidden" name="id_campers" value="{{$camper->id}}" />
           <div class="form-group">
                 <label for="document">New photos</label>
-                <div class="needsclick dropzone" id="document-dropzone">
+                <div class="needsclick dropzone" id="document-dropzone" required>
 
                 </div>
           </div>
+          @if(count($files)>0)
+          <div class="form-group">
+                <label for="document">All photos</label>
+                <div  class="old-photos" >
+                  <div style="display: grid;
+                      grid-template-columns: repeat(4, 1fr);
+                      grid-template-rows: repeat({{$countFiles}}, 5vw);
+                    grid-gap: 30px;">
+                    @foreach($files as $f)
+                      <div style="text-align: center;padding-bottom:10px;color:grey">
+                        <img src="{{ asset('images/campers')}}/{{$f->file_name}}" style=" width: 100%;height: 100%;object-fit: cover;border-radius: 20px;" >
+                        <a href="/rentOut/photos/delete/{{$camper->id}}/{{$f->id}}" style="text-align:center">Remove file</a>
+                      </div>
+                    @endforeach
+                  </div>
+                </div>
+          </div>
+          @endif
           <div>
               {{Form::submit(trans('front.apply'),['style' => 'width:200px','class'=>'button border','name' => 'action'])}}
               {{Form::submit(trans('front.cancel'),['onclick'=>'window.history.go(-1); return false;', 'style' => 'width:200px','class'=>'button border','name' => 'action'])}}

@@ -343,16 +343,25 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        foreach ($request->document as $doc) {
-            $camperImage = new CamperImage();
-            $camperImage->id_campers = $camper->id;
-            $camperImage->image = $doc;
-            $camperImage->save();
+        if ($request->document != null) {
+            foreach ($request->document as $doc) {
+                $camperImage = new CamperImage();
+                $camperImage->id_campers = $camper->id;
+                $camperImage->image = $doc;
+                $camperImage->save();
+            }
         }
 
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory = $data ? $data->label_en : ''; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
+        $insurance = DB::table('insurances')->get();
+        foreach ($insurance as $item) {
+            if ($item->allowed_total_weight <= $camper->allowed_total_weight) {
+                $camper->insurance_price = $item->price_per_day;
+                $camper->id_insurances = $item->id;
+            }
+        }
         return view('frontend.camper.rent_out.insurance')
             ->with('camper', $camper)
             ->with('client', $client)
