@@ -434,7 +434,7 @@ class FC_rentOutController extends Controller
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory = $data ? $data->label_en : ''; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
-        $extra = Accessorie::where('id_campers', $id)->get();
+        $extra = Accessorie::where('id_campers', $idCamper)->get();
 
         return view('frontend.camper.rent_out.accessories')
             ->with('camper', $camper)
