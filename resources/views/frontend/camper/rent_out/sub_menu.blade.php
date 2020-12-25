@@ -4,7 +4,7 @@
 		<ul>
 			<li>
 				<div style="text-align: center;">
-					<img style="max-width: 70% !important;" class="headline right" src="{{ asset('images')}}/campers/{{$camper->image }}"/>
+					<img style="max-width: 275px; max-height: 210px;" class="headline right" src="{{ asset('images')}}/campers/{{$camper->image }}"/>
 				</div>
 			</li>
 			<li style="padding-bottom:0px;">
