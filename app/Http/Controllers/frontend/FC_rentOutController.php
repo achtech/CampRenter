@@ -401,6 +401,7 @@ class FC_rentOutController extends Controller
         $equipement->sink = $request->sink;
         $equipement->dishes = $request->dishes;
         $equipement->additional_equipment_inside = $request->additional_equipment_inside;
+        $equipement->rotatable_seats = $request->rotatable_seats;
 
         if ($request->bathroom && !empty($request->bathroom)) {
             $equipement->bathroom = join(',', $request->bathroom);
@@ -553,7 +554,10 @@ class FC_rentOutController extends Controller
         $countries = Countries::get();
         $transmissions = Transmission::get();
         $fuels = Fuel::get();
-        $additionals = $camper->additional_attribute;
+        $additionals = [];
+        if ($camper->additional_attribute) {
+            $additionals = explode(',', $camper->additional_attribute);
+        }
 
         return view('frontend.camper.rent_out.fill_in_vehicle')
             ->with('client', $client)
