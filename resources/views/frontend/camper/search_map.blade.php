@@ -11,7 +11,7 @@ let sqh=7 ;
         }
         function LoadMap() {
             var mapOptions = {
-                center: new google.maps.LatLng('31.792305849269', '-7.080168000000015'),
+                center: new google.maps.LatLng('47.679293','8.625207'),
                 zoom: 7,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
@@ -76,13 +76,13 @@ let sqh=7 ;
 function initialize1212() {
 
 var cityBounds = new google.maps.LatLngBounds(
-  new google.maps.LatLng(-7.959286300000031,31.5628076),
-  new google.maps.LatLng(7.9951, 31.8728076));
+  new google.maps.LatLng(47.679293,8.625207),
+  new google.maps.LatLng(47.679293, 8.625207));
 
 var options = {
   bounds: cityBounds,
   types: ['geocode'],
-  componentRestrictions: {country: 'MA'}
+  componentRestrictions: {country: 'CH'}
 };
 
  var input = document.getElementById('searchTextField');

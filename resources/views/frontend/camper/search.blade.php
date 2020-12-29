@@ -94,7 +94,6 @@
 
 function PrepareMarkers(latup,longup,mouseOut, e){
 	e.preventDefault();
-	console.log(e);
 	 sqh=mouseOut
 	initMap(latup,longup,mouseOut) ;
 

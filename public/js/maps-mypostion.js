@@ -14,13 +14,13 @@ var infoBox_ratingType = 'star-rating';
         $("#currentLongitude").val(pos_default.lng);
         // The map, centered at Uluru
         map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 14,
+            zoom: 7,
             center: pos_default,
             draggable: true
         });
 
         // START Create the search box and link it to the UI element.
-        /**const input = document.getElementById("pac-input");
+        const input = document.getElementById("pac-input");
         const searchBox = new google.maps.places.SearchBox(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
         // Bias the SearchBox results towards current map's viewport.
@@ -73,7 +73,7 @@ var infoBox_ratingType = 'star-rating';
                 }
             });
             map.fitBounds(bounds);
-        });*/
+        });
         // FIN Create the search box and link it to the UI element.
 
         if (navigator.geolocation) {

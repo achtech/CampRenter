@@ -330,18 +330,18 @@
 									<strong>{{trans('front.location')}}</strong>
 									<div class="markers-on-the-map" style="margin-top: 23px;">
 									<p>{{trans('front.move')}} <img style="margin-bottom: 3px;" src="{{ asset('images/general/position.png')}}"> {{trans('front.text_map_1')}} <img style="margin-bottom: 3px;" src="{{ asset('images/general/cursor.png')}}"> {{trans('front.text_map_2')}}</p>
-										<!-- Map
+										<!-- Map -->
 											<input
 												id="pac-input"
 												class="controls"
 												type="text"
 												placeholder="Search Box"
 												name="location"
-											/>-->
+											/>
 										<div id="map"></div>
 									</div>
-										<input style="display: none" type="text" name="position_x" id="currentLatitude">
-										<input style="display: none" type="text" name="position_y" id="currentLongitude">
+										<input  type="text" name="position_x" id="currentLatitude">
+										<input  type="text" name="position_y" id="currentLongitude">
 								</div>
 							</div>
 						</li>
