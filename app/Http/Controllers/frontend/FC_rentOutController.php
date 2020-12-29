@@ -132,6 +132,7 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+
         $camper->camper_name = $request->camper_name ?? '';
         $camper->brand = $request->brand ?? '';
         $camper->model = $request->model ?? '';
