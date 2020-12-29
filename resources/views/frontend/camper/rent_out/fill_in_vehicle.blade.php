@@ -340,8 +340,8 @@
 											/>
 										<div id="map"></div>
 									</div>
-										<input  type="text" name="position_x" id="currentLatitude">
-										<input  type="text" name="position_y" id="currentLongitude">
+										<input  type="text" name="position_x" id="currentLatitude" value="{{$camper->position_x}}">
+										<input  type="text" name="position_y" id="currentLongitude" value="{{$camper->position_y}}">
 								</div>
 							</div>
 						</li>
