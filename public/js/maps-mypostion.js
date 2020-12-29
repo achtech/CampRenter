@@ -7,14 +7,14 @@ var infoBox_ratingType = 'star-rating';
     let map
 
     // Initialize and add the map
-    function initMapPosition() {
+    function initMap() {
         // The location of pos_default
         const pos_default = { lat: 46.8095941, lng: 7.1030541 };
         $("#currentLatitude").val(pos_default.lat);
         $("#currentLongitude").val(pos_default.lng);
         // The map, centered at Uluru
         map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 14,
+            zoom: 7,
             center: pos_default,
             draggable: true
         });
@@ -125,7 +125,7 @@ var infoBox_ratingType = 'star-rating';
         });
     }
 
-    initMapPosition();
+    initMap();
 
 
 })(this.jQuery);

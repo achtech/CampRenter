@@ -340,8 +340,8 @@
 											/>
 										<div id="map"></div>
 									</div>
-										<input style="display: none" type="text" name="position_x" id="currentLatitude">
-										<input style="display: none" type="text" name="position_y" id="currentLongitude">
+										<input  type="text" name="position_x" id="currentLatitude">
+										<input  type="text" name="position_y" id="currentLongitude">
 								</div>
 							</div>
 						</li>
