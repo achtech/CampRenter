@@ -153,6 +153,7 @@ class FC_rentOutController extends Controller
         $camper->cylinder_capacity = $request->cylinder_capacity ?? null;
         $camper->position_x = $request->position_x ?? null;
         $camper->position_y = $request->position_y ?? null;
+
         if ($request->additional_attribute) {
             $camper->additional_attribute = join(',', $request->additional_attribute);
         }
@@ -558,7 +559,7 @@ class FC_rentOutController extends Controller
         $countries = Countries::get();
         $transmissions = Transmission::get();
         $fuels = Fuel::get();
-        $additionals = $camper->additional_attribute;
+        $additionals[] = $camper->additional_attribute;
 
         return view('frontend.camper.rent_out.fill_in_vehicle')
             ->with('client', $client)

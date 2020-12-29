@@ -40,6 +40,13 @@ $(document).ready(function(){
 </head>
 
 <body>
+<!-- Maps -->
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4&libraries=places"
+></script>
+<script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/maps-mypostion.js')}}"></script>
 
 <!-- Wrapper -->
 <div id="wrapper">
@@ -109,13 +116,7 @@ $(document).ready(function(){
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js"></script>
 
-<!-- Maps -->
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4"
-></script>
-<script type="text/javascript" src="{{asset('js/infobox.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/markerclusterer.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/maps-mypostion.js')}}"></script>
+
 
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
 <script src="{{asset('js/moment.min.js')}}"></script>

@@ -7,7 +7,7 @@ var infoBox_ratingType = 'star-rating';
     let map
 
     // Initialize and add the map
-    function initMap() {
+    function initMapPosition() {
         // The location of pos_default
         const pos_default = { lat: 46.8095941, lng: 7.1030541 };
         $("#currentLatitude").val(pos_default.lat);
@@ -20,7 +20,7 @@ var infoBox_ratingType = 'star-rating';
         });
 
         // START Create the search box and link it to the UI element.
-        /**const input = document.getElementById("pac-input");
+        const input = document.getElementById("pac-input");
         const searchBox = new google.maps.places.SearchBox(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
         // Bias the SearchBox results towards current map's viewport.
@@ -73,7 +73,7 @@ var infoBox_ratingType = 'star-rating';
                 }
             });
             map.fitBounds(bounds);
-        });*/
+        });
         // FIN Create the search box and link it to the UI element.
 
         if (navigator.geolocation) {
@@ -125,7 +125,7 @@ var infoBox_ratingType = 'star-rating';
         });
     }
 
-    initMap();
+    initMapPosition();
 
 
 })(this.jQuery);
