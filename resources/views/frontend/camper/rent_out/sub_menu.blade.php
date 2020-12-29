@@ -3,7 +3,9 @@
 	<div class="dashboard-list-box margin-top-0">
 		<ul>
 			<li>
-				<img class="headline right" src="{{ asset('images/rent-out-camper/camper_rent.png') }}"/>
+				<div style="text-align: center;">
+					<img style="max-width: 70% !important;" class="headline right" src="{{ asset('images')}}/campers/{{$camper->image }}"/>
+				</div>
 			</li>
 			<li style="padding-bottom:0px;">
 					<h6>{{$camperCategory?? ''}}</h6>
