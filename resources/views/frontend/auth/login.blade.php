@@ -1,6 +1,6 @@
 @extends('frontend.layout.layout',['activePage' => 'home','footerPage' => 'true'])
 @section('content')
-    <div class="row margin-bottom-90">
+    <div class="row margin-bottom-90" style="width:99%;">
         <div class="col-sm-offset-3 col-md-6">
             {{ Form::open(['url'=>'login/client', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
             <div class="row" style="padding-left:5%;">
