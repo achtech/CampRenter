@@ -132,6 +132,7 @@ class FC_rentOutController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+
         $camper->camper_name = $request->camper_name ?? '';
         $camper->brand = $request->brand ?? '';
         $camper->model = $request->model ?? '';
@@ -151,9 +152,9 @@ class FC_rentOutController extends Controller
         $camper->length = $request->length ?? null;
         $camper->horse_power = $request->horse_power ?? null;
         $camper->cylinder_capacity = $request->cylinder_capacity ?? null;
+        $camper->location = $request->location ?? null;
         $camper->position_x = $request->position_x ?? null;
         $camper->position_y = $request->position_y ?? null;
-
         if ($request->additional_attribute) {
             $camper->additional_attribute = join(',', $request->additional_attribute);
         }

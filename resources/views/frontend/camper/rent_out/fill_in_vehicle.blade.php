@@ -328,20 +328,26 @@
 							<div class="row" style="margin-bottom:20px; margin-top:30px;">
 								<div class="col-md-12">
 									<strong>{{trans('front.location')}}</strong>
-									<div class="markers-on-the-map" style="margin-top: 23px;">
-									<p>{{trans('front.move')}} <img style="margin-bottom: 3px;" src="{{ asset('images/general/position.png')}}"> {{trans('front.text_map_1')}} <img style="margin-bottom: 3px;" src="{{ asset('images/general/cursor.png')}}"> {{trans('front.text_map_2')}}</p>
-										<!-- Map -->
+									<div class="markers-on-the-map">
+										<div class="card-label">
+											<label for="cylinder_capacity">Location of the vehicle</label>
+											<input type="text" name="location" id="address" value="{{$camper->location}}">
+										</div>
+
+									<!--<p>{{trans('front.move')}} <img style="margin-bottom: 3px;" src="{{ asset('images/general/position.png')}}"> {{trans('front.text_map_1')}} <img style="margin-bottom: 3px;" src="{{ asset('images/general/cursor.png')}}"> {{trans('front.text_map_2')}}</p>
+										 Map
 											<input
 												id="pac-input"
 												class="controls"
 												type="text"
 												placeholder="Search Box"
 												name="location"
+												value="{{$camper->location}}"
 											/>
-										<div id="map"></div>
+										<div id="map"></div>-->
 									</div>
-										<input  type="text" name="position_x" id="currentLatitude" value="{{$camper->position_x}}">
-										<input  type="text" name="position_y" id="currentLongitude" value="{{$camper->position_y}}">
+										<input type="hidden" name="position_x" id="currentLatitude" value="{{$camper->position_x}}">
+										<input type="hidden" name="position_y" id="currentLongitude" value="{{$camper->position_y}}">
 								</div>
 							</div>
 						</li>
@@ -360,4 +366,18 @@
 		</div>
 	</div>
 </div>
+<script>
+	var autocomplete = new google.maps.places.Autocomplete($("#address")[0], {});
+
+	autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        if (!place.geometry) {
+            window.alert("Autocomplete's returned place contains no geometry");
+            return;
+        }
+  		document.getElementById('address').value  = place.formatted_address;
+        document.getElementById('currentLatitude').value  = place.geometry.location.lat();
+        document.getElementById('currentLongitude').value  = place.geometry.location.lng();
+    });
+</script>
 @endsection
