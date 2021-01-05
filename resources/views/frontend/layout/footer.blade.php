@@ -17,7 +17,7 @@
 				</ul>
 
 			</div>
-			<div class="col-md-3  col-sm-12">
+			<div class="col-md-3  col-sm-6">
 				<h4>{{trans('front.footer_paiement_methods')}}</h4>
 				<ul class="social-icons margin-top-20">
 					<li><img width="50" height="180" style="max-width: 100%;height: auto;"  src="{{asset('images/paiement-methods/Paypal-Icon.png')}}" /></li>

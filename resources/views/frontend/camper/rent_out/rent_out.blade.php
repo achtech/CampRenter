@@ -53,7 +53,7 @@
 												data-picture_id="{{$category->id}}" alt=""
 												id="cat_{{$category->id}}"
 												onclick="changeCatStyle({{$category->id}})">
-											<h3 id="title_cat" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
+											<h3 id="title_cat">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
 										</a>
 									</div>
 								@endforeach
@@ -76,7 +76,7 @@
 												data-picture_sub_id="{{$sub_categories->id}}" alt=""
 													id="subcat_{{$sub_categories->id}}"
 													onclick="changeSubCatStyle({{$sub_categories->id}})">
-												<h3 id="title_sub" style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
+												<h3 id="title_sub">{{App\Http\Controllers\Controller::getLabelFromObject($sub_categories)}}</h4>
 											</a>
 										</div>
 									@endforeach

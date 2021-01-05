@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Message;
 use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
 
 class FContactController extends Controller
 {
@@ -41,6 +40,7 @@ class FContactController extends Controller
     }
     public function store(Request $request)
     {
+        dd('ok');
         $date = new DateTime();
         $send_date = $date->format('Y-m-d H:i:s');
         $input = request()->except(['_token', '_method', 'action']);

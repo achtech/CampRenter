@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
-use Socialite;
 use Illuminate\Support\Facades\Session;
+use Socialite;
 
 class FClientController extends DefaultLoginController
 {
@@ -61,10 +61,10 @@ class FClientController extends DefaultLoginController
         $avatars = Avatar::get();
         $avatarsIds = Avatar::pluck('id')->toArray();
         $input = request()->except(['_token', 'action']);
-        if($request->language){
+        if ($request->language) {
             $input['language'] = join(',', $request->language);
         }
-        if($request->where_you_see_us){
+        if ($request->where_you_see_us) {
             $input['where_you_see_us'] = join(',', $request->where_you_see_us);
         }
         $file = $request->file('photo');
@@ -88,7 +88,7 @@ class FClientController extends DefaultLoginController
 
         return redirect(route('clients.user.profile'));
     }
-    
+
     public function changePassword(Request $request)
     {
         $client = Controller::getConnectedClient();

@@ -30,12 +30,17 @@
     background-color: #39b7cd;
 }
 
+.style-2 .ui-accordion .ui-accordion-header:hover,
+.style-2 .trigger a:hover,
+.style-2 .trigger.active a,
+.style-2 .ui-accordion .ui-accordion-header-active:hover,
+.style-2 .ui-accordion .ui-accordion-header-active {
+    color: #fff !important;
+}
+
 .comment-by-listing a:hover,
 .browse-all-user-listings a i,
 .hosted-by-title h4 a:hover,
-.style-2 .trigger.active a,
-.style-2 .ui-accordion .ui-accordion-header-active:hover,
-.style-2 .ui-accordion .ui-accordion-header-active,
 #posts-nav li a:hover,
 .plan.featured .listing-badge,
 .post-content h3 a:hover,
@@ -66,8 +71,6 @@
 a.button.border.white:hover,
 .icon-box-2 i,
 a.button.border,
-.style-2 .ui-accordion .ui-accordion-header:hover,
-.style-2 .trigger a:hover,
 .plan.featured .listing-badges .featured,
 .list-4 li:before,
 .list-3 li:before,

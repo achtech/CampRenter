@@ -9898,12 +9898,12 @@ table.basic-table {
 .style-2 .trigger a {
     border: none;
     margin: 0;
-    padding: 27px 0;
+    padding: 16px 0;
     text-transform: none;
     font-size: 17px;
     font-weight: 500;
     background-color: transparent;
-    color: #333;
+    color: #fff;
     padding-right: 60px;
     font-weight: 400;
 }
@@ -9915,7 +9915,7 @@ body .style-2 .trigger a {
 
 .style-2 .ui-accordion .ui-accordion-content,
 .style-2 .toggle-container {
-    padding: 0px 0 30px 0;
+    padding: 13px 0 28px 22px;
     border: none;
 }
 
@@ -9932,6 +9932,15 @@ body .style-2 .trigger a {
 .style-2 .ui-accordion .ui-accordion-content,
 .style-2 .toggle-wrap {
     border-bottom: 1px solid #e0e0e0;
+}
+
+.toggle-wrap span {
+    display: inline-block;
+    width: 100%;
+    background-color: #39b7cd;
+    height: 60px;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .style-2 .ui-accordion .ui-accordion-header-active {
@@ -13803,14 +13812,14 @@ span.like-icon {
 }
 
 .alternative-imagebox h3 {
-    font-weight: bold;
+    /*font-weight: bold;*/
     color: #39b7cd;
     line-height: 36px;
     margin: 0 auto;
     font-size: 20px;
-    text-align: center;
+    /*text-align: center;*/
     padding: 0;
-    width: 56%;
+    width: 70%;
 }
 
 
@@ -15116,7 +15125,7 @@ a.close-list-item {
 
 .edit-profile-photo img {
     border-radius: 4px;
-    max-width: 240px;
+    max-width: 215px;
     width: 100%;
 }
 
@@ -22978,6 +22987,7 @@ a::after {
 
 .lang-menu ul {
     width: 127px !important;
+    left: 0 !important;
 }
 
 .not-connected ul {
@@ -22986,4 +22996,8 @@ a::after {
 
 .user-name img {
     max-width: 61%;
+}
+
+.help-container {
+    width: 100%;
 }
