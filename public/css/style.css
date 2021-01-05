@@ -12061,7 +12061,7 @@ body .notification strong {
 
 .pinterest i,
 .pinterest:before {
-    margin: 13px 0 0 15px;
+    margin: 13px 0 0 13px;
 }
 
 .pinterest:before {
@@ -13046,7 +13046,7 @@ body .notification strong {
 #footer .social-icons li a:before,
 #footer .social-icons li a i {
     font-size: 15px;
-    color: #a0a0a0;
+    /*color: #a0a0a0;*/
 }
 
 .listing-share .social-icons li .twitter:before,

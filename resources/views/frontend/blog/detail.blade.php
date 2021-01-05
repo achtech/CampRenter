@@ -63,8 +63,6 @@
 					<ul class="share-buttons margin-top-40 margin-bottom-0">
 						<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
 						<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
-						<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Google</a></li>
-						<li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li>
 					</ul>
 					<div class="clearfix"></div>
 
@@ -198,11 +196,10 @@
 					<!-- Widget -->
 					<div class="widget margin-top-40">
 						<h3 class="margin-bottom-25">Social</h3>
-						<ul class="social-icons rounded">
-							<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-							<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-							<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-							<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+						<ul class="social-icons color rounded">
+							<li><a class="facebook" href="https://www.facebook.com/Campunite-357655531438672"><i class="fa fa-facebook"></i></a></li>
+							<li><a class="twitter" href="https://twitter.com/campunite"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="pinterest" href="https://www.instagram.com/campunite.official"><i class="fa fa-instagram"></i></a></li>
 						</ul>
 
 					</div>
