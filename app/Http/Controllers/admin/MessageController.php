@@ -18,7 +18,7 @@ class MessageController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        
     }
 
     /**
@@ -76,6 +76,11 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+        $input = request()->except(['_token']);
+        $input['created_by']=1;
+        $input['updated_by']=1;
+        $data = Message::create($input);
+        return redirect(route('home.index'));
     }
 
     /**

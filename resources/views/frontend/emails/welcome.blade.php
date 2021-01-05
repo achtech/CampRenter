@@ -14,7 +14,7 @@
 {{trans('front.confirm_registration')}}
 
 <br/>
-<a type="submit" class="btn" style="background-color: #4cbed2;border-color: #4cbed2;margin-left: 183px;height: 45px !important;border-radius: 24px;" href="{{ route('frontend.client.show',$client['id']) }}">
+<a type="submit" class="btn" style="background-color: #4cbed2;border-color: #4cbed2;margin-left: 183px;height: 45px !important;border-radius: 24px;" href="{{ route('home.index') }}">
     {{trans('front.confirm_email_address')}}
  </a>
  <br/>
