@@ -10117,6 +10117,7 @@ body .style-2 .trigger a {
 
 #posts-nav li.prev-post a:before,
 #posts-nav li.next-post a:before {
+    display: none;
     font-family: "simple-line-icons";
     font-size: 20px;
     position: absolute;
