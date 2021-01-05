@@ -69,10 +69,8 @@
 
 			<section id="contact">
 				<h4 class="headline margin-bottom-35">{{trans('front.contact_form')}}</h4>
-
 				<div id="contact-message"></div>
-
-				{{ Form::open(['action'=>'App\Http\Controllers\admin\MessageController@sendEmailToClient', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+				{{ Form::open(['action'=>'App\Http\Controllers\admin\MessageController@store', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
 					<div class="row">
 						<div class="col-md-6">
 							<div>
