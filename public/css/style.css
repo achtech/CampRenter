@@ -9037,7 +9037,8 @@ a.read-more:hover i {
     position: relative;
 }
 
-.widget .search-blog-input .input:before {
+
+/*.widget .search-blog-input .input:before {
     content: "\e090";
     font-size: 17px;
     color: #a0a0a0;
@@ -9049,7 +9050,7 @@ a.read-more:hover i {
     margin-bottom: 0;
     background-color: #fff;
     padding-left: 7px;
-}
+}*/
 
 #contact textarea,
 #contact input,

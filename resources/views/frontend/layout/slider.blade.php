@@ -10,9 +10,9 @@
 						</h2>
 						<div class="main-search-input">
 							<div class="main-search-input-item location">
-								<div id="autocomplete-container">
-									<input id="autocomplete-input" type="text" placeholder="{{trans('front.slider_location')}}" name="searchedLocation">
-								</div>
+							<div id="autocomplete-containeroff" data-autocomplete-tip="{{trans('front.type_and_hit_enter')}}">
+                                <input id="searchTextFieldHome" autocomplete="off" type="text" placeholder="{{trans('front.location')}}" name="searchedLocation" value="{{$searchedLocation ?? ''}}" onchange="document.forms['frm1'].submit()" >
+                            </div>
 								<a href="#"><i class="fa fa-map-marker"></i></a>
 							</div>
 
@@ -29,3 +29,24 @@
 		{{ Form::close() }}
 	</div>
 </div>
+<script type="text/javascript">
+
+ google.maps.event.addDomListener(window, 'load', initialize12);
+
+
+function initialize12() {
+
+var cityBounds = new google.maps.LatLngBounds(
+  new google.maps.LatLng(47.679293,8.625207),
+  new google.maps.LatLng(47.679293, 8.625207));
+
+var options = {
+  bounds: cityBounds,
+  types: ['geocode']
+};
+
+ var input = document.getElementById('searchTextFieldHome');
+
+ var autocomplete = new google.maps.places.Autocomplete(input, options);
+}
+</script>
