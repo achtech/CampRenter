@@ -26,7 +26,7 @@
 					<div class="carousel-item">
 						<a href="{{route('frontend.camper.detail',$camper->id)}}" class="listing-item-container">
 							<div class="listing-item">
-								<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
+								<img src="{{asset('images/campers')}}/{{$camper->image}}" alt="">
 								<div class="listing-item-content">
 									<span class="tag">{{App\Http\Controllers\Controller::getLabel('camper_categories',$camper->id_camper_categories)}}</span>
 									<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>

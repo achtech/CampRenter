@@ -109,7 +109,7 @@
 	}
 	</script>
 		<!-- Typed Script -->
-	<script type="text/javascript" src="{{asset('js/typed.js')}}"></script>
+	<!--<script type="text/javascript" src="{{asset('js/typed.js')}}"></script>
 	<script>
 	var typed = new Typed('.typed-words', {
 	strings: [""," "," "],
@@ -120,7 +120,7 @@
 		loop: true,
 		showCursor: true
 	});
-	</script>
+	</script> -->
 
 
 <!-- Style Switcher
