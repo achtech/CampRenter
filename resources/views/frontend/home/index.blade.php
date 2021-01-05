@@ -56,15 +56,15 @@
 		</div>
 
 		<div class="col-md-12">
-			<div class="row" style="max-width: 90%; margin-left:11%;">
+			<div class="row">
 				@if(count($categories)>0)
 				@foreach($categories as $category)
 					<!-- Box -->
 					<div class="col-md-3 alternative-imagebox">
 						<a href="{{route('frontend.camper.searchByCategory',$category->id)}}" >
-							<img style="max-width:70%;" src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
-								<h4 style="margin-left:0px;">{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
-								<span style="left:20%;" class="blog-item-tag">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} {{trans('front.listings')}}</span>
+							<img src="{{asset('images')}}/camper_categories/{{$category->image}}" alt="">
+								<h4>{{App\Http\Controllers\Controller::getLabelFromObject($category)}}</h4>
+								<span class="listing-count">{{App\Http\Controllers\frontend\FHomeController::getListings($category->id)}} {{trans('front.listings')}}</span>
 						</a>
 					</div>
 				@endforeach

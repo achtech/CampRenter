@@ -11,10 +11,9 @@
 			<div class="col-md-3  col-sm-6">
 				<h4>{{trans('front.footer_social')}}</h4>
 				<ul class="social-icons margin-top-20">
-					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-					<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
+					<li><a class="fa fa-facebook" href="https://www.facebook.com/Campunite-357655531438672"></i></a></li>
+					<li><a class="fa fa-twitter" href="https://twitter.com/campunite"></a></li>
+					<li><a class="fa fa-instagram" href="https://www.instagram.com/campunite.official"></a></li>
 				</ul>
 
 			</div>

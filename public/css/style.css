@@ -366,7 +366,7 @@ header.fullwidth .container {
 
 .right-side {
     float: right;
-    width: 13%;
+    width: 10%;
     display: inline-block;
 }
 
@@ -1137,8 +1137,12 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
     margin-right: 25px;
     top: 9px;
     vertical-align: top;
-    padding-left: 25px;
+    padding-left: 0px;
     margin-left: 25px;
+}
+
+.fa-globe {
+    font-size: 20px;
 }
 
 .user-menu .user-name {
@@ -1197,6 +1201,16 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
     top: -5px;
 }
 
+.lang-menu span {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    margin-right: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+}
+
 .user-menu ul {
     float: left;
     text-align: left;
@@ -1208,7 +1222,7 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     display: inline-block;
-    width: 180px;
+    width: 185px;
     font-size: 15px;
     transform: translate3d(0, 15px, 0);
     padding: 12px 10px;
@@ -1231,19 +1245,14 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
     color: #444;
 }
 
-.user-menu ul li a i {
-    width: 20px;
-    position: relative;
-    display: inline-block;
-}
-
 .user-menu.active ul {
     visibility: visible;
     opacity: 1;
     transform: translate3d(0, 0, 0);
 }
 
-.user-name span:after {
+
+/*.user-name span:after {
     position: absolute;
     content: "";
     height: 15px;
@@ -1255,7 +1264,7 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
     border: 2px solid #fff;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
-}
+}*/
 
 
 /* User Menu Avatar Border */
@@ -1269,8 +1278,16 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
 .user-name span {
     width: 35px;
     height: 35px;
-    left: -28px;
-    top: -8px;
+    left: -26px;
+    top: -1px;
+    text-align: center;
+}
+
+.user-connected span {
+    width: 35px;
+    height: 35px;
+    /*left: -28px;*/
+    top: -1px;
 }
 
 .user-name span:after {
@@ -9297,6 +9314,7 @@ a.read-more:hover i {
 }
 
 span.blog-item-tag {
+    top: 30px;
     text-transform: uppercase;
     font-size: 9.7px;
     letter-spacing: 2.5px;
@@ -9309,7 +9327,7 @@ span.blog-item-tag {
     font-weight: 400;
     margin-bottom: 9px;
     position: absolute;
-    left: 80px;
+    left: 32px;
     z-index: 110;
     margin-top: 8px;
 }
@@ -13010,7 +13028,7 @@ body .notification strong {
 .agent .social-icons,
 #footer .social-icons {
     position: relative;
-    left: -13px;
+    /*left: -13px;*/
 }
 
 .agent .social-icons li,
@@ -13343,7 +13361,7 @@ section.fullwidth .listing-item-container.list-layout,
 }
 
 .listing-item-content span {
-    font-size: 16px;
+    /*font-size: 16px;*/
     font-weight: 300;
     display: inline-block;
     color: rgba(255, 255, 255, 0.7);
@@ -13757,8 +13775,12 @@ span.like-icon {
     height: 290px;
 }
 
+.alternative-imagebox {
+    text-align: center;
+}
+
 .alternative-imagebox h4 {
-    font-weight: bold;
+    /*font-weight: bold;*/
     color: #39b7cd;
     line-height: 36px;
     margin: 0 auto;
@@ -13766,6 +13788,18 @@ span.like-icon {
     text-align: center;
     padding: 0;
     width: 56%;
+}
+
+.alternative-imagebox span {
+    background-color: #39b7cd;
+    display: inline-block;
+    padding: 1px 17px;
+    border-radius: 50px;
+    color: #fff;
+}
+
+.alternative-imagebox img {
+    width: 63%;
 }
 
 .alternative-imagebox h3 {
@@ -19095,19 +19129,21 @@ text-overflow: ellipsis; */
     margin-bottom: 15px;
 }
 
-.old-photos{
+.old-photos {
     border: 2px dashed #59b02c;
-background: #fff;
-transition: all 0.35s linear;
-padding: 20px 20px;
-min-height: 150px;
-position: relative;
-border-radius: 3px;
-margin-bottom: 10px;
-margin-top: 5px;
-display: inline-block;
-width: 100%;
+    background: #fff;
+    transition: all 0.35s linear;
+    padding: 20px 20px;
+    min-height: 150px;
+    position: relative;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    display: inline-block;
+    width: 100%;
 }
+
+
 /* ---------------------------------- */
 
 
@@ -22933,4 +22969,21 @@ a::after {
     opacity: 0 !important;
     width: 0;
     height: 0;
+}
+
+.lang-menu {
+    float: right;
+    top: -13px;
+}
+
+.lang-menu ul {
+    width: 127px !important;
+}
+
+.not-connected ul {
+    width: 132px !important;
+}
+
+.user-name img {
+    max-width: 61%;
 }
