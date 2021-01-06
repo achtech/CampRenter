@@ -37,8 +37,8 @@
 						</div>
 					</div>
 					<form  action="{{route('frontend.camper.storePersonalData')}}" method="POST"  name="frm1">
-					@csrf
-					<input type="hidden" name="id_campers" value="{{isset($camper) ? $camper->id : ''}}" />
+						@csrf
+						<input type="hidden" name="id_campers" value="{{isset($camper) ? $camper->id : ''}}" />
 						<div class="col-md-12">
 							<div class="row" style="padding-left: 100px;">
 								@foreach($categories as $category)
@@ -85,42 +85,38 @@
 							@endif
 						</div>
 
-					<!-- Headline -->
-					<div class="col-md-12">
-						<div class="row">
-							<div class="add-listing-headline" style="margin-top: 65px;">
-								<h3>2. {{trans('front.give_name')}}</h3>
-							</div>
-						</div>
-					</div>
-
-					<!-- Title -->
-					<div class="col-md-12">
-						<div class="row">
-								<div class="col-md-12">
-									<input type="text" id="camper_name" name="camper_name" required placeholder="My sweet Camper" value="{{$camper->camper_name}}">
-									<h6>{{trans('front.still_can_change')}}</h6>
+						<!-- Headline -->
+						<div class="col-md-12">
+							<div class="row">
+								<div class="add-listing-headline" style="margin-top: 65px;">
+									<h3>2. {{trans('front.give_name')}}</h3>
 								</div>
-						</div>
-					</div>
-					<!-- Title -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="col-md-12">
-								<input type="text" name="recommandation" placeholder="" value="{{$camper->recommandation ?? '' }}" />
-								<h6>{{trans('front.recommandation')}}</h6>
 							</div>
 						</div>
-					</div>
-					<div class="row">
+
+						<!-- Title -->
 						<div class="col-md-12">
-						<div style="float: right;">
-						@if($isValid && empty($selectedCategoryId) )<div style="color:red"> please choose a category @endif
-						<button type="submit" class="button" @if($isValid && empty($selectedCategoryId)) disabled @endif>{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
-
+							<div class="row">
+									<div class="col-md-12">
+										<input type="text" id="camper_name" name="camper_name" required placeholder="My sweet Camper" value="{{$camper->camper_name}}">
+										<h6>{{trans('front.still_can_change')}}</h6>
+									</div>
+							</div>
 						</div>
-					</div>
-
+						<!-- Title -->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="col-md-12">
+									<input type="text" name="recommandation" placeholder="" value="{{$camper->recommandation ?? '' }}" />
+									<h6>{{trans('front.recommandation')}}</h6>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div style="float: right;">
+								<button type="submit" class="button" @if($isValid && empty($selectedCategoryId)) disabled @endif>{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
+							</div>
+						</div>
 					</form>
 				</div>
 				<!-- Section / End -->
