@@ -73,7 +73,7 @@
                 <div class="edit-profile-photo" style="height: 259px;">
                     <label>{{ __('front.photo') }}</label><br>
                     <img style="margin-top-10" src="{{asset('images/clients')}}/{{$client['photo']}}" alt="" id="client_image">
-                    <div class="change-photo-btn"  style="margin-top-10" >
+                    <div class="change-photo-btn">
                         <div class="photoUpload custom-file">
                             <span><i class="fa fa-upload"></i> {{ __('front.upload_photos') }}</span>
                             <input type="file" id="photo" name="photo" class="upload custom-file-input" onchange="readProfileImage(this);" />
@@ -98,8 +98,8 @@
                     <div class="row" >
                         @foreach($avatars as $elem)
 
-                            <div class="col-md-4" > 
-                                    <span style="cursor: pointer;"> 
+                            <div class="col-md-4" >
+                                    <span style="cursor: pointer;">
                                     <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
                                     <input type="hidden" name="id_avatars" value="" />
                                     <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
@@ -109,7 +109,7 @@
                                     </span>
                             </div>
 
-                        @endforeach    
+                        @endforeach
                     </div>
                 </div>
                 <div class="edit-profile-photo">
@@ -140,7 +140,7 @@ $("img[data-picture_avatar_id]").click(function(e){
             }else{
 				document.getElementById('avatar_'+obj[i]).style.outline="none";
             }
-        }            
+        }
 	}
 
 </script>

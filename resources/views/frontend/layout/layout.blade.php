@@ -13,7 +13,7 @@
 ================================================== -->
 <script src="https://kit.fontawesome.com/b90fcd0862.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+<!--<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}"> -->
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/main-color.css')}}" id="colors">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

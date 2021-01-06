@@ -33,13 +33,14 @@
           <div class="row">
             <div class="col-12">
               <div class="form-group col-6">
-                    <label for="document">Pricncipal camper picture</label>
+                    <label for="document">Pricncipal camper <picture></picture></label>
                     <div class="custom-file">
-                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" onchange="readCamperImage(this);">
                     </div>
               </div>
-              <div class="form-group col-6">
-                <img   src="{{asset('images')}}/campers/{{$camper['image']}}" alt="">
+              <div class="form-group col-6 camper_image">
+                <img   src="{{asset('images/camper')}}/{{$camper['image']}}" alt="" id="camper_image">
+
               </div>
             </div>
           </div>
@@ -106,5 +107,18 @@
     init: function () {
     }
   }
+	 function readCamperImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#camper_image')
+                        .attr('src', e.target.result)
+                        .width(100)
+                        .height(130);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 </script>
 @stop

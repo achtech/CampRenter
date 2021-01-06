@@ -4,13 +4,62 @@
 @section('content')
 <!-- Content
 ================================================== -->
-<div class="container" style="width=100%;">
+<div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<h3 class="headline margin-top-45" style="font-weight:normal;text-align:left;">
 				<strong class="headline-with-separator">Help</strong>
 			</h3>
 		</div>
+	</div>
+	<!-- Toggles Container -->
+	<div class="style-2 margin-bottom-30">
+
+		<!-- Toggle 1 -->
+		<div class="toggle-wrap">
+			<span class="trigger "><a href="#"><i class="sl sl-icon-plus"></i>Welcome to the help section!</a></span>
+			<div class="toggle-container">
+				<p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Vivamus justo arcu, elementum a sollicitudin pellentesque, tincidunt ac enim. Proin id arcu ut ipsum vestibulum elementum.</p>
+				<button class="button margin-top-10" value="Zum Formular"> Zum Formular </button>
+			</div>
+		</div>
+
+		<!-- Toggle 2 -->
+		<div class="toggle-wrap">
+			<span class="trigger"><a href="#">Abschnitt 2 <i class="sl sl-icon-plus"></i> </a></span>
+			<div class="toggle-container">
+			</div>
+		</div>
+
+		<!-- Toggle 3 -->
+		<div class="toggle-wrap">
+			<span class="trigger"><a href="#">Abschnitt 3 <i class="sl sl-icon-plus"></i> </a></span>
+			<div class="toggle-container">
+			</div>
+		</div>
+
+		<!-- Toggle 4 -->
+		<div class="toggle-wrap">
+			<span class="trigger"><a href="#">Abschnitt 4 <i class="sl sl-icon-plus"></i> </a></span>
+			<div class="toggle-container">
+			</div>
+		</div>
+
+		<!-- Toggle 5 -->
+		<div class="toggle-wrap">
+			<span class="trigger"><a href="#">Abschnitt 5 <i class="sl sl-icon-plus"></i> </a></span>
+			<div class="toggle-container">
+			</div>
+		</div>
+
+		<!-- Toggle 6 -->
+		<div class="toggle-wrap">
+			<span class="trigger"><a href="#">Section <i class="sl sl-icon-plus"></i> </a></span>
+			<div class="toggle-container">
+				<p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
+			</div>
+		</div>
+
 	</div>
 	<div class="row">
 		<div class="col-md-6">

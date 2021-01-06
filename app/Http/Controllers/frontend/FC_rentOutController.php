@@ -14,6 +14,7 @@ use App\Models\CamperCategory;
 use App\Models\Equipment;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
+use App\Models\Promotion;
 use App\Models\Transmission;
 use DB;
 use Illuminate\Http\Request;
@@ -94,7 +95,7 @@ class FC_rentOutController extends Controller
         $file = $request->file('photo');
         if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
             $input['photo'] = $request->file('photo')->getClientOriginalName();
-            $file->move(base_path('public\images\clients'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/clients'), $file->getClientOriginalName());
         };
         $client->update($input);
         Session::put('_clients', $client);
@@ -350,7 +351,7 @@ class FC_rentOutController extends Controller
         $file = $request->file('image');
         if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $camper->image = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\images\camper'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/camper'), $file->getClientOriginalName());
             $camper->save();
         }
 
@@ -969,8 +970,9 @@ class FC_rentOutController extends Controller
         $price_per_day = $request->price_per_night_main;
         $minimal_rent_days_main = $request->minimum_night_main;
         $total = $minimal_rent_days_main * $price_per_day;
-        $promotion = $total * 0.15;
-        $owner_part = $total - $promotion;
+        $per = Promotion::where('status', 1)->first()->commission;
+        $fee = ($total * $per) / 100;
+        $owner_part = $total - $fee;
 
         $html = "";
         $html .= "<div class='col-md-12' style='margin-top:10px;'>
@@ -985,7 +987,7 @@ class FC_rentOutController extends Controller
                 </div>
                 <div class='col-md-6' >
                     <p><h5>CHF $owner_part</h5></p>
-                    <p><h5>CHF $promotion</h5></p>
+                    <p><h5>CHF $fee</h5></p>
                     <p><h5><strong>CHF $total<strong></h5></p>
                 </div>
             </div>
@@ -1000,7 +1002,8 @@ class FC_rentOutController extends Controller
            $price_per_day = $request->price_per_night_off?? 1;
         $minimal_rent_days_off = $request->minimum_night_off ?? 1;
         $total = $minimal_rent_days_off * $price_per_day;
-        $promotion = $total * 0.15;
+        $per = Promotion::where('status', 1)->first()->commission;
+        $promotion = $total * $per;
         $owner_part = $total - $promotion;
 
         $html = "";
@@ -1030,7 +1033,8 @@ class FC_rentOutController extends Controller
         $price_per_day = $request->price_per_night_winter;
         $minimal_rent_days_winter = $request->minimum_night_winter;
         $total = $minimal_rent_days_winter * $price_per_day;
-        $promotion = $total * 0.15;
+        $per = Promotion::where('status', 1)->first()->commission;
+        $promotion = $total * $per;
         $owner_part = $total - $promotion;
 
         $html = "";

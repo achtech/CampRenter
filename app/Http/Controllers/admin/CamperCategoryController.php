@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Models\CamperCategory;
-use Illuminate\Http\Request;
 use DB;
+use Illuminate\Http\Request;
+
 class CamperCategoryController extends Controller
 {
     /**
@@ -65,12 +66,12 @@ class CamperCategoryController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $input['image'] = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\images\camper_categories'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/camper_categories'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = CamperCategory::create($input);
         return redirect(route('camperCategory.index'))->with('success', 'Item added succesfully');
     }
@@ -104,11 +105,11 @@ class CamperCategoryController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $input['image'] = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\images\camper_categories'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/camper_categories'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = CamperCategory::where('id', $id)->update($input);
         return redirect(route('camperCategory.index'))->with('success', 'Item Updated succesfully');
     }
@@ -131,8 +132,9 @@ class CamperCategoryController extends Controller
         return redirect(route('camperCategory.index'));
     }
 
-    public static function hasSubCategories($id){
-        return  DB::table('camper_sub_categories')->where('id_camper_categories', $id)->count()>0;
+    public static function hasSubCategories($id)
+    {
+        return DB::table('camper_sub_categories')->where('id_camper_categories', $id)->count() > 0;
 
     }
 }

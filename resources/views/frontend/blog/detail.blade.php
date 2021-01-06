@@ -75,12 +75,12 @@
 			<ul id="posts-nav" class="margin-top-0 margin-bottom-45">
 			@if($next)
 				<li class="next-post">
-					<a href="{{route('frontend.blog.fdetail',$next ?? 0)}}"><span>{{trans('front.next_post')}}</span>{{$nextTitle ?? ''}}</a>
+					<a href="{{route('frontend.blog.fdetail',$next ?? 0)}}"><span>{{trans('front.next_post')}} <i class="fas fa-chevron-right"></i></span>{{$nextTitle ?? ''}}</a>
 				</li>
 			@endif
 			@if($previous)
 				<li class="prev-post">
-					<a href="{{route('frontend.blog.fdetail',$previous ?? 0)}}"><span>{{trans('front.previous_post')}}</span>{{$previousTitle ?? ''}}</a>
+					<a href="{{route('frontend.blog.fdetail',$previous ?? 0)}}"><span><i class="fas fa-chevron-left"></i> {{trans('front.previous_post')}}</span>{{$previousTitle ?? ''}}</a>
 				</li>
 			@endif
 			</ul>
@@ -89,7 +89,7 @@
 
 			<!-- Reviews -->
 			<section class="comments">
-				<h4 class="headline margin-bottom-35">{{trans('front.blog_comment')}} <span class="comments-amount">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}})</span></h4>
+				<h4 class="headline margin-bottom-35"> {{trans('front.blog_comment')}} <span class="comments-amount">({{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}})</span></h4>
 				<ul>
 				@include('frontend.blog.comment', ['comments' => $comments, 'id_blogs' => $blog->id])
 				</ul>

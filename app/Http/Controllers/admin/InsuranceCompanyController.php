@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
 
@@ -59,7 +59,7 @@ class InsuranceCompanyController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('logo') && $request->file('logo')->getClientOriginalName()) {
             $input['logo'] = $request->file('logo')->getClientOriginalName();
-            $file->move(base_path('public\images\insuranceCompany'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/insuranceCompany'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
@@ -98,11 +98,11 @@ class InsuranceCompanyController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('logo') && $request->file('logo')->getClientOriginalName()) {
             $input['logo'] = $request->file('logo')->getClientOriginalName();
-            $file->move(base_path('public\images\insuranceCompany'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/insuranceCompany'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
-        
+
         $input['updated_by'] = auth()->user()->id;
         $data = InsuranceCompany::where('id', $id)->update($input);
         return redirect(route('insuranceCompany.index'))->with('success', 'Item Updated succesfully');
