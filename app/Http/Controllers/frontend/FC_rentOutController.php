@@ -10,6 +10,7 @@ use App\Models\CamperImage;
 use App\Models\CamperSubCategory;
 use App\Models\CamperTerms;
 use App\Models\Countries;
+use App\Models\CamperCategory;
 use App\Models\Equipment;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
@@ -996,8 +997,8 @@ class FC_rentOutController extends Controller
 
     public function calc_nights_off_ajax(Request $request)
     {
-        $price_per_day = $request->price_per_day;
-        $minimal_rent_days_off = $request->minimal_rent_days_off;
+           $price_per_day = $request->price_per_night_off?? 1;
+        $minimal_rent_days_off = $request->minimum_night_off ?? 1;
         $total = $minimal_rent_days_off * $price_per_day;
         $promotion = $total * 0.15;
         $owner_part = $total - $promotion;
@@ -1014,7 +1015,7 @@ class FC_rentOutController extends Controller
                     <p><h5><strong>rental nights</strong></h5></p>
                 </div>
                 <div class='col-md-6' >
-                    <p><h5>CHF $owner_part</h5></p>
+                    <p><h5>CHF". $price_per_day."</h5></p>
                     <p><h5>CHF $promotion</h5></p>
                     <p><h5><strong>CHF $total<strong></h5></p>
                 </div>
@@ -1026,8 +1027,8 @@ class FC_rentOutController extends Controller
 
     public function calc_nights_winter_ajax(Request $request)
     {
-        $price_per_day = $request->price_per_day;
-        $minimal_rent_days_winter = $request->minimal_rent_days_winter;
+        $price_per_day = $request->price_per_night_winter;
+        $minimal_rent_days_winter = $request->minimum_night_winter;
         $total = $minimal_rent_days_winter * $price_per_day;
         $promotion = $total * 0.15;
         $owner_part = $total - $promotion;
@@ -1081,4 +1082,7 @@ class FC_rentOutController extends Controller
         return redirect(route('frontend.clients.camper'));
     }
 
+    public static function getCategoriePhoto($id){
+        return CamperCategory::find($id)->image;
+    }
 }
