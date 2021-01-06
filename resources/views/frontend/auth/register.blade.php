@@ -1,9 +1,8 @@
 @extends('frontend.layout.layout',['activePage' => 'home','footerPage' => 'true'])
 @section('content')
-    <div class="row margin-bottom-30 margin-top-30">
+    <div class="row margin-bottom-30 margin-top-30" style="width:99%;">
         <div class="col-sm-offset-3 col-md-6">
             <div class="titles-container">
-                <h4 class="text-center">{{trans('front.create_an_account')}}</h4>
                 <h3 class="text-center">{{trans('front.welcome')}}</h3>
                 <h1 class="text-center">{{trans('front.create_an_account')}}</h1>
 
@@ -54,8 +53,8 @@
                             <input type="password" placeholder="Password" id="password" name="password" class="form-control" required>
                         </div>
                         <div class="col-md-12">
-                            <label style="display: flex;"><input style="width: auto;" id="service_terms" name="service_terms"  type="checkbox" class="form-control" required>
-                                <span style="margin-top: 12px;">{{trans('front.agree')}} <a  style="font-weight: bold;color: #818181;display: contents;" class="inscription" href="#" id="register" >{{trans('front.service_terms')}}</a>{{trans('front.and')}} <a   style="font-weight: bold;color: #818181;display: contents;" class="inscription" href="#" id="register" >{{trans('front.privacy_policy')}}</a></span>
+                            <label><input id="service_terms" name="service_terms"  type="checkbox" class="form-control" required>
+                                <span style="margin-top: 12px;">{{trans('front.agree')}} <a  style="font-weight: bold;color: #818181;display: contents;" class="inscription" href="{{route('terms')}}" id="register" >{{trans('front.service_terms')}}</a>{{trans('front.and')}} <a   style="font-weight: bold;color: #818181;display: contents;" class="inscription" href="{{route('disclaimer')}}" id="register" >{{trans('front.privacy_policy')}}</a></span>
                             </label>
                         </div>
                         <div class="col-md-12">

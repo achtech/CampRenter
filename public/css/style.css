@@ -182,6 +182,9 @@ input[type="submit"] {
 
 input[type="checkbox"] {
     display: inline;
+    margin: 11px 6px 0;
+    width: auto;
+    height: auto;
 }
 
 input[type="radio"] {
@@ -383,6 +386,9 @@ header.fullwidth .container {
     .left-side {
         width: 100%;
         display: inline-block;
+    }
+    #wrapper {
+        width: 122% !important;
     }
 }
 

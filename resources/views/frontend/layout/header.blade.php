@@ -87,7 +87,7 @@
 				</div>
 			@else
 				<div class="user-menu">
-					<div class="user-name"><span><img src="{{asset('/images')}}/clients/{{App\Http\Controllers\Controller::getConnectedClientAvatarOrPicture()}}" alt=""></div>
+					<div class="user-name"><span><img src="{{asset('/images/clients')}}/{{App\Http\Controllers\Controller::getConnectedClientAvatarOrPicture()}}" alt=""></div>
 					<ul>
                      	  <li><a href="{{ route('clients.user.profile') }}" style="width: 100%;"><i class="far fa-user" style="margin-right: 6%;"></i>{{ __('front.my_profile') }} </a></li>
                      	  <li><a href="{{ route('frontend.clients.message') }}" style="width: 100%;"><i class="far fa-envelope" style="margin-right: 6%;"></i> {{ __('front.my_message') }}</a></li>
