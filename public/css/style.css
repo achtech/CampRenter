@@ -22984,7 +22984,7 @@ a::after {
 
 .lang-menu {
     float: right;
-    top: -13px;
+    top: -16px;
 }
 
 .lang-menu ul {
@@ -23002,4 +23002,9 @@ a::after {
 
 .help-container {
     width: 100%;
+}
+
+.camper_image {
+    max-width: 100px;
+    max-width: 130px;
 }

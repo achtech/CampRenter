@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
 
-use App\Models\CamperSubCategory;
+use App\Http\Controllers\Controller;
 use App\Models\CamperCategory;
+use App\Models\CamperSubCategory;
 use Illuminate\Http\Request;
 
 class CamperSubCategoryController extends Controller
@@ -37,7 +37,7 @@ class CamperSubCategoryController extends Controller
     public function create()
     {
         $camperCategories = CamperCategory::all()->pluck(app()->getLocale() == 'de' ? 'label_de' : (app()->getLocale() == 'en' ? 'label_en' : 'label_fr'), 'id');
-        return view('admin.camperSubCategory.create')->with('camperCategories',$camperCategories);
+        return view('admin.camperSubCategory.create')->with('camperCategories', $camperCategories);
     }
     /**
      * Display the specified resource.
@@ -61,12 +61,12 @@ class CamperSubCategoryController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $input['image'] = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\images\camper_categories'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/camper_categories'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = CamperSubCategory::create($input);
         return redirect(route('camperSubCategory.index'))->with('success', 'Item added succesfully');
     }
@@ -82,7 +82,7 @@ class CamperSubCategoryController extends Controller
         $camperCategories = CamperCategory::all()->pluck(app()->getLocale() == 'de' ? 'label_de' : (app()->getLocale() == 'en' ? 'label_en' : 'label_fr'), 'id');
 
         $data = CamperSubCategory::find($id);
-        return view('admin.camperSubCategory.edit', ['id' => 1])->with('data', $data)->with('camperCategories',$camperCategories);
+        return view('admin.camperSubCategory.edit', ['id' => 1])->with('data', $data)->with('camperCategories', $camperCategories);
     }
 
     /**
@@ -102,11 +102,11 @@ class CamperSubCategoryController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $input['image'] = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\images\camper_categories'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/camper_categories'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = CamperSubCategory::where('id', $id)->update($input);
         return redirect(route('camperSubCategory.index'))->with('success', 'Item Updated succesfully');
     }

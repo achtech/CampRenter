@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 
@@ -61,7 +61,7 @@ class BlogController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
             $input['photo'] = $request->file('photo')->getClientOriginalName();
-            $file->move(base_path('public\images\blog'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/blog'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'photo']);
         }
@@ -102,7 +102,7 @@ class BlogController extends Controller
         $input = request()->except(['_token', '_method', 'action']);
         if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
             $input['photo'] = $request->file('photo')->getClientOriginalName();
-            $file->move(base_path('public\images\blog'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/blog'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }

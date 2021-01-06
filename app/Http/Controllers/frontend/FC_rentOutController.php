@@ -93,7 +93,7 @@ class FC_rentOutController extends Controller
         $file = $request->file('photo');
         if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
             $input['photo'] = $request->file('photo')->getClientOriginalName();
-            $file->move(base_path('public\images\clients'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/clients'), $file->getClientOriginalName());
         };
         $client->update($input);
         Session::put('_clients', $client);
@@ -349,7 +349,7 @@ class FC_rentOutController extends Controller
         $file = $request->file('image');
         if ($request->file('image') && $request->file('image')->getClientOriginalName()) {
             $camper->image = $request->file('image')->getClientOriginalName();
-            $file->move(base_path('public\images\camper'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/camper'), $file->getClientOriginalName());
             $camper->save();
         }
 

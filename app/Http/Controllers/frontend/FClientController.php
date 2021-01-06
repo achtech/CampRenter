@@ -72,15 +72,15 @@ class FClientController extends DefaultLoginController
         $driving_licence_image = $request->file('driving_licence_image');
         if ($request->file('driving_licence_image') && $request->file('driving_licence_image')->getClientOriginalName()) {
             $input['driving_licence_image'] = $request->file('driving_licence_image')->getClientOriginalName();
-            $driving_licence_image->move(base_path('public\images\clients'), $driving_licence_image->getClientOriginalName());
+            $driving_licence_image->move(base_path('public/images/clients'), $driving_licence_image->getClientOriginalName());
         }
         if ($request->file('image_national_id') && $request->file('image_national_id')->getClientOriginalName()) {
             $input['image_national_id'] = $request->file('image_national_id')->getClientOriginalName();
-            $cin->move(base_path('public\images\clients'), $cin->getClientOriginalName());
+            $cin->move(base_path('public/images/clients'), $cin->getClientOriginalName());
         }
         if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
             $input['photo'] = $request->file('photo')->getClientOriginalName();
-            $file->move(base_path('public\images\clients'), $file->getClientOriginalName());
+            $file->move(base_path('public/images/clients'), $file->getClientOriginalName());
         };
         $client->update($input);
 
