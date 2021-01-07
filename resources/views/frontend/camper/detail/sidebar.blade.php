@@ -5,8 +5,9 @@
 
 <!-- Book Now -->
 <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
-    <form method="POST" id="idForm" action="{{route('frontend.add_request_booking',$camper->id)}}" autocomplete="off" >
+    <form method="POST" id="idForm" action="{{route('frontend.add_request_booking')}}" autocomplete="off" >
     @csrf
+        <input type="hidden" name="id_campers" value="{{$camper->id}}" />
         <h3><i class="fa fa-calendar-check-o "></i> {{trans('front.booking')}}</h3>
         <div class="row with-forms  margin-top-0">
 
@@ -79,9 +80,9 @@
     @endif
         <!-- Share Buttons -->
         <ul class="share-buttons margin-top-40 margin-bottom-0">
-            <li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
-            <li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
-            <li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Google</a></li>
+            <li><a class="fb-share" href="https://www.facebook.com/Campunite-357655531438672"><i class="fa fa-facebook"></i> Facebook</a></li>
+            <li><a class="twitter-share" href="https://twitter.com/campunite"><i class="fa fa-twitter"></i> Tweet</a></li>
+            <li><a class="gplus-share" href="https://www.instagram.com/campunite.official"><i class="fa fa-instagram"></i> Instagram</a></li>
             <!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
         </ul>
         <div class="clearfix"></div>

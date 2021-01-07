@@ -133,10 +133,10 @@ Route::group(['middleware' => 'Lang'], function () {
 
     Route::post('/rentOut/saveCalendar',
         [FC_rentOutController::class, 'storeCalendar'])->name('frontend.camper.saveCalendar');
-        
+
     Route::get('/rentOut/toBeConfirmed/{id}',
         [FC_rentOutController::class, 'toBeConfirmed'])->name('frontend.camper.tobeConfirmed');
-    
+
     Route::get('/step-insurance/{id}',
         [FC_rentOutController::class, 'showInsurance'])->name('goToInsurance');
 
@@ -188,7 +188,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/bookmark_client', [FC_bookmarkController::class, 'index'])->name('frontend.clients.bookmark');
     Route::post('/ajax/addBookmarks', [FC_bookmarkController::class, 'addOrRemove'])->name('frontend.camper.add_bookmark');
     Route::get('/bookmark/{id}/delete', [FC_bookmarkController::class, 'removeFromBookMark'])->name('frontend.bookmark.delete');
-    Route::post('/camper/request_booking/{id}', [FC_bookingController::class, 'requestBooking'])->name('frontend.add_request_booking');
+    Route::post('/camper/request_booking', [FC_bookingController::class, 'requestBooking'])->name('frontend.add_request_booking');
     Route::post('/storeMessage', [FContactController::class, 'store'])->name('frontend.contact.store');
     Route::get('/client/notification/detail/{id}', [FC_notificationController::class, 'show'])->name('frontend.clients.notification.detail');
     Route::get('/booking/booking_owner/detail/{id}', [FC_bookingController::class, 'detailBookingOwner'])->name('booking.owner_booking.detail');

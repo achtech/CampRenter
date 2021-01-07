@@ -18,10 +18,11 @@ function initialize() {
     var el=document.getElementById("map_canvas");
     map = new google.maps.Map(el, mapOptions);
 
-    /**var marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
         map: map,
-        position: latlng
-    });*/
+        position: latlng,
+        visible: false
+    });
 
     var sunCircle = {
         strokeColor: "#c3fc49",

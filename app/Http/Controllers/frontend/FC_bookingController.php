@@ -25,9 +25,9 @@ class FC_bookingController extends Controller
             ->with('renterBookings', $renterBookings);
     }
 
-    public function requestBooking($idCamper)
+    public function requestBooking(Request $request)
     {
-        dd('teeest');
+        dd($request->id_campers);
         $searchedDate = $request->searchedDate ?? '';
         if ($searchedDate != '') {
             $client = Controller::getConnectedClient();
