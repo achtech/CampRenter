@@ -11,7 +11,7 @@
         <h3><i class="fa fa-calendar-check-o "></i> {{trans('front.booking')}}</h3>
         <div class="row with-forms  margin-top-0">
 
-            <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
+            <!-- Date Range Picker -->
             <div class="col-lg-12 booking_date">
                 <input type="text" id="booking-date-range" required
                         name="searchedDate"  placeholder="{{trans('front.check_in_out')}}"

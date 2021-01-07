@@ -7,6 +7,7 @@ use App\models\Booking;
 use App\models\Camper;
 use App\models\Notification;
 use DB;
+use Illuminate\Http\Request;
 
 class FC_bookingController extends Controller
 {
@@ -42,11 +43,11 @@ class FC_bookingController extends Controller
             $booking->end_date = $endDate;
             $booking->id_clients = $client ? $client->id : 0;
 
-            $booking->id_campers = $idCamper;
+            $booking->id_campers = $request->id_campers;
             $booking->id_booking_status = 1;
             $booking->save();
 
-            $camper = Camper::find($idCamper);
+            $camper = Camper::find($request->id_campers);
             $notification = new Notification();
             $notification->id_renter = $booking->id_clients;
             $notification->id_owner = $camper->id_clients;
