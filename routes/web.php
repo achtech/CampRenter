@@ -133,7 +133,10 @@ Route::group(['middleware' => 'Lang'], function () {
 
     Route::post('/rentOut/saveCalendar',
         [FC_rentOutController::class, 'storeCalendar'])->name('frontend.camper.saveCalendar');
-
+        
+    Route::get('/rentOut/toBeConfirmed/{id}',
+        [FC_rentOutController::class, 'toBeConfirmed'])->name('frontend.camper.tobeConfirmed');
+    
     Route::get('/step-insurance/{id}',
         [FC_rentOutController::class, 'showInsurance'])->name('goToInsurance');
 

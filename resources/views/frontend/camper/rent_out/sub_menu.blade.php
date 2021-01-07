@@ -76,6 +76,18 @@
 					</ol>
 				</div>
 			</li>
+			<li>
+				<div class="row">
+					<div class="col-md-12" style="margin-top: -26px;margin-bottom: -15px;">
+						@if($camper && $camper->id && $camper->is_completed == 0)
+							<a href="{{route('frontend.camper.tobeConfirmed',$camper->id)}}"><h3><strong>{{trans('front.publier_camper')}}</strong></h3></a>
+						@else
+							<a href="#"><h3><strong>{{trans('front.verified')}}</strong></h3></a>
+						@endif
+					</div>
+				</div>
+			</li>
+
 		</ul>
 	</div>
 </div>

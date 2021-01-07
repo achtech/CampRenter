@@ -1089,4 +1089,11 @@ class FC_rentOutController extends Controller
     public static function getCategoriePhoto($id){
         return CamperCategory::find($id)->image;
     }
+
+    public function toBeConfirmed($id){
+        $camper = Camper::find($id);
+        $camper->is_completed = 1;
+        $camper->save();
+        return redirect(route('frontend.camper.detail', $camper->id));
+}
 }

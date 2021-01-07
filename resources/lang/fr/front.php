@@ -542,5 +542,7 @@ return [
     'payment_date' => 'Date de Payment',
     'total_cost' => 'Coût total',
     'days' => 'Jours',
+    'verified' => 'Valider',
+    'publier_camper' => 'publier le camping-car',
 
 ];

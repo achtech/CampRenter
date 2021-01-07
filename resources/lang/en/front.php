@@ -550,5 +550,7 @@ return [
     'year' => 'year',
     'choose' => 'Choose',
     'our_proposition' => 'Our insurance proposition',
+    'Verified' => 'Valid',
+    'publier_camper' => 'publish the camper',
 
 ];

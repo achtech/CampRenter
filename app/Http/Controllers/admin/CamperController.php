@@ -161,7 +161,7 @@ class CamperController extends Controller
         } else {
             $data->is_confirmed = '0';
         }
-
+        $data->save();
         $input = request()->except(['_token', '_method', 'action']);
         $input['updated_by'] = auth()->user()->id;
         $data = Camper::where('id', $id)->update($input);

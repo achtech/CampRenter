@@ -387,4 +387,6 @@ return [
     'payment_date' => 'Zahlungsdatum',
     'total_cost' => 'Gesamtkosten',
     'days' => 'Tage',
+    'verified' => 'Gültig',
+    'publier_camper' => 'Veröffentlichen Sie den Camper',
 ];
