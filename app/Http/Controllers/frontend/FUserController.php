@@ -41,4 +41,8 @@ class FUserController extends Controller
         $clt->id_avatars = $request->id;
         $clt->update();
     }
+
+    public function deleteProflPicture(){
+        
+    }
 }

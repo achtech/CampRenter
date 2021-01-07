@@ -77,8 +77,12 @@
                         <div class="photoUpload custom-file">
                             <span><i class="fa fa-upload"></i> {{ __('front.upload_photos') }}</span>
                             <input type="file" id="photo" name="photo" class="upload custom-file-input" onchange="readProfileImage(this);" />
+                            
                         </div>
                     </div>
+                    @if($client['photo'])
+                    <a style="color:red" href="#">remove photo</a>
+                    @endif
                 </div>
                 <div class="edit-profile-photo">
                     <label>{{ __('front.image_national') }}</label><br>
