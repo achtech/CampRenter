@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avatar;
 use App\Models\Camper;
 use App\Models\Client;
 use App\Models\Message;
 use App\Models\User;
-use App\Models\Avatar;
 use DB;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -76,9 +76,10 @@ class Controller extends BaseController
         return $client ? $client->client_last_name . ' ' . $client->client_name : '';
     }
 
-    public static function getConnectedClientAvatarOrPicture(){
+    public static function getConnectedClientAvatarOrPicture()
+    {
         $client = self::getConnectedClient();
-        if($client->photo!=null){
+        if ($client->photo != null) {
             return $client->photo;
         } else {
             $avatar = Avatar::find($client->id_avatars);
@@ -122,4 +123,8 @@ class Controller extends BaseController
                 ['id_owner', $client->id], ['status', 'unread'], ['type', $type]])->get()->count();
     }
 
+    public static function diffDate($date1, $date2)
+    {
+        return (strtotime($date2) - strtotime($date1)) / (3600 * 24);
+    }
 }
