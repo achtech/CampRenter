@@ -81,8 +81,7 @@ var cityBounds = new google.maps.LatLngBounds(
 
 var options = {
   bounds: cityBounds,
-  types: ['geocode'],
-  componentRestrictions: {country: 'CH'}
+  types: ['geocode']
 };
 
  var input = document.getElementById('searchTextField');

@@ -89,10 +89,11 @@
 				<div class="user-menu">
 					<div class="user-name"><span><img src="{{asset('/images/clients')}}/{{App\Http\Controllers\Controller::getConnectedClientAvatarOrPicture()}}" alt=""></div>
 					<ul>
-                     	  <li><a href="{{ route('clients.user.profile') }}" style="width: 100%;"><i class="far fa-user" style="margin-right: 6%;"></i>{{ __('front.my_profile') }} </a></li>
-                     	  <li><a href="{{ route('frontend.clients.message') }}" style="width: 100%;"><i class="far fa-envelope" style="margin-right: 6%;"></i> {{ __('front.my_message') }}</a></li>
-                     	  <li><a href="{{ route('frontend.clients.booking') }}" style="width: 100%;"><i class="far fa-folder-open" style="margin-right: 6%;"></i>{{ __('front.my_bookings') }}</a></li>
-                     	  <li><a href="{{ route('frontend.clients.camper') }}" style="width: 100%;"><i class="fas fa-caravan" style="margin-right: 6%;"></i>{{ __('front.my_campers') }}</a></li>
+                  <li><a href="{{ route('frontend.clients.bookmark') }}" style="width: 100%;"><i class="far fa-heart" style="margin-right: 6%;"></i>{{trans('front.favoris')}}</a></li>
+                  <li><a href="{{ route('frontend.clients.booking') }}" style="width: 100%;"><i class="far fa-folder-open" style="margin-right: 6%;"></i>{{ __('front.my_bookings') }}</a></li>
+                  <li><a href="{{ route('frontend.clients.message') }}" style="width: 100%;"><i class="far fa-envelope" style="margin-right: 6%;"></i> {{ __('front.my_message') }}</a></li>
+                  <li><a href="{{ route('frontend.clients.camper') }}" style="width: 100%;"><i class="fas fa-caravan" style="margin-right: 6%;"></i>{{ __('front.my_campers') }}</a></li>
+                  <li><a href="{{ route('clients.user.profile') }}" style="width: 100%;"><i class="far fa-user" style="margin-right: 6%;"></i>{{ __('front.my_profile') }} </a></li>
 
                      		  <li><a class="dropdown-item" href="{{ route('client.logout') }}"
                      		  		onclick="event.preventDefault();
