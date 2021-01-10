@@ -51,6 +51,12 @@ class FC_CamperController extends Controller
 
         $rateDetail = DB::table('v_rate_camper_detail')->where('id_campers', $id)->first();
         $categories = DB::table('camper_categories')->paginate(10);
+        if ($owner->photo != null) {
+            $owner_photo = $owner->photo;
+        } else {
+            $avatar = DB::table('avatars')->find($owner->id_avatars);
+            $owner_photo = $avatar ? $avatar->image : 'default.jpg';
+        }
 
         return view('frontend.camper.detail')
             ->with('camper', $camper)
@@ -64,6 +70,7 @@ class FC_CamperController extends Controller
             ->with('camper_terms', $camper_terms)
             ->with('camper_rental_terms', $camper_rental_terms)
             ->with('camper_equipment', $camper_equipment)
+            ->with('owner_photo', $owner_photo)
             ->with('camper_inssurance', $camper_inssurance);
     }
 

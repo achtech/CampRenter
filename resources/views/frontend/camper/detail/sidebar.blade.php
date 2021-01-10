@@ -51,6 +51,7 @@
 <div class="boxed-widget margin-top-35">
     <div class="hosted-by-title">
         <h4><span>{{trans('front.hosted_by')}}</span> <a href="{{route('frontend.camper.owner_detail', $camper->id)}}">{{$owner->client_name}} {{$owner->client_last_name}}</a></h4>
+        <a href="{{route('frontend.camper.owner_detail', $camper->id)}}" class="hosted-by-avatar"><img src="{{asset('/images')}}/clients/{{$owner_photo}}" alt=""></a>
     </div>
 </div>
 <!-- Contact / End-->
