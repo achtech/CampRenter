@@ -151,8 +151,8 @@ class FC_bookingController extends Controller
                     $query->where('start_month', $sMonth)
                         ->orWhere('end_month', $sMonth);
                 })
-                ->first()->price_per_night;
-            $total = ($pricePerDay + $insurance) * $nbrDays;
+                ->first();
+            $total = ($pricePerDay ? $pricePerDay->price_per_night : ''+$insurance) * $nbrDays;
         } else {
             $nbrDays1 = Controller::diffDate($start_date, date("Y-m-t", strtotime($start_date))); //15/08/2021->31/08/2021
             $nbrDays2 = Controller::diffDate(date("Y-m-01", strtotime($end_date)), $end_date); //01/09/2021->02/09/2021
@@ -173,7 +173,7 @@ class FC_bookingController extends Controller
                 })
                 ->first()->price_per_night;
 
-            $total = ($pricePerDay1 + $insurance) * ($nbrDays1 + 1) + ($pricePerDay2 + $insurance) * $nbrDays2;
+            $total = ($pricePerDay1 ? $pricePerDay1->price_per_night : ''+$insurance) * ($nbrDays1 + 1) + ($pricePerDay2 ? $pricePerDay2->price_per_night : ''+$insurance) * $nbrDays2;
         }
         return $total;
     }

@@ -26,6 +26,7 @@
 		height: 100%;
 	}
 </style>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="6812b27b-30cd-42e2-8ae4-64ff247819cb" data-blockingmode="auto" type="text/javascript"></script>
 </head>
 
 <body>
