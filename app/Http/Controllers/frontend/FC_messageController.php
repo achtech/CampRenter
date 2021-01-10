@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use App\models\Booking;
+use App\Models\Booking;
 use App\Models\Chat;
 use DB;
 use Illuminate\Http\Request;
