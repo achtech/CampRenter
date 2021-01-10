@@ -31,7 +31,7 @@ class FC_bookingController extends Controller
     public function requestBooking(Request $request)
     {
         $searchedDate = $request->searchedDate ?? '';
-        $camper = Camper::find($request->id_campers);
+        $camper = DB::table("campers")->find($request->id_campers);
         if ($searchedDate != '') {
             $client = Controller::getConnectedClient();
             if ($client == null) {
