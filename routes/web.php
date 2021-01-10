@@ -198,6 +198,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/message_client/add/{id}', [FC_messageController::class, 'addMessage'])->name('frontend.booking.add_message');
     Route::get('/review/owner/feedback/{id}', [FC_reviewController::class, 'feedback'])->name('frontend.review.add_feedback');
     Route::get('/review/owner/edit/{id}', [FC_reviewController::class, 'editReview'])->name('frontend.review.edit_review');
+    Route::get('/camper/detail/owner/{id}', [FC_CamperController::class, 'getOwnerDetail'])->name('frontend.camper.owner_detail');
 
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');

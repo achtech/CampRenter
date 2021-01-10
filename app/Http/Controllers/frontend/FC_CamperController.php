@@ -57,7 +57,6 @@ class FC_CamperController extends Controller
             ->with('category', $category)
             ->with('galleries', $galleries)
             ->with('owner', $owner)
-            ->with('categories', $categories)
             ->with('reviews', $reviews)
             ->with('rateCamper', $rateCamper)
             ->with('rateDetail', $rateDetail)
@@ -214,5 +213,24 @@ class FC_CamperController extends Controller
 
         return $result;
 
+    }
+
+    public function getOwnerDetail($id_camper)
+    {
+        $camper = DB::table('campers')->find($id_camper);
+        $owner = DB::table('clients')->where('id', $camper->id_clients)->first();
+        $campers_owner = DB::table('campers')->where('id_clients', $owner->id)->get();
+        $reviews_client = DB::table('camper_reviews')->where('id_campers', $id_camper)->get();
+        if ($owner->photo != null) {
+            $owner_photo = $owner->photo;
+        } else {
+            $avatar = DB::table('avatars')->find($owner->id_avatars);
+            $owner_photo = $avatar ? $avatar->image : 'default.jpg';
+        }
+        return view('frontend.camper.detail.owner_detail')
+            ->with('owner', $owner)
+            ->with('owner_photo', $owner_photo)
+            ->with('reviews_client', $reviews_client)
+            ->with('campers_owner', $campers_owner);
     }
 }
