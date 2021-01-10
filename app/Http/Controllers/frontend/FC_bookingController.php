@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use App\models\Booking;
-use App\models\Camper;
-use App\models\CamperTerms;
-use App\models\Notification;
-use App\models\Promotion;
+use App\Models\Booking;
+use App\Models\Camper;
+use App\Models\CamperTerms;
+use App\Models\Notification;
+use App\Models\Promotion;
 use DB;
 use Illuminate\Http\Request;
 
@@ -31,7 +31,7 @@ class FC_bookingController extends Controller
     public function requestBooking(Request $request)
     {
         $searchedDate = $request->searchedDate ?? '';
-        $camper = DB::table("campers")->find($request->id_campers);
+        $camper = Camper::find($request->id_campers);
         if ($searchedDate != '') {
             $client = Controller::getConnectedClient();
             if ($client == null) {
