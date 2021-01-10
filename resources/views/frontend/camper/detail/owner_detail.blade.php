@@ -47,7 +47,7 @@
 				@foreach($campers_owner as $camper)
 				<div class="col-lg-8 col-md-12">
 					<div class="listing-item-container list-layout">
-						<a href="listings-single-page.html" class="listing-item">
+						<a href="{{route('frontend.camper.detail',$camper->id)}}" class="listing-item">
 							<!-- Image -->
 							<div class="listing-item-image">
 								<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
@@ -110,7 +110,7 @@
 					@if($reviews_client != null)
 					@foreach($reviews_client as $review)
 						<li>
-							<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
+							<div class="avatar"><img src="{{asset('/images/avatar/default.jpg')}}" alt="" /></div>
 							<div class="comment-content"><div class="arrow-comment"></div>
 								<div class="comment-by">{{$review->name}} <span class="date">{{date('j F Y', strtotime($review->created_at))}}</span>
 									<div class="star-rating" data-rating="{{number_format(($review->rate_service+$review->rate_managing+$review->rate_cleanliness)/3),1}}"></div>
