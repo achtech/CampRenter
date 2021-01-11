@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="row">
-		<!-- sub_menu -->
+		<!-- sub_menu  -->
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'slide_camper'])
 
 		<div class="col-lg-7 col-md-12">

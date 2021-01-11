@@ -109,7 +109,7 @@
       <form  action="{{route('camper.blockActivateCamper','test')}}" method="post">
             {{csrf_field()}}
           <div class="modal-body">
-          {{ __('change_status') }}
+          {{ __('backend.change_status') }}
                 <input type="hidden" name="id" id="id" value="">
           </div>
           <div class="modal-footer">

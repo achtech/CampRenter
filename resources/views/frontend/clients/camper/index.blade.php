@@ -32,7 +32,7 @@
 								@csrf
 									<li>
 										<div class="list-box-listing">
-											<div class="list-box-listing-img" style="text-align: center;"><img style="max-width: 85px; max-height: 85px;" src="{{ asset('images')}}/campers/{{$camper->image }}" alt=""></div>
+											<div class="list-box-listing-img" style="text-align: center;"><img style="max-width: 85px; max-height: 85px;" src="{{ asset('images')}}/camper/{{$camper->image}}" alt=""></div>
 											<div class="list-box-listing-content">
 												<div class="inner">
 													<h3><a href="#">{{$camper->camper_name}}</a></h3>
