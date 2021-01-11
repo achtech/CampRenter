@@ -91,7 +91,7 @@
                             <h4 class="card-title">{{__('backend.licence_categories')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_licence_categories',$licenceCategories->label_en,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_licence_categories',$licenceCategories->label_en??'',['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -151,7 +151,7 @@
                             <h4 class="card-title">{{__('backend.category')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_camper_categories',$camper_categories->label_en,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_camper_categories',$camper_categories->label_en ?? '',['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -163,7 +163,7 @@
                             <h4 class="card-title">{{__('backend.transmissions')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_transmissions',$transmissions->label_en,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_transmissions',$transmissions->label_en ?? '',['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>
@@ -259,7 +259,7 @@
                             <h4 class="card-title">{{__('backend.fuels')}}</h4>
                             <form class="mt-4">
                                 <div class="form-group">
-                                {{Form::text('id_fuels',$fuels->label_en,['class'=>'form-control','required','disabled'])}}
+                                {{Form::text('id_fuels',$fuels->label_en ?? '',['class'=>'form-control','required','disabled'])}}
                                 </div>
                             </form>
                         </div>

@@ -32,6 +32,7 @@
 					<div class="messages-inbox">
 
 						<ul>
+						@if(!empty($messages))
 						@foreach($messages as $msg)
 							<li class="{{$msg->status}}">
 								<a href="{{route('frontend.clients.message.detail',$msg->renter_id)}}">
@@ -48,6 +49,14 @@
 								</a>
 							</li>
 						@endforeach
+						@else
+							<li>
+								<div class="message-by">
+									<p>{{trans('front.no_results')}}</p>
+								</div>
+							</li>
+						@endif
+
 						</ul>
 
 					</div>

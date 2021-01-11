@@ -35,15 +35,8 @@ class CamperController extends Controller
      */
     public function index(Request $request)
     {
-        $search = '';
-        $camper_categories = '';
-        if (isset($request) && null !== $request->get('search')) {
-            $search = $request->get('search');
-            $datas = Camper::where('camper_name', 'like', '%' . $search . '%')->get();
-        } else {
-            $datas = Camper::get();
-        }
-        return view('admin.camper.index')->with('datas', $datas)->with('search', $search, $camper_categories);
+        $datas = Camper::get();
+        return view('admin.camper.index')->with('datas', $datas);
     }
     /**
      * Show the form for creating a new resource.
@@ -174,12 +167,12 @@ class CamperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function blockActivateCamper($id)
+    public function blockActivateCamper(Request $request)
     {
-        $data = Camper::find($id);
-        $data->is_confirmed = $data->is_confirmed == '0' ? '1' : '0';
+        $data = Camper::find($request->id);
+        $data->is_confirmed = $data->is_confirmed == '1' || $data->is_confirmed == 1 ? 0 : 1;
         $data->updated_by = auth()->user()->id;
-        $data = $data->update();
+        $data = $data->save();
         return redirect(route('camper.index'));
     }
 

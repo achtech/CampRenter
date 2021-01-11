@@ -24,7 +24,12 @@ class FC_messageController extends Controller
         foreach ($renters as $r) {
             $ids[] = $r->id;
         }
-        $messages = DB::select("select * from v_client_messages where id in (select max(id) from v_client_messages where renter_id IN (" . implode(',', $ids) . ") group by `renter_id`)");
+        if (count($ids) > 0) {
+            $messages = DB::select("select * from v_client_messages where id in (select max(id) from v_client_messages where renter_id IN (" . implode(',', $ids) . ") group by `renter_id`)");
+        } else {
+            $messages = [];
+        }
+
         return view('frontend.clients.message.index')->with('messages', $messages);
     }
 

@@ -24,7 +24,7 @@
                             <tbody>
                                 @foreach($datas as $item)
                                 <tr>
-                                    <td style="vertical-align: middle;text-align:center"><img style="width:100px" src="{{ asset('images/gallery') }}/{{$item->image}}"/></td>
+                                    <td style="vertical-align: middle;text-align:center"><img style="width:100px" src="{{ asset('images/camper') }}/{{$item->image}}"/></td>
                                     <td style="vertical-align: middle;">{{$item->camper_name}}</td>
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\admin\CamperController::getName('clients',$item->id_clients)}}</td>
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\admin\CamperController::getLabel('camper_categories',$item->id_camper_categories)}}</td>
@@ -61,52 +61,16 @@
                                             <li class="list-inline-item">
                                                 <a href="{{ route('camper.detail',$item->id)}}" class="btn btn-primary btn-sm rounded-0"  data-toggle="tooltip" title="Details"><i class="fa fa-list"></i></a>
                                             </li>
-                                            @if($item->is_confirmed==1)
-                                            <li class="list-inline-item" >
-                                                <a href="" class="btn btn-danger btn-sm rounded-0" data-toggle="modal" data-target="#block"  title="Block"><i class="fas fa-ban"></i></a>
-                                            <!-- Modal -->
-                                                <div class="modal fade" id="block" role="dialog">
-                                                    <div class="modal-dialog">
-                                                    <!-- Modal content-->
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>{{ __('backend.block_camper_message') }}</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <a href="{{ route('camper.blockActivateCamper', $item->id)}}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.block') }}</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                            </li>
-                                            @else
+
                                             <li class="list-inline-item">
-                                                <a href="" class="btn btn-info btn-sm rounded-0" data-toggle="modal" data-target="#activate"  title="Confirm"><i class="fas fa-check"></i></a>
-                                                                              <!-- Modal -->
-                                                <div class="modal fade" id="activate" role="dialog">
-                                                    <div class="modal-dialog">
+                                                <button
+                                                    class="btn btn-sm rounded-0 @if($item->is_confirmed==1) btn-danger  @else  btn-success @endif"
+                                                    id="deletePrgButton"
+                                                    data-id="{{$item->id}}" data-toggle="modal" data-target="#delete"data-placement="top" title="Confirm">@if($item->is_confirmed==1) <i class="fas fa-ban"></i>  @else <i class="fas fa-check"></i>@endif
+                                                </button>
 
-                                                    <!-- Modal content-->
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>{{ __('backend.confirm_camper_message') }}</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <a href="{{ route('camper.blockActivateCamper', $item->id) }}" class="btn btn-danger btn-sm rounded-0"> {{ __('backend.activate') }}</a>
-                                                                <!--<button type="button" class="btn btn-default" data-dismiss="modal" class="btn btn-primary btn-sm rounded-0">Close</button>-->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </li>
-                                            @endif
+
                                             <li class="list-inline-item">
                                                 <a href="{{ route('camper.reviews',$item->id)}}" class="btn btn-primary btn-sm rounded-0"  data-toggle="tooltip" title="Details"><i class="far fa-star"></i></a>
                                             </li>
@@ -133,5 +97,36 @@
         </div>
     </div>
 </div>
+ <!-- Modal -->
+ <div class="modal modal-danger fade" id="deletePrgModal" tabindex="-1"
+  role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center" id="myModalLabel"> {{ __('backend.warning') }}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <form  action="{{route('camper.blockActivateCamper','test')}}" method="post">
+            {{csrf_field()}}
+          <div class="modal-body">
+          {{ __('change_status') }}
+                <input type="hidden" name="id" id="id" value="">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal"> {{__('backend.Cancel')}}</button>
+            <button type="submit" class="btn btn-info">{{__('backend.apply')}}</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).on("click", "#deletePrgButton", function () {
+        var prg = $(this).data('id');
+        $(".modal-body #id").val( prg );
+        $('#deletePrgModal').modal('show');
+    });
+</script>
 
 @endsection

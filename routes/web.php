@@ -277,7 +277,7 @@ Route::group(['middleware' => 'Lang'], function () {
         'show' => 'camper.show',
     ]]);
 
-    Route::get('camper/{id}/blockActivateCamper', 'App\Http\Controllers\admin\CamperController@blockActivateCamper')->name('camper.blockActivateCamper');
+    Route::post('camper/{id}/blockActivateCamper', 'App\Http\Controllers\admin\CamperController@blockActivateCamper')->name('camper.blockActivateCamper');
     Route::get('camper/{id}/detailBooking', 'App\Http\Controllers\admin\CamperController@detailBooking')->name('camper.detailBooking');
     Route::get('camper/{id}/detailCamper', 'App\Http\Controllers\admin\CamperController@detailCamper')->name('camper.detailCamper');
     Route::get('camper/{id}/detail', 'App\Http\Controllers\admin\CamperController@detail')->name('camper.detail');

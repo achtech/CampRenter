@@ -354,5 +354,8 @@ return [
     'menu_camper_sub_category' => 'Sub-Category',
     'edit_camper_sub_category.breadcrumb' => 'Edit Sub-category',
     'message_delete_camperSubCategory' => 'Do you want to delete this Sub-category?',
+    'apply' => 'Apply',
+    'change_status' => 'Change status',
+    'warning' => 'Warning',
 
 ];
