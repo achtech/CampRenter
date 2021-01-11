@@ -37,16 +37,16 @@
 					<h4>{{trans('front.booking_requests')}}</h4>
 					<!-- Tabs Navigation -->
 					<ul class="tabs-nav">
-						<li class="active"><a href="#tab1b">{{trans('front.tab_owner')}}</a></li>
-						<li><a href="#tab2b">{{trans('front.tab_renter')}}</a></li>
+						<li class="active"><a href="#tab1b">{{trans('front.tab_renter')}}</a></li>
+						<li><a href="#tab2b">{{trans('front.tab_owner')}}</a></li>
 					</ul>
 					<!-- Tabs Content -->
 					<div class="tabs-container">
 						<div class="tab-content" id="tab1b">
-							@include('frontend.clients.booking.owner_bookings')
+							@include('frontend.clients.booking.renter_bookings')
 						</div>
 						<div class="tab-content" id="tab2b">
-							@include('frontend.clients.booking.renter_bookings')
+							@include('frontend.clients.booking.owner_bookings')
 						</div>
 					</div>
 				</div>
