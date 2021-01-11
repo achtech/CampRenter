@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
@@ -39,9 +39,9 @@ class CamperController extends Controller
         $camper_categories = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = Camper::where('camper_name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = Camper::where('camper_name', 'like', '%' . $search . '%')->get();
         } else {
-            $datas = Camper::paginate(10);
+            $datas = Camper::get();
         }
         return view('admin.camper.index')->with('datas', $datas)->with('search', $search, $camper_categories);
     }
@@ -254,9 +254,10 @@ class CamperController extends Controller
         return redirect(route('dashboard'));
     }
 
-    public function reviews($id){
-        $datas = DB::table('camper_reviews')->where('id_campers',$id)->get();
+    public function reviews($id)
+    {
+        $datas = DB::table('camper_reviews')->where('id_campers', $id)->get();
         $camper = Camper::find($id);
-        return view('admin.camper.camperReviews')->with('datas',$datas)->with('camper',$camper);
+        return view('admin.camper.camperReviews')->with('datas', $datas)->with('camper', $camper);
     }
 }
