@@ -50,7 +50,7 @@
 						<a href="{{route('frontend.camper.detail',$camper->id)}}" class="listing-item">
 							<!-- Image -->
 							<div class="listing-item-image">
-								<img src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
+								<img src="{{asset('images')}}/camper/{{$camper->image}}" alt="">
 								<span class="tag">{{App\Http\Controllers\Controller::getLabel("camper_categories", $camper->id_camper_categories)}}</span>
 							</div>
 
