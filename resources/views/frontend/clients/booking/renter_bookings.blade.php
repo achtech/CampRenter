@@ -23,16 +23,16 @@
                         </div>
 
                         @if($booking->booking_status_id==5 || $booking->booking_status_id==4)
-                            <a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> {{trans('front.send_message')}}</a>
+                            <a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="far fa-envelope-open"></i> {{trans('front.send_message')}}</a>
                         @endif
                     </div>
                 </div>
             </div>
             <div class="buttons-to-right">
             @if($booking->booking_status_id==2)
-                <a href="{{ route('booking.renter_booking.process',$booking->id)}}" class="button gray approve"><i class="sl sl-icon-check"></i> {{trans('front.complete_booking')}}</a>
+                <a href="{{ route('booking.renter_booking.process',$booking->id)}}" class="button gray approve"><i class="far fa-edit"></i> {{trans('front.complete_booking')}}</a>
             @endif
-            <a href="{{ route('booking.owner_booking.detail',$booking->id)}}" class="button green approve"><i class="sl sl-icon-screen-tablet"></i> {{trans('front.details')}}</a>
+            <a href="{{ route('booking.owner_booking.detail',$booking->id)}}" class="button green approve"><i class="fas fa-list-ul"></i> {{trans('front.details')}}</a>
             </div>
         </li>
 

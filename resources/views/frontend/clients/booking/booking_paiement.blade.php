@@ -38,59 +38,6 @@
 			<div class="payment">
 				<div class="payment-tab payment-tab-active">
 					<div class="payment-tab-trigger">
-						<input checked id="invoice" name="cardType" type="radio" value="invoice">
-						<label for="invoice">Send Invoice</label>
-						<img class="payment-logo invoice" src="{{asset('images/paiement-methods/invoice.png')}}" alt="Invoice" title="Invoice">
-					</div>
-					<div class="payment-tab-content">
-						<div class="row">
-							<form role="form" action="{{ route('stripe.payment') }}" method="post" class="validation"
-										data-cc-on-file="false"
-										data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-										id="payment-form">
-                        		@csrf
-								<div class="col-md-6">
-									<div class="card-label">
-										<label for="nameOnCard">{{trans('front.name_on_card')}}</label>
-										<input id="nameOnCard" name="nameOnCard" required type="text">
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="card-label">
-										<label for="card-num">{{trans('front.card_number')}}</label>
-										<input id="card-num" name="cardNumber" placeholder="1234  5678  9876  5432" required type="text">
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<div class="card-label">
-										<label for="card-expiry-month">{{trans('front.expiry_month')}}</label>
-										<input id="card-expiry-month" placeholder="MM" required type="text">
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<div class="card-label">
-										<label for="card-expiry-year">{{trans('front.expiry_year')}}</label>
-										<input id="card-expiry-year" placeholder="YY" required type="text">
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<div class="card-label">
-										<label for="card-cvc">CVC</label>
-										<input id="card-cvc" required type="text">
-									</div>
-								</div>
-								<button type="submit" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">{{trans('front.confirm_and_pay')}}</button>
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<div class="payment-tab">
-					<div class="payment-tab-trigger">
 						<input checked id="paypal" name="cardType" type="radio" value="paypal">
 						<label for="paypal">PayPal</label>
 						<img class="payment-logo paypal" src="{{asset('images/paiement-methods/ApBxkXU.png')}}" alt="">
@@ -178,7 +125,7 @@
 					</div>
 
 					<div class="col-md-6">
-						<label>{{isset($camper) ? $camper->camper_name : ''}}</label>
+						<label>{{trans('front.camper_name')}}</label>
 						<input type="text" value="{{$booking->camper_name}}" name="camper_name">
 					</div>
 					<div class="col-md-6">
