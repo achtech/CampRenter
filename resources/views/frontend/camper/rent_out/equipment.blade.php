@@ -228,13 +228,13 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="single_beds">Number of single beds</label>
-										<input type="number" name="single_beds" value="{{$equipement->single_beds ??0}}">
+										<input type="number" min="0" name="single_beds" value="{{$equipement->single_beds ??0}}">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="double_beds">Number of double beds</label>
-										<input type="number" name="double_beds" value="{{$equipement->double_beds ??0}}">
+										<input type="number" min="0" name="double_beds" value="{{$equipement->double_beds ??0}}">
 									</div>
 								</div>
 							</div>

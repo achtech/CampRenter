@@ -42,7 +42,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="camper_name">{{trans('front.name_vehicle')}}</label>
-										<input type="text" name="camper_name" value="{{$camper->camper_name}}">
+										<input type="text" name="camper_name" value="{{$camper->camper_name}}" required>
 									</div>
 								</div>
 
@@ -122,7 +122,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="seat_number">{{trans('front.number_seats')}}</label>
-										<input type="number" name="seat_number" value="{{$camper->seat_number}}">
+										<input type="number" min="0" name="seat_number" value="{{$camper->seat_number}}">
 									</div>
 								</div>
 
@@ -130,7 +130,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="gear_number">{{trans('front.number_gears')}}</label>
-										<input type="number" name="gear_number" value="{{$camper->gear_number}}">
+										<input type="number" min="0" name="gear_number" value="{{$camper->gear_number}}">
 									</div>
 								</div>
 							</div>
@@ -228,7 +228,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="fuel_capacity">{{trans('front.fuel_capacity')}}</label>
-										<input type="number" name="fuel_capacity" value="{{$camper->fuel_capacity}}">
+										<input type="number" min="0" name="fuel_capacity" value="{{$camper->fuel_capacity}}">
 									</div>
 								</div>
 
@@ -236,7 +236,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="fuel_consumation">{{trans('front.fuel_consumation')}}</label>
-										<input type="number" name="fuel_consumation" value="{{$camper->fuel_consumation}}">
+										<input type="number" min="0" name="fuel_consumation" value="{{$camper->fuel_consumation}}">
 									</div>
 								</div>
 							</div>
@@ -248,14 +248,14 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="allowed_total_weight">{{trans('front.allowed_tons')}}</label>
-										<input type="number" name="allowed_total_weight" value="{{$camper->allowed_total_weight}}">
+										<input type="number" min="0" name="allowed_total_weight" value="{{$camper->allowed_total_weight}}" required>
 									</div>
 								</div>
 								<!-- Website -->
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="length">{{trans('front.length_in_metres')}}</label>
-										<input type="number" name="length" value="{{$camper->length}}">
+										<input type="number" min="0" name="length" value="{{$camper->length}}">
 									</div>
 								</div>
 							</div>
@@ -266,7 +266,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="horse_power">{{trans('front.horse_power')}}</label>
-										<input type="number" name="horse_power" value="{{$camper->horse_power}}">
+										<input type="number" min="0" name="horse_power" value="{{$camper->horse_power}}">
 									</div>
 								</div>
 
@@ -274,7 +274,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="cylinder_capacity">{{trans('front.cylinder_capacity')}}</label>
-										<input type="number" name="cylinder_capacity" value="{{$camper->cylinder_capacity}}">
+										<input type="number" min="0" name="cylinder_capacity" value="{{$camper->cylinder_capacity}}">
 									</div>
 								</div>
 							</div>
@@ -331,7 +331,7 @@
 									<div class="markers-on-the-map">
 										<div class="card-label">
 											<label for="cylinder_capacity">Location of the vehicle</label>
-											<input type="text" name="location" id="address" value="{{$camper->location}}">
+											<input type="text" name="location" id="address" value="{{$camper->location}}" required>
 										</div>
 
 									<!--<p>{{trans('front.move')}} <img style="margin-bottom: 3px;" src="{{ asset('images/general/position.png')}}"> {{trans('front.text_map_1')}} <img style="margin-bottom: 3px;" src="{{ asset('images/general/cursor.png')}}"> {{trans('front.text_map_2')}}</p>

@@ -132,17 +132,6 @@
 						</div>
 					</div>
 				</div>-->
-				<div class="col-md-12">
-						<h3>{{trans('front.additional_equipment')}}</h3>
-							<div class="switcher-content">
-								<div class="row">
-									<div class="col-md-12">
-										<textarea name="additional_equipment_out" value="{{$camper->additional_equipment_out}}"></textarea>
-									</div>
-								</div>
-							</div>
-						<h5>{{trans('front.note_additional_rental')}}</h5>
-					</div>
 				<div class="row" >
 					<div class="col-md-12" style="padding-top: 20px;">
 						<div style="float: right;">
