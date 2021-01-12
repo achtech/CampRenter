@@ -1,4 +1,4 @@
-<form method="GET" action="{{ route('frontend.camper.search') }}" name="frm1">
+<form method="GET" action="{{ route('frontend.camper.search') }}" name="frm1" id="frm1">
 <!-- Search -->
 <section class="search">
 
@@ -19,7 +19,7 @@
                     <!-- Main Search Input -->
                     <div class="col-fs-6">
                         <div class="input-with-icon date_range_search">
-                            <input type="text" id="booking-date-range" name="searchedDate" placeholder="{{trans('front.check_in_out')}}" value="{{$searchedDate ?? ''}}"  onchange="document.forms['frm1'].submit()" />
+                            <input type="text" readonly="readonly" id="booking-date-range1" name="searchedDate" placeholder="{{trans('front.check_in_out')}}" value="{{$searchedDate ?? ''}}"  />
                             <i class="fa fa-calendar calendar-position"></i>
                         </div>
                     </div>

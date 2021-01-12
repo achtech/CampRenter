@@ -142,28 +142,30 @@ $(function() {
 
     function cb(start, end) {
         $('#booking-date-range span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-		$('#booking-date-range').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+		$('#booking-date-range1').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 
 	}
     //cb(start, end);
-    $('#booking-date-range').daterangepicker({
+    $('#booking-date-range1').daterangepicker({
     	"opens": "left",
 	    "autoUpdateInput": false,
-	    "alwaysShowCalendars": true,
-//        startDate: start,
-  //      endDate: end,
+		"alwaysShowCalendars": true,
+		onChange: function (dateText, inst) {
+			$('#frm1').submit();
+			}
     }, cb);
+
 
     //cb(start, end);
 
 });
 
 // Calendar animation and visual settings
-$('#booking-date-range').on('show.daterangepicker', function(ev, picker) {
+$('#booking-date-range1').on('show.daterangepicker', function(ev, picker) {
 	$('.daterangepicker').addClass('calendar-visible calendar-animated bordered-style');
 	$('.daterangepicker').removeClass('calendar-hidden');
 });
-$('#booking-date-range').on('hide.daterangepicker', function(ev, picker) {
+$('#booking-date-range1').on('hide.daterangepicker', function(ev, picker) {
 	$('.daterangepicker').removeClass('calendar-visible');
 	$('.daterangepicker').addClass('calendar-hidden');
 });

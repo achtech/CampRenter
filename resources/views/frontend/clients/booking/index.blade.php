@@ -30,7 +30,7 @@
 							<h3>{{trans('front.send_message')}}</h3>
 						</div>
 						<div class="message-reply margin-top-0">
-							<textarea cols="40" rows="3" placeholder="Your Message to Kathy"></textarea>
+							<textarea cols="40" rows="3" placeholder="Your Message"></textarea>
 							<button class="button">{{trans('front.send')}}</button>
 						</div>
 					</div>

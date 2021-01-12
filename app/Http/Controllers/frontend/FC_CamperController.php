@@ -95,26 +95,28 @@ class FC_CamperController extends Controller
         }
         if (!empty($searchedDate)) {
             $tabDate = explode('-', $searchedDate);
-            $startDate = date("Y-m-d", strtotime($tabDate[0]));
-            $endDate = date("Y-m-d", strtotime($tabDate[1]));
-            $bookings = DB::table('bookings')->where(function ($query) use ($endDate) {
-                $query->where('start_date', '<', $endDate)
-                    ->where('end_date', '>', $endDate);
-            })
-                ->orWhere(function ($query) use ($startDate) {
-                    $query->where('start_date', '<', $startDate)
-                        ->where('end_date', '>', $startDate);
+            if (count($tabDate) == 2 && strtotime($tabDate[0]) && strtotime($tabDate[1])) {
+                $startDate = date("Y-m-d", strtotime($tabDate[0]));
+                $endDate = date("Y-m-d", strtotime($tabDate[1]));
+                $bookings = DB::table('bookings')->where(function ($query) use ($endDate) {
+                    $query->where('start_date', '<', $endDate)
+                        ->where('end_date', '>', $endDate);
                 })
-                ->orWhere(function ($query) use ($startDate, $endDate) {
-                    $query->where('start_date', '>', $startDate)
-                        ->where('end_date', '<', $endDate);
-                })
-                ->select('id_campers')->get();
-            $ids = array();
-            foreach ($bookings as $b) {
-                $ids[] = $b->id_campers;
+                    ->orWhere(function ($query) use ($startDate) {
+                        $query->where('start_date', '<', $startDate)
+                            ->where('end_date', '>', $startDate);
+                    })
+                    ->orWhere(function ($query) use ($startDate, $endDate) {
+                        $query->where('start_date', '>', $startDate)
+                            ->where('end_date', '<', $endDate);
+                    })
+                    ->select('id_campers')->get();
+                $ids = array();
+                foreach ($bookings as $b) {
+                    $ids[] = $b->id_campers;
+                }
+                $data = $data->whereNotIn('id', $ids);
             }
-            $data = $data->whereNotIn('id', $ids);
         }
         if (!empty($searchedCategories)) {
             $data = $data->whereIn('id_camper_categories', $searchedCategories);
