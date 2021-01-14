@@ -36,7 +36,6 @@ class FClientController extends DefaultLoginController
         $input['password'] = bcrypt($input['password']);
         $client = Client::create($input);
         //Mail::to($client['email'])->send(new RegistrationMail($client));
-        $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
         return view('frontend.auth.login');
     }
 
