@@ -36,11 +36,6 @@ class FClientController extends DefaultLoginController
         $input['password'] = bcrypt($input['password']);
         $client = Client::create($input);
         //Mail::to($client['email'])->send(new RegistrationMail($client));
-        $categories = DB::table('camper_categories')->paginate(10);
-        $campers = DB::table('campers')->where([
-            ['is_confirmed', 1],
-            ['availability', 2],
-        ])->get();
         $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
         return view('frontend.auth.login');
     }
