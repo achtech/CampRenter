@@ -5,7 +5,6 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Auth\LoginController as DefaultLoginController;
 use App\Http\Controllers\Controller;
 use App\Mail\ForgotPasswordEmail;
-use App\Mail\RegistrationMail;
 use App\Models\Avatar;
 use App\Models\Client;
 use Exception;
