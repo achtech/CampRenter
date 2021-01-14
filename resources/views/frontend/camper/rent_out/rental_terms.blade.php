@@ -96,7 +96,7 @@
 				<div class="col-md-12" style="padding-top: 12px;">
 					<select name="kilometres_per_night" class="chosen-select-no-single" >
 						<?php for ($j = 100; $j <= 300; $j = $j + 50) {?>
-							<option <?php echo $camper->kilometres_per_night == $j ? "selected='selected'" : null; ?> value="<?php echo $j; ?>"> <?php echo $j; ?> {{trans('front.years')}}</option>
+							<option <?php echo $camper->kilometres_per_night == $j ? "selected='selected'" : null; ?> value="<?php echo $j; ?>"> <?php echo $j; ?> Km</option>
 						<?php }?>
 						<option value="400" <?php echo $camper->kilometres_per_night == 400 ? "selected='selected'" : null; ?>>{{trans('front.unlimited')}}</option>
 					</select>

@@ -26,7 +26,7 @@
 							class="listing-item-container getbysrc1_{{$camper->id}}"
 							data-marker-id="{{$camper->id}}">
 							<div class="listing-item">
-								<img   src="{{asset('images')}}/campers/{{$camper->image}}" alt="">
+								<img   src="{{asset('images')}}/camper/{{$camper->image}}" alt="">
 								@if($camper->availability==0)
 									<div class="listing-badge now-close">{{trans('front.blocked')}}</div>
 								@elseif($camper->availability==1)

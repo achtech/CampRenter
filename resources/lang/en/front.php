@@ -552,5 +552,6 @@ return [
     'our_proposition' => 'Our insurance proposition',
     'Verified' => 'Valid',
     'publier_camper' => 'publish the camper',
+    'kilometres' => 'Kilometres',
 
 ];

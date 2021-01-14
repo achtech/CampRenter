@@ -1,7 +1,5 @@
 <!-- Verified Badge -->
-<div class="verified-badge with-tip">
-<i class="far fa-check-circle"></i> {{trans('front.verified_listing')}}
-</div>
+
 
 <!-- Book Now -->
 <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">

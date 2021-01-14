@@ -31,7 +31,7 @@
 				<h3><strong>{{trans('front.description')}}</strong></h3>
 				<p>{{trans('front.description_camper')}}</p>
 				<div class="col-md-12">
-					<textarea cols="40" rows="5" maxlength="5000" minlength="100" name="description_camper" placeholder="At least 20 words ...">{{$camper->description_camper ?? ''}}</textarea>
+					<textarea cols="40" rows="5" maxlength="300" minlength="100" name="description_camper">{{$camper->description_camper ?? ''}}</textarea>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
