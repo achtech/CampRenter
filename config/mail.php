@@ -13,7 +13,7 @@ return [
     |
      */
 
-    'default' => env('MAIL_MAILER', 'gmail'),
+    'default' => env('MAIL_MAILER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
