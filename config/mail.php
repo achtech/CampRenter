@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST'),
-            'port' => env('MAIL_PORT'),
-            'encryption' => env('MAIL_ENCRYPTION'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => 'asmtp.mail.hostpoint.ch',
+            'port' => '465',
+            'encryption' => 'SSL',
+            'username' => 'support@campunite.com',
+            'password' => 'P!5ZeZsSJ5QJ2b7',
             'timeout' => null,
             'auth_mode' => null,
         ],
