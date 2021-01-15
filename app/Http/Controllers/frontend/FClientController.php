@@ -5,7 +5,6 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Auth\LoginController as DefaultLoginController;
 use App\Http\Controllers\Controller;
 use App\Mail\ForgotPasswordEmail;
-use App\Mail\RegistrationMail;
 use App\Models\Avatar;
 use App\Models\Client;
 use Exception;
@@ -36,7 +35,7 @@ class FClientController extends DefaultLoginController
         $input = request()->except(['_token', '_method', 'action']);
         $input['password'] = bcrypt($input['password']);
         $client = Client::create($input);
-        Mail::to($client['email'])->send(new RegistrationMail($client));
+        //Mail::to($client['email'])->send(new RegistrationMail($client));
         return view('frontend.auth.login');
     }
 
