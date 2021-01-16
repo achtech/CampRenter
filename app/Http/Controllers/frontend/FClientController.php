@@ -117,20 +117,14 @@ class FClientController extends DefaultLoginController
     }
     public function showRegister()
     {
-        $campers = DB::table('campers')->where([
-            ['is_confirmed', 1],
-            ['availability', 2],
-        ])->get();
+        $campers = DB::table('campers')->where('is_confirmed', 1)->get();
         $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
         return view('frontend.auth.register')->with('blogs', $blogs)->with('campers', $campers);
     }
 
     public function ShowResetPassword(Request $request)
     {
-        $campers = DB::table('campers')->where([
-            ['is_confirmed', 1],
-            ['availability', 2],
-        ])->get();
+        $campers = DB::table('campers')->where('is_confirmed', 1)->get();
         $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
         return view('frontend.auth.passwords.reset')->with('blogs', $blogs)->with('campers', $campers);
     }

@@ -157,7 +157,6 @@ class FC_rentOutController extends Controller
         $camper->location = $request->location ?? null;
         $camper->position_x = $request->position_x ?? null;
         $camper->position_y = $request->position_y ?? null;
-        $camper->availability = '2';
         if ($request->additional_attribute) {
             $camper->additional_attribute = join(',', $request->additional_attribute);
         }

@@ -33,8 +33,6 @@ class CreateBookingOwnerView extends Migration
         `bs`.`label_fr` AS `booking_status_fr`,
         `c`.`camper_name` AS `camper_name`,
         `c`.`image` AS `camper_image`,
-        `c`.`price_per_day` AS `price`,
-        `c`.`camper_status` AS `camper_status`,
         `clt`.`client_name` AS `client_name`,
         `clt`.`client_last_name` AS `client_last_name`,
         `clt`.`telephone` AS `telephone`,

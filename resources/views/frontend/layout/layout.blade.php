@@ -160,8 +160,8 @@ $(function() {
 
 // Calendar animation and visual settings
 $('#booking-date-range1').on('show.daterangepicker', function(ev, picker) {
-	var s = '<?php echo $start_date_s; ?>';
-	var e = '<?php echo $end_date_s; ?>';
+	var s = '<?php echo $start_date_s ?? ''; ?>';
+	var e = '<?php echo $end_date_s ?? ''; ?>';
 
 	$('.daterangepicker').addClass('calendar-visible calendar-animated bordered-style');
 	$('.daterangepicker').removeClass('calendar-hidden');
@@ -170,8 +170,8 @@ $('#booking-date-range1').on('show.daterangepicker', function(ev, picker) {
 	$('#booking-date-range1').data('daterangepicker').setEndDate(e);
 });
 $('#booking-date-range1').on('hide.daterangepicker', function(ev, picker) {
-	var s = "<?php echo $start_date_s; ?>";
-	var e = "<?php echo $end_date_s; ?>";
+	var s = "<?php echo $start_date_s ?? ''; ?>";
+	var e = "<?php echo $end_date_s ?? ''; ?>";
 	$('.daterangepicker').removeClass('calendar-visible');
 	$('.daterangepicker').addClass('calendar-hidden');
 	$('#frm1').submit();

@@ -127,4 +127,20 @@ class Controller extends BaseController
     {
         return (strtotime($date2) - strtotime($date1)) / (3600 * 24);
     }
+
+    public static function getCamperAvailability($id)
+    {
+        $today = date('Y-m-d');
+        /**
+         * 0-Blocked    -----------SD-----$today------ED---
+         * 1-Reserved   -----------SD-----$today------ED---
+         * 2-Available   ----------ED ----$today------SD---
+         */
+        $booking = Booking::where('id_campers', $id)->whereDate('start_date', '<=', $today)->whereDate('end_date', '>=', $today)->first();
+        if ($booking != null) {
+            return $booking->id_booking_status == 7 ? 0 : ($booking->id_booking_status != 3 ? 1 : 2);
+        }
+
+        return 2;
+    }
 }

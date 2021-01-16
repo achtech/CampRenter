@@ -56,9 +56,9 @@
 
 							<!-- Content -->
 							<div class="listing-item-content">
-								@if($camper->availability==0)
+								@if(App\Http\Controllers\Controller::getCamperAvailability($camper->id)==0)
 									<div class="listing-badge now-close">{{trans('front.blocked')}}</div>
-								@elseif($camper->availability==1)
+								@elseif(App\Http\Controllers\Controller::getCamperAvailability($camper->id)==1)
 									<div class="listing-badge now-closed">{{trans('front.reserved')}}</div>
 								@else
 									<div class="listing-badge now-open">{{trans('front.available')}}</div>
