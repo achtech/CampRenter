@@ -1003,8 +1003,8 @@ class FC_rentOutController extends Controller
         $minimal_rent_days_off = $request->minimum_night_off ?? 1;
         $total = $minimal_rent_days_off * $price_per_day;
         $per = Promotion::where('status', 1)->first()->commission;
-        $promotion = $total * $per;
-        $owner_part = $total - $promotion;
+        $fee = ($total * $per) / 100;
+        $owner_part = $total - $fee;
 
         $html = "";
         $html .= "<div class='col-md-12' style='margin-top:10px;'>
@@ -1019,7 +1019,7 @@ class FC_rentOutController extends Controller
                 </div>
                 <div class='col-md-6' >
                     <p><h5>CHF" . $price_per_day . "</h5></p>
-                    <p><h5>CHF $promotion</h5></p>
+                    <p><h5>CHF $fee </h5></p>
                     <p><h5><strong>CHF $total<strong></h5></p>
                 </div>
             </div>
@@ -1034,8 +1034,8 @@ class FC_rentOutController extends Controller
         $minimal_rent_days_winter = $request->minimum_night_winter;
         $total = $minimal_rent_days_winter * $price_per_day;
         $per = Promotion::where('status', 1)->first()->commission;
-        $promotion = $total * $per;
-        $owner_part = $total - $promotion;
+        $fee = ($total * $per) / 100;
+        $owner_part = $total - $fee;
 
         $html = "";
         $html .= "<div class='col-md-12' style='margin-top:10px;'>
@@ -1050,7 +1050,7 @@ class FC_rentOutController extends Controller
                 </div>
                 <div class='col-md-6' >
                     <p><h5>CHF $owner_part</h5></p>
-                    <p><h5>CHF $promotion</h5></p>
+                    <p><h5>CHF $fee</h5></p>
                     <p><h5><strong>CHF $total<strong></h5></p>
                 </div>
             </div>

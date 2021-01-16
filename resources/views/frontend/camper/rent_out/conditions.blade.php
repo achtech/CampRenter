@@ -160,6 +160,7 @@
 
 
 <script>
+
 	var price_main = $("#price_main").val();
 	var current_night = $("#main_season").val();
 	if(price_main>0 && current_night>0 ){
@@ -179,6 +180,44 @@
 		});
 	}
 
+	var price_off = $("#price_off").val();
+	var off_season_night = $("#off_season").val();
+	if(price_off>0 && off_season_night>0 ){
+		var base_url="{{ URL::to('/rentOut/calcule_off')}}"
+		$.ajax({
+			type: "POST",
+			url: base_url,
+			cache: false,
+			dataType: 'html',
+			data: {price_per_night_off:price_off, minimum_night_off: off_season_night},
+
+			success: function(res){
+			r=res.trim();
+			$("#off_div").show() ;
+			$("#off_div").html(r);
+				}
+		});
+	}
+
+	var price_winter = $("#price_winter").val();
+	var winter_season_night = $("#winter_season").val();
+	if(price_winter>0 && winter_season_night>0 ){
+		var base_url="{{ URL::to('/rentOut/calcule_winter')}}"
+		$.ajax({
+			type: "POST",
+			url: base_url,
+			cache: false,
+			dataType: 'html',
+			data: {price_per_night_winter:price_winter, minimum_night_winter: winter_season_night},
+
+			success: function(res){
+			r=res.trim();
+			$("#winter_div").show() ;
+			$("#winter_div").html(r);
+				}
+		});
+	}
+/*--------start main season-------------*/
 	$('#main_season').on('change', function(){
 		if($('#price_main').val() > 0){
 			var base_url="{{ URL::to('/rentOut/calcule_main')}}"
@@ -220,6 +259,9 @@
 			});
 		}
    })
+   /*--------End MAIN season-------------*/
+
+   /*--------Start OFF season-------------*/
    $('#off_season').on('change', function(){
 		if($('#price_off').val() > 0){
 			var base_url2="{{ URL::to('/rentOut/calcule_off')}}"
@@ -241,6 +283,30 @@
 		}
    })
 
+   $('#price_off').on('change', function(){
+		if($('#off_season').val() > 0){
+			var base_url2="{{ URL::to('/rentOut/calcule_off')}}"
+			var off_night = $("#off_season").val();
+			var price_off = this.value ;
+			$.ajax({
+				type: "POST",
+				url: base_url2,
+				cache: false,
+				dataType: 'html',
+				data: {price_per_night_off:price_off, minimum_night_off: off_night},
+
+				success: function(res2){
+				r2=res2.trim();
+				$("#off_div").show() ;
+				$("#off_div").html(r2);
+					}
+			});
+		}
+   })
+   /*--------End OFF season-------------*/
+
+   /*--------Start WINTER season-------------*/
+
    $('#winter_season').on('change', function(){
 		if($('#price_winter').val() > 0){
 			var base_url3="{{ URL::to('/rentOut/calcule_winter')}}"
@@ -261,6 +327,29 @@
 			});
 		}
    })
+
+   $('#price_winter').on('change', function(){
+		if($('#winter_season').val() > 0){
+			var base_url3="{{ URL::to('/rentOut/calcule_winter')}}"
+			var winter_night = $("#winter_season").val();
+			var price_winter = this.value ;
+			$.ajax({
+				type: "POST",
+				url: base_url3,
+				cache: false,
+				dataType: 'html',
+				data: {price_per_night_winter:price_winter, minimum_night_winter: winter_night},
+
+				success: function(res3){
+				r3=res3.trim();
+				$("#winter_div").show() ;
+				$("#winter_div").html(r3);
+					}
+			});
+		}
+   })
+   /*--------End WINTER season-------------*/
+
 
 </script>
 
