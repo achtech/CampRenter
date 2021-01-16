@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
 use App\Models\CamperImage;
 use App\Models\CamperReview;
+use App\Models\CamperTerms;
 use App\Models\Client;
 use DB;
 use Illuminate\Http\Request;
@@ -87,6 +89,9 @@ class FC_CamperController extends Controller
         $searchedCategories = $request->searchedCategories ?? '';
         $data = $this->getData();
         $camperEquipementIds = $this->searchByEquipment($request);
+        $start_date_s = date("F d, Y");
+        $end_date_s = date("F d, Y");
+
         if ($camperEquipementIds != 0) {
             $data = $data->whereIn('id', $camperEquipementIds);
         }
@@ -96,6 +101,9 @@ class FC_CamperController extends Controller
         if (!empty($searchedDate)) {
             $tabDate = explode('-', $searchedDate);
             if (count($tabDate) == 2 && strtotime($tabDate[0]) && strtotime($tabDate[1])) {
+                $start_date_s = $tabDate[0];
+                $end_date_s = $tabDate[1];
+
                 $startDate = date("Y-m-d", strtotime($tabDate[0]));
                 $endDate = date("Y-m-d", strtotime($tabDate[1]));
                 $bookings = DB::table('bookings')->where(function ($query) use ($endDate) {
@@ -117,6 +125,16 @@ class FC_CamperController extends Controller
                 }
                 $data = $data->whereNotIn('id', $ids);
             }
+        } else {
+            //select * from campers where id not in (select id_campers from booking where start_date>today or end_date<today)
+            $booking = Booking::whereDate('start_date', '<=', date('Y-m-d'))->orWhereDate('end_date', '>=', date('Y-m-d'))
+                ->select('id_campers')->distinct()->get();
+            $ids = array();
+            foreach ($booking as $b) {
+                $ids[] = $b->id_campers;
+            }
+
+            $data = $data->whereNotIn('id', $ids);
         }
         if (!empty($searchedCategories)) {
             $data = $data->whereIn('id_camper_categories', $searchedCategories);
@@ -129,6 +147,8 @@ class FC_CamperController extends Controller
             ->with('searchedLocation', $searchedLocation)
             ->with('searchedCategories', $searchedCategories)
             ->with('categories', $categories)
+            ->with('start_date_s', $start_date_s)
+            ->with('end_date_s', $end_date_s)
             ->with('campers', $data);
     }
 
@@ -242,4 +262,20 @@ class FC_CamperController extends Controller
             ->with('reviews_client', $reviews_client)
             ->with('campers_owner', $campers_owner);
     }
+
+    public static function getCamperPriceCurrentSaison($id)
+    {
+        //TODO insuarnce logic must be her
+        $insurance = 0;
+        $sMonth = date('m');
+        $saisons = CamperTerms::where('id_campers', $id)
+            ->where(function ($query) use ($sMonth) {
+                $query->where('start_month', $sMonth)
+                    ->orWhere('end_month', $sMonth);
+            })
+            ->first();
+        $saisons = $saisons != null ? $saisons : CamperTerms::where('id_campers', $id)->where('start_month', 11)->first();
+        return isset($saisons->price_per_night) ? $saisons->price_per_night + $insurance : 0;
+    }
+
 }

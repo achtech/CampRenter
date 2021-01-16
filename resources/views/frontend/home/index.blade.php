@@ -30,7 +30,7 @@
 								<div class="listing-item-content">
 									<span class="tag">{{App\Http\Controllers\Controller::getLabel('camper_categories',$camper->id_camper_categories)}}</span>
 									<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
-									<span>{{$camper->description_camper}}</span>
+									<span>{{Illuminate\Support\Str::limit($camper->description_camper, 25)}}...</span>
 								</div>
 								<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}">
 								{{App\Http\Controllers\frontend\FHomeController::getCamperRate($camper->id)}}<div class="rating-counter">({{App\Http\Controllers\frontend\FHomeController::getReviewsCount($camper->id)}} {{__('front.Reviews')}})</div>

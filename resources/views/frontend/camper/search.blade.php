@@ -27,16 +27,10 @@
 							data-marker-id="{{$camper->id}}">
 							<div class="listing-item">
 								<img   src="{{asset('images')}}/camper/{{$camper->image}}" alt="">
-								@if($camper->availability==0)
-									<div class="listing-badge now-close">{{trans('front.blocked')}}</div>
-								@elseif($camper->availability==1)
-									<div class="listing-badge now-closed">{{trans('front.reserved')}}</div>
-								@else
-									<div class="listing-badge now-open">{{trans('front.available')}}</div>
-								@endif
+								<div class="listing-badge now-open">{{trans('front.available')}}</div>
 								<div class="listing-item-content">
 									<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
-									<span>{{Illuminate\Support\Str::limit($camper->description_camper, 80)}}...</span></br>
+									<span>{{Illuminate\Support\Str::limit($camper->description_camper, 25)}}...</span></br>
 									<span class="tag">{{App\Http\Controllers\Controller::getLabel("camper_categories", $camper->id_camper_categories)}}</span>
 									<span class="tag" style="background: #ca353c !important;"
 									onmouseenter="PrepareMarkers('{{$camper->position_x}}','{{$camper->position_y}}',0,event)"
@@ -137,5 +131,6 @@ if(mouseOut==0){
 }
 
 </script>
+
 
 @endsection

@@ -17,7 +17,6 @@ class CreateCampersTable extends Migration
             $table->id();
             $table->string('is_completed')->default(0)->nullable();
             $table->string('camper_name')->nullable();
-            $table->string('camper_status')->nullable();
             $table->string('image', 50)->nullable();
             $table->string('brand', 100)->nullable();
             $table->string('model', 100)->nullable();
@@ -35,10 +34,9 @@ class CreateCampersTable extends Migration
             $table->string('length', 100)->nullable();
             $table->string('width', 100)->nullable();
             $table->string('height', 100)->nullable();
-            $table->string('description_camper', 1000)->nullable();
+            $table->string('description_camper', 5000)->nullable();
             $table->string('recommandation', 300)->nullable();
             $table->string('location', 100)->nullable();
-            $table->double('price_per_day')->nullable();
             $table->integer('minimal_rent_days')->nullable();
             $table->string('included_kilometres', 100)->nullable();
             $table->integer('kilometres_per_night')->nullable();
@@ -50,7 +48,6 @@ class CreateCampersTable extends Migration
             $table->string('license_age', 100)->nullable();
             $table->string('licence_age_desc', 300)->nullable();
             $table->string('smoking_allowed', 100)->nullable();
-            $table->string('availability', 100)->nullable();
             $table->string('is_confirmed', 100)->nullable();
             $table->integer("zip_code")->nullable();
             $table->string("city")->nullable();

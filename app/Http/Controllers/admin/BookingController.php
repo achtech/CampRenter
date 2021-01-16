@@ -1,12 +1,12 @@
 <?php
 namespace App\Http\Controllers\admin;
+
 use App\Http\Controllers\Controller;
- 
+use App\Http\Controllers\frontend\FC_CamperController;
 use App\Models\Booking;
-use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
 use Carbon\carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -57,12 +57,14 @@ class BookingController extends Controller
     }
     public function detail($id)
     {
-        $data = DB::table('v_bookings_details')->Where('id',$id)->first();
-        $totalPrice = $data-> price_per_day * $data-> bookingDay;
+
+        $data = DB::table('v_bookings_details')->Where('id', $id)->first();
+        $price = FC_CamperController::getCamperPriceCurrentSaison($data->id_campers);
+        $totalPrice = $price * $data->bookingDay;
         if (empty($data)) {
             return redirect(route('booking.index'));
         }
-        return view('admin.booking.show')->with('data', $data)->with('totalPrice',$totalPrice);
+        return view('admin.booking.show')->with('data', $data)->with('totalPrice', $totalPrice);
 
     }
     /**
@@ -74,12 +76,11 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Booking::create($input);
         return redirect(route('booking.index'))->with('success', 'Item added succesfully');
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -105,7 +106,7 @@ class BookingController extends Controller
             return redirect(route('booking.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = Booking::where('id', $id)->update($input);
         return redirect(route('booking.index'))->with('success', 'Item Updated succesfully');
     }
@@ -138,47 +139,47 @@ class BookingController extends Controller
     {
         $datasClients = DB::table('clients')->get();
         $start_date = $request->get('start_date');
-        $end_date = $request->get('end_date'); 
+        $end_date = $request->get('end_date');
         $date1 = Carbon::parse($start_date)->format('yy-m-d');
         $date2 = Carbon::parse($end_date)->format('yy-m-d');
         $renter = $request->get('renterId');
         $datas = DB::table('v_bookings_details');
-        if(!empty($renter) && $renter != 'Choose'){
-            $datas = $datas->Where('renter_id',$renter);
+        if (!empty($renter) && $renter != 'Choose') {
+            $datas = $datas->Where('renter_id', $renter);
         }
-        if(!empty($start_date)){
-            $datas = $datas->whereDate('start_date','>=', $date1);
+        if (!empty($start_date)) {
+            $datas = $datas->whereDate('start_date', '>=', $date1);
         }
-        if(!empty($end_date)){
-            $datas = $datas->whereDate('end_date','<=', $date2);
+        if (!empty($end_date)) {
+            $datas = $datas->whereDate('end_date', '<=', $date2);
         }
-        $datas = $datas->get();        
+        $datas = $datas->get();
         return view('admin.booking.index')
             ->with('datas', $datas)
-            ->with('start_date',$start_date)
-            ->with('end_date',$end_date)
-            ->with('renter',$renter)
+            ->with('start_date', $start_date)
+            ->with('end_date', $end_date)
+            ->with('renter', $renter)
             ->with('datasClients', $datasClients);
     }
     public function chat($id)
     {
         $dataMessOwner = DB::table('v_chats_bookings')
-            ->Where('id_bookings',$id)
+            ->Where('id_bookings', $id)
             ->WhereNotNull('id_owner')
-            ->orderBy('ordre_message','asc')->get();
+            ->orderBy('ordre_message', 'asc')->get();
         $dataMessRenter = DB::table('v_chats_bookings')
-            ->Where('id_bookings',$id)
+            ->Where('id_bookings', $id)
             ->WhereNotNull('id_renter')
-            ->orderBy('ordre_message','asc')->get();
+            ->orderBy('ordre_message', 'asc')->get();
         $datas = DB::table('v_bookings_details')->get();
         $datasClients = DB::table('clients')->get();
-        if (empty($dataMessOwner) && empty($dataMessRenter) ) {
+        if (empty($dataMessOwner) && empty($dataMessRenter)) {
             return redirect(route('booking.index'));
         }
         return view('admin.booking.chat')->with('dataMessOwner', $dataMessOwner)->with('dataMessRenter', $dataMessRenter)
-        ->with('bookingId', $id)
-        ->with('datas', $datas)
-        ->with('datasClients', $datasClients);
+            ->with('bookingId', $id)
+            ->with('datas', $datas)
+            ->with('datasClients', $datasClients);
     }
 
 }

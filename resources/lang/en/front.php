@@ -553,5 +553,6 @@ return [
     'Verified' => 'Valid',
     'publier_camper' => 'publish the camper',
     'kilometres' => 'Kilometres',
+    'verified' => 'Sned to verify',
 
 ];

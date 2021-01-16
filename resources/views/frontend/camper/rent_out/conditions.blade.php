@@ -39,7 +39,7 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id='price_main' name="price_per_night_main" type="text" value="{{$season_main ? $season_main->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id='price_main' name="price_per_night_main" type="number" min="0" value="{{$season_main ? $season_main->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -66,7 +66,7 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id="price_off" name='price_per_night_off' type="text" value="{{$season_off ? $season_off->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id="price_off" name='price_per_night_off' type="number" min="0" value="{{$season_off ? $season_off->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -93,7 +93,7 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id="price_winter" name='price_per_night_winter' type="text" value="{{$season_winter ? $season_winter->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id="price_winter" name='price_per_night_winter' type="number" min="0" value="{{$season_winter ? $season_winter->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -160,6 +160,25 @@
 
 
 <script>
+	var price_main = $("#price_main").val();
+	var current_night = $("#main_season").val();
+	if(price_main>0 && current_night>0 ){
+		var base_url="{{ URL::to('/rentOut/calcule_main')}}"
+		$.ajax({
+			type: "POST",
+			url: base_url,
+			cache: false,
+			dataType: 'html',
+			data: {price_per_night_main:price_main, minimum_night_main: current_night},
+
+			success: function(res){
+			r=res.trim();
+			$("#resultsrc").show() ;
+			$("#resultsrc").html(r);
+				}
+		});
+	}
+
 	$('#main_season').on('change', function(){
 		if($('#price_main').val() > 0){
 			var base_url="{{ URL::to('/rentOut/calcule_main')}}"
@@ -181,6 +200,26 @@
 		}
    })
 
+   $('#price_main').on('change', function(){
+		if($('#main_season').val() > 0){
+			var base_url="{{ URL::to('/rentOut/calcule_main')}}"
+			var current_night = $("#main_season").val();
+			var price_main = this.value ;
+			$.ajax({
+				type: "POST",
+				url: base_url,
+				cache: false,
+				dataType: 'html',
+				data: {price_per_night_main:price_main, minimum_night_main: current_night},
+
+				success: function(res){
+				r=res.trim();
+				$("#resultsrc").show() ;
+				$("#resultsrc").html(r);
+					}
+			});
+		}
+   })
    $('#off_season').on('change', function(){
 		if($('#price_off').val() > 0){
 			var base_url2="{{ URL::to('/rentOut/calcule_off')}}"

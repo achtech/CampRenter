@@ -42,7 +42,7 @@ class CreateClientsTable extends Migration
             $table->string('where_you_see_us')->nullable();
             $table->string('instagram_user_name')->nullable();
             $table->string('who_are_you')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email')->nullable()->unique();
             $table->string('review')->nullable();
             $table->enum('type_login', array('forms', 'facebook', 'google'))->nullable();
             $table->string('language')->nullable();

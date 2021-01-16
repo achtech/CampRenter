@@ -4,7 +4,7 @@
 		<ul>
 			<li>
 				<div style="text-align: center;">
-					<img style="max-width: 275px; max-height: 210px;" class="headline right" src="{{ asset('images')}}/camper/{{$camper->image }}"/>
+					<img style="max-width: 275px; max-height: 210px;" class="headline right" src="{{ asset('images')}}/camper_categories/{{App\Http\Controllers\frontend\FC_rentOutController::getCategoriePhoto($camper->id_camper_categories) }}"/>
 				</div>
 			</li>
 			<li style="padding-bottom:0px;">

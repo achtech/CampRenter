@@ -15,7 +15,7 @@
 					<span>
 						<a href="#" class="listing-address">
 							<i class="fa fa-money"></i>
-							{{trans('front.price_per_day')}} {{$camper->price_per_day}} CHF
+							{{trans('front.price_per_day')}} {{App\Http\Controllers\frontend\FC_CamperController::getCamperPriceCurrentSaison($camper->id)}} CHF
 						</a>
 					</span>
 					<div class="star-rating" data-rating="{{$rateCamper}}">
