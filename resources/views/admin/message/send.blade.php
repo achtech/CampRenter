@@ -10,9 +10,9 @@
                 {{ Form::open(['route'=>'message.sendEmail','method'=>'POST']) }}
                         <div class="form-group row">
                             <label class="col-md-2">{{ __('backend.From') }} </label>
-                            <input class="col-md-4 form-control" id="from_email" name="from_email" value="unitcamper@gmail.com"/> 
+                            <input class="col-md-4 form-control" id="from_email" name="from_email" value="unitcamper@gmail.com" disabled/> 
                             <label class="col-md-2">{{ __('backend.To') }} </label>
-                            <input class="col-md-4 form-control" id="to_email" name="to_email" value="{{$data->email}}"/> 
+                            <input class="col-md-4 form-control" id="to_email" name="to_email" value="{{$data->email}}" disabled/> 
                         
                         </div>
                         

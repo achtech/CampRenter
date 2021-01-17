@@ -76,13 +76,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
         $file = $request->file('picture');
 
         if($request->file('picture') && $request->file('picture')->getClientOriginalName()){
             $input = request()->except(['_token', '_method', 'action']);
             $input['picture'] = $request->file('picture')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\users'),$file->getClientOriginalName());
+            $file->move(public_path('public\images\users'),$file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
@@ -171,7 +170,7 @@ class UserController extends Controller
         if($request->file('picture') && $request->file('picture')->getClientOriginalName()){
             $input = request()->except(['_token', '_method', 'action']);
             $input['picture'] = $request->file('picture')->getClientOriginalName();
-            $file->move(base_path('public\assets\images\users'),$file->getClientOriginalName());
+            $file->move(public_path('images\users'),$file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
