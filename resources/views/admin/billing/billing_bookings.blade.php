@@ -15,7 +15,6 @@
                                     <th>{{ __('backend.Camper') }}</th>
                                     <th>{{ __('backend.From') }}</th>
                                     <th>{{ __('backend.To') }}</th>
-                                    <th>{{ __('backend.Price per day') }}</th>
                                     <th>{{ __('backend.booking_status_booking') }}</th>
                                     <th>{{ __('backend.status_billing') }}</th>
                                 </tr>
@@ -27,7 +26,6 @@
                                         <td>{{$item->camper_name}}</td>
                                         <td>{{$item->start_date}}</td>
                                         <td>{{$item->end_date}}</td>
-                                        <td>{{$item->price_per_day}}</td>
                                         <td>{{ app()->getLocale() == 'de' ? $item->status_booking_de : $item->status_booking_en }}</td>
                                         <td>{{ $item->status_billings }}</td>
                                     </tr>
@@ -39,7 +37,6 @@
                                     <th>{{ __('backend.Camper') }}</th>
                                     <th>{{ __('backend.From') }}</th>
                                     <th>{{ __('backend.To') }}</th>
-                                    <th>{{ __('backend.Price per day') }}</th>
                                     <th>{{ __('backend.booking_status_booking') }}</th>
                                     <th>{{ __('backend.status_billing') }}</th>
                                 </tr>

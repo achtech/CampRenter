@@ -357,5 +357,5 @@ return [
     'apply' => 'Apply',
     'change_status' => 'Change status',
     'warning' => 'Warning',
-
+    'No bookings'=> 'No bookings',
 ];

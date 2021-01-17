@@ -5,11 +5,6 @@
     <!--'action'=>'App\Http\Controllers\admin\InsuranceController@update',-->
     @csrf
      <div class="row">
-         @if(session('_client'))
-         {{session('_client')}}
-         @else
-         nn session
-         @endif
      <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">

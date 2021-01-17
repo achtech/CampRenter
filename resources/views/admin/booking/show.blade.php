@@ -44,16 +44,8 @@
                                             </div>
                                         </div>
                                     </div>
-                            <div class="form-group row">
-                                        <label class="col-md-4">{{ __('backend.status_booking') }} </label>
-                                <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>{{ app()->getLocale() =='de' ? $data->status_booking_de : $data->status_booking_en }}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
                                             </div>
                                         </div>
                                     </div>
@@ -77,14 +69,6 @@
                                         </div>
                                     </div>
                             <div class="form-group row">
-                                        <div  class="col-md-4"><label>{{ __('backend.Price per day') }}</label></div>
-                                <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>{{$data->price_per_day }}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                            <div class="form-group row">
                                         <label class="col-md-4">{{ __('backend.booking_total_price') }} </label>
                                 <div class="col-md-8">
                                             <div class="form-group">
@@ -100,19 +84,14 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                            </div>
-                                        </div>
+                                <label class="col-md-4">{{ __('backend.status_booking') }} </label>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label>{{ app()->getLocale() =='de' ? $data->status_booking_de : $data->status_booking_en }}</label>
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
+                            </div>
                                 </div>
                             </div>
                         </div>

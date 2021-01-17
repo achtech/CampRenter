@@ -11,20 +11,23 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.Image') }}</th>
-                                    <th>{{ __('backend.camper_name') }}</th>
-                                    <th>{{ __('backend.category') }}</th>
-                                    <th>{{ __('backend.availability') }}</th>
-                                    <th>{{ __('backend.Status') }}</th>
-                                    <th>{{ __('backend.confirmed') }}</th>
+                                    <th>{{ __("backend.Image") }}</th>
+                                    <th>{{ __("backend.camper_name") }}</th>
+                                    <th>{{ __("backend.category") }}</th>
+                                    <th>{{ __("backend.availability") }}</th>
+                                    <th>{{ __("backend.Status") }}</th>
+                                    <th>{{ __("backend.confirmed") }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($datas as $item)
                                 <tr>
-                                    <td style="vertical-align: middle;text-align:center"><img style="width:100px" src="{{ asset('{{asset('/images/gallery') }}/{{$item->image}}"/></td>
+                                    <td style="vertical-align: middle;text-align:center">
+                                        <img style="width:100px" src="{{ asset('/images/gallery') }}/{{$item->image}}"/></td>
                                     <td style="vertical-align: middle;">{{$item->camper_name}}</td>
-                                    <td style="vertical-align: middle;">{{App\Http\Controllers\admin\CamperController::getLabel('camper_categories',$item->id_camper_categories)}}</td>
+                                    <td style="vertical-align: middle;">
+                                        {{App\Http\Controllers\admin\CamperController::getLabel("camper_categories",$item->id_camper_categories)}}
+                                    </td>
                                     <td style="vertical-align: middle;text-align:center">
                                         @if($item->availability==0)
                                         <i class="btn waves-effect waves-light btn-danger">Blocked</i>
@@ -35,9 +38,9 @@
                                         @endif
                                     <td style="vertical-align: middle;">
                                         @if($item->availability==0)
-                                            Blocked by Owner {{App\Http\Controllers\admin\CamperController::getName('clients',$item->id_clients)}}
+                                            Blocked by Owner {{App\Http\Controllers\admin\CamperController::getName("clients",$item->id_clients)}}
                                         @elseif($item->availability==1)
-                                            Reserved by {{App\Http\Controllers\admin\CamperController::getName('clients',$item->id_clients)}}
+                                            Reserved by {{App\Http\Controllers\admin\CamperController::getName("clients",$item->id_clients)}}
                                             <br />From : {{App\Http\Controllers\admin\CamperController::getBookingCamperStart($item->id)}}
                                             <br />To  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp{{App\Http\Controllers\admin\CamperController::getBookingCamperEnd($item->id)}}
                                         @else
@@ -57,12 +60,12 @@
                                 @endforeach
                             </tbody>
                             <tfoot>
-                            <th>{{ __('backend.Image') }}</th>
-                                    <th>{{ __('backend.camper_name') }}</th>
-                                    <th>{{ __('backend.category') }}</th>
-                                    <th>{{ __('backend.availability') }}</th>
-                                    <th>{{ __('backend.Status') }}</th>
-                                    <th>{{ __('backend.confirmed') }}</th>
+                            <th>{{ __("backend.Image") }}</th>
+                                    <th>{{ __("backend.camper_name") }}</th>
+                                    <th>{{ __("backend.category") }}</th>
+                                    <th>{{ __("backend.availability") }}</th>
+                                    <th>{{ __("backend.Status") }}</th>
+                                    <th>{{ __("backend.confirmed") }}</th>
                                 </tr>
                             </tfoot>
                         </table>
