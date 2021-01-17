@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Response;
 use Socialite;
 
 class FClientController extends DefaultLoginController
@@ -34,19 +33,19 @@ class FClientController extends DefaultLoginController
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'bail|unique:clients|required|email',
+            'password' => 'bail|required|min:8',
+        ]);
         $input = request()->except(['_token', '_method', 'action']);
-        $input['password'] = bcrypt($input['password']);
         $client_mail = Client::where('email', $input['email'])->first();
-        if ($client_mail) {
-            return Response::json(array('msg' => 'true'));
-        } else {
-            return Response::json(array('msg' => 'false'));
+        if ($client_mail == null) {
+            $input['password'] = bcrypt($input['password']);
+            $client = Client::create($input);
+            Mail::to($client['email'])->send(new RegistrationMail($client));
+            return view('frontend.auth.login');
         }
-
-        $client = Client::create($input);
-        Mail::to($client['email'])->send(new RegistrationMail($client));
-        return view('frontend.auth.login');
-
+        return back()->withInput($request->only('email', 'remember'));
     }
 
     public function userUpdateClient(Request $request)

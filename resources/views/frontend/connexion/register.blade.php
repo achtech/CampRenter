@@ -55,27 +55,25 @@
                             <div class="titles-container">
                                 <h1 class="text-center">{{trans('front.create_an_account')}}</h1>
                                 <h4 class="text-center">{{trans('front.register_with_email_address')}}</h4>
-
+                                {{ Form::open(['route'=>'frontend.client.store', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+                                @csrf
                                 <div class="row">
                                         <div  class="col-md-12">
                                             <label for="username2">
                                                 {{trans('front.first_name')}}:
-                                                <input type="text" placeholder="First Name" id="client_name" name="client_name" class="form-control" required>
+                                                <input type="text" placeholder="First Name" id="client_name" name="client_name" class="form-control" value="{{ old('client_name') }}" required>
                                             </label>
                                         </div>
                                     <div class="col-md-12">
                                         <label  for="username2">
                                             {{trans('front.last_name')}}:
-                                            <input   type="text" placeholder="Last Name" id="client_last_name" name="client_last_name" class="form-control" required>
+                                            <input   type="text" placeholder="Last Name" id="client_last_name" name="client_last_name" class="form-control" value="{{ old('client_last_name') }}" required>
                                         </label>
                                     </div>
-                                <div class="col-md-12">
+                                    <div class="col-md-12">
                                     <label  for="username2">
                                         {{trans('front.email_add')}}:
-                                        <input type="email" placeholder="Email Address" id="email" name="email" class="form-control @error('email') is-invalid @enderror" required >
-                                        @error('email')
-                                            <div class="alert alert-danger">{{$message}}</div>
-                                        @enderror
+                                        <input type="email" placeholder="Email Address" id="email" name="email" class="form-control  @error('email') is-invalid @enderror" value="{{ old('email') }}" required >
                                     </label>
                                 </div>
                                 <div class="col-md-12">
@@ -84,7 +82,7 @@
                                     </label>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="password" placeholder="Password" id="password" name="password" class="form-control" required>
+                                    <input type="password" placeholder="Password" id="password" name="password" class="form-control  @error('password') is-invalid @enderror" required>
                                 </div>
                                 <div class="col-md-12">
                                     <label style="display: flex;"><input style="width: auto;" id="service_terms" name="service_terms"  type="checkbox" class="form-control" required>
@@ -92,11 +90,12 @@
                                     </label>
                                 </div>
                                 <div class="col-md-12">
-                                    <button id="registration" class="button border margin-top-5 connexion" style="font-weight: bold;width: 99% !important;" >
+                                    <button  type="submit" class="button border margin-top-5 connexion" style="font-weight: bold;width: 99% !important;" >
                                         {{trans('front.sign_up')}}
                                     </button>
                                 </div>
                             </div>
+                                {{ Form::close() }}
 
                             </div>
 
@@ -125,41 +124,3 @@
 
 </div>
 </div>
-<script>
-    var email =  $("#email").val();
-    $('#registration').validate({
-        rules: {
-            email: {
-                required: true,
-                email: true,
-                remote: {
-                    url: '{{url('/storeClient')}}',
-                    type: "post",
-                    data: {
-                        client_name:$(client_name).val(),
-                        client_last_name:$(client_last_name).val(),
-                        email:$(email).val(),
-                        password:$(password).val(),
-                        _token:"{{ csrf_token() }}"
-                        },
-                    dataFilter: function (data) {
-                        var json = JSON.parse(data);
-                        alert(json.msg);
-                        if (json.msg == "true") {
-                            return "\"" + "Email address already in use" + "\"";
-                        } else {
-                            return 'true';
-                        }
-                    }
-                }
-            }
-        },
-        messages: {
-            email: {
-                required: "Email is required!",
-                email: "Enter A Valid EMail!",
-                remote: "Email address already in use!"
-            }
-        }
-    });
-</script>
