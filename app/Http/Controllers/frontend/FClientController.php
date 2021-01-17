@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Response;
 use Socialite;
 
 class FClientController extends DefaultLoginController
@@ -37,12 +38,15 @@ class FClientController extends DefaultLoginController
         $input['password'] = bcrypt($input['password']);
         $client_mail = Client::where('email', $input['email'])->first();
         if ($client_mail) {
-            return view('frontend.auth.login');
+            return Response::json(array('msg' => 'true'));
         } else {
-            $client = Client::create($input);
-            Mail::to($client['email'])->send(new RegistrationMail($client));
-            return view('frontend.auth.login');
+            return Response::json(array('msg' => 'false'));
         }
+
+        $client = Client::create($input);
+        Mail::to($client['email'])->send(new RegistrationMail($client));
+        return view('frontend.auth.login');
+
     }
 
     public function userUpdateClient(Request $request)
