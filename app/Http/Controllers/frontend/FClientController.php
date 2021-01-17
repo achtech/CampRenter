@@ -35,9 +35,14 @@ class FClientController extends DefaultLoginController
     {
         $input = request()->except(['_token', '_method', 'action']);
         $input['password'] = bcrypt($input['password']);
-        $client = Client::create($input);
-        Mail::to($client['email'])->send(new RegistrationMail($client));
-        return view('frontend.auth.login');
+        $client_mail = Client::where('email', $input['email'])->first();
+        if ($client_mail) {
+            return view('frontend.auth.login');
+        } else {
+            $client = Client::create($input);
+            Mail::to($client['email'])->send(new RegistrationMail($client));
+            return view('frontend.auth.login');
+        }
     }
 
     public function userUpdateClient(Request $request)
