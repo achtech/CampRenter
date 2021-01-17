@@ -15138,10 +15138,12 @@ a.close-list-item {
 .edit-profile-photo img {
     border-radius: 4px;
     max-width: 215px;
-    width: 100%;
+    /*width: 100%;*/
+    height: 85%;
 }
 
 .edit-profile-photo {
+    height: 259px;
     position: relative;
     display: block;
     margin-bottom: 35px;
