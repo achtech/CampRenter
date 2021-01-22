@@ -46,9 +46,14 @@
 								<p><strong>Prämienberechnung:</strong></p>
 							</div>
 							<div class='col-md-12' >
-								<p><h5><strong>1-6</strong> Nächte: </h5></p>
-								<p><h5><strong>7-13</strong> Nächte: </h5></p>
-								<p><h5><strong>Ab 14</strong> Nächte: </h5></p>
+							@foreach($insurance as $item)
+								@if($item->nbr_days_to!=null)
+									<p><h5><strong>{{$item->nbr_days_from}} - {{$item->nbr_days_to}}</strong>
+									@if($item->initial_price!=0) Fixprämie CHF {{$item->initial_price}},@endif CHF {{$item->price_per_day}} Pro Nacht</h5></p>
+								@else
+									<p><h5><strong>Ab {{$item->nbr_days_to}}</strong> @if($item->initial_price!=0) Fixprämie CHF {{$item->initial_price}},@endif CHF {{$item->price_per_day}} Pro Nacht</h5></p>
+								@endif
+							@endforeach
 							</div>
 						</div>
 					</div>

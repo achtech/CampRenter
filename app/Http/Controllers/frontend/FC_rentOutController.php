@@ -13,6 +13,7 @@ use App\Models\CamperTerms;
 use App\Models\Countries;
 use App\Models\Equipment;
 use App\Models\Fuel;
+use App\Models\Insurance;
 use App\Models\LicenceCategory;
 use App\Models\Promotion;
 use App\Models\Transmission;
@@ -715,8 +716,9 @@ class FC_rentOutController extends Controller
             return redirect(route('frontend.login.client'));
         }
         $camper = Camper::find($id);
-        $insurance = DB::table('insurances')->get();
-
+        $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
+        $insurance = Insurance::where('id_camper_categories', $camper->id_camper_categories);
+        $insurance = $camper->allowed_total_weight == 0 ? $insurance->get() : $insurance->where('tonage', $t)->get();
         return view('frontend.camper.rent_out.insurance')
             ->with('client', $client)
             ->with('camper', $camper)
