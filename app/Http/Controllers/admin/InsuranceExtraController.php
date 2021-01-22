@@ -53,10 +53,11 @@ class InsuranceExtraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store(Request $request)
     {
-        $data = insuranceExtra::find($id);
-        return redirect(route('insuranceExtra.index'))->with('data', $data);
+        $input = request()->except(['_token', '_method', 'action']);
+        $data = insuranceExtra::create($input);
+        return redirect(route('insuranceExtra.index'))->with('success', 'Item added succesfully');
     }
 
     /**
@@ -85,8 +86,8 @@ class InsuranceExtraController extends Controller
             return redirect(route('insuranceExtra.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by'] = auth()->user()->id;
         $data = insuranceExtra::where('id', $id)->update($input);
+
         return redirect(route('insuranceExtra.index'))->with('success', 'Item Updated succesfully');
     }
 

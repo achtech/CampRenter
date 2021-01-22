@@ -1,7 +1,10 @@
-@extends('admin.layout', ['activePage' => 'insurance', 'titlePage' => trans('backend.insurance_managment')]) @section('content') {{ Breadcrumbs::render('edit_insurance') }}
+@extends('admin.layout', ['activePage' => 'insurance', 'titlePage' => trans('backend.insurance_managment')]) 
+@section('content') 
+{{ Breadcrumbs::render('edit_insurance', $data->id) }}
 <div class="container-fluid">
     <!--'action'=>'App\Http\Controllers\admin\InsuranceController@update',-->
-    {{ Form::open(array('method'=>'PUT','route' => ['insurance.update', $data->id])) }} @csrf
+    {{ Form::open(array('method'=>'PUT','route' => ['insurance.update', $data->id])) }} 
+    @csrf
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">

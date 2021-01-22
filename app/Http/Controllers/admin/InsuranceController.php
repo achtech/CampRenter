@@ -27,14 +27,8 @@ class InsuranceController extends Controller
      */
     public function index(Request $request)
     {
-        $search = '';
-        if (isset($request) && null !== $request->get('search')) {
-            $search = $request->get('search');
-            $datas = Insurance::where('description', 'like', '%' . $search . '%')->paginate(10);
-        } else {
-            $datas = Insurance::get();
-        }
-        return view('admin.insurance.index')->with('datas', $datas)->with('search', $search);
+        $datas = Insurance::orderBy('id_camper_categories')->get();
+        return view('admin.insurance.index')->with('datas', $datas);
     }
     /**
      * Show the form for creating a new resource.
@@ -67,8 +61,6 @@ class InsuranceController extends Controller
     public function store(Request $request)
     {
         $input = request()->except(['_token', '_method', 'action']);
-        $input['created_by'] = auth()->user()->id;
-        $input['updated_by'] = auth()->user()->id;
         $data = Insurance::create($input);
         return redirect(route('insurance.index'))->with('success', 'Item added succesfully');
     }
@@ -83,8 +75,8 @@ class InsuranceController extends Controller
     {
         $data = Insurance::find($id);
         $camperCategories = CamperCategory::all();
-        //dd($insuranceCompanies);
-        return view('admin.insurance.edit', ['id' => 1])
+        
+        return view('admin.insurance.edit')
             ->with('data', $data)
             ->with('camperCategories', $camperCategories);
     }
@@ -98,12 +90,12 @@ class InsuranceController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $data = Insurance::find($id);
         if (empty($data)) {
             return redirect(route('insurance.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by'] = auth()->user()->id;
         $data = Insurance::where('id', $id)->update($input);
         return redirect(route('insurance.index'))->with('success', 'Item Updated succesfully');
     }

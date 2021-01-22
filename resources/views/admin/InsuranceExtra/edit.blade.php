@@ -3,7 +3,7 @@
 {{ Breadcrumbs::render('create_insurance_extra') }}
 <div class="container-fluid">
     <!--'action'=>'InsuranceExtraController@store',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\admin\InsuranceExtraController@store','enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
+    {{ Form::open(array('method'=>'PUT','route' => ['insuranceExtra.update', $data->id])) }} 
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
@@ -35,7 +35,7 @@
                     <h4 class="card-title">{{ __('backend.day_to') }}</h4>
                     <div class="mt-5">
                         <div class="form-group">
-                            {{ Form::text('nbr_days_to',$data->nbr_days_to,['class'=>'form-control','required'])}}
+                            {{ Form::text('nbr_days_to',$data->nbr_days_to,['class'=>'form-control'])}}
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                 <h4 class="card-title">{{ __('backend.initial_price') }}</h4>
                     <div class="mt-5">
                         <div class="form-group">
-                            {{Form::text('initial_price',$data->initial_price,['class'=>'form-control','required'])}}
+                            {{Form::text('initial_price',$data->initial_price,['class'=>'form-control'])}}
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                 <h4 class="card-title">{{ __('backend.Price per day') }}</h4>
                     <div class="mt-5">
                         <div class="form-group">
-                            {{Form::text('price_per_day',$data->price_per_day,['class'=>'form-control','required'])}}
+                            {{Form::text('price_per_day',$data->price_per_day,['class'=>'form-control'])}}
                         </div>
                     </div>
                 </div>

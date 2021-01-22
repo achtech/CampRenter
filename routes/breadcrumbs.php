@@ -69,9 +69,9 @@ Breadcrumbs::for('insurance', function ($trail) {
 });
 
 // Dashboard > Insurance > Edit Insurance
-Breadcrumbs::for('edit_insurance', function ($trail) {
+Breadcrumbs::for('edit_insurance', function ($trail,$id) {
     $trail->parent('insurance');
-    $trail->push(__('backend.edit_inssurance.breadcrumb'), route('insurance.edit'));
+    $trail->push(__('backend.edit_inssurance.breadcrumb'), route('insurance.edit',$id));
 });
 
 // Dashboard > Insurance > Create Insurance
