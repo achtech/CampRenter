@@ -1,25 +1,14 @@
-@extends('admin.layout', ['activePage' => 'insurance', 'titlePage' => trans('backend.insurance_managment')]) @section('content') {{ Breadcrumbs::render('create_insurance') }}
+@extends('admin.layout', ['activePage' => 'insurance_extra', 'titlePage' => trans('backend.insurance_extra_managment')])
+@section('content')
+{{ Breadcrumbs::render('create_insurance_extra') }}
 <div class="container-fluid">
-    <!--'action'=>'App\Http\Controllers\admin\InsuranceController@update',-->
-    {{ Form::open(['action'=>'App\Http\Controllers\admin\InsuranceController@store','autocomplete'=>'off','method'=>'POST']) }}
-    @csrf
+    <!--'action'=>'InsuranceExtraController@store',-->
+    {{ Form::open(['action'=>'App\Http\Controllers\admin\InsuranceExtraController@store','enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">category</h4>
-                    <div class="mt-5">
-                        <div class="form-group">
-                            {{ Form::select('id_camper_categories', $camperCategories, null, ['class' => 'form-control','required']) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Days from</h4>
+                    <h4 class="card-title">{{ __('backend.Name') }}</h4>
                     <div class="mt-5">
                         <div class="form-group">
                             {{Form::text('nbr_days_from','',['class'=>'form-control','required'])}}
@@ -31,10 +20,10 @@
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Days to</h4>
+                    <h4 class="card-title">{{ __('backend.day_from') }}</h4>
                     <div class="mt-5">
                         <div class="form-group">
-                            {{ Form::text('nbr_days_to','',['class'=>'form-control','required'])}}
+                            {{ Form::text('nbr_days_from','',['class'=>'form-control','required'])}}
                         </div>
                     </div>
                 </div>
@@ -43,15 +32,16 @@
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ __('backend.tons') }}</h4>
+                    <h4 class="card-title">{{ __('backend.day_to') }}</h4>
                     <div class="mt-5">
                         <div class="form-group">
-                            {{Form::text('tonage','',['class'=>'form-control','required'])}}
+                            {{ Form::text('nbr_days_to','',['class'=>'form-control','required'])}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
@@ -77,12 +67,11 @@
             </div>
         </div>
 
+            <div class="col-sm-12">
+                {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
 
-        <div class="col-sm-12">
-            {{Form::submit('Create',['style' => 'width:200px','class'=>'btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right','name' => 'action'])}}
-
-            <a href="{{ route('insurance.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width: 200px;">{{ __('backend.Cancel') }}</a>
-        </div>
+                <a href="{{ route('insuranceExtra.index') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right" style="width:200px">{{ __('backend.Cancel') }}</a>
+            </div>
     </div>
     {{ Form::close() }}
 </div>

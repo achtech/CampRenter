@@ -71,31 +71,31 @@ Breadcrumbs::for('insurance', function ($trail) {
 // Dashboard > Insurance > Edit Insurance
 Breadcrumbs::for('edit_insurance', function ($trail) {
     $trail->parent('insurance');
-    $trail->push(__('backend.edit_inssurance.breadcrumb'), route('insurance.index'));
+    $trail->push(__('backend.edit_inssurance.breadcrumb'), route('insurance.edit'));
 });
 
 // Dashboard > Insurance > Create Insurance
 Breadcrumbs::for('create_insurance', function ($trail) {
     $trail->parent('insurance');
-    $trail->push(__('backend.create_inssurance.breadcrumb'), route('insurance.index'));
+    $trail->push(__('backend.create_inssurance.breadcrumb'), route('insurance.create'));
 });
 
-// Dashboard > insurance_company
-Breadcrumbs::for('insurance_company', function ($trail) {
+// Dashboard > insurance_extra
+Breadcrumbs::for('insurance_extra', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push(__('backend.inssurance_company.breadcrumb'), route('inssuranceCompany.index'));
+    $trail->push(__('backend.inssurance_extra.breadcrumb'), route('insuranceExtra.index'));
 });
 
 // Dashboard > Insurance > Edit Insurance
-Breadcrumbs::for('edit_insurance_company', function ($trail, $data) {
-    $trail->parent('insurance_company');
-    $trail->push(__('backend.edit_inssurance_company.breadcrumb'), route('inssuranceCompany.edit', $data->id));
+Breadcrumbs::for('edit_insurance_extra', function ($trail, $data) {
+    $trail->parent('insurance_extra');
+    $trail->push(__('backend.edit_inssurance_extra.breadcrumb'), route('inssuranceExtra.edit', $data->id));
 });
 
 // Dashboard > Insurance > Create Insurance
-Breadcrumbs::for('create_insurance_company', function ($trail) {
-    $trail->parent('insurance_company');
-    $trail->push(__('backend.create_inssurance_company.breadcrumb'), route('inssuranceCompany.create'));
+Breadcrumbs::for('create_insurance_extra', function ($trail) {
+    $trail->parent('insurance_extra');
+    $trail->push(__('backend.create_inssurance_extra.breadcrumb'), route('insuranceExtra.create'));
 });
 
 // Dashboard > Camper

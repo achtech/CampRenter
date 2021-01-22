@@ -20,7 +20,7 @@
                                     <th>{{ __('backend.tons') }}</th>
                                     <th>{{ __('backend.initial_price') }}</th>
                                     <th>{{ __('backend.Price per day') }}</th>
-                                     <th>{{ __('backend.Operations') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,10 +66,11 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.Description') }} DE</th>
-                                    <th>{{ __('backend.Description') }} EN</th>
-                                    <th>{{ __('backend.Description') }} FR</th>
-                                    <th>{{ __('backend.insurance_company') }}</th>
+                                    <th>{{ __('backend.camper_category.breadcrumb') }}</th>
+                                    <th>{{ __('backend.day_from') }}</th>
+                                    <th>{{ __('backend.day_to') }}</th>
+                                    <th>{{ __('backend.tons') }}</th>
+                                    <th>{{ __('backend.initial_price') }}</th>
                                     <th>{{ __('backend.Price per day') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
                                 </tr>

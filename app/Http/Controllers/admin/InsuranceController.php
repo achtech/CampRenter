@@ -43,10 +43,10 @@ class InsuranceController extends Controller
      */
     public function create()
     {
-        $insuranceCompanies = InsuranceCompany::all()->pluck(app()->getLocale() == 'de' ? 'label_de' : (app()->getLocale() == 'en' ? 'label_en' : 'label_fr'), 'id');
+        $camperCategories = CamperCategory::all()->pluck(app()->getLocale() == 'de' ? 'label_de' : (app()->getLocale() == 'en' ? 'label_en' : 'label_fr'), 'id');
 
         return view('admin.insurance.create')
-            ->with('insuranceCompanies', $insuranceCompanies);
+            ->with('camperCategories', $camperCategories);
     }
     /**
      * Display the specified resource.

@@ -306,14 +306,14 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->INSURANCE
-    Route::delete('insuranceCompany/{id}/delete', 'App\Http\Controllers\admin\InsuranceCompanyController@destroy')->name('insuranceCompany.delete');
-    Route::resource('insuranceCompany', 'App\Http\Controllers\admin\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
-        'index' => 'insuranceCompany.index',
-        'create' => 'insuranceCompany.create',
-        'update' => 'insuranceCompany.update',
-        'edit' => 'insuranceCompany.edit',
-        'store' => 'insuranceCompany.store',
-        'show' => 'insuranceCompany.show',
+    Route::delete('insuranceExtra/{id}/delete', 'App\Http\Controllers\admin\InsuranceExtraController@destroy')->name('insuranceExtra.delete');
+    Route::resource('insuranceExtra', 'App\Http\Controllers\admin\InsuranceExtraController', ['except' => 'destroy', 'names' => [
+        'index' => 'insuranceExtra.index',
+        'create' => 'insuranceExtra.create',
+        'update' => 'insuranceExtra.update',
+        'edit' => 'insuranceExtra.edit',
+        'store' => 'insuranceExtra.store',
+        'show' => 'insuranceExtra.show',
     ]]);
 
     //ADMIN->COMIMSSION
@@ -439,15 +439,15 @@ Route::group(['middleware' => 'Lang'], function () {
         'store' => 'billing.store',
         'show' => 'billing.show',
     ]]);
-    //ADMIN->INSURANCECOMPANY
-    Route::delete('inssuranceCompany/{id}/delete', 'App\Http\Controllers\admin\InsuranceCompanyController@destroy')->name('inssuranceCompany.delete');
-    Route::resource('inssuranceCompany', 'App\Http\Controllers\admin\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
-        'index' => 'inssuranceCompany.index',
-        'create' => 'inssuranceCompany.create',
-        'update' => 'inssuranceCompany.update',
-        'edit' => 'inssuranceCompany.edit',
-        'store' => 'inssuranceCompany.store',
-        'show' => 'inssuranceCompany.show',
+    //ADMIN->insuranceExtra
+    Route::delete('insuranceExtra/{id}/delete', 'App\Http\Controllers\admin\InsuranceExtraController@destroy')->name('insuranceExtra.delete');
+    Route::resource('insuranceExtra', 'App\Http\Controllers\admin\InsuranceExtraController', ['except' => 'destroy', 'names' => [
+        'index' => 'insuranceExtra.index',
+        'create' => 'insuranceExtra.create',
+        'update' => 'insuranceExtra.update',
+        'edit' => 'insuranceExtra.edit',
+        'store' => 'insuranceExtra.store',
+        'show' => 'insuranceExtra.show',
     ]]);
 
     //ADMIN->MESSAGE
