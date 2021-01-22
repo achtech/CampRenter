@@ -276,6 +276,13 @@
                             <span class="hide-menu">{{ __('backend.menu_insurances') }}</span>
                         </a>
                     </li>
+                    
+                    <li class="sidebar-item{{ $activePage == 'insurance_extra' ? ' selected' : '' }}">
+                        <a class="sidebar-link sidebar-link" href="{{route('insuranceExtra.index')}}" aria-expanded="false">
+                        <i class="icon-book-open"></i>
+                            <span class="hide-menu">{{ __('backend.insurance_extra') }}</span>
+                        </a>
+                    </li>
                     <li class="sidebar-item{{ $activePage == 'message' ? ' selected' : '' }}">
                         <a class="sidebar-link sidebar-link"
                             href="{{route('message.index')}}"

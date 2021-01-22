@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avatar;
+use App\Models\Insurance;
+use App\Models\InsuranceExtra;
 use App\Models\Camper;
 use App\Models\Client;
 use App\Models\Message;
@@ -142,5 +144,46 @@ class Controller extends BaseController
         }
 
         return 2;
+    }
+    /**
+     * -------------------From-----------To--------------
+     */
+
+    public static function getInsurance($idCategorie,$nbrDays,$tons=0){
+        
+        $t = $tons > 3.5 ? ">3":"<=3";
+
+        $data = Insurance::where('id_camper_categories',$idCategorie)
+                            ->where('nbr_days_from',"<=",$nbrDays)
+                            ->where('nbr_days_To',">=",$nbrDays);
+        $data = $tons==0 ? $data->first():$data->where('tonage',$t)->first();
+
+        if($data== null ){
+            $data = Insurance::where('id_camper_categories',$idCategorie)->where('nbr_days_To','null');
+            $data = $tons==0 ? $data->first():$data->where('tonage',$t)->first();
+        }
+
+        if($data != null ){
+            return $data->initial_price + ($nbrDays-$data->nbr_days_from+1)*$data->price_per_day;
+        }
+        return 0;        
+    }
+
+    public static function getExtraInsurance($name,$nbrDays){
+
+        $data = Insurance::where('name',$name)
+                            ->where('nbr_days_from',"<=",$nbrDays)
+                            ->where('nbr_days_To',">=",$nbrDays)
+                            ->first();
+        if($data != null){
+            $data = Insurance::where('name',$name)
+            ->where('nbr_days_To','null')
+            ->first();
+        }
+
+        if(count($data)!=0){
+            return $data->initial_price + ($nbrDays-$item->nbr_days_from+1)*$item->price_per_day;
+        }
+        return 0;        
     }
 }

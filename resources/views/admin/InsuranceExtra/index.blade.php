@@ -9,6 +9,60 @@
                     <div class="table-responsive">
                         <a href="{{ route('insuranceExtra.create') }}" class="btn waves-effect waves-light btn-rounded btn-rounded btn-primary float-right add-class"
                             style="margin:0px 10px">{{ __('backend.new_insurance_extra') }}</a>
+                   
+<table border="1">
+<tr>
+    <th>Cat</th>
+    <th>nbrDays</th>
+    <th>Tons</th>
+    <th>val</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>{{App\Http\Controllers\Controller::getInsurance(3,1)}}</td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>5</td>
+    <td>1</td>
+    <td>{{App\Http\Controllers\Controller::getInsurance(3,5)}}</td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>6</td>
+    <td>1</td>
+    <td>{{App\Http\Controllers\Controller::getInsurance(3,6)}}</td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>7</td>
+    <td>1</td>
+    <td>{{App\Http\Controllers\Controller::getInsurance(3,7)}}</td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>10</td>
+    <td>1</td>
+    <td>{{App\Http\Controllers\Controller::getInsurance(3,10)}}</td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>14</td>
+    <td>1</td>
+    <td>{{App\Http\Controllers\Controller::getInsurance(3,14)}}</td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>20</td>
+    <td>1</td>
+    <td>{{App\Http\Controllers\Controller::getInsurance(3,20)}}</td>
+</tr>
+</table>
                         <table id="default_order" class="table table-striped table-bordered display no-wrap"
                             style="width:100%">
                             <thead>
@@ -25,8 +79,8 @@
                                 @foreach($datas as $item)
                                 <tr>
                                     <td>{{$item->name}}</td>
-                                    <td>{{$item->nbr_days_from}}</td>
-                                    <td>{{$item->nbr_days_to}}</td>
+                                    <td>{{$item->nbr_days_from==0?1:$item->nbr_days_from}}</td>
+                                    <td>{{$item->nbr_days_to==0?'':$item->nbr_days_to}}</td>
                                     <td>{{$item->initial_price}}</td>
                                     <td>{{$item->price_per_day}}</td>
                                    <td>

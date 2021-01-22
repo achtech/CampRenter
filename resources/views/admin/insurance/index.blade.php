@@ -27,9 +27,9 @@
                                 @foreach($datas as $item)
                                 <tr>
                                     <td>{{App\Http\Controllers\admin\InsuranceController::getLabel('camper_categories',$item->id_camper_categories)}}</td>
-                                    <td>{{$item->nbr_days_from}}</td>
-                                    <td>{{$item->nbr_days_to}}</td>
-                                    <td>{{$item->tonage}}</td>
+                                    <td>{{$item->nbr_days_from==0 ? 1 : $item->nbr_days_from }}</td>
+                                    <td>{{$item->nbr_days_to!=0?$item->nbr_days_to:''}}</td>
+                                    <td>{{$item->tonage }}</td>
                                     <td>{{$item->initial_price}}</td>
                                     <td>{{$item->price_per_day}}</td>
                                    <td>
