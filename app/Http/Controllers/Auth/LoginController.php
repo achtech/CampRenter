@@ -7,7 +7,6 @@ use App\Providers\RouteServiceProvider;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -34,20 +33,16 @@ class LoginController extends Controller
     {
         session()->forget('_client');
         Auth::logout();
-        return redirect('/');
+        return redirect(route('home.index'));
     }
 
     public function showAdminLoginForm()
     {
-        $campers = DB::table('campers')->where('is_confirmed', 1)->get();
-        $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
-        $categories = DB::table('camper_categories')->paginate(10);
-        return view('frontend.auth.login')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
+        return view('frontend.auth.login');
     }
 
     public function adminLogin(Request $request)
     {
-
         $this->validate($request, [
             'email' => 'exists:clients|required|email',
             'password' => 'required|min:8',
@@ -55,7 +50,7 @@ class LoginController extends Controller
 
         if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
             Session::put('_client', $request['email']);
-            return redirect()->intended('/');
+            return redirect()->intended(route('home.index'));
         }
         return back()->withInput($request->only('email', 'remember'));
     }

@@ -170,6 +170,12 @@ class FClientController extends DefaultLoginController
 
         return view('frontend.client.index');
     }
+
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
@@ -187,7 +193,7 @@ class FClientController extends DefaultLoginController
 
                 Auth::login($finduser);
 
-                return redirect('/home');
+                return redirect(route('home.index'));
             } else {
                 $newUser = Client::create([
                     'name' => $user->name,
@@ -201,6 +207,36 @@ class FClientController extends DefaultLoginController
             }
         } catch (Exception $e) {
             return redirect('auth/google');
+        }
+    }
+
+    public function handleFacebookCallback()
+    {
+
+        try {
+
+            $user = Socialite::driver('facebook')->user();
+
+            $finduser = Client::where('facebook_id', $user->id)->first();
+
+            if ($finduser) {
+
+                Auth::login($finduser);
+
+                return redirect(route('home.index'));
+            } else {
+                $newUser = Client::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'facebook_id' => $user->id,
+                ]);
+
+                Auth::login($newUser);
+
+                return redirect()->back();
+            }
+        } catch (Exception $e) {
+            return redirect('auth/facebook');
         }
     }
 }

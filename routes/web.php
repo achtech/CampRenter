@@ -47,7 +47,10 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
 
-    Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
+    Route::get('/', function () {
+        return view('frontend.coming_soon');
+    });
+    Route::get('/index', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
 
@@ -202,8 +205,8 @@ Route::group(['middleware' => 'Lang'], function () {
 
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
-    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-    //Route::get('/logoutC', '\App\Http\Controllers\Auth\LoginController@clientLogout')->name('client.logout');
+    //Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+    Route::get('/logoutC', '\App\Http\Controllers\Auth\LoginController@clientLogout')->name('client.logout');
     Route::post('/logoutC', '\App\Http\Controllers\Auth\LoginController@logout')->name('client.logout');
     Route::get('/dashboard', function () {
         if (auth()->user() == null) {
