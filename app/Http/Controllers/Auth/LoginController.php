@@ -50,7 +50,7 @@ class LoginController extends Controller
 
         $this->validate($request, [
             'email' => 'exists:clients|required|email',
-            'password' => 'required|min:6',
+            'password' => 'required|min:8',
         ]);
 
         if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {

@@ -26,7 +26,7 @@
                             </label>
                         </div>
                         <div  class="col-md-12">
-                            <input type="text" placeholder="First Name" id="client_name" name="client_name" class="form-control" required>
+                            <input type="text" placeholder="First Name" id="client_name" name="client_name" class="form-control"  value="{{ old('client_name') }}"  required>
                         </div>
                         <div class="col-md-12">
                             <label  for="username2">
@@ -34,7 +34,7 @@
                             </label>
                         </div>
                         <div  class="col-md-12">
-                            <input type="text" placeholder="Last Name" id="client_last_name" name="client_last_name" class="form-control" required>
+                            <input type="text" placeholder="Last Name" id="client_last_name" name="client_last_name" class="form-control"  value="{{ old('client_last_name') }}" required>
                         </div>
                         <div class="col-md-12">
                             <label  for="username2">
@@ -42,7 +42,12 @@
                             </label>
                         </div>
                         <div  class="col-md-12">
-                            <input type="text" placeholder="Email Address" id="email" name="email" class="form-control" required>
+                            <input type="email" placeholder="Email Address" id="email" name="email" class="form-control  @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                         </div>
                         <div class="col-md-12">
                             <label>
@@ -50,7 +55,12 @@
                             </label>
                         </div>
                         <div class="col-md-12">
-                            <input type="password" placeholder="Password" id="password" name="password" class="form-control" required>
+                            <input type="password" placeholder="Password" id="password" name="password" class="form-control  @error('password') is-invalid @enderror"  required>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                         </div>
                         <div class="col-md-12">
                             <label><input id="service_terms" name="service_terms"  type="checkbox" class="form-control" required>

@@ -176,7 +176,7 @@ return [
     'hi' => 'Hi',
     'confirm_registration' => 'Please click the button to confirm your email address and finalize your registration.',
     'question_case' => ' In case of questions please write us an email at',
-    'contact_us' => 'or call us under 061 551 00 20. The Campunite team gets back to you as quickly as possible.',
+    'contact_us' => 'or call us under (123) 123-456. The Campunite team gets back to you as quickly as possible.',
     'best_regards' => 'Kind regards ',
     'camp_team' => 'Your CampeUnite team ',
     'address_verified' => 'Your email address has been successfully verified',
