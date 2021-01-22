@@ -33,7 +33,7 @@ return [
     'message_delete_camperStatus' => 'Do you want to delete this camper status ?',
     'message_delete_fuel' => 'Do you want to delete this Fuel ?',
     'message_delete_insurance' => 'Do you want to delete this Insurance ?',
-    'message_delete_insurance_company' => 'Do you want to delete this insurance company ?',
+    'message_delete_insurance_extra' => 'Do you want to delete this extra insurance?',
     'message_delete_licence_category' => 'Do you want to delete this licence category ?',
     'message_delete_user' => 'Do you want to delete this user ?',
     'message_delete_transmission' => 'Do you want to delete this Transmission?',
@@ -100,9 +100,9 @@ return [
     'licence_category.breadcrumb' => 'Licence category',
     'create_licence_category.breadcrumb' => 'Create Licence Category',
     'edit_licence_category.breadcrumb' => 'Edit Licence Category',
-    'inssurance_company.breadcrumb' => 'Insurances company',
-    'edit_inssurance_company.breadcrumb' => 'Edit insurance company',
-    'create_inssurance_company.breadcrumb' => 'Create insurance company',
+    'inssurance_extra.breadcrumb' => 'Insurances extra',
+    'edit_inssurance_extra.breadcrumb' => 'Edit insurance extra',
+    'create_inssurance_extra.breadcrumb' => 'Create insurance extra',
     'fuel.breadcrumb' => 'Fuel',
     'edit_fuel.breadcrumb' => 'Edit Fuel',
     'create_fuel.breadcrumb' => 'Create Fuel',
@@ -228,9 +228,9 @@ return [
     'licence_categories' => 'Licence Category',
 
     /** Insurance providers */
-    'insurance_company' => 'Insurance provider',
-    'insurance_company_managment' => 'Insurance provider managment',
-    'new_insurance_company' => 'New insurance provider',
+    'insurance_extra' => 'Extra Insurance',
+    'insurance_extra_managment' => 'Insurance extras managment',
+    'new_insurance_extra' => 'New extra insurance',
 
     /** FUELS */
     'fuels' => 'Fuel',
@@ -357,5 +357,9 @@ return [
     'apply' => 'Apply',
     'change_status' => 'Change status',
     'warning' => 'Warning',
-    'No bookings'=> 'No bookings',
+    'No bookings' => 'No bookings',
+    'day_from' => ' Day from',
+    'day_to' => 'Day to',
+    'tons' => 'Tons',
+    'initial_price' => 'Initial price',
 ];

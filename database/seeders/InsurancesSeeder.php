@@ -24,7 +24,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 0,
                 'price_per_day' => 22,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             1 => array(
                 'id' => 2,
@@ -35,7 +35,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 140,
                 'price_per_day' => 5,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             2 => array(
                 'id' => 3,
@@ -46,7 +46,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 175,
                 'price_per_day' => 3,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             3 => array(
                 'id' => 4,
@@ -57,7 +57,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 0,
                 'price_per_day' => 24,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             4 => array(
                 'id' => 5,
@@ -68,7 +68,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 160,
                 'price_per_day' => 5,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             5 => array(
                 'id' => 6,
@@ -79,7 +79,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 200,
                 'price_per_day' => 4,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             6 => array(
                 'id' => 7,
@@ -90,7 +90,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 0,
                 'price_per_day' => 10,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             7 => array(
                 'id' => 8,
@@ -101,7 +101,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 65,
                 'price_per_day' => 3.5,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             8 => array(
                 'id' => 9,
@@ -112,7 +112,7 @@ class InsurancesSeeder extends Seeder
                 'price_per_day' => 1.5,
                 'tonage' => '1=1',
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             9 => array(
                 'id' => 10,
@@ -123,7 +123,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 0,
                 'price_per_day' => 23,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             10 => array(
                 'id' => 11,
@@ -132,9 +132,9 @@ class InsurancesSeeder extends Seeder
                 'nbr_days_to' => 13,
                 'tonage' => '<=3',
                 'initial_price' => 135,
-                'price_per_day' => 6 ,
+                'price_per_day' => 6,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             11 => array(
                 'id' => 12,
@@ -145,7 +145,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 180,
                 'price_per_day' => 3.5,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             12 => array(
                 'id' => 13,
@@ -156,7 +156,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 0,
                 'price_per_day' => 23,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             13 => array(
                 'id' => 14,
@@ -165,9 +165,9 @@ class InsurancesSeeder extends Seeder
                 'nbr_days_to' => 13,
                 'tonage' => '>3',
                 'initial_price' => 135,
-                'price_per_day' => 6 ,
+                'price_per_day' => 6,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             14 => array(
                 'id' => 15,
@@ -178,7 +178,7 @@ class InsurancesSeeder extends Seeder
                 'initial_price' => 175,
                 'price_per_day' => 3,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
         ));
     }

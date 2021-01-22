@@ -47,7 +47,10 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
 
-    Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
+    Route::get('/', function () {
+        return view('frontend.coming_soon');
+    });
+    Route::get('/index', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
 
@@ -202,8 +205,8 @@ Route::group(['middleware' => 'Lang'], function () {
 
     /** Backend */
     Route::get('/dashboard', 'App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
-    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-    //Route::get('/logoutC', '\App\Http\Controllers\Auth\LoginController@clientLogout')->name('client.logout');
+    //Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+    Route::get('/logoutC', '\App\Http\Controllers\Auth\LoginController@clientLogout')->name('client.logout');
     Route::post('/logoutC', '\App\Http\Controllers\Auth\LoginController@logout')->name('client.logout');
     Route::get('/dashboard', function () {
         if (auth()->user() == null) {
@@ -303,14 +306,14 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN->INSURANCE
-    Route::delete('insuranceCompany/{id}/delete', 'App\Http\Controllers\admin\InsuranceCompanyController@destroy')->name('insuranceCompany.delete');
-    Route::resource('insuranceCompany', 'App\Http\Controllers\admin\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
-        'index' => 'insuranceCompany.index',
-        'create' => 'insuranceCompany.create',
-        'update' => 'insuranceCompany.update',
-        'edit' => 'insuranceCompany.edit',
-        'store' => 'insuranceCompany.store',
-        'show' => 'insuranceCompany.show',
+    Route::delete('insuranceExtra/{id}/delete', 'App\Http\Controllers\admin\InsuranceExtraController@destroy')->name('insuranceExtra.delete');
+    Route::resource('insuranceExtra', 'App\Http\Controllers\admin\InsuranceExtraController', ['except' => 'destroy', 'names' => [
+        'index' => 'insuranceExtra.index',
+        'create' => 'insuranceExtra.create',
+        'update' => 'insuranceExtra.update',
+        'edit' => 'insuranceExtra.edit',
+        'store' => 'insuranceExtra.store',
+        'show' => 'insuranceExtra.show',
     ]]);
 
     //ADMIN->COMIMSSION
@@ -436,15 +439,15 @@ Route::group(['middleware' => 'Lang'], function () {
         'store' => 'billing.store',
         'show' => 'billing.show',
     ]]);
-    //ADMIN->INSURANCECOMPANY
-    Route::delete('inssuranceCompany/{id}/delete', 'App\Http\Controllers\admin\InsuranceCompanyController@destroy')->name('inssuranceCompany.delete');
-    Route::resource('inssuranceCompany', 'App\Http\Controllers\admin\InsuranceCompanyController', ['except' => 'destroy', 'names' => [
-        'index' => 'inssuranceCompany.index',
-        'create' => 'inssuranceCompany.create',
-        'update' => 'inssuranceCompany.update',
-        'edit' => 'inssuranceCompany.edit',
-        'store' => 'inssuranceCompany.store',
-        'show' => 'inssuranceCompany.show',
+    //ADMIN->insuranceExtra
+    Route::delete('insuranceExtra/{id}/delete', 'App\Http\Controllers\admin\InsuranceExtraController@destroy')->name('insuranceExtra.delete');
+    Route::resource('insuranceExtra', 'App\Http\Controllers\admin\InsuranceExtraController', ['except' => 'destroy', 'names' => [
+        'index' => 'insuranceExtra.index',
+        'create' => 'insuranceExtra.create',
+        'update' => 'insuranceExtra.update',
+        'edit' => 'insuranceExtra.edit',
+        'store' => 'insuranceExtra.store',
+        'show' => 'insuranceExtra.show',
     ]]);
 
     //ADMIN->MESSAGE

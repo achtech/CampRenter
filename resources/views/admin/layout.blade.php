@@ -292,12 +292,12 @@
                             </a>
                         </li>
                     @endif
-                    <li class="sidebar-item {{ $activePage == 'profile' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'camperSubCategory' || $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' selected' : '' }}">
+                    <li class="sidebar-item {{ $activePage == 'profile' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory' || $activePage == 'camperSubCategory' || $activePage == 'insurance_extra' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' selected' : '' }}">
                         <a class="sidebar-link has-arrow" aria-expanded="false">
                         <i class="icon-settings"></i>
                             <span class="hide-menu">{{ __('backend.menu_settings') }}</span>
                         </a>
-                        <ul aria-expanded="false" class="collapse  first-level base-level-line {{ $activePage == 'profile' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory'  || $activePage == 'camperSubCategory'|| $activePage == 'insurance_company' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' in' : '' }}">
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line {{ $activePage == 'profile' || $activePage == 'promotion' || $activePage == 'licenceCategory' || $activePage == 'camperCategory'  || $activePage == 'camperSubCategory'|| $activePage == 'insurance_extra' || $activePage == 'transmission' || $activePage == 'fuel' || $activePage == 'avatar' || $activePage == 'backup' ? ' in' : '' }}">
                             <li class="sidebar-item {{$activePage == 'profile' || $activePage == 'user' ? 'active' : ''}}"><a href="{{route('user.profile')}}" class="sidebar-link {{$activePage == 'profile' || $activePage == 'user' ? 'active' : ''}}"><span
                                         class="hide-menu"> {{ __('backend.menu_profil') }}
                                         </span></a>
@@ -324,9 +324,9 @@
                                         class="hide-menu">{{ __('backend.menu_licence_category') }}
                                     </span></a>
                             </li>
-                            <li class="sidebar-item {{$activePage == 'insurance_company' ? 'active' : ''}}">
-                                <a href="{{route('inssuranceCompany.index')}}" class="sidebar-link {{$activePage == 'insurance_company' ? 'active' : ''}}">
-                                    <span class="hide-menu">{{ __('backend.menu_inssurance_providers') }}</span>
+                            <li class="sidebar-item {{$activePage == 'insurance_extra' ? 'active' : ''}}">
+                                <a href="{{route('insuranceExtra.index')}}" class="sidebar-link {{$activePage == 'insurance_extra' ? 'active' : ''}}">
+                                    <span class="hide-menu">{{ __('backend.insurance_extra') }}</span>
                                 </a>
                             </li>
                             <li class="sidebar-item {{$activePage == 'fuel' ? 'active' : ''}}">

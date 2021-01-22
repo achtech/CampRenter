@@ -30,13 +30,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'facebook' => [
-        'client_id' => '414101039952819',
-        'client_secret' => 'fb19d5febfcbb14b03aef44b9c1be0fa',
-        'redirect' => 'https://defoxed.ch/callback/facebook',
+        'client_id' => '849526262054061',
+        'client_secret' => 'd4dffdb6f2d391e200f517896c01ef54',
+        'redirect' => 'https://campunite.com/callback/facebook',
     ],
     'google' => [
         'client_id' => '366872804593-c4v1bv3ria1bie2lmci5u1m26ad3h3ql.apps.googleusercontent.com',
         'client_secret' => 'OHYChb26h03Hn-odQ-btKPzo',
-        'redirect' => 'https://defoxed.ch/callback/google',
+        'redirect' => 'https://campunite.com/callback/google',
     ],
 ];

@@ -14,21 +14,23 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('backend.Description') }} DE</th>
-                                    <th>{{ __('backend.Description') }} EN</th>
-                                    <th>{{ __('backend.Description') }} FR</th>
-                                    <th>{{ __('backend.insurance_company') }}</th>
+                                    <th>{{ __('backend.camper_category.breadcrumb') }}</th>
+                                    <th>{{ __('backend.day_from') }}</th>
+                                    <th>{{ __('backend.day_to') }}</th>
+                                    <th>{{ __('backend.tons') }}</th>
+                                    <th>{{ __('backend.initial_price') }}</th>
                                     <th>{{ __('backend.Price per day') }}</th>
-                                     <th>{{ __('backend.Operations') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($datas as $item)
                                 <tr>
-                                    <td>{{$item->description_de}}</td>
-                                    <td>{{$item->description_en}}</td>
-                                    <td>{{$item->description_fr}}</td>
-                                    <td>{{App\Http\Controllers\admin\InsuranceController::getName('insurance_companies',$item->id_insurance_companies)}}</td>
+                                    <td>{{App\Http\Controllers\admin\InsuranceController::getLabel('camper_categories',$item->id_camper_categories)}}</td>
+                                    <td>{{$item->nbr_days_from}}</td>
+                                    <td>{{$item->nbr_days_to}}</td>
+                                    <td>{{$item->tonage}}</td>
+                                    <td>{{$item->initial_price}}</td>
                                     <td>{{$item->price_per_day}}</td>
                                    <td>
                                         <ul class="list-inline m-0">
@@ -64,10 +66,11 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>{{ __('backend.Description') }} DE</th>
-                                    <th>{{ __('backend.Description') }} EN</th>
-                                    <th>{{ __('backend.Description') }} FR</th>
-                                    <th>{{ __('backend.insurance_company') }}</th>
+                                    <th>{{ __('backend.camper_category.breadcrumb') }}</th>
+                                    <th>{{ __('backend.day_from') }}</th>
+                                    <th>{{ __('backend.day_to') }}</th>
+                                    <th>{{ __('backend.tons') }}</th>
+                                    <th>{{ __('backend.initial_price') }}</th>
                                     <th>{{ __('backend.Price per day') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
                                 </tr>

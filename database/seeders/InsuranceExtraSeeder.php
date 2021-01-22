@@ -23,7 +23,7 @@ class InsuranceExtraSeeder extends Seeder
                 'initial_price' => 25,
                 'price_per_day' => 3,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             1 => array(
                 'id' => 2,
@@ -33,7 +33,7 @@ class InsuranceExtraSeeder extends Seeder
                 'initial_price' => 16,
                 'price_per_day' => 4,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             2 => array(
                 'id' => 3,
@@ -43,7 +43,7 @@ class InsuranceExtraSeeder extends Seeder
                 'initial_price' => 56,
                 'price_per_day' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             3 => array(
                 'id' => 4,
@@ -53,7 +53,7 @@ class InsuranceExtraSeeder extends Seeder
                 'initial_price' => 10,
                 'price_per_day' => 1,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             4 => array(
                 'id' => 5,
@@ -63,7 +63,7 @@ class InsuranceExtraSeeder extends Seeder
                 'initial_price' => 20,
                 'price_per_day' => 2,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
+                'updated_at' => date("Y-m-d h:i:s"),
             ),
             5 => array(
                 'id' => 6,
@@ -73,8 +73,8 @@ class InsuranceExtraSeeder extends Seeder
                 'initial_price' => 7.5,
                 'price_per_day' => 2.5,
                 'created_at' => date("Y-m-d h:i:s"),
-                'updated_at' => date("Y-m-d h:i:s")
-            )
+                'updated_at' => date("Y-m-d h:i:s"),
+            ),
         ));
     }
 }
