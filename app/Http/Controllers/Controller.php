@@ -159,7 +159,7 @@ class Controller extends BaseController
         $data = $tons==0 ? $data->first():$data->where('tonage',$t)->first();
 
         if($data== null ){
-            $data = Insurance::where('id_camper_categories',$idCategorie)->where('nbr_days_To','null');
+            $data = Insurance::where('id_camper_categories',$idCategorie)->whereNull('nbr_days_To');
             $data = $tons==0 ? $data->first():$data->where('tonage',$t)->first();
         }
 
@@ -171,18 +171,18 @@ class Controller extends BaseController
 
     public static function getExtraInsurance($name,$nbrDays){
 
-        $data = Insurance::where('name',$name)
+        $data = InsuranceExtra::where('name','like','%'.$name.'%')
                             ->where('nbr_days_from',"<=",$nbrDays)
                             ->where('nbr_days_To',">=",$nbrDays)
                             ->first();
-        if($data != null){
-            $data = Insurance::where('name',$name)
-            ->where('nbr_days_To','null')
+        if($data == null){
+            $data = InsuranceExtra::where('name',$name)
+            ->whereNull('nbr_days_To')
             ->first();
         }
 
-        if(count($data)!=0){
-            return $data->initial_price + ($nbrDays-$item->nbr_days_from+1)*$item->price_per_day;
+        if($data !=null){
+            return $data->initial_price + ($nbrDays-$data->nbr_days_from+1)*$data->price_per_day;
         }
         return 0;        
     }
