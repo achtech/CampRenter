@@ -41,10 +41,15 @@
 				</div>
 				<div id="div1" class="payment-tab-trigger" style="display: none; margin-top: 5%;">
 					<div class="row">
-						<div class="col-md-6">
-							<p style="margin-bottom: 0px;"><strong>{{trans('front.allowed_tons')}} : </strong>{{$camper->allowed_total_weight}}</p>
-							<p><strong>Price Insurance/day : </strong>{{$camper->insurance_price}}€</p>
-							<input type="hidden" name="insurance_price" value="{{$camper->insurance_price}}" />
+						<div class="col-md-12">
+							<div class='col-md-12' >
+								<p><strong>Prämienberechnung:</strong></p>
+							</div>
+							<div class='col-md-12' >
+								<p><h5><strong>1-6</strong> Nächte: </h5></p>
+								<p><h5><strong>7-13</strong> Nächte: </h5></p>
+								<p><h5><strong>Ab 14</strong> Nächte: </h5></p>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -716,16 +716,11 @@ class FC_rentOutController extends Controller
         }
         $camper = Camper::find($id);
         $insurance = DB::table('insurances')->get();
-        foreach ($insurance as $item) {
-            if ($item->allowed_total_weight <= $camper->allowed_total_weight) {
-                $camper->insurance_price = $item->price_per_day;
-                $camper->id_insurances = $item->id;
-            }
-        }
 
         return view('frontend.camper.rent_out.insurance')
             ->with('client', $client)
-            ->with('camper', $camper);
+            ->with('camper', $camper)
+            ->with('insurance', $insurance);
     }
 
     public function showRental_terms($id)
