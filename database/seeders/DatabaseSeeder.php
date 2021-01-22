@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             CamperCategoriesSeeder::class,
 
             FuelsSeeder::class,
-            InsuranceCompaniesSeeder::class,
+            InsuranceExtraSeeder::class,
             LicenceCategoriesSeeder::class,
 
             MessagesSeeder::class,

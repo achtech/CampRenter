@@ -357,5 +357,9 @@ return [
     'apply' => 'Apply',
     'change_status' => 'Change status',
     'warning' => 'Warning',
-    'No bookings'=> 'No bookings',
+    'No bookings' => 'No bookings',
+    'day_from' => ' Day from',
+    'day_to' => 'Day to',
+    'tons' => 'Tons',
+    'initial_price' => 'Initial price',
 ];

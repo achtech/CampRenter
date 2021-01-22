@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CamperCategory;
 use App\Models\Insurance;
-use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +32,7 @@ class InsuranceController extends Controller
             $search = $request->get('search');
             $datas = Insurance::where('description', 'like', '%' . $search . '%')->paginate(10);
         } else {
-            $datas = Insurance::paginate(10);
+            $datas = Insurance::get();
         }
         return view('admin.insurance.index')->with('datas', $datas)->with('search', $search);
     }
@@ -82,11 +82,11 @@ class InsuranceController extends Controller
     public function edit($id)
     {
         $data = Insurance::find($id);
-        $insuranceCompanies = InsuranceCompany::all();
+        $camperCategories = CamperCategory::all();
         //dd($insuranceCompanies);
         return view('admin.insurance.edit', ['id' => 1])
             ->with('data', $data)
-            ->with('insuranceCompanies', $insuranceCompanies);
+            ->with('camperCategories', $camperCategories);
     }
 
     /**

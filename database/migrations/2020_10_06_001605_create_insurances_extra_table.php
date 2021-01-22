@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInsurancesTable extends Migration
+class CreateInsurancesExtraTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateInsurancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('insurances', function (Blueprint $table) {
+        Schema::create('insurance_extra', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_camper_categories')->nullable();
+            $table->string('name')->nullable();
             $table->integer('nbr_days_from')->nullable();
             $table->integer('nbr_days_to')->nullable();
-            $table->string('tonage')->nullable();
             $table->double('initial_price')->nullable();
             $table->double('price_per_day')->nullable();
             $table->timestamps();
-
         });
     }
 
@@ -33,6 +31,6 @@ class CreateInsurancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('insurances');
+        Schema::dropIfExists('insurance_extra');
     }
 }
