@@ -33,6 +33,32 @@
 		<!-- Content
 		================================================== -->
 		<div class="col-lg-8 col-md-8 padding-right-30">
+			<h3 class="margin-bottom-50">{{trans('front.Insurances')}}</h3>
+			<div class="row">
+				<div class="pricing-list-container">
+
+						<!-- Insurance List -->
+						<h4>{{trans('front.main_insurance')}}</h4>
+						<ul>
+							<li>
+								<h5>Main</h5>
+								<p>$4 / Night</p>
+								<a href="#" class="button medium border">Add insurance</a>
+							</li>
+						</ul>
+
+						<!-- Extra List -->
+						<h4>{{trans('front.extras_insurance')}}</h4>
+						<ul>
+							<li>
+								<h5>Extras</h5>
+								<p>$4 / Night</p>
+								<a href="#" class="button medium border">Add Extra</a>
+							</li>
+						</ul>
+
+					</div>
+			</div>
 			<h3 class="margin-bottom-50">{{trans('front.footer_paiement_methods')}}</h3>
 			<!-- Payment Methods Accordion -->
 			<div class="payment">

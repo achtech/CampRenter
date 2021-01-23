@@ -41,7 +41,7 @@ class FC_CamperController extends Controller
         $camper_terms = DB::table('camper_terms')->where('id_campers', $id)->get();
         $camper_rental_terms = DB::table('camper_rental_terms')->where('id_campers', $id)->first();
         $camper_equipment = DB::table('camper_equipment')->where('id_campers', $id)->first();
-        $camper_inssurance = DB::table('camper_inssurance')->where('id_campers', $id)->first();
+        //$camper_inssurance = DB::table('camper_inssurance')->where('id_campers', $id)->first();
         $camper = Camper::find($id);
         $owner = Client::where('id', $camper->id_clients)->first();
         $category = CamperCategory::where('id', $camper->id_camper_categories)->first();
@@ -72,8 +72,7 @@ class FC_CamperController extends Controller
             ->with('camper_terms', $camper_terms)
             ->with('camper_rental_terms', $camper_rental_terms)
             ->with('camper_equipment', $camper_equipment)
-            ->with('owner_photo', $owner_photo)
-            ->with('camper_inssurance', $camper_inssurance);
+            ->with('owner_photo', $owner_photo);
     }
 
     public function bookingPaiement()

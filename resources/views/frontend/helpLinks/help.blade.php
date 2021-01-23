@@ -17,7 +17,7 @@
 
 		<!-- Toggle 1 -->
 		<div class="toggle-wrap">
-			<span class="trigger "><a href="#"><i class="sl sl-icon-plus"></i>Welcome to the help section!</a></span>
+			<span class="trigger "><a href="#"><i class="fas fa-plus"></i>Welcome to the help section!</a></span>
 			<div class="toggle-container">
 				<p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Vivamus justo arcu, elementum a sollicitudin pellentesque, tincidunt ac enim. Proin id arcu ut ipsum vestibulum elementum.</p>
 				<button class="button margin-top-10" value="Zum Formular"> Zum Formular </button>
@@ -26,35 +26,35 @@
 
 		<!-- Toggle 2 -->
 		<div class="toggle-wrap">
-			<span class="trigger"><a href="#">Abschnitt 2 <i class="sl sl-icon-plus"></i> </a></span>
+			<span class="trigger"><a href="#">Abschnitt 2 <i class="fas fa-plus"></i> </a></span>
 			<div class="toggle-container">
 			</div>
 		</div>
 
 		<!-- Toggle 3 -->
 		<div class="toggle-wrap">
-			<span class="trigger"><a href="#">Abschnitt 3 <i class="sl sl-icon-plus"></i> </a></span>
+			<span class="trigger"><a href="#">Abschnitt 3 <i class="fas fa-plus"></i> </a></span>
 			<div class="toggle-container">
 			</div>
 		</div>
 
 		<!-- Toggle 4 -->
 		<div class="toggle-wrap">
-			<span class="trigger"><a href="#">Abschnitt 4 <i class="sl sl-icon-plus"></i> </a></span>
+			<span class="trigger"><a href="#">Abschnitt 4 <i class="fas fa-plus"></i> </a></span>
 			<div class="toggle-container">
 			</div>
 		</div>
 
 		<!-- Toggle 5 -->
 		<div class="toggle-wrap">
-			<span class="trigger"><a href="#">Abschnitt 5 <i class="sl sl-icon-plus"></i> </a></span>
+			<span class="trigger"><a href="#">Abschnitt 5 <i class="fas fa-plus"></i> </a></span>
 			<div class="toggle-container">
 			</div>
 		</div>
 
 		<!-- Toggle 6 -->
 		<div class="toggle-wrap">
-			<span class="trigger"><a href="#">Section <i class="sl sl-icon-plus"></i> </a></span>
+			<span class="trigger"><a href="#">Section <i class="fas fa-plus"></i> </a></span>
 			<div class="toggle-container">
 				<p>Seded ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Donec ut volutpat metus. Aliquam tortor lorem, fringilla tempor dignissim at, pretium et arcu.</p>
 			</div>

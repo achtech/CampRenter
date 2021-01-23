@@ -173,8 +173,8 @@ span.blog-item-tag,
 }
 
 .pricing-list-container h4 {
-    color: #f91942;
-    border-color: #f91942;
+    color: #39b7cd;
+    border-color: #39b7cd;
 }
 
 .sidebar-textbox ul.contact-details li a {
@@ -307,15 +307,15 @@ a.button.border {
 
 .opening-hours.summary li:hover,
 .opening-hours.summary li.total-costs span {
-    color: #f91742;
+    color: #39b7cd;
 }
 
 .payment-tab-trigger>input:checked~label::before {
-    border-color: #f91742;
+    border-color: #39b7cd;
 }
 
 .payment-tab-trigger>input:checked~label::after {
-    background-color: #f91742;
+    background-color: #39b7cd;
 }
 
 #navigation.style-1 .current,

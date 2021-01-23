@@ -284,7 +284,7 @@ return [
     'years' => 'years',
     'minimum_length_driver_prosession' => 'Minimum length of driver s licence possession',
     'parking_available' => 'Parking spot available during rental',
-    'Insurance' => 'Insurance',
+    'Insurances' => 'Insurances',
     'Roadside assistance' => 'Roadside assistance',
     'Deposit' => 'Deposit',
     'Deductible' => 'Deductible',
@@ -554,5 +554,11 @@ return [
     'publier_camper' => 'publish the camper',
     'kilometres' => 'Kilometres',
     'verified' => 'Sned to verify',
+    'indoor_insurance' => 'Extras: Indoor insurance',
+    'assistance_insurance' => 'Extras: Assistance',
+    'occupant_accident' => 'Extras: Occupant accident',
+    'bonus_loss' => 'Extras: Bonus loss & deductible transfer',
+    'main_insurance' => 'Main Insurance',
+    'extras_insurance' => 'Extras Insurances',
 
 ];

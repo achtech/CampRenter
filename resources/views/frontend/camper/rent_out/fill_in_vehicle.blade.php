@@ -248,7 +248,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="allowed_total_weight">{{trans('front.allowed_tons')}}</label>
-										<input type="number" min="0" name="allowed_total_weight" value="{{$camper->allowed_total_weight}}" required>
+										<input type="number" min="0" name="allowed_total_weight" step="any" value="{{$camper->allowed_total_weight}}" required>
 									</div>
 								</div>
 								<!-- Website -->
