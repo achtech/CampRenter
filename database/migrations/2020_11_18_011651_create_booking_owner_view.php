@@ -24,6 +24,7 @@ class CreateBookingOwnerView extends Migration
         `b`.`status_billings` AS `status_billings`,
         `b`.`commission` AS `commission`,
         `b`.`price_per_day` AS `price`,
+        `b`.`total` AS `total`,
         DATE_FORMAT(`b`.`created_at`, '%e-%c-%Y') AS `created_date`,
         DATE_FORMAT(`b`.`created_at`, '%H:%i') AS `created_hour`,
         (

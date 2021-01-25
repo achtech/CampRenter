@@ -264,8 +264,6 @@ class FC_CamperController extends Controller
 
     public static function getCamperPriceCurrentSaison($id)
     {
-        //TODO insuarnce logic must be her
-        $insurance = 0;
         $sMonth = date('m');
         $saisons = CamperTerms::where('id_campers', $id)
             ->where(function ($query) use ($sMonth) {
@@ -274,7 +272,7 @@ class FC_CamperController extends Controller
             })
             ->first();
         $saisons = $saisons != null ? $saisons : CamperTerms::where('id_campers', $id)->where('start_month', 11)->first();
-        return isset($saisons->price_per_night) ? $saisons->price_per_night + $insurance : 0;
+        return isset($saisons->price_per_night) ? $saisons->price_per_night : 0;
     }
 
 }

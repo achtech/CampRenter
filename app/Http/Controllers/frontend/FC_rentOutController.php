@@ -14,6 +14,7 @@ use App\Models\Countries;
 use App\Models\Equipment;
 use App\Models\Fuel;
 use App\Models\Insurance;
+use App\Models\InsuranceExtra;
 use App\Models\LicenceCategory;
 use App\Models\Promotion;
 use App\Models\Transmission;
@@ -719,10 +720,18 @@ class FC_rentOutController extends Controller
         $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
         $insurance = Insurance::where('id_camper_categories', $camper->id_camper_categories);
         $insurance = $camper->allowed_total_weight == 0 ? $insurance->get() : $insurance->where('tonage', $t)->get();
+
+        $extra = DB::table('insurance_extra')
+            ->select('name')
+            ->groupBy('name')
+            ->get();
+        
         return view('frontend.camper.rent_out.insurance')
             ->with('client', $client)
             ->with('camper', $camper)
-            ->with('insurance', $insurance);
+            ->with('insurance', $insurance)
+            ->with('extra', $extra)
+        ;
     }
 
     public function showRental_terms($id)
@@ -1094,5 +1103,10 @@ class FC_rentOutController extends Controller
         $camper->is_completed = 1;
         $camper->save();
         return redirect(route('frontend.camper.detail', $camper->id));
+    }
+
+    public static function getExtraData($name)
+    {
+        return InsuranceExtra::where('name', $name)->get();
     }
 }

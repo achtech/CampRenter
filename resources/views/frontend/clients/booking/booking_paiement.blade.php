@@ -41,20 +41,39 @@
 						<h4>{{trans('front.main_insurance')}}</h4>
 						<ul>
 							<li>
-								<h5>Main</h5>
-								<p>$4 / Night</p>
-								<a href="#" class="button medium border">Add insurance</a>
+								@if($insurance->initial_price!=0)
+									<p><span>Fixprämie </span>{{$insurance->initial_price}} CHF</p>
+								@endif
+								<p><span> Pro Nacht </span> {{$insurance->price_per_day}} CHF</p>
+								<p><span>Total: </span>{{$insurance_total}} CHF </p>
+								@if(!$camper->has_insurance)
+									<a href="#" class="button medium border">Add</a>
+								@else
+									<a href="#" class="button medium">Included</a>
+								@endif
 							</li>
 						</ul>
 
 						<!-- Extra List -->
 						<h4>{{trans('front.extras_insurance')}}</h4>
 						<ul>
+						@foreach($extras as $extra)
 							<li>
-								<h5>Extras</h5>
-								<p>$4 / Night</p>
-								<a href="#" class="button medium border">Add Extra</a>
+								<h5>{{$extra->name}}</h5>
+								@foreach(App\Http\Controllers\Controller::getExtraData($extra->name,$booking->nbr_days) as $item)
+									@if($item->initial_price!=0)
+										<p><span>Fixprämie </span>{{$item->initial_price}} CHF</p>
+									@endif
+									<p><span> Pro Nacht </span> {{$item->price_per_day}} CHF</p>
+								@endforeach
+								<p><span>Total: </span>{{App\Http\Controllers\Controller::getExtraInsurance($extra->name,$booking->nbr_days)}} CHF </p>
+								@if(!in_array($extra->name,$extraIds))
+									<a href="#" class="button medium border">Add</a>
+								@else
+									<a href="#" class="button medium">Included</a>
+								@endif
 							</li>
+						@endforeach
 						</ul>
 
 					</div>
@@ -202,7 +221,12 @@
 					<li>{{trans('front.date')}} <span>{{date('j F Y', strtotime($booking->created_date))}}</span></li>
 					<li>{{trans('front.hour')}} <span>{{$booking->created_hour}}</span></li>
 					<li>{{trans('front.n_nights')}} <span>{{$booking->nbr_days}} {{trans('front.days')}}</span></li>
-					<li class="total-costs">{{trans('front.total_cost')}} <span>${{$booking->nbr_days*$booking->price}}</span></li>
+					<li>price <span>{{$total_without_insurance}} CHF</span></li>
+					<li>Insurance  <span>{{$insurance_total}} CHF</span></li>
+					@foreach($extraIds as $extra)
+						<li>{{$extra}} <span>{{App\Http\Controllers\Controller::getExtraInsurance($extra,$booking->nbr_days)}} CHF</span></li>
+					@endforeach
+					<li class="total-costs">{{trans('front.total_cost')}} <span>{{$totalBooking}} CHF</span></li>
 				</ul>
 
 			</div>
