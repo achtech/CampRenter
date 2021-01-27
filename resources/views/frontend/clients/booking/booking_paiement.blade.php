@@ -236,12 +236,16 @@
 					<li>{{trans('front.date')}} <span>{{date('j F Y', strtotime($booking->created_date))}}</span></li>
 					<li>{{trans('front.hour')}} <span>{{$booking->created_hour}}</span></li>
 					<li>{{trans('front.n_nights')}} <span>{{$booking->nbr_days}} {{trans('front.days')}}</span></li>
-					<li>price <span>{{$total_without_insurance}} CHF</span></li>
+					<li>Price <span>{{$total_without_insurance}} CHF</span></li>
+					@if($booking->insurance_price != 0)
 					<li>Insurance  <span>{{$booking->insurance_price}} CHF</span></li>
-					@foreach($extraIds as $extra)
-						<li>{{$extra}} <span>{{App\Http\Controllers\Controller::getExtraInsurance($extra,$booking->nbr_days)}} CHF</span></li>
+					@endif
+					@php($totalExtra = 0)
+					@foreach(App\Http\Controllers\frontend\FC_bookingController::getExtraBooking($booking->id) as $be)
+						<li>{{$be->name}} <span>{{$be->price}} CHF</span></li>
+						@php($totalExtra += $be->price)
 					@endforeach
-					<li class="total-costs">{{trans('front.total_cost')}} <span>{{$totalBooking}} CHF</span></li>
+					<li class="total-costs">{{trans('front.total_cost')}} <span>{{$total_without_insurance+$booking->insurance_price+$totalExtra}} CHF</span></li>
 				</ul>
 
 			</div>

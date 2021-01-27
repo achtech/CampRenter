@@ -131,6 +131,8 @@ class FC_bookingController extends Controller
         $hasTonz = Insurance::where('id_camper_categories', $camper->id_camper_categories)->first();
         $tons = $hasTonz->tonage != null ? $t : 0;
         $insurance_total = Controller::getInsurance($camper->id_camper_categories, $booking->nbr_days, $tons);
+        //save included insurance in booking
+        $this->changeInsurance($id);
 
         $insurance = Insurance::where('id_camper_categories', $camper->id_camper_categories)
             ->where('nbr_days_from', "<=", $booking->nbr_days)
@@ -153,6 +155,9 @@ class FC_bookingController extends Controller
         foreach ($camper_extra as $item) {
             $extraIds[] = $item->name;
             $totalExtra += Controller::getExtraInsurance($item->name, $booking->nbr_days);
+            //save extra in booking extra
+            $this->addExtra($id, $item->name);
+
         }
         $total_without_insurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
         $totalBooking = $total_without_insurance + $insurance_total + $totalExtra;
@@ -191,11 +196,13 @@ class FC_bookingController extends Controller
 
     public function addExtra($id_booking, $extraName)
     {
+        $this->removeExtra($id_booking, $extraName);
         $extra = InsuranceExtra::where('name', $extraName)->first();
+        $booking = DB::table('v_bookings_owner')->where('id', $id_booking)->first();
         $newData = BookingExtra::create([
             'id_bookings' => $id_booking,
             'id_insurance_extra' => $extra->id,
-            'price' => 10,
+            'price' => Controller::getExtraInsurance($extra->name, $booking->nbr_days),
         ]);
         $newData->save();
     }
@@ -260,6 +267,11 @@ class FC_bookingController extends Controller
             $total = ($pricePerDay1 ? $pricePerDay1->price_per_night : 0) * ($nbrDays1 + 1) + ($pricePerDay2 ? $pricePerDay2->price_per_night : 0) * $nbrDays2;
         }
         return $total;
+    }
+
+    public static function getExtraBooking($id)
+    {
+        return BookingExtra::join('insurance_extra', 'insurance_extra.id', '=', 'booking_extras.id_insurance_extra')->where('id_bookings', $id)->get();
     }
 
 }
