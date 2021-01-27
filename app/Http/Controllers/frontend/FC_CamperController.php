@@ -84,7 +84,7 @@ class FC_CamperController extends Controller
     {
         $searchedLocation = $request->searchedLocation;
 
-        $searchedDate = $request->searchedDate ?? '';
+        $searchedDate = $request->searchedDate ?? date("F d, Y");
         $searchedCategories = $request->searchedCategories ?? '';
         $data = $this->getData();
         $camperEquipementIds = $this->searchByEquipment($request);
