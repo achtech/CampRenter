@@ -23,6 +23,7 @@
 
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
+				<a href="{{route('rent_out')}}" class="button border rent_out_button"><i class="fas fa-plus-circle"></i>{{trans('front.menu_panel_rentout')}}</a>
 				<div class="dashboard-list-box margin-top-0">
 					<h4>{{trans('front.list_campers')}}</h4>
 					<ul>

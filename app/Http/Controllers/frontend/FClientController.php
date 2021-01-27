@@ -60,7 +60,7 @@ class FClientController extends DefaultLoginController
         } else {
             $client_status = 'Non Confirmed';
         }
-        $avatars = Avatar::get();
+        $avatars = Avatar::limit(9)->get();
         $avatarsIds = Avatar::pluck('id')->toArray();
         $input = request()->except(['_token', 'action']);
         if ($request->language) {

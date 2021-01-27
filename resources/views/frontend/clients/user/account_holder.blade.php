@@ -2,32 +2,32 @@
     <h4 class="gray">{{ __('front.account_holder') }}</h4>
     <div class="dashboard-list-box-static my-profile">
         <label>{{ __('front.account_holder_name') }}</label>
-        <input id="account_holder_name" name="account_holder_name" value="{{$client['account_holder_name']}}" class="form-control" type="tel">
+        <input id="account_holder_name" name="account_holder_name" value="{{$client['account_holder_name']}}" class="form-control" type="text" required>
         <label>{{ __('front.street') }}</label>
-        <input  id="account_holder_street" name="account_holder_street" class="form-control" value="{{$client['account_holder_street']}}" type="text" >
+        <input  id="account_holder_street" name="account_holder_street" class="form-control" value="{{$client['account_holder_street']}}" type="text" required>
         <label>{{ __('front.account_holder_building_number') }}</label>
-        <input  id="account_holder_building_number" name="account_holder_building_number" class="form-control" value="{{$client['account_holder_building_number']}}" type="text" >
+        <input  id="account_holder_building_number" name="account_holder_building_number" class="form-control" value="{{$client['account_holder_building_number']}}" type="text" required>
         <label>{{ __('front.postal_code') }}</label>
-        <input  id="account_holder_postal_code" name="account_holder_postal_code" class="form-control" value="{{$client['account_holder_postal_code']}}" type="text" >
+        <input  id="account_holder_postal_code" name="account_holder_postal_code" class="form-control" value="{{$client['account_holder_postal_code']}}" type="text" required>
         <label>{{ __('front.location') }}</label>
-        <input  id="account_holder_location" name="account_holder_location" class="form-control" value="{{$client['account_holder_location']}}" type="text" >
+        <input  id="account_holder_location" name="account_holder_location" class="form-control" value="{{$client['account_holder_location']}}" type="text" required>
         <label>{{ __('front.country') }}</label>
-        <input  id="account_holder_country" name="account_holder_country" class="form-control" value="{{$client['account_holder_country']}}" type="text" >
+        <input id="account_holder_country" name="account_holder_country" class="form-control" value="{{$client['account_holder_country']}}" type="text" style="margin-bottom: 4%;" required>
     </div>
 </div>
-<div class="dashboard-list-box margin-top-10">
+<div class="dashboard-list-box margin-top-50">
     <h4 class="gray">{{ __('front.bank_data') }}</h4>
     <div class="dashboard-list-box-static my-profile">
         <label>{{ __('front.bank_data_adress') }}</label>
-        <input id="bank_data_adress" name="bank_data_adress" value="{{$client['bank_data_adress']}}" class="form-control" type="tel">
+        <input id="bank_data_adress" name="bank_data_adress" value="{{$client['bank_data_adress']}}" class="form-control" type="text" required>
         <label>{{ __('front.bank_data_iban') }}</label>
-        <input  id="bank_data_iban" name="bank_data_iban" class="form-control" value="{{$client['bank_data_iban']}}" type="text" >
+        <input  id="bank_data_iban" name="bank_data_iban" class="form-control" value="{{$client['bank_data_iban']}}" type="text" required>
         <label>{{ __('front.bank_data_bic') }}</label>
-        <input  id="bank_data_bic" name="bank_data_bic" class="form-control" value="{{$client['bank_data_bic']}}" type="text" >
+        <input  id="bank_data_bic" name="bank_data_bic" class="form-control" value="{{$client['bank_data_bic']}}" type="text" required>
     </div>
 </div>
 
-<div class="dashboard-list-box margin-top-10">
+<div class="dashboard-list-box margin-top-50">
     <h4 class="gray">{{ __('front.languages') }}</h4>
     <div class="checkboxes in-row padding-left-20" style="background:white;">
         <input id="check-a" type="checkbox" name="language[]"  value="DE" @if(isset($languages) && is_array($languages) && in_array("DE",$languages)) checked @endif>
@@ -47,7 +47,7 @@
     </div>
 </div>
 
-<div class="dashboard-list-box margin-top-10">
+<div class="dashboard-list-box margin-top-50">
     <h4 class="gray">{{ __('front.where_did_you_see_us') }}</h4>
 
     <div class="checkboxes in-row padding-left-20" style="background:white;">
@@ -84,16 +84,16 @@
     </div>
 </div>
 
-<div class="dashboard-list-box margin-top-10">
+<div class="dashboard-list-box margin-top-50">
     <h4 class="gray">{{ __('front.instagram_user_name') }}</h4>
     <div class="dashboard-list-box-static" style="padding-top: 20px">
-        <input id="instagram_user_name" name="instagram_user_name" value="{{$client['instagram_user_name']}}" class="form-control" type="tel">
+        <input id="instagram_user_name" name="instagram_user_name" value="{{$client['instagram_user_name']}}" class="form-control" type="text">
     </div>
 </div>
 
-<div class="dashboard-list-box margin-top-10">
+<div class="dashboard-list-box margin-top-50">
     <h4 class="gray">{{ __('front.who_are_you') }}</h4>
     <div class="dashboard-list-box-static" style="padding-top: 25px">
-        <textarea id="who_are_you" name="who_are_you"  class="form-control"  rows="8" cols="33" >{{$client['who_are_you']}}</textarea>
+        <textarea id="who_are_you" name="who_are_you"  class="form-control"  rows="8" cols="33" style="margin-bottom: 5%;">{{$client['who_are_you']}}</textarea>
     </div>
 </div>

@@ -23,7 +23,8 @@ class CreateBookingTable extends Migration
             $table->string('status_billings')->nullable();
             $table->double('commission')->nullable();
             $table->string('comment')->nullable();
-            
+            $table->integer("insurance_price")->nullable();
+
             $table->unsignedBigInteger('id_campers')->nullable();
             $table->unsignedBigInteger('id_clients')->nullable();
             $table->unsignedBigInteger('id_booking_status')->nullable();

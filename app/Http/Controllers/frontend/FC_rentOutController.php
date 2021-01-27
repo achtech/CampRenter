@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
 use App\Models\CamperImage;
+use App\Models\CamperInsurance;
 use App\Models\CamperSubCategory;
 use App\Models\CamperTerms;
 use App\Models\Countries;
@@ -720,17 +721,25 @@ class FC_rentOutController extends Controller
         $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
         $insurance = Insurance::where('id_camper_categories', $camper->id_camper_categories);
         $insurance = $camper->allowed_total_weight == 0 ? $insurance->get() : $insurance->where('tonage', $t)->get();
+        $has_insurance = $camper->has_insurance;
 
         $extra = DB::table('insurance_extra')
             ->select('name')
             ->groupBy('name')
             ->get();
-        
+
+        $extraInsurance = InsuranceExtra::join('camper_insurances', 'camper_insurances.id_insurance_extra', '=', 'insurance_extra.id')->select('name')->where('camper_insurances.id_campers', $id)->get();
+        $extraNames = [];
+        foreach ($extraInsurance as $extIns) {
+            $extraNames[] = $extIns->name;
+        }
         return view('frontend.camper.rent_out.insurance')
             ->with('client', $client)
             ->with('camper', $camper)
             ->with('insurance', $insurance)
             ->with('extra', $extra)
+            ->with('has_insurance', $has_insurance)
+            ->with('extraNames', $extraNames)
         ;
     }
 
@@ -813,23 +822,9 @@ class FC_rentOutController extends Controller
         }
         switch ($request->input('action')) {
             case 'edit':
-                $camper = DB::table('campers')->find($id);
-                $categories = DB::table('camper_categories')->paginate(10);
-                $sub_categories = CamperSubCategory::paginate(10);
-                $categorieIds = DB::table('camper_categories')->pluck('id')->toArray();
-                $subCategorieIds = DB::table('camper_sub_categories')->pluck('id')->toArray();
-                return view('frontend.camper.rent_out.rent_out')
-                    ->with('categories', $categories)
-                    ->with('camper', $camper)
-                    ->with('categorieIds', $categorieIds)
-                    ->with('subCategorieIds', $subCategorieIds)
-                    ->with('sub_categories', $sub_categories)
-                    ->with('selectedCategoryId', $camper->id_camper_categories)
-                    ->with('selectedSubCategoryId', $camper->id_camper_sub_categories)
-                    ->with('isValid', true);
+                return redirect(route('frontend.camper.showVehicleData', $id));
             case 'detail':
-                $camper = DB::table('campers')->find($id);
-                return redirect(route('frontend.camper.detail', $camper->id));
+                return redirect(route('frontend.camper.detail', $id));
             case 'delete':
                 $camper = DB::table('campers')->where('id', $id)->delete();
                 return redirect(route('frontend.clients.camper'));
@@ -864,22 +859,28 @@ class FC_rentOutController extends Controller
 
     public function storeRental_terms(Request $request)
     {
-        $camper = Camper::find($request->id_campers);
-
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        if ($request->has_insurance == 0) {
-            $camper->insurance_price = 0;
-            $camper->has_insurance = $request->has_insurance;
-            $camper->id_insurances = null;
-            $camper->update();
-        } else {
-            $camper->insurance_price = $request->insurance_price;
-            $camper->has_insurance = $request->has_insurance;
-            $camper->update();
+        $camper = Camper::find($request->id_campers);
+        $extra_insurance = InsuranceExtra::all();
+        DB::statement('DELETE FROM camper_insurances WHERE id_campers =' . $camper->id);
+
+        foreach ($extra_insurance as $ex) {
+            if ($request[str_replace(' ', '_', $ex->name)] == 1) {
+                $newData = CamperInsurance::create([
+                    'id_campers' => $request->id_campers,
+                    'id_insurance_extra' => $ex->id,
+                ]);
+                $newData->save();
+
+            }
         }
+
+        $camper->has_insurance = $request->has_insurance;
+        $camper->update();
+
         return view('frontend.camper.rent_out.rental_terms')
             ->with('camper', $camper)
             ->with('client', $client);
@@ -1089,7 +1090,12 @@ class FC_rentOutController extends Controller
                 }
             }
         }
-        return redirect(route('frontend.clients.camper'));
+        $camper = Camper::find($request->id_campers);
+        $calendar = Booking::where('id_clients', $client->id)->where('id_booking_status', 7)->select(['start_date', 'end_date', 'comment'])->get();
+        return view('frontend.camper.rent_out.calendar')
+            ->with('client', $client)
+            ->with('camper', $camper)
+            ->with('blokedPeriods', $calendar);
     }
 
     public static function getCategoriePhoto($id)
@@ -1105,7 +1111,7 @@ class FC_rentOutController extends Controller
         return redirect(route('frontend.camper.detail', $camper->id));
     }
 
-    public static function getExtraData($name)
+    public static function getExtraDatas($name)
     {
         return InsuranceExtra::where('name', $name)->get();
     }

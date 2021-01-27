@@ -4,9 +4,11 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\BookingExtra;
 use App\Models\Camper;
 use App\Models\CamperTerms;
 use App\Models\Insurance;
+use App\Models\InsuranceExtra;
 use App\Models\Notification;
 use App\Models\Promotion;
 use DB;
@@ -23,7 +25,7 @@ class FC_bookingController extends Controller
             return redirect(route('frontend.login.client'));
         }
         $ownerBookings = DB::table("v_bookings_owner")->where('id_owners', $client->id)->orderBy('id', 'desc')->get();
-        $renterBookings = DB::table("v_bookings_owner")->where('id_renters', $client->id)->orderBy('id', 'desc')->get();
+        $renterBookings = DB::table("v_bookings_owner")->where('booking_status_id', '<>', 7)->where('id_renters', $client->id)->orderBy('id', 'desc')->get();
         return view('frontend.clients.booking.index')
             ->with('ownerBookings', $ownerBookings)
             ->with('renterBookings', $renterBookings);
@@ -165,6 +167,44 @@ class FC_bookingController extends Controller
             ->with('totalBooking', $totalBooking);
     }
 
+    public function changeInsurance($id_booking)
+    {
+        $booking = DB::table("v_bookings_owner")->where('id', $id_booking)->first();
+        $camper = Camper::find($booking->id_campers);
+        $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
+        $hasTonz = Insurance::where('id_camper_categories', $camper->id_camper_categories)->first();
+        $tons = $hasTonz->tonage != null ? $t : 0;
+        $insurance_total = Controller::getInsurance($camper->id_camper_categories, $booking->nbr_days, $tons);
+
+        $b = Booking::find($id_booking);
+        $b->insurance_price = $insurance_total;
+        $b->save();
+
+    }
+
+    public function removeInsuranceFromBooking($id)
+    {
+        $b = Booking::find($id);
+        $b->insurance_price = 0;
+        $b->save();
+    }
+
+    public function addExtra($id_booking, $extraName)
+    {
+        $extra = InsuranceExtra::where('name', $extraName)->first();
+        $newData = BookingExtra::create([
+            'id_bookings' => $id_booking,
+            'id_insurance_extra' => $extra->id,
+            'price' => 10,
+        ]);
+        $newData->save();
+    }
+
+    public function removeExtra($id_booking, $extraName)
+    {
+        $extra = InsuranceExtra::where('name', $extraName)->first();
+        DB::statement('DELETE FROM booking_extras WHERE id_bookings =' . $id_booking . " and id_insurance_extra=" . $extra->id);
+    }
 /**
  * 7-8 main
  * 5-6  off

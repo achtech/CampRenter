@@ -198,6 +198,12 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/booking/booking_owner/confirm/{id}', [FC_bookingController::class, 'confirmBookingOwner'])->name('booking.owner_booking.confirm');
     Route::get('/booking/booking_owner/reject/{id}', [FC_bookingController::class, 'rejectBookingOwner'])->name('booking.owner_booking.reject');
     Route::get('/booking/booking_renter/process/{id}', [FC_bookingController::class, 'processBookingRenter'])->name('booking.renter_booking.process');
+    Route::get('/booking/add_insurance/{id}', [FC_bookingController::class, 'changeInsurance'])->name('booking.change.insurance');
+    Route::get('/booking/remove_insurance/{id}', [FC_bookingController::class, 'removeInsuranceFromBooking'])->name('booking.remove.insurance');
+
+    Route::get('/booking/add_extra/{id}/{extra}', [FC_bookingController::class, 'addExtra']);
+    Route::get('/booking/remove_extra/{id}/{extra}', [FC_bookingController::class, 'removeExtra']);
+
     Route::get('/message_client/add/{id}', [FC_messageController::class, 'addMessage'])->name('frontend.booking.add_message');
     Route::get('/review/owner/feedback/{id}', [FC_reviewController::class, 'feedback'])->name('frontend.review.add_feedback');
     Route::get('/review/owner/edit/{id}', [FC_reviewController::class, 'editReview'])->name('frontend.review.edit_review');

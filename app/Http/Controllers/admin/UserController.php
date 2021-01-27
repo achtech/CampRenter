@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProfile;
 use App\Models\Avatar;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\DB;
 use Hash;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -37,8 +35,9 @@ class UserController extends Controller
         } else {
             $datas = User::paginate(10);
         }
-        $avatarsIds = Avatar::pluck('id')->toArray();
-        return view('admin.user.index')->with('datas', $datas)->with('search', $search)->with('avatarsIds',$avatarsIds);
+        $avatarsIds = Avatar::limit(9)->pluck('id')->toArray();
+        dd($avatarsIds);
+        return view('admin.user.index')->with('datas', $datas)->with('search', $search)->with('avatarsIds', $avatarsIds);
     }
     /**
      * Show the form for creating a new resource.
@@ -78,16 +77,16 @@ class UserController extends Controller
     {
         $file = $request->file('picture');
 
-        if($request->file('picture') && $request->file('picture')->getClientOriginalName()){
+        if ($request->file('picture') && $request->file('picture')->getClientOriginalName()) {
             $input = request()->except(['_token', '_method', 'action']);
             $input['picture'] = $request->file('picture')->getClientOriginalName();
-            $file->move(public_path('public\images\users'),$file->getClientOriginalName());
+            $file->move(public_path('public\images\users'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
-        $input['password']=bcrypt("123456");
-        $input['created_by']=auth()->user()->id;
-        $input['updated_by']=auth()->user()->id;
+        $input['password'] = bcrypt("123456");
+        $input['created_by'] = auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
 
         $data = User::create($input);
         return redirect(route('user.index'))->with('success', 'Item added succesfully');
@@ -104,16 +103,18 @@ class UserController extends Controller
         return view('admin.user.edit')->with('data', $data);
     }
 
-    public function updateProfile(){
+    public function updateProfile()
+    {
         $user = User::find(auth()->user()->id);
         return view('admin.user.updateProfile')->with('data', $user);
     }
-    
-    public function changePassword(){
+
+    public function changePassword()
+    {
         $user = User::find(auth()->user()->id);
         return view('admin.user.changePassword')->with('data', $user);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -123,16 +124,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->updateUser($request,$id);
+        $this->updateUser($request, $id);
         return redirect(route('user.index'))->with('success', 'Item Updated succesfully');
     }
-    
+
     public function updateDataProfile(Request $request)
     {
-        $this->updateUser($request,auth()->user()->id);
+        $this->updateUser($request, auth()->user()->id);
         return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
     }
-    
+
     public function updatePassword(UpdateProfile $request)
     {
         $current = $request->old_password;
@@ -144,37 +145,38 @@ class UserController extends Controller
         }
         if (!(Hash::check($current, auth()->user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+            return redirect()->back()->with("error", "Your current password does not matches with the password you provided. Please try again.");
         }
 
-        if(strcmp($current, $password) == 0){
+        if (strcmp($current, $password) == 0) {
             //Current password and new password are same
-            return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+            return redirect()->back()->with("error", "New Password cannot be same as your current password. Please choose a different password.");
         }
-        if($password!=$confirm){
-            return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');    
+        if ($password != $confirm) {
+            return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
         }
-        $input = request()->except(['_token', '_method', 'action','old_password','password_confirmation']);
+        $input = request()->except(['_token', '_method', 'action', 'old_password', 'password_confirmation']);
         $input['password'] = bcrypt($password);
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = User::where('id', auth()->user()->id)->update($input);
         return redirect(route('user.profile'))->with('success', 'Item Updated succesfully');
     }
 
-    private function updateUser($request, $id){
+    private function updateUser($request, $id)
+    {
         $file = $request->file('picture');
         $data = User::find($id);
         if (empty($data)) {
             return redirect(route('user.index'));
         }
-        if($request->file('picture') && $request->file('picture')->getClientOriginalName()){
+        if ($request->file('picture') && $request->file('picture')->getClientOriginalName()) {
             $input = request()->except(['_token', '_method', 'action']);
             $input['picture'] = $request->file('picture')->getClientOriginalName();
-            $file->move(public_path('images\users'),$file->getClientOriginalName());
+            $file->move(public_path('images\users'), $file->getClientOriginalName());
         } else {
             $input = request()->except(['_token', '_method', 'action', 'picture']);
         }
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = User::where('id', $id)->update($input);
     }
     //
@@ -192,7 +194,7 @@ class UserController extends Controller
             return redirect(route('user.index'));
         }
         $data->status = 0;
-        $input['updated_by']=auth()->user()->id;
+        $input['updated_by'] = auth()->user()->id;
         $data = User::where('id', $id)->update($data);
         return redirect(route('user.index'));
     }

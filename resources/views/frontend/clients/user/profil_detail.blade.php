@@ -4,11 +4,11 @@
     <div class="dashboard-list-box-static">
         <div class="my-profile dashboard-list-box-static" style="padding-left: 1px;">
             <label>{{ __('front.profil_name') }}</label>
-            <input id="client_name" name="client_name" class="form-control" value="{{$client['client_name']}}" type="text">
+            <input id="client_name" name="client_name" class="form-control" value="{{$client['client_name']}}" type="text" required>
             <label>{{ __('front.profil_last_name') }}</label>
-            <input  id="client_last_name" name="client_last_name" class="form-control" value="{{$client['client_last_name']}}" type="text">
+            <input  id="client_last_name" name="client_last_name" class="form-control" value="{{$client['client_last_name']}}" type="text" required>
             <label>{{ __('front.profil_sex') }}</label>
-            <select name="sex" class="chosen-select" data-placeholder="{{trans('front.sex')}}">
+            <select name="sex" class="chosen-select" data-placeholder="{{trans('front.sex')}}" required>
                 <option label="Opening Time"></option>
                 <option value="female" @if($client->sex=='female') selected @endif>{{trans('front.female')}}</option>
                 <option value="male" @if($client->sex=='male') selected @endif>{{trans('front.male')}}</option>
@@ -24,19 +24,19 @@
             <label>{{ __('front.postal_code') }}</label>
             <input  id="postal_code" name="postal_code" class="form-control" value="{{$client['postal_code']}}" type="text" >
             <label>{{ __('front.country') }}</label>
-            <input  id="country" name="country" class="form-control" value="{{$client['country']}}" type="text" >
+            <input  id="country" name="country" class="form-control" value="{{$client['country']}}" type="text">
             <label>{{ __('front.profil_phone') }}</label>
             <input id="telephone" name="telephone" class="form-control" value="{{$client['telephone']}}" type="text">
             <label>{{ __('front.profil_phone_code') }}</label>
-            <input id="telephone_code" name="telephone_code" class="form-control" value="{{$client['telephone_code']}}" type="text">
+            <input id="telephone_code" name="telephone_code" class="form-control" value="{{$client['telephone_code']}}" type="text" required>
             <label>{{ __('front.profil_review') }}</label>
             <input id="review" name="review" class="form-control" value="{{$client['review']}}" type="text">
             <label>{{ __('front.profile_driving_licence') }}</label>
-            <input id="driving_licence" name="driving_licence" class="form-control" value="{{$client['driving_licence']}}" type="tel">
+            <input id="driving_licence" name="driving_licence" class="form-control" value="{{$client['driving_licence']}}" type="text">
             <label>{{ __('front.profile_status') }}</label>
             <input id="status" name="status" class="form-control" value="{{$client_status}}" type="text" disabled>
             <label>{{ __('front.national_code') }}</label>
-            <input id="national_id" name="national_id" class="form-control" value="{{$client['national_id']}}" type="text" >
+            <input id="national_id" name="national_id" class="form-control" value="{{$client['national_id']}}" type="text" required>
             <label>{{ __('front.date_of_birth') }}</label>
             <div class="row" style="margin-bottom:20px">
                 <div class="col-md-4">
@@ -70,8 +70,8 @@
     <div class="dashboard-list-box-static my-profile">
         <div class="row">
             <div class="col-md-6">
-                <div class="edit-profile-photo" style="height: 259px;">
-                    <label>{{ __('front.photo') }}</label><br>
+                <div class="edit-profile-photo">
+                    <label>{{ __('front.photo') }}</label>
                     <img style="margin-top-10" src="{{asset('images/clients')}}/{{$client['photo']}}" alt="" id="client_image">
                     <div class="change-photo-btn">
                         <div class="photoUpload custom-file">
@@ -82,8 +82,8 @@
                     </div>
                 </div>
                 <div class="edit-profile-photo">
-                    <label>{{ __('front.image_national') }}</label><br>
-                    <img src="images/clients/{{$client['image_national_id']}}" alt="" id="client_cin">
+                    <label>{{ __('front.image_national') }}</label>
+                    <img src="{{asset('images/clients')}}/{{$client['image_national_id']}}" alt="" id="client_cin">
                     <div class="change-photo-btn">
                         <div class="photoUpload custom-file">
                             <span><i class="fa fa-upload"></i> {{ __('front.upload_image_national') }}</span>
@@ -95,27 +95,65 @@
 
             <div class="col-md-6">
                 <div class="edit-profile-photo" style="margin-top-10">
-                    <label>{{ __('front.avatar') }}</label><br>
-                    <div class="row" >
-                        @foreach($avatars as $elem)
-
-                            <div class="col-md-4" >
-                                    <span style="cursor: pointer;">
+                    <label>{{ __('front.avatar') }}</label>
+                    <div class="row">
+                        <div class="row" style="height: 69px;">
+                            @foreach($avatars_first as $elem)
+                            @if($elem!=null)
+                            <div class="col-md-4" style="display: inline-block;">
+                                <label>
                                     <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
                                     <input type="hidden" name="id_avatars" value="" />
                                     <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
                                     data-picture_avatar_id="{{$elem->id}}"
-                                         src="images/clients/{{$elem->image}}" alt="" class="avatar"
-                                         style="width:64px;height:64px;border-radius: 50%;@if($elem->id==$client['id_avatars']) outline:2px solid #38b6cd; @endif ">
-                                    </span>
-                            </div>
+                                         src="{{asset('images/clients')}}/{{$elem->image}}" alt="" class="avatar"
+                                         style="height:64px;@if($elem->id==$client['id_avatars']) outline:1px solid #38b6cd; @endif ">
 
-                        @endforeach
+                                </label>
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
+
+                        <div class="row" style="height: 69px;">
+                            @foreach($avatars_second as $elem)
+                            @if($elem!=null)
+                            <div class="col-md-4" style="display: inline-block;">
+                                <label>
+                                    <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
+                                    <input type="hidden" name="id_avatars" value="" />
+                                    <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
+                                    data-picture_avatar_id="{{$elem->id}}"
+                                         src="{{asset('images/clients')}}/{{$elem->image}}" alt="" class="avatar"
+                                         style="height:64px;@if($elem->id==$client['id_avatars']) outline:1px solid #38b6cd; @endif ">
+
+                                </label>
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
+                        <div class="row" style="height: 69px;" >
+                            @foreach($avatars_third as $elem)
+                            @if($elem!=null)
+                            <div class="col-md-4" style="display: inline-block;">
+                                <label>
+                                    <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
+                                    <input type="hidden" name="id_avatars" value="" />
+                                    <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
+                                    data-picture_avatar_id="{{$elem->id}}"
+                                         src="{{asset('images/clients')}}/{{$elem->image}}" alt="" class="avatar"
+                                         style="height:64px;@if($elem->id==$client['id_avatars']) outline:1px solid #38b6cd; @endif ">
+
+                                </label>
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
                     </div>
                 </div>
                 <div class="edit-profile-photo">
-                    <label>{{ __('front.driving_licence_image') }}</label><br>
-                    <img src="images/clients/{{$client['driving_licence_image']}}" alt="" id="client_driving_licence">
+                    <label>{{ __('front.driving_licence_image') }}</label>
+                    <img src="{{asset('images/clients')}}/{{$client['driving_licence_image']}}" alt="" id="client_driving_licence">
                     <div class="change-photo-btn">
                         <div class="photoUpload custom-file">
                             <span><i class="fa fa-upload"></i> {{ __('front.driving_licence') }}</span>

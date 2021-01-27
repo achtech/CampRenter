@@ -338,7 +338,7 @@ return [
     'YouTube' => 'YouTube',
     'Flyer' => 'Flyer',
     'profil_sex' => 'Sex',
-    'profil_phone_code' => 'Country Code',
+    'profil_phone_code' => 'Phone country Code',
     'profil_birth_date' => 'Birth Date',
     'instagram_user_name' => 'What s your instagram user name?',
     'profil_review' => 'Review',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avatar;
+use App\Models\BookingExtra;
 use App\Models\Camper;
 use App\Models\Client;
 use App\Models\Insurance;
@@ -200,6 +201,12 @@ class Controller extends BaseController
                 ->get();
         }
         return $data;
+    }
+
+    public static function isExtraByOwner($extra_name, $id_booking)
+    {
+        $booking = BookingExtra::join('insurance_extra', 'insurance_extra.id', '=', 'booking_extras.id_insurance_extra')->where('name', $extra_name)->where('id_bookings', $id_booking)->first();
+        return $booking != null && $booking->price != 0;
     }
 
 }
