@@ -48,11 +48,10 @@
 								<p><span>Total: </span>{{$insurance_total}} CHF </p>
 								@if(!$camper->has_insurance)
 									<div id="insurance">
-										@if($booking->insurance_price == 0)
+
 											<a id="add_insurance" data-booking-id="{{$booking->id}}" class="button medium border">Add</a>
-										@else
-											<a id="remove_insurance" data-booking-id="{{$booking->id}}" class="button medium border">Remove</a>
-										@endif
+											<button id="remove_insurance" data-booking-id="{{$booking->id}}" class="button medium border">Remove</button>
+
 									</div>
 								@else
 									<a class="button medium" style="pointer-events: none">Included</a>
@@ -91,125 +90,6 @@
 
 					</div>
 			</div>
-			<h3 class="margin-bottom-50">{{trans('front.footer_paiement_methods')}}</h3>
-			<!-- Payment Methods Accordion -->
-			<div class="payment">
-				<div class="payment-tab payment-tab-active">
-					<div class="payment-tab-trigger">
-						<input checked id="paypal" name="cardType" type="radio" value="paypal">
-						<label for="paypal">PayPal</label>
-						<img class="payment-logo paypal" src="{{asset('images/paiement-methods/ApBxkXU.png')}}" alt="">
-					</div>
-
-					<div class="payment-tab-content">
-						<p>{{trans('front.redirected_to_paypal')}}</p>
-					</div>
-				</div>
-				<div class="payment-tab">
-					<div class="payment-tab-trigger">
-						<input type="radio" name="cardType" id="creditCart" value="creditCard">
-						<label for="creditCart">{{trans('front.credit_card')}}</label>
-						<img class="payment-logo" src="{{asset('images/paiement-methods/IHEKLgm.png')}}" alt="">
-					</div>
-
-					<div class="payment-tab-content">
-						<div class="row">
-							<form role="form" action="{{ route('stripe.payment') }}" method="post" class="validation"
-										data-cc-on-file="false"
-										data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-										id="payment-form">
-                        		@csrf
-								<div class="col-md-6">
-									<div class="card-label">
-										<label for="nameOnCard">{{trans('front.name_on_card')}}</label>
-										<input id="nameOnCard" name="nameOnCard" required type="text">
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="card-label">
-										<label for="card-num">{{trans('front.card_number')}}</label>
-										<input id="card-num" name="cardNumber" placeholder="1234  5678  9876  5432" required type="text">
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<div class="card-label">
-										<label for="card-expiry-month">{{trans('front.expiry_month')}}</label>
-										<input id="card-expiry-month" placeholder="MM" required type="text">
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<div class="card-label">
-										<label for="card-expiry-year">{{trans('front.expiry_year')}}</label>
-										<input id="card-expiry-year" placeholder="YY" required type="text">
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<div class="card-label">
-										<label for="card-cvc">CVC</label>
-										<input id="card-cvc" required type="text">
-									</div>
-								</div>
-								<button type="submit" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">{{trans('front.confirm_and_pay')}}</button>
-							</form>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<!-- Payment Methods Accordion / End -->
-			<h3 class="margin-top-50 margin-bottom-30" >Or send Invoice</h3>
-			<div class="row">
-				<form action="{{route('frontend.clients.send.invoice')}}" method="POST">
-					@csrf
-					<input style="display:none;" type="text" value="{{$booking->id}}" name="id">
-					<input style="display:none;" type="text" value="{{$booking->created_date}}-{{$booking->id}}" name="reservation_num">
-					<div class="col-md-6">
-						<label>{{trans('front.first_name')}}</label>
-						<input type="text" value="{{$booking->client_name}}" name="client_name">
-					</div>
-
-					<div class="col-md-6">
-						<label>{{trans('front.last_name')}}</label>
-						<input type="text" value="{{$booking->client_last_name}}" name="client_last_name">
-					</div>
-
-					<div class="col-md-6">
-						<label>{{trans('front.email_add')}}</label>
-						<input type="text" value="{{$booking->email}}" name="email">
-					</div>
-
-					<div class="col-md-6">
-						<label>{{trans('front.camper_name')}}</label>
-						<input type="text" value="{{$booking->camper_name}}" name="camper_name">
-					</div>
-					<div class="col-md-6">
-						<label>{{trans('front.date_start')}}</label>
-						<input type="text" value="{{date('j F Y', strtotime($booking->start_date))}}" name="start_date">
-					</div>
-					<div class="col-md-6">
-						<label>{{trans('front.date_end')}}</label>
-						<input type="text" value="{{date('j F Y', strtotime($booking->end_date))}}" name="end_date">
-					</div>
-
-					<div class="col-md-6">
-						<label>{{trans('front.total_cost')}}</label>
-						<input type="text" value="{{$booking->nbr_days*$booking->price}}" name="total">
-					</div>
-
-					<div class="col-md-6">
-						<label>Date</label>
-						<input type="text" value="{{$booking->created_date}}" name="created_date">
-					</div>
-					<div class="col-md-12">
-						<button type="submit" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Send Invoice</button>
-					</div>
-				</form>
-			</div>
-
 		</div>
 
 
@@ -254,59 +134,8 @@
 	</div>
 </div>
 <!-- Container / End -->
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script type="text/javascript">
-$(function() {
-    var $form         = $(".validation");
-  $('form.validation').bind('submit', function(e) {
-    var $form         = $(".validation"),
-        inputVal = ['input[type=email]', 'input[type=password]',
-                         'input[type=text]', 'input[type=file]',
-                         'textarea'].join(', '),
-        $inputs       = $form.find('.required').find(inputVal),
-        $errorStatus = $form.find('div.error'),
-        valid         = true;
-        $errorStatus.addClass('hide');
-
-        $('.has-error').removeClass('has-error');
-    $inputs.each(function(i, el) {
-      var $input = $(el);
-      if ($input.val() === '') {
-        $input.parent().addClass('has-error');
-        $errorStatus.removeClass('hide');
-        e.preventDefault();
-      }
-    });
-
-    if (!$form.data('cc-on-file')) {
-      e.preventDefault();
-      Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-      Stripe.createToken({
-        number: $('#card-num').val(),
-        cvc: $('#card-cvc').val(),
-        exp_month: $('#card-expiry-month').val(),
-        exp_year: $('#card-expiry-year').val()
-      }, stripeHandleResponse);
-    }
-
-  });
-
-  function stripeHandleResponse(status, response) {
-        if (response.error) {
-            $('.error')
-                .removeClass('hide')
-                .find('.alert')
-                .text(response.error.message);
-        } else {
-            var token = response['id'];
-            $form.find('input[type=text]').empty();
-            $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-            $form.get(0).submit();
-        }
-    }
-
-});
 
 
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');

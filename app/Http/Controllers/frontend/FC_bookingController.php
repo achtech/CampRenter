@@ -161,7 +161,7 @@ class FC_bookingController extends Controller
         }
         $total_without_insurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
         $totalBooking = $total_without_insurance + $insurance_total + $totalExtra;
-        return view('frontend.clients.booking.booking_paiement')
+        return view('frontend.clients.booking.booking_insurance')
             ->with('booking', $booking)
             ->with('insurance_total', $insurance_total)
             ->with('insurance', $insurance)

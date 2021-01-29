@@ -43,10 +43,7 @@
 					<div id="div1" class="payment-tab-trigger" style="display: none; margin-top: 5%;">
 						<div class="row">
 							<div class="col-md-12">
-								<div class='col-md-12' >
-									<p><strong>Prämienberechnung:</strong></p>
-								</div>
-								<div class='col-md-12' >
+								<p><strong>Prämienberechnung:</strong></p>
 								@foreach($insurance as $item)
 									@if($item->nbr_days_to!=null)
 										<p><h5><strong>{{$item->nbr_days_from}} - {{$item->nbr_days_to}}</strong>
@@ -55,7 +52,6 @@
 										<p><h5><strong>Ab {{$item->nbr_days_to}}</strong> @if($item->initial_price!=0) Fixprämie CHF {{$item->initial_price}},@endif CHF {{$item->price_per_day}} Pro Nacht</h5></p>
 									@endif
 								@endforeach
-								</div>
 							</div>
 						</div>
 					</div>
@@ -63,7 +59,7 @@
 
 				<!-- Extras insurances -->
 				@foreach($extra as $ext)
-				<div class="col-lg-7 col-md-12">
+				<div class="col-lg-7 col-md-12 margin-bottom-30">
 					<h3><strong>{{$ext->name}}</strong></h3>
 					<div class="payment-tab-trigger">
 						<input id="{{$ext->name}}_NO" name="{{$ext->name}}" type="radio" value="0" onclick="hide({{$loop->index}});" @if(!in_array($ext->name,$extraNames)) checked @endif>
@@ -73,22 +69,45 @@
 						<input id="{{str_replace(' ', '', $ext->name)}}_YES" name="{{$ext->name}}" type="radio" value="1" onclick="show({{$loop->index}});"  @if(in_array($ext->name,$extraNames))  checked @endif>
 						<label for="{{str_replace(' ', '', $ext->name)}}_YES"><strong>{{trans('front.yes')}}</strong></label>
 					</div>
+					<div class="row">
+						<div class="col-md-12" style="padding-left: 10%;">
+							@foreach(App\Http\Controllers\frontend\FC_rentOutController::getSubExtra($ext->name) as $ext1)
+								<div id="{{$loop->parent->index}}_{{$loop->index}}" class="payment-tab-trigger" style="display:none;">
+									<input id="{{str_replace(' ', '', $ext->name)}}_{{$ext1->sub_extra}}_YES" name="{{$ext->name}}_"
+										type="radio" value="{{$ext1->sub_extra}}" onclick="showSubExtra({{$loop->parent->index}}, {{$loop->index}});"
+										@if(in_array($ext->name.'_'.$ext1->sub_extra,$extraNames))  checked @endif
+									>
+									<label for="{{str_replace(' ', '', $ext->name)}}_{{$ext1->sub_extra}}_YES"><strong>{{$ext1->sub_extra}}</strong></label>
+								</div>
+								<div id="_{{$loop->parent->index}}_{{$loop->index}}" class="payment-tab-trigger" style="display: none; margin-top: 5%;">
+									<div class="row">
+										<div class="col-md-12">
+											<p><strong>Prämienberechnung:</strong></p>
+											@foreach(App\Http\Controllers\frontend\FC_rentOutController::getSubExtraData($ext->name, $ext1->sub_extra) as $ext2)
+												@if($ext2->nbr_days_to!=null)
+													<p><h5><strong>{{$ext2->nbr_days_from}} - {{$ext2->nbr_days_to}}</strong>
+													@if($ext2->initial_price!=0) Fixprämie CHF {{$ext2->initial_price}},@endif CHF {{$ext2->price_per_day}} Pro Nacht</h5></p>
+												@else
+													<p><h5><strong>Ab {{$ext2->nbr_days_from}}</strong> @if($ext2->initial_price!=0) Fixprämie CHF {{$ext2->initial_price}},@endif CHF {{$ext2->price_per_day}} Pro Nacht</h5></p>
+												@endif
+											@endforeach
+										</div>
+									</div>
+								</div>
+							@endforeach
+						</div>
+					</div>
 					<div id="{{$loop->index}}" class="payment-tab-trigger" style="display: none; margin-top: 5%;">
 						<div class="row">
 							<div class="col-md-12">
-
-								<div class='col-md-12' >
-									<p><strong>Prämienberechnung:</strong></p>
-								</div>
+								<p><strong>Prämienberechnung:</strong></p>
 								@foreach(App\Http\Controllers\frontend\FC_rentOutController::getExtraDatas($ext->name) as $ext2)
-									<div class='col-md-12' >
 									@if($ext2->nbr_days_to!=null)
 										<p><h5><strong>{{$ext2->nbr_days_from}} - {{$ext2->nbr_days_to}}</strong>
 										@if($ext2->initial_price!=0) Fixprämie CHF {{$ext2->initial_price}},@endif CHF {{$ext2->price_per_day}} Pro Nacht</h5></p>
 									@else
 										<p><h5><strong>Ab {{$ext2->nbr_days_from}}</strong> @if($ext2->initial_price!=0) Fixprämie CHF {{$ext2->initial_price}},@endif CHF {{$ext2->price_per_day}} Pro Nacht</h5></p>
 									@endif
-									</div>
 								@endforeach
 							</div>
 						</div>
@@ -117,17 +136,49 @@ for(var i=0;i<extraNamesSelected.length;i++){
 	}
 }
 
+if(document.getElementById('noinsurance').checked){
+	show2();
+}
+
 function show1(){
   document.getElementById('div1').style.display ='none';
 }
 function show2(){
   document.getElementById('div1').style.display = 'block';
 }
+function showSubExtra(outerId,id){
+	hideSubExtra("_"+outerId);
+  document.getElementById("_"+outerId+'_'+id).style.display = 'block';
+}
+function hideSubExtra(outerId){
+	var newId = outerId+"_";
+	subExtras = document.querySelectorAll('[id ^= "'+newId+'"]');
+	Array.prototype.forEach.call(subExtras, hideSubExtras);
+}
+
 function hide(id){
-  document.getElementById(id).style.display ='none';
+	var newId = id+"_";
+	hideSubExtra("_"+id);
+	subExtras = document.querySelectorAll('[id ^= "'+newId+'"]');
+	Array.prototype.forEach.call(subExtras, hideSubExtras);
+	if(subExtras.length==0){
+		document.getElementById(id).style.display ='none';
+	}
 }
 function show(id){
-  document.getElementById(id).style.display = 'block';
+	var newId = id+"_";
+	subExtras = document.querySelectorAll('[id ^= "'+newId+'"]');
+	Array.prototype.forEach.call(subExtras, showSubExtras);
+	if(subExtras.length==0){
+		document.getElementById(id).style.display = 'block';
+	}
 }
+function showSubExtras(element, iterator) {
+	document.getElementById(element.id).style.display = 'block';
+}
+function hideSubExtras(element, iterator) {
+	document.getElementById(element.id).style.display = 'none';
+}
+
 </script>
 @endsection

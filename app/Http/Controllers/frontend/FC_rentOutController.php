@@ -869,10 +869,22 @@ class FC_rentOutController extends Controller
 
         foreach ($extra_insurance as $ex) {
             if ($request[str_replace(' ', '_', $ex->name)] == 1) {
-                $newData = CamperInsurance::create([
-                    'id_campers' => $request->id_campers,
-                    'id_insurance_extra' => $ex->id,
-                ]);
+                if (isset($request[str_replace(' ', '_', $ex->name) . "_"]) && !empty($request[str_replace(' ', '_', $ex->name) . "_"])) {
+                    $subExtra = $request[str_replace(' ', '_', $ex->name) . "_"];
+                    $idSubExtra = InsuranceExtra::where('name', $ex->name)->where('sub_extra', $subExtra)->first()->id;
+                    DB::statement('DELETE FROM camper_insurances WHERE id_campers =' . $camper->id . ' and id_insurance_extra =' . $idSubExtra);
+
+                    $newData = CamperInsurance::create([
+                        'id_campers' => $request->id_campers,
+                        'id_insurance_extra' => $idSubExtra,
+                    ]);
+                    // $request->request->remove(str_replace(' ', '_', $ex->name) . "_");
+                } else {
+                    $newData = CamperInsurance::create([
+                        'id_campers' => $request->id_campers,
+                        'id_insurance_extra' => $ex->id,
+                    ]);
+                }
                 $newData->save();
 
             }
@@ -1114,5 +1126,14 @@ class FC_rentOutController extends Controller
     public static function getExtraDatas($name)
     {
         return InsuranceExtra::where('name', $name)->get();
+    }
+    public static function getSubExtra($name)
+    {
+        return InsuranceExtra::where('name', $name)->whereNotNull('sub_extra')->get();
+    }
+
+    public static function getSubExtraData($name, $subExtraName)
+    {
+        return InsuranceExtra::where('name', $name)->where('sub_extra', $subExtraName)->get();
     }
 }

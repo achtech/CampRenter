@@ -12,6 +12,7 @@ class InsuranceExtra extends Base
         'nbr_days_to',
         'initial_price',
         'price_per_day',
+        'sub_extra',
         'created_by',
         'updated_by',
     ];
