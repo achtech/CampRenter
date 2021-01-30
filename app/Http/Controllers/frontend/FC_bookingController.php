@@ -159,17 +159,16 @@ class FC_bookingController extends Controller
             $this->addExtra($id, $item->name);
 
         }
-        $total_without_insurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
-        $totalBooking = $total_without_insurance + $insurance_total + $totalExtra;
-        return view('frontend.clients.booking.booking_insurance')
+        $html = $this->getHtmlPricesBooking($booking->id);
+
+        return view('frontend.clients.booking.booking_paiement')
             ->with('booking', $booking)
             ->with('insurance_total', $insurance_total)
             ->with('insurance', $insurance)
             ->with('camper', $camper)
             ->with('extras', $extras)
             ->with('extraIds', $extraIds)
-            ->with('total_without_insurance', $total_without_insurance)
-            ->with('totalBooking', $totalBooking);
+            ->with('html', $html);
     }
 
     public function changeInsurance($id_booking)
@@ -184,6 +183,7 @@ class FC_bookingController extends Controller
         $b = Booking::find($id_booking);
         $b->insurance_price = $insurance_total;
         $b->save();
+        return $this->getHtmlPricesBooking($id_booking);
 
     }
 
@@ -192,6 +192,7 @@ class FC_bookingController extends Controller
         $b = Booking::find($id);
         $b->insurance_price = 0;
         $b->save();
+        return $this->getHtmlPricesBooking($id);
     }
 
     public function addExtra($id_booking, $extraName)
@@ -205,12 +206,14 @@ class FC_bookingController extends Controller
             'price' => Controller::getExtraInsurance($extra->name, $booking->nbr_days),
         ]);
         $newData->save();
+        return $this->getHtmlPricesBooking($id_booking);
     }
 
     public function removeExtra($id_booking, $extraName)
     {
         $extra = InsuranceExtra::where('name', $extraName)->first();
         DB::statement('DELETE FROM booking_extras WHERE id_bookings =' . $id_booking . " and id_insurance_extra=" . $extra->id);
+        return $this->getHtmlPricesBooking($id_booking);
     }
 /**
  * 7-8 main
@@ -272,6 +275,28 @@ class FC_bookingController extends Controller
     public static function getExtraBooking($id)
     {
         return BookingExtra::join('insurance_extra', 'insurance_extra.id', '=', 'booking_extras.id_insurance_extra')->where('id_bookings', $id)->get();
+    }
+
+    public function getHtmlPricesBooking($booking_id)
+    {
+        $booking = DB::table("v_bookings_owner")->where('id', $booking_id)->first();
+
+        $total_without_insurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
+        $html = "<li>" . trans('front.date') . " <span>" . date('j F Y', strtotime($booking->created_date)) . "</span></li>";
+
+        $html .= "<li>" . trans('front.n_nights') . " <span>" . $booking->nbr_days . " " . trans('front.days') . "</span></li>";
+        $html .= "<li>Price <span>" . $total_without_insurance . " CHF</span></li>";
+        if ($booking->insurance_price != 0) {
+            $html .= "<li>Insurance  <span>" . $booking->insurance_price . " CHF</span></li>";
+        }
+        $totalExtra = 0;
+        $bookingExtras = $this->getExtraBooking($booking->id);
+        foreach ($bookingExtras as $be) {
+            $html .= "<li>" . $be->name . " <span>" . $be->price . " CHF</span></li>";
+            $totalExtra += $be->price;
+        }
+        $html .= "<li class='total-costs'>" . trans('front.total_cost') . " <span>" . ($total_without_insurance + $booking->insurance_price + $totalExtra) . " CHF</span></li>";
+        return $html;
     }
 
 }

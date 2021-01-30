@@ -203,6 +203,7 @@ Route::group(['middleware' => 'Lang'], function () {
 
     Route::get('/booking/add_extra/{id}/{extra}', [FC_bookingController::class, 'addExtra']);
     Route::get('/booking/remove_extra/{id}/{extra}', [FC_bookingController::class, 'removeExtra']);
+    Route::get('/bookingpaiment/{id}', [FC_bookingController::class, 'getHtmlPricesBooking']);
 
     Route::get('/message_client/add/{id}', [FC_messageController::class, 'addMessage'])->name('frontend.booking.add_message');
     Route::get('/review/owner/feedback/{id}', [FC_reviewController::class, 'feedback'])->name('frontend.review.add_feedback');

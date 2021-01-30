@@ -46,6 +46,7 @@
 								@endif
 								<p><span> Pro Nacht </span> {{$insurance->price_per_day}} CHF</p>
 								<p><span>Total: </span>{{$insurance_total}} CHF </p>
+								<input type="hidden" value="{{$booking->id}}" id="bookingId">
 								@if(!$camper->has_insurance)
 									<div class="insurance">
 
@@ -57,7 +58,6 @@
 											<div class="removesrc"></div>
 
 										@endif
-										<input type="hidden" value="{{$booking->id}}" id="bookingId">
 
 									</div>
 								@else
@@ -83,11 +83,11 @@
 									<div class="extras">
 
 									@if(App\Http\Controllers\Controller::isExtraByOwner($extra->name,$booking->id))
-										<a id="remove_extra_{{$extra->name}}"  onclick="removeExtra()" class="button medium border">Remove</a>
+										<a id="remove_extra_{{$extra->name}}"  onclick="removeExtra('{{$extra->name}}')" class="button medium border">Remove</a>
 										<div class="removeExtra{{$extra->name}}"></div>
 										<input type="hidden" value="{{$extra->name}}" id="extraName1">
 									@else
-										<a id="add_extra_{{$extra->name}}" onclick="addExtra()" class="button medium border">Add</a>
+										<a id="add_extra_{{$extra->name}}" onclick="addExtra('{{$extra->name}}')" class="button medium border">Add</a>
 										<div class="addextra{{$extra->name}}"></div>
 										<input type="hidden" value="{{$extra->name}}" id="extraName2">
 									@endif
@@ -238,22 +238,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="boxed-widget opening-hours summary margin-top-0">
+			<div class="boxed-widget opening-hours summary margin-top-0" id="invoice_insurance">
 				<h3><i class="fa fa-calendar-check-o"></i> {{trans('front.booking_summary')}}</h3>
-				<ul>
-					<li>{{trans('front.date')}} <span>{{date('j F Y', strtotime($booking->created_date))}}</span></li>
-					<li>{{trans('front.hour')}} <span>{{$booking->created_hour}}</span></li>
-					<li>{{trans('front.n_nights')}} <span>{{$booking->nbr_days}} {{trans('front.days')}}</span></li>
-					<li>Price <span>{{$total_without_insurance}} CHF</span></li>
-					@if($booking->insurance_price != 0)
-					<li>Insurance  <span>{{$booking->insurance_price}} CHF</span></li>
-					@endif
-					@php($totalExtra = 0)
-					@foreach(App\Http\Controllers\frontend\FC_bookingController::getExtraBooking($booking->id) as $be)
-						<li>{{$be->name}} <span>{{$be->price}} CHF</span></li>
-						@php($totalExtra += $be->price)
-					@endforeach
-					<li class="total-costs">{{trans('front.total_cost')}} <span>{{$total_without_insurance+$booking->insurance_price+$totalExtra}} CHF</span></li>
+				<ul id="side_bar_prices">
 				</ul>
 
 			</div>
@@ -267,6 +254,101 @@
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script type="text/javascript">
+
+	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+	var id_booking=$("#bookingId").val()
+	$(function() {
+		$.ajax({
+			type: "get",
+			url: '/bookingpaiment/'+id_booking,
+			cache: false,
+			dataType: 'html',
+			data: {id:id_booking},
+
+			success: function(res){
+			r=res.trim();
+			$("#side_bar_prices").show() ;
+			$("#side_bar_prices").html(r);
+				}
+		});
+	});
+
+
+function AddInsurance(){
+	$.ajax({
+			url: '/booking/add_insurance/'+id_booking,
+			type: 'get',
+			data: {_token: CSRF_TOKEN},
+			success: function(response){
+				$("#remove_insurance").show()
+				$("#add_insurance").hide()
+				//addsrc : bloc
+				$(".addsrc").html('<a id="remove_insurance" onclick="removeInsurance()" class="button medium border">Remove</a>');
+				r=response.trim();
+				$("#side_bar_prices").show() ;
+				$("#side_bar_prices").html(r);
+			}
+		});
+}
+
+function removeInsurance(){
+	$.ajax({
+			url: '/booking/remove_insurance/'+id_booking,
+			type: 'get',
+			data: {_token: CSRF_TOKEN},
+			success: function(response){
+				$("#add_insurance").show()
+				$("#remove_insurance").hide()
+				$(".removesrc").html('<a id="add_insurance" onclick="AddInsurance()" class="button medium border">Add</a>');
+				r=response.trim();
+				$("#side_bar_prices").show() ;
+				$("#side_bar_prices").html(r);
+			}
+		});
+}
+
+function addExtra(extra_name){
+	//Set the value of the hidden input field
+	//var extra_name2=$("#extraName2").val()
+	var id_booking=$("#bookingId").val()
+
+	$.ajax({
+			url: '/booking/add_extra/'+id_booking+'/'+extra_name,
+			type: 'get',
+			data: {_token: CSRF_TOKEN},
+			success: function(response){
+				$("#remove_extra_"+extra_name).show()
+				$("#add_extra_"+extra_name).hide()
+				//addextra : bloc
+				$(".addextra"+extra_name).html('<a id="remove_extra_'+extra_name+'" onclick="removeExtra(\''+extra_name+'\')" class="button medium border">Remove</a>');
+				r=response.trim();
+				$("#side_bar_prices").show() ;
+				$("#side_bar_prices").html(r);
+			}
+		});
+}
+
+function removeExtra(extra_name){
+	//Set the value of the hidden input field
+	//var extra_name1=$("#extraName1").val()
+	var id_booking=$("#bookingId").val()
+
+	$.ajax({
+			url: '/booking/remove_extra/'+id_booking+'/'+extra_name,
+			type: 'get',
+			data: {_token: CSRF_TOKEN},
+			success: function(response){
+				$("#add_extra_"+extra_name).show()
+				$("#remove_extra_"+extra_name).hide()
+				//removeExtra : bloc
+				$(".removeExtra"+extra_name).html('<a id="add_extra_'+extra_name+'" onclick="addExtra(\''+extra_name+'\')" class="button medium border">Add</a>');
+				r=response.trim();
+				$("#side_bar_prices").show() ;
+				$("#side_bar_prices").html(r);
+			}
+		});
+}
+
 $(function() {
     var $form         = $(".validation");
   $('form.validation').bind('submit', function(e) {
@@ -317,74 +399,5 @@ $(function() {
     }
 
 });
-
-var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-var id_booking=$("#bookingId").val()
-function AddInsurance(){
-	$.ajax({
-			url: '/booking/add_insurance/'+id_booking,
-			type: 'get',
-			data: {_token: CSRF_TOKEN},
-			success: function(response){
-				$("#remove_insurance").show()
-				$("#add_insurance").hide()
-				//addsrc : bloc
-				$(".addsrc").html('<a id="remove_insurance" onclick="removeInsurance()" class="button medium border">Remove</a>');
-			}
-		});
-}
-
-function removeInsurance(){
-	var id_booking=$("#bookingId").val()
-	$.ajax({
-			url: '/booking/remove_insurance/'+id_booking,
-			type: 'get',
-			data: {_token: CSRF_TOKEN},
-			success: function(response){
-				$("#add_insurance").show()
-				$("#remove_insurance").hide()
-				$(".removesrc").html('<a id="add_insurance" onclick="AddInsurance()" class="button medium border">Add</a>');
-			}
-		});
-}
-
-
-
-function addExtra(){
-	//Set the value of the hidden input field
-	var extra_name2=$("#extraName2").val()
-
-	$.ajax({
-			url: '/booking/add_extra/'+id_booking+'/'+extra_name2,
-			type: 'get',
-			data: {_token: CSRF_TOKEN},
-			success: function(response){
-				$("#remove_extra_"+extra_name2).show()
-				$("#add_extra_"+extra_name2).hide()
-				//addextra : bloc
-				$(".addextra"+extra_name2).html('<a id="remove_extra_'+extra_name2+'" onclick="removeExtra()" class="button medium border">Remove</a>');
-				extra_name2=null;
-			}
-		});
-}
-
-
-function removeExtra(){
-	//Set the value of the hidden input field
-	var extra_name1=$("#extraName1").val()
-
-	$.ajax({
-			url: '/booking/remove_extra/'+id_booking+'/'+extra_name1,
-			type: 'get',
-			data: {_token: CSRF_TOKEN},
-			success: function(response){
-				$("#add_extra_"+extra_name1).show()
-				$("#remove_extra_"+extra_name1).hide()
-				//removeExtra : bloc
-				$(".removeExtra"+extra_name1).html('<a id="add_extra_'+extra_name1+'" onclick="addExtra()" class="button medium border">Add</a>');
-				extra_name1=null;
-			}
-		});
-}
 </script>
 @endsection
