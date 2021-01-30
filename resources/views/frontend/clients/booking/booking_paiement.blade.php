@@ -47,12 +47,18 @@
 								<p><span> Pro Nacht </span> {{$insurance->price_per_day}} CHF</p>
 								<p><span>Total: </span>{{$insurance_total}} CHF </p>
 								@if(!$camper->has_insurance)
-									<div id="insurance">
+									<div class="insurance">
+
 										@if($booking->insurance_price == 0)
-											<a id="add_insurance" data-booking-id="{{$booking->id}}" class="button medium border">Add</a>
+											<a id="add_insurance" onclick="AddInsurance()" data-booking-id="{{$booking->id}}" class="button medium border">Add</a>
+											<div class="addsrc"></div>
 										@else
-											<a id="remove_insurance" data-booking-id="{{$booking->id}}" class="button medium border">Remove</a>
+											<a id="remove_insurance"  onclick="removeInsurance()" data-booking-id="{{$booking->id}}" class="button medium border">Remove</a>
+											<div class="removesrc"></div>
+
 										@endif
+										<input type="hidden" value="{{$booking->id}}" id="bookingId">
+
 									</div>
 								@else
 									<a class="button medium" style="pointer-events: none">Included</a>
@@ -77,9 +83,13 @@
 									<div class="extras">
 
 									@if(App\Http\Controllers\Controller::isExtraByOwner($extra->name,$booking->id))
-										<a id="remove_extra" data-booking-id="{{$booking->id}}" data-extra-name="{{$extra->name}}" class="button medium border">Remove</a>
+										<a id="remove_extra_{{$extra->name}}"  onclick="removeExtra()" class="button medium border">Remove</a>
+										<div class="removeExtra{{$extra->name}}"></div>
+										<input type="hidden" value="{{$extra->name}}" id="extraName1">
 									@else
-										<a id="add_extra" data-booking-id="{{$booking->id}}" data-extra-name="{{$extra->name}}" class="button medium border">Add</a>
+										<a id="add_extra_{{$extra->name}}" onclick="addExtra()" class="button medium border">Add</a>
+										<div class="addextra{{$extra->name}}"></div>
+										<input type="hidden" value="{{$extra->name}}" id="extraName2">
 									@endif
 									</div>
 								@else
@@ -228,7 +238,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="boxed-widget opening-hours summary margin-top-0" id="invoice_insurance">
+			<div class="boxed-widget opening-hours summary margin-top-0">
 				<h3><i class="fa fa-calendar-check-o"></i> {{trans('front.booking_summary')}}</h3>
 				<ul>
 					<li>{{trans('front.date')}} <span>{{date('j F Y', strtotime($booking->created_date))}}</span></li>
@@ -308,76 +318,73 @@ $(function() {
 
 });
 
-
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
-$("#add_insurance").click( function(e){
-	//Set the value of the hidden input field
-	var id_booking = $(this).data('booking-id');
-
+var id_booking=$("#bookingId").val()
+function AddInsurance(){
 	$.ajax({
 			url: '/booking/add_insurance/'+id_booking,
 			type: 'get',
 			data: {_token: CSRF_TOKEN},
 			success: function(response){
-				$('#insurance').load(' #insurance');
-				$('#invoice_insurance').load(' #invoice_insurance');
+				$("#remove_insurance").show()
+				$("#add_insurance").hide()
+				//addsrc : bloc
+				$(".addsrc").html('<a id="remove_insurance" onclick="removeInsurance()" class="button medium border">Remove</a>');
 			}
 		});
-});
+}
 
-
-$("#remove_insurance").click( function(e){
-	//Set the value of the hidden input field
-	var id_booking = $(this).data('booking-id');
-
+function removeInsurance(){
+	var id_booking=$("#bookingId").val()
 	$.ajax({
 			url: '/booking/remove_insurance/'+id_booking,
 			type: 'get',
 			data: {_token: CSRF_TOKEN},
 			success: function(response){
-				$('#insurance').load(' #insurance');
-				$('#invoice_insurance').load(' #invoice_insurance');
+				$("#add_insurance").show()
+				$("#remove_insurance").hide()
+				$(".removesrc").html('<a id="add_insurance" onclick="AddInsurance()" class="button medium border">Add</a>');
 			}
 		});
-});
+}
 
 
-$("#add_extra").click( function(e){
+
+function addExtra(){
 	//Set the value of the hidden input field
-	var id_booking = $(this).data('booking-id');
-	var extra_name = $(this).data('extra-name');
+	var extra_name2=$("#extraName2").val()
 
 	$.ajax({
-		url: '/booking/add_extra/'+id_booking+'/'+extra_name,
-		type: 'get',
-		data: {_token: CSRF_TOKEN},
-		success: function(response){
-			//$('.extras').load(location.href+(' .extras'));
-			document.getElementById('add_extra').style.display ='none';
-			document.getElementById('remove_extra').style.display ='block';
-			//$('#invoice_insurance').load(location.href+(' #invoice_insurance'));
+			url: '/booking/add_extra/'+id_booking+'/'+extra_name2,
+			type: 'get',
+			data: {_token: CSRF_TOKEN},
+			success: function(response){
+				$("#remove_extra_"+extra_name2).show()
+				$("#add_extra_"+extra_name2).hide()
+				//addextra : bloc
+				$(".addextra"+extra_name2).html('<a id="remove_extra_'+extra_name2+'" onclick="removeExtra()" class="button medium border">Remove</a>');
+				extra_name2=null;
 			}
 		});
-});
+}
 
 
-$("#remove_extra").click( function(e){
+function removeExtra(){
 	//Set the value of the hidden input field
-	var id_booking = $(this).data('booking-id');
-	var extra_name = $(this).data('extra-name');
+	var extra_name1=$("#extraName1").val()
 
 	$.ajax({
-		url: '/booking/remove_extra/'+id_booking+'/'+extra_name,
-		type: 'get',
-		data: {_token: CSRF_TOKEN},
-		success: function(response){
-			$('.extras').load(location.href+(' .extras'));
-			//document.getElementById('remove_extra').style.display ='none';
-			//document.getElementById('add_extra').style.display ='block';
-			$('#invoice_insurance').load(location.href+(' #invoice_insurance'));
+			url: '/booking/remove_extra/'+id_booking+'/'+extra_name1,
+			type: 'get',
+			data: {_token: CSRF_TOKEN},
+			success: function(response){
+				$("#add_extra_"+extra_name1).show()
+				$("#remove_extra_"+extra_name1).hide()
+				//removeExtra : bloc
+				$(".removeExtra"+extra_name1).html('<a id="add_extra_'+extra_name1+'" onclick="addExtra()" class="button medium border">Add</a>');
+				extra_name1=null;
 			}
 		});
-});
+}
 </script>
 @endsection
