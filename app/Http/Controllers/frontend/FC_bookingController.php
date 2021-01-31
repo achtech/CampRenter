@@ -132,7 +132,9 @@ class FC_bookingController extends Controller
         $tons = $hasTonz->tonage != null ? $t : 0;
         $insurance_total = Controller::getInsurance($camper->id_camper_categories, $booking->nbr_days, $tons);
         //save included insurance in booking
-        $this->changeInsurance($id);
+        if ($camper->has_insurance) {
+            $this->changeInsurance($id);
+        }
 
         $insurance = Insurance::where('id_camper_categories', $camper->id_camper_categories)
             ->where('nbr_days_from', "<=", $booking->nbr_days)
@@ -191,7 +193,7 @@ class FC_bookingController extends Controller
     {
         $b = Booking::find($id);
         $b->insurance_price = 0;
-        $b->save();
+        $b->update();
         return $this->getHtmlPricesBooking($id);
     }
 
@@ -211,21 +213,40 @@ class FC_bookingController extends Controller
 
     public function removeExtra($id_booking, $extraName)
     {
-        $extra = InsuranceExtra::where('name', $extraName)->first();
-        DB::statement('DELETE FROM booking_extras WHERE id_bookings =' . $id_booking . " and id_insurance_extra=" . $extra->id);
+        $extra = InsuranceExtra::where('name', $extraName)->get();
+        $ids = '';
+        foreach ($extra as $ext) {
+            $ids .= $ext->id . ',';
+        }
+        $ids = rtrim($ids, ',');
+        DB::statement('DELETE FROM booking_extras WHERE id_bookings =' . $id_booking . " and id_insurance_extra in (" . $ids . ")");
         return $this->getHtmlPricesBooking($id_booking);
     }
-/**
- * 7-8 main
- * 5-6  off
- * 9-10 off
- * 11-4 winter
- */
-/**
- * case 1 : same month => (pricePerDay+insurance) * nbrOfDays
- * case 2 : different month but same saison => (pricePerDay+insurance) * nbrOfDays
- * case 3 : different month and different saison => ((pricePerDay1+insurance) * nbrOfDaysOfFirstSaison)+((pricePerDay2+insurance) * nbrOfDaysOfSecondSaison)
- */
+
+    public function addSubExtra($id_booking, $extraName, $subExtra)
+    {
+        $this->removeExtra($id_booking, $extraName);
+        $extra = InsuranceExtra::where('name', $extraName)->where('sub_extra', $subExtra)->first();
+        $booking = DB::table('v_bookings_owner')->where('id', $id_booking)->first();
+        $newData = BookingExtra::create([
+            'id_bookings' => $id_booking,
+            'id_insurance_extra' => $extra->id,
+            'price' => Controller::getSubExtraInsurance($extra->name, $subExtra, $booking->nbr_days),
+        ]);
+        $newData->save();
+        return $this->getHtmlPricesBooking($id_booking);
+    }
+
+    public function removeSubExtra($id_booking, $extraName, $subExtra)
+    {
+        $extra = InsuranceExtra::where('name', $extraName)->where('sub_extra', $subExtra)->first();
+        DB::statement('DELETE FROM booking_extras WHERE id_bookings =' . $id_booking . " and id_insurance_extra=" . $extra->id . " and sub_extra=" . $subExtra);
+        return $this->getHtmlPricesBooking($id_booking);
+    }
+
+    /**
+     *
+     */
     private function getBookingWithoutInsurance($id, $start_date, $end_date)
     {
 
@@ -286,6 +307,7 @@ class FC_bookingController extends Controller
 
         $html .= "<li>" . trans('front.n_nights') . " <span>" . $booking->nbr_days . " " . trans('front.days') . "</span></li>";
         $html .= "<li>Price <span>" . $total_without_insurance . " CHF</span></li>";
+
         if ($booking->insurance_price != 0) {
             $html .= "<li>Insurance  <span>" . $booking->insurance_price . " CHF</span></li>";
         }

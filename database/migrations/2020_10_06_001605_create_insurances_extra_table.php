@@ -20,6 +20,7 @@ class CreateInsurancesExtraTable extends Migration
             $table->integer('nbr_days_to')->nullable();
             $table->double('initial_price')->nullable();
             $table->double('price_per_day')->nullable();
+            $table->string('sub_extra')->nullable();
             $table->timestamps();
         });
     }

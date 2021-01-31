@@ -70,6 +70,37 @@
 						<h4>{{trans('front.extras_insurance')}}</h4>
 						<ul>
 						@foreach($extras as $extra)
+							@if(App\Http\Controllers\Controller::hasSubExtra($extra->name))
+								@foreach(App\Http\Controllers\Controller::getSubExtra($extra->name) as $subExtra)
+									<li>
+										<h5>{{$extra->name}} : {{$subExtra->sub_extra}}</h5>
+										@foreach(App\Http\Controllers\Controller::getSubExtraData($extra->name,$subExtra->sub_extra, $booking->nbr_days) as $element)
+											@if($element->initial_price!=0)
+												<p><span>Fixprämie </span>{{$element->initial_price}} CHF</p>
+											@endif
+											<p><span> Pro Nacht </span> {{$element->price_per_day}} CHF</p>
+										@endforeach
+										<p><span>Total: </span>{{App\Http\Controllers\Controller::getSubExtraInsurance($extra->name,$subExtra->sub_extra, $booking->nbr_days)}} CHF </p>
+										@if(!App\Http\Controllers\Controller::isSubExtraBooking($extra->name, $booking->id))
+											<div class="extras">
+
+											@if(App\Http\Controllers\Controller::isSubExtraByOwner($extra->name, $subExtra->sub_extra, $booking->id))
+												<a id="remove_extra_{{$subExtra->sub_extra}}"  onclick="removeExtra('{{$extra->name}}','{{$subExtra->sub_extra}}')" class="button medium border">Remove</a>
+												<div class="removeExtra{{$subExtra->sub_extra}}"></div>
+											@else
+												<a id="add_extra_{{$subExtra->sub_extra}}" onclick="addExtra('{{$extra->name}}','{{$subExtra->sub_extra}}')" class="button medium border">Add</a>
+												<div class="addextra{{$subExtra->sub_extra}}"></div>
+											@endif
+
+											</div>
+										@else
+											@if(App\Http\Controllers\Controller::isSubExtraIncluded($extra->name, $subExtra->sub_extra, $booking->id_campers))
+												<a href="" class="button medium" style="pointer-events: none">Included</a>
+											@endif
+										@endif
+									</li>
+								@endforeach
+							@else
 							<li>
 								<h5>{{$extra->name}}</h5>
 								@foreach(App\Http\Controllers\Controller::getExtraData($extra->name,$booking->nbr_days) as $item)
@@ -83,19 +114,18 @@
 									<div class="extras">
 
 									@if(App\Http\Controllers\Controller::isExtraByOwner($extra->name,$booking->id))
-										<a id="remove_extra_{{$extra->name}}"  onclick="removeExtra('{{$extra->name}}')" class="button medium border">Remove</a>
+										<a id="remove_extra_{{$extra->name}}"  onclick="removeExtra('{{$extra->name}},\'\'')" class="button medium border">Remove</a>
 										<div class="removeExtra{{$extra->name}}"></div>
-										<input type="hidden" value="{{$extra->name}}" id="extraName1">
 									@else
-										<a id="add_extra_{{$extra->name}}" onclick="addExtra('{{$extra->name}}')" class="button medium border">Add</a>
+										<a id="add_extra_{{$extra->name}}" onclick="addExtra('{{$extra->name}},\'\'')" class="button medium border">Add</a>
 										<div class="addextra{{$extra->name}}"></div>
-										<input type="hidden" value="{{$extra->name}}" id="extraName2">
 									@endif
 									</div>
 								@else
 									<a href="" class="button medium" style="pointer-events: none">Included</a>
 								@endif
 							</li>
+							@endif
 						@endforeach
 						</ul>
 
@@ -307,20 +337,35 @@ function removeInsurance(){
 		});
 }
 
-function addExtra(extra_name){
+function addExtra(extra_name, sub_extra){
 	//Set the value of the hidden input field
 	//var extra_name2=$("#extraName2").val()
-	var id_booking=$("#bookingId").val()
+	var id_booking=$("#bookingId").val();
+	var url_extra = '/booking/add_extra/'+id_booking+'/'+extra_name;
+	if(sub_extra!= undefined)
+	{
+		url_extra = '/booking/add_sub_extra/'+id_booking+'/'+extra_name+'/'+sub_extra ;
+	}
 
+	alert(url_extra);
 	$.ajax({
-			url: '/booking/add_extra/'+id_booking+'/'+extra_name,
+			url: url_extra,
 			type: 'get',
 			data: {_token: CSRF_TOKEN},
 			success: function(response){
+				if(sub_extra!= undefined){
+					for(var j=0;j<subExtras.length;j++){
+						$("#remove_extra_"+subExtras[j]).hide()
+						$("#add_extra_"+subExtras[j]).show()
+						//addextra : bloc
+						$(".addextra"+extra_name).html('<a id="add_extra_'+extra_name+'" onclick="addExtra(\''+extra_name+'\',\''+subExtras[j]+'\')" class="button medium border">Remove</a>');
+					}
+				}
 				$("#remove_extra_"+extra_name).show()
 				$("#add_extra_"+extra_name).hide()
 				//addextra : bloc
 				$(".addextra"+extra_name).html('<a id="remove_extra_'+extra_name+'" onclick="removeExtra(\''+extra_name+'\')" class="button medium border">Remove</a>');
+
 				r=response.trim();
 				$("#side_bar_prices").show() ;
 				$("#side_bar_prices").html(r);
@@ -328,13 +373,18 @@ function addExtra(extra_name){
 		});
 }
 
-function removeExtra(extra_name){
+function removeExtra(extra_name, sub_extra){
 	//Set the value of the hidden input field
 	//var extra_name1=$("#extraName1").val()
-	var id_booking=$("#bookingId").val()
-
+	var id_booking=$("#bookingId").val();
+	var url_extra = '/booking/remove_extra/'+id_booking+'/'+extra_name;
+	if(sub_extra!= undefined)
+	{
+		url_extra = '/booking/remove_sub_extra/'+id_booking+'/'+extra_name+'/'+sub_extra ;
+	}
+	alert(url_extra);
 	$.ajax({
-			url: '/booking/remove_extra/'+id_booking+'/'+extra_name,
+			url: url_extra,
 			type: 'get',
 			data: {_token: CSRF_TOKEN},
 			success: function(response){

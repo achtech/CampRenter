@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avatar;
+use App\Models\Booking;
 use App\Models\BookingExtra;
 use App\Models\Camper;
 use App\Models\Client;
@@ -207,6 +208,81 @@ class Controller extends BaseController
     {
         $booking = BookingExtra::join('insurance_extra', 'insurance_extra.id', '=', 'booking_extras.id_insurance_extra')->where('name', $extra_name)->where('id_bookings', $id_booking)->first();
         return $booking != null && $booking->price != 0;
+    }
+
+    public static function isSubExtraByOwner($extra_name, $sub_extra, $id_booking)
+    {
+        $booking = BookingExtra::join('insurance_extra', 'insurance_extra.id', '=', 'booking_extras.id_insurance_extra')
+            ->where('name', $extra_name)->where('sub_extra', $sub_extra)->where('id_bookings', $id_booking)->first();
+        return $booking != null && $booking->price != 0;
+    }
+    public static function isSubExtraBooking($extra_name, $id_booking)
+    {
+        $camper_id = Booking::find($id_booking)->id_campers;
+        return DB::table('camper_insurances')
+            ->join('insurance_extra', 'insurance_extra.id', '=', 'camper_insurances.id_insurance_extra')
+            ->where('id_campers', $camper_id)
+            ->where('name', $extra_name)
+            ->get()
+            ->count() > 0;
+
+    }
+
+    public static function hasSubExtra($extra_name)
+    {
+        return InsuranceExtra::where('name', $extra_name)->whereNotNull('sub_extra')->get()->count() > 0;
+    }
+
+    public static function getSubExtra($extra_name)
+    {
+        return InsuranceExtra::where('name', $extra_name)->get();
+    }
+
+    public static function isSubExtraIncluded($extra_name, $subExtra, $idCampers)
+    {
+        return DB::table('camper_insurances')
+            ->join('insurance_extra', 'insurance_extra.id', '=', 'camper_insurances.id_insurance_extra')
+            ->where('id_campers', $idCampers)
+            ->where('name', $extra_name)
+            ->where('sub_extra', $subExtra)
+            ->get()
+            ->count() > 0;
+
+    }
+
+    public static function getSubExtraData($extra_name, $sub_extra_name, $nbrDays)
+    {
+        $data = InsuranceExtra::where('name', 'like', '%' . $extra_name . '%')
+            ->where('nbr_days_from', "<=", $nbrDays)
+            ->where('nbr_days_To', ">=", $nbrDays)
+            ->where('sub_extra', "like", $sub_extra_name)
+            ->get();
+        if (count($data) == 0) {
+            $data = InsuranceExtra::where('name', $extra_name)
+                ->where('sub_extra', "like", $sub_extra_name)
+                ->whereNull('nbr_days_To')
+                ->get();
+        }
+        return $data;
+    }
+
+    public static function getSubExtraInsurance($extra_name, $sub_extra_name, $nbrDays)
+    {
+        $data = InsuranceExtra::where('name', 'like', '%' . $extra_name . '%')
+            ->where('nbr_days_from', "<=", $nbrDays)
+            ->where('nbr_days_To', ">=", $nbrDays)
+            ->where('sub_extra', "like", $sub_extra_name)
+            ->first();
+        if ($data == null) {
+            $data = InsuranceExtra::where('name', $extra_name)
+                ->whereNull('nbr_days_To')
+                ->where('sub_extra', "like", $sub_extra_name)
+                ->first();
+        }
+        if ($data != null) {
+            return $data->initial_price + ($nbrDays - $data->nbr_days_from + 1) * $data->price_per_day;
+        }
+        return 0;
     }
 
 }
