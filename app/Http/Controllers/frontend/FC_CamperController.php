@@ -7,9 +7,11 @@ use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
 use App\Models\CamperImage;
+use App\Models\CamperInsurance;
 use App\Models\CamperReview;
 use App\Models\CamperTerms;
 use App\Models\Client;
+use App\Models\Insurance;
 use DB;
 use Illuminate\Http\Request;
 
@@ -272,7 +274,24 @@ class FC_CamperController extends Controller
             })
             ->first();
         $saisons = $saisons != null ? $saisons : CamperTerms::where('id_campers', $id)->where('start_month', 11)->first();
-        return isset($saisons->price_per_night) ? $saisons->price_per_night : 0;
+        $camperPrice = $saisons != null ? $saisons->price_per_night : 0;
+        $camper = Camper::find($id);
+        $hasInsurance = $camper->has_insurance == 1;
+        $insurance = 0;
+        $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
+        if ($hasInsurance) {
+            $getInsurance = Insurance::where('id_camper_categories', $camper->id_camper_categories)
+                ->where('nbr_days_from', 1)
+                ->where('tonage', $t)
+                ->first();
+            $insurance = $getInsurance != null ? $getInsurance->price_per_day : 0;
+        }
+        $extras = CamperInsurance::join('insurance_extra', 'insurance_extra.id', '=', 'camper_insurances.id_insurance_extra')
+            ->where('id_campers', $camper->id)
+            ->where('nbr_days_from', 1)
+            ->sum('price_per_day');
+
+        return $insurance + $extras + $camperPrice;
     }
 
 }

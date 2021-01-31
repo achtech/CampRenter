@@ -85,11 +85,11 @@
 											<div class="extras">
 
 											@if(App\Http\Controllers\Controller::isSubExtraByOwner($extra->name, $subExtra->sub_extra, $booking->id))
-												<a id="remove_extra_{{$subExtra->sub_extra}}"  onclick="removeExtra('{{$extra->name}}','{{$subExtra->sub_extra}}')" class="button medium border">Remove</a>
-												<div class="removeExtra{{$subExtra->sub_extra}}"></div>
+												<a id="remove_sub_extra_{{$extra->name}}_{{$subExtra->sub_extra}}"  onclick="removeExtra('{{$extra->name}}','{{$subExtra->sub_extra}}')" class="button medium border">Remove</a>
+												<div class="remove_sub_extra_{{$extra->name}}_{{$subExtra->sub_extra}}"></div>
 											@else
-												<a id="add_extra_{{$subExtra->sub_extra}}" onclick="addExtra('{{$extra->name}}','{{$subExtra->sub_extra}}')" class="button medium border">Add</a>
-												<div class="addextra{{$subExtra->sub_extra}}"></div>
+												<a id="add_sub_extra_{{$extra->name}}_{{$subExtra->sub_extra}}" onclick="addSubExtra('{{$extra->name}}','{{$subExtra->sub_extra}}')" class="button medium border">Add</a>
+												<div class="add_sub_extra_{{$extra->name}}_{{$subExtra->sub_extra}}"></div>
 											@endif
 
 											</div>
@@ -114,10 +114,10 @@
 									<div class="extras">
 
 									@if(App\Http\Controllers\Controller::isExtraByOwner($extra->name,$booking->id))
-										<a id="remove_extra_{{$extra->name}}"  onclick="removeExtra('{{$extra->name}},\'\'')" class="button medium border">Remove</a>
+										<a id="remove_extra_{{$extra->name}}"  onclick="removeExtra('{{$extra->name}}')" class="button medium border">Remove</a>
 										<div class="removeExtra{{$extra->name}}"></div>
 									@else
-										<a id="add_extra_{{$extra->name}}" onclick="addExtra('{{$extra->name}},\'\'')" class="button medium border">Add</a>
+										<a id="add_extra_{{$extra->name}}" onclick="addExtra('{{$extra->name}}')" class="button medium border">Add</a>
 										<div class="addextra{{$extra->name}}"></div>
 									@endif
 									</div>
@@ -337,41 +337,45 @@ function removeInsurance(){
 		});
 }
 
-function addExtra(extra_name, sub_extra){
+function addExtra(extra_name){
 	//Set the value of the hidden input field
 	//var extra_name2=$("#extraName2").val()
 	var id_booking=$("#bookingId").val();
 	var url_extra = '/booking/add_extra/'+id_booking+'/'+extra_name;
-	if(sub_extra!= undefined)
-	{
-		url_extra = '/booking/add_sub_extra/'+id_booking+'/'+extra_name+'/'+sub_extra ;
-	}
 
-	alert(url_extra);
 	$.ajax({
-			url: url_extra,
-			type: 'get',
-			data: {_token: CSRF_TOKEN},
-			success: function(response){
-				if(sub_extra!= undefined){
-					for(var j=0;j<subExtras.length;j++){
-						$("#remove_extra_"+subExtras[j]).hide()
-						$("#add_extra_"+subExtras[j]).show()
-						//addextra : bloc
-						$(".addextra"+extra_name).html('<a id="add_extra_'+extra_name+'" onclick="addExtra(\''+extra_name+'\',\''+subExtras[j]+'\')" class="button medium border">Remove</a>');
-					}
-				}
-				$("#remove_extra_"+extra_name).show()
-				$("#add_extra_"+extra_name).hide()
-				//addextra : bloc
-				$(".addextra"+extra_name).html('<a id="remove_extra_'+extra_name+'" onclick="removeExtra(\''+extra_name+'\')" class="button medium border">Remove</a>');
-
-				r=response.trim();
-				$("#side_bar_prices").show() ;
-				$("#side_bar_prices").html(r);
-			}
-		});
+		url: url_extra,
+		type: 'get',
+		data: {_token: CSRF_TOKEN},
+		success: function(response){
+			$("#remove_extra_"+extra_name).show()
+			$("#add_extra_"+extra_name).hide()
+			//addextra : bloc
+			$(".addextra"+extra_name).html('<a id="remove_extra_'+extra_name+'" onclick="removeExtra(\''+extra_name+'\')" class="button medium border">Remove</a>');
+			r=response.trim();
+			$("#side_bar_prices").show() ;
+			$("#side_bar_prices").html(r);
+		}
+	});
 }
+
+function addSubExtra(extra_name, sub_extra){
+	//Set the value of the hidden input field
+	//var extra_name2=$("#extraName2").val()
+	var id_booking=$("#bookingId").val();
+	var url_extra = '/booking/add_sub_extra/'+id_booking+'/'+extra_name+'/'+sub_extra ;
+
+
+	$.ajax({
+		url: url_extra,
+		type: 'get',
+		data: {_token: CSRF_TOKEN},
+		success: function(response){
+			location.reload();
+		}
+	});
+}
+
 
 function removeExtra(extra_name, sub_extra){
 	//Set the value of the hidden input field
@@ -382,19 +386,22 @@ function removeExtra(extra_name, sub_extra){
 	{
 		url_extra = '/booking/remove_sub_extra/'+id_booking+'/'+extra_name+'/'+sub_extra ;
 	}
-	alert(url_extra);
 	$.ajax({
 			url: url_extra,
 			type: 'get',
 			data: {_token: CSRF_TOKEN},
 			success: function(response){
-				$("#add_extra_"+extra_name).show()
-				$("#remove_extra_"+extra_name).hide()
-				//removeExtra : bloc
-				$(".removeExtra"+extra_name).html('<a id="add_extra_'+extra_name+'" onclick="addExtra(\''+extra_name+'\')" class="button medium border">Add</a>');
-				r=response.trim();
-				$("#side_bar_prices").show() ;
-				$("#side_bar_prices").html(r);
+				if(sub_extra==undefined){
+					$("#add_extra_"+extra_name).show()
+					$("#remove_extra_"+extra_name).hide()
+					//removeExtra : bloc
+					$(".removeExtra"+extra_name).html('<a id="add_extra_'+extra_name+'" onclick="addExtra(\''+extra_name+'\')" class="button medium border">Add</a>');
+					r=response.trim();
+					$("#side_bar_prices").show() ;
+					$("#side_bar_prices").html(r);
+				}else{
+					location.reload();
+				}
 			}
 		});
 }

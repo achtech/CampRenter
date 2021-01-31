@@ -728,10 +728,18 @@ class FC_rentOutController extends Controller
             ->groupBy('name')
             ->get();
 
-        $extraInsurance = InsuranceExtra::join('camper_insurances', 'camper_insurances.id_insurance_extra', '=', 'insurance_extra.id')->select('name')->where('camper_insurances.id_campers', $id)->get();
+        $subExtraNames = DB::table('insurance_extra')
+            ->select(DB::raw('name, CONCAT(name, sub_extra) AS full_name'))
+            ->whereNotNull('sub_extra')
+            ->groupBy('name', 'sub_extra')
+            ->get();
+        $extraInsurance = InsuranceExtra::join('camper_insurances', 'camper_insurances.id_insurance_extra', '=', 'insurance_extra.id')
+            ->select('name', 'sub_extra')
+            ->where('camper_insurances.id_campers', $id)->get();
         $extraNames = [];
         foreach ($extraInsurance as $extIns) {
             $extraNames[] = $extIns->name;
+            $extraNames[] = $extIns->name . ($extIns->sub_extra != null ? '_' . $extIns->sub_extra : '');
         }
         return view('frontend.camper.rent_out.insurance')
             ->with('client', $client)
@@ -740,6 +748,7 @@ class FC_rentOutController extends Controller
             ->with('extra', $extra)
             ->with('has_insurance', $has_insurance)
             ->with('extraNames', $extraNames)
+            ->with('subExtraNames', $subExtraNames)
         ;
     }
 
@@ -1132,7 +1141,7 @@ class FC_rentOutController extends Controller
         return InsuranceExtra::where('name', $name)->whereNotNull('sub_extra')->get();
     }
 
-    public static function getSubExtraData($name, $subExtraName)
+    public static function getSubExtraDatas($name, $subExtraName)
     {
         return InsuranceExtra::where('name', $name)->where('sub_extra', $subExtraName)->get();
     }

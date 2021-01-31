@@ -27,7 +27,7 @@
 							data-marker-id="{{$camper->id}}">
 							<div class="listing-item">
 								<img   src="{{asset('images')}}/camper/{{$camper->image}}" alt="">
-								<div class="listing-badge now-open">{{trans('front.available')}}</div>
+								<div class="listing-badge now-open">{{App\Http\Controllers\frontend\FC_CamperController::getCamperPriceCurrentSaison($camper->id)}} CHF</div>
 								<div class="listing-item-content">
 									<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
 									<span>{{Illuminate\Support\Str::limit($camper->description_camper, 25)}}...</span></br>

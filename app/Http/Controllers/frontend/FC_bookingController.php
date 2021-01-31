@@ -125,6 +125,7 @@ class FC_bookingController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        //dd($id);
         $booking = DB::table("v_bookings_owner")->where('id', $id)->first();
         $camper = Camper::find($booking->id_campers);
         $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
@@ -235,12 +236,13 @@ class FC_bookingController extends Controller
         ]);
         $newData->save();
         return $this->getHtmlPricesBooking($id_booking);
+
     }
 
     public function removeSubExtra($id_booking, $extraName, $subExtra)
     {
         $extra = InsuranceExtra::where('name', $extraName)->where('sub_extra', $subExtra)->first();
-        DB::statement('DELETE FROM booking_extras WHERE id_bookings =' . $id_booking . " and id_insurance_extra=" . $extra->id . " and sub_extra=" . $subExtra);
+        DB::statement('DELETE FROM booking_extras WHERE id_bookings =' . $id_booking . " and id_insurance_extra=" . $extra->id);
         return $this->getHtmlPricesBooking($id_booking);
     }
 

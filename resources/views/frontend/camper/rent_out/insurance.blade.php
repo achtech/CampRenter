@@ -73,17 +73,17 @@
 						<div class="col-md-12" style="padding-left: 10%;">
 							@foreach(App\Http\Controllers\frontend\FC_rentOutController::getSubExtra($ext->name) as $ext1)
 								<div id="{{$loop->parent->index}}_{{$loop->index}}" class="payment-tab-trigger" style="display:none;">
-									<input id="{{str_replace(' ', '', $ext->name)}}_{{$ext1->sub_extra}}_YES" name="{{$ext->name}}_"
+									<input id="{{str_replace(' ', '', $ext->name)}}{{$ext1->sub_extra}}_YES" name="{{$ext->name}}_"
 										type="radio" value="{{$ext1->sub_extra}}" onclick="showSubExtra({{$loop->parent->index}}, {{$loop->index}});"
 										@if(in_array($ext->name.'_'.$ext1->sub_extra,$extraNames))  checked @endif
 									>
-									<label for="{{str_replace(' ', '', $ext->name)}}_{{$ext1->sub_extra}}_YES"><strong>{{$ext1->sub_extra}}</strong></label>
+									<label for="{{str_replace(' ', '', $ext->name)}}{{$ext1->sub_extra}}_YES"><strong>{{$ext1->sub_extra}}</strong></label>
 								</div>
 								<div id="_{{$loop->parent->index}}_{{$loop->index}}" class="payment-tab-trigger" style="display: none; margin-top: 5%;">
 									<div class="row">
 										<div class="col-md-12">
 											<p><strong>Prämienberechnung:</strong></p>
-											@foreach(App\Http\Controllers\frontend\FC_rentOutController::getSubExtraData($ext->name, $ext1->sub_extra) as $ext2)
+											@foreach(App\Http\Controllers\frontend\FC_rentOutController::getSubExtraDatas($ext->name, $ext1->sub_extra) as $ext2)
 												@if($ext2->nbr_days_to!=null)
 													<p><h5><strong>{{$ext2->nbr_days_from}} - {{$ext2->nbr_days_to}}</strong>
 													@if($ext2->initial_price!=0) Fixprämie CHF {{$ext2->initial_price}},@endif CHF {{$ext2->price_per_day}} Pro Nacht</h5></p>
@@ -129,10 +129,21 @@
 
 <script>
 var extraNamesSelected = <?php echo json_encode($extra); ?>;
+var names = [];
 for(var i=0;i<extraNamesSelected.length;i++){
 	var v1 = document.getElementById(extraNamesSelected[i].name.replace(/\s/g, '') + '_YES').checked;
-	if(v1==true){
+	names[i] = extraNamesSelected[i].name;
+	if(v1==true ){
 		show(i);
+	}
+}
+
+var subExtraNamesSelected = <?php echo json_encode($subExtraNames); ?>;
+for(var i=0;i<subExtraNamesSelected.length;i++){
+	var v1 = document.getElementById(subExtraNamesSelected[i].full_name.replace(/\s/g, '') + '_YES').checked;
+	if(v1==true ){
+		var outerId = names.indexOf(subExtraNamesSelected[i].name);
+		showSubExtra(outerId, i);
 	}
 }
 
@@ -148,7 +159,9 @@ function show2(){
 }
 function showSubExtra(outerId,id){
 	hideSubExtra("_"+outerId);
-  document.getElementById("_"+outerId+'_'+id).style.display = 'block';
+	if(document.getElementById("_"+outerId+'_'+id) != undefined){
+		document.getElementById("_"+outerId+'_'+id).style.display = 'block';
+	}
 }
 function hideSubExtra(outerId){
 	var newId = outerId+"_";
@@ -169,7 +182,7 @@ function show(id){
 	var newId = id+"_";
 	subExtras = document.querySelectorAll('[id ^= "'+newId+'"]');
 	Array.prototype.forEach.call(subExtras, showSubExtras);
-	if(subExtras.length==0){
+	if(subExtras.length==0 && document.getElementById(id) != undefined){
 		document.getElementById(id).style.display = 'block';
 	}
 }
