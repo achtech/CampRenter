@@ -24,7 +24,7 @@ class FC_CamperController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $campers = DB::table("campers")->where('id_clie(nts', $client->id)->get();
+        $campers = DB::table("campers")->where('id_clients', $client->id)->get();
         return view('frontend.clients.camper.index')
             ->with('campers', $campers);
     }

@@ -47,7 +47,7 @@
 										<div class="buttons-to-right">
 											<button type="submit" name="action" value="detail" class="button gray"><i class="fas fa-list-ul"></i>{{trans('front.client_camper_detail')}}</button>
 											<button type="submit" name="action" value="edit" class="button gray"><i class="far fa-edit"></i>{{trans('front.client_camper_edit')}}</button>
-											<button id="opener" name="action" value="delete" class="button gray"><i class="far fa-times-circle"></i>{{trans('front.client_camper_delete')}}</button>
+											<!-- <button id="opener" name="action" value="delete" class="button gray"><i class="far fa-times-circle"></i>{{trans('front.client_camper_delete')}}</button>-->
 											<!-- Modal
 											<div id="dialog" title="Basic dialog">
 												<p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>

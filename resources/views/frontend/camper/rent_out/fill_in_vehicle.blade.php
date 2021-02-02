@@ -93,6 +93,14 @@
 										<input type="text" name="license_plate_number" value="{{$camper->license_plate_number}}">
 									</div>
 								</div>
+								<div class="col-md-6" style="margin-top: 20px;">
+									<select name="country" id="country" class="chosen-select" data-placeholder="country">
+										<option> </option>
+										@foreach($countries as $cat)
+											<option value="{{$cat->label}}" @if($camper->country==$cat->label) selected @endif>{{$cat->label}}</option>
+										@endforeach
+									</select>
+								</div>
 							</div>
 						</li>
 						<li>
@@ -106,14 +114,7 @@
 								</div> -->
 
 								<!-- Website -->
-								<div class="col-md-6" style="margin-top: 20px;">
-									<select name="country" id="country" class="chosen-select" data-placeholder="country">
-										<option> </option>
-										@foreach($countries as $cat)
-											<option value="{{$cat->label}}" @if($camper->country==$cat->label) selected @endif>{{$cat->label}}</option>
-										@endforeach
-									</select>
-								</div>
+
 							</div>
 						</li>
 						<li>
