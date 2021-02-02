@@ -362,4 +362,5 @@ return [
     'day_to' => 'Day to',
     'tons' => 'Tons',
     'initial_price' => 'Initial price',
+    'sub_extra' => 'Sub-Extra',
 ];

@@ -19,7 +19,7 @@
                             <div class="inner-booking-list">
                                 <h5>{{trans('front.price')}}:</h5>
                                 <ul class="booking-list">
-                                    <li class="highlighted">{{$booking->price}} CHF</li>
+                                    <li class="highlighted">{{App\Http\Controllers\frontend\FC_CamperController::getCamperPriceCurrentSaison($booking->id_campers)}} CHF</li>
                                 </ul>
                             </div>
 

@@ -18,6 +18,7 @@
                                     <th>{{ __('backend.day_to') }}</th>
                                     <th>{{ __('backend.initial_price') }}</th>
                                     <th>{{ __('backend.Price per day') }}</th>
+                                    <th>{{ __('backend.sub_extra') }}</th>
                                     <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </thead>
@@ -29,6 +30,7 @@
                                     <td>{{$item->nbr_days_to==0?'':$item->nbr_days_to}}</td>
                                     <td>{{$item->initial_price}}</td>
                                     <td>{{$item->price_per_day}}</td>
+                                    <td>{{$item->sub_extra}}</td>
                                    <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
@@ -54,7 +56,8 @@
                                     <th>{{ __('backend.day_to') }} </th>
                                     <th>{{ __('backend.initial_price') }} </th>
                                     <th>{{ __('backend.Price per day') }}</th>
-                                     <th>{{ __('backend.Operations') }}</th>
+                                    <th>{{ __('backend.sub_extra') }}</th>
+                                    <th>{{ __('backend.Operations') }}</th>
                                 </tr>
                             </tfoot>
                         </table>

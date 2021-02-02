@@ -63,42 +63,42 @@
                                 <!-- Checkboxes -->
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input id="check-a" type="checkbox" name="cooking_possibility">
+                                        <input id="check-a" type="checkbox" name="cooking_possibility" @if(isset($equipments) && is_array($equipments) && in_array("cooking_possibility",$equipments)) checked @endif>
                                         <label for="check-a">{{trans('front.burner stove')}}</label>
 
-                                        <input id="check-b" type="checkbox" name="sink">
+                                        <input id="check-b" type="checkbox" name="sink"  @if(isset($equipments) && is_array($equipments) && in_array("sink",$equipments)) checked @endif>
                                         <label for="check-b">{{trans('front.Sink')}}</label>
 
-                                        <input id="check-c" type="checkbox" name="indoor_table">
+                                        <input id="check-c" type="checkbox" name="indoor_table"  @if(isset($equipments) && is_array($equipments) && in_array("indoor_table",$equipments)) checked @endif>
                                         <label for="check-c">{{trans('front.Indoor table')}}</label>
 
-                                        <input id="check-d" type="checkbox" name="dishes">
+                                        <input id="check-d" type="checkbox" name="dishes"  @if(isset($equipments) && is_array($equipments) && in_array("dishes",$equipments)) checked @endif>
                                         <label for="check-d">{{trans('front.Dishes')}}</label>
 
-                                        <input id="check-i" type="checkbox" name="camping_chairs">
+                                        <input id="check-i" type="checkbox" name="camping_chairs"  @if(isset($equipments) && is_array($equipments) && in_array("camping_chairs",$equipments)) checked @endif>
                                         <label for="check-i">{{trans('front.Camping chairs')}}</label>
 
-                                        <input id="check-j" type="checkbox" name="water">
+                                        <input id="check-j" type="checkbox" name="water"  @if(isset($equipments) && is_array($equipments) && in_array("water",$equipments)) checked @endif>
                                         <label for="check-j">{{trans('front.water_tank')}}</label>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <input id="check-e" type="checkbox" name="power" >
+                                        <input id="check-e" type="checkbox" name="power"  @if(isset($equipments) && is_array($equipments) && in_array("power",$equipments)) checked @endif>
                                         <label for="check-e">{{trans('front.Power supply')}}</label>
 
-                                        <input id="check-f" type="checkbox" name="cooling_possibility" >
+                                        <input id="check-f" type="checkbox" name="cooling_possibility"  @if(isset($equipments) && is_array($equipments) && in_array("cooling_possibility",$equipments)) checked @endif>
                                         <label for="check-f">{{trans('front.Fridge')}}</label>
 
-                                        <input id="check-g" type="checkbox" name="electronics">
+                                        <input id="check-g" type="checkbox" name="electronics"  @if(isset($equipments) && is_array($equipments) && in_array("electronics",$equipments)) checked @endif>
                                         <label for="check-g">{{trans('front.CD Player')}}</label>
 
-                                        <input id="check-h" type="checkbox" name="camping_table">
+                                        <input id="check-h" type="checkbox" name="camping_table"  @if(isset($equipments) && is_array($equipments) && in_array("camping_table",$equipments)) checked @endif>
                                         <label for="check-h">{{trans('front.Camping table')}}</label>
 
-                                        <input id="check-k" type="checkbox" name="transport">
+                                        <input id="check-k" type="checkbox" name="transport"  @if(isset($equipments) && is_array($equipments) && in_array("transport",$equipments)) checked @endif>
                                         <label for="check-k">{{trans('front.Trailer hitch')}}</label>
 
-                                        <input id="check-l" type="checkbox" name="additional_equipment_outside">
+                                        <input id="check-l" type="checkbox" name="additional_equipment_outside"  @if(isset($equipments) && is_array($equipments) && in_array("additional_equipment_outside",$equipments)) checked @endif>
                                         <label for="check-l">{{trans('front.cooker_fire')}}</label>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                             </div>
                         </div>
                         <!-- Panel Dropdown / End -->
-                        <!-- Panel Dropdown -->
+                        <!-- Panel Dropdown
                         <div class="panel-dropdown">
                             <a href="#">{{trans('front.distance_radius')}}</a>
                             <div class="panel-dropdown-content">
@@ -122,7 +122,7 @@
                                     <button class="panel-apply">{{trans('front.apply')}}</button>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- Panel Dropdown / End -->
                     </div>
                     <!-- Filters / End -->

@@ -369,18 +369,44 @@ class FC_rentOutController extends Controller
         $idCamper = $camper->id;
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory = $data ? $data->label_en : ''; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
-        $insurance = DB::table('insurances')->get();
+        /*$insurance = DB::table('insurances')->get();
         foreach ($insurance as $item) {
-            if ($item->allowed_total_weight <= $camper->allowed_total_weight) {
-                $camper->insurance_price = $item->price_per_day;
-                $camper->id_insurances = $item->id;
-            }
+        if ($item->allowed_total_weight <= $camper->allowed_total_weight) {
+        $camper->insurance_price = $item->price_per_day;
+        $camper->id_insurances = $item->id;
+        }
+        }*/
+        $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
+        $insurance = Insurance::where('id_camper_categories', $camper->id_camper_categories);
+        $insurance = $camper->allowed_total_weight == 0 ? $insurance->get() : $insurance->where('tonage', $t)->get();
+
+        $has_insurance = $camper->has_insurance;
+        $extra = DB::table('insurance_extra')
+            ->select('name')
+            ->groupBy('name')
+            ->get();
+
+        $subExtraNames = DB::table('insurance_extra')
+            ->select(DB::raw('name, CONCAT(name, sub_extra) AS full_name'))
+            ->whereNotNull('sub_extra')
+            ->groupBy('name', 'sub_extra')
+            ->get();
+        $extraInsurance = InsuranceExtra::join('camper_insurances', 'camper_insurances.id_insurance_extra', '=', 'insurance_extra.id')
+            ->select('name', 'sub_extra')
+            ->where('camper_insurances.id_campers', $request->id_campers)->get();
+        $extraNames = [];
+        foreach ($extraInsurance as $extIns) {
+            $extraNames[] = $extIns->name;
+            $extraNames[] = $extIns->name . ($extIns->sub_extra != null ? '_' . $extIns->sub_extra : '');
         }
         return view('frontend.camper.rent_out.insurance')
-            ->with('camper', $camper)
             ->with('client', $client)
-            ->with('idCamper', $idCamper)
-            ->with('camperCategory', $camperCategory)
+            ->with('camper', $camper)
+            ->with('insurance', $insurance)
+            ->with('extra', $extra)
+            ->with('has_insurance', $has_insurance)
+            ->with('extraNames', $extraNames)
+            ->with('subExtraNames', $subExtraNames)
         ;
     }
 
@@ -795,7 +821,7 @@ class FC_rentOutController extends Controller
             return redirect(route('frontend.login.client'));
         }
         $camper = Camper::find($id);
-        $calendar = Booking::where('id_clients', $client->id)->where('id_booking_status', 7)->select(['start_date', 'end_date', 'comment'])->get();
+        $calendar = Booking::where('id_clients', $client->id)->where('id_campers', $camper->id)->where('id_booking_status', 7)->select(['start_date', 'end_date', 'comment'])->get();
 
         return view('frontend.camper.rent_out.calendar')
             ->with('client', $client)
@@ -986,7 +1012,7 @@ class FC_rentOutController extends Controller
             $camper_terms_winter->id_campers = $camper->id;
             $camper_terms_winter->save();
         }
-        $calendar = Booking::where('id_clients', $client->id)->where('id_booking_status', 7)->select(['start_date', 'end_date', 'comment'])->get();
+        $calendar = Booking::where('id_clients', $client->id)->where('id_campers', $camper->id)->where('id_booking_status', 7)->select(['start_date', 'end_date', 'comment'])->get();
         return view('frontend.camper.rent_out.calendar')
             ->with('client', $client)
             ->with('camper', $camper)
@@ -1112,7 +1138,7 @@ class FC_rentOutController extends Controller
             }
         }
         $camper = Camper::find($request->id_campers);
-        $calendar = Booking::where('id_clients', $client->id)->where('id_booking_status', 7)->select(['start_date', 'end_date', 'comment'])->get();
+        $calendar = Booking::where('id_clients', $client->id)->where('id_campers', $camper->id)->where('id_booking_status', 7)->select(['start_date', 'end_date', 'comment'])->get();
         return view('frontend.camper.rent_out.calendar')
             ->with('client', $client)
             ->with('camper', $camper)

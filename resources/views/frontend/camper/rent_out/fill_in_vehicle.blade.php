@@ -81,12 +81,12 @@
 						</li>
 						<li>
 							<div class="row">
-								<!-- Phone -->
+								<!--
 								<div class="col-md-6" style="margin-top: 20px;">
 									<Label> {{trans('front.converted_vehicle')}} </label>
-								</div>
+								</div> -->
 
-								<!-- Website -->
+								<!-- -->
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="license_plate_number">{{trans('front.licence_number')}}</label>
@@ -97,13 +97,13 @@
 						</li>
 						<li>
 							<div class="row">
-								<!-- Phone -->
+								<!--
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="vehicle_licence">{{trans('front.vehicle_registration')}}</label>
 										<input type="text" name="vehicle_licence" value="{{$camper->vehicle_licence}}">
 									</div>
-								</div>
+								</div> -->
 
 								<!-- Website -->
 								<div class="col-md-6" style="margin-top: 20px;">
@@ -255,7 +255,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="length">{{trans('front.length_in_metres')}}</label>
-										<input type="number" min="0" name="length" value="{{$camper->length}}">
+										<input type="number" min="0" name="length" step="any" value="{{$camper->length}}">
 									</div>
 								</div>
 							</div>
@@ -274,7 +274,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="cylinder_capacity">{{trans('front.cylinder_capacity')}}</label>
-										<input type="number" min="0" name="cylinder_capacity" value="{{$camper->cylinder_capacity}}">
+										<input type="number" min="0" name="cylinder_capacity" step="any" value="{{$camper->cylinder_capacity}}">
 									</div>
 								</div>
 							</div>

@@ -553,7 +553,7 @@ return [
     'Verified' => 'Valid',
     'publier_camper' => 'publish the camper',
     'kilometres' => 'Kilometres',
-    'verified' => 'Sned to verify',
+    'verified' => 'Send to verify',
     'indoor_insurance' => 'Extras: Indoor insurance',
     'assistance_insurance' => 'Extras: Assistance',
     'occupant_accident' => 'Extras: Occupant accident',

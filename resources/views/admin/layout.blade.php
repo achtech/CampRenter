@@ -160,7 +160,7 @@
                                                         <span class="btn btn-primary rounded-circle btn-circle"><i
                                                                 data-feather="box" class="text-white"></i></span>
                                                         <div class="w-75 d-inline-block v-middle pl-2">
-                                                            <h6 class="message-title mb-0 mt-1">{{$camps->client_last_name." ".$camps->client_name}}</h6> <span
+                                                            <h6 class="message-title mb-0 mt-1">{{$camps->camper_name}}</h6> <span
                                                                 class="font-12 text-nowrap d-block text-muted">{{(app()->getLocale()== 'fr' ? $camps->label_fr : (app()->getLocale()== 'en' ? $camps->label_en : $camps->label_de))}}</span>
                                                             <span class="font-12 text-nowrap d-block text-muted">{{date('j F Y', strtotime($camps->created_at))}}</span>
                                                         </div>

@@ -113,7 +113,6 @@
                 reader.onload = function (e) {
                     $('#camper_image')
                         .attr('src', e.target.result)
-                        .width(100)
                         .height(130);
                 };
 
