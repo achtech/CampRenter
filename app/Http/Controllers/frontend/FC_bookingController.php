@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OwnerRequestMail;
+use App\Mail\RenterRequestMail;
 use App\Models\Booking;
 use App\Models\BookingExtra;
 use App\Models\Camper;
@@ -13,6 +15,7 @@ use App\Models\Notification;
 use App\Models\Promotion;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FC_bookingController extends Controller
 {
@@ -26,6 +29,24 @@ class FC_bookingController extends Controller
         }
         $ownerBookings = DB::table("v_bookings_owner")->where('id_owners', $client->id)->orderBy('id', 'desc')->get();
         $renterBookings = DB::table("v_bookings_owner")->where('booking_status_id', '<>', 7)->where('id_renters', $client->id)->orderBy('id', 'desc')->get();
+        foreach ($renterBookings as $booking) {
+            $bookingWithoutInsurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
+            $totalExtra = 0;
+            $bookingExtras = $this->getExtraBooking($booking->id);
+            foreach ($bookingExtras as $be) {
+                $totalExtra += $be->price;
+            }
+            $booking->total = $bookingWithoutInsurance + $totalExtra + $booking->insurance_price;
+        }
+        foreach ($ownerBookings as $booking) {
+            $bookingWithoutInsurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
+            $totalExtra = 0;
+            $bookingExtras = $this->getExtraBooking($booking->id);
+            foreach ($bookingExtras as $be) {
+                $totalExtra += $be->price;
+            }
+            $booking->total = $bookingWithoutInsurance + $totalExtra + $booking->insurance_price;
+        }
         return view('frontend.clients.booking.index')
             ->with('ownerBookings', $ownerBookings)
             ->with('renterBookings', $renterBookings);
@@ -56,7 +77,6 @@ class FC_bookingController extends Controller
 
             $booking->save();
 
-            $camper = Camper::find($request->id_campers);
             $notification = new Notification();
             $notification->id_renter = $booking->id_clients;
             $notification->id_owner = $camper->id_clients;
@@ -65,16 +85,22 @@ class FC_bookingController extends Controller
             $notification->type = "Booking";
             $notification->status = "unread";
             $notification->save();
+            //dd($notification);
+            $owner = Client::find($camper->id_clients);
+            Mail::to($client['email'])->send(new RenterRequestMail($client, $camper));
+            Mail::to($owner['email'])->send(new OwnerRequestMail($owner, $camper));
         }
     }
 
     public function detailBookingOwner($id)
     {
-        $notification = Notification::where('type', 'Booking')->where('id_table', $id)->first();
+        $n = Notification::where('type', 'Booking')->where('id_table', $id)->first();
+        $notification = Notification::find($n->id);
         if ($notification) {
             $notification->status = "readed";
-            $notification->save();
+            $notification->update();
         }
+        //    dd($notification);
 
         $booking = DB::table("v_bookings_owner")->where('id', $id)->first();
         return view('frontend.clients.booking.detail1')
@@ -92,7 +118,7 @@ class FC_bookingController extends Controller
         $notification->id_renter = $booking->id_clients;
         $notification->id_owner = $camper->id_clients;
         $notification->id_table = $booking->id;
-        $notification->message = "Your request for camper " . $camper->camper_name . " between  : " . $booking->start_date . " and " . $booking->end_date . " is CONFIRMED";
+        $notification->message = "Your request for camper " . $camper->camper_name . " between  : " . date("j F Y", strtotime($booking->start_date)) . " and " . date("j F Y", strtotime($booking->end_date)) . " is CONFIRMED";
         $notification->type = "Booking";
         $notification->status = "unread";
         $notification->save();
@@ -111,7 +137,7 @@ class FC_bookingController extends Controller
         $notification->id_renter = $booking->id_clients;
         $notification->id_owner = $camper->id_clients;
         $notification->id_table = $booking->id;
-        $notification->message = "Your request for camper " . $camper->camper_name . " between  : " . $booking->start_date . " and " . $booking->end_date . " is REJECTED";
+        $notification->message = "Your request for camper " . $camper->camper_name . " between  : " . date("j F Y", strtotime($booking->start_date)) . " and " . date("j F Y", strtotime($booking->end_date)) . " is REJECTED";
         $notification->type = "Booking";
         $notification->status = "unread";
         $notification->save();

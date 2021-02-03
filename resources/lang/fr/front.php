@@ -176,7 +176,7 @@ return [
     'hi' => 'Salut',
     'confirm_registration' => 'Veuillez cliquer sur le bouton pour confirmer votre adresse e-mail et finaliser votre inscription.',
     'question_case' => ' En cas de questions, veuillez nous écrire un e-mail à',
-    'contact_us' => "ou appelez-nous au 061 551 00 20. L'équipe MyCamper vous répond dans les plus brefs délais.",
+    'contact_us' => "ou appelez-nous au (123) 123-456. L'équipe CampUnite vous répond dans les plus brefs délais.",
     'best_regards' => 'Sincères amitiés ',
     'camp_team' => 'Votre équipe Camperunite ',
     'address_verified' => 'Votre adresse e-mail a été vérifiée avec succès',

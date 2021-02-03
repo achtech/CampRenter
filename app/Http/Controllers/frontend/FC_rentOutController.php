@@ -345,6 +345,7 @@ class FC_rentOutController extends Controller
 
     public function storePhotosAndGoToInsurance(Request $request)
     {
+
         $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -379,7 +380,6 @@ class FC_rentOutController extends Controller
         $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
         $insurance = Insurance::where('id_camper_categories', $camper->id_camper_categories);
         $insurance = $camper->allowed_total_weight == 0 ? $insurance->get() : $insurance->where('tonage', $t)->get();
-
         $has_insurance = $camper->has_insurance;
         $extra = DB::table('insurance_extra')
             ->select('name')
@@ -861,7 +861,9 @@ class FC_rentOutController extends Controller
             case 'detail':
                 return redirect(route('frontend.camper.detail', $id));
             case 'delete':
-                $camper = DB::table('campers')->where('id', $id)->delete();
+                $camper = Camper::find($id);
+                $camper->is_deleted = 0;
+                $camper->update();
                 return redirect(route('frontend.clients.camper'));
         }
 

@@ -229,7 +229,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="fuel_capacity">{{trans('front.fuel_capacity')}}</label>
-										<input type="number" min="0" name="fuel_capacity" value="{{$camper->fuel_capacity}}">
+										<input type="number" min="0" name="fuel_capacity" step="any" value="{{$camper->fuel_capacity}}">
 									</div>
 								</div>
 
@@ -237,7 +237,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="fuel_consumation">{{trans('front.fuel_consumation')}}</label>
-										<input type="number" min="0" name="fuel_consumation" value="{{$camper->fuel_consumation}}">
+										<input type="number" min="0" name="fuel_consumation" step="any" value="{{$camper->fuel_consumation}}">
 									</div>
 								</div>
 							</div>

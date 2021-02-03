@@ -3,7 +3,7 @@
         @foreach($ownerBookings as $booking)
             <li class="booking-{{$booking->booking_status_id}}">
                 <div class="list-box-listing bookings">
-                    <div class="list-box-listing-img"><img src="{{asset('images/campers')}}/{{$booking->camper_image}}" alt=""></div>
+                    <div class="list-box-listing-img"><img src="{{asset('images/camper')}}/{{$booking->camper_image}}" alt=""></div>
                     <div class="list-box-listing-content">
                         <div class="inner">
                             <h3>{{$booking->camper_name}}
@@ -12,7 +12,7 @@
                             <div class="inner-booking-list">
                                 <h5>{{trans('front.booking_date')}}:</h5>
                                 <ul class="booking-list">
-                                    <li class="highlighted">{{$booking->start_date}} - {{$booking->end_date}}</li>
+                                    <li class="highlighted">{{date('j F Y', strtotime($booking->start_date))}} - {{date('j F Y', strtotime($booking->end_date))}}</li>
                                 </ul>
                             </div>
 
@@ -26,9 +26,7 @@
                             <div class="inner-booking-list">
                                 <h5>{{trans('front.client')}}:</h5>
                                 <ul class="booking-list">
-                                    <li>{{$booking->client_last_name." ".$booking->client_name}}</li>
-                                    <li>{{$booking->email ?? trans('front.no_email')}}</li>
-                                    <li>{{$booking->telephone ?? trans('front.no_phone')}}</li>
+                                    <li>{{$booking->client_last_name}}</li>
                                 </ul>
                             </div>
                             @if($booking->booking_status_id==5 || $booking->booking_status_id==4)

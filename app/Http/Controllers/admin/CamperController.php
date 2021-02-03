@@ -36,7 +36,7 @@ class CamperController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = Camper::get();
+        $datas = Camper::where('is_deleted', 1)->get();
 
         return view('admin.camper.index')->with('datas', $datas);
     }
@@ -207,7 +207,8 @@ class CamperController extends Controller
         if (empty($data)) {
             return redirect(route('camper.index'));
         }
-        $data->delete();
+        $data->is_deleted = 0;
+        $data->update();
         return redirect(route('camper.index'));
     }
 

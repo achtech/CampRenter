@@ -560,5 +560,6 @@ return [
     'bonus_loss' => 'Extras: Bonus loss & deductible transfer',
     'main_insurance' => 'Main Insurance',
     'extras_insurance' => 'Extras Insurances',
-
+    'registered' => 'Registered',
+    'total_price' => 'Total price',
 ];

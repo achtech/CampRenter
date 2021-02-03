@@ -41,7 +41,7 @@
 
 									<div class="message-by">
 										<div class="message-by-headline">
-											<h5>{{$msg->renter_name}} @if($msg->status=="unread") <i>{{trans('front.unread')}}</i> @endif</h5>
+											<h5>{{$msg->renter_name}} @if(App\Http\Controllers\frontend\FC_messageController::getNotificationByRenter($msg->renter_id)>0) <i>{{trans('front.unread')}}</i> @endif</h5>
 											<span>{{$msg->date_message}}</span>
 										</div>
 										<p>{{ Illuminate\Support\Str::limit($msg->message, 100)}}</p>

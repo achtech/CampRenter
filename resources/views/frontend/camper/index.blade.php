@@ -41,7 +41,7 @@
 			@if(!session('_client'))
 			<a class="button" href="{{route('frontend.client.show_login')}}"><i class="fas fa-sign-in-alt"></i> {{trans('front.register')}}</a>
 			@else
-			<a class="button" href="{{route('rent_out')}}"><i class="fas fa-sign-in-alt"></i> {{trans('front.register')}}</a>
+			<a class="button" href="" style="pointer-events: none"><i class="fas fa-sign-in-alt"></i> {{trans('front.registered')}}</a>
 			@endif
 		</div>
 	</div>

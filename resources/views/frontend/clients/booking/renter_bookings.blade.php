@@ -2,7 +2,7 @@
     @foreach($renterBookings as $booking)
         <li class="booking-{{$booking->booking_status_id}}">
             <div class="list-box-listing bookings">
-                <div class="list-box-listing-img"><img src="{{asset('images')}}/avatar/{{$booking->image}}" alt=""></div>
+                <div class="list-box-listing-img"><img src="{{asset('images')}}/camper/{{$booking->camper_image}}" alt=""></div>
                 <div class="list-box-listing-content">
                     <div class="inner">
                         <h3>{{$booking->camper_name}}
@@ -11,14 +11,14 @@
                         <div class="inner-booking-list">
                             <h5>{{trans('front.booking_date')}}:</h5>
                             <ul class="booking-list">
-                                <li class="highlighted">{{$booking->start_date}} - {{$booking->end_date}}</li>
+                                <li class="highlighted">From: {{date('j F Y', strtotime($booking->start_date))}} To: {{date('j F Y', strtotime($booking->end_date))}}</li>
                             </ul>
                         </div>
 
                         <div class="inner-booking-list">
-                            <h5>{{trans('front.price')}}:</h5>
+                            <h5>{{trans('front.total_price')}}:</h5>
                             <ul class="booking-list">
-                                <li class="highlighted">{{App\Http\Controllers\frontend\FC_CamperController::getCamperPriceCurrentSaison($booking->id_campers)}} CHF</li>
+                                <li class="highlighted">{{$booking->total}} CHF</li>
                             </ul>
                         </div>
 

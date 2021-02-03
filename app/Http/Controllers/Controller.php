@@ -114,12 +114,7 @@ class Controller extends BaseController
             ->orderby('campers.created_at')
             ->get();
     }
-    public static function getNotificationCount()
-    {
-        $client = self::getConnectedClient();
-        return DB::table('notifications')->where([
-            ['id_owner', $client->id], ['status', 'unread']])->get()->count();
-    }
+
     public static function getNotificationCountByType($type)
     {
         $client = self::getConnectedClient();

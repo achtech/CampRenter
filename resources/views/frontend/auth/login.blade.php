@@ -14,7 +14,7 @@
                     </label>
 
                     @error('email')
-                    <span class="invalid-feedback" role="alert" style="width: 100%;font-size: 50%;color: #ff4f70;">
+                    <span class="invalid-feedback" role="alert" style="width: 100%;font-size: 40%;color: #ff4f70;">
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror
@@ -26,9 +26,9 @@
                            name="password" required autocomplete="current-password">
 
                     @error('password')
-                    <span class="invalid-feedback" role="alert" style="width: 100%;margin-top: 0.25rem;font-size: 50%;color: #ff4f70;">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                        <span class="invalid-feedback" role="alert" style="width: 100%;margin-top: 0.25rem;font-size: 40%;color: #ff4f70;">
+                            <strong>{{ $message }}</strong>
+                        </span>
                     @enderror
                 </div>
 

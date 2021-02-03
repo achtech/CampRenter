@@ -200,7 +200,7 @@
 				</div>
 
 			</div>
-			<!-- Payment Methods Accordion / End -->
+			<!-- Payment Methods Accordion / End
 			<h3 class="margin-top-50 margin-bottom-30" >Or send Invoice</h3>
 			<div class="row">
 				<form action="{{route('frontend.clients.send.invoice')}}" method="POST">
@@ -248,7 +248,7 @@
 						<button type="submit" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Send Invoice</button>
 					</div>
 				</form>
-			</div>
+			</div>-->
 
 		</div>
 
@@ -259,7 +259,7 @@
 			<!-- Booking Summary -->
 			<div class="listing-item-container compact order-summary-widget">
 				<div class="listing-item">
-					<img src="{{asset('images')}}/campers/{{$booking->camper_image}}" alt="">
+					<img src="{{asset('images')}}/camper/{{$booking->camper_image}}" alt="">
 
 					<div class="listing-item-content">
 						<div class="numerical-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($booking->id_campers)}}"></div>

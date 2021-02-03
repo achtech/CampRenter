@@ -24,7 +24,7 @@ class FC_CamperController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $campers = DB::table("campers")->where('id_clients', $client->id)->get();
+        $campers = DB::table("campers")->where('is_deleted', 1)->where('id_clients', $client->id)->get();
         return view('frontend.clients.camper.index')
             ->with('campers', $campers);
     }
@@ -269,7 +269,8 @@ class FC_CamperController extends Controller
     public function getData()
     {
         return DB::table('campers')
-            ->where('is_confirmed', '1');
+            ->where('is_confirmed', '1')
+            ->where('is_deleted', 1);
     }
 
     public function searchingsnippet($_param)
@@ -292,6 +293,7 @@ class FC_CamperController extends Controller
 
                 $result = Camper::where('location', 'LIKE', '%' . $tab[$i] . '%')
                     ->where('is_confirmed', '1')
+                    ->where('is_deleted', 1)
                     ->orWhere('city', 'LIKE', '%' . $tab[$i] . '%')
                     ->orWhere('country', 'LIKE', '%' . $tab[$i] . '%');
 
@@ -307,7 +309,7 @@ class FC_CamperController extends Controller
     {
         $camper = DB::table('campers')->find($id_camper);
         $owner = DB::table('clients')->where('id', $camper->id_clients)->first();
-        $campers_owner = DB::table('campers')->where('id_clients', $owner->id)->get();
+        $campers_owner = DB::table('campers')->where('is_deleted', 1)->where('id_clients', $owner->id)->get();
         $reviews_client = DB::table('camper_reviews')->where('id_campers', $id_camper)->get();
         if ($owner->photo != null) {
             $owner_photo = $owner->photo;
