@@ -29,12 +29,13 @@
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\admin\CamperController::getName('clients',$item->id_clients)}}</td>
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\admin\CamperController::getLabel('camper_categories',$item->id_camper_categories)}}</td>
                                     <td style="vertical-align: middle;text-align:center">
-                                        @if($item->availability==0)
-                                        <i class="btn waves-effect waves-light btn-danger">Blocked</i>
-                                        @elseif($item->availability==1)
-                                        <i class="btn waves-effect waves-light btn-warning">Reserved</i>
+                                    @php($status = App\Http\Controllers\admin\CamperController::getCamperStatus($item->id))
+                                        @if($status->bookingStatusId==3 || $status->bookingStatusId==7)
+                                        <i class="btn waves-effect waves-light btn-danger">{{$status->label_en}}</i>
+                                        @elseif($status->bookingStatusId<3 || ($status->bookingStatusId>=4 && $status->bookingStatusId<=6) )
+                                        <i class="btn waves-effect waves-light btn-warning">{{$status->label_en}}</i>
                                         @else
-                                        <i class="btn waves-effect waves-light btn-success">Available</i>
+                                        <i class="btn waves-effect waves-light btn-success">{{$status->label_en}}</i>
                                         @endif
                                     <td style="vertical-align: middle;">
                                         @if($item->availability==0)

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OwnerRequestMail;
+use App\Mail\RenterRequestMail;
 use App\Models\Booking;
 use App\Models\BookingExtra;
 use App\Models\Camper;
@@ -13,6 +15,7 @@ use App\Models\Notification;
 use App\Models\Promotion;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FC_bookingController extends Controller
 {
@@ -26,6 +29,24 @@ class FC_bookingController extends Controller
         }
         $ownerBookings = DB::table("v_bookings_owner")->where('id_owners', $client->id)->orderBy('id', 'desc')->get();
         $renterBookings = DB::table("v_bookings_owner")->where('booking_status_id', '<>', 7)->where('id_renters', $client->id)->orderBy('id', 'desc')->get();
+        foreach ($renterBookings as $booking) {
+            $bookingWithoutInsurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
+            $totalExtra = 0;
+            $bookingExtras = $this->getExtraBooking($booking->id);
+            foreach ($bookingExtras as $be) {
+                $totalExtra += $be->price;
+            }
+            $booking->total = $bookingWithoutInsurance + $totalExtra + $booking->insurance_price;
+        }
+        foreach ($ownerBookings as $booking) {
+            $bookingWithoutInsurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
+            $totalExtra = 0;
+            $bookingExtras = $this->getExtraBooking($booking->id);
+            foreach ($bookingExtras as $be) {
+                $totalExtra += $be->price;
+            }
+            $booking->total = $bookingWithoutInsurance + $totalExtra + $booking->insurance_price;
+        }
         return view('frontend.clients.booking.index')
             ->with('ownerBookings', $ownerBookings)
             ->with('renterBookings', $renterBookings);
@@ -56,7 +77,6 @@ class FC_bookingController extends Controller
 
             $booking->save();
 
-            $camper = Camper::find($request->id_campers);
             $notification = new Notification();
             $notification->id_renter = $booking->id_clients;
             $notification->id_owner = $camper->id_clients;
@@ -65,16 +85,22 @@ class FC_bookingController extends Controller
             $notification->type = "Booking";
             $notification->status = "unread";
             $notification->save();
+            //dd($notification);
+            $owner = Client::find($camper->id_clients);
+            Mail::to($client['email'])->send(new RenterRequestMail($client, $camper));
+            Mail::to($owner['email'])->send(new OwnerRequestMail($owner, $camper));
         }
     }
 
     public function detailBookingOwner($id)
     {
-        $notification = Notification::where('type', 'Booking')->where('id_table', $id)->first();
+        $n = Notification::where('type', 'Booking')->where('id_table', $id)->first();
+        $notification = Notification::find($n->id);
         if ($notification) {
             $notification->status = "readed";
-            $notification->save();
+            $notification->update();
         }
+        //    dd($notification);
 
         $booking = DB::table("v_bookings_owner")->where('id', $id)->first();
         return view('frontend.clients.booking.detail1')
@@ -92,7 +118,7 @@ class FC_bookingController extends Controller
         $notification->id_renter = $booking->id_clients;
         $notification->id_owner = $camper->id_clients;
         $notification->id_table = $booking->id;
-        $notification->message = "Your request for camper " . $camper->camper_name . " between  : " . $booking->start_date . " and " . $booking->end_date . " is CONFIRMED";
+        $notification->message = "Your request for camper " . $camper->camper_name . " between  : " . date("j F Y", strtotime($booking->start_date)) . " and " . date("j F Y", strtotime($booking->end_date)) . " is CONFIRMED";
         $notification->type = "Booking";
         $notification->status = "unread";
         $notification->save();
@@ -111,7 +137,7 @@ class FC_bookingController extends Controller
         $notification->id_renter = $booking->id_clients;
         $notification->id_owner = $camper->id_clients;
         $notification->id_table = $booking->id;
-        $notification->message = "Your request for camper " . $camper->camper_name . " between  : " . $booking->start_date . " and " . $booking->end_date . " is REJECTED";
+        $notification->message = "Your request for camper " . $camper->camper_name . " between  : " . date("j F Y", strtotime($booking->start_date)) . " and " . date("j F Y", strtotime($booking->end_date)) . " is REJECTED";
         $notification->type = "Booking";
         $notification->status = "unread";
         $notification->save();
@@ -125,6 +151,7 @@ class FC_bookingController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        //dd($id);
         $booking = DB::table("v_bookings_owner")->where('id', $id)->first();
         $camper = Camper::find($booking->id_campers);
         $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
@@ -132,7 +159,9 @@ class FC_bookingController extends Controller
         $tons = $hasTonz->tonage != null ? $t : 0;
         $insurance_total = Controller::getInsurance($camper->id_camper_categories, $booking->nbr_days, $tons);
         //save included insurance in booking
-        $this->changeInsurance($id);
+        if ($camper->has_insurance) {
+            $this->changeInsurance($id);
+        }
 
         $insurance = Insurance::where('id_camper_categories', $camper->id_camper_categories)
             ->where('nbr_days_from', "<=", $booking->nbr_days)
@@ -159,17 +188,16 @@ class FC_bookingController extends Controller
             $this->addExtra($id, $item->name);
 
         }
-        $total_without_insurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
-        $totalBooking = $total_without_insurance + $insurance_total + $totalExtra;
-        return view('frontend.clients.booking.booking_insurance')
+        $html = $this->getHtmlPricesBooking($booking->id);
+
+        return view('frontend.clients.booking.booking_paiement')
             ->with('booking', $booking)
             ->with('insurance_total', $insurance_total)
             ->with('insurance', $insurance)
             ->with('camper', $camper)
             ->with('extras', $extras)
             ->with('extraIds', $extraIds)
-            ->with('total_without_insurance', $total_without_insurance)
-            ->with('totalBooking', $totalBooking);
+            ->with('html', $html);
     }
 
     public function changeInsurance($id_booking)
@@ -184,6 +212,7 @@ class FC_bookingController extends Controller
         $b = Booking::find($id_booking);
         $b->insurance_price = $insurance_total;
         $b->save();
+        return $this->getHtmlPricesBooking($id_booking);
 
     }
 
@@ -191,7 +220,8 @@ class FC_bookingController extends Controller
     {
         $b = Booking::find($id);
         $b->insurance_price = 0;
-        $b->save();
+        $b->update();
+        return $this->getHtmlPricesBooking($id);
     }
 
     public function addExtra($id_booking, $extraName)
@@ -205,24 +235,46 @@ class FC_bookingController extends Controller
             'price' => Controller::getExtraInsurance($extra->name, $booking->nbr_days),
         ]);
         $newData->save();
+        return $this->getHtmlPricesBooking($id_booking);
     }
 
     public function removeExtra($id_booking, $extraName)
     {
-        $extra = InsuranceExtra::where('name', $extraName)->first();
-        DB::statement('DELETE FROM booking_extras WHERE id_bookings =' . $id_booking . " and id_insurance_extra=" . $extra->id);
+        $extra = InsuranceExtra::where('name', $extraName)->get();
+        $ids = '';
+        foreach ($extra as $ext) {
+            $ids .= $ext->id . ',';
+        }
+        $ids = rtrim($ids, ',');
+        DB::statement('DELETE FROM booking_extras WHERE id_bookings =' . $id_booking . " and id_insurance_extra in (" . $ids . ")");
+        return $this->getHtmlPricesBooking($id_booking);
     }
-/**
- * 7-8 main
- * 5-6  off
- * 9-10 off
- * 11-4 winter
- */
-/**
- * case 1 : same month => (pricePerDay+insurance) * nbrOfDays
- * case 2 : different month but same saison => (pricePerDay+insurance) * nbrOfDays
- * case 3 : different month and different saison => ((pricePerDay1+insurance) * nbrOfDaysOfFirstSaison)+((pricePerDay2+insurance) * nbrOfDaysOfSecondSaison)
- */
+
+    public function addSubExtra($id_booking, $extraName, $subExtra)
+    {
+        $this->removeExtra($id_booking, $extraName);
+        $extra = InsuranceExtra::where('name', $extraName)->where('sub_extra', $subExtra)->first();
+        $booking = DB::table('v_bookings_owner')->where('id', $id_booking)->first();
+        $newData = BookingExtra::create([
+            'id_bookings' => $id_booking,
+            'id_insurance_extra' => $extra->id,
+            'price' => Controller::getSubExtraInsurance($extra->name, $subExtra, $booking->nbr_days),
+        ]);
+        $newData->save();
+        return $this->getHtmlPricesBooking($id_booking);
+
+    }
+
+    public function removeSubExtra($id_booking, $extraName, $subExtra)
+    {
+        $extra = InsuranceExtra::where('name', $extraName)->where('sub_extra', $subExtra)->first();
+        DB::statement('DELETE FROM booking_extras WHERE id_bookings =' . $id_booking . " and id_insurance_extra=" . $extra->id);
+        return $this->getHtmlPricesBooking($id_booking);
+    }
+
+    /**
+     *
+     */
     private function getBookingWithoutInsurance($id, $start_date, $end_date)
     {
 
@@ -272,6 +324,29 @@ class FC_bookingController extends Controller
     public static function getExtraBooking($id)
     {
         return BookingExtra::join('insurance_extra', 'insurance_extra.id', '=', 'booking_extras.id_insurance_extra')->where('id_bookings', $id)->get();
+    }
+
+    public function getHtmlPricesBooking($booking_id)
+    {
+        $booking = DB::table("v_bookings_owner")->where('id', $booking_id)->first();
+
+        $total_without_insurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
+        $html = "<li>" . trans('front.date') . " <span>" . date('j F Y', strtotime($booking->created_date)) . "</span></li>";
+
+        $html .= "<li>" . trans('front.n_nights') . " <span>" . $booking->nbr_days . " " . trans('front.days') . "</span></li>";
+        $html .= "<li>Price <span>" . $total_without_insurance . " CHF</span></li>";
+
+        if ($booking->insurance_price != 0) {
+            $html .= "<li>Insurance  <span>" . $booking->insurance_price . " CHF</span></li>";
+        }
+        $totalExtra = 0;
+        $bookingExtras = $this->getExtraBooking($booking->id);
+        foreach ($bookingExtras as $be) {
+            $html .= "<li>" . $be->name . " <span>" . $be->price . " CHF</span></li>";
+            $totalExtra += $be->price;
+        }
+        $html .= "<li class='total-costs'>" . trans('front.total_cost') . " <span>" . ($total_without_insurance + $booking->insurance_price + $totalExtra) . " CHF</span></li>";
+        return $html;
     }
 
 }

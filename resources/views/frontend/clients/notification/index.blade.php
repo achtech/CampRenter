@@ -34,7 +34,7 @@
 						<ul>
 							@foreach($datas as $data)
 							<li class="{{$data->status}}">
-								<a href="#">
+								<a href="{{ route('frontend.clients.notification.detail',$data->id)}}">
 									<div class="message-avatar">
 										<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" />
 									</div>
@@ -42,7 +42,7 @@
 									<div class="message-by">
 										<div class="message-by-headline">
 											<h5>{{ App\Http\Controllers\Controller::getClientName($data->id_renter)}} @if($data->status == "unread") <i>{{trans('front.unread')}}</i> @endif</h5>
-											<span>{{date('j F Y h:m:s', strtotime($data->created_at))}}</span>
+											<span>{{date('j F Y', strtotime($data->created_at))}}</span>
 										</div>
 										<p>{{$data->message}}</p>
 									</div>

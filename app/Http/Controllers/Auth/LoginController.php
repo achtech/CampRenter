@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use App\Providers\RouteServiceProvider;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -52,6 +54,13 @@ class LoginController extends Controller
             Session::put('_client', $request['email']);
             return redirect()->intended(route('home.index'));
         }
-        return back()->withInput($request->only('email', 'remember'));
+
+        $user = Client::where('email', '=', $request->input('email'))->first();
+
+        if (!Hash::check($request->password, $user->password)) {
+            return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors([
+                'approve' => 'Wrong password',
+            ]);
+        }
     }
 }

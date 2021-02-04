@@ -1,6 +1,10 @@
 <!-- Verified Badge -->
 
-
+<div class="listing-item-container compact order-summary-widget">
+    <div class="listing-item">
+        <img src="{{asset('images')}}/camper/{{$camper->image}}" alt="">
+    </div>
+</div>
 <!-- Book Now -->
 <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
     <form method="POST" id="idForm" action="{{route('frontend.add_request_booking')}}" autocomplete="off" >
@@ -15,23 +19,6 @@
                         name="searchedDate"  placeholder="{{trans('front.check_in_out')}}"
                         />
             </div>
-            <!--
-            <div class="col-lg-12 booking_date" id="booking_devis">
-                <div class="col-lg-8 booking_date">
-                    <label>Number of night</label>
-                </div>
-
-                <div class="col-lg-4 booking_date">
-                    <span id="numberdays">10</span>
-                </div>
-                <div class="col-lg-8 booking_date">
-                    <label>Total</label>
-                </div>
-
-                <div class="col-lg-4 booking_date">
-                    <span id="priceBooking">100 CHF</span>
-                </div>
-            </div>-->
         </div>
 
         <!-- Book Now -->
@@ -44,15 +31,22 @@
     <!-- Estimated Cost -->
 </div>
 <!-- Book Now / End -->
-
 <!-- Contact -->
 <div class="boxed-widget margin-top-35">
     <div class="hosted-by-title">
-        <h4><span>{{trans('front.hosted_by')}}</span> <a href="{{route('frontend.camper.owner_detail', $camper->id)}}">{{$owner->client_name}} {{$owner->client_last_name}}</a></h4>
+        <h4><span>{{trans('front.hosted_by')}}</span> <a href="{{route('frontend.camper.owner_detail', $camper->id)}}">{{$owner->client_name}}</a></h4>
         <a href="{{route('frontend.camper.owner_detail', $camper->id)}}" class="hosted-by-avatar"><img src="{{asset('/images')}}/clients/{{$owner_photo}}" alt=""></a>
     </div>
 </div>
 <!-- Contact / End-->
+<!-- Insurance -->
+<div class="boxed-widget opening-hours margin-top-35">
+    <h3><i class="fas fa-user-shield"></i> Stay safe with Helvetia</h3>
+    <ul>
+        <li style="text-align: center;"><img src="{{asset('images')}}/logo.png" alt=""></li>
+    </ul>
+</div>
+<!-- OInsurance / End -->
 
 
 <!-- Share / Like -->

@@ -553,12 +553,13 @@ return [
     'Verified' => 'Valid',
     'publier_camper' => 'publish the camper',
     'kilometres' => 'Kilometres',
-    'verified' => 'Sned to verify',
+    'verified' => 'Send to verify',
     'indoor_insurance' => 'Extras: Indoor insurance',
     'assistance_insurance' => 'Extras: Assistance',
     'occupant_accident' => 'Extras: Occupant accident',
     'bonus_loss' => 'Extras: Bonus loss & deductible transfer',
     'main_insurance' => 'Main Insurance',
     'extras_insurance' => 'Extras Insurances',
-
+    'registered' => 'Registered',
+    'total_price' => 'Total price',
 ];

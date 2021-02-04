@@ -7,6 +7,7 @@ use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
 use App\Models\CamperImage;
+use App\Models\CamperStatus;
 use App\Models\Client;
 use App\Models\Fuel;
 use App\Models\LicenceCategory;
@@ -35,8 +36,24 @@ class CamperController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = Camper::get();
+        $datas = Camper::where('is_deleted', 1)->get();
+
         return view('admin.camper.index')->with('datas', $datas);
+    }
+
+    public static function getCamperStatus($id)
+    {
+        $data = DB::table('v_camper_status')->where('camperId', $id)->first();
+        if ($data != null) {
+            return $data;
+        } else {
+            $datas = new CamperStatus();
+            $datas->label_en = "Available";
+            $datas->label_de = "Available";
+            $datas->label_fr = "Available";
+            $datas->bookingStatusId = 10;
+            return $datas;
+        }
     }
     /**
      * Show the form for creating a new resource.
@@ -190,7 +207,8 @@ class CamperController extends Controller
         if (empty($data)) {
             return redirect(route('camper.index'));
         }
-        $data->delete();
+        $data->is_deleted = 0;
+        $data->update();
         return redirect(route('camper.index'));
     }
 

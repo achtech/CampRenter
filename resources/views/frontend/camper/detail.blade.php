@@ -59,7 +59,9 @@
 
 			<!-- Add Review Box -->
 			<div id="add-review" class="add-review-box">
+			@if(!session('_client'))
 				@include('frontend.camper.detail.add_review')
+				@endif
 			</div>
 			<!-- Add Review Box / End -->
 

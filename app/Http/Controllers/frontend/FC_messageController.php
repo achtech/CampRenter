@@ -5,6 +5,8 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Chat;
+use App\Models\Client;
+use App\Models\Notification;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -72,6 +74,15 @@ class FC_messageController extends Controller
                     ->orWhere('owner_id', $idClient);
             })->orderBy('id')->get();
         $id_bookings = $this->getIdBooking($idRenter);
+
+        Notification::where('id_owner', '=', $idRenter)
+            ->where('status', '=', 'unread')
+            ->where('type', '=', 'Chats')
+            ->where('id_renter', '=', $idClient)
+            ->update([
+                'status' => 'readed',
+            ]);
+
         return view('frontend.clients.message.detail')
             ->with('messages', $messages)
             ->with('conversations', $conversations)
@@ -94,6 +105,17 @@ class FC_messageController extends Controller
         $input['date_sent'] = now();
         $input['id_bookings'] = $this->getIdBooking($request->id_renters);
         $data = Chat::create($input);
+
+        $notification = new Notification();
+        $notification->id_renter = $data->id_renters;
+        $notification->id_owner = $client->id;
+        $notification->id_table = $data->id;
+        $renter = Client::find($data->id_renters);
+        $notification->message = "You have new message from : " . $renter->client_last_name . " " . $renter->client_name;
+        $notification->type = "Chats";
+        $notification->status = "unread";
+        $notification->save();
+
         return redirect(route('frontend.clients.message.detail', $request->id_renters));
     }
 
@@ -107,7 +129,7 @@ class FC_messageController extends Controller
             return redirect(route('frontend.login.client'));
         }
         $client = Controller::getConnectedClient();
-        return DB::table("chats")->where('status', "unread")->where('id_owners', $client->id)->get()->count();
+        return DB::table("notifications")->where('type', "Chats")->where('status', "unread")->where('id_renter', $client->id)->get()->count();
     }
 
     public function getIdBooking($idRenter)
@@ -150,5 +172,10 @@ class FC_messageController extends Controller
         });
 
         return redirect(route('frontend.clients.booking'));
+    }
+
+    public static function getNotificationByRenter($id)
+    {
+        return Notification::where('id_renter', $id)->where('type', 'Chats')->where('status', 'unread')->get()->count();
     }
 }

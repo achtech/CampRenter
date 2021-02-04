@@ -81,31 +81,18 @@
 						</li>
 						<li>
 							<div class="row">
-								<!-- Phone -->
+								<!--
 								<div class="col-md-6" style="margin-top: 20px;">
 									<Label> {{trans('front.converted_vehicle')}} </label>
-								</div>
+								</div> -->
 
-								<!-- Website -->
+								<!-- -->
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="license_plate_number">{{trans('front.licence_number')}}</label>
 										<input type="text" name="license_plate_number" value="{{$camper->license_plate_number}}">
 									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="row">
-								<!-- Phone -->
-								<div class="col-md-6">
-									<div class="card-label">
-										<label for="vehicle_licence">{{trans('front.vehicle_registration')}}</label>
-										<input type="text" name="vehicle_licence" value="{{$camper->vehicle_licence}}">
-									</div>
-								</div>
-
-								<!-- Website -->
 								<div class="col-md-6" style="margin-top: 20px;">
 									<select name="country" id="country" class="chosen-select" data-placeholder="country">
 										<option> </option>
@@ -114,6 +101,20 @@
 										@endforeach
 									</select>
 								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row">
+								<!--
+								<div class="col-md-6">
+									<div class="card-label">
+										<label for="vehicle_licence">{{trans('front.vehicle_registration')}}</label>
+										<input type="text" name="vehicle_licence" value="{{$camper->vehicle_licence}}">
+									</div>
+								</div> -->
+
+								<!-- Website -->
+
 							</div>
 						</li>
 						<li>
@@ -228,7 +229,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="fuel_capacity">{{trans('front.fuel_capacity')}}</label>
-										<input type="number" min="0" name="fuel_capacity" value="{{$camper->fuel_capacity}}">
+										<input type="number" min="0" name="fuel_capacity" step="any" value="{{$camper->fuel_capacity}}">
 									</div>
 								</div>
 
@@ -236,7 +237,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="fuel_consumation">{{trans('front.fuel_consumation')}}</label>
-										<input type="number" min="0" name="fuel_consumation" value="{{$camper->fuel_consumation}}">
+										<input type="number" min="0" name="fuel_consumation" step="any" value="{{$camper->fuel_consumation}}">
 									</div>
 								</div>
 							</div>
@@ -255,7 +256,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="length">{{trans('front.length_in_metres')}}</label>
-										<input type="number" min="0" name="length" value="{{$camper->length}}">
+										<input type="number" min="0" name="length" step="any" value="{{$camper->length}}">
 									</div>
 								</div>
 							</div>
@@ -274,7 +275,7 @@
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="cylinder_capacity">{{trans('front.cylinder_capacity')}}</label>
-										<input type="number" min="0" name="cylinder_capacity" value="{{$camper->cylinder_capacity}}">
+										<input type="number" min="0" name="cylinder_capacity" step="any" value="{{$camper->cylinder_capacity}}">
 									</div>
 								</div>
 							</div>

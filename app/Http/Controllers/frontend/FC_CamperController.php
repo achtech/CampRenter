@@ -7,9 +7,11 @@ use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
 use App\Models\CamperImage;
+use App\Models\CamperInsurance;
 use App\Models\CamperReview;
 use App\Models\CamperTerms;
 use App\Models\Client;
+use App\Models\Insurance;
 use DB;
 use Illuminate\Http\Request;
 
@@ -22,7 +24,7 @@ class FC_CamperController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $campers = DB::table("campers")->where('id_clients', $client->id)->get();
+        $campers = DB::table("campers")->where('is_deleted', 1)->where('id_clients', $client->id)->get();
         return view('frontend.clients.camper.index')
             ->with('campers', $campers);
     }
@@ -88,6 +90,7 @@ class FC_CamperController extends Controller
         $searchedCategories = $request->searchedCategories ?? '';
         $data = $this->getData();
         $camperEquipementIds = $this->searchByEquipment($request);
+        $equipments = $this->getEquipmentNames($request);
         $start_date_s = date("F d, Y");
         $end_date_s = date("F d, Y");
 
@@ -148,7 +151,8 @@ class FC_CamperController extends Controller
             ->with('categories', $categories)
             ->with('start_date_s', $start_date_s)
             ->with('end_date_s', $end_date_s)
-            ->with('campers', $data);
+            ->with('campers', $data)
+            ->with('equipments', $equipments);
     }
 
     public function searchByEquipment(Request $request)
@@ -156,33 +160,34 @@ class FC_CamperController extends Controller
         $ids = array();
         $exist = false;
         $data = DB::table('camper_equipment');
-        if ($request->cooking_possibility) {$exist = true;
+        if ($request->cooking_possibility == 'on') {$exist = true;
             $data->where('cooking_possibility', 1);}
-        if ($request->sink) {$exist = true;
+        if ($request->sink == 'on') {$exist = true;
             $data->where('sink', 1);}
-        if ($request->indoor_table) {$exist = true;
+        if ($request->indoor_table == 'on') {$exist = true;
             $data->where('indoor_table', 1);}
-        if ($request->dishes) {$exist = true;
+        if ($request->dishes == 'on') {$exist = true;
             $data->where('dishes', 1);}
-        if ($request->camping_chairs) {$exist = true;
+        if ($request->camping_chairs == 'on') {$exist = true;
             $data->where('camping_chairs', 1);}
-        if ($request->water) {$exist = true;
+        if ($request->water == 'on') {$exist = true;
             $data->where('water', 1);}
-        if ($request->power) {$exist = true;
+        if ($request->power == 'on') {$exist = true;
             $data->where('power', 1);}
-        if ($request->cooling_possibility) {$exist = true;
+        if ($request->cooling_possibility == 'on') {$exist = true;
             $data->where('cooling_possibility', 1);}
-        if ($request->electronics) {$exist = true;
+        if ($request->electronics == 'on') {$exist = true;
             $data->where('electronics', 1);}
-        if ($request->camping_table) {$exist = true;
+        if ($request->camping_table == 'on') {$exist = true;
             $data->where('camping_table', 1);}
-        if ($request->transport) {$exist = true;
+        if ($request->transport == 'on') {$exist = true;
             $data->where('transport', 1);}
-        if ($request->additional_equipment_outside) {$exist = true;
+        if ($request->additional_equipment_outside == 'on') {$exist = true;
             $data->where('additional_equipment_outside', 1);}
 
         if ($exist) {
             $data = $data->select('id_campers')->get();
+
             foreach ($data as $e) {
                 $ids[] = $e->id_campers;
             }
@@ -192,6 +197,61 @@ class FC_CamperController extends Controller
         }
 
     }
+    public function getEquipmentNames(Request $request)
+    {
+        $names = [];
+        if ($request->cooking_possibility == 'on') {
+            $names[] = 'cooking_possibility';
+        }
+
+        if ($request->sink == 'on') {
+            $names[] = 'sink';
+        }
+
+        if ($request->indoor_table == 'on') {
+            $names[] = 'indoor_table';
+        }
+
+        if ($request->dishes == 'on') {
+            $names[] = 'dishes';
+        }
+
+        if ($request->camping_chairs == 'on') {
+            $names[] = 'camping_chairs';
+        }
+
+        if ($request->water == 'on') {
+            $names[] = 'water';
+        }
+
+        if ($request->power == 'on') {
+            $names[] = 'power';
+        }
+
+        if ($request->cooling_possibility == 'on') {
+            $names[] = 'cooling_possibility';
+        }
+
+        if ($request->electronics == 'on') {
+            $names[] = 'electronics';
+        }
+
+        if ($request->camping_table == 'on') {
+            $names[] = 'camping_table';
+        }
+
+        if ($request->transport == 'on') {
+            $names[] = 'transport';
+        }
+
+        if ($request->additional_equipment_outside == 'on') {
+            $names[] = 'additional_equipment_outside';
+        }
+
+        return $names;
+
+    }
+
     public function searchByCategory($id)
     {
         $searchedCategory = $id ?? '';
@@ -209,7 +269,8 @@ class FC_CamperController extends Controller
     public function getData()
     {
         return DB::table('campers')
-            ->where('is_confirmed', '1');
+            ->where('is_confirmed', '1')
+            ->where('is_deleted', 1);
     }
 
     public function searchingsnippet($_param)
@@ -232,6 +293,7 @@ class FC_CamperController extends Controller
 
                 $result = Camper::where('location', 'LIKE', '%' . $tab[$i] . '%')
                     ->where('is_confirmed', '1')
+                    ->where('is_deleted', 1)
                     ->orWhere('city', 'LIKE', '%' . $tab[$i] . '%')
                     ->orWhere('country', 'LIKE', '%' . $tab[$i] . '%');
 
@@ -247,7 +309,7 @@ class FC_CamperController extends Controller
     {
         $camper = DB::table('campers')->find($id_camper);
         $owner = DB::table('clients')->where('id', $camper->id_clients)->first();
-        $campers_owner = DB::table('campers')->where('id_clients', $owner->id)->get();
+        $campers_owner = DB::table('campers')->where('is_deleted', 1)->where('id_clients', $owner->id)->get();
         $reviews_client = DB::table('camper_reviews')->where('id_campers', $id_camper)->get();
         if ($owner->photo != null) {
             $owner_photo = $owner->photo;
@@ -272,7 +334,24 @@ class FC_CamperController extends Controller
             })
             ->first();
         $saisons = $saisons != null ? $saisons : CamperTerms::where('id_campers', $id)->where('start_month', 11)->first();
-        return isset($saisons->price_per_night) ? $saisons->price_per_night : 0;
+        $camperPrice = $saisons != null ? $saisons->price_per_night : 0;
+        $camper = Camper::find($id);
+        $hasInsurance = $camper->has_insurance == 1;
+        $insurance = 0;
+        $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
+        if ($hasInsurance) {
+            $getInsurance = Insurance::where('id_camper_categories', $camper->id_camper_categories)
+                ->where('nbr_days_from', 1)
+                ->where('tonage', $t)
+                ->first();
+            $insurance = $getInsurance != null ? $getInsurance->price_per_day + $getInsurance->initial_price : 0;
+        }
+        $extras = CamperInsurance::join('insurance_extra', 'insurance_extra.id', '=', 'camper_insurances.id_insurance_extra')
+            ->where('id_campers', $camper->id)
+            ->where('nbr_days_from', 1)
+            ->sum(\DB::raw('price_per_day + initial_price'));
+
+        return $insurance + $extras + $camperPrice;
     }
 
 }
