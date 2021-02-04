@@ -6,6 +6,8 @@
     </div>
 </div>
 <!-- Book Now -->
+
+@if(App\Http\Controllers\Controller::getConnectedClient()!=null && $camper->id_clients!=App\Http\Controllers\Controller::getConnectedClient()->id)
 <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
     <form method="POST" id="idForm" action="{{route('frontend.add_request_booking')}}" autocomplete="off" >
     @csrf
@@ -30,6 +32,7 @@
     </form>
     <!-- Estimated Cost -->
 </div>
+@endif
 <!-- Book Now / End -->
 <!-- Contact -->
 <div class="boxed-widget margin-top-35">
