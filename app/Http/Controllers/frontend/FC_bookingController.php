@@ -100,7 +100,6 @@ class FC_bookingController extends Controller
             $notification->status = "readed";
             $notification->update();
         }
-        //    dd($notification);
 
         $booking = DB::table("v_bookings_owner")->where('id', $id)->first();
         return view('frontend.clients.booking.detail1')
