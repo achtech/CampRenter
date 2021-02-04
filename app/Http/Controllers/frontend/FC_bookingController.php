@@ -348,4 +348,15 @@ class FC_bookingController extends Controller
         return $html;
     }
 
+    public static function canBook($camper){
+        $connectedClient = Controller::getConnectedClient();
+        $check1 = $connectedClient !=null && $camper->id_clients!=$connectedClient->id;
+        return $check1 ;
+    }
+    public static function isNotBooked($id){
+        $connectedClient = Controller::getConnectedClient();
+        $check2 = Booking::where('id_campers',$id)->where('id_clients',$connectedClient->id)->where('id_booking_status',1)->get()->count();
+        return $check2 != 0 ;
+    }
+
 }
