@@ -9,6 +9,7 @@ use App\Models\Booking;
 use App\Models\BookingExtra;
 use App\Models\Camper;
 use App\Models\CamperTerms;
+use App\Models\Client;
 use App\Models\Insurance;
 use App\Models\InsuranceExtra;
 use App\Models\Notification;

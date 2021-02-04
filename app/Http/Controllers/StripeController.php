@@ -13,7 +13,8 @@ class StripeController extends Controller
      */
     public function handleGet()
     {
-        redirect(route('frontend.clients.booking'));
+        // redirect(route('frontend.clients.booking'));
+        echo 'ex';
     }
 
     /**
@@ -28,7 +29,7 @@ class StripeController extends Controller
             "source" => $request->stripeToken,
             "description" => "Making test payment.",
         ]);
-
+        echo 'ppppp';exit();
         Session::flash('success', 'Payment has been successfully processed.');
 
         return back();

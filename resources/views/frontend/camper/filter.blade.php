@@ -13,7 +13,7 @@
                             <div id="autocomplete-containeroff" data-autocomplete-tip="{{trans('front.type_and_hit_enter')}}">
                                 <input id="searchTextField" autocomplete="off" type="text" placeholder="{{trans('front.location')}}" name="searchedLocation" value="{{$searchedLocation ?? ''}}" onchange="document.forms['frm1'].submit()" >
                             </div>
-                            <a href="#"><i class="fa fa-map-marker"></i></a>
+                            <!--<a href="#"><i class="fa fa-map-marker"></i></a>-->
                         </div>
                     </div>
 
