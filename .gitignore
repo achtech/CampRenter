@@ -51,3 +51,6 @@ yarn-error.log
 /public/images/users/widget-table-pic3.jpg
 /public/images/users/widget-table-pic4.jpg
 /public/public/images/users/2018-10-11 22_31_38-Window.png
+/.env.example
+/composer.json
+/package-lock.json
