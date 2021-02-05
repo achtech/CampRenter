@@ -22,7 +22,7 @@ class CreateInsurancesTable extends Migration
             $table->double('initial_price')->nullable();
             $table->double('price_per_day')->nullable();
             $table->timestamps();
-            
+
         });
     }
 

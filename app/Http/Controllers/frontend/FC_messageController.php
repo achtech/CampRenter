@@ -75,10 +75,9 @@ class FC_messageController extends Controller
             })->orderBy('id')->get();
         $id_bookings = $this->getIdBooking($idRenter);
 
-        Notification::where('id_owner', '=', $idRenter)
-            ->where('status', '=', 'unread')
+        Notification::where('status', '=', 'unread')
             ->where('type', '=', 'Chats')
-            ->where('id_renter', '=', $idClient)
+            ->where('id_user', '=', $idClient)
             ->update([
                 'status' => 'readed',
             ]);
@@ -107,10 +106,9 @@ class FC_messageController extends Controller
         $data = Chat::create($input);
 
         $notification = new Notification();
-        $notification->id_renter = $data->id_renters;
-        $notification->id_owner = $client->id;
+        $notification->id_user = $request->id_renters;
         $notification->id_table = $data->id;
-        $renter = Client::find($data->id_renters);
+        $renter = Client::find($request->id_renters);
         $notification->message = "You have new message from : " . $renter->client_last_name . " " . $renter->client_name;
         $notification->type = "Chats";
         $notification->status = "unread";
@@ -129,7 +127,7 @@ class FC_messageController extends Controller
             return redirect(route('frontend.login.client'));
         }
         $client = Controller::getConnectedClient();
-        return DB::table("notifications")->where('type', "Chats")->where('status', "unread")->where('id_renter', $client->id)->get()->count();
+        return DB::table("notifications")->where('type', "Chats")->where('status', "unread")->where('id_user', $client->id)->get()->count();
     }
 
     public function getIdBooking($idRenter)
@@ -176,6 +174,6 @@ class FC_messageController extends Controller
 
     public static function getNotificationByRenter($id)
     {
-        return Notification::where('id_renter', $id)->where('type', 'Chats')->where('status', 'unread')->get()->count();
+        return Notification::where('id_user', $id)->where('type', 'Chats')->where('status', 'unread')->get()->count();
     }
 }

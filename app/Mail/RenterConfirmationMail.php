@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RenterRejectMail extends Mailable
+class RenterConfirmationMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $renter;
@@ -30,6 +30,6 @@ class RenterRejectMail extends Mailable
      */
     public function build()
     {
-        return $this->view('frontend.emails.rejectBookingRenter');
+        return $this->view('frontend.emails.confirmationBookingRenter');
     }
 }

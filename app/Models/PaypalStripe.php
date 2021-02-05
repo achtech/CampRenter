@@ -2,19 +2,23 @@
 
 namespace App\Models;
 
-class Chat extends Base
+use Illuminate\Database\Eloquent\Model;
+
+class PaypalStripe extends Model
 {
-    protected $table = 'chats';
+    protected $table = 'paypal_stripe';
     public $primarykey = 'id';
     protected $fillable = [
-        'message', 
-        'date_sent', 
-        'ordre_message', 
-        'id_owners', 
-        'id_renters', 
-        'id_bookings',
-        'status',
-        'created_by',
-        'updated_by'
+        'transaction_id',
+        'booking_id',
+        'camper_name',
+        'amount',
+        'payer_email',
+        'typepaiement',
+        'payment_status',
+        'created_at',
+        'updated_at',
     ];
+    protected $hidden = ['created_at', 'updated_at'];
+
 }

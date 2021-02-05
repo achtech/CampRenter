@@ -8,9 +8,9 @@
       <br/>
       <h2>{{trans('front.welcome_camp_unit')}}</h2>
       <br/>
-      {{trans('front.hi')}} {{$client['client_name']}}  {{$client['client_last_name']}}
+      {{trans('front.hi')}} {{$renter['client_name']}}  {{$renter['client_last_name']}}
       <br/>
-       <p>Your request for {{$camper['camper_name']}} has been sent to the owner, we wait for his feedback.</p>
+       <p>Your request for {{$camper['camper_name']}} has been rejected the owner. Try with an other camper that is available.</p>
       <br/>
       <p>{{trans('front.question_case')}} <a href="mailto:support@campunite.com">support@campunite.com</a>
       {{trans('front.contact_us')}}</p>

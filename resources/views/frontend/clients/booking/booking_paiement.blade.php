@@ -120,11 +120,11 @@
 									<div class="extras">
 
 									@if(App\Http\Controllers\Controller::isExtraByOwner($extra->name,$booking->id))
-										<a id="remove_extra_{{$extra->name}}"  onclick="removeExtra('{{$extra->name}}')" class="button medium border">Remove</a>
-										<div class="removeExtra{{$extra->name}}"></div>
+										<a id="remove_extra_{{preg_replace('/[^A-Za-z0-9\-]/', '',$extra->name)}}"  onclick="removeExtra('{{$extra->name}}')" class="button medium border">Remove</a>
+										<div class="removeExtra{{preg_replace('/[^A-Za-z0-9\-]/', '',$extra->name)}}"></div>
 									@else
-										<a id="add_extra_{{$extra->name}}" onclick="addExtra('{{$extra->name}}')" class="button medium border">Add</a>
-										<div class="addextra{{$extra->name}}"></div>
+										<a id="add_extra_{{preg_replace('/[^A-Za-z0-9\-]/', '',$extra->name)}}" onclick="addExtra('{{$extra->name}}')" class="button medium border">Add</a>
+										<div class="addextra{{preg_replace('/[^A-Za-z0-9\-]/', '',$extra->name)}}"></div>
 									@endif
 									</div>
 								@else
@@ -371,20 +371,18 @@ function removeInsurance(){
 }
 
 function addExtra(extra_name){
-	//Set the value of the hidden input field
-	//var extra_name2=$("#extraName2").val()
 	var id_booking=$("#bookingId").val();
 	var url_extra = '/booking/add_extra/'+id_booking+'/'+extra_name;
-
+	var ExtraWithoutSpace = extra_name.replace(/[^a-zA-Z0-9-]/g, "");
 	$.ajax({
 		url: url_extra,
 		type: 'get',
 		data: {_token: CSRF_TOKEN},
 		success: function(response){
-			$("#remove_extra_"+extra_name).show()
-			$("#add_extra_"+extra_name).hide()
+			$("#remove_extra_"+ExtraWithoutSpace).show()
+			$("#add_extra_"+ExtraWithoutSpace).hide()
 			//addextra : bloc
-			$(".addextra"+extra_name).html('<a id="remove_extra_'+extra_name+'" onclick="removeExtra(\''+extra_name+'\')" class="button medium border">Remove</a>');
+			$(".addextra"+ExtraWithoutSpace).html('<a id="remove_extra_'+ExtraWithoutSpace+'" onclick="removeExtra(\''+extra_name+'\')" class="button medium border">Remove</a>');
 			r=response.trim();
 			$("#side_bar_prices").show() ;
 			$("#side_bar_prices").html(r);
@@ -393,8 +391,6 @@ function addExtra(extra_name){
 }
 
 function addSubExtra(extra_name, sub_extra){
-	//Set the value of the hidden input field
-	//var extra_name2=$("#extraName2").val()
 	var id_booking=$("#bookingId").val();
 	var url_extra = '/booking/add_sub_extra/'+id_booking+'/'+extra_name+'/'+sub_extra ;
 
@@ -415,6 +411,7 @@ function removeExtra(extra_name, sub_extra){
 	//var extra_name1=$("#extraName1").val()
 	var id_booking=$("#bookingId").val();
 	var url_extra = '/booking/remove_extra/'+id_booking+'/'+extra_name;
+	var ExtraWithoutSpace = extra_name.replace(/[^a-zA-Z0-9-]/g, '');
 	if(sub_extra!= undefined)
 	{
 		url_extra = '/booking/remove_sub_extra/'+id_booking+'/'+extra_name+'/'+sub_extra ;
@@ -425,10 +422,10 @@ function removeExtra(extra_name, sub_extra){
 			data: {_token: CSRF_TOKEN},
 			success: function(response){
 				if(sub_extra==undefined){
-					$("#add_extra_"+extra_name).show()
-					$("#remove_extra_"+extra_name).hide()
+					$("#add_extra_"+ExtraWithoutSpace).show()
+					$("#remove_extra_"+ExtraWithoutSpace).hide()
 					//removeExtra : bloc
-					$(".removeExtra"+extra_name).html('<a id="add_extra_'+extra_name+'" onclick="addExtra(\''+extra_name+'\')" class="button medium border">Add</a>');
+					$(".removeExtra"+ExtraWithoutSpace).html('<a id="add_extra_'+ExtraWithoutSpace+'" onclick="addExtra(\''+extra_name+'\')" class="button medium border">Add</a>');
 					r=response.trim();
 					$("#side_bar_prices").show() ;
 					$("#side_bar_prices").html(r);

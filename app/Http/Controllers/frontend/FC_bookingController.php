@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OwnerConfirmationMail;
+use App\Mail\OwnerRejectMail;
 use App\Mail\OwnerRequestMail;
+use App\Mail\RenterConfirmationMail;
+use App\Mail\RenterRejectMail;
 use App\Mail\RenterRequestMail;
 use App\Models\Booking;
 use App\Models\BookingExtra;
@@ -79,13 +83,21 @@ class FC_bookingController extends Controller
             $booking->save();
 
             $notification = new Notification();
-            $notification->id_renter = $booking->id_clients;
-            $notification->id_owner = $camper->id_clients;
+            $notification->id_user = $booking->id_clients;
+            $notification->id_table = $booking->id;
+            $notification->message = "You request for booking camper : " . $camper->camper_name . " has been sent.";
+            $notification->type = "Booking";
+            $notification->status = "unread";
+            $notification->save();
+
+            $notification = new Notification();
+            $notification->id_user = $camper->id_clients;
             $notification->id_table = $booking->id;
             $notification->message = "You have new booking for your camper : " . $camper->camper_name . " from : " . $client->client_last_name . " " . $client->client_name;
             $notification->type = "Booking";
             $notification->status = "unread";
             $notification->save();
+
             //dd($notification);
             $owner = Client::find($camper->id_clients);
             Mail::to($client['email'])->send(new RenterRequestMail($client, $camper));
@@ -115,13 +127,26 @@ class FC_bookingController extends Controller
 
         $camper = Camper::find($booking->id_campers);
         $notification = new Notification();
-        $notification->id_renter = $booking->id_clients;
-        $notification->id_owner = $camper->id_clients;
+        $notification->id_user = $booking->id_clients;
         $notification->id_table = $booking->id;
         $notification->message = "Your request for camper " . $camper->camper_name . " between  : " . date("j F Y", strtotime($booking->start_date)) . " and " . date("j F Y", strtotime($booking->end_date)) . " is CONFIRMED";
         $notification->type = "Booking";
         $notification->status = "unread";
         $notification->save();
+
+        $notification = new Notification();
+        $notification->id_user = $camper->id_clients;
+        $notification->id_table = $booking->id;
+        $notification->message = "You confirmed the booking of  camper " . $camper->camper_name . " between  : " . date("j F Y", strtotime($booking->start_date)) . " and " . date("j F Y", strtotime($booking->end_date));
+        $notification->type = "Booking";
+        $notification->status = "unread";
+        $notification->save();
+
+        $renter = Client::find($booking->id_clients);
+        $owner = Client::find($camper->id_clients);
+
+        Mail::to($renter['email'])->send(new RenterConfirmationMail($renter, $camper));
+        Mail::to($owner['email'])->send(new OwnerConfirmationMail($owner, $camper));
 
         return redirect(route('frontend.clients.booking'));
     }
@@ -134,13 +159,26 @@ class FC_bookingController extends Controller
 
         $camper = Camper::find($booking->id_campers);
         $notification = new Notification();
-        $notification->id_renter = $booking->id_clients;
-        $notification->id_owner = $camper->id_clients;
+        $notification->id_user = $booking->id_clients;
         $notification->id_table = $booking->id;
         $notification->message = "Your request for camper " . $camper->camper_name . " between  : " . date("j F Y", strtotime($booking->start_date)) . " and " . date("j F Y", strtotime($booking->end_date)) . " is REJECTED";
         $notification->type = "Booking";
         $notification->status = "unread";
         $notification->save();
+
+        $notification = new Notification();
+        $notification->id_user = $camper->id_clients;
+        $notification->id_table = $booking->id;
+        $notification->message = "You reject a booking for camper: " . $camper->camper_name . " between  : " . date("j F Y", strtotime($booking->start_date)) . " and " . date("j F Y", strtotime($booking->end_date));
+        $notification->type = "Booking";
+        $notification->status = "unread";
+        $notification->save();
+
+        $renter = Client::find($booking->id_clients);
+        $owner = Client::find($camper->id_clients);
+
+        Mail::to($renter['email'])->send(new RenterRejectMail($renter, $camper));
+        Mail::to($owner['email'])->send(new OwnerRejectMail($owner, $camper));
 
         return redirect(route('frontend.clients.booking'));
     }
@@ -191,6 +229,7 @@ class FC_bookingController extends Controller
         $html = $this->getHtmlPricesBooking($booking->id);
 
         return view('frontend.clients.booking.booking_paiement')
+            ->with('client', $client)
             ->with('booking', $booking)
             ->with('insurance_total', $insurance_total)
             ->with('insurance', $insurance)
@@ -349,15 +388,17 @@ class FC_bookingController extends Controller
         return $html;
     }
 
-    public static function canBook($camper){
+    public static function canBook($camper)
+    {
         $connectedClient = Controller::getConnectedClient();
-        $check1 = $connectedClient !=null && $camper->id_clients!=$connectedClient->id;
-        return $check1 ;
+        $check1 = $connectedClient != null && $camper->id_clients != $connectedClient->id;
+        return $check1;
     }
-    public static function isNotBooked($id){
+    public static function isNotBooked($id)
+    {
         $connectedClient = Controller::getConnectedClient();
-        $check2 = Booking::where('id_campers',$id)->where('id_clients',$connectedClient->id)->where('id_booking_status',1)->get()->count();
-        return $check2 != 0 ;
+        $check2 = Booking::where('id_campers', $id)->where('id_clients', $connectedClient->id)->where('id_booking_status', 1)->get()->count();
+        return $check2 != 0;
     }
 
 }

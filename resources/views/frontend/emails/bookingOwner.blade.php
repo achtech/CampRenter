@@ -8,7 +8,7 @@
       <br/>
       <h2>{{trans('front.welcome_camp_unit')}}</h2>
       <br/>
-      {{trans('front.hi')}} {{$client['client_name']}}  {{$client['client_last_name']}}
+      {{trans('front.hi')}} {{$owner['client_name']}}  {{$owner['client_last_name']}}
       <br/>
       <p>You just receved a request for your camper {{$camper->camper_name}}, the client is waiting for your feedback.</p>
       <br/>

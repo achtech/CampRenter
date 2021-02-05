@@ -15,7 +15,7 @@ class FC_notificationController extends Controller
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
-        $notification = Notification::where('id_owner', $client->id)->get();
+        $notification = Notification::where('id_user', $client->id)->orderBy('created_at', 'DESC')->get();
         return view('frontend.clients.notification.index')
             ->with('datas', $notification);
     }

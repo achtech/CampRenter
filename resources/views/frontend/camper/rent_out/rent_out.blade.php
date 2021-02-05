@@ -23,8 +23,11 @@
 
 	<div class="row">
 		<div class="col-lg-12">
+		<div class="notification error">
+				<p><span>Warning!</span> Please choose a category before apply.</p>
+				<a class="close" href="#"></a>
+			</div>
 			<div id="add-listing">
-
 				<!-- Section -->
 				<div class="add-listing-section">
 

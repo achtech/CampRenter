@@ -42,11 +42,11 @@ class SocialController extends Controller
                 $client->type_login = "facebook";
                 $client->save();
                 Session::put('_client', $user['email']);
-                return redirect('/');
+                return redirect(route('home.index'));
 
             } else {
                 Session::put('_client', $user['email']);
-                return redirect('/');
+                return redirect(route('home.index'));
             }
 
         } else {
@@ -54,11 +54,11 @@ class SocialController extends Controller
                 $client->type_login = "google";
                 $client->save();
                 Session::put('_client', $user['email']);
-                return redirect('/');
+                return redirect(route('home.index'));
 
             } else {
                 Session::put('_client', $user['email']);
-                return redirect('/');
+                return redirect(route('home.index'));
             }
         }
 

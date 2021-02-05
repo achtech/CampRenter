@@ -120,7 +120,7 @@ class Controller extends BaseController
         $client = self::getConnectedClient();
         return DB::table('notifications')
             ->where([
-                ['id_owner', $client->id], ['status', 'unread'], ['type', $type]])->get()->count();
+                ['id_user', $client->id], ['status', 'unread'], ['type', $type]])->get()->count();
     }
 
     public static function diffDate($date1, $date2)
