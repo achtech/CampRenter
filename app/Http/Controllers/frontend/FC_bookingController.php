@@ -101,7 +101,6 @@ class FC_bookingController extends Controller
             $notification->status = "readed";
             $notification->update();
         }
-        //    dd($notification);
 
         $booking = DB::table("v_bookings_owner")->where('id', $id)->first();
         return view('frontend.clients.booking.detail1')
@@ -348,6 +347,17 @@ class FC_bookingController extends Controller
         }
         $html .= "<li class='total-costs'>" . trans('front.total_cost') . " <span>" . ($total_without_insurance + $booking->insurance_price + $totalExtra) . " CHF</span></li>";
         return $html;
+    }
+
+    public static function canBook($camper){
+        $connectedClient = Controller::getConnectedClient();
+        $check1 = $connectedClient !=null && $camper->id_clients!=$connectedClient->id;
+        return $check1 ;
+    }
+    public static function isNotBooked($id){
+        $connectedClient = Controller::getConnectedClient();
+        $check2 = Booking::where('id_campers',$id)->where('id_clients',$connectedClient->id)->where('id_booking_status',1)->get()->count();
+        return $check2 != 0 ;
     }
 
 }

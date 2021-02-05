@@ -6,6 +6,14 @@
     </div>
 </div>
 <!-- Book Now -->
+
+@if(App\Http\Controllers\frontend\FC_bookingController::isNotBooked($camper->id))
+<div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
+    <!-- Book Now -->
+    <span  class="button book-now fullwidth margin-top-5" disabled>You already send a request for this camper</span>
+    <!-- Estimated Cost -->
+</div>
+@elseif(App\Http\Controllers\frontend\FC_bookingController::canBook($camper))
 <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
     <form method="POST" id="idForm" action="{{route('frontend.add_request_booking')}}" autocomplete="off" >
     @csrf
@@ -30,6 +38,7 @@
     </form>
     <!-- Estimated Cost -->
 </div>
+@endif
 <!-- Book Now / End -->
 <!-- Contact -->
 <div class="boxed-widget margin-top-35">

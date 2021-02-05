@@ -40,7 +40,6 @@ class FContactController extends Controller
     }
     public function store(Request $request)
     {
-        dd('ok');
         $date = new DateTime();
         $send_date = $date->format('Y-m-d H:i:s');
         $input = request()->except(['_token', '_method', 'action']);

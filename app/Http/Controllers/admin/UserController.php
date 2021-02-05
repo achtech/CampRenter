@@ -36,7 +36,6 @@ class UserController extends Controller
             $datas = User::paginate(10);
         }
         $avatarsIds = Avatar::limit(9)->pluck('id')->toArray();
-        dd($avatarsIds);
         return view('admin.user.index')->with('datas', $datas)->with('search', $search)->with('avatarsIds', $avatarsIds);
     }
     /**
