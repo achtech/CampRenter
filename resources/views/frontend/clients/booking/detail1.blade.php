@@ -35,7 +35,7 @@
 		<div class="col-lg-8 col-md-8 padding-right-30">
 
 			<div class="row">
-				<input type="hidden" value="{{$booking->id}}" id="bookingId">
+			<input type="hidden" value="{{$booking->id}}" id="bookingId">
 				<div class="col-md-6">
 					<label>Start Date</label>
 					<input type="text" value="{{date('j F Y', strtotime($booking->start_date))}}"  disabled>
@@ -53,13 +53,7 @@
 					<input type="text" value="{{$booking->booking_status_en}}"  disabled>
 				</div>
 			</div>
-			<div class="row margin-top-30">
-				<a href="javascript:history.back()" class="button medium border"><i class="far fa-arrow-alt-circle-left"></i>Return</a>
-                @if($booking->booking_status_id==1)
-					<a href="{{ route('booking.owner_booking.reject',$booking->id)}}" class="button button medium border"><i class="far fa-times-circle"></i> {{trans('front.reject')}}</a>
-					<a href="{{ route('booking.owner_booking.confirm',$booking->id)}}" class="button button medium border"><i class="far fa-check-circle"></i> {{trans('front.approve')}}</a>
-				@endif
-			</div>
+			<a href="javascript:history.back()" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Return</a>
 		</div>
 
 

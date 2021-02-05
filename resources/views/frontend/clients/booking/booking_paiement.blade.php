@@ -29,10 +29,16 @@
 <!-- Container -->
 <div class="container">
 	<div class="row">
-
+		@if (Session::has('successStripe'))
+			<div class="notification success">
+				<p><span>Success!</span> You did it, now relax and enjoy it.</p>
+				<a class="close"></a>
+			</div>
+		@endif
 		<!-- Content
 		================================================== -->
 		<div class="col-lg-8 col-md-8 padding-right-30">
+
 			<h3 class="margin-bottom-50">{{trans('front.Insurances')}}</h3>
 			<div class="row">
 				<div class="pricing-list-container">
@@ -132,22 +138,14 @@
 					</div>
 			</div>
 			<h3 class="margin-bottom-50">{{trans('front.footer_paiement_methods')}}</h3>
+
+
 			<!-- Payment Methods Accordion -->
-			<div class="payment">
+			<div class="payment margin-bottom-50">
+
 				<div class="payment-tab payment-tab-active">
 					<div class="payment-tab-trigger">
-						<input checked id="paypal" name="cardType" type="radio" value="paypal">
-						<label for="paypal">PayPal</label>
-						<img class="payment-logo paypal" src="{{asset('images/paiement-methods/ApBxkXU.png')}}" alt="">
-					</div>
-
-					<div class="payment-tab-content">
-						<p>{{trans('front.redirected_to_paypal')}}</p>
-					</div>
-				</div>
-				<div class="payment-tab">
-					<div class="payment-tab-trigger">
-						<input type="radio" name="cardType" id="creditCart" value="creditCard">
+						<input checked type="radio" name="cardType" id="creditCart" value="creditCard">
 						<label for="creditCart">{{trans('front.credit_card')}}</label>
 						<img class="payment-logo" src="{{asset('images/paiement-methods/IHEKLgm.png')}}" alt="">
 					</div>
@@ -159,10 +157,18 @@
 										data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
 										id="payment-form">
                         		@csrf
+							<input type="hidden" name="item_name" value="{{$booking->camper_name}}">
+							<input type="hidden" name="first_name" value="{{$client->name}}"  />
+							<input type="hidden" name="last_name" value="{{$client->last_name}}"  />
+							<input type="hidden" name="payer_email" value="{{$client->email}}"  />
+							<input type="hidden" value="{{$booking->id}}" name="bookingid" id="bookingId">
+
+
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="nameOnCard">{{trans('front.name_on_card')}}</label>
 										<input id="nameOnCard" name="nameOnCard" required type="text">
+
 									</div>
 								</div>
 
@@ -193,9 +199,36 @@
 										<input id="card-cvc" required type="text">
 									</div>
 								</div>
-								<button type="submit" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">{{trans('front.confirm_and_pay')}}</button>
+								<button type="submit" class="button margin-bottom-20" style="top: 14px;left: 16px;">{{trans('front.confirm_and_pay')}}</button>
 							</form>
 						</div>
+					</div>
+				</div>
+				<div class="payment-tab">
+					<div class="payment-tab-trigger">
+						<input  id="paypal" name="cardType" class="paypalIn" type="radio" value="paypal">
+						<label for="paypal">PayPal</label>
+						<img class="payment-logo paypal" src="{{asset('images/paiement-methods/ApBxkXU.png')}}" alt="">
+						<form class="paypal_form" action="{{route('redirectToPayp')}}" method="post" id="paypalform" target="_blank">
+							@csrf
+
+							<input type="hidden" name="cmd" value="_xclick" />
+							<input type="hidden" name="no_note" value="1" />
+							<input type="hidden" value="{{$booking->id}}" name="bookingid" id="bookingid">
+
+							<input type="hidden" name="item_name" value="{{$booking->camper_name}}">
+							<input type="hidden" name="currency_code" value="CHF" />
+
+							<input type="hidden" name="first_name" value="{{$client->name}}"  />
+							<input type="hidden" name="last_name" value="{{$client->last_name}}"  />
+							<input type="hidden" name="payer_email" value="{{$client->email}}"  />
+							<input type="hidden" name="item_number" value="<?php echo uniqid(); ?>" />
+							<input type="submit" class="button" style="top: 14px;left: 16px;margin-bottom: 34px;" id="subwithpaypal" onclick="prepareTo();" name="submit" value="{{trans('front.confirm_and_pay')}}"/>
+						</form>
+					</div>
+
+					<div class="payment-tab-content prepareto" style="display:none">
+						<p>{{trans('front.redirected_to_paypal')}}...</p>
 					</div>
 				</div>
 
@@ -456,5 +489,30 @@ $(function() {
     }
 
 });
+
+ // if($('.paypalIn').is(':checked'))
+	//   {
+
+
+	// 	 $('#paypal_form').submit();
+
+	// 	 $(".prepareto").show()
+
+	//   }else{
+	// 	$(".prepareto").hide()
+
+
+	//   }
+
+
+
+// $('#subwithpaypal').click(function(event){
+//   event.preventDefault();
+//  $(".prepareto").show() ;
+
+
+// 	});
+
+
 </script>
 @endsection

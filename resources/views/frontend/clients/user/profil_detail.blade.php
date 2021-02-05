@@ -81,6 +81,66 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="edit-profile-photo" style="margin-top-10">
+                    <label>{{ __('front.avatar') }}</label>
+                    <div class="row">
+                        <div class="row">
+                            @foreach($avatars_first as $elem)
+                            @if($elem!=null)
+                            <div class="col-md-4" style="display: inline-block;">
+                                    <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
+                                    <input type="hidden" name="id_avatars" value="" />
+                                    <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
+                                    data-picture_avatar_id="{{$elem->id}}"
+                                         src="{{asset('images/clients')}}/{{$elem->image}}" alt=""
+                                         style="height:64px;@if($elem->id==$client['id_avatars']) outline:1px solid #38b6cd; @endif ">
+
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
+
+                        <div class="row">
+                            @foreach($avatars_second as $elem)
+                            @if($elem!=null)
+                            <div class="col-md-4" style="display: inline-block;">
+                                    <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
+                                    <input type="hidden" name="id_avatars" value="" />
+                                    <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
+                                    data-picture_avatar_id="{{$elem->id}}"
+                                         src="{{asset('images/clients')}}/{{$elem->image}}" alt=""
+                                         style="height:64px;@if($elem->id==$client['id_avatars']) outline:1px solid #38b6cd; @endif ">
+
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
+                        <div class="row" >
+                            @foreach($avatars_third as $elem)
+                            @if($elem!=null)
+                            <div class="col-md-4" style="display: inline-block;">
+                                    <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
+                                    <input type="hidden" name="id_avatars" value="" />
+                                    <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
+                                    data-picture_avatar_id="{{$elem->id}}"
+                                         src="{{asset('images/clients')}}/{{$elem->image}}" alt=""
+                                         style="height:64px;@if($elem->id==$client['id_avatars']) outline:1px solid #38b6cd; @endif ">
+
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
                 <div class="edit-profile-photo">
                     <label>{{ __('front.image_national') }}</label>
                     <img src="{{asset('images/clients')}}/{{$client['image_national_id']}}" alt="" id="client_cin">
@@ -94,63 +154,6 @@
             </div>
 
             <div class="col-md-6">
-                <div class="edit-profile-photo" style="margin-top-10">
-                    <label>{{ __('front.avatar') }}</label>
-                    <div class="row">
-                        <div class="row" style="height: 69px;">
-                            @foreach($avatars_first as $elem)
-                            @if($elem!=null)
-                            <div class="col-md-4" style="display: inline-block;">
-                                <label>
-                                    <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
-                                    <input type="hidden" name="id_avatars" value="" />
-                                    <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
-                                    data-picture_avatar_id="{{$elem->id}}"
-                                         src="{{asset('images/clients')}}/{{$elem->image}}" alt="" class="avatar"
-                                         style="height:64px;@if($elem->id==$client['id_avatars']) outline:1px solid #38b6cd; @endif ">
-
-                                </label>
-                            </div>
-                            @endif
-                            @endforeach
-                        </div>
-
-                        <div class="row" style="height: 69px;">
-                            @foreach($avatars_second as $elem)
-                            @if($elem!=null)
-                            <div class="col-md-4" style="display: inline-block;">
-                                <label>
-                                    <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
-                                    <input type="hidden" name="id_avatars" value="" />
-                                    <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
-                                    data-picture_avatar_id="{{$elem->id}}"
-                                         src="{{asset('images/clients')}}/{{$elem->image}}" alt="" class="avatar"
-                                         style="height:64px;@if($elem->id==$client['id_avatars']) outline:1px solid #38b6cd; @endif ">
-
-                                </label>
-                            </div>
-                            @endif
-                            @endforeach
-                        </div>
-                        <div class="row" style="height: 69px;" >
-                            @foreach($avatars_third as $elem)
-                            @if($elem!=null)
-                            <div class="col-md-4" style="display: inline-block;">
-                                <label>
-                                    <input type="radio" class="avatar-design" name="id_avatars" id="id_avatars" value="{{$elem->image}}">
-                                    <input type="hidden" name="id_avatars" value="" />
-                                    <img onclick="javascript:avatarSelected({{$elem->id}})" id="avatar_{{$elem->id}}"
-                                    data-picture_avatar_id="{{$elem->id}}"
-                                         src="{{asset('images/clients')}}/{{$elem->image}}" alt="" class="avatar"
-                                         style="height:64px;@if($elem->id==$client['id_avatars']) outline:1px solid #38b6cd; @endif ">
-
-                                </label>
-                            </div>
-                            @endif
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
                 <div class="edit-profile-photo">
                     <label>{{ __('front.driving_licence_image') }}</label>
                     <img src="{{asset('images/clients')}}/{{$client['driving_licence_image']}}" alt="" id="client_driving_licence">

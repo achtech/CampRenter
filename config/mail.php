@@ -82,7 +82,7 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
      */
-    'from' => ['address' => 'unitcamper@gmail.com', 'name' => 'camper unit'], //default :'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'support@campunite.com', 'name' => 'camper unite team'], //default :'from' => ['address' => null, 'name' => null],
 
     /*
     |--------------------------------------------------------------------------
