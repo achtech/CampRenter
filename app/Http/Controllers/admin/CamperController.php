@@ -36,7 +36,7 @@ class CamperController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = Camper::where('is_deleted', 1)->get();
+        $datas = Camper::where('is_deleted', 1)->orderBy('updated_at','desc')->get();
 
         return view('admin.camper.index')->with('datas', $datas);
     }

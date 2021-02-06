@@ -33,4 +33,14 @@ class FC_notificationController extends Controller
         return view('frontend.clients.booking.detail1')
             ->with('booking', $booking);
     }
+
+    public function destroy(Request $request)
+    {
+        $data = Notification::find($request->id);
+        if (empty($data)) {
+            return redirect(route('notification.index'));
+        }
+        $data->delete();
+        return redirect(route('notification.index'));
+    }
 }

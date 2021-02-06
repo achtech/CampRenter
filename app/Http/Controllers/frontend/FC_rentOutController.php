@@ -1173,4 +1173,54 @@ class FC_rentOutController extends Controller
     {
         return InsuranceExtra::where('name', $name)->where('sub_extra', $subExtraName)->get();
     }
+
+    public static function isReadyToVerify($id){
+        $camper = Camper::find($id);
+        $check1 = self::isVehicleDataReady($camper);
+        $check2 = self::isEquipmentReady($camper);
+        $check3 = $camper->description_camper != null;
+        $check4 = self::isInsuranceReady($camper);
+        $check5 = self::isRentalTermsReady($camper);
+        $check6 = self::isTermsReady($camper);
+
+        return  $check1 && $check2 && $check3 && $check4 && $check5 && $check6;
+    }
+
+    public static function  isVehicleDataReady($camper) {
+        return $camper->camper_name != null && $camper->brand != null && $camper->model != null && $camper->id_licence_categories != null 
+                && $camper->license_plate_number != null && $camper->country != null && $camper->seat_number != null && 
+                $camper->allowed_total_weight != null && $camper->length != null && $camper->location != null;
+    }
+    public static function  isEquipmentReady($camper) {
+        return true;
+    }
+    public static function  isInsuranceReady($camper) {
+        return $camper->has_insurance != null;
+    }
+    public static function  isRentalTermsReady($camper) {
+        return $camper->animals_allowed && $camper->smoking_allowed;
+    }
+    public static function  isTermsReady($camper) {
+   //     dd( CamperTerms::where('id_campers',$camper->id)->get()->count());
+        return CamperTerms::where('id_campers',$camper->id)->get()->count()>=3;
+    }
+
+    public static function  toBeFilled($id){
+        $camper = Camper::find($id);
+        $check1 = self::isVehicleDataReady($camper);
+        $check2 = self::isEquipmentReady($camper);
+        $check3 = $camper->description_camper != null;
+        $check4 = self::isInsuranceReady($camper);
+        $check5 = self::isRentalTermsReady($camper);
+        $check6 = self::isTermsReady($camper);
+        $str = '';
+        if(!$check1) $str.="(Vehicle Data";
+        if(!$check2) $str.= $str!='' ? ",Equipement" : "(Equipement";
+        if(!$check3) $str.= $str!='' ? ",Description" : "(Description";
+        if(!$check4) $str.= $str!='' ? ",Insurance" : "(Insurance";
+        if(!$check5) $str.= $str!='' ? ",Rental Terms" : "(Rental Terms";
+        if(!$check6) $str.= $str!='' ? ",Terms" : "(Terms";
+
+        return  $str!='' ? 'please fill '.$str.")" : '';   
+    }
 }

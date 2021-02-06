@@ -247,6 +247,7 @@ Route::group(['middleware' => 'Lang'], function () {
     ]]);
 
     //ADMIN -> Blog
+    Route::delete('notification/{id}/delete', 'App\Http\Controllers\frontend\FC_notificationController@destroy')->name('admin.notofocation.delete');
     Route::delete('blog/{id}/delete', 'App\Http\Controllers\admin\BlogController@destroy')->name('admin.blog.delete');
     Route::resource('admin/blog', 'App\Http\Controllers\admin\BlogController', ['except' => 'destroy', 'names' => [
         'index' => 'admin.blog.index',

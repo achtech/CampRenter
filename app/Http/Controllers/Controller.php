@@ -111,7 +111,7 @@ class Controller extends BaseController
             ->where('campers.is_confirmed', 0)
             ->where('campers.is_completed', 1)
             ->select('campers.*', 'clients.client_name', 'clients.client_last_name')
-            ->orderby('campers.created_at')
+            ->orderby('campers.updated_at', 'desc')
             ->get();
     }
 
