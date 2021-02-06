@@ -39,14 +39,14 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id='price_main' name="price_per_night_main" type="number" min="0" value="{{$season_main ? $season_main->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id='price_main' name="price_per_night_main" type="number" required min="0" value="{{$season_main ? $season_main->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
-								<select id="main_season" name="minimum_night_main" class="" >
-									<option value="0">Choose</option>
+								<select id="main_season" name="minimum_night_main" required="required"  class=""  >
+									<option value="">Choose</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
 										<option @if( $season_main && $season_main->minimum_night == $i) selected='selected' @endif value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
 									<?php }?>
@@ -66,14 +66,14 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id="price_off" name='price_per_night_off' type="number" min="0" value="{{$season_off ? $season_off->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id="price_off" name='price_per_night_off' type="number" required min="0" value="{{$season_off ? $season_off->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
-								<select id="off_season" name="minimum_night_off" >
-									<option value="0">Choose</option>
+								<select id="off_season" name="minimum_night_off" required="required" >
+									<option value="">Choose</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
 										<option @if($season_off && $season_off->minimum_night == $i) selected='selected'
 												 @endif "selected='selected'" value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
@@ -93,14 +93,14 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id="price_winter" name='price_per_night_winter' type="number" min="0" value="{{$season_winter ? $season_winter->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id="price_winter" required name='price_per_night_winter' type="number" min="0" value="{{$season_winter ? $season_winter->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
-								<select id="winter_season" name="minimum_night_winter" >
-								<option value="0">Choose</option>
+								<select id="winter_season" required="required" name="minimum_night_winter" >
+								<option value="">Choose</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
 										<option @if( $season_winter && $season_winter->minimum_night == $i) selected='selected' @endif value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
 									<?php }?>

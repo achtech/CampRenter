@@ -27,9 +27,11 @@
                                     <td style="vertical-align: middle;text-align:center"><img style="width:100px" src="{{ asset('images/camper') }}/{{$item->image}}"/></td>
                                     <td style="vertical-align: middle;">{{Illuminate\Support\Str::limit($item->camper_name, 25)}}</td>
                                     <td style="vertical-align: middle;">{{App\Http\Controllers\admin\CamperController::getName('clients',$item->id_clients)}}</td>
-                                    <td style="vertical-align: middle;">{{App\Http\Controllers\admin\CamperController::getLabel('camper_categories',$item->id_camper_categories)}}</td>
+                                    <td style="vertical-align: middle;">
+                                        {{App\Http\Controllers\admin\CamperController::getLabel('camper_categories',$item->id_camper_categories)}}</td>
                                     <td style="vertical-align: middle;text-align:center">
-                                    @php($status = App\Http\Controllers\admin\CamperController::getCamperStatus($item->id))
+                                    @if($item->is_confirmed==1)
+                                        @php($status = App\Http\Controllers\admin\CamperController::getCamperStatus($item->id))
                                         @if($status->bookingStatusId==3 || $status->bookingStatusId==7)
                                         <i class="btn waves-effect waves-light btn-danger">{{$status->label_en}}</i>
                                         @elseif($status->bookingStatusId<3 || ($status->bookingStatusId>=4 && $status->bookingStatusId<=6) )
@@ -37,7 +39,9 @@
                                         @else
                                         <i class="btn waves-effect waves-light btn-success">{{$status->label_en}}</i>
                                         @endif
+                                    @endif
                                     <td style="vertical-align: middle;">
+                                    @if($item->is_confirmed==1)
                                         @if($item->availability==0)
                                             Blocked by Owner {{App\Http\Controllers\admin\CamperController::getName('clients',$item->id_clients)}}
                                         @elseif($item->availability==1)
@@ -47,6 +51,7 @@
                                         @else
                                             Available
                                         @endif
+                                    @endif
                                     </td>
                                     <td style="vertical-align: middle;text-align:center">
                                         @if($item->is_confirmed==1)
@@ -54,7 +59,9 @@
                                             by {{App\Http\Controllers\Controller::getUser($item->updated_by)}}
                                         @else
                                             <i class="btn waves-effect waves-light btn-outline-danger">Not Confirmed</i></br>
-                                            by {{App\Http\Controllers\Controller::getUser($item->updated_by)}}
+
+                                            @php($user = App\Http\Controllers\Controller::getUser($item->updated_by))
+                                            {{$user!=null ? "by ".$user : ''}}
                                         @endif
                                     </td>
                                     <td style="vertical-align: middle;">
