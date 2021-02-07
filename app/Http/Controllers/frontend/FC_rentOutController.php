@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ConfirmationCamperMail;
 use App\Models\Accessorie;
 use App\Models\Booking;
 use App\Models\Camper;
@@ -11,6 +12,7 @@ use App\Models\CamperImage;
 use App\Models\CamperInsurance;
 use App\Models\CamperSubCategory;
 use App\Models\CamperTerms;
+use App\Models\Client;
 use App\Models\Countries;
 use App\Models\Equipment;
 use App\Models\Fuel;
@@ -21,6 +23,7 @@ use App\Models\Promotion;
 use App\Models\Transmission;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class FC_rentOutController extends Controller
@@ -1157,6 +1160,10 @@ class FC_rentOutController extends Controller
         $camper = Camper::find($id);
         $camper->is_completed = 1;
         $camper->save();
+
+        $client = Client::find($camper->id_clients);
+        Mail::to("support@campunite.com")->send(new ConfirmationCamperMail($client, $camper));
+
         return redirect(route('frontend.camper.detail', $camper->id));
     }
 
@@ -1174,7 +1181,8 @@ class FC_rentOutController extends Controller
         return InsuranceExtra::where('name', $name)->where('sub_extra', $subExtraName)->get();
     }
 
-    public static function isReadyToVerify($id){
+    public static function isReadyToVerify($id)
+    {
         $camper = Camper::find($id);
         $check1 = self::isVehicleDataReady($camper);
         $check2 = self::isEquipmentReady($camper);
@@ -1183,29 +1191,35 @@ class FC_rentOutController extends Controller
         $check5 = self::isRentalTermsReady($camper);
         $check6 = self::isTermsReady($camper);
 
-        return  $check1 && $check2 && $check3 && $check4 && $check5 && $check6;
+        return $check1 && $check2 && $check3 && $check4 && $check5 && $check6;
     }
 
-    public static function  isVehicleDataReady($camper) {
-        return $camper->camper_name != null && $camper->brand != null && $camper->model != null && $camper->id_licence_categories != null 
-                && $camper->license_plate_number != null && $camper->country != null && $camper->seat_number != null && 
-                $camper->allowed_total_weight != null && $camper->length != null && $camper->location != null;
+    public static function isVehicleDataReady($camper)
+    {
+        return $camper->camper_name != null && $camper->brand != null && $camper->model != null && $camper->id_licence_categories != null
+        && $camper->license_plate_number != null && $camper->country != null && $camper->seat_number != null &&
+        $camper->allowed_total_weight != null && $camper->length != null && $camper->location != null;
     }
-    public static function  isEquipmentReady($camper) {
+    public static function isEquipmentReady($camper)
+    {
         return true;
     }
-    public static function  isInsuranceReady($camper) {
+    public static function isInsuranceReady($camper)
+    {
         return $camper->has_insurance != null;
     }
-    public static function  isRentalTermsReady($camper) {
+    public static function isRentalTermsReady($camper)
+    {
         return $camper->animals_allowed && $camper->smoking_allowed;
     }
-    public static function  isTermsReady($camper) {
-   //     dd( CamperTerms::where('id_campers',$camper->id)->get()->count());
-        return CamperTerms::where('id_campers',$camper->id)->get()->count()>=3;
+    public static function isTermsReady($camper)
+    {
+        //     dd( CamperTerms::where('id_campers',$camper->id)->get()->count());
+        return CamperTerms::where('id_campers', $camper->id)->get()->count() >= 3;
     }
 
-    public static function  toBeFilled($id){
+    public static function toBeFilled($id)
+    {
         $camper = Camper::find($id);
         $check1 = self::isVehicleDataReady($camper);
         $check2 = self::isEquipmentReady($camper);
@@ -1214,13 +1228,30 @@ class FC_rentOutController extends Controller
         $check5 = self::isRentalTermsReady($camper);
         $check6 = self::isTermsReady($camper);
         $str = '';
-        if(!$check1) $str.="(Vehicle Data";
-        if(!$check2) $str.= $str!='' ? ",Equipement" : "(Equipement";
-        if(!$check3) $str.= $str!='' ? ",Description" : "(Description";
-        if(!$check4) $str.= $str!='' ? ",Insurance" : "(Insurance";
-        if(!$check5) $str.= $str!='' ? ",Rental Terms" : "(Rental Terms";
-        if(!$check6) $str.= $str!='' ? ",Terms" : "(Terms";
+        if (!$check1) {
+            $str .= "(Vehicle Data";
+        }
 
-        return  $str!='' ? 'please fill '.$str.")" : '';   
+        if (!$check2) {
+            $str .= $str != '' ? ",Equipement" : "(Equipement";
+        }
+
+        if (!$check3) {
+            $str .= $str != '' ? ",Description" : "(Description";
+        }
+
+        if (!$check4) {
+            $str .= $str != '' ? ",Insurance" : "(Insurance";
+        }
+
+        if (!$check5) {
+            $str .= $str != '' ? ",Rental Terms" : "(Rental Terms";
+        }
+
+        if (!$check6) {
+            $str .= $str != '' ? ",Terms" : "(Terms";
+        }
+
+        return $str != '' ? 'please fill ' . $str . ")" : '';
     }
 }

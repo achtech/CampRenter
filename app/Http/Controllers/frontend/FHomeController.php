@@ -9,10 +9,17 @@ class FHomeController extends Controller
 {
     public function index()
     {
+        $start_date_s = date("F d, Y");
+        $end_date_s = date("F d, Y");
         $categories = DB::table('camper_categories')->get();
         $campers = DB::table('campers')->where('is_confirmed', 1)->get();
         $blogs = DB::table('blogs')->orderBy('created_at', 'desc')->get();
-        return view('frontend.home.index')->with('blogs', $blogs)->with('categories', $categories)->with('campers', $campers);
+        return view('frontend.home.index')
+            ->with('blogs', $blogs)
+            ->with('categories', $categories)
+            ->with('campers', $campers)
+            ->with('start_date_s', $start_date_s)
+            ->with('end_date_s', $end_date_s);
     }
     public static function getReviewsCount($id)
     {

@@ -6,19 +6,21 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RegistrationMail extends Mailable
+class ConfirmationCamperMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $client;
+    public $camper;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($client)
+    public function __construct($client, $camper)
     {
         $this->client = $client;
+        $this->camper = $camper;
     }
 
     /**
@@ -28,16 +30,7 @@ class RegistrationMail extends Mailable
      */
     public function build()
     {
-        $subject = 'Confirmation email from:';
-        $address = 'support@campunite.com';
-        $name = 'Campunite Team';
-
-        return $this->view('frontend.emails.welcome')
-            ->from($address, $name)
-
-            ->replyTo($address, $name)
-            ->subject($subject)
-            ->with(['client' => $this->client]);
+        return $this->view('frontend.emails.camperConfirmation');
 
     }
 
