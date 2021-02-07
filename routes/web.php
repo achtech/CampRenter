@@ -52,6 +52,7 @@ Route::group(['middleware' => 'Lang'], function () {
     });
     Route::get('/index', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
+    Route::get('/profile/delete', 'App\Http\Controllers\frontend\FUserController@deletePhoto')->name('clients.user.deletePhoto');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
 
     Route::post('/client/profil/update', [FClientController::class, 'userUpdateClient'])->name('frontend.client.updateData');

@@ -80,6 +80,10 @@ class FClientController extends DefaultLoginController
             $input['image_national_id'] = $request->file('image_national_id')->getClientOriginalName();
             $cin->move(base_path('public/images/clients'), $cin->getClientOriginalName());
         }
+        if ($request->photoDelete && $request->photoDelete==1) {
+            $input['photo'] = null;
+        }
+        
         if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
             $input['photo'] = $request->file('photo')->getClientOriginalName();
             $file->move(base_path('public/images/clients'), $file->getClientOriginalName());

@@ -71,8 +71,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="edit-profile-photo">
-                    <label>{{ __('front.photo') }}</label>
-                    <img style="margin-top-10" src="{{asset('images/clients')}}/{{$client['photo']}}" alt="" id="client_image">
+                    <label>{{ __('front.photo') }} 
+                    @if($client['photo']!=null)
+                        <a id="linkPhoto" onclick="clearProfilPhoto()" style="color:red">(Remove current photo)</a>
+                        <input type="hidden" name="photoDelete" value="0" id="photoDelete">
+                    @endif
+                    </label>
+                    <img  style="margin-top-10" src="{{asset('images/clients')}}/{{$client['photo']}}" alt="" id="client_image">
                     <div class="change-photo-btn">
                         <div class="photoUpload custom-file">
                             <span><i class="fa fa-upload"></i> {{ __('front.upload_photos') }}</span>
@@ -185,4 +190,10 @@ $("img[data-picture_avatar_id]").click(function(e){
         }
 	}
 
+function clearProfilPhoto(){
+    document.getElementById('client_image').src= null;
+    document.getElementById('photo').input= null;
+    document.getElementById('photoDelete').value = 1;
+    document.getElementById('linkPhoto').style.display = 'none';
+}
 </script>
