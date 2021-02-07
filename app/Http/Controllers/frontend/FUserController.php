@@ -57,8 +57,11 @@ class FUserController extends Controller
         $clt->update();
     }
 
-    public function deleteProflPicture()
+    public function deletePhoto()
     {
-
+        $client = Controller::getConnectedClient();
+        $clt = Client::find($client->id);
+        $clt->photo = null;
+        $clt->update();
     }
 }
