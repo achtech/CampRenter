@@ -162,8 +162,7 @@
 							<input type="hidden" name="last_name" value="{{$client->last_name}}"  />
 							<input type="hidden" name="payer_email" value="{{$client->email}}"  />
 							<input type="hidden" value="{{$booking->id}}" name="bookingid" id="bookingId">
-
-
+							<input type="hidden" name="id_owners" value="{{$camper->id_clients}}">
 								<div class="col-md-6">
 									<div class="card-label">
 										<label for="nameOnCard">{{trans('front.name_on_card')}}</label>
@@ -214,6 +213,7 @@
 
 							<input type="hidden" name="cmd" value="_xclick" />
 							<input type="hidden" name="no_note" value="1" />
+							<input type="hidden" name="id_owners" value="{{$camper->id_owners}}">
 							<input type="hidden" value="{{$booking->id}}" name="bookingid" id="bookingid">
 
 							<input type="hidden" name="item_name" value="{{$booking->camper_name}}">

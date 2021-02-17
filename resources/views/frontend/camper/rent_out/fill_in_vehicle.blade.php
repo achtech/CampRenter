@@ -158,10 +158,14 @@
 									<div class="col-md-12">
 										@foreach($fuels as $f)
 										<label class="containerRadio">{{$f->label_en}}
-											<input type="radio" name="id_fuels" value="{{$f->id}}" @if($f->id==$camper->id_fuels) checked="checked" @endif>
+											<input type="radio" name="id_fuels" value="{{$f->id}}"
+											 onchange="isElectric('{{$f->label_en}}')"
+											  @if($f->id==$camper->id_fuels) checked="checked" @endif>
 											<span class="checkmarkRadio"></span>
 										</label>
+
 										@endforeach
+										<input type="hidden" id="oldFuel" name="oldFuel" value="{{$camper->id_fuels ?? 0}}">
 									</div>
 									<div class="col-md-12" style="margin-bottom:10px">
 										<strong>{{trans('front.leasing_vehicle')}}</strong>
@@ -224,7 +228,7 @@
 							</div>
 						</li>
 						<li>
-							<div class="row">
+							<div class="row" id="fuel_range">
 								<!-- Phone -->
 								<div class="col-md-6">
 									<div class="card-label">
@@ -238,6 +242,15 @@
 									<div class="card-label">
 										<label for="fuel_consumation">{{trans('front.fuel_consumation')}}</label>
 										<input type="number" min="0" name="fuel_consumation" step="any" value="{{$camper->fuel_consumation}}">
+									</div>
+								</div>
+							</div>
+							<div class="row" id="electric_range" style="display:none;">
+								<!-- Phone -->
+								<div class="col-md-12">
+									<div class="card-label">
+										<label for="fuel_capacity">Battery range </label>
+										<input type="number" min="0" name="fuel_capacity" step="any" value="{{$camper->fuel_capacity}}">
 									</div>
 								</div>
 							</div>
@@ -368,6 +381,7 @@
 	</div>
 </div>
 <script>
+
 	var autocomplete = new google.maps.places.Autocomplete($("#address")[0], {});
 
 	autocomplete.addListener('place_changed', function() {
@@ -380,5 +394,19 @@
         document.getElementById('currentLatitude').value  = place.geometry.location.lat();
         document.getElementById('currentLongitude').value  = place.geometry.location.lng();
     });
+	function isElectric(fuel){
+		if(fuel === "Electric"){
+			$("#electric_range").css("display","block");
+			$("#fuel_range").css("display","none");
+		} else {
+			$("#electric_range").css("display","none");
+			$("#fuel_range").css("display","block");
+		}
+	}
+
+var idFuel = $("#oldFuel").val();
+if(idFuel==3){
+	isElectric("Electric");
+}
 </script>
 @endsection

@@ -19,7 +19,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Content -->
 		<div class="row">
 
@@ -81,15 +80,14 @@
 			<div class="col-lg-6 col-md-12">
 				<div class="dashboard-list-box invoices with-icons margin-top-20">
 					<h4>{{trans('front.earnings')}} <div class="comission-taken">Fee: <strong>{{$activePromotion->commission}}%</strong></div></h4>
-					<ul>
+					<ul style="height: 500px;overflow-y: auto;">
 					@if($owner_bookings != null)
 						@foreach($owner_bookings as $owner_booking)
 						<li><i class="fas fa-caravan"></i>
 							<strong>{{$owner_booking->camper_name}}</strong>
 							<ul>
-								<li class="paid">{{trans('front.price_day')}}: ${{$owner_booking->price}}</li>
+								<li class="paid">{{trans('front.net_earning')}}: <span>$ {{$owner_booking->netEaning}}</span></li>
 								<li class="unpaid">Fee: {{$owner_booking->commission}}%</li>
-								<li class="paid">{{trans('front.net_earning')}}: <span>$ {{App\Http\Controllers\frontend\FC_walletController::getIncomBooking($owner_booking->id)}}</span></li>
 								<li>{{trans('front.number_days')}}: {{$owner_booking->nbr_days}}</li>
 								<li>{{trans('front.booking_date')}}: {{$owner_booking->created_date}}</li>
 							</ul>

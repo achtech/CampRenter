@@ -12,7 +12,6 @@ use App\Mail\RenterRequestMail;
 use App\Models\Booking;
 use App\Models\BookingExtra;
 use App\Models\Camper;
-use App\Models\CamperTerms;
 use App\Models\Client;
 use App\Models\Insurance;
 use App\Models\InsuranceExtra;
@@ -35,7 +34,7 @@ class FC_bookingController extends Controller
         $ownerBookings = DB::table("v_bookings_owner")->where('id_owners', $client->id)->orderBy('id', 'desc')->get();
         $renterBookings = DB::table("v_bookings_owner")->where('booking_status_id', '<>', 7)->where('id_renters', $client->id)->orderBy('id', 'desc')->get();
         foreach ($renterBookings as $booking) {
-            $bookingWithoutInsurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
+            $bookingWithoutInsurance = Controller::getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
             $totalExtra = 0;
             $bookingExtras = $this->getExtraBooking($booking->id);
             foreach ($bookingExtras as $be) {
@@ -44,7 +43,7 @@ class FC_bookingController extends Controller
             $booking->total = $bookingWithoutInsurance + $totalExtra + $booking->insurance_price;
         }
         foreach ($ownerBookings as $booking) {
-            $bookingWithoutInsurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
+            $bookingWithoutInsurance = Controller::getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
             $totalExtra = 0;
             $bookingExtras = $this->getExtraBooking($booking->id);
             foreach ($bookingExtras as $be) {
@@ -59,13 +58,13 @@ class FC_bookingController extends Controller
 
     public function requestBooking(Request $request)
     {
+        $client = Controller::getConnectedClient();
+        if ($client == null) {
+            return redirect(route('frontend.login.client'));
+        }
         $searchedDate = $request->searchedDate ?? '';
-        $camper = Camper::find($request->id_campers);
         if ($searchedDate != '') {
-            $client = Controller::getConnectedClient();
-            if ($client == null) {
-                return redirect(route('frontend.login.client'));
-            }
+            $camper = Camper::find($request->id_campers);
             $tabDate = explode('-', $searchedDate);
             $startDate = date("Y-m-d", strtotime($tabDate[0]));
             $endDate = date("Y-m-d", strtotime($tabDate[1]));
@@ -78,7 +77,10 @@ class FC_bookingController extends Controller
             $booking->id_booking_status = 1;
             $booking->status_billings = 'Not paid';
             $booking->commission = Promotion::where('status', 1)->first()->commission;
-            $booking->total = $this->getBookingWithoutInsurance($request->id_campers, $startDate, $endDate);
+
+            $total = Controller::getBookingWithoutInsurance($request->id_campers, $startDate, $endDate);
+            $booking->total = $total;
+            $booking->total_camper = $total;
 
             $booking->save();
 
@@ -98,7 +100,6 @@ class FC_bookingController extends Controller
             $notification->status = "unread";
             $notification->save();
 
-            //dd($notification);
             $owner = Client::find($camper->id_clients);
             Mail::to($client['email'])->send(new RenterRequestMail($client, $camper));
             Mail::to($owner['email'])->send(new OwnerRequestMail($owner, $camper));
@@ -108,10 +109,12 @@ class FC_bookingController extends Controller
     public function detailBookingOwner($id)
     {
         $n = Notification::where('type', 'Booking')->where('id_table', $id)->first();
-        $notification = Notification::find($n->id);
-        if ($notification) {
-            $notification->status = "readed";
-            $notification->update();
+        if ($n) {
+            $notification = Notification::find($n->id);
+            if ($notification) {
+                $notification->status = "readed";
+                $notification->update();
+            }
         }
 
         $booking = DB::table("v_bookings_owner")->where('id', $id)->first();
@@ -311,55 +314,6 @@ class FC_bookingController extends Controller
         return $this->getHtmlPricesBooking($id_booking);
     }
 
-    /**
-     *
-     */
-    private function getBookingWithoutInsurance($id, $start_date, $end_date)
-    {
-
-        $sMonth = date('m', strtotime($start_date));
-        $eMonth = date('m', strtotime($end_date));
-        $total = 0;
-        $sameSaison = ($sMonth == 5 && $eMonth == 6) || ($sMonth == 7 && $eMonth == 8) || ($sMonth == 9 && $eMonth == 10)
-            || ($sMonth == 11 && $eMonth == 12) || ($sMonth == 12 && $eMonth == 1) || ($sMonth <= 4 && $eMonth <= 4);
-        if ($sMonth == $eMonth || $sameSaison) {
-            $nbrDays = Controller::diffDate($start_date, $end_date);
-            $sMonth = $sMonth == 9 ? 5 : ($sMonth == 10 ? 5 : $sMonth);
-            $eMonth = $eMonth == 9 ? 6 : ($eMonth == 10 ? 6 : $eMonth);
-            $sMonth = $sMonth == 12 || $sMonth <= 4 ? 11 : $sMonth;
-            $eMonth = $eMonth == 12 || $eMonth <= 4 ? 4 : $eMonth;
-            $pricePerDay = CamperTerms::where('id_campers', $id)
-                ->where(function ($query) use ($sMonth) {
-                    $query->where('start_month', $sMonth)
-                        ->orWhere('end_month', $sMonth);
-                })
-                ->first();
-            $total = ($pricePerDay ? $pricePerDay->price_per_night : 0) * $nbrDays;
-        } else {
-            $nbrDays1 = Controller::diffDate($start_date, date("Y-m-t", strtotime($start_date)));
-            $nbrDays2 = Controller::diffDate(date("Y-m-01", strtotime($end_date)), $end_date);
-            $sMonth = $sMonth == 9 ? 5 : ($sMonth == 10 ? 5 : $sMonth);
-            $eMonth = $eMonth == 9 ? 6 : ($eMonth == 10 ? 6 : $eMonth);
-
-            $pricePerDay1 = CamperTerms::where('id_campers', $id)
-                ->where(function ($query) use ($sMonth) {
-                    $query->where('start_month', $sMonth)
-                        ->orWhere('end_month', $sMonth);
-                })
-                ->first()->price_per_night;
-
-            $pricePerDay2 = CamperTerms::where('id_campers', $id)
-                ->where(function ($query) use ($eMonth) {
-                    $query->where('start_month', $eMonth)
-                        ->orWhere('end_month', $eMonth);
-                })
-                ->first()->price_per_night;
-
-            $total = ($pricePerDay1 ? $pricePerDay1->price_per_night : 0) * ($nbrDays1 + 1) + ($pricePerDay2 ? $pricePerDay2->price_per_night : 0) * $nbrDays2;
-        }
-        return $total;
-    }
-
     public static function getExtraBooking($id)
     {
         return BookingExtra::join('insurance_extra', 'insurance_extra.id', '=', 'booking_extras.id_insurance_extra')->where('id_bookings', $id)->get();
@@ -369,10 +323,10 @@ class FC_bookingController extends Controller
     {
         $booking = DB::table("v_bookings_owner")->where('id', $booking_id)->first();
 
-        $total_without_insurance = $this->getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
+        $total_without_insurance = Controller::getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
         $html = "<li>" . trans('front.date') . " <span>" . date('j F Y', strtotime($booking->created_date)) . "</span></li>";
 
-        $html .= "<li>" . trans('front.n_nights') . " <span>" . $booking->nbr_days . " " . trans('front.days') . "</span></li>";
+        $html .= "<li>" . trans('front.n_nights') . " <span>" . $booking->nbr_days . " " . trans('front.nights') . "</span></li>";
         $html .= "<li>Price <span>" . $total_without_insurance . " CHF</span></li>";
 
         if ($booking->insurance_price != 0) {
@@ -397,8 +351,11 @@ class FC_bookingController extends Controller
     public static function isNotBooked($id)
     {
         $connectedClient = Controller::getConnectedClient();
-        $check2 = Booking::where('id_campers', $id)->where('id_clients', $connectedClient->id)->where('id_booking_status', 1)->get()->count();
-        return $check2 != 0;
+        if ($connectedClient) {
+            $check2 = Booking::where('id_campers', $id)->where('id_clients', $connectedClient->id)->where('id_booking_status', 1)->get()->count();
+            return $check2 != 0;
+        }
+
     }
 
 }

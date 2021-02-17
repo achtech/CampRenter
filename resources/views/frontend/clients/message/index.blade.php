@@ -35,13 +35,13 @@
 						@if(!empty($messages))
 						@foreach($messages as $msg)
 							<li class="{{$msg->status}}">
-								<a href="{{route('frontend.clients.message.detail',$msg->renter_id)}}">
+								<a href="{{route('frontend.clients.message.detail',$msg->id_bookings)}}">
 									<div class="message-avatar">
 										<img src="@if(!empty($msg->renter_photo)) {{asset('/images')}}/clients/{{$msg->renter_photo}} @else http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=70 @endif" alt="" /></div>
 
 									<div class="message-by">
 										<div class="message-by-headline">
-											<h5>{{$msg->renter_name}} @if(App\Http\Controllers\frontend\FC_messageController::getNotificationByRenter($msg->renter_id)>0) <i>{{trans('front.unread')}}</i> @endif</h5>
+											<h5>{{$msg->renter_id!=$idClient ? $msg->renter_name : $msg->owner_name}} @if(App\Http\Controllers\frontend\FC_messageController::getNotificationByRenter($msg->renter_id)>0) <i>{{trans('front.unread')}}</i> @endif</h5>
 											<span>{{$msg->date_message}}</span>
 										</div>
 										<p>{{ Illuminate\Support\Str::limit($msg->message, 100)}}</p>

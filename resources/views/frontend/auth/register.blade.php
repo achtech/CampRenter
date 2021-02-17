@@ -18,6 +18,12 @@
                 </div>
                 <div class="titles-container">
                     <h4 class="text-center">{{trans('front.register_with_email_address')}}</h4>
+                    @if (Session::has('successregistration'))
+                        <div class="notification success">
+                            <p><span>Success!</span> Check your email</p>
+                            <a class="close"></a>
+                        </div>
+                    @endif
                     {{ Form::open(['route'=>'frontend.client.store', 'enctype'=>'multipart/form-data','autocomplete'=>'off','method'=>'POST']) }}
                     <div class="row">
                         <div  class="col-md-12">

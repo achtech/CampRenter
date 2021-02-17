@@ -141,6 +141,7 @@ class FC_rentOutController extends Controller
             return redirect(route('frontend.login.client'));
         }
 
+        $request_location = mb_convert_case($request->location, MB_CASE_LOWER, "UTF-8");
         $camper->camper_name = $request->camper_name ?? '';
         $camper->brand = $request->brand ?? '';
         $camper->model = $request->model ?? '';
@@ -160,7 +161,7 @@ class FC_rentOutController extends Controller
         $camper->length = $request->length ?? null;
         $camper->horse_power = $request->horse_power ?? null;
         $camper->cylinder_capacity = $request->cylinder_capacity ?? null;
-        $camper->location = $request->location ?? null;
+        $camper->location = $request_location ?? null;
         $camper->position_x = $request->position_x ?? null;
         $camper->position_y = $request->position_y ?? null;
         if ($request->additional_attribute) {
@@ -1037,7 +1038,7 @@ class FC_rentOutController extends Controller
         $html .= "<div class='col-md-12' style='margin-top:10px;'>
             <div class='col-md-9' >
                 <div class='col-md-12' >
-                    <p><strong>Sample booking high season (average booking on CampUnite of 10 nights)</strong></p>
+                    <p><strong>Sample booking high season (average booking on minimum nights of renting)</strong></p>
                 </div>
                 <div class='col-md-6' >
                     <p><h5>Owner earnings</h5></p>
@@ -1163,7 +1164,6 @@ class FC_rentOutController extends Controller
 
         $client = Client::find($camper->id_clients);
         Mail::to("support@campunite.com")->send(new ConfirmationCamperMail($client, $camper));
-
         return redirect(route('frontend.camper.detail', $camper->id));
     }
 
@@ -1210,7 +1210,7 @@ class FC_rentOutController extends Controller
     }
     public static function isRentalTermsReady($camper)
     {
-        return $camper->animals_allowed && $camper->smoking_allowed;
+        return $camper->animals_allowed != null && $camper->smoking_allowed != null;
     }
     public static function isTermsReady($camper)
     {

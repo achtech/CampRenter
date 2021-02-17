@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> {{trans('front.forget_password')}}</title>
+    <title> Request for camper confirmation </title>
 </head>
 
 <body>

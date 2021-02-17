@@ -24,16 +24,7 @@
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
-					<!-- Reply to review popup -->
-					<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-						<div class="small-dialog-header">
-							<h3>{{trans('front.send_message')}}</h3>
-						</div>
-						<div class="message-reply margin-top-0">
-							<textarea cols="40" rows="3" placeholder="Your Message"></textarea>
-							<button class="button">{{trans('front.send')}}</button>
-						</div>
-					</div>
+
 					<h4>{{trans('front.booking_requests')}}</h4>
 					<!-- Tabs Navigation -->
 					<ul class="tabs-nav">

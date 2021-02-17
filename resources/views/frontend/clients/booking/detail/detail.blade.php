@@ -37,23 +37,29 @@
 
 			<!-- Slider -->
 			<div id="listing-gallery" class="listing-section">
-			@include('frontend.camper.detail.gallery')
+			@include('frontend.clients.booking.detail.gallery')
 			</div>
 
 
 			<!-- Overview -->
 			<div id="listing-overview" class="listing-section">
-			@include('frontend.camper.detail.overview')
+			@include('frontend.clients.booking.detail.overview')
 			</div>
 
 			<!-- Location -->
 			<div id="listing-location" class="listing-section">
-			@include('frontend.camper.detail.location')
+			@include('frontend.clients.booking.detail.location')
 			</div>
 
 			<!-- Reviews -->
 			<div id="listing-reviews" class="listing-section">
-				@include('frontend.camper.detail.reviews')
+				@include('frontend.clients.booking.detail.reviews')
+			</div>
+
+
+			<!-- Add Review Box -->
+			<div id="add-review" class="add-review-box">
+			@include('frontend.clients.booking.detail.add_review')
 			</div>
 			<!-- Add Review Box / End -->
 
@@ -64,7 +70,7 @@
 		<!-- Sidebar
 		================================================== -->
 		<div class="col-lg-4 col-md-4 margin-top-75 sticky">
-			@include('frontend.camper.detail.sidebar')
+			@include('frontend.clients.booking.detail.sidebar')
 		</div>
 		<!-- Sidebar / End -->
 
@@ -101,9 +107,6 @@
 
 		e.preventDefault(); // avoid to execute the actual submit of the form.
 
-		$("#btnRequest").prop("disabled",true);
-		$("#btnRequest").css("cursor","default");
-
 		var form = $(this);
 		var url = form.attr('action');
 
@@ -114,18 +117,10 @@
 			success: function(data)
 			{
 				$("#btnRequest").html("Your book is requested");
+				$("#btnRequest").prop("disabled",true);
 				document.getElementById('btnRequest').style.background="#19b453";
-			},
-			error: function(data)
-			{
-				$("#btnRequest").prop("disabled",false);
 			}
 		});
 	});
-
-	var disabledDates = [
-    '2015-05-06',
-    '2015-05-08'
-];
 </script>
 @endsection

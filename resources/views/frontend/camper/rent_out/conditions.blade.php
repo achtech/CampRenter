@@ -45,7 +45,7 @@
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
-								<select id="main_season" name="minimum_night_main" required="required"  class=""  >
+								<select id="main_season" name="minimum_night_main" required="required"  >
 									<option value="">Choose</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
 										<option @if( $season_main && $season_main->minimum_night == $i) selected='selected' @endif value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
@@ -72,7 +72,7 @@
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
-								<select id="off_season" name="minimum_night_off" required="required" >
+								<select id="off_season" name="minimum_night_off" required="required"  >
 									<option value="">Choose</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
 										<option @if($season_off && $season_off->minimum_night == $i) selected='selected'
@@ -93,13 +93,13 @@
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
-								<input id="price_winter" required name='price_per_night_winter' type="number" min="0" value="{{$season_winter ? $season_winter->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
+								<input id="price_winter" name='price_per_night_winter' type="number" required min="0" value="{{$season_winter ? $season_winter->price_per_night : null}}" placeholder="{{trans('front.price_per_night')}}">
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
-								<select id="winter_season" required="required" name="minimum_night_winter" >
+								<select id="winter_season" name="minimum_night_winter" required="required">
 								<option value="">Choose</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
 										<option @if( $season_winter && $season_winter->minimum_night == $i) selected='selected' @endif value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
@@ -112,6 +112,7 @@
 
 					</div>
 				</div>
+				<!--
 				<div class="col-md-12" style="margin-top:20px;">
 					<h4><strong>1. {{trans('front.set_discounts')}}</strong></h4>
 				</div>
@@ -140,8 +141,8 @@
 						<p><strong>Long-trip discount</strong></p>
 					</div>
 
-				</div>
-				<div class="row">
+				</div>-->
+				<div class="row margin-top-50">
 					<div class="col-md-12">
 					<div style="float: right;">
 						{{Form::submit(trans('front.apply'),['style' => 'width:200px','class'=>'button border','name' => 'action'])}}

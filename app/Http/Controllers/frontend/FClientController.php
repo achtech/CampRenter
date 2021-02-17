@@ -31,6 +31,32 @@ class FClientController extends DefaultLoginController
      * @return void
      */
 
+    public function check_id_confirm($id_confirm)
+    {
+        $data = Client::where(DB::raw('md5(id)'), $id_confirm)->first();
+
+        return $data;
+
+    }
+    public function confirmationEmail($id_confirm = null)
+    {
+        if ($id_confirm) {
+            $confirm = $this->check_id_confirm($id_confirm);
+            if (!empty($confirm)) {
+                $datas['actif'] = 1;
+                DB::table('clients')
+                    ->where('id', $confirm->id)
+                    ->update($datas);
+
+                return redirect(route('frontend.login.client'));
+            } else {
+                return abort(404);
+            }
+        } else {
+            return abort(404);
+        }
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -39,11 +65,13 @@ class FClientController extends DefaultLoginController
         ]);
         $input = request()->except(['_token', '_method', 'action']);
         $client_mail = Client::where('email', $input['email'])->first();
-        if ($client_mail == null) {
+
+        if (empty($client_mail)) {
             $input['password'] = bcrypt($input['password']);
             $client = Client::create($input);
             Mail::to($client['email'])->send(new RegistrationMail($client));
-            return view('frontend.auth.login');
+            Session::flash('successregistration', 'true');
+            return back();
         }
         return back()->withInput($request->only('email', 'remember'));
     }
@@ -80,10 +108,10 @@ class FClientController extends DefaultLoginController
             $input['image_national_id'] = $request->file('image_national_id')->getClientOriginalName();
             $cin->move(base_path('public/images/clients'), $cin->getClientOriginalName());
         }
-        if ($request->photoDelete && $request->photoDelete==1) {
+        if ($request->photoDelete && $request->photoDelete == 1) {
             $input['photo'] = null;
         }
-        
+
         if ($request->file('photo') && $request->file('photo')->getClientOriginalName()) {
             $input['photo'] = $request->file('photo')->getClientOriginalName();
             $file->move(base_path('public/images/clients'), $file->getClientOriginalName());

@@ -48,6 +48,7 @@ class Client extends Authenticatable
         'status',
         'id_avatars',
         'photo',
+        'actif',
         'created_by',
         'updated_by',
         'created_at',

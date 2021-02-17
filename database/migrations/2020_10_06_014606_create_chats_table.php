@@ -17,6 +17,7 @@ class CreateChatsTable extends Migration
             $table->id();
             $table->string('message', 100)->nullable();
             $table->string('status', 100)->nullable();
+            $table->string('sender', 100)->nullable();
             $table->dateTime('date_sent')->nullable();
             $table->bigInteger('ordre_message')->nullable();
 

@@ -31,8 +31,12 @@ class FC_reviewController extends Controller
         }
         $input = request()->except(['_token', '_method']);
         $input['created_by'] = $client->id;
+        $input['email'] = $client->email;
+        $input['id_clients'] = $client->id;
+        $input['name'] = $client->client_name;
+
         $data = CamperReview::create($input);
-        return redirect(route('frontend.camper.detail', $request->id_campers))->with('success', 'Item added succesfully');
+        return redirect(route('frontend.camper.detail.booked', $request->id_campers))->with('success', 'Item added succesfully');
     }
 
     public function feedback($id)
@@ -55,7 +59,9 @@ class FC_reviewController extends Controller
     {
         $review = CamperReview::find($id);
         //TODO connext user must
-        $review->increment('helpfulReview'); // increase one count
+        if ($review != null) {
+            $review->increment('helpfulReview');
+        }
         //$review->decrement('helpfulReview');
         return redirect()->back();
     }

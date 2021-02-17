@@ -121,7 +121,7 @@
                 });
                 (function (marker, data) {
                     google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.description_camper + "</div>");
+                        infoWindow.setContent("<img style = 'width:200px;min-height:40px;border-radius: 10%;' src={{asset('images')}}/camper/" + data.image + " ><h5 style='font-weight: bold;'> "+data.camper_name+" </h5>");
                         infoWindow.open(map, marker);
                     });
                 })(marker, data);

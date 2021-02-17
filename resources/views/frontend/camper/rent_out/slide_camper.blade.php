@@ -39,13 +39,16 @@
                     </div>
               </div>
               <div class="form-group col-6 camper_image">
+              @if($camper['image'] != "camper_rent.png")
                 <img   src="{{asset('images/camper')}}/{{$camper['image']}}" alt="" id="camper_image">
-
+                @else
+                <img alt="" id="camper_image">
+              @endif
               </div>
             </div>
           </div>
           <div class="form-group">
-                <label for="document">New photos</label>
+                <label for="document">Gallery images</label>
                 <div class="needsclick dropzone" id="document-dropzone">
 
                 </div>

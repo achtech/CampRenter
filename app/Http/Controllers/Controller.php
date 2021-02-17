@@ -6,6 +6,7 @@ use App\Models\Avatar;
 use App\Models\Booking;
 use App\Models\BookingExtra;
 use App\Models\Camper;
+use App\Models\CamperTerms;
 use App\Models\Client;
 use App\Models\Insurance;
 use App\Models\InsuranceExtra;
@@ -279,6 +280,57 @@ class Controller extends BaseController
             return $data->initial_price + ($nbrDays - $data->nbr_days_from + 1) * $data->price_per_day;
         }
         return 0;
+    }
+
+    /**
+     *
+     */
+    public static function getBookingWithoutInsurance($id, $start_date, $end_date)
+    {
+
+        $sMonth = date('m', strtotime($start_date));
+        $eMonth = date('m', strtotime($end_date));
+        $total = 0;
+        $sameSaison = ($sMonth == 5 && $eMonth == 6) || ($sMonth == 7 && $eMonth == 8) || ($sMonth == 9 && $eMonth == 10)
+            || ($sMonth == 11 && $eMonth == 12) || ($sMonth == 12 && $eMonth == 1) || ($sMonth <= 4 && $eMonth <= 4);
+        if ($sMonth == $eMonth || $sameSaison) {
+            $nbrDays = self::diffDate($start_date, $end_date);
+            $sMonth = $sMonth == 9 ? 5 : ($sMonth == 10 ? 5 : $sMonth);
+            $eMonth = $eMonth == 9 ? 6 : ($eMonth == 10 ? 6 : $eMonth);
+            $sMonth = $sMonth == 12 || $sMonth <= 4 ? 11 : $sMonth;
+            $eMonth = $eMonth == 12 || $eMonth <= 4 ? 4 : $eMonth;
+            $pricePerDay = CamperTerms::where('id_campers', $id)
+                ->where(function ($query) use ($sMonth) {
+                    $query->where('start_month', $sMonth)
+                        ->orWhere('end_month', $sMonth);
+                })
+                ->first();
+            $total = ($pricePerDay ? $pricePerDay->price_per_night : 0) * $nbrDays;
+        } else {
+            $nbrDays1 = self::diffDate($start_date, date("Y-m-t", strtotime($start_date)));
+            $nbrDays2 = self::diffDate(date("Y-m-01", strtotime($end_date)), $end_date);
+            $sMonth = $sMonth == 9 ? 5 : ($sMonth == 10 ? 5 : $sMonth);
+            $eMonth = $eMonth == 9 ? 6 : ($eMonth == 10 ? 6 : $eMonth);
+
+            $pricePerDay1data = CamperTerms::where('id_campers', $id)
+                ->where(function ($query) use ($sMonth) {
+                    $query->where('start_month', $sMonth)
+                        ->orWhere('end_month', $sMonth);
+                })
+                ->first();
+            $pricePerDay1 = $pricePerDay1data != null ? $pricePerDay1data->price_per_night : 0;
+
+            $pricePerDay2data = CamperTerms::where('id_campers', $id)
+                ->where(function ($query) use ($eMonth) {
+                    $query->where('start_month', $eMonth)
+                        ->orWhere('end_month', $eMonth);
+                })
+                ->first();
+            $pricePerDay2 = $pricePerDay2data != null ? $pricePerDay2data->price_per_night : 0;
+
+            $total = $pricePerDay1 * ($nbrDays1 + 1) + $pricePerDay2 * $nbrDays2;
+        }
+        return $total;
     }
 
 }

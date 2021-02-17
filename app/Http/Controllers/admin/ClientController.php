@@ -211,10 +211,10 @@ class ClientController extends Controller
     {
         $bookings = Booking::leftjoin('campers', 'bookings.id_campers', '=', 'campers.id')
             ->where('campers.id_clients', $id)
-            ->where('bookings.status_billings', 'Not Payed')
-            ->where('bookings.id_booking_status', '2')
-            ->select(DB::raw('sum((total/100) * (100-commission)) as total'));
-        return $bookings->first()->total ?? '0';
+            ->where('bookings.start_date', 'like', date('Y-m-') . "%")
+            ->where('bookings.id_booking_status', '4')
+            ->select(DB::raw('sum((total_camper/100) * (100-commission)) as totalCamper'));
+        return $bookings->first()->totalCamper ?? '0';
     }
 
     public static function toTransfertSolde($id)
@@ -226,13 +226,18 @@ class ClientController extends Controller
             ->select(DB::raw('sum((total/100) * (100-commission)) as total'));
         return $bookings->first()->total ?? '0';
     }
+
     public static function getTotalsSolde($id)
     {
+        //total : a payer
+        //totalExtra
+        //totalInsurance
+        //totalCamper : camper pernight * nbr de nuit
         $bookings = Booking::leftjoin('campers', 'bookings.id_campers', '=', 'campers.id')
             ->where('campers.id_clients', $id)
-            ->where('bookings.id_booking_status', '3')
-            ->select(DB::raw('sum((total/100) * (100-commission)) as total'));
-        return $bookings->first()->total ?? '0';
+            ->where('bookings.id_booking_status', '4')
+            ->select(DB::raw('sum((total_camper/100) * (100-commission)) as totalCamper'));
+        return $bookings->first()->totalCamper ?? '0';
     }
 
     public static function getCampUnitPart($id)

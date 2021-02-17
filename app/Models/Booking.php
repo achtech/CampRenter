@@ -10,6 +10,8 @@ class Booking extends Base
         'start_date',
         'end_date',
         'total',
+        'total_camper',
+        'total_extras',
         'id_booking_status',
         'status_billings',
         'id_campers',
@@ -17,6 +19,6 @@ class Booking extends Base
         'commission',
         'created_by',
         'updated_by',
-        'comment'
+        'comment',
     ];
 }

@@ -21,10 +21,14 @@ class FC_walletController extends Controller
             $total_rejected = DB::table("v_wallet_owner")->where('clt', $client->id)->where('bstatus', 3)->first();
             $total_orders = DB::table("v_wallet_owner")->where('clt', $client->id)->sum('total');
 
-            $owner_bookings = DB::table("v_bookings_owner")->where('id_owners', $client->id)->get();
+            $owner_bookings = DB::table("v_bookings_owner")->where('id_owners', $client->id)->where('booking_status_id', 4)->get();
             $activePromotion = Promotion::where('status', 1)->first();
             $billings = DB::table("billings")->where('id_clients', $client->id)->get();
-            //dd($activePromotion);
+
+            foreach ($owner_bookings as $booking) {
+                $booking->netEaning = Controller::getBookingWithoutInsurance($booking->id_campers, $booking->start_date, $booking->end_date);
+            }
+
             return view('frontend.clients.wallet.index')
                 ->with('total_canceled', $total_canceled)
                 ->with('total_confirmed', $total_confirmed)

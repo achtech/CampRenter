@@ -18,6 +18,12 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                     @enderror
+                    @if (Session::has('stepemailcheck'))
+                        <div class="notification danger">
+                            <p><span>Error!</span> {{trans('front.email_or_pwd_error')}}</p>
+                            <a class="close"></a>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-md-12">
                     <label for="password1">{{trans('front.password')}}</label>
@@ -41,11 +47,11 @@
             {{ Form::close() }}
         </div>
 
-          <div style="padding-top: 10px;text-align: center;">
+          <!--<div style="padding-top: 10px;text-align: center;">
               <a href="{{ route('frontend.client.showresetpassword') }}" style="margin-top: 90px">
                   {{ __('Forgot Your Password?') }}
               </a>
-          </div>
+          </div>-->
         <div class="row" style="padding-left:5%;">
             <div class="col-md-12">
                 <div class="hr-bar">

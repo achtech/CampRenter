@@ -8,7 +8,7 @@
             <label>{{ __('front.profil_last_name') }}</label>
             <input  id="client_last_name" name="client_last_name" class="form-control" value="{{$client['client_last_name']}}" type="text" required>
             <label>{{ __('front.profil_sex') }}</label>
-            <select name="sex" class="chosen-select" data-placeholder="{{trans('front.sex')}}" required>
+            <select name="sex" class="chosen-select" data-placeholder="{{trans('front.sex')}}">
                 <option label="Opening Time"></option>
                 <option value="female" @if($client->sex=='female') selected @endif>{{trans('front.female')}}</option>
                 <option value="male" @if($client->sex=='male') selected @endif>{{trans('front.male')}}</option>
@@ -71,9 +71,9 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="edit-profile-photo">
-                    <label>{{ __('front.photo') }} 
+                    <label>{{ __('front.photo') }}</br>
                     @if($client['photo']!=null)
-                        <a id="linkPhoto" onclick="clearProfilPhoto()" style="color:red">(Remove current photo)</a>
+                        <a id="linkPhoto" onclick="clearProfilPhoto()" style="color:#39b7cd; font-weight: 100;">Remove</a>
                         <input type="hidden" name="photoDelete" value="0" id="photoDelete">
                     @endif
                     </label>
@@ -190,10 +190,11 @@ $("img[data-picture_avatar_id]").click(function(e){
         }
 	}
 
-function clearProfilPhoto(){
-    document.getElementById('client_image').src= null;
-    document.getElementById('photo').input= null;
-    document.getElementById('photoDelete').value = 1;
-    document.getElementById('linkPhoto').style.display = 'none';
-}
+    function clearProfilPhoto(){
+        document.getElementById('client_image').display = 'none';
+        document.getElementById('client_image').src= null;
+        document.getElementById('photo').input= null;
+        document.getElementById('photoDelete').value = 1;
+    }
+
 </script>

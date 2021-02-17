@@ -2,7 +2,7 @@
 
 <div class="listing-item-container compact order-summary-widget">
     <div class="listing-item">
-        <img src="{{asset('public/images/camper')}}/{{$camper->image}}" alt="">
+        <img src="{{asset('images')}}/camper/{{$camper->image}}" alt="">
     </div>
 </div>
 <!-- Book Now -->
@@ -13,7 +13,7 @@
     <span  class="button book-now fullwidth margin-top-5" disabled>You already send a request for this camper</span>
     <!-- Estimated Cost -->
 </div>
-@elseif(App\Http\Controllers\frontend\FC_bookingController::canBook($camper) || !session('_client'))
+@elseif(App\Http\Controllers\frontend\FC_bookingController::canBook($camper))
 <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
     <form method="POST" id="idForm" action="{{route('frontend.add_request_booking')}}" autocomplete="off" >
     @csrf
@@ -22,7 +22,7 @@
         <div class="row with-forms  margin-top-0">
 
             <!-- Date Range Picker -->
-            <div class="col-lg-12 booking_date" id="daterangepicker">
+            <div class="col-lg-12 booking_date">
                 <input type="text" id="booking-date-range" required
                         name="searchedDate"  placeholder="{{trans('front.check_in_out')}}"
                         />
@@ -44,7 +44,7 @@
 <div class="boxed-widget margin-top-35">
     <div class="hosted-by-title">
         <h4><span>{{trans('front.hosted_by')}}</span> <a href="{{route('frontend.camper.owner_detail', $camper->id)}}">{{$owner->client_name}}</a></h4>
-        <a style="height: 100%;" href="{{route('frontend.camper.owner_detail', $camper->id)}}" class="hosted-by-avatar"><img style="height: 100%;" src="{{asset('/images')}}/clients/{{$owner_photo}}" alt=""></a>
+        <a href="{{route('frontend.camper.owner_detail', $camper->id)}}" class="hosted-by-avatar"><img src="{{asset('/images')}}/clients/{{$owner_photo}}" alt=""></a>
     </div>
 </div>
 <!-- Contact / End-->

@@ -48,18 +48,13 @@
     <ul>
         @foreach($reviews as $review)
             <li>
-                <div class="avatar" style="height: 60%;"><img style="height: 60%;" src="{{ $review->photo ? asset('public/images/clients').'/'.$review->photo : asset('/images/avatar/default.jpg')}}" alt="" /></div>
+                <div class="avatar"><img src="{{asset('/images/avatar/default.jpg')}}" alt="" /></div>
                 <div class="comment-content"><div class="arrow-comment"></div>
                     <div class="comment-by">{{$review->name}} <span class="date">{{date('j F Y', strtotime($review->created_at))}}</span>
                         <div class="star-rating" data-rating="{{number_format(($review->rate_service+$review->rate_managing+$review->rate_cleanliness)/3),1}}"></div>
                     </div>
                     <p>{{$review->comment}}</p>
-                    <!-- Book Now -->
-                    @if(!session('_client'))
-                    <a href="/showlogin/client" class="rate-review"><i class="far fa-thumbs-up"></i> {{trans('front.helpful_review')}} <span>{{$review->helpfulReview}}</span></a>
-                    @else
                     <a href="{{route('frontend.clients.review.helpfulReview',$review->id)}}" class="rate-review"><i class="far fa-thumbs-up"></i> {{trans('front.helpful_review')}} <span>{{$review->helpfulReview}}</span></a>
-                    @endif
                 </div>
             </li>
         @endforeach

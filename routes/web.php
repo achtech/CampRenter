@@ -60,6 +60,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
     Route::get('/login/ShowResetPassword', [FClientController::class, 'ShowResetPassword'])->name('frontend.client.showresetpassword');
     Route::get('/showRegister', [FClientController::class, 'showRegister'])->name('frontend.client.show_register');
+    Route::get('/confirmation/{id}', [FClientController::class, 'confirmationEmail'])->name('frontend.client.confirmationEmail');
     Route::post('/resetPassword', [FClientController::class, 'resetPassword'])->name('frontend.client.resetPassword');
     Route::get('/editPass', [FClientController::class, 'edit'])->name('frontend.client.editClient');
     Route::put('/updateClient', [FClientController::class, 'updatePassword'])->name('frontend.client.updatePassword');
@@ -188,6 +189,7 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::get('/review_helpfulReview/{id}', [FC_reviewController::class, 'helpfulReview'])->name('frontend.clients.review.helpfulReview');
     Route::post('/review_addReview', [FC_reviewController::class, 'addReview'])->name('frontend.clients.review.addReview');
     Route::get('/camper/detail/client/{id}', [FC_CamperController::class, 'detail'])->name('frontend.camper.detail');
+    Route::get('/camper/detail/booked/{id}', [FC_CamperController::class, 'detailBookedCamper'])->name('frontend.camper.detail.booked');
     Route::get('/details_booking_paiement', [FC_CamperController::class, 'bookingPaiement'])->name('frontend.camper.booking_paiement');
     Route::get('/bookmark_client', [FC_bookmarkController::class, 'index'])->name('frontend.clients.bookmark');
     Route::post('/ajax/addBookmarks', [FC_bookmarkController::class, 'addOrRemove'])->name('frontend.camper.add_bookmark');
@@ -487,3 +489,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //facebook call
 Route::get('/redirect/{service}', [App\Http\Controllers\SocialController::class, 'redirect']);
 Route::get('/callback/{service}', [App\Http\Controllers\SocialController::class, 'callback']);
+
+###############Paypal########
+
+Route::get('payment-successful', [App\Http\Controllers\PaypalController::class, 'successful']);
+Route::get('ipn', [App\Http\Controllers\PaypalController::class, 'ipn']);
+Route::get('payment-cancelled', [App\Http\Controllers\PaypalController::class, 'cancelled']);
+Route::post('payments', [App\Http\Controllers\PaypalController::class, 'payments'])->name('redirectToPayp'); //1
+Route::post('receivepost', [App\Http\Controllers\PaypalController::class, 'savedataPost']);

@@ -26,7 +26,7 @@
 							class="listing-item-container getbysrc1_{{$camper->id}}"
 							data-marker-id="{{$camper->id}}">
 							<div class="listing-item">
-								<img   src="{{asset('images')}}/camper/{{$camper->image}}" alt="">
+								<img   src="{{asset('public/images')}}/camper/{{$camper->image}}" alt="">
 								<div class="listing-badge now-open">{{App\Http\Controllers\frontend\FC_CamperController::getCamperPriceCurrentSaison($camper->id)}} CHF</div>
 								<div class="listing-item-content">
 									<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>

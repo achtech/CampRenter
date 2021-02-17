@@ -28,7 +28,23 @@
                     </div>
                 </div>
             </div>
+            <!-- Reply to review popup -->
+            <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+            {{ Form::open(['action'=>'App\Http\Controllers\frontend\FC_messageController@store', 'method'=>'POST']) }}
+                <input type="hidden" name="id_renters" value="{{$booking->id_renters}}"/>
+                <input type="hidden" name="id_owners" value="{{$booking->id_owners}}"/>
+                <div class="small-dialog-header">
+                    <h3>{{trans('front.send_message')}}</h3>
+                </div>
+                <div class="message-reply margin-top-0">
+                    <textarea cols="40" rows="3" name="message" placeholder="Your Message"></textarea>
+                </div>
+            {{Form::submit('Send',['class'=>'button','name' => 'action'])}}
+            </div>
             <div class="buttons-to-right">
+            @if($booking->booking_status_id==5 || $booking->booking_status_id==4)
+                <a href="{{route('frontend.camper.detail.booked',$booking->id_campers)}}" class="button gray approve"><i class="far fa-eye"></i> Check camper</a>
+            @endif
             @if($booking->booking_status_id==2)
                 <a href="{{ route('booking.renter_booking.process',$booking->id)}}" class="button gray approve"><i class="far fa-edit"></i> {{trans('front.complete_booking')}}</a>
             @endif

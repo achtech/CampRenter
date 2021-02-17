@@ -63,5 +63,6 @@ class FUserController extends Controller
         $clt = Client::find($client->id);
         $clt->photo = null;
         $clt->update();
+
     }
 }
