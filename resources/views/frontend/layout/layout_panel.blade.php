@@ -41,10 +41,7 @@ $(document).ready(function(){
 </head>
 
 <body>
-<!-- Maps -->
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjaNhwjWA-cyChAjLnGiIe44NbHMZ_s7c&libraries=places"
-></script>
+
 
 
 <!-- Wrapper -->

@@ -75,9 +75,6 @@ gtag('config', 'AW-387696381');
 <body>
 
 <!-- Maps -->
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjaNhwjWA-cyChAjLnGiIe44NbHMZ_s7c&libraries=places"
-></script>
 
 <!-- Wrapper -->
 <div id="wrapper">
