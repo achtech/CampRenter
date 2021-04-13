@@ -3,9 +3,7 @@
 
 <div id="map_canvas" style="width: 100%; height: 400px;"></div>
 
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjaNhwjWA-cyChAjLnGiIe44NbHMZ_s7c"
-></script>
+
 <script type="text/javascript">
 	var map;
 var latlng = new google.maps.LatLng('{{$camper->position_x}}','{{$camper->position_y}}');
