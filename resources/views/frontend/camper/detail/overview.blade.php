@@ -17,7 +17,6 @@
             <h5>{{__('front.Vehicle')}}</h5>
         </div>
         <div class="col-md-10">
-
                 <div class="row" >
                     <div class="col-md-5">
                         <h6 class="head-design">{{__('front.brand_type')}}</h6>
@@ -25,34 +24,34 @@
 
                     </div>
                     <div class="col-md-5">
-                        <h6 class="head-design">{{__('front.drivers_licence')}}</h6>
-                        <div style="margin-top: -12px;">{{$camper->vehicle_licence}}</div>
+                        <h6 class="head-design">{{__('front.model')}}</h6>
+                        <div style="margin-top: -12px;">{{$camper->model}}</div>
                     </div>
                 </div>
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-md-5">
                         <h6 class="head-design">{{__('front.Gearbox')}}</h6>
                         <div style="margin-top: -12px;">{{$camper->gearbox}}</div>
                     </div>
-                </div>
+                </div>-->
                 <div class="row">
                     <div class="col-md-5">
                         <h6 class="head-design">{{__('front.Fuel')}}</h6>
-                        <div style="margin-top: -12px;">{{$camper->gearbox}}</div>
+                        <div style="margin-top: -12px;">{{App\Http\Controllers\Controller::getLabel('fuels', $fuel->id)}}</div>
                     </div>
                     <div class="col-md-5">
                         <h6 class="head-design">{{__('front.Fuel Consumption')}}</h6>
-                        <div style="margin-top: -12px;">{{$camper->fuel_consumption}} {{__('front.per_100km')}}</div>
+                        <div style="margin-top: -12px;">{{$camper->fuel_consumation}} {{__('front.per_100km')}}</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-5">
                         <h6 class="head-design">{{__('front.capacity_fuel_tank')}}</h6>
-                        <div style="margin-top: -12px;">{{$camper->capacity_fuel_tank}}</div>
+                        <div style="margin-top: -12px;">{{$camper->fuel_capacity}}</div>
                     </div>
                     <div class="col-md-5">
                         <h6 class="head-design">{{__('front.Mileage')}}</h6>
-                        <div style="margin-top: -12px;">{{$camper->included_kilometres}} {{__('front.km')}}</div>
+                        <div style="margin-top: -12px;">{{$camper->included_kilometres}}</div>
                     </div>
                 </div>
                 <div class="row">
@@ -72,7 +71,7 @@
                     </div>
                     <div class="col-md-5">
                         <h6 class="head-design">{{__('front.Performance in horse power')}}</h6>
-                        <div style="margin-top: -12px;">{{$camper->performance_horse_power}} {{__('front.ps')}}</div>
+                        <div style="margin-top: -12px;">{{$camper->horse_power}} {{__('front.ps')}}</div>
                     </div>
                 </div>
                 <div class="row">
@@ -82,7 +81,7 @@
                     </div>
                     <div class="col-md-5">
                         <h6 class="head-design">{{__('front.Additional attributes')}}</h6>
-                        <div style="margin-top: -12px;white-space: nowrap;">{{$camper->additional_attributes}} {{__('front.ps')}}</div>
+                        <div style="margin-top: -12px">{{$additionalAttribute}} {{__('front.ps')}}</div>
                     </div>
                 </div>
         </div>
@@ -101,112 +100,75 @@
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->power==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.Power supply')}}
+                    @endif
                 </div>
-            </div>
-            <div class="row" >
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->cooking_possibility==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.burner stove')}}
+                    @endif
                 </div>
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->cooling_possibility==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.Fridge')}}
+                    @endif
                 </div>
-            </div>
-            <div class="row" >
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->sink==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.Sink')}}
+                    @endif
                 </div>
 
-            </div>
-            <div class="row" >
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->indoor_table==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.Indoor table')}}
+                    @endif
                 </div>
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->electronics==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.CD Player')}}
+                    @endif
                 </div>
-            </div>
-            <div class="row" >
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->dishes==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.Dishes')}}
+                    @endif
                 </div>
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->camping_table==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.Camping table')}}
+                    @endif
                 </div>
-            </div>
-            <div class="row" >
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->camping_chairs==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.Camping chairs')}}
+                    @endif
                 </div>
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->transport==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.Trailer hitch')}}
+                    @endif
                 </div>
-            </div>
-            <div class="row" >
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->water==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-                    @endif
                     {{__('front.water_tank')}}
+                    @endif
                 </div>
                 <div class="col-md-5">
                     @if($camper_equipment && $camper_equipment->additional_equipment_outside==1)
                     <i class="fa fa-check" aria-hidden="true" style="color:#4cbed2 !important;"></i>
-                    @else
-                    <i class="fa fa-close" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;" aria-hidden="true"  style="color: red;"></i>
-
-                    @endif
                     {{__('front.cooker_fire')}}
+                    @endif
                 </div>
             </div>
         </div>
@@ -219,27 +181,25 @@
         <div class="col-md-10">
             <div class="row" >
                 <div class="col-md-5">
-                    <h6 class="head-design"> {{count($camper_terms)>0 ? $camper_terms[0]->season : ''}} {{__('front.main_season')}}</h6>
+                    <h6 class="head-design">{{__('front.main_season')}}</h6>
                     <div style="margin-top: -12px;">
-
                         {{count($camper_terms)>0 ? $camper_terms[0]->price_per_night : ''}} {{__('front.CHF')}} {{__('front.per_night')}}
                         <div style="margin-top: -8px;">{{__('front.minimum_night_main_season')}} {{count($camper_terms)>0 ? $camper_terms[0]->minimum_night : ''}} {{__('front.nights')}}
-
+                        </div>
                     </div>
                 </div>
-
-                </div>
                 <div class="col-md-5">
-                    <h6 class="head-design"> {{count($camper_terms)>1 ? $camper_terms[1]->season : ''}} {{__('front.off_season')}}</h6>
+                    <h6 class="head-design">{{__('front.off_season')}}</h6>
                     <div style="margin-top: -12px;">
                         {{count($camper_terms)>1 ? $camper_terms[1]->price_per_night : 0}} {{__('front.CHF')}} {{__('front.per_night')}}
                         <div style="margin-top: -8px;">{{__('front.minimum_night_main_season')}} {{count($camper_terms)>1 ? $camper_terms[1]->minimum_night : ''}} {{__('front.nights')}}
+                        </div>
                     </div>
-                </div>                </div>
+                </div>
             </div>
             <div class="row" >
                 <div class="col-md-5">
-                    <h6 class="head-design"> {{count($camper_terms)>2 ? $camper_terms[2]->season : ''}} {{__('front.winter_season')}}</h6>
+                    <h6 class="head-design">{{__('front.winter_season')}}</h6>
                     <div style="margin-top: -12px;">
                         {{count($camper_terms)>2 ? $camper_terms[2]->price_per_night : 0}} {{__('front.CHF')}} {{__('front.per_night')}}
                         <div style="margin-top: -8px;">{{__('front.minimum_night_main_season')}} {{count($camper_terms)>2 ? $camper_terms[2]->minimum_night : ''}} {{__('front.nights')}}
@@ -247,10 +207,6 @@
                 </div>
 
                 </div>
-                <div class="col-md-5">
-                    <h6 class="head-design">{{__('front.Discounts')}}</h6>
-
-            </div>
             </div>
         </div>
     </div>
@@ -262,7 +218,7 @@
         <div class="col-md-10">
             <div class="row" >
                 <div class="col-md-5">
-                    <h6 class="head-design">{{__('front.Kilometres included')}}</h6>
+                    <h6 class="head-design">{{__('front.kilometres_per_night')}}</h6>
                     <div style="margin-top: -12px;">
                         {{$camper_rental_terms ? $camper_rental_terms->included_kilometres : ''}}
                     </div>
@@ -292,7 +248,7 @@
                 <div class="col-md-5">
                     <h6 class="head-design">{{__('front.minimum_renter_age')}}</h6>
                     <div style="margin-top: -12px;">
-                        {{$camper_rental_terms ? $camper_rental_terms->minimum_age_renter : ''}} {{__('front.years')}}
+                        {{$camper_rental_terms ? $camper_rental_terms->minimum_age : ''}} {{__('front.years')}}
 
                     </div>
                 </div>

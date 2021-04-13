@@ -85,7 +85,7 @@ class InsuranceExtraController extends Controller
             return redirect(route('insuranceExtra.index'));
         }
         $input = request()->except(['_token', '_method', 'action']);
-        $input['updated_by'] = auth()->user()->id;
+        $input['default_extra'] = $request->default_extra == 1 ? 1 : 0;
         $data = insuranceExtra::where('id', $id)->update($input);
         return redirect(route('insuranceExtra.index'))->with('success', 'Item Updated succesfully');
     }

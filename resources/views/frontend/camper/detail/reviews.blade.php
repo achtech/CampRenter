@@ -1,10 +1,10 @@
-<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews <span>({{count($reviews)}})</span></h3>
+<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">{{trans('front.Reviews')}} <span>({{count($reviews)}})</span></h3>
 
 <!-- Rating Overview -->
 <div class="rating-overview">
     <div class="rating-overview-box">
         <span class="rating-overview-box-total">{{number_format($rateCamper,1)}}</span>
-        <span class="rating-overview-box-percent">out of 5.0</span>
+        <span class="rating-overview-box-percent">{{trans('front.out of')}} 5.0</span>
         <div class="star-rating" data-rating="5"></div>
     </div>
 

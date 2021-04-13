@@ -27,13 +27,13 @@
 
 		<div class="col-lg-7 col-md-12">
 			<h3><strong>{{trans('front.photos')}}</strong></h3>
-      <form action="{{ route('frontend.camper.storeFiles') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('frontend.camper.storeFiles') }}" method="POST" enctype="multipart/form-data" id="dropzone">
           @csrf
           <input type="hidden" name="id_campers" value="{{$camper->id}}" />
           <div class="row">
             <div class="col-12">
               <div class="form-group col-6">
-                    <label for="document">Pricncipal camper <picture></picture></label>
+                    <label for="document">{{trans('front.principal_photo')}}<picture></picture></label>
                     <div class="custom-file">
                         <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" onchange="readCamperImage(this);">
                     </div>
@@ -48,14 +48,14 @@
             </div>
           </div>
           <div class="form-group">
-                <label for="document">Gallery images</label>
+                <label for="document">{{trans('front.gallery')}}</label>
                 <div class="needsclick dropzone" id="document-dropzone">
 
                 </div>
           </div>
           @if(count($files)>0)
           <div class="form-group">
-                <label for="document">All photos</label>
+                <label for="document">{{trans('front.all_photos')}}</label>
                 <div  class="old-photos" >
                   <div style="display: grid;
                               grid-template-columns: repeat(4, 1fr);
@@ -64,7 +64,7 @@
                       @foreach($files as $f)
                         <div style="text-align: center;padding-bottom:10px;color:grey">
                           <img src="{{ asset('images/campers')}}/{{$f->file_name}}" style=" width: 100%;height: 100%;object-fit: cover;border-radius: 20px;" >
-                          <a href="/rentOut/photos/delete/{{$camper->id}}/{{$f->id}}" style="text-align:center">Remove file</a>
+                          <a href="/rentOut/photos/delete/{{$camper->id}}/{{$f->id}}" style="text-align:center">{{trans('front.remove_file')}}</a>
                         </div>
                       @endforeach
                   </div>
@@ -85,6 +85,8 @@
  @endsection
  @section('script')
 <script>
+Dropzone.prototype.defaultOptions.dictDefaultMessage = "{{trans('front.dropphotos')}}";
+Dropzone.prototype.defaultOptions.dictRemoveFile = "{{trans('front.remove_file')}}";
   var uploadedDocumentMap = {}
   Dropzone.options.documentDropzone = {
     url: '{{ route('frontend.camper.storeMedia') }}',

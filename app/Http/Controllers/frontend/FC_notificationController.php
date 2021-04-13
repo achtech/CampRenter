@@ -4,7 +4,6 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
-use DB;
 
 class FC_notificationController extends Controller
 {
@@ -28,10 +27,13 @@ class FC_notificationController extends Controller
         $n = Notification::find($id);
         $n->status = "readed";
         $n->update();
-        $booking = DB::table("v_bookings_owner")->where('id', $n->id_table)->first();
+        if ($n->type == "Booking") {
+            return redirect(route('booking.owner_booking.detail', $n->id_table));
+        }
+        if ($n->type == "Chats") {
+            return redirect(route('frontend.clients.message.detail', $n->id_table));
+        }
 
-        return view('frontend.clients.booking.detail1')
-            ->with('booking', $booking);
     }
 
     public function destroy(Request $request)

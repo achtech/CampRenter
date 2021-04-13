@@ -26,7 +26,7 @@
 					<div class="carousel-item">
 						<a href="{{route('frontend.camper.detail',$camper->id)}}" class="listing-item-container">
 							<div class="listing-item">
-								<img src="{{asset('images/camper')}}/{{$camper->image}}" alt="">
+								<img src="{{asset('public/images/camper')}}/{{$camper->image}}" alt="">
 								<div class="listing-item-content">
 									<span class="tag">{{App\Http\Controllers\Controller::getLabel('camper_categories',$camper->id_camper_categories)}}</span>
 									<h3>{{$camper->camper_name}} <i class="verified-icon"></i></h3>
@@ -140,10 +140,10 @@
 						<span class="blog-item-tag">{{trans('front.tips')}}</span>
 						<div class="blog-compact-item-content">
 							<ul class="blog-post-tags">
-								<li>{{date('j F Y', strtotime($blog->created_at))}}</li>
+								<li>{{date('j m Y', strtotime($blog->created_at))}}</li>
 							</ul>
-							<h3>{{$blog->title}}</h3>
-							<p>{{ Illuminate\Support\Str::limit($blog->article, 80)}}</p>
+							<h3>{{App\Http\Controllers\Controller::getTitle($blog)}}</h3>
+							<p>{{ Illuminate\Support\Str::limit(App\Http\Controllers\Controller::getArticle($blog), 80)}}</p>
 						</div>
 					</div>
 				</a>

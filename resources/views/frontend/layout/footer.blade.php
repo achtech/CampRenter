@@ -10,7 +10,7 @@
 			</div>
 			<div class="col-md-3  col-sm-6">
 				<h4>{{trans('front.footer_social')}}</h4>
-				<ul class="social-icons margin-top-20">
+				<ul class="social-icons" style="display: inline-block;">
 					<li><a class="fa fa-facebook" href="https://www.facebook.com/Campunite-357655531438672"></i></a></li>
 					<li><a class="fa fa-twitter" href="https://twitter.com/campunite"></a></li>
 					<li><a class="fa fa-instagram" href="https://www.instagram.com/campunite.official"></a></li>
@@ -19,7 +19,7 @@
 			</div>
 			<div class="col-md-3  col-sm-6">
 				<h4>{{trans('front.footer_paiement_methods')}}</h4>
-				<ul class="social-icons margin-top-20">
+				<ul class="social-icons" style="display: inline-block;">
 					<li><img width="50" height="180" style="max-width: 100%;height: auto;"  src="{{asset('images/paiement-methods/Paypal-Icon.png')}}" /></li>
 					<li><img width="50" height="180" style="max-width: 100%;height: auto;"  src="{{asset('images/paiement-methods/Mastercard-Icon.png')}}" /></li>
 					<li><img width="50" height="180" style="max-width: 100%;height: auto;"  src="{{asset('images/paiement-methods/Visa-Icon.png')}}" /></li>
@@ -29,7 +29,7 @@
 			</div>
 			<div class="col-md-3 col-sm-6 ">
 				<h4>{{trans('front.footer_helpful_links')}}</h4>
-				<ul class="footer-links">
+				<ul class="footer-links" style="display: inline-block;">
 					<li><a href="{{route('help')}}">{{trans('front.footer_Help')}}</a></li>
 					<li><a href="{{route('contact')}}">{{trans('front.footer_Contact')}}</a></li>
 					<li><a href="{{route('terms')}}">{{trans('front.footer_Conditions')}}</a></li>

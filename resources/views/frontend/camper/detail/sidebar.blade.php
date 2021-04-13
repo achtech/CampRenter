@@ -1,5 +1,4 @@
 <!-- Verified Badge -->
-
 <div class="listing-item-container compact order-summary-widget">
     <div class="listing-item">
         <img src="{{asset('public/images/camper')}}/{{$camper->image}}" alt="">
@@ -10,7 +9,7 @@
 @if(App\Http\Controllers\frontend\FC_bookingController::isNotBooked($camper->id))
 <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
     <!-- Book Now -->
-    <span  class="button book-now fullwidth margin-top-5" disabled>You already send a request for this camper</span>
+    <span  class="button book-now fullwidth margin-top-5" disabled>{{trans('front.already_sent')}}</span>
     <!-- Estimated Cost -->
 </div>
 @elseif(App\Http\Controllers\frontend\FC_bookingController::canBook($camper) || !session('_client'))
@@ -50,7 +49,7 @@
 <!-- Contact / End-->
 <!-- Insurance -->
 <div class="boxed-widget opening-hours margin-top-35">
-    <h3><i class="fas fa-user-shield"></i> Stay safe with Helvetia</h3>
+    <h3><i class="fas fa-user-shield"></i> {{trans('front.stay_safe')}}</h3>
     <ul>
         <li style="text-align: center;"><img src="{{asset('images')}}/logo.png" alt=""></li>
     </ul>

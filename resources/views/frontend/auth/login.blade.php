@@ -45,6 +45,12 @@
                     </button>
                 </div>
             {{ Form::close() }}
+            <div class="col-md-12">
+                <a class="button border margin-top-15 connexion"
+                        style="font-weight: bold; width:99% !important;background-color: #ea4435;border-color: #ea4435; color: white;text-align: center;" href="{{route('frontend.client.show_register')}}" style="color:white;">
+                        {{trans('front.menu_register')}}
+                    </a>
+            </div>
         </div>
 
           <!--<div style="padding-top: 10px;text-align: center;">

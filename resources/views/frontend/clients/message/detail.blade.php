@@ -47,7 +47,7 @@
 													<h5>{{$msg->renter_id!=$idClient ? $msg->renter_name : $msg->owner_name}} @if(App\Http\Controllers\frontend\FC_messageController::getNotificationByRenter($msg->renter_id)>0) <i>{{trans('front.unread')}}</i> @endif</h5>
 												</div>
 												<p>{{ Illuminate\Support\Str::limit($msg->message, 30)}} ...</p>
-												<span style="color: #888;">{{date('j F Y', strtotime($msg->date_message))}}</span>
+												<span style="color: #888;">{{date('j m Y', strtotime($msg->date_message))}}</span>
 												<span style="float:right; color: #888;">{{date('h:m', strtotime($msg->date_message))}}</span>
 											</div>
 										</a>
@@ -79,7 +79,7 @@
 								@endforeach
 							</div>
 
-							@if($id_bookings>0)
+							@if(isset($id_bookings) && !empty($id_bookings) && $id_bookings>0)
 								<!-- Reply Area -->
 								<div class="clearfix"></div>
 									<form method="POST" action="{{ route('frontend.chat.register_chat') }}">

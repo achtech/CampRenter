@@ -19,7 +19,7 @@
 						</a>
 					</span>
 					<div class="star-rating" data-rating="{{$rateCamper}}">
-						<div class="rating-counter"><a href="#listing-reviews">({{count($reviews)}} reviews)</a></div>
+						<div class="rating-counter"><a href="#listing-reviews">({{count($reviews)}} {{trans('front.Reviews')}})</a></div>
 					</div>
 				</div>
 			</div>

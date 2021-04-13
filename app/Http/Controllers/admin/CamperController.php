@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminBlockCamperMail;
+use App\Mail\AdminConfirmationCamperMail;
 use App\Models\Booking;
 use App\Models\Camper;
 use App\Models\CamperCategory;
@@ -15,6 +17,7 @@ use App\Models\Transmission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class CamperController extends Controller
 {
@@ -36,7 +39,7 @@ class CamperController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = Camper::where('is_deleted', 1)->orderBy('updated_at','desc')->get();
+        $datas = Camper::where('is_deleted', 1)->orderBy('updated_at', 'desc')->get();
 
         return view('admin.camper.index')->with('datas', $datas);
     }
@@ -186,10 +189,19 @@ class CamperController extends Controller
      */
     public function blockActivateCamper(Request $request)
     {
-        $data = Camper::find($request->id);
-        $data->is_confirmed = $data->is_confirmed == '1' || $data->is_confirmed == 1 ? 0 : 1;
-        $data->updated_by = auth()->user()->id;
-        $data = $data->save();
+        $camper = Camper::find($request->id);
+        $owner = Client::find($camper->id_clients);
+        $camper->is_confirmed = $camper->is_confirmed == '1' || $camper->is_confirmed == 1 ? 0 : 1;
+        $camper->updated_by = auth()->user()->id;
+
+        if ($camper->is_confirmed == 1) {
+            Mail::to($owner['email'])->send(new AdminConfirmationCamperMail($owner, $camper));
+        } else {
+            Mail::to($owner['email'])->send(new AdminBlockCamperMail($owner, $camper));
+        }
+
+        $camper = $camper->save();
+
         return redirect(route('camper.index'));
     }
 

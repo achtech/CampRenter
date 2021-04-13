@@ -105,7 +105,7 @@
 
                                 <!-- Buttons -->
                                 <div class="panel-buttons">
-                                    <button class="panel-cancel">Cancel</button>
+                                    <button class="panel-cancel">{{trans('front.cancel')}}</button>
                                     <button type = "submit" class="panel-apply">{{trans('front.apply')}}</button>
                                 </div>
 

@@ -31,7 +31,7 @@
 	<div class="row">
 		@if (Session::has('successStripe'))
 			<div class="notification success">
-				<p><span>Success!</span> You did it, now relax and enjoy it.</p>
+				<p><span>{{trans('front.success')}}!</span>{{trans('front.success_message')}}</p>
 				<a class="close"></a>
 			</div>
 		@endif
@@ -48,26 +48,26 @@
 						<ul>
 							<li>
 								@if($insurance->initial_price!=0)
-									<p><span>Fixprämie </span>{{$insurance->initial_price}} CHF</p>
+									<p><strong>Fixprämie </strong>{{$insurance->initial_price}} CHF</p>
 								@endif
-								<p><span> Pro Nacht </span> {{$insurance->price_per_day}} CHF</p>
-								<p><span>Total: </span>{{$insurance_total}} CHF </p>
+								<p><span> <strong>{{trans('front.per_night')}}: </strong> </span> {{$insurance->price_per_day}} CHF</p>
+								<p><span> <strong>{{trans('front.total')}}: </strong></span> {{$insurance_total}} CHF </p>
 								<input type="hidden" value="{{$booking->id}}" id="bookingId">
 								@if(!$camper->has_insurance)
 									<div class="insurance">
 
 										@if($booking->insurance_price == 0)
-											<a id="add_insurance" onclick="AddInsurance()" data-booking-id="{{$booking->id}}" class="button medium border">Add</a>
+											<button id="add_insurance" onclick="AddInsurance()" data-booking-id="{{$booking->id}}" class="button medium border">{{trans('front.add')}}</button>
 											<div class="addsrc"></div>
 										@else
-											<a id="remove_insurance"  onclick="removeInsurance()" data-booking-id="{{$booking->id}}" class="button medium border">Remove</a>
+											<button id="remove_insurance"  onclick="removeInsurance()" data-booking-id="{{$booking->id}}" class="button medium border">{{trans('front.remove')}}</button>
 											<div class="removesrc"></div>
 
 										@endif
 
 									</div>
 								@else
-									<a class="button medium" style="pointer-events: none">Included</a>
+									<button class="button medium" style="pointer-events: none">{{trans('front.included')}}</button>
 								@endif
 							</li>
 						</ul>
@@ -79,56 +79,67 @@
 							@if(App\Http\Controllers\Controller::hasSubExtra($extra->name))
 								@foreach(App\Http\Controllers\Controller::getSubExtra($extra->name) as $subExtra)
 									<li>
-										<h5>{{$extra->name}} : {{$subExtra->sub_extra}}</h5>
+										<h5><strong>{{$extra->name}} : {{$subExtra->sub_extra}} </strong><a href="https://campunite.com/" target="_blank"><i class="tip" data-tip-content="Insurance link"></i></a></h5>
 										@foreach(App\Http\Controllers\Controller::getSubExtraData($extra->name,$subExtra->sub_extra, $booking->nbr_days) as $element)
-											@if($element->initial_price!=0)
-												<p><span>Fixprämie </span>{{$element->initial_price}} CHF</p>
+											@if($subExtra->sub_extra == "Light")
+												<p><span><strong>{{trans('front.disability_capital')}}: </strong></span> 30'000 CHF</p>
+												<p><span><strong>{{trans('front.death_benefit')}} : </strong></span> 30'000 CHF</p>
 											@endif
-											<p><span> Pro Nacht </span> {{$element->price_per_day}} CHF</p>
+											@if($subExtra->sub_extra == "Plus")
+												<p><span><strong>{{trans('front.disability_capital')}}: </strong></span> 60'000 CHF</p>
+												<p><span><strong>{{trans('front.death_benefit')}}: </strong></span> 60'000 CHF</p>
+											@endif
+											@if($element->initial_price!=0)
+												<p><span><strong>{{trans('front.fixed_premium')}}: </strong></span> {{$element->initial_price}} CHF</p>
+											@endif
+											<p><span><strong> {{trans('front.per_night')}}:</strong> </span> {{$element->price_per_day}} CHF</p>
 										@endforeach
-										<p><span>Total: </span>{{App\Http\Controllers\Controller::getSubExtraInsurance($extra->name,$subExtra->sub_extra, $booking->nbr_days)}} CHF </p>
+										<p><span><strong>{{trans('front.total')}}:</strong> </span> {{App\Http\Controllers\Controller::getSubExtraInsurance($extra->name,$subExtra->sub_extra, $booking->nbr_days)}} CHF </p>
 										@if(!App\Http\Controllers\Controller::isSubExtraBooking($extra->name, $booking->id))
 											<div class="extras">
 
 											@if(App\Http\Controllers\Controller::isSubExtraByOwner($extra->name, $subExtra->sub_extra, $booking->id))
-												<a id="remove_sub_extra_{{$extra->name}}_{{$subExtra->sub_extra}}"  onclick="removeExtra('{{$extra->name}}','{{$subExtra->sub_extra}}')" class="button medium border">Remove</a>
+												<button id="remove_sub_extra_{{$extra->name}}_{{$subExtra->sub_extra}}"  onclick="removeExtra('{{$extra->name}}','{{$subExtra->sub_extra}}')" class="button medium border">{{trans('front.remove')}}</button>
 												<div class="remove_sub_extra_{{$extra->name}}_{{$subExtra->sub_extra}}"></div>
 											@else
-												<a id="add_sub_extra_{{$extra->name}}_{{$subExtra->sub_extra}}" onclick="addSubExtra('{{$extra->name}}','{{$subExtra->sub_extra}}')" class="button medium border">Add</a>
+												<button id="add_sub_extra_{{$extra->name}}_{{$subExtra->sub_extra}}" onclick="addSubExtra('{{$extra->name}}','{{$subExtra->sub_extra}}')" class="button medium border">{{trans('front.add')}}</button>
 												<div class="add_sub_extra_{{$extra->name}}_{{$subExtra->sub_extra}}"></div>
 											@endif
 
 											</div>
 										@else
 											@if(App\Http\Controllers\Controller::isSubExtraIncluded($extra->name, $subExtra->sub_extra, $booking->id_campers))
-												<a href="" class="button medium" style="pointer-events: none">Included</a>
+												<button href="" class="button medium" style="pointer-events: none">{{trans('front.included')}}</button>
 											@endif
 										@endif
 									</li>
 								@endforeach
 							@else
 							<li>
-								<h5>{{$extra->name}}</h5>
+								<h5><strong>{{$extra->name}}</strong></h5>
 								@foreach(App\Http\Controllers\Controller::getExtraData($extra->name,$booking->nbr_days) as $item)
-									@if($item->initial_price!=0)
-										<p><span>Fixprämie </span>{{$item->initial_price}} CHF</p>
+									@if($extra->name == "Assistance")
+										<p><span>{{trans('front.roadside_assistance')}} </span></p>
 									@endif
-									<p><span> Pro Nacht </span> {{$item->price_per_day}} CHF</p>
+									@if($item->initial_price!=0)
+										<p><span><strong>{{trans('front.fixed_premium')}}:</strong>  </span>{{$item->initial_price}} CHF</p>
+									@endif
+									<p><span><strong>{{trans('front.per_night')}}:</strong> </span> {{$item->price_per_day}} CHF</p>
 								@endforeach
-								<p><span>Total: </span>{{App\Http\Controllers\Controller::getExtraInsurance($extra->name,$booking->nbr_days)}} CHF </p>
+								<p><span><strong>{{trans('front.total')}}:</strong> </span>{{App\Http\Controllers\Controller::getExtraInsurance($extra->name,$booking->nbr_days)}} CHF </p>
 								@if(!in_array($extra->name,$extraIds))
 									<div class="extras">
 
 									@if(App\Http\Controllers\Controller::isExtraByOwner($extra->name,$booking->id))
-										<a id="remove_extra_{{preg_replace('/[^A-Za-z0-9\-]/', '',$extra->name)}}"  onclick="removeExtra('{{$extra->name}}')" class="button medium border">Remove</a>
+										<button id="remove_extra_{{preg_replace('/[^A-Za-z0-9\-]/', '',$extra->name)}}"  onclick="removeExtra('{{$extra->name}}')" class="button medium border">{{trans('front.remove')}}</button>
 										<div class="removeExtra{{preg_replace('/[^A-Za-z0-9\-]/', '',$extra->name)}}"></div>
 									@else
-										<a id="add_extra_{{preg_replace('/[^A-Za-z0-9\-]/', '',$extra->name)}}" onclick="addExtra('{{$extra->name}}')" class="button medium border">Add</a>
+										<button id="add_extra_{{preg_replace('/[^A-Za-z0-9\-]/', '',$extra->name)}}" onclick="addExtra('{{$extra->name}}')" class="button medium border">{{trans('front.add')}}</button>
 										<div class="addextra{{preg_replace('/[^A-Za-z0-9\-]/', '',$extra->name)}}"></div>
 									@endif
 									</div>
 								@else
-									<a href="" class="button medium" style="pointer-events: none">Included</a>
+									<button href="" class="button medium" style="pointer-events: none">{{trans('front.included')}}</button>
 								@endif
 							</li>
 							@endif
@@ -233,56 +244,6 @@
 				</div>
 
 			</div>
-			<!-- Payment Methods Accordion / End
-			<h3 class="margin-top-50 margin-bottom-30" >Or send Invoice</h3>
-			<div class="row">
-				<form action="{{route('frontend.clients.send.invoice')}}" method="POST">
-					@csrf
-					<input style="display:none;" type="text" value="{{$booking->id}}" name="id">
-					<input style="display:none;" type="text" value="{{$booking->created_date}}-{{$booking->id}}" name="reservation_num">
-					<div class="col-md-6">
-						<label>{{trans('front.first_name')}}</label>
-						<input type="text" value="{{$booking->client_name}}" name="client_name">
-					</div>
-
-					<div class="col-md-6">
-						<label>{{trans('front.last_name')}}</label>
-						<input type="text" value="{{$booking->client_last_name}}" name="client_last_name">
-					</div>
-
-					<div class="col-md-6">
-						<label>{{trans('front.email_add')}}</label>
-						<input type="text" value="{{$booking->email}}" name="email">
-					</div>
-
-					<div class="col-md-6">
-						<label>{{trans('front.camper_name')}}</label>
-						<input type="text" value="{{$booking->camper_name}}" name="camper_name">
-					</div>
-					<div class="col-md-6">
-						<label>{{trans('front.date_start')}}</label>
-						<input type="text" value="{{date('j F Y', strtotime($booking->start_date))}}" name="start_date">
-					</div>
-					<div class="col-md-6">
-						<label>{{trans('front.date_end')}}</label>
-						<input type="text" value="{{date('j F Y', strtotime($booking->end_date))}}" name="end_date">
-					</div>
-
-					<div class="col-md-6">
-						<label>{{trans('front.total_cost')}}</label>
-						<input type="text" value="{{$booking->nbr_days*$booking->price}}" name="total">
-					</div>
-
-					<div class="col-md-6">
-						<label>Date</label>
-						<input type="text" value="{{$booking->created_date}}" name="created_date">
-					</div>
-					<div class="col-md-12">
-						<button type="submit" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Send Invoice</button>
-					</div>
-				</form>
-			</div>-->
-
 		</div>
 
 
@@ -296,7 +257,7 @@
 
 					<div class="listing-item-content">
 						<div class="numerical-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($booking->id_campers)}}"></div>
-						<h3>{{App\Http\Controllers\Controller::getCamperCategorie($booking->id_campers)->label_en}}</h3>
+						<h3>{{App\Http\Controllers\Controller::getCamperCategorie($booking->id_campers)}}</h3>
 						<span>{{$booking->camper_name}}</span>
 					</div>
 				</div>
@@ -346,7 +307,7 @@ function AddInsurance(){
 				$("#remove_insurance").show()
 				$("#add_insurance").hide()
 				//addsrc : bloc
-				$(".addsrc").html('<a id="remove_insurance" onclick="removeInsurance()" class="button medium border">Remove</a>');
+				$(".addsrc").html('<button id="remove_insurance" onclick="removeInsurance()" class="button medium border">{{trans('front.Remove')}}</button>');
 				r=response.trim();
 				$("#side_bar_prices").show() ;
 				$("#side_bar_prices").html(r);
@@ -362,7 +323,7 @@ function removeInsurance(){
 			success: function(response){
 				$("#add_insurance").show()
 				$("#remove_insurance").hide()
-				$(".removesrc").html('<a id="add_insurance" onclick="AddInsurance()" class="button medium border">Add</a>');
+				$(".removesrc").html('<button id="add_insurance" onclick="AddInsurance()" class="button medium border">{{trans('front.add')}}</button>');
 				r=response.trim();
 				$("#side_bar_prices").show() ;
 				$("#side_bar_prices").html(r);
@@ -382,7 +343,7 @@ function addExtra(extra_name){
 			$("#remove_extra_"+ExtraWithoutSpace).show()
 			$("#add_extra_"+ExtraWithoutSpace).hide()
 			//addextra : bloc
-			$(".addextra"+ExtraWithoutSpace).html('<a id="remove_extra_'+ExtraWithoutSpace+'" onclick="removeExtra(\''+extra_name+'\')" class="button medium border">Remove</a>');
+			$(".addextra"+ExtraWithoutSpace).html('<button id="remove_extra_'+ExtraWithoutSpace+'" onclick="removeExtra(\''+extra_name+'\')" class="button medium border">{{trans('front.Remove')}}</button>');
 			r=response.trim();
 			$("#side_bar_prices").show() ;
 			$("#side_bar_prices").html(r);
@@ -425,7 +386,7 @@ function removeExtra(extra_name, sub_extra){
 					$("#add_extra_"+ExtraWithoutSpace).show()
 					$("#remove_extra_"+ExtraWithoutSpace).hide()
 					//removeExtra : bloc
-					$(".removeExtra"+ExtraWithoutSpace).html('<a id="add_extra_'+ExtraWithoutSpace+'" onclick="addExtra(\''+extra_name+'\')" class="button medium border">Add</a>');
+					$(".removeExtra"+ExtraWithoutSpace).html('<button id="add_extra_'+ExtraWithoutSpace+'" onclick="addExtra(\''+extra_name+'\')" class="button medium border">{{trans('front.add')}}</button>');
 					r=response.trim();
 					$("#side_bar_prices").show() ;
 					$("#side_bar_prices").html(r);
@@ -486,30 +447,5 @@ $(function() {
     }
 
 });
-
- // if($('.paypalIn').is(':checked'))
-	//   {
-
-
-	// 	 $('#paypal_form').submit();
-
-	// 	 $(".prepareto").show()
-
-	//   }else{
-	// 	$(".prepareto").hide()
-
-
-	//   }
-
-
-
-// $('#subwithpaypal').click(function(event){
-//   event.preventDefault();
-//  $(".prepareto").show() ;
-
-
-// 	});
-
-
 </script>
 @endsection

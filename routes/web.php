@@ -47,14 +47,15 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::post('/showlogin/client', [\App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
     /** Frontend */
 
-    Route::get('/', function () {
+    Route::get('/comming_soon', function () {
         return view('frontend.coming_soon');
     });
-    Route::get('/index', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
+    Route::get('/', 'App\Http\Controllers\frontend\FHomeController@index')->name('home.index');
     Route::get('/profile', 'App\Http\Controllers\frontend\FUserController@index')->name('clients.user.profile');
     Route::get('/profile/delete', 'App\Http\Controllers\frontend\FUserController@deletePhoto')->name('clients.user.deletePhoto');
     Route::get('/fcamper', 'App\Http\Controllers\frontend\FCamperController@index')->name('frontend.camper');
 
+    Route::get('/welcome', [FClientController::class, 'welcomePage'])->name('frontend.client.welcomePage');
     Route::post('/client/profil/update', [FClientController::class, 'userUpdateClient'])->name('frontend.client.updateData');
     Route::post('/client/changePassword', [FClientController::class, 'changePassword'])->name('frontend.client.change_password');
     Route::post('/storeClient', [FClientController::class, 'store'])->name('frontend.client.store');
@@ -93,6 +94,7 @@ Route::group(['middleware' => 'Lang'], function () {
         [FC_rentOutController::class, 'rentByCategory'])->name('frontend.camper.rent_out_by_category');
     Route::post('/rentOut/fill_in_vehicle',
         [FC_rentOutController::class, 'fillInVehicle'])->name('frontend.camper.fillInVehicle');
+
     Route::post('/rentOut/data',
         [FC_rentOutController::class, 'storePersonalData'])->name('frontend.camper.storePersonalData');
     Route::post('/rentOut/vehicle_data',
@@ -111,6 +113,19 @@ Route::group(['middleware' => 'Lang'], function () {
         [FC_rentOutController::class, 'storeMedia'])->name('frontend.camper.storeMedia');
     Route::post('/rentOut/storeFiles',
         [FC_rentOutController::class, 'storePhotosAndGoToInsurance'])->name('frontend.camper.storeFiles');
+
+    Route::get('/rentOut/data',
+        [FC_rentOutController::class, 'showVehicleData']);
+    Route::get('/rentOut/vehicle_data', [FC_rentOutController::class, 'showVehicleData']);
+    Route::get('/rentOut/equipment', [FC_rentOutController::class, 'showEquipement']);
+    Route::get('/rentOut/extra', [FC_rentOutController::class, 'showExtra']);
+    Route::get('/rentOut/description', [FC_rentOutController::class, 'showDescription']);
+    Route::get('/rentOut/photos', [FC_rentOutController::class, 'showPhoto']);
+    Route::get('/rentOut/storeFiles', [FC_rentOutController::class, 'showInsurance']);
+    Route::get('/rentOut/storeterms', [FC_rentOutController::class, 'showTerms']);
+    Route::get('/rentOut/rental_terms', [FC_rentOutController::class, 'showRental_terms']);
+    Route::get('/rentOut/storecalendar', [FC_rentOutController::class, 'showCalendar']);
+
     Route::post('/edit_camper/{id}',
         [FC_rentOutController::class, 'myCamperActions'])->name('frontend.camper.edit.camper');
     Route::get('/rentOut/vehicleData/{id}',

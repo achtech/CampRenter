@@ -26,7 +26,7 @@
 		@include('frontend.camper.rent_out.sub_menu', ['active_page' => 'conditions'])
 		<form  action="{{route('frontend.camper.storecalendar')}}" method="POST">
 		@csrf
-			<input type="hidden" name="id_campers" value="{{$camper->id}}" />
+			<input type="hidden" id="id_campers" name="id_campers" value="{{$camper->id}}" />
 			<div class="col-lg-7 col-md-12">
 				<h3><strong>{{trans('front.terms')}}</strong></h3>
 				<div class="col-md-12">
@@ -35,7 +35,7 @@
 				<div class="row" >
 					<div class="col-md-6">
 						<div class="col-md-12" style="margin-top:20px;">
-							<p><strong>{{trans('front.main_season')}}:</strong>Jul. - Aug.</p>
+							<p><strong>{{trans('front.main_season')}}:</strong>{{trans('front.jul_aug')}}</p>
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
@@ -46,9 +46,9 @@
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
 								<select id="main_season" name="minimum_night_main" required="required"  >
-									<option value="">Choose</option>
+									<option value="">{{trans('front.choose')}}</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
-										<option @if( $season_main && $season_main->minimum_night == $i) selected='selected' @endif value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
+										<option @if( $season_main && $season_main->minimum_night == $i) selected='selected' @endif value="<?php echo $i; ?>"> <?php echo $i; ?> {{trans('front.nights')}}</option>
 									<?php }?>
 								</select>
 							</div>
@@ -62,7 +62,7 @@
 				<div class="row" >
 					<div class="col-md-6">
 						<div class="col-md-12" style="margin-top:20px;">
-							<p><strong>{{trans('front.off_season')}}:</strong>May - Jun. / Sep. - Oct.</p>
+							<p><strong>{{trans('front.off_season')}}:</strong>{{trans('front.may_jun_sep_oct')}}</p>
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
@@ -73,10 +73,10 @@
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
 								<select id="off_season" name="minimum_night_off" required="required"  >
-									<option value="">Choose</option>
+									<option value="">{{trans('front.choose')}}</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
 										<option @if($season_off && $season_off->minimum_night == $i) selected='selected'
-												 @endif "selected='selected'" value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
+												 @endif "selected='selected'" value="<?php echo $i; ?>"> <?php echo $i; ?> {{trans('front.nights')}}</option>
 									<?php }?>
 								</select>
 							</div>
@@ -89,7 +89,7 @@
 				<div class="row" >
 					<div class="col-md-6">
 						<div class="col-md-12" style="margin-top:20px;">
-							<p><strong>{{trans('front.winter_season')}}:</strong>Nov. - Apr.</p>
+							<p><strong>{{trans('front.winter_season')}}:</strong>{{trans('front.nov_apr')}}</p>
 						</div>
 						<div class="col-md-12" style="margin-top:10px;">
 							<div class="col-md-12" >
@@ -100,9 +100,9 @@
 							<div class="col-md-12">
 								<h5>{{trans('front.minimal_rental_duration')}}</h5>
 								<select id="winter_season" name="minimum_night_winter" required="required">
-								<option value="">Choose</option>
+								<option value="">{{trans('front.choose')}}</option>
 									<?php for ($i = 1; $i <= 14; $i++) {?>
-										<option @if( $season_winter && $season_winter->minimum_night == $i) selected='selected' @endif value="<?php echo $i; ?>"> <?php echo $i; ?> nights</option>
+										<option @if( $season_winter && $season_winter->minimum_night == $i) selected='selected' @endif value="<?php echo $i; ?>"> <?php echo $i; ?> {{trans('front.nights')}}</option>
 									<?php }?>
 								</select>
 							</div>
@@ -164,6 +164,7 @@
 
 	var price_main = $("#price_main").val();
 	var current_night = $("#main_season").val();
+	var id_campers = $("#id_campers").val();
 	if(price_main>0 && current_night>0 ){
 		var base_url="{{ URL::to('/rentOut/calcule_main')}}"
 		$.ajax({
@@ -171,7 +172,7 @@
 			url: base_url,
 			cache: false,
 			dataType: 'html',
-			data: {price_per_night_main:price_main, minimum_night_main: current_night},
+			data: {price_per_night_main:price_main, minimum_night_main: current_night, id_campers: id_campers },
 
 			success: function(res){
 			r=res.trim();
@@ -190,7 +191,7 @@
 			url: base_url,
 			cache: false,
 			dataType: 'html',
-			data: {price_per_night_off:price_off, minimum_night_off: off_season_night},
+			data: {price_per_night_off:price_off, minimum_night_off: off_season_night, id_campers: id_campers },
 
 			success: function(res){
 			r=res.trim();
@@ -209,7 +210,7 @@
 			url: base_url,
 			cache: false,
 			dataType: 'html',
-			data: {price_per_night_winter:price_winter, minimum_night_winter: winter_season_night},
+			data: {price_per_night_winter:price_winter, minimum_night_winter: winter_season_night, id_campers: id_campers },
 
 			success: function(res){
 			r=res.trim();
@@ -229,7 +230,7 @@
 				url: base_url,
 				cache: false,
 				dataType: 'html',
-				data: {price_per_night_main:price_main, minimum_night_main: current_night},
+				data: {price_per_night_main:price_main, minimum_night_main: current_night, id_campers: id_campers },
 
 				success: function(res){
 				r=res.trim();
@@ -250,7 +251,7 @@
 				url: base_url,
 				cache: false,
 				dataType: 'html',
-				data: {price_per_night_main:price_main, minimum_night_main: current_night},
+				data: {price_per_night_main:price_main, minimum_night_main: current_night, id_campers: id_campers },
 
 				success: function(res){
 				r=res.trim();
@@ -273,7 +274,7 @@
 				url: base_url2,
 				cache: false,
 				dataType: 'html',
-				data: {price_per_night_off:price_off, minimum_night_off: off_night},
+				data: {price_per_night_off:price_off, minimum_night_off: off_night, id_campers: id_campers },
 
 				success: function(res2){
 				r2=res2.trim();
@@ -294,7 +295,7 @@
 				url: base_url2,
 				cache: false,
 				dataType: 'html',
-				data: {price_per_night_off:price_off, minimum_night_off: off_night},
+				data: {price_per_night_off:price_off, minimum_night_off: off_night, id_campers: id_campers },
 
 				success: function(res2){
 				r2=res2.trim();
@@ -318,7 +319,7 @@
 				url: base_url3,
 				cache: false,
 				dataType: 'html',
-				data: {price_per_night_winter:price_winter, minimum_night_winter: winter_night},
+				data: {price_per_night_winter:price_winter, minimum_night_winter: winter_night, id_campers: id_campers },
 
 				success: function(res3){
 				r3=res3.trim();
@@ -339,7 +340,7 @@
 				url: base_url3,
 				cache: false,
 				dataType: 'html',
-				data: {price_per_night_winter:price_winter, minimum_night_winter: winter_night},
+				data: {price_per_night_winter:price_winter, minimum_night_winter: winter_night, id_campers: id_campers },
 
 				success: function(res3){
 				r3=res3.trim();

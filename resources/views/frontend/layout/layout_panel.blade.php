@@ -43,7 +43,7 @@ $(document).ready(function(){
 <body>
 <!-- Maps -->
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4&libraries=places"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjaNhwjWA-cyChAjLnGiIe44NbHMZ_s7c&libraries=places"
 ></script>
 
 

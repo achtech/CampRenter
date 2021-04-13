@@ -19,7 +19,7 @@
 							<!-- Date Range -->
 
 							<div class="main-search-input-item">
-									<input type="text" readonly="readonly" id="booking-date-range" name="searchedDate"  placeholder="{{trans('front.check_in_out')}}" />
+								<input type="text" readonly="readonly"  id="booking-date-range1" name="searchedDate" placeholder="{{trans('front.check_in_out')}}"  />
 							</div>
 							<button type="submit" class="button">{{trans('front.slider_search')}}</button>
 						</div>

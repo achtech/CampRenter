@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Mail\PaymentSuccessOwnerMail;
 use App\Mail\PaymentSuccessRenterMail;
+use App\Mail\PaymentSuccessTeamMail;
 use App\Models\Booking;
 use App\Models\BookingExtra;
+use App\Models\Camper;
+use App\Models\CamperCategory;
 use App\Models\Client;
 use App\Models\PaypalStripe;
 use DB;
@@ -45,7 +48,10 @@ class StripeController extends Controller
         }
 
         $_varcost = $total_without_insurance + $booking->insurance_price + $totalExtra;
-        return $_varcost;
+        $feePayment = ($_varcost * 3) / 100;
+        $feePayment = number_format($feePayment, 2);
+        $total_cost = $_varcost + $feePayment;
+        return number_format($total_cost, 2);
 
     }
     public function handlePost(Request $request)
@@ -78,12 +84,14 @@ class StripeController extends Controller
         $saved_booking->total = $request['amount'];
         $saved_booking->id_booking_status = 4;
         $saved_booking->update();
-        $camper = $request['camper_name'];
+        $camper = $request['item_name'];
         $renter = Client::where('email', $request->payer_email)->first();
         $owner = Client::find($request->id_owners);
-
+        $theCamper = Camper::find($saved_booking->id_campers);
+        $camper_category = CamperCategory::find($theCamper->id_camper_categories);
         Mail::to($renter['email'])->send(new PaymentSuccessRenterMail($renter, $camper));
         Mail::to($owner['email'])->send(new PaymentSuccessOwnerMail($owner, $camper));
+        Mail::to("support@campunite.com")->send(new PaymentSuccessTeamMail($owner, $renter, $camper, $camper_category, $saved_booking));
 
         return back();
     }

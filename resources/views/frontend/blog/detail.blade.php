@@ -42,20 +42,19 @@
 			<div class="blog-post single-post">
 
 				<!-- Img -->
-				<img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{$blog->title}}">
+				<img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{App\Http\Controllers\Controller::getTitle($blog)}}">
 
 				<!-- Content -->
 				<div class="post-content">
 
-					<h3>{{$blog->title}}</h3>
+					<h3>{{App\Http\Controllers\Controller::getTitle($blog)}}</h3>
 
 					<ul class="post-meta">
-						<li>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}</li>
-						<li>{{date('j F Y', strtotime($blog->created_at))}}</li>
+						<li>{{date('j m Y', strtotime($blog->created_at))}}</li>
 						<li>{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} {{trans('front.blog_comment')}}</li>
 					</ul>
 
-					<p>{{$blog->article}}</p>
+					<p>{{App\Http\Controllers\Controller::getArticle($blog)}}</p>
 
 
 
@@ -75,12 +74,12 @@
 			<ul id="posts-nav" class="margin-top-0 margin-bottom-45">
 			@if($next)
 				<li class="next-post">
-					<a href="{{route('frontend.blog.fdetail',$next ?? 0)}}"><span>{{trans('front.next_post')}} <i class="fas fa-chevron-right"></i></span>{{$nextTitle ?? ''}}</a>
+					<a href="{{route('frontend.blog.fdetail',$next ?? 0)}}"><span>{{trans('front.next_post')}} <i class="fas fa-chevron-right"></i></span></a>
 				</li>
 			@endif
 			@if($previous)
 				<li class="prev-post">
-					<a href="{{route('frontend.blog.fdetail',$previous ?? 0)}}"><span><i class="fas fa-chevron-left"></i> {{trans('front.previous_post')}}</span>{{$previousTitle ?? ''}}</a>
+					<a href="{{route('frontend.blog.fdetail',$previous ?? 0)}}"><span><i class="fas fa-chevron-left"></i> {{trans('front.previous_post')}}</span></a>
 				</li>
 			@endif
 			</ul>
@@ -146,7 +145,7 @@
 				{{ Form::open(['action'=>'App\Http\Controllers\frontend\FBlogController@search','method'=>'GET']) }}
 					<!-- Widget -->
 					<div class="widget">
-						<h3 class="margin-top-0 margin-bottom-25">Search Blog</h3>
+						<h3 class="margin-top-0 margin-bottom-25">{{__('front.search_blog')}}</h3>
 						<div class="search-blog-input">
 							<div class="input"><input class="search-field" type="text" placeholder="Type and hit enter" name="searchBlog" value="{{$searchBlog ?? ''}}" /></div>
 						</div>
@@ -157,10 +156,10 @@
 
 					<!-- Widget -->
 					<div class="widget margin-top-40">
-						<h3>Got any questions?</h3>
+						<h3>{{__('front.any_question')}}</h3>
 						<div class="info-box margin-bottom-10">
-							<p>Having any questions? Feel free to ask!</p>
-							<a href="{{route('contact')}}" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> Drop Us a Line</a>
+							<p>{{__('front.feel_free_to_ask')}}</p>
+							<a href="{{route('contact')}}" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> {{__('front.drop_line')}}</a>
 						</div>
 					</div>
 					<!-- Widget / End -->
@@ -169,18 +168,18 @@
 					<!-- Widget -->
 					<div class="widget margin-top-40">
 
-						<h3>Popular Posts</h3>
+						<h3>{{__('front.popular_posts')}}</h3>
 						<ul class="widget-tabs">
 							@foreach($populairePost as $blog)
 							<li>
 								<div class="widget-content">
 										<div class="widget-thumb">
-										<a href="{{route('frontend.blog.fdetail',$blog->id)}}"><img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{$blog->title}}"></a>
+										<a href="{{route('frontend.blog.fdetail',$blog->id)}}"><img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{App\Http\Controllers\Controller::getTitle($blog)}}"></a>
 									</div>
 
 									<div class="widget-text">
-										<h5><a href="pages-blog-post.html">{{$blog->title}}</a></h5>
-										<span>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}, {{date('j F Y', strtotime($blog->created_at))}}</span>
+										<h5><a href="{{route('frontend.blog.fdetail',$blog->id)}}">{{App\Http\Controllers\Controller::getTitle($blog)}}</a></h5>
+										<span>{{date('j m Y', strtotime($blog->created_at))}}</span>
 									</div>
 									<div class="clearfix"></div>
 								</div>

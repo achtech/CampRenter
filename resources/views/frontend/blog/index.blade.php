@@ -31,20 +31,19 @@
 
 								<!-- Image -->
 								<div class="listing-item-image">
-									<img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{$blog->title}}">
+									<img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{App\Http\Controllers\Controller::getTitle($blog)}}">
 								</div>
 
 								<!-- Content -->
 								<div class="listing-item-content">
 									<div class="listing-item-inner">
-									<h3>{{$blog->title}} </h3>
+									<h3>{{App\Http\Controllers\Controller::getTitle($blog)}} </h3>
 									<div class="row">
-										<div class="col-lg-4"><div class="blog-title " >{{App\Http\Controllers\Controller::getUser($blog->created_by)}}</div></div>
-										<div class="col-lg-4"><div class="blog-title " >{{date('j F Y', strtotime($blog->created_at))}}</div></div>
+										<div class="col-lg-4"><div class="blog-title " >{{date('j m Y', strtotime($blog->created_at))}}</div></div>
 										<div class="col-lg-4"><div class="blog-title " >{{App\Http\Controllers\frontend\FBlogController::getBlogReviewsCount($blog->id)}} {{trans('front.blog_comment')}}</div></div>
 									</div>
 
-									<div class="rating-counter">{{ Illuminate\Support\Str::limit($blog->article, 100)}}
+									<div class="rating-counter">{{ Illuminate\Support\Str::limit(App\Http\Controllers\Controller::getArticle($blog), 100)}}
 
 									</div>
 
@@ -64,7 +63,7 @@
 						<!-- Pagination -->
 						<div class="pagination-container margin-top-20 margin-bottom-40">
 							<nav class="pagination">
-							{{ $blogs->links() }}
+								<!--Link-->
 							</nav>
 						</div>
 					</div>
@@ -108,11 +107,11 @@
 							<li>
 								<div class="widget-content">
 										<div class="widget-thumb">
-										<a href="{{route('frontend.blog.fdetail',$blog->id)}}"><img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{$blog->title}}"></a>
+										<a href="{{route('frontend.blog.fdetail',$blog->id)}}"><img src="{{asset('images')}}/blog/{{$blog->photo}}" alt="{{App\Http\Controllers\Controller::getTitle($blog)}}"></a>
 									</div>
 									<div class="widget-text">
-										<h5><a href="pages-blog-post.html">{{$blog->title}}</a></h5>
-										<span>{{App\Http\Controllers\Controller::getUser($blog->created_by)}}, {{date('j F Y', strtotime($blog->created_at))}}</span>
+										<h5><a href="pages-blog-post.html">{{App\Http\Controllers\Controller::getTitle($blog)}}</a></h5>
+										<span>{{date('j m Y', strtotime($blog->created_at))}}</span>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -125,14 +124,12 @@
 					<!-- Widget / End-->
 
 
-					<!-- Widget -->
 					<div class="widget margin-top-40">
-						<h3 class="margin-bottom-25">{{trans('front.footer_social')}}</h3>
-						<ul class="social-icons rounded">
-							<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-							<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-							<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-							<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+						<h3 class="margin-bottom-25">Social</h3>
+						<ul class="social-icons color rounded">
+							<li><a class="facebook" href="https://www.facebook.com/Campunite-357655531438672"><i class="fa fa-facebook"></i></a></li>
+							<li><a class="twitter" href="https://twitter.com/campunite"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="pinterest" href="https://www.instagram.com/campunite.official"><i class="fa fa-instagram"></i></a></li>
 						</ul>
 
 					</div>

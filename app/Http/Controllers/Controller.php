@@ -32,22 +32,76 @@ class Controller extends BaseController
         $label = $data->label_en;
         switch (app()->getLocale()) {
             case 'fr':
-                $label = $data->label_en;
+                $label = $data->label_fr;
                 break;
             case 'de':
-                $label = $data->label_en;
+                $label = $data->label_de;
                 break;
             default:
                 $label = $data->label_en;
         }
         return $label;
     }
+
+    public static function getTitle($data)
+    {
+        $title = $data->title_en;
+        switch (app()->getLocale()) {
+            case 'fr':
+                $title = $data->title_fr;
+                break;
+            case 'de':
+                $title = $data->title_de;
+                break;
+            default:
+                $title = $data->title_en;
+        }
+        return $title;
+    }
+
+    public static function getArticle($data)
+    {
+        $article = $data->article_en;
+        switch (app()->getLocale()) {
+            case 'fr':
+                $article = $data->article_fr;
+                break;
+            case 'de':
+                $article = $data->article_de;
+                break;
+            default:
+                $article = $data->article_en;
+        }
+        return $article;
+    }
+
     public static function getLabel($table, $id)
     {
         $data = DB::table($table)->find($id);
         return $data ? self::getLabelFromObject($data) : '';
     }
 
+    public static function getStatus($table, $id)
+    {
+        $data = DB::table($table)->find($id);
+        return $data ? self::getStatusFromObject($data) : '';
+    }
+
+    public static function getStatusFromObject($data)
+    {
+        $status = $data->booking_status_en;
+        switch (app()->getLocale()) {
+            case 'fr':
+                $status = $data->booking_status_fr;
+                break;
+            case 'de':
+                $status = $data->booking_status_de;
+                break;
+            default:
+                $status = $data->booking_status_en;
+        }
+        return $status;
+    }
     public static function getMessageCount()
     {
         return Message::where('status', 0)->orderby('send_date')->get()->count();
@@ -99,11 +153,12 @@ class Controller extends BaseController
 
     public static function getCamperCategorie($idCamper)
     {
-        return DB::table('campers')
+        $data = DB::table('campers')
             ->join('camper_categories', 'camper_categories.id', '=', 'campers.id_camper_categories')
             ->where('campers.id', $idCamper)
             ->select('camper_categories.*')
             ->first();
+        return $data ? self::getLabelFromObject($data) : '';
     }
 
     public static function getNotConfirmedcampers()

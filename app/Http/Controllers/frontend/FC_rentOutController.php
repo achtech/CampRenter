@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ConfirmationCamperMail;
+use App\Mail\ConfirmationClientCamperMail;
 use App\Models\Accessorie;
 use App\Models\Booking;
 use App\Models\Camper;
@@ -78,7 +79,6 @@ class FC_rentOutController extends Controller
             ->with('sub_categories', $sub_categories)
             ->with('selectedCategoryId', $id)
             ->with('selectedSubCategoryId', '')
-            ->with('isValid', false)
         ;
     }
 
@@ -349,7 +349,6 @@ class FC_rentOutController extends Controller
 
     public function storePhotosAndGoToInsurance(Request $request)
     {
-
         $camper = Camper::find($request->id_campers);
         $client = Controller::getConnectedClient();
         if ($client == null) {
@@ -387,16 +386,19 @@ class FC_rentOutController extends Controller
         $has_insurance = $camper->has_insurance;
         $extra = DB::table('insurance_extra')
             ->select('name')
+            ->where('default_extra', 0)
             ->groupBy('name')
             ->get();
 
         $subExtraNames = DB::table('insurance_extra')
             ->select(DB::raw('name, CONCAT(name, sub_extra) AS full_name'))
             ->whereNotNull('sub_extra')
+            ->where('default_extra', 0)
             ->groupBy('name', 'sub_extra')
             ->get();
         $extraInsurance = InsuranceExtra::join('camper_insurances', 'camper_insurances.id_insurance_extra', '=', 'insurance_extra.id')
             ->select('name', 'sub_extra')
+            ->where('default_extra', 0)
             ->where('camper_insurances.id_campers', $request->id_campers)->get();
         $extraNames = [];
         foreach ($extraInsurance as $extIns) {
@@ -519,18 +521,21 @@ class FC_rentOutController extends Controller
         if (isset($request->id_campers) && !empty($request->id_campers)) {
             $camper = Camper::find($request->id_campers);
         }
+
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+
         $camper->camper_name = $request->camper_name ?? '';
         $camper->recommandation = $request->recommandation ?? '';
         $camper->id_camper_categories = $request->id_camper_categories ?? null;
         $camper->id_camper_sub_categories = $request->id_camper_sub_categories ?? null;
         $camper->id_clients = $client->id;
         $camper->save();
-
+        Session::put('currentCamper', $camper->id);
         $idCamper = $camper->id;
+
         $data = DB::table('camper_categories')->find($camper->id_camper_categories);
         $camperCategory = $data ? $data->label_en : ''; //auth()->user()->lang == "EN" ? "EN" :auth()->user()->lang == "EN" ? "DE" : "FR";
 
@@ -584,13 +589,18 @@ class FC_rentOutController extends Controller
         }
     }
 
-    public function showVehicleData($id)
+    public function showVehicleData($id = -1)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
         $categories = DB::table('camper_categories')->paginate(10);
+        if ($id == -1) {
+            $id = Session::get('currentCamper');
+        } else {
+            Session::put('currentCamper', $id);
+        }
         $camper = Camper::find($id);
         $licenceCategories = LicenceCategory::get();
         $countries = Countries::get();
@@ -612,24 +622,27 @@ class FC_rentOutController extends Controller
             ->with('camper', $camper);
     }
 
-    public function showDescription($id)
+    public function showDescription($id = -1)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        $id = $id == -1 ? Session::get('currentCamper') : $id;
+
         $camper = Camper::find($id);
         return view('frontend.camper.rent_out.description')
             ->with('client', $client)
             ->with('camper', $camper);
     }
 
-    public function showExtra($id)
+    public function showExtra($id = -1)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        $id = $id == -1 ? Session::get('currentCamper') : $id;
         $camper = Camper::find($id);
         $extra = Accessorie::where('id_campers', $id)->get();
 
@@ -639,12 +652,13 @@ class FC_rentOutController extends Controller
             ->with('camper', $camper);
     }
 
-    public function showPhoto($id)
+    public function showPhoto($id = -1)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        $id = $id == -1 ? Session::get('currentCamper') : $id;
         $camper = Camper::find($id);
         $photos = CamperImage::where('id_campers', $id)->get();
         $pictures = CamperImage::where('id_campers', $id)->select(['image', 'id'])->get();
@@ -661,12 +675,13 @@ class FC_rentOutController extends Controller
             ->with('countFiles', $countFiles)
             ->with('camper', $camper);
     }
-    public function showEquipement($id)
+    public function showEquipement($id = -1)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        $id = $id == -1 ? Session::get('currentCamper') : $id;
         $camper = Camper::find($id);
         $equipement = Equipment::where('id_campers', $camper->id)->first();
 
@@ -741,12 +756,13 @@ class FC_rentOutController extends Controller
         ;
     }
 
-    public function showInsurance($id)
+    public function showInsurance($id = -1)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        $id = $id == -1 ? Session::get('currentCamper') : $id;
         $camper = Camper::find($id);
         $t = $camper->allowed_total_weight > 3.5 ? ">3" : "<=3";
         $insurance = Insurance::where('id_camper_categories', $camper->id_camper_categories);
@@ -755,6 +771,7 @@ class FC_rentOutController extends Controller
 
         $extra = DB::table('insurance_extra')
             ->select('name')
+            ->where('default_extra', 0)
             ->groupBy('name')
             ->get();
 
@@ -782,12 +799,14 @@ class FC_rentOutController extends Controller
         ;
     }
 
-    public function showRental_terms($id)
+    public function showRental_terms($id = -1)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        $id = $id == -1 ? Session::get('currentCamper') : $id;
+
         $camper = Camper::find($id);
 
         return view('frontend.camper.rent_out.rental_terms')
@@ -795,12 +814,14 @@ class FC_rentOutController extends Controller
             ->with('camper', $camper);
     }
 
-    public function showTerms($id)
+    public function showTerms($id = -1)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        $id = $id == -1 ? Session::get('currentCamper') : $id;
+
         $camper = Camper::find($id);
 
         $season_main = DB::table('camper_terms')->where('id_campers', $camper->id)->where('season', 'main')->first();
@@ -818,12 +839,14 @@ class FC_rentOutController extends Controller
             ->with('season_off', $season_off);
     }
 
-    public function showCalendar($id)
+    public function showCalendar($id = -1)
     {
         $client = Controller::getConnectedClient();
         if ($client == null) {
             return redirect(route('frontend.login.client'));
         }
+        $id = $id == -1 ? Session::get('currentCamper') : $id;
+
         $camper = Camper::find($id);
         $calendar = Booking::where('id_clients', $client->id)->where('id_campers', $camper->id)->where('id_booking_status', 7)->select(['start_date', 'end_date', 'comment'])->get();
 
@@ -908,6 +931,7 @@ class FC_rentOutController extends Controller
         $extra_insurance = InsuranceExtra::all();
         DB::statement('DELETE FROM camper_insurances WHERE id_campers =' . $camper->id);
 
+        $this->storeDefaultExtra($camper->id);
         foreach ($extra_insurance as $ex) {
             if ($request[str_replace(' ', '_', $ex->name)] == 1) {
                 if (isset($request[str_replace(' ', '_', $ex->name) . "_"]) && !empty($request[str_replace(' ', '_', $ex->name) . "_"])) {
@@ -937,6 +961,19 @@ class FC_rentOutController extends Controller
         return view('frontend.camper.rent_out.rental_terms')
             ->with('camper', $camper)
             ->with('client', $client);
+    }
+
+    private function storeDefaultExtra($id_campers)
+    {
+        $defaultExtra = InsuranceExtra::where('default_extra', 1)->get();
+        foreach ($defaultExtra as $def) {
+            $newData = CamperInsurance::create([
+                'id_campers' => $id_campers,
+                'id_insurance_extra' => $def->id,
+            ]);
+            $newData->save();
+        }
+
     }
 
     public function storeterms(Request $request)
@@ -1025,6 +1062,12 @@ class FC_rentOutController extends Controller
             ->with('blokedPeriods', $calendar);
     }
 
+    public function getInsuranceCostByCamper($id_camper, $nbrDays)
+    {
+        $camper = Camper::find($id_camper);
+        return Controller::getInsurance($camper->id_camper_categories, $nbrDays, $camper->tonage);
+    }
+
     public function calc_nights_main_ajax(Request $request)
     {
         $price_per_day = $request->price_per_night_main;
@@ -1033,21 +1076,25 @@ class FC_rentOutController extends Controller
         $per = Promotion::where('status', 1)->first()->commission;
         $fee = ($total * $per) / 100;
         $owner_part = $total - $fee;
+        $insuranceCost = $this->getInsuranceCostByCamper($request->id_campers, $minimal_rent_days_main);
+        $total = $minimal_rent_days_main * $price_per_day + $insuranceCost;
 
         $html = "";
         $html .= "<div class='col-md-12' style='margin-top:10px;'>
             <div class='col-md-9' >
                 <div class='col-md-12' >
-                    <p><strong>Sample booking high season (average booking on minimum nights of renting)</strong></p>
+                    <p><strong>" . trans('front.average_booking_desc') . "</strong></p>
                 </div>
                 <div class='col-md-6' >
-                    <p><h5>Owner earnings</h5></p>
-                    <p><h5>Service fee</h5></p>
-                    <p><h5><strong>rental nights</strong></h5></p>
+                    <p><h5>" . trans('front.owner_earnings') . "</h5></p>
+                    <p><h5>" . trans('front.service_fee') . "</h5></p>
+                    <p><h5>" . trans('insurances') . "</h5></p>
+                    <p><h5><strong>" . trans('front.rental_nights') . "</strong></h5></p>
                 </div>
                 <div class='col-md-6' >
                     <p><h5>CHF $owner_part</h5></p>
                     <p><h5>CHF $fee</h5></p>
+                    <p><h5>CHF $insuranceCost</h5></p>
                     <p><h5><strong>CHF $total<strong></h5></p>
                 </div>
             </div>
@@ -1065,21 +1112,25 @@ class FC_rentOutController extends Controller
         $per = Promotion::where('status', 1)->first()->commission;
         $fee = ($total * $per) / 100;
         $owner_part = $total - $fee;
+        $insuranceCost = $this->getInsuranceCostByCamper($request->id_campers, $minimal_rent_days_off);
+        $total = $minimal_rent_days_off * $price_per_day + $insuranceCost;
 
         $html = "";
         $html .= "<div class='col-md-12' style='margin-top:10px;'>
             <div class='col-md-9' >
                 <div class='col-md-12' >
-                    <p><strong>Sample booking for your minimum period:</strong></p>
+                    <p><strong>" . trans('front.desc_minimum_period') . ":</strong></p>
                 </div>
                 <div class='col-md-6' >
-                    <p><h5>Owner earnings</h5></p>
-                    <p><h5>Service fee</h5></p>
-                    <p><h5><strong>rental nights</strong></h5></p>
+                    <p><h5>" . trans('front.owner_earnings') . "</h5></p>
+                    <p><h5>" . trans('front.service_fee') . "</h5></p>
+                    <p><h5>" . trans('insurances') . "</h5></p>
+                    <p><h5><strong>" . trans('front.rental_nights') . "</strong></h5></p>
                 </div>
                 <div class='col-md-6' >
                     <p><h5>CHF" . $price_per_day . "</h5></p>
                     <p><h5>CHF $fee </h5></p>
+                    <p><h5>CHF $insuranceCost</h5></p>
                     <p><h5><strong>CHF $total<strong></h5></p>
                 </div>
             </div>
@@ -1096,21 +1147,25 @@ class FC_rentOutController extends Controller
         $per = Promotion::where('status', 1)->first()->commission;
         $fee = ($total * $per) / 100;
         $owner_part = $total - $fee;
+        $insuranceCost = $this->getInsuranceCostByCamper($request->id_campers, $minimal_rent_days_winter);
+        $total = $minimal_rent_days_winter * $price_per_day + $insuranceCost;
 
         $html = "";
         $html .= "<div class='col-md-12' style='margin-top:10px;'>
             <div class='col-md-9' >
                 <div class='col-md-12' >
-                    <p><strong>Sample booking for your minimum period:</strong></p>
+                    <p><strong>" . trans('front.desc_minimum_period') . ":</strong></p>
                 </div>
                 <div class='col-md-6' >
-                    <p><h5>Owner earnings</h5></p>
-                    <p><h5>Service fee</h5></p>
-                    <p><h5><strong>rental nights</strong></h5></p>
+                    <p><h5>" . trans('front.owner_earnings') . "</h5></p>
+                    <p><h5>" . trans('front.service_fee') . "</h5></p>
+                    <p><h5>" . trans('insurances') . "</h5></p>
+                    <p><h5><strong>" . trans('front.rental_nights') . "</strong></h5></p>
                 </div>
                 <div class='col-md-6' >
                     <p><h5>CHF $owner_part</h5></p>
                     <p><h5>CHF $fee</h5></p>
+                    <p><h5>CHF $insuranceCost</h5></p>
                     <p><h5><strong>CHF $total<strong></h5></p>
                 </div>
             </div>
@@ -1164,6 +1219,8 @@ class FC_rentOutController extends Controller
 
         $client = Client::find($camper->id_clients);
         Mail::to("support@campunite.com")->send(new ConfirmationCamperMail($client, $camper));
+        Mail::to($client['email'])->send(new ConfirmationClientCamperMail($client, $camper));
+
         return redirect(route('frontend.camper.detail', $camper->id));
     }
 
@@ -1210,7 +1267,7 @@ class FC_rentOutController extends Controller
     }
     public static function isRentalTermsReady($camper)
     {
-        return $camper->animals_allowed != null && $camper->smoking_allowed != null;
+        return $camper->animals_allowed != null && $camper->smoking_allowed != null && $camper->minimum_age != null;
     }
     public static function isTermsReady($camper)
     {

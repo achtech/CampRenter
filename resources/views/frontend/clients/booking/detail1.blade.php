@@ -37,23 +37,23 @@
 			<div class="row">
 			<input type="hidden" value="{{$booking->id}}" id="bookingId">
 				<div class="col-md-6">
-					<label>Start Date</label>
-					<input type="text" value="{{date('j F Y', strtotime($booking->start_date))}}"  disabled>
+					<label>{{trans('front.start_date')}}</label>
+					<input type="text" value="{{date('j m Y', strtotime($booking->start_date))}}"  disabled>
 				</div>
 				<div class="col-md-6">
-					<label>End date</label>
-					<input type="text" value="{{date('j F Y', strtotime($booking->end_date))}}"  disabled>
+					<label>{{trans('front.end_date')}}</label>
+					<input type="text" value="{{date('j m Y', strtotime($booking->end_date))}}"  disabled>
 				</div>
 				<div class="col-md-6">
-					<label>Price per day</label>
+					<label>{{trans('front.price_per_day')}}</label>
 					<input type="text" value="{{App\Http\Controllers\frontend\FC_CamperController::getCamperPriceCurrentSaison($booking->id_campers)}} CHF"  disabled>
 				</div>
 				<div class="col-md-6">
-					<label>Booking status</label>
-					<input type="text" value="{{$booking->booking_status_en}}"  disabled>
+					<label>{{trans('front.booking_status')}}</label>
+					<input type="text" value="{{App\Http\Controllers\Controller::getStatus('v_bookings_owner',$booking->id)}}"  disabled>
 				</div>
 			</div>
-			<a href="javascript:history.back()" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">Return</a>
+			<a href="javascript:history.back()" class="button booking-confirmation-btn margin-top-40 margin-bottom-65">{{trans('front.cancel')}}</a>
 		</div>
 
 
@@ -67,13 +67,13 @@
 
 					<div class="listing-item-content">
 						<div class="numerical-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($booking->id_campers)}}"></div>
-						<h3>{{App\Http\Controllers\Controller::getCamperCategorie($booking->id_campers)->label_en}}</h3>
+						<h3>{{App\Http\Controllers\Controller::getCamperCategorie($booking->id_campers)}}</h3>
 						<span>{{$booking->camper_name}}</span>
 					</div>
 				</div>
 			</div>
 			<div class="boxed-widget opening-hours summary margin-top-0">
-				<h3><i class="fa fa-calendar-check-o"></i> Booking Summary</h3>
+				<h3><i class="fa fa-calendar-check-o"></i> {{trans('front.booking_summary')}}</h3>
 				<ul id="side_bar_prices">
 				</ul>
 			</div>

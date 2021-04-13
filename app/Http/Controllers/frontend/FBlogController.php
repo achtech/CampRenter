@@ -12,7 +12,7 @@ class FBlogController extends Controller
     //
     public function index()
     {
-        $blogs = DB::table('blogs')->orderby('created_at', 'desc')->paginate(5);
+        $blogs = DB::table('blogs')->orderby('created_at', 'desc')->get();
         $populairePost = DB::table('blogs')->paginate(3);
         return view('frontend.blog.index')
             ->with('blogs', $blogs)
@@ -22,10 +22,10 @@ class FBlogController extends Controller
     public function search(Request $request)
     {
         $blogs = DB::table('blogs')
-            ->where('article', 'like', "%" . $request->searchBlog . "%")
-            ->orWhere('title', 'like', "%" . $request->searchBlog . "%")
+            ->where('article_en', 'like', "%" . $request->searchBlog . "%")
+            ->orWhere('title_en', 'like', "%" . $request->searchBlog . "%")
             ->orderby('created_at', 'desc')
-            ->paginate(5);
+            ->get();
         $populairePost = DB::table('blogs')->paginate(3);
         return view('frontend.blog.index')
             ->with('blogs', $blogs)
@@ -47,10 +47,10 @@ class FBlogController extends Controller
         }*/
         // get previous blog id
         $previous = DB::table('blogs')->where('id', '<', $id)->max('id');
-        $previousTitle = $previous ? DB::table('blogs')->where('id', $previous)->first()->title : '';
+        $previousTitle = $previous ? DB::table('blogs')->where('id', $previous)->first()->title_en : '';
         // get next blog id
         $next = DB::table('blogs')->where('id', '>', $id)->min('id');
-        $nextTitle = $next ? DB::table('blogs')->where('id', $next)->first()->title : '';
+        $nextTitle = $next ? DB::table('blogs')->where('id', $next)->first()->title_en : '';
         return view('frontend.blog.detail')
             ->with('comments', $comments)
             ->with('previous', $previous)

@@ -20,7 +20,7 @@
                     <h4 class="text-center">{{trans('front.register_with_email_address')}}</h4>
                     @if (Session::has('successregistration'))
                         <div class="notification success">
-                            <p><span>Success!</span> Check your email</p>
+                            <p><span>{{trans('front.success')}}!</span> {{trans('front.email_message')}}</p>
                             <a class="close"></a>
                         </div>
                     @endif
@@ -32,7 +32,7 @@
                             </label>
                         </div>
                         <div  class="col-md-12">
-                            <input type="text" placeholder="First Name" id="client_name" name="client_name" class="form-control"  value="{{ old('client_name') }}"  required>
+                            <input type="text" id="client_name" name="client_name" class="form-control"  value="{{ old('client_name') }}"  required>
                         </div>
                         <div class="col-md-12">
                             <label  for="username2">
@@ -40,7 +40,7 @@
                             </label>
                         </div>
                         <div  class="col-md-12">
-                            <input type="text" placeholder="Last Name" id="client_last_name" name="client_last_name" class="form-control"  value="{{ old('client_last_name') }}" required>
+                            <input type="text" id="client_last_name" name="client_last_name" class="form-control"  value="{{ old('client_last_name') }}" required>
                         </div>
                         <div class="col-md-12">
                             <label  for="username2">
@@ -48,7 +48,7 @@
                             </label>
                         </div>
                         <div  class="col-md-12">
-                            <input type="email" placeholder="Email Address" id="email" name="email" class="form-control  @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
+                            <input type="email" id="email" name="email" class="form-control  @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -57,11 +57,11 @@
                         </div>
                         <div class="col-md-12">
                             <label>
-                                {{trans('front.password')}} : {{trans('front.minimum_length')}}
+                                {{trans('front.password')}}: {{trans('front.minimum_length')}}
                             </label>
                         </div>
                         <div class="col-md-12">
-                            <input type="password" placeholder="Password" id="password" name="password" class="form-control  @error('password') is-invalid @enderror"  required>
+                            <input type="password" id="password" name="password" class="form-control  @error('password') is-invalid @enderror"  required>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-md-12">
                             <label><input id="service_terms" name="service_terms"  type="checkbox" class="form-control" required>
-                                <span style="margin-top: 12px;">{{trans('front.agree')}} <a  style="font-weight: bold;color: #818181;display: contents;" class="inscription" href="{{route('terms')}}" id="register" >{{trans('front.service_terms')}}</a>{{trans('front.and')}} <a   style="font-weight: bold;color: #818181;display: contents;" class="inscription" href="{{route('disclaimer')}}" id="register" >{{trans('front.privacy_policy')}}</a></span>
+                                <span style="margin-top: 12px;">{{trans('front.agree')}} <a  style="font-weight: bold;color: #818181;display: contents;" class="inscription" href="{{route('terms')}}" id="register" >{{trans('front.service_terms')}}</a> {{trans('front.and')}} <a   style="font-weight: bold;color: #818181;display: contents;" class="inscription" href="{{route('disclaimer')}}" id="register" >{{trans('front.privacy_policy')}}</a></span>
                             </label>
                         </div>
                         <div class="col-md-12">

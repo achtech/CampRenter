@@ -14,7 +14,7 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-{{ Breadcrumbs::render('rentOut') }}
+						{{ Breadcrumbs::render('rentOut') }}
 					</ul>
 				</nav>
 			</div>
@@ -27,7 +27,6 @@
 
 		<div class="col-lg-7 col-md-12" style="padding-left: 37px;">
 			<div class="row">
-				<h6>{{trans('front.vehicle_data')}}</h6>
 				<h3><strong>{{trans('front.vehicle_data')}}</strong></h3>
 			</div>
 			<form  action="{{route('frontend.camper.storeEquipment')}}" method="POST">
@@ -41,7 +40,7 @@
 								<!-- Phone -->
 								<div class="col-md-6">
 									<div class="card-label">
-										<label for="camper_name">{{trans('front.name_vehicle')}}</label>
+										<label for="camper_name">{{trans('front.name_vehicle')}} <span classe="required-field">*</span></label>
 										<input type="text" name="camper_name" value="{{$camper->camper_name}}" required>
 									</div>
 								</div>
@@ -49,8 +48,8 @@
 								<!-- Website -->
 								<div class="col-md-6">
 									<div class="card-label">
-										<label for="brand">{{trans('front.camper_brand')}}</label>
-										<input type="text" name="brand" value="{{$camper->brand}}">
+										<label for="brand">{{trans('front.camper_brand')}} <span classe="required-field">*</span></label>
+										<input type="text" name="brand" value="{{$camper->brand}}" required>
 									</div>
 								</div>
 							</div>
@@ -60,16 +59,16 @@
 								<!-- Phone -->
 								<div class="col-md-6">
 									<div class="card-label">
-										<label for="model">{{trans('front.model')}}</label>
-										<input type="text" name="model" value="{{$camper->model}}">
+										<label for="model">{{trans('front.model')}} <span classe="required-field">*</span></label>
+										<input type="text" name="model" value="{{$camper->model}}" required>
 									</div>
 								</div>
 
 								<!-- Website -->
-								<div class="col-md-6" style="margin-top: 20px;">
+								<div class="col-md-6">
 									<div class="card-label">
-										<select name="id_licence_categories" id="id_licence_categories" class="chosen-select" data-placeholder="Licence">
-										<option> </option>
+										<label for="id_licence_categories">{{trans('front.licence_category')}} <span classe="required-field">*</span></label>
+										<select name="id_licence_categories" id="id_licence_categories" class="chosen-select"  data-placeholder="Licence" required>
 										@foreach($licenceCategories as $cat)
 											<option value="{{$cat->id}}" @if($camper->id_licence_categories==$cat->id) selected @endif>{{$cat->label_en}}</option>
 										@endforeach
@@ -89,17 +88,20 @@
 								<!-- -->
 								<div class="col-md-6">
 									<div class="card-label">
-										<label for="license_plate_number">{{trans('front.licence_number')}}</label>
-										<input type="text" name="license_plate_number" value="{{$camper->license_plate_number}}">
+										<label for="license_plate_number">{{trans('front.licence_number')}} <span classe="required-field">*</span></label>
+										<input type="text" name="license_plate_number" value="{{$camper->license_plate_number}}" required>
 									</div>
 								</div>
-								<div class="col-md-6" style="margin-top: 20px;">
-									<select name="country" id="country" class="chosen-select" data-placeholder="country">
-										<option> </option>
-										@foreach($countries as $cat)
-											<option value="{{$cat->label}}" @if($camper->country==$cat->label) selected @endif>{{$cat->label}}</option>
-										@endforeach
-									</select>
+								<div class="col-md-6">
+									<div class="card-label">
+										<label for="country">{{trans('front.country_registration')}} <span classe="required-field">*</span></label>
+										<select name="country" id="country" class="chosen-select" data-placeholder="country" required>
+											<option> Switzerland </option>
+											@foreach($countries as $cat)
+												<option value="{{$cat->label}}" @if($camper->country==$cat->label) selected @endif>{{$cat->label}}</option>
+											@endforeach
+										</select>
+									</div>
 								</div>
 							</div>
 						</li>
@@ -122,8 +124,8 @@
 								<!-- Phone -->
 								<div class="col-md-6">
 									<div class="card-label">
-										<label for="seat_number">{{trans('front.number_seats')}}</label>
-										<input type="number" min="0" name="seat_number" value="{{$camper->seat_number}}">
+										<label for="seat_number">{{trans('front.number_seats')}} <span classe="required-field">*</span></label>
+										<input type="number" min="0" name="seat_number" value="{{$camper->seat_number}}" required>
 									</div>
 								</div>
 
@@ -145,7 +147,7 @@
 									</div>
 									<div class="col-md-12">
 										@foreach($transmissions as $t)
-										<label class="containerRadio">{{$t->label_en}}
+										<label class="containerRadio">{{App\Http\Controllers\Controller::getLabel('transmissions', $t->id)}}
 											<input type="radio"  name="id_transmissions" value="{{$t->id}}" @if($t->id==$camper->id_transmissions) checked="checked" @endif>
 											<span class="checkmarkRadio"></span>
 										</label>
@@ -157,7 +159,7 @@
 									</div>
 									<div class="col-md-12">
 										@foreach($fuels as $f)
-										<label class="containerRadio">{{$f->label_en}}
+										<label class="containerRadio">{{App\Http\Controllers\Controller::getLabel('fuels', $f->id)}}
 											<input type="radio" name="id_fuels" value="{{$f->id}}"
 											 onchange="isElectric('{{$f->label_en}}')"
 											  @if($f->id==$camper->id_fuels) checked="checked" @endif>
@@ -249,7 +251,7 @@
 								<!-- Phone -->
 								<div class="col-md-12">
 									<div class="card-label">
-										<label for="fuel_capacity">Battery range </label>
+										<label for="fuel_capacity">{{trans('front.battery_range')}} </label>
 										<input type="number" min="0" name="fuel_capacity" step="any" value="{{$camper->fuel_capacity}}">
 									</div>
 								</div>
@@ -261,15 +263,15 @@
 
 								<div class="col-md-6">
 									<div class="card-label">
-										<label for="allowed_total_weight">{{trans('front.allowed_tons')}}</label>
+										<label for="allowed_total_weight">{{trans('front.allowed_tons')}} <span classe="required-field">*</span></label>
 										<input type="number" min="0" name="allowed_total_weight" step="any" value="{{$camper->allowed_total_weight}}" required>
 									</div>
 								</div>
 								<!-- Website -->
 								<div class="col-md-6">
 									<div class="card-label">
-										<label for="length">{{trans('front.length_in_metres')}}</label>
-										<input type="number" min="0" name="length" step="any" value="{{$camper->length}}">
+										<label for="length">{{trans('front.length_in_metres')}} <span classe="required-field">*</span></label>
+										<input type="number" min="0" name="length" step="any" value="{{$camper->length}}" required>
 									</div>
 								</div>
 							</div>
@@ -301,19 +303,19 @@
 								<div class="col-md-6">
 									<div class="checkboxes in-row">
 										<input id="check-a" type="checkbox" name="additional_attribute[]"  value="Aircon" @if(isset($additionals) && is_array($additionals) && in_array("Aircon",$additionals)) checked @endif>
-										<label for="check-a">Aircon in the driver's cabin</label>
+										<label for="check-a">{{trans('front.Aircon')}}</label>
 									</div>
 									<div class="checkboxes in-row">
 										<input id="check-b" type="checkbox" name="additional_attribute[]"  value="Rear" @if(isset($additionals) && is_array($additionals) && in_array("Rear",$additionals)) checked @endif>
-										<label for="check-b">Rear view camera</label>
+										<label for="check-b">{{trans('front.Rear')}}</label>
 									</div>
 									<div class="checkboxes in-row">
 										<input id="check-c" type="checkbox" name="additional_attribute[]"  value="Power" @if(isset($additionals) && is_array($additionals) && in_array("Power",$additionals)) checked @endif>
-										<label for="check-c">Power steering</label>
+										<label for="check-c">{{trans('front.Power')}}</label>
 									</div>
 									<div class="checkboxes in-row">
 										<input id="check-d" type="checkbox" name="additional_attribute[]"  value="Four" @if(isset($additionals) && is_array($additionals) && in_array("Four",$additionals)) checked @endif>
-										<label for="check-d">Four wheel drive</label>
+										<label for="check-d">{{trans('front.Four')}}</label>
 									</div>
 								</div>
 
@@ -321,19 +323,19 @@
 								<div class="col-md-6">
 									<div class="checkboxes in-row">
 										<input id="check-f" type="checkbox" name="additional_attribute[]"  value="Auxiliary" @if(isset($additionals) && is_array($additionals) && in_array("Auxiliary",$additionals)) checked @endif>
-										<label for="check-f">Auxiliary heating</label>
+										<label for="check-f">{{trans('front.Auxiliary')}}</label>
 									</div>
 									<div class="checkboxes in-row">
 										<input id="check-g" type="checkbox" name="additional_attribute[]"  value="Reverse" @if(isset($additionals) && is_array($additionals) && in_array("Reverse",$additionals)) checked @endif>
-										<label for="check-g">Reverse parking system</label>
+										<label for="check-g">{{trans('front.Reverse')}}</label>
 									</div>
 									<div class="checkboxes in-row">
 										<input id="check-h" type="checkbox" name="additional_attribute[]"  value="Anti" @if(isset($additionals) && is_array($additionals) && in_array("Anti",$additionals)) checked @endif>
-										<label for="check-h">Anti-skid-system</label>
+										<label for="check-h">{{trans('front.Anti')}}</label>
 									</div>
 									<div class="checkboxes in-row">
 										<input id="check-i" type="checkbox" name="additional_attribute[]"  value="Central" @if(isset($additionals) && is_array($additionals) && in_array("Central",$additionals)) checked @endif>
-										<label for="check-i">Central locking</label>
+										<label for="check-i">{{trans('front.Central')}}</label>
 									</div>
 								</div>
 							</div>
@@ -344,7 +346,7 @@
 									<strong>{{trans('front.location')}}</strong>
 									<div class="markers-on-the-map">
 										<div class="card-label">
-											<label for="cylinder_capacity">Location of the vehicle</label>
+											<label for="cylinder_capacity">{{trans('front.location_vehicle')}}<span classe="required-field">*</span></label>
 											<input type="text" name="location" id="address" value="{{$camper->location}}" required>
 										</div>
 
@@ -409,4 +411,10 @@ if(idFuel==3){
 	isElectric("Electric");
 }
 </script>
+<style>
+.required-field{
+	color: red;
+    font-size: 20px;
+}
+</style>
 @endsection

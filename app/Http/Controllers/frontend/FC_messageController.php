@@ -94,6 +94,7 @@ class FC_messageController extends Controller
         if (Controller::getConnectedClient() == null) {
             return redirect(route('frontend.login.client'));
         }
+
         $client = Controller::getConnectedClient();
         $input = request()->except(['_token', '_method', 'action']);
         $input['created_by'] = $client->id;
@@ -109,14 +110,17 @@ class FC_messageController extends Controller
         $data = Chat::create($input);
 
         $notification = new Notification();
-        $notification->id_user = $request->id_renters;
-        $notification->id_table = $data->id;
-        if ($request->id_renters != null && $request->id_renters == $client->id) {
-            $renter = Client::find($request->id_renters);
+
+        $notification->id_table = $request->id_bookings;
+
+        if ($request->id_owners != null && $request->id_owners == $client->id) {
+            $notification->id_user = $request->id_renters;
+            $renter = Client::find($request->id_owners);
             $notification->message = "You have new message from : " . $renter->client_last_name . " " . $renter->client_name;
         }
-        if ($request->id_owners != null && $request->id_owners == $client->id) {
-            $owner = Client::find($request->id_owners);
+        if ($request->id_renters != null && $request->id_renters == $client->id) {
+            $notification->id_user = $request->id_owners;
+            $owner = Client::find($request->id_renters);
             $notification->message = "You have new message from : " . $owner->client_last_name . " " . $owner->client_name;
         }
 

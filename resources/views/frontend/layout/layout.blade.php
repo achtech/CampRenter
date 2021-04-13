@@ -28,13 +28,55 @@
 	}
 </style>
 <!--<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="6812b27b-30cd-42e2-8ae4-64ff247819cb" data-blockingmode="auto" type="text/javascript"></script>-->
+<!-- Facebook Pixel Code -->
+<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '2818080024915225');
+	fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2818080024915225&ev=PageView&noscript=1"/></noscript>
+<!-- End Facebook Pixel Code -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-191495896-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-191495896-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Ads: 387696381 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-387696381"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'AW-387696381');
+</script>
+
+@if (Session::has('successregistration'))
+	<!-- Event snippet for Registrierung conversion page -->
+	<script>
+	gtag('event', 'conversion', {'send_to': 'AW-387696381/WbMcCMfcsYACEP2N77gB'});
+	</script>
+@endif
+
 </head>
 
 <body>
 
 <!-- Maps -->
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCVL7v7EJXFy70y3vF9mb_AusJlhg0H4&libraries=places"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjaNhwjWA-cyChAjLnGiIe44NbHMZ_s7c&libraries=places"
 ></script>
 
 <!-- Wrapper -->
@@ -145,8 +187,114 @@ $(function() {
 		$('#booking-date-range1').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 
 	}
+    var lang = <?php echo json_encode(app()->getLocale()); ?>;
+	var locale
+	if(lang == 'en'){
+		locale = {
+			"format": "MM/DD/YYYY",
+			"separator": " - ",
+			"applyLabel": "Apply",
+			"cancelLabel": "Cancel",
+			"fromLabel": "From",
+			"toLabel": "To",
+			"customRangeLabel": "Custom",
+			"daysOfWeek": [
+				"Su",
+				"Mo",
+				"Tu",
+				"We",
+				"Th",
+				"Fr",
+				"Sa"
+			],
+			"monthNames": [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December"
+			],
+			"firstDay": 1
+    	}
+	}else if(lang == 'fr'){
+		locale = {
+			"format": "MM/DD/YYYY",
+			"separator": " - ",
+			"applyLabel": "Appliquer",
+			"cancelLabel": "Annuler",
+			"fromLabel": "De",
+			"toLabel": "A",
+			"customRangeLabel": "Custom",
+			"daysOfWeek": [
+				"Dim",
+				"Lun",
+				"Mar",
+				"Mer",
+				"Jeu",
+				"Ven",
+				"Sam"
+			],
+			"monthNames": [
+				"Janvier",
+				"Février",
+				"Mars",
+				"Avrile",
+				"Mai",
+				"Juin",
+				"Juillet",
+				"Août",
+				"Septembre",
+				"Octobre",
+				"Novembre",
+				"Décembre"
+			],
+			"firstDay": 1
+    	}
+	}else {
+		locale = {
+			"format": "MM/DD/YYYY",
+			"separator": " - ",
+			"applyLabel": "Anwenden",
+			"cancelLabel": "Stornieren",
+			"fromLabel": "From",
+			"toLabel": "To",
+			"customRangeLabel": "Custom",
+			"daysOfWeek": [
+				"So",
+				"Mo",
+				"Di",
+				"Mi",
+				"Do",
+				"Fr",
+				"Sa"
+			],
+			"monthNames": [
+				"Januar",
+				"Februar",
+				"März",
+				"April",
+				"Mai",
+				"Juni",
+				"Juli",
+				"August",
+				"September",
+				"Oktober",
+				"November",
+				"Dezember"
+			],
+			"firstDay": 1
+    	}
+	};
     //cb(start, end);
     $('#booking-date-range1').daterangepicker({
+		"locale": locale,
     	"opens": "left",
 	    "autoUpdateInput": false,
 		"alwaysShowCalendars": true
@@ -160,24 +308,14 @@ $(function() {
 
 // Calendar animation and visual settings
 $('#booking-date-range1').on('show.daterangepicker', function(ev, picker) {
-	var s = '<?php echo $start_date_s ?? ''; ?>';
-	var e = '<?php echo $end_date_s ?? ''; ?>';
-
 	$('.daterangepicker').addClass('calendar-visible calendar-animated bordered-style');
 	$('.daterangepicker').removeClass('calendar-hidden');
-	//$('#booking-date-range1').daterangepicker({ startDate: s, endDate: e });
-	 $('#booking-date-range1').data('daterangepicker').setStartDate(s);
-	$('#booking-date-range1').data('daterangepicker').setEndDate(e);
+
 });
 $('#booking-date-range1').on('hide.daterangepicker', function(ev, picker) {
-	var s = "<?php echo $start_date_s ?? ''; ?>";
-	var e = "<?php echo $end_date_s ?? ''; ?>";
 	$('.daterangepicker').removeClass('calendar-visible');
 	$('.daterangepicker').addClass('calendar-hidden');
-	$('#frm1').submit();
-	//$('#booking-date-range1').daterangepicker({ startDate: s, endDate: e });
-	$('#booking-date-range1').data('daterangepicker').setStartDate(s);
-	$('#booking-date-range1').data('daterangepicker').setEndDate(e);
+
 });
 </script>
 </body>

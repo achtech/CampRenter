@@ -19,7 +19,7 @@
             <input  id="street" name="street" class="form-control" value="{{$client['street']}}" type="text" >
             <label>{{ __('front.street_number') }}</label>
             <input  id="street_number" name="street_number" class="form-control" value="{{$client['street_number']}}" type="text" >
-            <label>{{ __('front.location') }}</label>
+            <label>{{ __('front.profile_location') }}</label>
             <input  id="location" name="location" class="form-control" value="{{$client['location']}}" type="text" >
             <label>{{ __('front.postal_code') }}</label>
             <input  id="postal_code" name="postal_code" class="form-control" value="{{$client['postal_code']}}" type="text" >
@@ -29,8 +29,6 @@
             <input id="telephone" name="telephone" class="form-control" value="{{$client['telephone']}}" type="text">
             <label>{{ __('front.profil_phone_code') }}</label>
             <input id="telephone_code" name="telephone_code" class="form-control" value="{{$client['telephone_code']}}" type="text" required>
-            <label>{{ __('front.profil_review') }}</label>
-            <input id="review" name="review" class="form-control" value="{{$client['review']}}" type="text">
             <label>{{ __('front.profile_driving_licence') }}</label>
             <input id="driving_licence" name="driving_licence" class="form-control" value="{{$client['driving_licence']}}" type="text">
             <label>{{ __('front.profile_status') }}</label>

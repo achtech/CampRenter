@@ -12,7 +12,7 @@
 				<div class="row fs-switcher">
 					<div class="col-md-6">
 						<!-- Showing Results -->
-						<p class="showing-results">{{isset($campers) ? count($campers) : 0}} Results Found </p>
+						<p class="showing-results">{{isset($campers) ? count($campers) : 0}} {{trans('front.results_found')}} </p>
 					</div>
 				</div>
 				<!-- Listings -->
@@ -35,7 +35,7 @@
 									<span class="tag" style="background: #ca353c !important;"
 									onmouseenter="PrepareMarkers('{{$camper->position_x}}','{{$camper->position_y}}',0,event)"
 									onmouseout="PrepareMarkers('{{$camper->position_x}}','{{$camper->position_y}}',1, event)">
-									See in Map</span>
+									{{trans('front.see_in_map')}}</span>
 								</div>
 								<!--<div id="book_fav">
 									@if(!session('_client'))
@@ -48,7 +48,7 @@
 								</div>-->
 							</div>
 							<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($camper->id)}}">
-								<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} reviews)</div>
+								<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} {{trans('front.menu_panel_review')}})</div>
 							</div>
 						</a>
 					</div>

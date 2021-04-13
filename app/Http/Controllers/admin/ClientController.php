@@ -37,9 +37,9 @@ class ClientController extends Controller
         $search = '';
         if (isset($request) && null !== $request->get('search')) {
             $search = $request->get('search');
-            $datas = Client::where('client_name', 'like', '%' . $search . '%')->paginate(10);
+            $datas = Client::where('client_name', 'like', '%' . $search . '%')->get();
         } else {
-            $datas = Client::paginate(10);
+            $datas = Client::get();
         }
         return view('admin.client.index')->with('datas', $datas)->with('search', $search);
     }

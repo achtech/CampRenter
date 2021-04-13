@@ -45,6 +45,7 @@ class FC_CamperController extends Controller
         $camper_equipment = DB::table('camper_equipment')->where('id_campers', $id)->first();
         //$camper_inssurance = DB::table('camper_inssurance')->where('id_campers', $id)->first();
         $camper = Camper::find($id);
+        $fuel = DB::table('fuels')->find($camper->id_fuels);
         $owner = Client::where('id', $camper->id_clients)->first();
         $category = CamperCategory::where('id', $camper->id_camper_categories)->first();
         $galleries = CamperImage::where('id_campers', $id)->get();
@@ -61,8 +62,19 @@ class FC_CamperController extends Controller
             $avatar = DB::table('avatars')->find($owner->id_avatars);
             $owner_photo = $avatar ? $avatar->image : 'default.jpg';
         }
-
+        $additionalAttributeArray = explode(',', $camper->additional_attribute);
+        $additionalAttribute = "";
+        foreach ($additionalAttributeArray as $item) {
+            $additionalAttribute .= trans('front.' . $item) . ", ";
+        }
+        $additionalAttribute = substr($additionalAttribute, 1, -2);
         $booking_campers = Booking::where('id_booking_status', 4)->where('id_campers', $id)->first();
+
+        $booked_campers = Booking::where('id_campers', $id)->where('id_booking_status', 4)->get();
+        foreach ($booked_campers as $booked_camper) {
+            $booked_camper->start_date = date("d-m-Y", strtotime($booked_camper->start_date));
+            $booked_camper->end_date = date("d-m-Y", strtotime($booked_camper->end_date));
+        }
 
         return view('frontend.camper.detail')
             ->with('camper', $camper)
@@ -77,7 +89,10 @@ class FC_CamperController extends Controller
             ->with('camper_rental_terms', $camper_rental_terms)
             ->with('camper_equipment', $camper_equipment)
             ->with('owner_photo', $owner_photo)
-            ->with('booking_campers', $booking_campers);
+            ->with('booking_campers', $booking_campers)
+            ->with('fuel', $fuel)
+            ->with('booked_campers', $booked_campers)
+            ->with('additionalAttribute', $additionalAttribute);
     }
 
     public function detailBookedCamper($id)

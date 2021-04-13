@@ -9,7 +9,7 @@
 
     <!-- Subrating #1 -->
     <div class="add-sub-rating">
-        <div class="sub-rating-title">Service </div>
+        <div class="sub-rating-title">{{trans('front.service')}} </div>
         <div class="sub-rating-stars">
             <!-- Leave Rating -->
             <div class="clearfix"></div>
@@ -30,7 +30,7 @@
 
     <!-- Subrating #2 -->
     <div class="add-sub-rating">
-        <div class="sub-rating-title">Managing </div>
+        <div class="sub-rating-title">{{trans('front.managing')}} </div>
         <div class="sub-rating-stars">
             <!-- Leave Rating -->
             <div class="clearfix"></div>
@@ -51,7 +51,7 @@
 
     <!-- Subrating #3 -->
     <div class="add-sub-rating">
-        <div class="sub-rating-title">Cleanliness </div>
+        <div class="sub-rating-title">{{trans('front.cleanliness')}} </div>
         <div class="sub-rating-stars">
             <!-- Leave Rating -->
             <div class="clearfix"></div>

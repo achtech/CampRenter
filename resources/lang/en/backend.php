@@ -363,4 +363,5 @@ return [
     'tons' => 'Tons',
     'initial_price' => 'Initial price',
     'sub_extra' => 'Sub-Extra',
+    'is_default' => 'Is Default',
 ];

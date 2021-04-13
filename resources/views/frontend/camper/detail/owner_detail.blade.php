@@ -37,7 +37,7 @@
 		================================================== -->
 		<div class="col-lg-12 col-md-12 padding-left-30">
 
-			<h3 class="margin-top-0 margin-bottom-40 margin-top-30">{{$owner->client_name}} Listings</h3>
+			<h3 class="margin-top-0 margin-bottom-40 margin-top-30">{{$owner->client_name}} {{trans('front.listings')}}</h3>
 
 			<!-- Listings Container -->
 			<div class="row">
@@ -68,7 +68,7 @@
 									<h3>{{$camper->camper_name}}</h3>
 									<span>{{$camper->city}}, {{$camper->country}}</span>
 									<div class="star-rating" data-rating="{{App\Http\Controllers\frontend\FC_reviewController::rateCamper($camper->id)}}">
-										<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} reviews)</div>
+										<div class="rating-counter">({{App\Http\Controllers\frontend\FC_reviewController::reviewCamperCount($camper->id)}} {{trans('front.reviews.breadcrumb')}})</div>
 									</div>
 								</div>
 
@@ -90,7 +90,7 @@
 				<!-- Listing Item / End -->
 
 				<div class="col-md-12 browse-all-user-listings">
-					<a href="#">Browse All Listings <i class="fa fa-angle-right"></i> </a>
+					<a href="#">{{trans('front.browse_all_listings')}} <i class="fa fa-angle-right"></i> </a>
 				</div>
 
 			</div>
@@ -99,7 +99,7 @@
 
 			<!-- Reviews -->
 			<div id="listing-reviews" class="listing-section">
-				<h3 class="margin-top-60 margin-bottom-20">Reviews</h3>
+				<h3 class="margin-top-60 margin-bottom-20">{{trans('front.reviews.breadcrumb')}}</h3>
 
 				<div class="clearfix"></div>
 
@@ -128,11 +128,11 @@
 					 </ul>
 				</section>
 
-				<!-- Pagination -->
+				<!-- Pagination
 				<div class="clearfix"></div>
 				<div class="row">
 					<div class="col-md-12">
-						<!-- Pagination
+						Pagination
 						<div class="pagination-container margin-top-30">
 							<nav class="pagination">
 								<ul>

@@ -71,9 +71,14 @@ class FClientController extends DefaultLoginController
             $client = Client::create($input);
             Mail::to($client['email'])->send(new RegistrationMail($client));
             Session::flash('successregistration', 'true');
-            return back();
+            return redirect(route('frontend.client.welcomePage'));
         }
         return back()->withInput($request->only('email', 'remember'));
+    }
+
+    public function welcomePage(Request $request)
+    {
+        return view('frontend.auth.welcome');
     }
 
     public function userUpdateClient(Request $request)

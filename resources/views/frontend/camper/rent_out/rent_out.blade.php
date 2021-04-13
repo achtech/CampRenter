@@ -23,8 +23,8 @@
 
 	<div class="row">
 		<div class="col-lg-12">
-		<div class="notification error">
-				<p><span>Warning!</span> Please choose a category before apply.</p>
+		<div class="notification error" id="error-valid" style="display:none;">
+				<p><span>{{trans('front.warning')}}!</span> {{trans('front.choose_category')}}</p>
 				<a class="close" href="#"></a>
 			</div>
 			<div id="add-listing">
@@ -39,7 +39,7 @@
 							</div>
 						</div>
 					</div>
-					<form  action="{{route('frontend.camper.storePersonalData')}}" method="POST"  name="frm1">
+					<form  action="{{route('frontend.camper.storePersonalData')}}" method="POST"  name="frm1" onSubmit="return validateForm()">
 						@csrf
 						<input type="hidden" name="id_campers" value="{{isset($camper) ? $camper->id : ''}}" />
 						<div class="col-md-12">
@@ -101,23 +101,15 @@
 						<div class="col-md-12">
 							<div class="row">
 									<div class="col-md-12">
-										<input type="text" id="camper_name" name="camper_name" required placeholder="My sweet Camper" value="{{$camper->camper_name}}">
+										<input type="text" id="camper_name" name="camper_name" required placeholder="{{trans('front.sweet_camper')}}" value="{{$camper->camper_name}}">
 										<h6>{{trans('front.still_can_change')}}</h6>
 									</div>
 							</div>
 						</div>
-						<!-- Title -->
-						<div class="row">
-							<div class="col-md-12">
-								<div class="col-md-12">
-									<input type="text" name="recommandation" placeholder="" value="{{$camper->recommandation ?? '' }}" />
-									<h6>{{trans('front.recommandation')}}</h6>
-								</div>
-							</div>
-						</div>
+
 						<div class="row">
 							<div style="float: right;">
-								<button type="submit" class="button" @if($isValid && empty($selectedCategoryId)) disabled @endif>{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
+								<button type="submit" class="button">{{trans('front.apply')}} <i class="fa fa-check-circle"></i></button>
 							</div>
 						</div>
 					</form>
@@ -172,6 +164,18 @@ $("img[data-picture_sub_id]").click(function(e){
 	//Set the value of the hidden input field
 	$("input[name='id_camper_sub_categories']").val($(this).data('picture_sub_id'));
 });
+
+function validateForm() {
+	var errors = [];
+	var form = document.getElementsByTagName('frm1')[0];
+	var selectedCategory = <?php echo json_encode($selectedCategoryId); ?>;
+
+
+	if(!selectedCategory){
+		document.getElementById("error-valid").style.display = "block";
+       	return false;
+    }
+}
 
 </script>
 @endsection

@@ -327,10 +327,10 @@ class FC_bookingController extends Controller
         $html = "<li>" . trans('front.date') . " <span>" . date('j F Y', strtotime($booking->created_date)) . "</span></li>";
 
         $html .= "<li>" . trans('front.n_nights') . " <span>" . $booking->nbr_days . " " . trans('front.nights') . "</span></li>";
-        $html .= "<li>Price <span>" . $total_without_insurance . " CHF</span></li>";
+        $html .= "<li>" . trans('front.price') . " <span>" . $total_without_insurance . " CHF</span></li>";
 
         if ($booking->insurance_price != 0) {
-            $html .= "<li>Insurance  <span>" . $booking->insurance_price . " CHF</span></li>";
+            $html .= "<li>" . trans('front.insurance') . " <span>" . $booking->insurance_price . " CHF</span></li>";
         }
         $totalExtra = 0;
         $bookingExtras = $this->getExtraBooking($booking->id);
@@ -338,7 +338,11 @@ class FC_bookingController extends Controller
             $html .= "<li>" . $be->name . " <span>" . $be->price . " CHF</span></li>";
             $totalExtra += $be->price;
         }
-        $html .= "<li class='total-costs'>" . trans('front.total_cost') . " <span>" . ($total_without_insurance + $booking->insurance_price + $totalExtra) . " CHF</span></li>";
+        $totaltCost = $total_without_insurance + $booking->insurance_price + $totalExtra;
+        $feePayment = ($totaltCost * 3) / 100;
+        $html .= "<li> 3% " . trans('front.fee_payment') . "<span>" . number_format($feePayment, 2) . " CHF</span></li>";
+        $total = $totaltCost + $feePayment;
+        $html .= "<li class='total-costs'>" . trans('front.total_cost') . " <span>" . number_format($total, 2) . " CHF</span></li>";
         return $html;
     }
 

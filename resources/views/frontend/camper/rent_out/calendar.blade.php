@@ -41,10 +41,10 @@
                         <div id='calendar'></div>
                         <div class="row margin-top-20">
                             <div class="col-md-4">
-                                <input type="date" id="fc-date-start" placeholder="{{trans('front.date_start')}}">
+                                <input type="text" id="fc-date-start" placeholder="{{trans('front.date_start')}}" onfocus="(this.type='date')" onblur="(this.type='text')">
                             </div>
                             <div class="col-md-4">
-                                <input type="date" id="fc-date-end" placeholder="{{trans('front.date_end')}}">
+                                <input type="text" id="fc-date-end" placeholder="{{trans('front.date_end')}}" onfocus="(this.type='date')" onblur="(this.type='text')">
                             </div>
                             <div class="col-md-4">
                                 <input type="text" id="fc-title" placeholder="title">
@@ -58,27 +58,27 @@
                     @csrf
                     <input type="hidden" name="id_campers" value="{{$camper->id}}" />
 
-                    <h4 class="headline margin-bottom-30">Previous entries</h4>
+                    <h4 class="headline margin-bottom-30">{{trans('front.previous_entries')}}</h4>
                     <table id="tableBody" class="basic-table">
 
                         <tr>
-                            <th>Blocked period</th>
-                            <th>Note</th>
+                            <th>{{trans('front.blocked_period')}}</th>
+                            <th>{{trans('front.note')}}</th>
                             <th></th>
                         </tr>
                         @if(count($blokedPeriods)==0)
                         <tr>
-                            <td colspan="2">No data Found</td>
+                            <td colspan="2">{{trans('front.no_data_found')}}</td>
                         </tr>
                         @else
-                            @foreach($blokedPeriods as $item)        
+                            @foreach($blokedPeriods as $item)
                                 <tr>
                                     <td>
                                     <input type='hidden' name="period[{{$loop->index}}][start]" value="{{date('d-m-Y',strtotime($item->start_date))}}"/>
                                     <input type='hidden' name="period[{{$loop->index}}][end]" value="{{date('d-m-Y',strtotime($item->end_date))}}" />
                                     <input type='hidden' name="period[{{$loop->index}}][title]" value="{{$item->comment}}" />
-                                    
-                                    From <strong>{{date('d-m-Y',strtotime($item->start_date))}}</strong> To <strong>{{date('d-m-Y',strtotime($item->end_date))}}</strong> </td>
+
+                                    {{trans('front.from')}} <strong>{{date('d-m-Y',strtotime($item->start_date))}}</strong> {{trans('front.to')}} <strong>{{date('d-m-Y',strtotime($item->end_date))}}</strong> </td>
                                     <td>{{$item->comment}}</td>
                                     <td><a class="delete" href="#"><i class="fa fa-remove"></i></a></td>
                                 </tr>
@@ -139,11 +139,11 @@
                     Swal.fire({
                         title: info.event.title,
                         icon: 'info',
-                        html:' <div> <input type="date" id="swal-start" value="'+moment(info.event.start).format('YYYY-MM-DD')+'" placeholder="date Start"> <input type="date" id="swal-end" value="'+moment(info.event.end).format('YYYY-MM-DD')+'" placeholder="date End"> <input type="text" id="swal-title" placeholder="title" value="'+info.event.title+'"> </div>',
+                        html:' <div> <input type="date" id="swal-start" value="'+moment(info.event.start).format('YYYY-MM-DD')+'" placeholder="{{trans('front.date_start')}}"> <input type="date" id="swal-end" value="'+moment(info.event.end).format('YYYY-MM-DD')+'" placeholder="{{trans('front.date_end')}}"> <input type="text" id="swal-title" placeholder="{{trans('front.title')}}" value="'+info.event.title+'"> </div>',
                         showDenyButton: true,
                         showCancelButton: true,
-                        confirmButtonText: `Update`,
-                        denyButtonText: `Remove`,
+                        confirmButtonText: `{{trans('front.client_camper_edit')}}`,
+                        denyButtonText: `{{trans('front.client_camper_delete')}}`,
                     }).then((result) => {
                         if (result.isConfirmed) {
                             const date_star = $("#swal-start").val();
@@ -189,7 +189,7 @@
                 });
                 var table = document.getElementById("tableBody");
                 var list_calendar = calendar.getEvents();
-                var html = "<tr><th>Blocked period</th><th>Note</th><th></th></tr>";
+                var html = "<tr><th>{{trans('front.blocked_period')}}</th><th>Note</th><th></th></tr>";
                 var oldEvent =<?php echo json_encode($blokedPeriods); ?>;
                 var count = 0;
                 if(oldEvent != undefined && oldEvent.length>0){
@@ -198,21 +198,21 @@
                         html += "<input type='hidden' name='period["+count+"][start]' value='"+moment(oldEvent[count].start_date).format('YYYY-MM-DD')+"'/>";
                         html += "<input type='hidden' name='period["+count+"][end]' value='"+moment(oldEvent[count].end_date).format('YYYY-MM-DD')+"'/>";
                         html += "<input type='hidden' name='period["+count+"][title]' value='"+oldEvent[count].comment+"'/>";
-                        html += "From <strong>"+moment(oldEvent[count].start_date).format('DD-MM-YYYY')+"</strong> To <strong>"+moment(oldEvent[count].end_date).format('DD-MM-YYYY')+" </strong></td>";
+                        html += "{{trans('front.from')}} <strong>"+moment(oldEvent[count].start_date).format('DD-MM-YYYY')+"</strong> {{trans('front.to')}} <strong>"+moment(oldEvent[count].end_date).format('DD-MM-YYYY')+" </strong></td>";
                         html += "<td>"+oldEvent[count].comment+"</td>";
                         html += "<td><a class='delete' href='#'><i class='fa fa-remove'></i></a></td>";
                         html += "</tr>";
                     }
-                }       
-                         
+                }
+
                 if(list_calendar != undefined){
                     for(var i =0;i<list_calendar.length;i++){
-                        
+
                         html += "<tr><td>";
                         html += "<input type='hidden' name='period["+count+"][start]' value='"+moment(list_calendar[i].start).format('YYYY-MM-DD')+"'/>";
                         html += "<input type='hidden' name='period["+count+"][end]' value='"+moment(list_calendar[i].end).format('YYYY-MM-DD')+"'/>";
                         html += "<input type='hidden' name='period["+count+"][title]' value='"+list_calendar[i].title+"'/>";
-                        html += "From <strong>"+moment(list_calendar[i].start).format('DD-MM-YYYY')+"</strong> To <strong>"+moment(list_calendar[i].end).format('DD-MM-YYYY')+" </strong></td>";
+                        html += "{{trans('front.from')}} <strong>"+moment(list_calendar[i].start).format('DD-MM-YYYY')+"</strong> {{trans('front.to')}} <strong>"+moment(list_calendar[i].end).format('DD-MM-YYYY')+" </strong></td>";
                         html += "<td>"+list_calendar[i].title+"</td>";
                         html += "<td><a class='delete' href='#''><i class='fa fa-remove'></i></a></td>";
                         html += "</tr>";

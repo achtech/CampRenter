@@ -104,7 +104,7 @@ return [
 
     'content_most_visited' => 'Meistbesuchte Camper',
 
-    'title_categories' => 'Der richtige zum Campen',
+    'title_categories' => 'Das richtige Fahrzeug zum campen',
 
     'content_user_review' => 'So geht es in den Urlaub',
 
@@ -112,7 +112,7 @@ return [
 
     'choose_data_request' => 'Wenn du einen Camper ausgewählt hast, sieh dir alle weiteren Details in der Übersicht an. Passt der Camper für dich? Wähle dann dein bevorzugtes Datum und sende die Anfrage an den Vermieter.',
 
-    'receive_request' => 'Jetzt brauchst du nur noch ein wenig Geduld. Sobald der Vermieter deine Anfrage erhalten hat, kann er diese bestätigen und deinem Campingurlaub steht nichts mehr im Wege. Viel Spaß bei deinem Abenteuer.',
+    'receive_request' => 'Jetzt brauchst du nur noch ein wenig Geduld. Sobald der Vermieter deine Anfrage erhalten hat, kann er diese bestätigen und deinem Campingurlaub steht nichts mehr im Wege. Viel Spass bei deinem Abenteuer.',
 
     'our_bloc' => 'Von unserem Blog',
 
@@ -134,7 +134,7 @@ return [
 
     'text_content_1_1' => 'Teile deinen Camper mit Menschen aus der ganzen Welt. Campunite macht es dir so einfach wie möglich. Wir bieten unkomplizierte Zahlungsmethoden wie PayPal, Visa und Mastercard. Beachte die Schritte und lege gleich los!',
 
-    'text_content_1_2' => 'Grüße von deinem Campunite-Team',
+    'text_content_1_2' => 'Grüsse von deinem Campunite-Team',
 
     'learn_more' => 'Mehr erfahren',
 
@@ -164,9 +164,9 @@ return [
 
     'recommandation' => 'Wenn du einen Empfehlungscode hast, kannst du diesen hier eingeben',
 
-    'cancel' => 'Stornieren',
+    'cancel' => 'Abbrechen',
 
-    'apply' => 'Anwenden',
+    'apply' => 'Speichern und weiter',
 
     'state' => 'Status',
 
@@ -198,7 +198,7 @@ return [
 
     'street_um' => 'Str. Nr.',
 
-    'location' => 'Ort',
+    'profile_location' => 'Ort',
 
     'postal_code' => 'Postleitzahl',
 
@@ -330,7 +330,7 @@ return [
 
     'password_requirment' => 'Passwort Bedingungen:',
 
-    'capital_required' => 'Verwende mindestens 1 Großbuchstaben',
+    'capital_required' => 'Verwende mindestens 1 Grossbuchstaben',
 
     'terms_required' => 'Nutzungsbedingungen:',
 
@@ -342,15 +342,15 @@ return [
 
     'hi' => 'Hallo',
 
-    'confirm_registration' => 'Bitte klicke auf die Schaltfläche, um deine E-Mail-Adresse zu bestätigen und die Registrierung abzuschließen.',
+    'confirm_registration' => 'Bitte klicke auf die Schaltfläche, um deine E-Mail-Adresse zu bestätigen und die Registrierung abzuschliessen.',
 
     'question_case' => 'Bei Fragen schreibe uns bitte eine E-Mail an',
 
     'contact_us' => 'Das Campunite-Team meldet sich so schnell wie möglich bei dir.',
 
-    'best_regards' => 'Mit freundlichen Grüßen',
+    'best_regards' => 'Mit freundlichen Grüssen',
 
-    'camp_team' => 'dein Campeunite-Team',
+    'camp_team' => 'dein Campunite Team',
 
     'address_verified' => 'Deine E-Mail-Adresse wurde erfolgreich überprüft',
 
@@ -372,7 +372,7 @@ return [
 
     'Blog' => 'Blog',
 
-    'Latest News' => 'Neusten Nachrichten',
+    'Latest News' => 'Neuste Nachrichten',
 
     'Name' => 'Name',
 
@@ -510,7 +510,7 @@ return [
 
     'Sink' => 'Waschbecken',
 
-    'Indoor table' => 'Innen-Tisch',
+    'Indoor table' => 'Tisch im Innenraum',
 
     'CD Player' => 'CD Player',
 
@@ -524,7 +524,7 @@ return [
 
     'water_tank' => 'Abwassertank, Frischwassertank',
 
-    'cooker_fire' => 'Gaskocher für draußen, Markise, Feuerlöscher, Kabeltrommel',
+    'cooker_fire' => 'Gaskocher für draussen, Markise, Feuerlöscher, Kabeltrommel',
 
     'main_season' => '(Jul - Aug)',
 
@@ -568,7 +568,7 @@ return [
 
     'Deductible' => 'Selbstbehalt',
 
-    'Interior insurance' => 'Innenversicherung',
+    'Interior insurance' => 'Innenraumversicherung',
 
     /*--------------personnal data*/
 
@@ -584,7 +584,7 @@ return [
 
     /*--------------Contact--------------*/
 
-    'street_view' => 'Straßenansicht',
+    'street_view' => 'Strassenansicht',
 
     'our_office' => 'Unser Büro',
 
@@ -608,9 +608,9 @@ return [
 
     'edit_profile' => 'Profil bearbeiten',
 
-    'upload_image_national' => 'Nationales Bild',
+    'upload_image_national' => 'ID/Pass',
 
-    'driving_licence' => 'Führerscheinbild',
+    'driving_licence' => 'Bild vom Führerausweis',
 
     'street' => 'Strasse',
 
@@ -674,7 +674,7 @@ return [
 
     'profil_review' => 'Rezension',
 
-    'profile_driving_licence' => 'Führerschein',
+    'profile_driving_licence' => 'Führerausweis',
 
     'profile_status' => 'Status',
 
@@ -708,7 +708,7 @@ return [
 
     'search_blog' => 'Blog durchsuchen',
 
-    'any_question' => 'Hast du Fragen?',
+    'any_question' => 'Hast du Fragen',
 
     'feel_free_to_ask' => 'Hast du Fragen? Fragen sind immer willkommen!',
 
@@ -732,13 +732,13 @@ return [
 
     'check_in_out' => 'Einchecken - Auschecken',
 
-    'request_to_book' => 'Buchungs-Anfrage',
+    'request_to_book' => 'Buchungsanfrage',
 
     'hosted_by' => 'Verwaltet von',
 
     'bookmark_listing' => 'Setze ein Lesezeichen für dieses Angebot',
 
-    'people_bookmarked_this_place' => 'Leute haben diesen Ort mit einem Lesezeichen versehen',
+    'people_bookmarked_this_place' => 'Person(en) haben dieses Angebot mit einem Lesezeichen versehen',
 
     'camper_name' => 'Name des Campers',
 
@@ -788,7 +788,7 @@ return [
 
     'description_camper' => "Beschreibe das Fahrzeug, die Ausrüstung, was du damit erlebt hast und für wen es am besten geeignet ist.",
 
-    'outside' => 'Draußen',
+    'outside' => 'Draussen',
 
     'camping_table' => 'Camping Tisch',
 
@@ -818,9 +818,9 @@ return [
 
     'heatable_water' => 'Heizbarer Wasser- und Abwassertank',
 
-    'further_equipment' => 'Weitere Ausrüstung für draußen',
+    'further_equipment' => 'Weitere Ausrüstung für',
 
-    'additional_equipment' => 'Zusatzausstattung für den Außenbereich',
+    'additional_equipment' => 'Zusatzausstattung für den Aussenbereich',
 
     'add_additional_equipment' => 'Zusätzliche Ausrüstung hinzufügen',
 
@@ -830,11 +830,11 @@ return [
 
     'model' => 'Modell',
 
-    'licence_category' => 'Fahrzeug-Kategorie',
+    'licence_category' => 'Fahrzeugkategorie',
 
     'converted_vehicle' => 'Umgebautes Fahrzeug',
 
-    'licence_number' => 'Fahrzeugnummer',
+    'licence_number' => 'Nummernschild',
 
     'vehicle_registration' => 'Fahrzeugschein',
 
@@ -866,21 +866,21 @@ return [
 
     'cylinder_capacity' => 'Hubraum',
 
-    'aircon' => "Klimaanlage in der Fahrerkabine",
+    'Aircon' => "Klimaanlage in der Fahrerkabine",
 
-    'rear_view_camera' => 'Rear view camera',
+    'Rear' => 'Rückfahrkamera',
 
-    'power_steering' => 'Servolenkung',
+    'Power' => 'Servolenkung',
 
-    'comprehensive_cover' => 'Umfassende Deckung des Fahrzeugbesitzers',
+    'comprehensive_cover' => 'Vollkasko-Versicherung des Vermieters (Kollision- & Teilkasko)',
 
-    'comprehensive_cover_info' => 'Wähle diese Option, wenn deine Versicherung einen umfassenden Versicherungsschutz beinhaltet.',
+    'comprehensive_cover_info' => 'Wähle diese Option, wenn du eine Vollkasko-Versicherung auf dein Fahrzeug hast.',
 
     'no_insurance' => 'Keine Versicherung',
 
-    'no_insurance_info' => "Hast du keine Versicherung, die auch für Vermietungen gilt? Du kannst dich gerne mit uns in Verbindung setzen. Gemeinsam werden wir sicherlich eine Lösung finden.",
+    'no_insurance_info' => "Die Versicherungsdeckung für dein Fahrzeug ist während der gesamten Miezeit über Campunite – Helvetia gedeckt. Die Campunite – Helvetia Versicherung deckt Schäden am gemieteten Fahrzeug.",
 
-    'roadside_assistance ' => 'Pannenhilfe inklusive, auch bei Vermietung des Camper.',
+    'roadside_assistance ' => 'Pannenhilfe inklusive, auch bei Vermietung des Campers.',
 
     'sex' => 'Geschlecht',
 
@@ -888,7 +888,7 @@ return [
 
     'select_category' => 'Kategorie wählen',
 
-    'minimum_length_licence' => "Mindestdauer des Führerscheins",
+    'minimum_length_licence' => "Mindestdauer des Führerscheinbesitzes",
 
     'by_agreement' => 'Nach Vereinbarung',
 
@@ -906,7 +906,7 @@ return [
 
     'note_additional_rental' => "Bitte beachte, dass die zusätzlichen Mietbedingungen nicht im Widerspruch zu den Allgemeinen Geschäftsbedingungen von Campunite stehen dürfen.",
 
-    'price_per_day' => 'Preis pro Tag:',
+    'price_per_day' => 'Preis pro Tag',
 
     'overview' => 'Übersicht',
 
@@ -928,7 +928,7 @@ return [
 
     'personal_details' => 'Persönliche Daten',
 
-    'redirected_to_paypal' => 'Du wirst zu PayPal weitergeleitet, um die Zahlung abzuschließen.',
+    'redirected_to_paypal' => 'Du wirst zu PayPal weitergeleitet, um die Zahlung abzuschliessen.',
 
     'credit_card' => 'Kredit- / Debitkarte',
 
@@ -1046,7 +1046,7 @@ return [
 
     'avatar' => 'Wähle deinen Avatar',
 
-    'image_national' => 'Lade deine nationale ID hoch',
+    'image_national' => 'Lade deine Identifikationsdokumente (ID, Pass) hoch',
 
     'driving_licence_image' => 'Lade deinen Führerschein hoch',
 
@@ -1066,9 +1066,9 @@ return [
 
     'paid' => 'Bezahlt',
 
-    'payment_date' => 'Payment date',
+    'payment_date' => 'Zahlungsdatum',
 
-    'total_cost' => 'Zahlungsdatum',
+    'total_cost' => 'Zahlungstotal',
 
     'days' => 'Tage',
 
@@ -1084,7 +1084,7 @@ return [
 
     'choose' => 'Wähle',
 
-    'our_proposition' => 'Unser Versicherungsangebot',
+    'our_proposition' => 'Campunite – Helvetia Versicherung',
 
     'Verified' => 'Gültig',
 
@@ -1112,5 +1112,159 @@ return [
     'email_or_pwd_error' => 'Email oder Passwort ist falsch!',
 
     'nights' => 'Nächte',
+
+    /** Add the rest of missing labels */
+
+    'fee_payment' => 'Gebühren',
+    'average_booking_desc' => 'Musterbuchung in der Hochsaison (durchschnittliche Buchung bei Mindestmietnächten)',
+    'owner_earnings' => 'Einkommen des Eigentümers',
+    'service_fee' => 'Servicegebühr',
+    'rental_nights' => 'Mietnächte',
+    'desc_minimum_period' => 'Musterbuchung für Ihren Mindestzeitraum',
+    'add' => 'Hinzufügen',
+    'remove' => 'Entfernen',
+    'included' => 'Inbegriffen',
+    'disability_capital' => 'Invaliditätskapital',
+    'death_benefit' => 'Todesfallkapital',
+    'fixed_premium' => 'Fixprämie',
+    'total' => 'Total',
+    'roadside_assistance' => 'Pannenhilfe in Europa',
+    'any_questions' => 'Hast du Fragen?',
+    'feel_free_to_ask' => 'Hast du Fragen? Wir helfen gerne!',
+    'search_blog' => 'Blog durchsuchen',
+    'drop_link' => 'Melde dich',
+    'popular_posts' => 'Beliebte Beiträge',
+    'browse_all_listings' => 'Alle Einträge durchsuchen',
+    'already_sent' => 'Du hast bereits eine Anfrage für diesen Camper gesendet',
+    'stay_safe' => 'Stay safe mit Helvetia',
+    'previous_entries' => 'Vorherige Einträge',
+    'blocked_period' => 'Blockierter Zeitraum',
+    'note' => 'Hinweis',
+    'no_data_found' => 'Keine Daten gefunden',
+    'title' => 'Titel',
+    'blocked_period' => 'Blockierter Zeitraum',
+    'from' => 'Von',
+    'to' => 'Zu',
+    'jul_aug' => 'Jul - Aug',
+    'may_jun_sep_oct' => 'Mai - Jun / Sep - Okt',
+    'nov_apr' => 'Nov - Apr',
+    'water_canister' => 'Wasserkanister',
+    'grill' => 'Grill',
+    'levelling_ramp' => 'Nivellierrampe',
+    'tent' => 'Zelt',
+    'fire_extinguisher' => 'Feuerlöscher',
+    'mosquito_net' => 'Mückennetz',
+    'hammock' => 'Hängematte',
+    'gas_bottle' => 'Gasflasche',
+    'gas_cooker' => 'Gaskocher für draussen',
+    'awning' => 'Storen',
+    'camping_light' => 'Camping Licht',
+    'cable_reel' => 'Kabelrolle',
+    'deck_chair' => 'Liegestuhl',
+    'carpet_for_tent' => 'Teppich für den Zeltboden',
+    'inside' => 'Innerhalb',
+    'number_of_single_beds' => 'Anzahl der Einzelbetten',
+    'number_of_double_beds' => 'Anzahl der Doppelbetten',
+    'air_conditioner' => 'Klimaanlage',
+    'heating' => 'Heizung',
+    'power' => 'Strom',
+    'power_supply' => 'Stromversorgung',
+    'heavy_current_connection' => 'Starke Stromverbindung',
+    'extra_battery' => 'Zusätzliche Batterie',
+    'dimming' => 'Dimmen',
+    'tinted_windows' => 'Getönte Scheiben',
+    'curtains' => 'Vorhänge',
+    'roller_blinds' => 'Rollos',
+    'rotatable_seats' => 'Drehbare Sitze',
+    'baby_seat' => 'Kindersitz',
+    'baby_seat_latch' => 'Kindersitzverriegelung',
+    'electronics' => 'Elektronik',
+    'cooking_possibility' => 'Kochmöglichkeit',
+    'burner_stove' => 'Gaskocher',
+    'single_electric_cooker' => 'Einzelner Elektroherd',
+    'Triple_electric_cooker' => 'Dreifacher Elektroherd',
+    'double_electric_cooker' => 'Doppelter Elektroherd',
+    'oven' => 'Ofen',
+    'cooling_possibility' => 'Kühlmöglichkeit',
+    'fridge' => 'Kühlschrank',
+    'freezer' => 'Gefrierschrank',
+    'cool_box' => 'Kühlbox',
+    'bathroom' => 'Bad',
+    'toilet' => 'Toilette',
+    'basin' => 'Waschbecken',
+    'mobile_toilet' => 'Mobile Camping-Toilette',
+    'shower' => 'Dusche',
+    'outdoor_shower' => 'Aussendusche',
+    'sink' => 'Waschbecken',
+    'dishes' => 'Geschirr',
+    'additional_equipment_intside' => 'Zusatzausstattung für den Innenbereich',
+    'battery_range' => 'Batteriebereich',
+    'Four' => 'Allradantrieb',
+    'Auxiliary' => 'Behelfsheizung',
+    'Reverse' => 'Rückwärtsparksystem',
+    'Anti' => 'Anti-Rutsch-System (ASR)',
+    'Central' => 'Zentralverriegelung',
+    'location_vehicle' => 'Standort des Fahrzeugs',
+    'required_check_insurance' => 'Ich bestätige hiermit, dass mein Fahrzeug gegen Kollissions- und Teilkaskoereignisse versichert ist. Meine Versicherung wurde über die Vermietung in Kenntnis gesetzt und erklärt sich damit einverstanden',
+    'insurance_benefit' => 'Versicherungsleistung',
+    'insurance_benefit_title_1' => 'Übernahme von Selbstbehalt und Bonusverlust aus folgenden Schadenereignissen',
+    'liability' => 'Haftpflicht',
+    'collision_insurance' => 'Kollisionskasko',
+    'partial_coverage' => 'Teilkasko',
+    'damage_reported' => 'Schäden müssen bei der Übergabe des Fahrzeuges mitgeteilt werden.',
+    'premium_calculation' => 'Prämienberechnung: (Bonsusverlust / Selbsbehalt)',
+    'premium_calc' => 'Prämienberechnung',
+    'tab_title_1' => 'Versicherungsleistungen (Mieter und/oder Lenker im Zeitpunkt des Schadenfalles ist zwischen 18 und 23 Jahre alt)',
+    'acceptance_bonus' => 'Übernahme von Selbstbehalt und Bonusverlust',
+    'gross_negligence' => 'Grobfahrlässigkeit',
+    'partial_coverage' => 'Teilkasko inkl. GlasPLUS',
+    'tab_title_2' => 'Versicherungsleistungen (Mieter und/oder Lenker im Zeitpunkt des Schadenfalles ist mind. 24 Jahre alt)',
+    'compulsory_insurance' => 'Versicherungspflicht Mieter',
+    'compulsory_insurance_desc' => 'Bitte wähle die Versicherungsleistungen aus, welche für den Mieter während der Mietdauer pflicht sind. Diese werden automatisch dem Endpreis für den Mieter eingerechnet und sind über die Campunite - Helvetia Versicherung gedeckt.',
+    'assistance_desc' => 'Unsere Assistance bietet dem Mieter schnelle und kompetente Unterstützung bei der Bewältigung des Schadens oder Panne.',
+    'indoor_insurance_desc' => 'Ein Missgeschick ist schnell passiert. Der Kaffee verschüttet während der Fahrt und der Fleck auf dem Sitz geht nicht mehr weg. Diese und viele weitere Schadenursachen sind über die Innenraumversicherung gedeckt',
+    'alert_insurance' => 'Bitte Überprüfe den Versicherungsverlustbonus und den Selbstbehalt, bevor Du ihn einreichst',
+    'warning' => 'Warnung',
+    'choose_category' => 'Bitte wähle eine Kategorie, bevor Du weitergehst.',
+    'sweet_camper' => 'Mein süsser Camper',
+    'error' => 'Error',
+    'hirer_licence_required' => '"Mindestalter" und "Mindestdauer des Führerscheinbesitzes" sind erforderlich.',
+    'principal_photo' => 'Anzeigefoto',
+    'all_photos' => 'Alle Fotos',
+    'remove_file' => 'Datei löschen',
+
+    'imprint_title' => 'Impressum',
+    'imprint_p_1' => 'Campunite by Auciello & Ramsperger',
+    'imprint_p_2' => '8212 Neuhausen am Rheinfall',
+    'imprint_p_3' => 'Schweiz',
+    'imprint_p_4' => 'Gerichtsstand Kanton Schaffhausen.',
+
+    'out of' => 'aus',
+    'completed' => 'Abgeschlossen',
+    'draft' => 'Entwurf',
+    'Cargo carrier' => 'Frachtführer',
+    'Trailer hitch' => 'Anhängerkupplung',
+    'Heatable' => 'Heizbarer Wasser- und Abwassertank',
+
+    'iPhone Connection' => 'iPhone-Verbindung',
+    'dropphotos' => 'Dateien hier ablegen',
+    'today' => 'Heute',
+    'fee' => 'Gebühr',
+    'your_review' => 'Deine Bewertung',
+    'your_reviews' => 'Ihre Bewertungen',
+    'camper' => 'Wohnmobil von ',
+    "check_camper" => "Prüfen",
+    "your_message" => "Deine Nachricht",
+    'start_date' => 'Anfangsdatum',
+    'end_date' => 'Endtermin',
+    'booking_status' => 'Buchungsstatus',
+    'booking_summary' => 'Buchungsübersicht',
+    'success' => 'Erfolg',
+    'success_message' => ' Du hast es geschafft, jetzt viel Spaß.',
+    'email_message' => ' Check deine E-Mails',
+    'Contact Us' => 'Kontaktiere uns',
+    'results_found' => 'Gefundene Ergebnisse',
+    'see_in_map' => 'Siehe in Karte',
+    'thank_you' => 'Vielen Dank',
 
 ];

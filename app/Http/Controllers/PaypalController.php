@@ -36,7 +36,9 @@ class PaypalController extends Controller
         }
 
         $_varcost = $total_without_insurance + $booking->insurance_price + $totalExtra;
-        return $_varcost;
+        $feePayment = ($_varcost * 3) / 100;
+        $total_cost = $_varcost + $feePayment;
+        return $total_cost;
 
     }
 

@@ -87,7 +87,8 @@
 				</div>
 			@else
 				<div class="user-menu">
-					<div class="user-name"><span><img src="{{asset('/images/clients')}}/{{App\Http\Controllers\Controller::getConnectedClientAvatarOrPicture()}}" alt=""></div>
+            <!--<img src="{{asset('/images/clients')}}/{{App\Http\Controllers\Controller::getConnectedClientAvatarOrPicture()}}" alt="">-->
+					<div class="user-name"><span><i class="fas fa-home"></i></div>
 					<ul>
                   <li><a href="{{ route('frontend.clients.bookmark') }}" style="width: 100%;"><i class="far fa-heart" style="margin-right: 6%;"></i>{{trans('front.favoris')}}</a></li>
                   <li><a href="{{ route('frontend.clients.booking') }}" style="width: 100%;"><i class="far fa-folder-open" style="margin-right: 6%;"></i>{{ __('front.my_bookings') }}</a></li>

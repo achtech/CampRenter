@@ -28,8 +28,8 @@
 					<div class="dashboard-stat-content wallet-totals">
 						<h4>{{App\Http\Controllers\admin\ClientController::getTotalsSolde($client->id)}}</h4>
 						<span>{{ __('front.total_earning') }}
-							<strong class="wallet-currency">EUR</strong></span></div>
-					<div class="dashboard-stat-icon"><i class="fas fa-euro-sign"></i></div>
+							<strong class="wallet-currency">CHF</strong></span></div>
+
 				</div>
 			</div>
 			<!-- Item -->
@@ -38,8 +38,8 @@
 					<div class="dashboard-stat-content wallet-totals">
 						<h4>{{App\Http\Controllers\admin\ClientController::getCurrentSolde($client->id)}}</h4>
 						<span>{{ __('front.total_current_month') }}
-							<strong class="wallet-currency">EUR</strong></span></div>
-					<div class="dashboard-stat-icon"><i class="fas fa-euro-sign"></i></div>
+							<strong class="wallet-currency">CHF</strong></span></div>
+
 				</div>
 			</div>
 			<!-- Item -->
@@ -47,28 +47,28 @@
 				<div class="dashboard-stat color-6">
 					<div class="dashboard-stat-content"><h4>{{ $total_orders ?? 0 }}</h4>
 					 <span>{{ __('front.total_orders') }} </span></div>
-					<div class="dashboard-stat-icon"><i class="fas fa-euro-sign"></i></div>
+
 				</div>
 			</div>
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-7">
 					<div class="dashboard-stat-content"><h4>{{ $total_confirmed ? $total_confirmed->total : 0 }}</h4> <span>{{ __('front.confirmed_bookings') }} </span></div>
-					<div class="dashboard-stat-icon"><i class="fas fa-euro-sign"></i></div>
+
 				</div>
 			</div>
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-5">
 					<div class="dashboard-stat-content"><h4>{{ $total_canceled ? $total_canceled->total : 0 }}</h4> <span>{{ __('front.total_canceled') }} </span></div>
-					<div class="dashboard-stat-icon"><i class="fas fa-euro-sign"></i></div>
+
 				</div>
 			</div>
 			<!-- Item -->
 			<div class="col-lg-2 col-md-6">
 				<div class="dashboard-stat color-2">
 					<div class="dashboard-stat-content"><h4>{{ $total_rejected ? $total_rejected->total : 0 }}</h4> <span>{{ __('front.total_rejected') }} </span></div>
-					<div class="dashboard-stat-icon"><i class="fas fa-euro-sign"></i></div>
+
 				</div>
 			</div>
 
@@ -79,9 +79,9 @@
 			<!-- Invoices -->
 			<div class="col-lg-6 col-md-12">
 				<div class="dashboard-list-box invoices with-icons margin-top-20">
-					<h4>{{trans('front.earnings')}} <div class="comission-taken">Fee: <strong>{{$activePromotion->commission}}%</strong></div></h4>
+					<h4>{{trans('front.earnings')}} <div class="comission-taken">{{trans('front.fee')}}: <strong>{{$activePromotion->commission}}%</strong></div></h4>
+					@if(sizeof($owner_bookings) != 0)
 					<ul style="height: 500px;overflow-y: auto;">
-					@if($owner_bookings != null)
 						@foreach($owner_bookings as $owner_booking)
 						<li><i class="fas fa-caravan"></i>
 							<strong>{{$owner_booking->camper_name}}</strong>
@@ -93,10 +93,10 @@
 							</ul>
 						</li>
 						@endforeach
-					@else
-						<p>{{trans('front.no_results')}}</p>
-					@endif
 					</ul>
+					@else
+						<p style="display: inline-block;padding: 8px 0px 0px 11px;">{{trans('front.no_results')}}</p>
+					@endif
 				</div>
 			</div>
 
@@ -104,8 +104,8 @@
 			<div class="col-lg-6 col-md-12">
 				<div class="dashboard-list-box invoices with-icons margin-top-20">
 					<h4>{{trans('front.billing_history')}}</h4>
+					@if(sizeof($billings) != 0)
 					<ul>
-					@if($billings != null)
 						@foreach($billings as $billing)
 						<li><i class="list-box-icon fas fa-wallet"></i>
 							<strong>${{ $billing->total}}</strong>
@@ -119,10 +119,10 @@
 							</ul>
 						</li>
 						@endforeach
-					@else
-						<p>{{trans('front.no_results')}}</p>
-					@endif
 					</ul>
+					@else
+						<p style="display: inline-block;padding: 8px 0px 0px 11px;">{{trans('front.no_results')}}</p>
+					@endif
 				</div>
 			</div>
 			<!-- Copyrights -->

@@ -76,8 +76,7 @@
          <div class="sidebar-textbox">
             <p>{{trans('front.platform_description')}}</p>
             <ul class="contact-details">
-               <li><i class="fas fa-phone-alt"></i> <strong>{{trans('front.platform_phone')}}</strong> <span>(123) 123-456 </span></li>
-               <li><i class="fas fa-fax"></i> <strong>{{trans('front.platform_fax')}}</strong> <span>(123) 123-456 </span></li>
+               <li><i class="fas fa-phone-alt"></i> <strong>{{trans('front.platform_phone')}}</strong> <span>+41 52 511 31 98 </span></li>
                <li><i class="fas fa-globe"></i> <strong>{{trans('front.platform_web')}}</strong> <span><a href="">www.campunite.com</a></span></li>
                <li><i class="far fa-envelope"></i> <strong>{{trans('front.platform_email')}}</strong> <span><a href="mailto:support@campunite.com">support@campunite.com</a></span></li>
             </ul>
